@@ -1,0 +1,17 @@
+<h2> New post </h2>
+
+<%= form_for(@post) do |form| %>
+  <div>
+    <%= form.label :content %>
+    <%= form.text_field :content, id: :post_conent, class: 'form-control' %>
+  </div>
+  <div>
+    <%= form.submit 'Save', class: 'btn btn-primary' %>
+<% end %>
+
+<h2> Timeline </h2>
+
+<% @posts.each do |post| %>
+  <%= post.user.name %>
+  <%= post.content %>
+<% end %>
