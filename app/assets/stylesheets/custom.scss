@@ -63,6 +63,25 @@ a {
 .notice,
 .alert {
   margin-bottom: 8px;
+  width: 100%;
+  height: 30px;
+  text-align: center;
+  padding: 5px;
+  color: dimgrey;
+  font-size: 14px;
+}
+
+.notice {
+  background-color: #D4F6C6;
+}
+
+.alert {
+  background-color: #F6CFC6;
+}
+
+.errors {
+  font-size: 10px;
+  color: red;
 }
 
 form {
