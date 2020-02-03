@@ -41,6 +41,12 @@ a {
   padding: 16px 48px;
   background-color: $primary-color-dark;
   color: $primary-color-light;
+
+  .menu {
+    width: 75%;
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 .nav a {
@@ -72,11 +78,11 @@ a {
 }
 
 .notice {
-  background-color: #D4F6C6;
+  background-color: #d4f6c6;
 }
 
 .alert {
-  background-color: #F6CFC6;
+  background-color: #f6cfc6;
 }
 
 .errors {
@@ -150,6 +156,7 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 
   label {
     display: none;
@@ -160,13 +167,25 @@ form {
     border: 1px solid $divider-color;
     height: 64px;
     padding: 8px;
-    margin: 4px;
+    margin: 4px 0;
     border-radius: 4px;
+  }
+
+  .field_with_errors {
+    width: 100%;
+
+    .form-control {
+      border: 1px solid #f00;
+    }
+  }
+
+  .btn-primary {
+    width: 100%;
   }
 }
 
 .timeline {
-  width: 80%;
+  width: 100%;
   margin: 16px 0;
   display: flex;
   flex-direction: column;
@@ -177,37 +196,80 @@ form {
   }
 
   .posts {
-    width: 60%;
+    width: 100%;
   }
 
   .post {
     width: 80%;
-    margin: 4px;
+    margin: 16px 0;
     display: flex;
     flex-direction: column;
   }
 
   .post-author {
-    align-self: flex-start;
     font-size: 0.8em;
     margin: 0 0 8px 0;
+    color: $primary-color-dark;
+    text-transform: capitalize;
   }
 
   .post-content {
-    align-self: center;
     font-size: 1.2em;
-    padding: 4px;
+    padding: 4px 0;
   }
 }
 
-@media only screen and (max-width: 480px) {
+.title {
+  text-align: center;
+  margin-bottom: 16px;
+  text-transform: capitalize;
+}
+
+.users-section {
+  width: 100%;
+
+  .users-list li {
+    margin-bottom: 16px;
+    text-transform: capitalize;
+    font-size: 1.2em;
+  }
+}
+
+.user-section {
+  width: 100%;
+  margin-left: 16px;
+
+  h2 {
+    text-transform: capitalize;
+  }
+
+  .timeline {
+    h3 {
+      width: 100%;
+    }
+    justify-content: start;
+  }
+}
+
+@media only screen and (min-width: 480px) {
   form {
     width: 60%;
+  }
+
+  .new_post,
+  .timeline {
+    width: 70%;
   }
 }
 
 @media (min-width: 780px) {
   form {
     width: 40%;
+  }
+
+  .nav .menu,
+  .new_post,
+  .timeline {
+    width: 50%;
   }
 }

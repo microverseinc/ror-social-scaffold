@@ -16,15 +16,6 @@
     Timeline
   </h3>
   <ul class="posts">
-    <% @timeline_posts.each do |post| %>
-      <li class="post">
-        <p class="post-author">
-          <%= post.user.name %>
-        </p>
-        <p class="post-content">
-          <%= post.content %>
-        </p>
-      </li>
-    <% end %>
+    <%= render @timeline_posts %>
   </ul>
 </article>
