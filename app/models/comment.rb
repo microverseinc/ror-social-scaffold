@@ -1,5 +1,5 @@
 class Comment < ApplicationRecord
-  validates :content, presence: true, length: { maximum: 20 }
+  validates :content, presence: true
 
   belongs_to :user
   belongs_to :post
