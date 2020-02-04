@@ -1,6 +1,6 @@
-class Post < ApplicationRecord
+class Comment < ApplicationRecord
   validates :content, presence: true, length: { maximum: 20 }
 
   belongs_to :user
-  has_many :comments
+  belongs_to :post
 end
