@@ -1,0 +1,7 @@
+<li class="post">
+  <%= link_to post.user.name, user_path(post.user), class: 'post-author' %>
+  <span class='post-date'> <%= post.created_at.strftime("%Y/%m/%d") %> </span>
+  <p class="post-content">
+    <%= post.content %>
+  </p>
+</li>
