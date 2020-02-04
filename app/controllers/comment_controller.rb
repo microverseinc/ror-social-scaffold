@@ -1,6 +1,6 @@
 def create
   @comment = Comment.new(comment_params)
-  @comment.user_id = current_user
+  @comment.user = current_user
   @comment.post = Post.find(params[:comment][:post_id])
   if @comment.save
     redirect_to posts_path, notice: 'Comment was successfully created.'
@@ -11,9 +11,8 @@ end
 
 def destroy
   comment = Comment.find(params[:id])
-  user = comment.post.user
   comment.destroy
-  redirect_to user_path(user)
+  redirect_to posts_path, notice: 'Comment was deleted'
 end
 
 private
