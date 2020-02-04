@@ -1,9 +1,11 @@
 <section class="users-section">
-  <h1 class="title">All Users</h1>
   <ul class="users-list">
     <% @users.each do |user| %>
       <li>
-        <%= link_to user.name,  user_path(user) %>
+        Name: <%= user.name %>
+        <span class="profile-link">
+          <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+        </span>
       </li>
     <% end %>
   </ul>
