@@ -14,5 +14,4 @@ class LikeController < ApplicationController
     like.destroy if like.user == current_user
     redirect_to posts_path
   end
-
 end
