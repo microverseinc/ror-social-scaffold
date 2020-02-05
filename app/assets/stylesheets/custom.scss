@@ -230,6 +230,36 @@ form {
     font-size: 1.2em;
     padding: 4px 0;
   }
+
+  
+  .post-comments {
+    position: relative;
+    display: flex;
+    border: 1px solid $divider-color;
+    border-radius: 3px;
+    margin-bottom: 2px;
+    padding: 10px;
+    width: 50%;
+    margin-left: 50px;
+    p {
+      font-size: .8em;
+    }
+    span {
+      position: absolute;
+      right: 3px;
+      font-size: .8em;
+    }
+  }
+}
+
+.new_comment {
+  display: flex;
+  justify-content: space-evenly;
+  width: 60%;
+  align-items: center;
+  .btn-secondary {
+    width: 20%;
+  }
 }
 
 .title {
