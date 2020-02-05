@@ -4,7 +4,13 @@
   <p class="post-content">
     <%= post.content %>
   </p>
-  
+  <%= form_for(post.likes.new) do |form| %>
+    <%= form.hidden_field :post_id, value: post.id %>    
+    <%= form.submit 'Like!', class: 'btn btn-secondary' %>
+  <% end %>
+  <h1>
+    <%= post.user == current_user %>    
+  </h1>
   <% post.comments.each do |comment| %>
     <div class="post-comments">
       <p>
@@ -12,7 +18,7 @@
       </p>
       <span> <%= comment.created_at.strftime("%Y/%m/%d") %> </span>
     </div>
-    
+
   <% end %>
 
   <%= form_for(post.comments.new) do |form| %>
