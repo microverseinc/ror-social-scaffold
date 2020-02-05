@@ -1,25 +1,21 @@
 class LikesController < ApplicationController
   def create
-    @like = Like.new(like_params)
-    @like.user = current_user
+    @like = current_user.likes.new(post_id: params[:post_id])
 
     if @like.save
-      redirect_to posts_path, notice: 'Post was liked'
+      redirect_to posts_path, notice: 'You liked a post.'
     else
-      redirect_to posts_path, alert: @like.errors.full_messages.join('. ').to_s
+      redirect_to posts_path, alert: 'You cannot like this post.'
     end
   end
 
   def destroy
-    like = like.find_by(id: params[:id])
-    like.destroy if like.user == current_user
-    redirect_to posts_path
+    like = Like.find_by(id: params[:id], user: current_user, post_id: params[:post_id])
+    if like
+      like.destroy
+      redirect_to posts_path, notice: 'You disliked a post.'
+    else
+      redirect_to posts_path, alert: 'You cannot dislike post that you did not like before.'
+    end
   end
-
-  private
-
-  def like_params
-    params.require(:like).permit(:post_id)
-  end
-
 end
