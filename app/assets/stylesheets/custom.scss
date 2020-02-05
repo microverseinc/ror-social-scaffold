@@ -162,7 +162,14 @@ form {
   }
 }
 
-.new_post {
+.title {
+  text-align: center;
+  margin-bottom: 16px;
+  text-transform: capitalize;
+}
+
+.new_post,
+.new_comment{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -192,6 +199,11 @@ form {
   .btn-primary {
     width: 100%;
   }
+
+  .btn-secondary {
+    width: 30%;
+    margin-left: 70%;
+  }
 }
 
 .timeline {
@@ -216,26 +228,59 @@ form {
     flex-direction: column;
   }
 
-  .post-author {
-    margin: 0 0 8px 0;
-    color: $primary-color-dark;
-    text-transform: capitalize;
+  .post-attribution {
+    float: left;
+
+    .post-author {
+      margin: 0 0 8px 0;
+      color: $primary-color-dark;
+      text-transform: capitalize;
+    }
   }
 
-  .post-date {
-    font-size: 0.6em;
+  .post-liking {
+    float: right;
+
+    a{
+      color: $primary-color-dark;
+      font-weight: bold;
+      font-size: 0.9em;
+      margin: 0 4px;
+    }
+    .post-date {
+      font-size: 0.6em;
+    }
   }
 
   .post-content {
-    font-size: 1.2em;
+    font-size: 1.1em;
     padding: 4px 0;
   }
-}
 
-.title {
-  text-align: center;
-  margin-bottom: 16px;
-  text-transform: capitalize;
+  .post-comments-section {
+    margin: 5px;
+    width: 90%;
+    margin-left: 10%;
+
+    .post-comments {
+      position: relative;
+      display: flex;
+      border-bottom: 1px solid $divider-color;
+      border-radius: 3px;
+      margin-bottom: 2px;
+      padding: 10px;
+
+      p {
+        font-size: .8em;
+        width: 90%;
+      }
+      span {
+        position: absolute;
+        right: 3px;
+        font-size: 0.6em;
+      }
+    }
+  }
 }
 
 .users-section {
