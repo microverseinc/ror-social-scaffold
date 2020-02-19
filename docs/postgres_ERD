@@ -1,0 +1,48 @@
+CREATE TABLE "Post" (
+  "id" <type>,
+  "user_id" <type>,
+  "content" <type>,
+  PRIMARY KEY ("id")
+);
+
+CREATE INDEX "FK" ON  "Post" ("user_id");
+
+CREATE TABLE "Invitation_friendship" (
+  "id" <type>,
+  "sender_id" <type>,
+  "receiver_id" <type>,
+  "status" <type>,
+  PRIMARY KEY ("id")
+);
+
+CREATE INDEX "FK" ON  "Invitation_friendship" ("sender_id", "receiver_id");
+
+CREATE TABLE "Like_dislike" (
+  "id" <type>,
+  "post_id" <type>,
+  "user_id" <type>,
+  "liked" <type>,
+  "disliked" <type>,
+  PRIMARY KEY ("id")
+);
+
+CREATE INDEX "FK" ON  "Like_dislike" ("post_id", "user_id");
+
+CREATE TABLE "Comment" (
+  "id" <type>,
+  "user_id" <type>,
+  "post_id" <type>,
+  "content" <type>,
+  PRIMARY KEY ("id")
+);
+
+CREATE INDEX "FK" ON  "Comment" ("user_id", "post_id");
+
+CREATE TABLE "User" (
+  "id" <type>,
+  "name" <type>,
+  "lastname" <type>,
+  "email" <type>,
+  "password" <type>,
+  PRIMARY KEY ("id")
+);
