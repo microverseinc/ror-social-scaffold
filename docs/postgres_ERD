@@ -44,5 +44,6 @@ CREATE TABLE "User" (
   "lastname" <type>,
   "email" <type>,
   "password" <type>,
+  "image_link" <type>,
   PRIMARY KEY ("id")
 );
