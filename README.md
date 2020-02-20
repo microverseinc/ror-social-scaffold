@@ -63,7 +63,12 @@ TBA
 
 ## Authors
 
-TBA
+Audrey Emmanuella Odiaka - [@o___audrey_xo](https://twitter.com/o___audrey_xo) - [@audrey-ella-xo](https://github.com/audrey-ella-xo) - anitaudrey@gmail.com
+<br />
+<br />
+María Eugenia Quemé - [@MaruKK](https://twitter.com/MaruKK) - [@euqueme](https://github.com/euqueme) - euqueme@gmail.com
+
+Project Link: [https://github.com/Audrey-Ella-xo/ror-social-scaffold/)
 
 ## 🤝 Contributing
 
