@@ -4,7 +4,8 @@
     <div class="request">
     <p class="name"><%= request.sender.name %> </p>
     <% unless confirm?(request.sender) %>
-    <%= button_to 'Accept request', user_friendship_path(request.sender.id, request.id), method: :put, class: 'btn btn-primary' %>
+    <%= button_to 'Accept', user_friendship_path(request.sender.id, request.id), method: :put, class: 'btn btn-primary' %>
+    <%= button_to 'Decline', user_friendship_path(request.sender.id, request.id), method: :delete, class: 'btn btn-primary' %>
     <% end %>
     </div>
 <% end %> 

@@ -5,9 +5,9 @@ class FriendshipsController < ApplicationController
     @friendship.status = false
 
     if @friendship.save
-      redirect_to users_path, notice: 'Friend request was successfully sent.'
+      redirect_to request.referrer, notice: 'Friend request was successfully sent.'
     else
-      redirect_to users_path, alert: @friendship.errors.full_messages.join('. ').to_s
+      redirect_to request.referrer, alert: @friendship.errors.full_messages.join('. ').to_s
     end
   end
 
@@ -23,7 +23,7 @@ class FriendshipsController < ApplicationController
     if @friendship.save
       redirect_to user_path(current_user.id), notice: 'Friend request was successfully confirmed'
     else
-      redirect_to user_path, alert: @friendship.errors.full_messages.join('. ').to_s
+      redirect_to user_path(current_user.id), alert: @friendship.errors.full_messages.join('. ').to_s
     end
   end
 
@@ -33,5 +33,12 @@ class FriendshipsController < ApplicationController
   end 
 
   def destroy
+    @friendship = Friendship.find_by(reciever_id: current_user.id, sender_id: params[:user_id] ) 
+
+    if @friendship.destroy
+      redirect_to user_path(current_user.id), notice: 'Friend request declined, we won\'t inform the sender'
+    else
+      redirect_to user_path(current_user.id), alert: @friendship.errors.full_messages.join('. ').to_s
+    end
   end
 end
