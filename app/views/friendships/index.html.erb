@@ -1,2 +1,13 @@
-<h1>Friendships#index</h1>
-<p>Find me in app/views/friendships/index.html.erb</p>
+<section class="users-section">
+  <ul class="users-list">
+  <% @inverse_friendships.reverse.each do |request|%>
+    <div class="request">
+    <p class="name"><%= request.sender.name %> </p>
+    <% unless confirm?(request.sender) %>
+    <%= button_to 'Accept request', user_friendship_path(request.sender.id, request.id), method: :put, class: 'btn btn-primary' %>
+    <% end %>
+    </div>
+<% end %> 
+  </ul>
+</section>
+
