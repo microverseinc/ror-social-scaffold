@@ -11,13 +11,9 @@ class FriendshipsController < ApplicationController
     end
   end
 
-  # def edit
-  #   @friendship = Friendship.find_by(reciever_id: current_user.id, sender_id: params[:sender_id] ) 
-  # end
 
   def update
     @friendship = Friendship.find_by(reciever_id: current_user.id, sender_id: params[:user_id] ) 
-    # @friendship.sender_id = params[:sender_id]
     @friendship.status = true
 
     if @friendship.save
