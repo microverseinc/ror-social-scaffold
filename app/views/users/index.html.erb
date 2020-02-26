@@ -4,7 +4,7 @@
       <% unless current_user?(user) %>
       <li>
         Name: <%= user.name %>
-        <span class="profile-link">
+        <span>
           <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
         </span>
         <% if friend_request?(user) %>
