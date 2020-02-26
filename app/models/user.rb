@@ -12,5 +12,4 @@ class User < ApplicationRecord
 
   has_many :friendships, foreign_key: :sender_id
   has_many :inverse_friendships, class_name: :Friendship, foreign_key: :reciever_id
-
 end

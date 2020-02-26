@@ -19,17 +19,16 @@ RSpec.describe Friendship, type: :model do
     end
 
     it 'not valid without a sender' do
-        subject.reciever = reciever
-        expect(subject).to_not be_valid
+      subject.reciever = reciever
+      expect(subject).to_not be_valid
     end
-
 
     it 'adds a new Friendship' do
       count = Friendship.count
       subject.update!(sender: sender, reciever: reciever, status: true)
       expect(Friendship.count).to eq(count + 1)
     end
-end
+  end
 
   context 'Associations tests' do
     let(:sender) { User.create(name: 'Audrey', email: 'audrey@gmail.com') }
@@ -43,8 +42,8 @@ end
     end
 
     it 'has many inverse friendships' do
-        expect(reciever.respond_to?(:inverse_friendships)).to be_truthy
-        expect(reciever.inverse_friendships).to include(inverse_friendship)
+      expect(reciever.respond_to?(:inverse_friendships)).to be_truthy
+      expect(reciever.inverse_friendships).to include(inverse_friendship)
     end
   end
 end

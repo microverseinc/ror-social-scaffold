@@ -11,9 +11,8 @@ class FriendshipsController < ApplicationController
     end
   end
 
-
   def update
-    @friendship = Friendship.find_by(reciever_id: current_user.id, sender_id: params[:user_id] ) 
+    @friendship = Friendship.find_by(reciever_id: current_user.id, sender_id: params[:user_id])
     @friendship.status = true
 
     if @friendship.save
@@ -26,10 +25,10 @@ class FriendshipsController < ApplicationController
   def index
     @friendships = current_user.friendships
     @inverse_friendships = current_user.inverse_friendships
-  end 
+  end
 
   def destroy
-    @friendship = Friendship.find_by(reciever_id: current_user.id, sender_id: params[:user_id] ) 
+    @friendship = Friendship.find_by(reciever_id: current_user.id, sender_id: params[:user_id])
 
     if @friendship.destroy
       redirect_to user_path(current_user.id), notice: 'Friend request declined, we won\'t inform the sender'
