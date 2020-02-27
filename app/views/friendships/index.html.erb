@@ -1,14 +1,8 @@
 <section class="users-section">
   <ul class="users-list">
   <% @inverse_friendships.reverse.each do |request|%>
-    <% unless confirm?(request.sender) %>
-    <div class="request">
-    <p class="name">Name: <%= request.sender.name %> </p>
-    <%= button_to 'Accept', user_friendship_path(request.sender.id, request.id), method: :put, class: 'btn btn-primary' %>
-    <%= button_to 'Decline', user_friendship_path(request.sender.id, request.id), method: :delete, class: 'btn btn-primary' %>
-    </div>
-    <% end %>
-<% end %> 
+    <%= confirm_decline(request) %>
+  <% end %> 
   </ul>
 </section>
 

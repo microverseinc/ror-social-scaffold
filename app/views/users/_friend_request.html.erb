@@ -1,0 +1,5 @@
+<span>
+<%= form_for(current_user.friendships.new, url: user_friendships_path(user)) do |form| %>
+  <%= form.submit 'Add friend', class: 'btn btn-secondary' %>
+<% end %>
+</span>

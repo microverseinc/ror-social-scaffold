@@ -12,7 +12,7 @@ class FriendshipsController < ApplicationController
   end
 
   def update
-    @friendship = Friendship.find_by(reciever_id: current_user.id, sender_id: params[:user_id])
+    @friendship = Friendship.find(params[:id])
     @friendship.status = true
 
     if @friendship.save

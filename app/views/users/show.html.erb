@@ -1,12 +1,6 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %> 
-  <% if friend_request?(@user) && !current_user?(@user) %>
-  <span>
-  <%= form_for(current_user.friendships.new, url: user_friendships_path(@user)) do |form| %>
-    <%= form.submit 'Add friend', class: 'btn btn-secondary' %>
-  <% end %>
-  </span>
-  <% end %>
+  <%= friend_request(@user) %>
   </h2>
   <article class="timeline">
     <h3>Recent posts:</h3>

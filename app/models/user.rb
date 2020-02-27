@@ -12,4 +12,16 @@ class User < ApplicationRecord
 
   has_many :friendships, foreign_key: :sender_id
   has_many :inverse_friendships, class_name: :Friendship, foreign_key: :reciever_id
+
+  def friendship_created?(reciever)
+    friendships.find_by(reciever_id: reciever.id).nil? && created_inverse?(reciever)
+  end
+
+  def created_inverse?(reciever)
+    reciever.friendships.find_by(reciever_id: id).nil?
+  end
+
+  def confirm_inverse?(reciever)
+    !friendships.find_by(reciever_id: reciever.id, status: false).nil?
+  end
 end

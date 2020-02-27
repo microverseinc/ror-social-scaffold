@@ -1,21 +1,7 @@
 <section class="users-section">
   <ul class="users-list">
     <% @users.each do |user| %>
-      <% unless current_user?(user) %>
-      <li>
-        Name: <%= user.name %>
-        <span>
-          <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-        </span>
-        <% if friend_request?(user) %>
-        <span>
-        <%= form_for(current_user.friendships.new, url: user_friendships_path(user)) do |form| %>
-          <%= form.submit 'Add friend', class: 'btn btn-secondary' %>
-        <% end %>
-        </span>
-        <% end %>
-      </li>
-      <% end %>
+      <%= user_info(user) %>
     <% end %>
   </ul>
 </section>
