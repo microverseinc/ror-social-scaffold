@@ -1,25 +1,7 @@
 require 'rails_helper'
 
-def create_initial_conditions
-  visit new_user_registration_path
-  within('form') do
-    fill_in 'Name', with: 'john'
-    fill_in 'Email', with: 'john@gmail.com'
-    fill_in 'Password', with: 'password'
-    fill_in 'Password confirmation', with: 'password'
-  end
-  click_button 'Sign up'
-  click_link 'Timeline'
-end
-
-def create_posts
-  fill_in 'post_content', with: 'First Post'
-  click_button 'Save'
-  fill_in 'post_content', with: 'Second Post'
-  click_button 'Save'
-end
-
 RSpec.feature 'Like' do
+  include Integration
   before(:each) do
     create_initial_conditions
     create_posts
