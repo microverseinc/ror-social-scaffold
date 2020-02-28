@@ -1,17 +1,21 @@
 require 'rails_helper'
 
 RSpec.describe 'Friendship', type: :model do
-  let(:user1) { User.create(
-    name: "john",
-    email: "john@gmail.com",
-    password: "password"
-  ) }
+  let(:user1) do
+    User.create(
+      name: 'john',
+      email: 'john@gmail.com',
+      password: 'password'
+    )
+  end
 
-  let(:user2) { User.create(
-    name: "jane",
-    email: "jane@gmail.com",
-    password: "password"
-  ) }
+  let(:user2) do
+    User.create(
+      name: 'jane',
+      email: 'jane@gmail.com',
+      password: 'password'
+    )
+  end
 
   it 'relation gets created with valid params' do
     friendship = Friendship.create(friendable_id: user1.id, friend_id: user2.id)

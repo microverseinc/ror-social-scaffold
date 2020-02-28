@@ -1,18 +1,22 @@
 require 'rails_helper'
 
 RSpec.describe 'Like Model', type: :model do
-  describe "validations" do
-    let(:user) { User.new(
-      name: "john",
-      email: "john@gmail.com",
-      password: "password"
-    ) }
-    let(:post) { Post.new(
-      content: "This is a new post",
-      user_id: user.id
-    )}
+  describe 'validations' do
+    let(:user) do
+      User.new(
+        name: 'john',
+        email: 'john@gmail.com',
+        password: 'password'
+      )
+    end
+    let(:post) do
+      Post.new(
+        content: 'This is a new post',
+        user_id: user.id
+      )
+    end
 
-    before(:each) do 
+    before(:each) do
       user.save
       post.save
     end

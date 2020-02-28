@@ -1,18 +1,22 @@
 require 'rails_helper'
 
 RSpec.describe 'Post Model', type: :model do
-  describe "validations" do
-    let(:user) { User.new(
-      name: "john",
-      email: "john@gmail.com",
-      password: "password"
-    ) }
-    let(:post) { Post.new(
-      content: "This is a new post",
-      user_id: user.id
-    )}
+  describe 'validations' do
+    let(:user) do
+      User.new(
+        name: 'john',
+        email: 'john@gmail.com',
+        password: 'password'
+      )
+    end
+    let(:post) do
+      Post.new(
+        content: 'This is a new post',
+        user_id: user.id
+      )
+    end
 
-    before(:each) do 
+    before(:each) do
       user.save
     end
 
@@ -43,11 +47,11 @@ RSpec.describe 'Post Model', type: :model do
       post.save
       expect(post.user.name).to eq(user.name)
     end
-    
+
     it 'is has many comments' do
       post.save
       2.times do
-        Post.last.comments.create(content: "This is a new comment", user_id: user.id)
+        Post.last.comments.create(content: 'This is a new comment', user_id: user.id)
       end
       expect(post.comments.count).to eq(2)
       expect(post.comments.first.user.name).to eq(user.name)
