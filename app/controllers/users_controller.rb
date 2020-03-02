@@ -22,5 +22,4 @@ class UsersController < ApplicationController
     flash[:success] = "You are now friends with #{user.name}"
     redirect_to root_path
   end
-  
 end
