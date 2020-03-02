@@ -2,7 +2,7 @@
   <h2><%= "Name: #{@user.name}" %></h2>
   <h3>Your Friends</h3>
   <ul>
-    <% @user.friendships.confirmed.each do |user| %>
+    <% @user.each do |user| %>
       <li><%= user.username %></li>
     <% end %>
   </ul>
