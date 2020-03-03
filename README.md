@@ -45,9 +45,9 @@ If you have contributions to make, send me a message telling me about your ideas
 
 ### Prerequisites
 
-Ruby: 2.6.3
-Rails: 5.2.3
-Postgres: >=9.5
+- Ruby: 2.6.3
+- Rails: 5.2.3
+- Postgres: >=9.5
 
 ### Setup
 
