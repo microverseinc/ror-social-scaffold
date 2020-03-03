@@ -102,9 +102,7 @@ TBA
 
 ## 🤝 Contributing
 
-Contributions, issues and feature requests are welcome!
-
-Feel free to check the [issues page](issues/).
+Contributions and feature requests are welcome!
 
 ## Show your support
 
