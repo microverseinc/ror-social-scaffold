@@ -313,6 +313,8 @@ form {
 
   .accept-link {
     color: $primary-color-dark;
+    margin-left: 8px;
+    margin-right: 8px;
     &:hover {
       text-decoration: underline;
     }
