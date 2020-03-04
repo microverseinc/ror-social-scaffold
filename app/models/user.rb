@@ -38,4 +38,12 @@ class User < ApplicationRecord
   def friend?(user)
     friends.include?(user)
   end
+
+  def friend_request_sent?(user)
+    friendships.include?(user)
+  end
+
+  def current_user
+    User.find(session[:id])
+  end
 end
