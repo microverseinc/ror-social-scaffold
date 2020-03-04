@@ -17,14 +17,21 @@ class User < ApplicationRecord
     friends_array = friendships.map do |friendship|
       friendship.friend if friendship.confirmed?
     end
-    friends_array + inverse_friendships.map do |friendship|
+    friends_array += inverse_friendships.map do |friendship|
       friendship.user if friendship.confirmed?
     end
+    friends_array
   end
 
-  def pending_friends
+  def friends_requests_sent
     friendships.map do |friendship|
       friendship.friend unless friendship.confirmed?
     end
+  end
+
+  def friends_requests_received
+    inverse_friendships.map{ |friendship| 
+      friendship.user unless friendship.confirmed?
+    }
   end
 end
