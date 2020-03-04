@@ -42,6 +42,6 @@ class User < ApplicationRecord
   end
 
   def user_timeline
-    Post.where(user: ( [User] + friends) )
+    Post.where(user: ([User] + friends))
   end
 end
