@@ -34,4 +34,8 @@ class User < ApplicationRecord
       friendship.user unless friendship.confirmed?
     }
   end
+
+  def friend?(user)
+    friends.include?(user)
+  end
 end
