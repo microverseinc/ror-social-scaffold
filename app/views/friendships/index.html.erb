@@ -1,18 +1,4 @@
 
- <div>Friends(<%= @friends.count %>)</div>
-    <div>
-        <% if @friends.empty?%>
-            <p>You have no friends</p>
-        <% end %>
-        <div>
-        <% @friends.each do |friend| %>
-            <ul>
-                <li><button><%= link_to 'Unfriend', friendship_path(friend), method: 'delete'%></button> <%= link_to friend.name, user_path(friend)%></li>
-            </ul>
-        <% end %>
-    </div>
-    </div>
-
   <div>Friend Requests <%= (@friend_requests.count) %></div>
     <div>
         <% if @friend_requests.empty?%>
