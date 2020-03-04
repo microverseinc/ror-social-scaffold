@@ -40,7 +40,13 @@ class User < ApplicationRecord
   end
 
   def friend_request_sent?(user)
-    friendships.include?(user)
+    requests_list = self.friends_requests_sent
+    requests_list.include?(user)
+  end
+
+  def friend_request_received?(user)
+    requests_list = self.friends_requests_received
+    requests_list.include?(user)
   end
 
   def current_user

@@ -7,6 +7,19 @@
         <span class="profile-link">
           <%= link_to 'See Profile', user_path(user), class: 'profile-link' %>
         </span>
+        <% if current_user.friend_request_sent?(user) %>
+          <span class="friendship-status">Friend Request Sent</span>
+        <% elsif current_user.friend_request_received?(user) %>
+          <span class="friendship-status">Friendship invitation received:</span>
+          <span class="friendship-status"><%= link_to 'Accept', root_path, class: 'accept-link' %></span>
+          <span class="friendship-status"><%= link_to 'Decline', root_path, class: 'negative-link' %></span>
+        <% elsif current_user == user %>
+          <span class="friendship-status">You!</span>
+        <% elsif current_user.friend?(user) %>
+          <span class="friendship-status"><%= link_to 'Unfriend', root_path, class: 'negative-link' %></span>
+        <% else %>
+          <span class="friendship-status"><%= link_to 'Invite for friendship', root_path, class: 'accept-link' %></span>
+        <% end %>
       </li>
     <% end %>
   </ul>

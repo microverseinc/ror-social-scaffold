@@ -295,8 +295,27 @@ form {
 
   .profile-link {
     font-size: 0.8em;
-    margin: 0 0 8px 0;
+    margin: 0 8px 8px 0;
     color: $primary-color-dark;
+  }
+
+  .friendship-status {
+    font-size: 0.64em;
+    color: black;
+  }
+
+  .negative-link {
+    color: red;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .accept-link {
+    color: $primary-color-dark;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
