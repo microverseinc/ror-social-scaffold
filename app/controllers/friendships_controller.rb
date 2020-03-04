@@ -1,11 +1,14 @@
 class FriendshipsController < ApplicationController
+  def index
+    # @friends = current_user.friends
+  end
+
   def create
     @friendship = current_user.friendships.build(:friend_id => params[:friend_id])
     if @friendship.save
-      flash.now = 'Added Friend'
-# Need to render
+      redirect_to users_path, notice: 'Friend Added.'
     else
-      flash.now = 'Unable to add friend.'
+      flash[:notice] = 'Unable to add friend.'
       redirect_to root_url
     end
   end

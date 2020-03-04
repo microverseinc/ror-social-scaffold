@@ -3,12 +3,24 @@
     <% @users.each do |user| %>
       <li>
         Name: <%= user.name %>
+
         <span class="profile-link">
           <%= link_to 'See Profile', user_path(user), class: 'profile-link' %>
         </span>
-        <span class="profile-link">
-        <%= link_to "[Add Friend]", friendships_path(:friend_id => user), :method => :post, class: 'profile-link' %>
-        </span>
+        <%# <%= current_user.pending_friends %>
+        <% if current_user.name != user.name %>
+          <% if !current_user.pending_friends?(user) || !current_user.friends?(user) %>
+            <% if current_user.friend_requests?(user) %>
+            <span class="profile-link">
+              [Pending Request]
+            </span>
+            <% else %>
+              <span class="profile-link">
+                <%= link_to "[Add Friend]", friendships_path(:friend_id => user), :method => :post, class: 'profile-link' %>
+              </span>
+            <% end %>
+          <% end %>
+        <% end %>
       </li>
     <% end %>
   </ul>
