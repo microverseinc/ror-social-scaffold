@@ -40,4 +40,8 @@ class User < ApplicationRecord
   def friend?(user)
     friends.include?(user)
   end
+
+  def user_timeline
+    Post.where(user: ( [User] + friends) )
+  end
 end
