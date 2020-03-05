@@ -1,85 +1,31 @@
-# Scaffold for social media app with Ruby on Rails
+# Stay in touch
+This is the final project for ruby on rails curriculum.
+We  have built a social media application we call ***Stay in touch*** 
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+## Built with 
+* Ruby on rails
+* Bootstrap
+* RSpec
 
-## Built With
+## Live demo
+https://sm-members-only.herokuapp.com/
+## Getting started
+To get started with the app, clone the repo and then install the needed gems:
 
-- Ruby v2.7.0
-- Ruby on Rails v5.2.4
+$ bundle install --without production Next, migrate the database:
 
-## Live Demo
+$ rails db:migrate Finally, run the test suite to verify that everything is working correctly:
 
-TBA
+$ rails test If the test suite passes, you'll be ready to run the app in a local server:
 
+$ rails server
 
-## Getting Started
-
-To get a local copy up and running follow these simple example steps.
-
-### Prerequisites
-
-Ruby: 2.6.3
-Rails: 5.2.3
-Postgres: >=9.5
-
-### Setup
-
-Instal gems with:
-
-```
-bundle install
-```
-
-Setup database with:
-
-```
-   rails db:create
-   rails db:migrate
-```
-
-
-
-### Usage
-
-Start server with:
-
-```
-    rails server
-```
-
-Open `http://localhost:3000/` in your browser.
-
-### Run tests
-
-```
-    rpsec --format documentation
-```
-
-> Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
-
-### Deployment
-
-TBA
+installing rspec
+$ rails g rspec:install
 
 ## Authors
+#### Author 1
+* Github: Salum Habibu https://github.com/IBUNHABIBU 
 
-TBA
-
-## 🤝 Contributing
-
-Contributions, issues and feature requests are welcome!
-
-Feel free to check the [issues page](issues/).
-
-## Show your support
-
-Give a ⭐️ if you like this project!
-
-## Acknowledgments
-
-TBA
-
-## 📝 License
-
-TBA
-
+#### Author 2 
+* Github: Maya Elfeky https://github.com/maya88en/
