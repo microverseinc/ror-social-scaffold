@@ -13,9 +13,9 @@
             <% elsif current_user.pending_friends.include?(user) %>
               <em> Pending request </em>
             <% elsif current_user.friend_requests.include?(user) %>
-              <em><%= link_to 'Confirm friend', recieverequest_path(user), method: 'post' %></em>
+              <em><%= link_to 'Confirm friend', recieverequest_path(user), method: 'post', class: 'btn btn-success' %></em>
             <% elsif !current_user.friend?(user) %>
-              <em><%= link_to 'Add friend', sendrequest_path(user.id), method: 'post' %></em>
+              <em><%= link_to 'Add friend', sendrequest_path(user.id), method: 'post', class: 'btn btn-success' %></em>
           <% end %>  
         <% end %>
       </li>
