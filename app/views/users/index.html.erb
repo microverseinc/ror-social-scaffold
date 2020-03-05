@@ -11,7 +11,7 @@
           <span class="friendship-status">Friend Request Sent</span>
         <% elsif current_user.friend_request_received?(user) %>
           <span class="friendship-status">Friendship Invitation Received:</span>
-          <span class="friendship-status"><%= link_to 'Accept', "/friendships/#{Friendship.current_friendship(current_user.id, user.id)}", method: :put,
+          <span class="friendship-status"><%= link_to 'Accept', "/friendships/#{Friendship.get_friendship(@all_friendships, user.id, current_user.id)}", method: :put,
                                                       class: 'accept-link' %></span>
           <span class="friendship-status"><%= link_to 'Decline', root_path, class: 'negative-link' %></span>
         <% elsif current_user == user %>
