@@ -9,7 +9,7 @@
         </span>
         <%# <%= current_user.pending_friends %>
         <% if current_user.name != user.name %>
-          <% if !current_user.pending_friends?(user) || !current_user.friends?(user) %>
+          <% if !current_user.pending_friends?(user) || !current_user.friend?(user) %>
             <% if current_user.friend_requests?(user) %>
             <span class="profile-link">
               [Pending Request]
@@ -24,4 +24,5 @@
       </li>
     <% end %>
   </ul>
+  <%= current_user.friendships.as_json %>
 </section>

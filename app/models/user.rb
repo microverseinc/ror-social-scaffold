@@ -13,9 +13,9 @@ class User < ApplicationRecord
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
 
   def friends
-    friends_array = friendships.map{ |friendship| friendship.friend if friendship.status }
-    friends_array + inverse_friendships.map{ |friendship| friendship.user if friendship.status }
-    friends_array.compact
+    confirmed_friendship_by_me = friendships.map{ |friendship| friendship.friend_id if friendship.status }
+    confirmed_friendship_to_me = inverse_friendships.map{ |friendship| friendship.user_id if friendship.status }
+    (confirmed_friendship_by_me + confirmed_friendship_to_me).compact
   end
 
   # Users who have YET to confirm friend requests
