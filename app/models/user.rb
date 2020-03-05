@@ -14,8 +14,8 @@ class User < ApplicationRecord
 
   def friends
     confirmed_friendship_by_me = friendships.map{ |friendship| friendship.friend_id if friendship.status }
-    confirmed_friendship_to_me = inverse_friendships.map{ |friendship| friendship.user_id if friendship.status }
-    (confirmed_friendship_by_me + confirmed_friendship_to_me).compact
+    confirmed_friendship_from_friend = inverse_friendships.map{ |friendship| friendship.user_id if friendship.status }
+    (confirmed_friendship_by_me + confirmed_friendship_from_friend).compact
   end
 
   # Users who have YET to confirm friend requests
