@@ -37,3 +37,14 @@
     <% end %>
   </ul>
 </section>
+
+<br><br>
+<%= form_with :url => {:controller => "friendships", :action => "create"} do |f| %>
+  <%= f.label :user_id %>
+  <%= f.text_field :user_id %>
+  <%= f.label :friend_id %>
+  <%= f.text_field :friend_id %>
+  <%= f.label :confirmed %>
+  <%= f.text_field :confirmed %>
+  <%= f.submit 'Create'%>
+<% end %>
