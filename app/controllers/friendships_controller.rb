@@ -8,6 +8,6 @@ class FriendshipsController < ApplicationController
   def update
     friendship = Friendship.find(params[:id])
     friendship.update(confirmed: true)
-    render 'users/index'
+    redirect_to users_url
   end
 end
