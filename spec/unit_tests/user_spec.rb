@@ -1,4 +1,5 @@
 require 'spec_helper'
+# require '../app/models/user'
 
 RSpec.describe 'User model tests', type: :model do
   let(:test_user) {
