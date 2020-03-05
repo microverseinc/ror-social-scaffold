@@ -1,17 +1,16 @@
 <section class="users-section">
   <ul class="users-list">
-    <% logged_user = current_user %>
     <% @users.each do |user| %>
       <li>
         Name: <%= user.name %>
         <span class="profile-link">
           <%= link_to 'See Profile', user_path(user), class: 'profile-link' %>
         </span>
-        <% if current_user.friend_request_sent?(user) %>
+        <% if @logged_user.friend_request_sent?(user) %>
           <span class="friendship-status">Friend Request Sent</span>
-        <% elsif current_user.friend_request_received?(user) %>
+        <% elsif @logged_user.friend_request_received?(user) %>
           <span class="friendship-status">Friendship Invitation Received:</span>
-          <% correct_friendship_id = Friendship.get_friendship(@all_friendships, current_user.id, user.id) %>
+          <% correct_friendship_id = Friendship.get_friendship(@all_friendships, @logged_user.id, user.id) %>
           <span class="friendship-status">
             <%= link_to 'Accept', "/friendships/#{correct_friendship_id}", method: :put,
                         class: 'accept-link' %>
@@ -20,17 +19,17 @@
             <%= link_to 'Decline', "friendships/#{correct_friendship_id}", method: :delete,
                         class: 'negative-link' %>
           </span>
-        <% elsif current_user == user %>
+        <% elsif @logged_user == user %>
           <span class="friendship-status">You!</span>
-        <% elsif current_user.friend?(user) %>
+        <% elsif @logged_user.friend?(user) %>
           <span class="friendship-status">
-            <%= link_to 'Unfriend', "friendships/#{Friendship.get_friendship(@all_friendships, current_user.id, user.id)}", method: :delete,
+            <%= link_to 'Unfriend', "friendships/#{Friendship.get_friendship(@all_friendships, @logged_user.id, user.id)}", method: :delete,
                         class: 'negative-link' %>
           </span>
         <% else %>
           <span class="friendship-status">
             <%= link_to 'Add Friend', {controller: 'friendships', action: 'create',
-                                       user_id: current_user.id, friend_id: user.id},
+                                       user_id: @logged_user.id, friend_id: user.id},
                         method: :post, class: 'accept-link' %>
           </span>
         <% end %>

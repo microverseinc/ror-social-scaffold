@@ -303,21 +303,21 @@ form {
     font-size: 0.64em;
     color: black;
   }
+}
 
-  .negative-link {
-    color: red;
-    &:hover {
-      text-decoration: underline;
-    }
+.negative-link {
+  color: red;
+  &:hover {
+    text-decoration: underline;
   }
+}
 
-  .accept-link {
-    color: $primary-color-dark;
-    margin-left: 8px;
-    margin-right: 8px;
-    &:hover {
-      text-decoration: underline;
-    }
+.accept-link {
+  color: $primary-color-dark;
+  margin-left: 8px;
+  margin-right: 8px;
+  &:hover {
+    text-decoration: underline;
   }
 }
 
