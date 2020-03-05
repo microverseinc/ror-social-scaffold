@@ -1,4 +1,17 @@
 
+    <div>Friends(<%= @friends.count %>)</div>
+    <div>
+        <% if @friends.empty?%>
+            <p>You have no friends</p>
+        <% end %>
+        <div>
+        <% @friends.each do |friend| %>
+            <ul>
+                <li><%= link_to 'Unfriend', friendship_path(friend), method: 'delete', class: 'btn btn-danger'%> <%= link_to friend.name, user_path(friend)%></li>
+            </ul>
+        <% end %>
+    </div>
+</div>
   <div>Friend Requests <%= (@friend_requests.count) %></div>
     <div>
         <% if @friend_requests.empty?%>
@@ -8,8 +21,8 @@
             <ul>
                 <li> From <%= link_to request.name, user_path(request)%>
                     <div>
-                        <button><%= link_to 'Accept', friendship_path(request.id), method: 'put' %></button>
-                        <button><%= link_to 'Delete', friendship_path(request.id), method: 'delete' %></button>
+                        <%= link_to 'Accept', friendship_path(request.id), method: 'put', class: 'btn btn-success' %>
+                        <%= link_to 'Delete', friendship_path(request.id), method: 'delete', class: 'btn btn-danger' %>
                     </div>
                 </li>
             </ul>
