@@ -11,15 +11,28 @@
           <span class="friendship-status">Friend Request Sent</span>
         <% elsif current_user.friend_request_received?(user) %>
           <span class="friendship-status">Friendship Invitation Received:</span>
-          <span class="friendship-status"><%= link_to 'Accept', "/friendships/#{Friendship.get_friendship(@all_friendships, user.id, current_user.id)}", method: :put,
-                                                      class: 'accept-link' %></span>
-          <span class="friendship-status"><%= link_to 'Decline', root_path, class: 'negative-link' %></span>
+          <% correct_friendship_id = Friendship.get_friendship(@all_friendships, current_user.id, user.id) %>
+          <span class="friendship-status">
+            <%= link_to 'Accept', "/friendships/#{correct_friendship_id}", method: :put,
+                        class: 'accept-link' %>
+          </span>
+          <span class="friendship-status">
+            <%= link_to 'Decline', "friendships/#{correct_friendship_id}", method: :delete,
+                        class: 'negative-link' %>
+          </span>
         <% elsif current_user == user %>
           <span class="friendship-status">You!</span>
         <% elsif current_user.friend?(user) %>
-          <span class="friendship-status"><%= link_to 'Unfriend', root_path, class: 'negative-link' %></span>
+          <span class="friendship-status">
+            <%= link_to 'Unfriend', "friendships/#{Friendship.get_friendship(@all_friendships, current_user.id, user.id)}", method: :delete,
+                        class: 'negative-link' %>
+          </span>
         <% else %>
-          <span class="friendship-status"><%= link_to 'Invite for friendship', root_path, class: 'accept-link' %></span>
+          <span class="friendship-status">
+            <%= link_to 'Add Friend', {controller: 'friendships', action: 'create',
+                                       user_id: current_user.id, friend_id: user.id},
+                        method: :post, class: 'accept-link' %>
+          </span>
         <% end %>
       </li>
     <% end %>
