@@ -5,7 +5,7 @@
   <% elsif @logged_user.friend_request_received?(@user) %>
     <span class="friendship-status">Friendship Invitation Received:</span>
     <% correct_friendship_id =
-           Friendship.get_friendship(@all_friendships, @logged_user.id, @user.id) %>
+           Friendship.get_friendship_id(@all_friendships, @logged_user.id, @user.id) %>
     <span class="friendship-status">
       <%= link_to 'Accept', "/friendships/#{correct_friendship_id}", method: :put,
                   class: 'accept-link' %>
@@ -19,7 +19,7 @@
   <% elsif @logged_user.friend?(@user) %>
     <span class="friendship-status">
       <%= link_to 'Unfriend',
-                  "friendships/#{Friendship.get_friendship(@all_friendships, @logged_user.id, @user.id)}",
+                  "friendships/#{Friendship.get_friendship_id(@all_friendships, @logged_user.id, @user.id)}",
                   method: :delete,
                   class: 'negative-link' %>
     </span>
