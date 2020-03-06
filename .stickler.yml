@@ -15,6 +15,9 @@ files:
     - "Rakefile"
     - "README.md"
     - "node_modules/**/*"
+    - "spec/rails_helper.rb"
+    - "spec/spec_helper.rb"
+    - "Gemfile"
 
 # PLEASE DO NOT enable auto fixing options
 # if you need extra support from you linter - do it in your local env as described in README for this config
