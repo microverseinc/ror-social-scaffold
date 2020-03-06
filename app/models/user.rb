@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :name, presence: true, length: {maximum: 20}
+  validates :name, presence: true, length: { maximum: 20 }
 
   has_many :posts
   has_many :comments, dependent: :destroy
@@ -30,9 +30,9 @@ class User < ApplicationRecord
   end
 
   def friends_requests_received
-    inverse_friendships.map{ |friendship| 
+    inverse_friendships.map do |friendship|
       friendship.user unless friendship.confirmed?
-    }
+    end
   end
 
   def friend?(user)
@@ -40,12 +40,12 @@ class User < ApplicationRecord
   end
 
   def friend_request_sent?(user)
-    requests_list = self.friends_requests_sent
+    requests_list = friends_requests_sent
     requests_list.include?(user)
   end
 
   def friend_request_received?(user)
-    requests_list = self.friends_requests_received
+    requests_list = friends_requests_received
     requests_list.include?(user)
   end
 

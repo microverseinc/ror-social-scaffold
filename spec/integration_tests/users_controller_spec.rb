@@ -2,12 +2,14 @@ require 'spec_helper'
 require 'rails_helper'
 
 RSpec.describe 'Integration tests for the user controller', type: :feature do
-  let(:test_user) {
+  let(:test_user) do
     User.new(name: 'test_user', email: 'test@user.com',
-             password: 'secret', password_confirmation: 'secret') }
-  let(:test_user_2) {
+             password: 'secret', password_confirmation: 'secret')
+  end
+  let(:test_user_2) do
     User.new(name: 'test_user_2', email: 'test2@user.com',
-             password: 'secret', password_confirmation: 'secret') }
+             password: 'secret', password_confirmation: 'secret')
+  end
 
   def store_in_database
     test_user.save
@@ -31,6 +33,6 @@ RSpec.describe 'Integration tests for the user controller', type: :feature do
     store_in_database
     log_in
     click_link("user-#{test_user_2.id}")
-    expect(page).to have_selector 'h2', text: "#{test_user.name}"
+    expect(page).to have_selector 'h2', text: test_user.name.to_s
   end
 end

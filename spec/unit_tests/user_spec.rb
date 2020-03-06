@@ -2,16 +2,18 @@ require 'spec_helper'
 require 'rails_helper'
 
 RSpec.describe 'User model tests', type: :model do
-
-  let(:test_user) {
+  let(:test_user) do
     User.new(name: 'test_user', email: 'test@user.com',
-             password: 'secret', password_confirmation: 'secret') }
-  let(:test_user_2) {
+             password: 'secret', password_confirmation: 'secret')
+  end
+  let(:test_user_2) do
     User.new(name: 'test_user_2', email: 'test2@user.com',
-             password: 'secret', password_confirmation: 'secret') }
-  let(:test_user_3) {
+             password: 'secret', password_confirmation: 'secret')
+  end
+  let(:test_user_3) do
     User.new(name: 'test_user_3', email: 'test3@user.com',
-             password: 'secret', password_confirmation: 'secret') }
+             password: 'secret', password_confirmation: 'secret')
+  end
   let(:test_friendship) do
     Friendship.new(user_id: test_user.id, friend_id: test_user_2.id, confirmed: true)
   end
@@ -41,7 +43,6 @@ RSpec.describe 'User model tests', type: :model do
 
       expect(test_user.friends_requests_sent).to include(test_user_2)
     end
-
 
     it 'returns the received invitations' do
       store_in_database

@@ -2,16 +2,18 @@ require 'spec_helper'
 require 'rails_helper'
 
 RSpec.describe 'friendship controller', type: :feature do
-  let(:test_user) {
+  let(:test_user) do
     User.new(name: 'test_user', email: 'test@user.com',
-             password: 'secret', password_confirmation: 'secret') }
-  let(:test_user_2) {
+             password: 'secret', password_confirmation: 'secret')
+  end
+  let(:test_user_2) do
     User.new(name: 'test_user_2', email: 'test2@user.com',
-             password: 'secret', password_confirmation: 'secret') }
+             password: 'secret', password_confirmation: 'secret')
+  end
 
   let(:friendship) { Friendship.new(user_id: test_user_2.id, friend_id: test_user.id, confirmed: false) }
 
-    def store_in_database
+  def store_in_database
     test_user.save
     test_user_2.save
   end
