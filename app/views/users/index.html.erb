@@ -7,18 +7,18 @@
           <%= link_to 'See Profile', user_path(user), class: 'profile-link', id: "user-#{user.id}" %>
         </span>
         <% if @logged_user.friend_request_sent?(user) %>
-          <span class="friendship-status">Friend Request Sent</span>
+          <span class="friendship-status" id=<%="waiting-user-#{user.id}"%> >Friend Request Sent</span>
         <% elsif @logged_user.friend_request_received?(user) %>
           <span class="friendship-status">Friendship Invitation Received:</span>
           <% correct_friendship_id =
                  Friendship.get_friendship_id(@all_friendships, @logged_user.id, user.id) %>
           <span class="friendship-status">
             <%= link_to 'Accept', "/friendships/#{correct_friendship_id}", method: :put,
-                        class: 'accept-link' %>
+                        class: 'accept-link', id: "accept-user-#{user.id}" %>
           </span>
           <span class="friendship-status">
             <%= link_to 'Decline', "friendships/#{correct_friendship_id}", method: :delete,
-                        class: 'negative-link' %>
+                        class: 'negative-link', id: "decline-user-#{user.id}" %>
           </span>
         <% elsif @logged_user == user %>
           <span class="friendship-status">You!</span>
@@ -27,13 +27,13 @@
             <%= link_to 'Unfriend',
                         "friendships/#{Friendship.get_friendship_id(@all_friendships, @logged_user.id, user.id)}",
                         method: :delete,
-                        class: 'negative-link' %>
+                        class: 'negative-link', id: "unfriend-user-#{user.id}" %>
           </span>
         <% else %>
           <span class="friendship-status">
             <%= link_to 'Add Friend', {controller: 'friendships', action: 'create',
                                        user_id: @logged_user.id, friend_id: user.id},
-                        method: :post, class: 'accept-link' %>
+                        method: :post, class: 'accept-link', id: "add-user-#{user.id}" %>
           </span>
         <% end %>
       </li>

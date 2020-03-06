@@ -30,7 +30,6 @@ RSpec.describe 'Integration tests for the user controller', type: :feature do
   scenario "'See profile' button shows the right user" do
     store_in_database
     log_in
-    # profile_link = find("#user-#{test_user_2.id}")
     click_link("user-#{test_user_2.id}")
     expect(page).to have_selector 'h2', text: "#{test_user.name}"
   end
