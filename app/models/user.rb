@@ -52,4 +52,12 @@ class User < ApplicationRecord
   def current_user
     User.find(session[:id])
   end
+
+  def friendship_id(friendship_list, friend_id)
+    correct_friendship = friendship_list.find do |friendship|
+      (friendship[:user_id] == self.id && friendship[:friend_id] == friend_id) ||
+          (friendship[:user_id] == friend_id && friendship[:friend_id] == self.id)
+    end
+    correct_friendship.id
+  end
 end

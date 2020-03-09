@@ -1,18 +1,18 @@
 example_id                                                   | status | run_time        |
 ------------------------------------------------------------ | ------ | --------------- |
-./spec/integration_tests/friendships_controller_spec.rb[1:1] | passed | 0.48835 seconds |
-./spec/integration_tests/friendships_controller_spec.rb[1:2] | passed | 0.09069 seconds |
-./spec/integration_tests/friendships_controller_spec.rb[1:3] | passed | 0.11739 seconds |
-./spec/integration_tests/friendships_controller_spec.rb[1:4] | passed | 0.10162 seconds |
-./spec/integration_tests/users_controller_spec.rb[1:1]       | passed | 0.06679 seconds |
-./spec/integration_tests/users_controller_spec.rb[1:2]       | passed | 0.12576 seconds |
-./spec/unit_tests/friendship_spec.rb[1:1:1]                  | passed | 0.0324 seconds  |
-./spec/unit_tests/user_spec.rb[1:1:1]                        | passed | 0.06799 seconds |
-./spec/unit_tests/user_spec.rb[1:1:2]                        | passed | 0.12297 seconds |
-./spec/unit_tests/user_spec.rb[1:1:3]                        | passed | 0.05633 seconds |
-./spec/unit_tests/user_spec.rb[1:1:4]                        | passed | 0.05825 seconds |
-./spec/unit_tests/user_spec.rb[1:1:5]                        | passed | 0.06054 seconds |
-./spec/unit_tests/user_spec.rb[1:1:6]                        | passed | 0.04853 seconds |
-./spec/unit_tests/user_spec.rb[1:1:7]                        | passed | 0.04525 seconds |
-./spec/unit_tests/user_spec.rb[1:1:8]                        | passed | 0.05934 seconds |
-./spec/unit_tests/user_spec.rb[1:1:9]                        | passed | 0.04921 seconds |
+./spec/integration_tests/friendships_controller_spec.rb[1:1] | passed | 0.10204 seconds |
+./spec/integration_tests/friendships_controller_spec.rb[1:2] | passed | 0.10827 seconds |
+./spec/integration_tests/friendships_controller_spec.rb[1:3] | passed | 0.10283 seconds |
+./spec/integration_tests/friendships_controller_spec.rb[1:4] | passed | 0.12155 seconds |
+./spec/integration_tests/users_controller_spec.rb[1:1]       | passed | 0.10616 seconds |
+./spec/integration_tests/users_controller_spec.rb[1:2]       | passed | 0.66029 seconds |
+./spec/unit_tests/friendship_spec.rb[1:1:1]                  | passed | 0.03735 seconds |
+./spec/unit_tests/user_spec.rb[1:1:1]                        | passed | 0.05597 seconds |
+./spec/unit_tests/user_spec.rb[1:1:2]                        | passed | 0.05072 seconds |
+./spec/unit_tests/user_spec.rb[1:1:3]                        | passed | 0.04821 seconds |
+./spec/unit_tests/user_spec.rb[1:1:4]                        | passed | 0.0669 seconds  |
+./spec/unit_tests/user_spec.rb[1:1:5]                        | passed | 0.0503 seconds  |
+./spec/unit_tests/user_spec.rb[1:1:6]                        | passed | 0.06038 seconds |
+./spec/unit_tests/user_spec.rb[1:1:7]                        | passed | 0.06187 seconds |
+./spec/unit_tests/user_spec.rb[1:1:8]                        | passed | 0.0499 seconds  |
+./spec/unit_tests/user_spec.rb[1:1:9]                        | passed | 0.05034 seconds |
