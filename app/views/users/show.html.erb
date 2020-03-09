@@ -1,35 +1,6 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
-  <% if @logged_user.friend_request_sent?(@user) %>
-    <span class="friendship-status">Friend Request Sent</span>
-  <% elsif @logged_user.friend_request_received?(@user) %>
-    <span class="friendship-status">Friendship Invitation Received:</span>
-    <% correct_friendship_id =
-           Friendship.get_friendship_id(@all_friendships, @logged_user.id, @user.id) %>
-    <span class="friendship-status">
-      <%= link_to 'Accept', "/friendships/#{correct_friendship_id}", method: :put,
-                  class: 'accept-link' %>
-    </span>
-    <span class="friendship-status">
-      <%= link_to 'Decline', "friendships/#{correct_friendship_id}", method: :delete,
-                  class: 'negative-link' %>
-    </span>
-  <% elsif @logged_user == @user %>
-    <span class="friendship-status">You!</span>
-  <% elsif @logged_user.friend?(@user) %>
-    <span class="friendship-status">
-      <%= link_to 'Unfriend',
-                  "friendships/#{Friendship.get_friendship_id(@all_friendships, @logged_user.id, @user.id)}",
-                  method: :delete,
-                  class: 'negative-link' %>
-    </span>
-  <% else %>
-    <span class="friendship-status">
-      <%= link_to 'Add Friend', {controller: 'friendships', action: 'create',
-                                 user_id: @logged_user.id, friend_id: @user.id},
-                  method: :post, class: 'accept-link' %>
-    </span>
-  <% end %>
+  <%= friendship_status(@user) %>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
