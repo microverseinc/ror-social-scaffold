@@ -4,15 +4,15 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :name, presence: true, length: {maximum: 20}
+  validates :name, presence: true, length: { maximum: 20 }
 
   has_many :posts
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :friendships
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
-  has_many :confirmed_friends, -> { where(friendships: {confirmed: true}) }, through: :friendships, source: :friend
-  has_many :confirmed_inverse_friends, -> { where(friendships: {confirmed: true}) },
+  has_many :confirmed_friends, -> { where(friendships: { confirmed: true }) }, through: :friendships, source: :friend
+  has_many :confirmed_inverse_friends, -> { where(friendships: { confirmed: true }) },
            through: :inverse_friendships, source: :user
 
   # Returns an array with the friends

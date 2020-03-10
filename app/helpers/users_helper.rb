@@ -7,7 +7,8 @@ module UsersHelper
       accept_link = link_to('Accept',
                             { controller: 'friendships', action: :update, friendships_id: correct_friendship_ids },
                             method: :put, class: 'accept-link', id: "accept-user-#{user.id}")
-      decline_link = link_to 'Decline', {controller: 'friendships', action: :destroy, friendships_id: correct_friendship_ids},
+      decline_link = link_to 'Decline',
+                             { controller: 'friendships', action: :destroy, friendships_id: correct_friendship_ids },
                              method: :delete, class: 'negative-link', id: "decline-user-#{user.id}"
       concat content_tag(:span, 'Friendship Invitation Received:', class: 'friendship-status')
       concat content_tag(:span, accept_link, class: 'friendship-status')
@@ -17,7 +18,7 @@ module UsersHelper
     elsif @logged_user.friend?(user)
       correct_friendship_ids = @logged_user.friendship_ids(@all_friendships, user.id)
       unfriend_link = link_to 'Unfriend',
-                              {controller: 'friendships', action: :destroy, friendships_id: correct_friendship_ids},
+                              { controller: 'friendships', action: :destroy, friendships_id: correct_friendship_ids },
                               method: :delete,
                               class: 'negative-link', id: "unfriend-user-#{user.id}"
       content_tag(:span, unfriend_link, class: 'friendship-status')

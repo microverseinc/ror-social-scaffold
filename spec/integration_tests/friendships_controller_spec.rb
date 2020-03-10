@@ -12,7 +12,7 @@ RSpec.describe 'friendship controller', type: :feature do
   end
 
   let(:friendship) { Friendship.new(user_id: test_user_2.id, friend_id: test_user.id, confirmed: false) }
-  let(:friendship_2) { Friendship.new(user_id: test_user.id, friend_id: test_user_2.id, confirmed: false)}
+  let(:friendship_2) { Friendship.new(user_id: test_user.id, friend_id: test_user_2.id, confirmed: false) }
 
   def store_in_database
     test_user.save

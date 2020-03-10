@@ -31,7 +31,8 @@ RSpec.describe 'Tests for the friendship model', type: :model do
     it 'returns the correct friendship id' do
       store_in_database
       friendship_list = Friendship.all
-      expect(test_user.friendship_ids(friendship_list, test_friend.id)).to eq([test_friendship.id, test_friendship_2.id])
+      result_array = [test_friendship.id, test_friendship_2.id]
+      expect(test_user.friendship_ids(friendship_list, test_friend.id)).to eq(result_array)
     end
   end
 end
