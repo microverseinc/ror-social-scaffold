@@ -1,12 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe 'Posts controller tests', type: :feature do
-  let(:test_user) { User.new(name: 'test user', email: 'test@user.com',
-                             password: 'password', password_confirmation: 'password') }
-  let(:test_user_2) { User.new(name: 'test user 2', email: 'test@user2.com',
-                               password: 'password', password_confirmation: 'password') }
-  let(:test_user_3) { User.new(name: 'test user 3', email: 'test@user3.com',
-                               password: 'password', password_confirmation: 'password')}
+  let(:test_user) do
+    User.new(name: 'test user', email: 'test@user.com',
+             password: 'password', password_confirmation: 'password')
+  end
+  let(:test_user_2) do
+    User.new(name: 'test user 2', email: 'test@user2.com',
+             password: 'password', password_confirmation: 'password')
+  end
+  let(:test_user_3) do
+    User.new(name: 'test user 3', email: 'test@user3.com',
+             password: 'password', password_confirmation: 'password')
+  end
   let(:test_friendship) { Friendship.new(user_id: test_user.id, friend_id: test_user_3.id, confirmed: true) }
   let(:test_post) { Post.new(user_id: test_user.id, content: 'Hello world!') }
   let(:test_post_2) { Post.new(user_id: test_user_3.id, content: "I'm user 2") }
@@ -39,26 +45,26 @@ RSpec.describe 'Posts controller tests', type: :feature do
     expect(page).to have_selector 'p', text: "I'm user 2"
   end
 
-  scenario "Comment is succesfully created" do
+  scenario 'Comment is succesfully created' do
     store_in_database
     log_in
-    within("li#post-#{test_post_2.id}"){fill_in 'comment_content', with: 'test'}
-    within("li#post-#{test_post_2.id}"){click_button 'Comment'}
+    within("li#post-#{test_post_2.id}") { fill_in 'comment_content', with: 'test' }
+    within("li#post-#{test_post_2.id}") { click_button 'Comment' }
     expect(page).to have_selector 'p', text: 'test'
   end
 
-  scenario "Comment counter works" do
+  scenario 'Comment counter works' do
     store_in_database
     log_in
-    within("li#post-#{test_post_2.id}"){fill_in 'comment_content', with: 'test'}
-    within("li#post-#{test_post_2.id}"){click_button 'Comment'}
-    within("li#post-#{test_post_2.id}"){expect(page).to have_selector 'div.post-liking', text: '1 comment'}
+    within("li#post-#{test_post_2.id}") { fill_in 'comment_content', with: 'test' }
+    within("li#post-#{test_post_2.id}") { click_button 'Comment' }
+    within("li#post-#{test_post_2.id}") { expect(page).to have_selector 'div.post-liking', text: '1 comment' }
   end
 
-  scenario "Like counter works" do
+  scenario 'Like counter works' do
     store_in_database
     log_in
-    within("li#post-#{test_post_2.id}"){click_link 'Like!'}
-    within("li#post-#{test_post_2.id}"){expect(page).to have_selector 'div.post-liking', text: '1 like'}
+    within("li#post-#{test_post_2.id}") { click_link 'Like!' }
+    within("li#post-#{test_post_2.id}") { expect(page).to have_selector 'div.post-liking', text: '1 like' }
   end
 end
