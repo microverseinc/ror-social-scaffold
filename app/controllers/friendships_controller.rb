@@ -10,17 +10,17 @@ class FriendshipsController < ApplicationController
   end
 
   def update
-    friendship = Friendship.find_by(user_id: params[:friendships_id][0])
+    friendship = Friendship.find(params[:friendships_id][0])
     friendship.update(confirmed: true)
-    friendship = Friendship.find_by(friend_id: params[:friendships_id][1])
+    friendship = Friendship.find(params[:friendships_id][1])
     friendship.update(confirmed: true)
     redirect_to users_url
   end
 
   def destroy
-    friendship = Friendship.find_by(user_id: params[:friendships_id][0])
+    friendship = Friendship.find(params[:friendships_id][0])
     friendship.destroy
-    friendship = Friendship.find_by(friend_id: params[:friendships_id][1])
+    friendship = Friendship.find(params[:friendships_id][1])
     friendship.destroy
     redirect_to users_url
   end

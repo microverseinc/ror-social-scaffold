@@ -42,9 +42,10 @@ class User < ApplicationRecord
     # requests_list.include?(user)
 
     friendships_array = friendship_ids(friendship_list, user.id)
-    return false if friendships_array.nil?
+    return false if friendships_array.empty? || friendships_array.nil?
 
-    Friendship.find(friendships_array[1]).user.id == id
+    current_friendship = Friendship.find(friendships_array[0])
+    current_friendship.user.id == id && current_friendship.confirmed == false
   end
 
   def friend_request_received?(user, friendship_list)
@@ -52,9 +53,10 @@ class User < ApplicationRecord
     # requests_list.include?(user)
 
     friendships_array = friendship_ids(friendship_list, user.id)
-    return false if friendships_array.nil?
+    return false if friendships_array.empty? || friendships_array.nil?
 
-    Friendship.find(friendships_array[1]).friend.id == id
+    current_friendship = Friendship.find(friendships_array[0])
+    current_friendship.friend.id == id && current_friendship.confirmed == false
   end
 
   def current_user
@@ -71,5 +73,6 @@ class User < ApplicationRecord
     friendship_id = []
     friendship_id << first_friendship_record.id unless first_friendship_record.nil?
     friendship_id << second_friendship_record.id unless second_friendship_record.nil?
+    friendship_id.sort!
   end
 end
