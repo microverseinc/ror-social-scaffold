@@ -38,4 +38,27 @@ RSpec.describe 'Posts controller tests', type: :feature do
     log_in
     expect(page).to have_selector 'p', text: "I'm user 2"
   end
+
+  scenario "Comment is succesfully created" do
+    store_in_database
+    log_in
+    within("li#post-#{test_post_2.id}"){fill_in 'comment_content', with: 'test'}
+    within("li#post-#{test_post_2.id}"){click_button 'Comment'}
+    expect(page).to have_selector 'p', text: 'test'
+  end
+
+  scenario "Comment counter works" do
+    store_in_database
+    log_in
+    within("li#post-#{test_post_2.id}"){fill_in 'comment_content', with: 'test'}
+    within("li#post-#{test_post_2.id}"){click_button 'Comment'}
+    within("li#post-#{test_post_2.id}"){expect(page).to have_selector 'div.post-liking', text: '1 comment'}
+  end
+
+  scenario "Like counter works" do
+    store_in_database
+    log_in
+    within("li#post-#{test_post_2.id}"){click_link 'Like!'}
+    within("li#post-#{test_post_2.id}"){expect(page).to have_selector 'div.post-liking', text: '1 like'}
+  end
 end
