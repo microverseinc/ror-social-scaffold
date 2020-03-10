@@ -320,12 +320,35 @@ form {
   width: 100%;
   margin-left: 16px;
 
+  .friend-list {
+    display: flex;
+    margin-top: 2rem;
+    display: block;
+
+    h3 {
+      width: 100%;
+      display: block;
+    }
+
+    ul {
+      list-style: none;
+      display: flex;
+      justify-content: left;
+      justify-items: left;
+      margin-top: 1rem;
+      li {
+        padding: 0.75rem;
+        display: inline-block;
+      }
+    }
+  }
+
   h2 {
     text-transform: capitalize;
   }
 
   .timeline {
-    width: 100%;
+    width: 60%;
     h3 {
       width: 100%;
     }
@@ -339,9 +362,12 @@ form {
   }
 
   .new_post,
-  .timeline,
   .users-section,
   .user-section {
+    width: 70%;
+  }
+
+  .timeline {
     width: 70%;
   }
 }
@@ -355,6 +381,6 @@ form {
   .timeline,
   .users-section,
   .user-section {
-    width: 50%;
+    width: 100%;
   }
 }
