@@ -4,15 +4,15 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :name, presence: true, length: { maximum: 20 }
+  validates :name, presence: true, length: {maximum: 20}
 
   has_many :posts
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :friendships
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
-  has_many :confirmed_friends, -> { where(friendships: { confirmed: true }) }, through: :friendships, source: :friend
-  has_many :confirmed_inverse_friends, -> { where(friendships: { confirmed: true }) },
+  has_many :confirmed_friends, -> { where(friendships: {confirmed: true}) }, through: :friendships, source: :friend
+  has_many :confirmed_inverse_friends, -> { where(friendships: {confirmed: true}) },
            through: :inverse_friendships, source: :user
 
   # Returns an array with the friends
@@ -37,25 +37,39 @@ class User < ApplicationRecord
     friends.include?(user)
   end
 
-  def friend_request_sent?(user)
-    requests_list = friends_requests_sent
-    requests_list.include?(user)
+  def friend_request_sent?(user, friendship_list)
+    # requests_list = friends_requests_sent
+    # requests_list.include?(user)
+
+    friendships_array = friendship_ids(friendship_list, user.id)
+    return false if friendships_array.nil?
+
+    Friendship.find(friendships_array[1]).user.id == id
   end
 
-  def friend_request_received?(user)
-    requests_list = friends_requests_received
-    requests_list.include?(user)
+  def friend_request_received?(user, friendship_list)
+    # requests_list = friends_requests_received(user)
+    # requests_list.include?(user)
+
+    friendships_array = friendship_ids(friendship_list, user.id)
+    return false if friendships_array.nil?
+
+    Friendship.find(friendships_array[1]).friend.id == id
   end
 
   def current_user
     User.find(session[:id])
   end
 
-  def friendship_id(friendship_list, friend_id)
-    correct_friendship = friendship_list.find do |friendship|
-      (friendship[:user_id] == id && friendship[:friend_id] == friend_id) ||
-        (friendship[:user_id] == friend_id && friendship[:friend_id] == id)
+  def friendship_ids(friendship_list, friend_id)
+    first_friendship_record = friendship_list.find do |friendship|
+      friendship[:user_id] == id && friendship[:friend_id] == friend_id
     end
-    correct_friendship.id
+    second_friendship_record = friendship_list.find do |friendship|
+      friendship[:user_id] == friend_id && friendship[:friend_id] == id
+    end
+    friendship_id = []
+    friendship_id << first_friendship_record.id unless first_friendship_record.nil?
+    friendship_id << second_friendship_record.id unless second_friendship_record.nil?
   end
 end
