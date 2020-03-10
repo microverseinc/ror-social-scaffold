@@ -7,21 +7,10 @@ We  have built a social media application we call ***Stay in touch***
 * Bootstrap
 * RSpec
 
-## Live demo
-https://sm-members-only.herokuapp.com/
-## Getting started
-To get started with the app, clone the repo and then install the needed gems:
-
-$ bundle install --without production Next, migrate the database:
-
-$ rails db:migrate Finally, run the test suite to verify that everything is working correctly:
-
-$ rails test If the test suite passes, you'll be ready to run the app in a local server:
-
-$ rails server
-
-installing rspec
-$ rails g rspec:install
+## Milestone 1: Prepare data architecture documentation
+1. Creating ERD using lucid chart
+2. Exporting the ERD to jpeg 
+3. Creating the folder we named it docs and updloaded the ERD file
 
 ## Authors
 #### Author 1
