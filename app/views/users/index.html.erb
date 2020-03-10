@@ -6,6 +6,20 @@
         <span class="profile-link">
           <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
         </span>
+
+        <% if show_friend_request user %>
+          <span class="friend-request-link">
+            <%= link_to 'Send Friend Request >>', {action: "send_request",:controller=>"friendships",friend_id: user.id }, method: :post, class: 'friend-request' %>
+          </span>
+        <% elsif pending_friend user %>
+          <span class="friend-request-link">
+            <p class="friend-already">pending friended request</p>
+          </span>
+        <% elsif already_friend user %>
+          <span class="friend-request-link">
+            <p class="friend-already">already friended</p>
+          </span>
+        <%end %>
       </li>
     <% end %>
   </ul>

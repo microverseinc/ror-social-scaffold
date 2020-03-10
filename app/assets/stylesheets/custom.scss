@@ -169,7 +169,7 @@ form {
 }
 
 .new_post,
-.new_comment{
+.new_comment {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -241,7 +241,7 @@ form {
   .post-liking {
     float: right;
 
-    a{
+    a {
       color: $primary-color-dark;
       font-weight: bold;
       font-size: 0.9em;
@@ -271,7 +271,7 @@ form {
       padding: 10px;
 
       p {
-        font-size: .8em;
+        font-size: 0.8em;
         width: 90%;
       }
       span {
@@ -297,6 +297,22 @@ form {
     font-size: 0.8em;
     margin: 0 0 8px 0;
     color: $primary-color-dark;
+  }
+
+  .friend-request-link {
+    float: right;
+    margin-right: 1rem;
+
+    .friend-request {
+      color: darkblue;
+      font-size: 14px;
+    }
+
+    .friend-already {
+      color: grey;
+      opacity: 0.4;
+      font-size: 14px;
+    }
   }
 }
 
