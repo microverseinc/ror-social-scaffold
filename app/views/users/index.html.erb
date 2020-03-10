@@ -4,8 +4,9 @@
       <li>
         Name: <%= user.name %>
         <span class="profile-link">
-          <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+          <%= link_to 'See Profile', user_path(user), class: 'profile-link', id: "user-#{user.id}" %>
         </span>
+        <%= friendship_status(user) %>
       </li>
     <% end %>
   </ul>
