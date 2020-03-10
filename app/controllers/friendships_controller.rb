@@ -10,4 +10,24 @@ class FriendshipsController < ApplicationController
     end
   end
 
+  def accept
+    accept = Friendship.find_by(id: params[:id])
+    if accept
+    accept.update(status: true)
+    flash[:success] = "You accepted request"
+    redirect_to requests_path
+    end
+  end
+  def decline
+    decline = Friendship.find_by(id: params[:id])
+    if decline
+      decline.destroy
+      flash[:danger] = "You decline request"
+      redirect_to requests_path
+    end
+  end
+  def show_requests
+    @request = Friendship.where(user_id:current_user.id,status: false)
+  end
+
 end

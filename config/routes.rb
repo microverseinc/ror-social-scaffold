@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   devise_for :users
 
   post '/send_request', to: 'friendships#send_request'
+  post '/requests', to: 'friendships#accept'
+  delete '/requests', to: 'friendships#decline'
+  get '/requests', to: 'friendships#show_requests'
 
   resources :users, only: [:index, :show]
   resources :posts, only: [:index, :create] do
