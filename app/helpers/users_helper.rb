@@ -5,7 +5,7 @@ module UsersHelper
     elsif @logged_user.friend_request_received?(user, @all_friendships)
       correct_friendship_ids = @logged_user.friendship_ids(@all_friendships, user.id)
       accept_link = link_to('Accept',
-                            {controller: 'friendships', action: :update, friendships_id: correct_friendship_ids},
+                            { controller: 'friendships', action: :update, friendships_id: correct_friendship_ids },
                             method: :put, class: 'accept-link', id: "accept-user-#{user.id}")
       decline_link = link_to 'Decline', {controller: 'friendships', action: :destroy, friendships_id: correct_friendship_ids},
                              method: :delete, class: 'negative-link', id: "decline-user-#{user.id}"

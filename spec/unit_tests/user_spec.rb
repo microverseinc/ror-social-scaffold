@@ -65,23 +65,23 @@ RSpec.describe 'User model tests', type: :model do
     it 'confirms if a friend request has been sent to a specific user' do
       store_in_database
       test_friendship.update(confirmed: false)
-      expect(test_user.friend_request_sent?(test_user_2)).to eq(true)
+      expect(test_user.friend_request_sent?(test_user_2, Friendship.all)).to eq(true)
     end
 
     it 'confirms if a friend request has not been sent to a specific user' do
       store_in_database
-      expect(test_user.friend_request_sent?(test_user_3)).to eq(false)
+      expect(test_user.friend_request_sent?(test_user_3, Friendship.all)).to eq(false)
     end
 
     it 'confirms if a friend request has been received from a specific user' do
       store_in_database
       test_friendship_2.update(confirmed: false)
-      expect(test_user.friend_request_received?(test_user_3)).to eq(true)
+      expect(test_user.friend_request_received?(test_user_3, Friendship.all)).to eq(true)
     end
 
     it 'confirms if a friend request has not been received from a specific user' do
       store_in_database
-      expect(test_user.friend_request_received?(test_user_2)).to eq(false)
+      expect(test_user.friend_request_received?(test_user_2, Friendship.all)).to eq(false)
     end
   end
 end

@@ -38,9 +38,6 @@ class User < ApplicationRecord
   end
 
   def friend_request_sent?(user, friendship_list)
-    # requests_list = friends_requests_sent
-    # requests_list.include?(user)
-
     friendships_array = friendship_ids(friendship_list, user.id)
     return false if friendships_array.empty? || friendships_array.nil?
 
@@ -49,9 +46,6 @@ class User < ApplicationRecord
   end
 
   def friend_request_received?(user, friendship_list)
-    # requests_list = friends_requests_received(user)
-    # requests_list.include?(user)
-
     friendships_array = friendship_ids(friendship_list, user.id)
     return false if friendships_array.empty? || friendships_array.nil?
 
