@@ -21,22 +21,22 @@ module ApplicationHelper
   end
 
   def show_friend_request(user)
-    friendShip = Friendship.find_by(user_id: current_user.id,
+    friendship = Friendship.find_by(user_id: current_user.id,
                                     friend_id: user.id)
-    user != current_user && !friendShip
+    user != current_user && !friendship
   end
 
   def already_friend(user)
-    friendShip = Friendship.find_by(user_id: current_user.id,
+    friendship = Friendship.find_by(user_id: current_user.id,
                                     friend_id: user.id,
                                     status: true)
-    user != current_user && friendShip
+    user != current_user && friendship
   end
 
   def pending_friend(user)
-    friendShip = Friendship.find_by(user_id: current_user.id,
+    friendship = Friendship.find_by(user_id: current_user.id,
                                     friend_id: user.id,
                                     status: false)
-    user != current_user && friendShip
+    user != current_user && friendship
   end
 end

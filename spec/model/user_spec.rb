@@ -4,8 +4,7 @@ RSpec.describe User, type: :model do
   subject do
     User.new(name: 'tashfeen',
              email: 'tashfeen@gmail.com',
-             password: '123456'
-             )
+             password: '123456')
   end
 
   it 'user should be valid' do
@@ -26,5 +25,4 @@ RSpec.describe User, type: :model do
     subject.password = nil
     expect(subject).to_not be_valid
   end
-
 end

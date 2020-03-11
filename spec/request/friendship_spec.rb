@@ -5,8 +5,8 @@ RSpec.feature 'Friendships', type: :feature do
     @user = User.create(name: 'Tash', email: 't@mail.com', password: 'foobar')
     @user2 = User.create(name: 'Nyan', email: 'n@mail.com', password: '123456')
     @user3 = User.create(name: 'User', email: 'u@mail.com', password: '123456')
-    @friendShip = Friendship.create(user_id: @user2.id,friend_id:@user.id,status:false)
-    @friendShip2 = Friendship.create(user_id: @user3.id,friend_id:@user.id,status:false)
+    @friendship = Friendship.create(user_id: @user2.id, friend_id: @user.id, status: false)
+    @friendship2 = Friendship.create(user_id: @user3.id, friend_id: @user.id, status: false)
   end
 
   scenario 'click friend request invite send' do
@@ -19,7 +19,7 @@ RSpec.feature 'Friendships', type: :feature do
     expect(find('.users-section')).to have_content('Send Friend Request >>')
     assert_selector 'ul.users-list' do
       assert_selector '.friend-request'
-      click_link('Send Friend Request >>',match: :first)
+      click_link('Send Friend Request >>', match: :first)
     end
     expect(find('.notice')).to have_content('Send your friend request successfully')
   end

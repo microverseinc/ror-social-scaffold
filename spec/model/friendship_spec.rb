@@ -13,7 +13,7 @@ RSpec.describe Friendship, type: :model do
     end
 
     it 'must create a friendship between two users' do
-      friendship = Friendship.new(user_id: user1.id, friend_id: user2.id, status:true)
+      friendship = Friendship.new(user_id: user1.id, friend_id: user2.id, status: true)
       friendship.save
       expect(friendship.valid?).to be true
     end
