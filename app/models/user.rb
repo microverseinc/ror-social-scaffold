@@ -13,23 +13,23 @@ class User < ApplicationRecord
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
 
   def friends
-    confirmed_friendship_by_me = friendships.map{ |friendship| friendship.friend_id if friendship.status }
-    confirmed_friendship_from_friend = inverse_friendships.map{ |friendship| friendship.user_id if friendship.status }
+    confirmed_friendship_by_me = friendships.map { |friendship| friendship.friend_id if friendship.status }
+    confirmed_friendship_from_friend = inverse_friendships.map { |friendship| friendship.user_id if friendship.status }
     (confirmed_friendship_by_me + confirmed_friendship_from_friend).compact
   end
 
   # Users who have YET to confirm friend requests
   def pending_friends
-    friendships.map{ |friendship| friendship.friend if !friendship.status }.compact
+    friendships.map { |friendship| friendship.friend unless !friendship.status }.compact
   end
 
   # Users who have requested to be friends
   def friend_requests
-    inverse_friendships.map{ |friendship| friendship.user if !friendship.status }.compact
+    inverse_friendships.map { |friendship| friendship.user unless !friendship.status }.compact
   end
 
   def confirm_friend(user)
-    friendship = inverse_friendships.find{ |friendship| friendship.user == user }
+    friendship = inverse_friendships.find { |friendship| friendship.user == user }
     friendship.status = true
     friendship.save
   end
