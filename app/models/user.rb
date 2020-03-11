@@ -37,20 +37,14 @@ class User < ApplicationRecord
     friends.include?(user)
   end
 
-  def friend_request_sent?(user, friendship_list)
-    friendships_array = friendship_ids(friendship_list, user.id)
-    return false if friendships_array.empty? || friendships_array.nil?
-
-    current_friendship = Friendship.find(friendships_array[0])
-    current_friendship.user.id == id && current_friendship.confirmed == false
+  def friend_request_sent?(user)
+    requests_list = friends_requests_sent
+    requests_list.include?(user)
   end
 
-  def friend_request_received?(user, friendship_list)
-    friendships_array = friendship_ids(friendship_list, user.id)
-    return false if friendships_array.empty? || friendships_array.nil?
-
-    current_friendship = Friendship.find(friendships_array[0])
-    current_friendship.friend.id == id && current_friendship.confirmed == false
+  def friend_request_received?(user)
+    requests_list = friends_requests_received
+    requests_list.include?(user)
   end
 
   def current_user
