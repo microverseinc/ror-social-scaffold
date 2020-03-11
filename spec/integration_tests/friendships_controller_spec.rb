@@ -12,7 +12,7 @@ RSpec.describe 'friendship controller', type: :feature do
   end
 
   let(:friendship) { Friendship.new(user_id: test_user_2.id, friend_id: test_user.id, confirmed: false) }
-  let(:friendship_2) { Friendship.new(user_id: test_user.id, friend_id: test_user_2.id, confirmed: false) }
+  let(:friendship_2) { Friendship.new(user_id: test_user.id, friend_id: test_user_2.id, confirmed: true) }
 
   def store_in_database
     test_user.save
@@ -21,7 +21,6 @@ RSpec.describe 'friendship controller', type: :feature do
 
   def save_friendships
     friendship.save
-    friendship_2.save
   end
 
   def log_in
@@ -57,8 +56,8 @@ RSpec.describe 'friendship controller', type: :feature do
   scenario 'unfriend a friend' do
     store_in_database
     friendship.confirmed = true
-    friendship_2.confirmed = true
     save_friendships
+    friendship_2.save
     log_in
     click_link("unfriend-user-#{test_user_2.id}")
     expect(page).to have_selector "a#add-user-#{test_user_2.id}"
