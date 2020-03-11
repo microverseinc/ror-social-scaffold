@@ -1,8 +1,8 @@
 <%if @request%>
 <h1>Requests</h1>
 <%@request.each do |requests|%>
-<%= requests.friend.name%>
-<%= link_to 'Accept >>', {action: "accept",:controller=>"friendships",id: requests.id }, method: :post, class: 'friend-request' %>
+<%= requests.user.name%>
+<%= link_to 'Accept >>', {action: "accept",:controller=>"friendships",id: requests.id }, method: :post, class: 'btn btn-primary' %>
 <%= link_to 'decline >>', {action: "decline",:controller=>"friendships",id: requests.id }, method: :delete, class: 'friend-request' %>
 <%end%>
 <%end%>

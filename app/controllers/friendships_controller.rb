@@ -27,7 +27,7 @@ class FriendshipsController < ApplicationController
     end
   end
   def show_requests
-    @request = Friendship.where(user_id:current_user.id,status: false)
+    @request = Friendship.where(friend_id:current_user.id,status: false)
   end
 
 end
