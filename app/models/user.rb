@@ -50,17 +50,4 @@ class User < ApplicationRecord
   def current_user
     User.find(session[:id])
   end
-
-  def friendship_ids(friendship_list, friend_id)
-    first_friendship_record = friendship_list.find do |friendship|
-      friendship[:user_id] == id && friendship[:friend_id] == friend_id
-    end
-    second_friendship_record = friendship_list.find do |friendship|
-      friendship[:user_id] == friend_id && friendship[:friend_id] == id
-    end
-    friendship_id = []
-    friendship_id << first_friendship_record.id unless first_friendship_record.nil?
-    friendship_id << second_friendship_record.id unless second_friendship_record.nil?
-    friendship_id.sort!
-  end
 end
