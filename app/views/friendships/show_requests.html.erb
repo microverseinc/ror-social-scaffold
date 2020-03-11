@@ -1,3 +1,6 @@
+<div class="container">
+<div class="row">
+<div class="col-md-6">
 <%if @request%>
 <h1>Requests List</h1>
   <ul>
@@ -7,16 +10,22 @@
         <h4>
           <%= requests.user.name%>
         </h4>
-        <%= link_to 'Accept >>', {action: "accept",:controller=>"friendships",id: requests.id }, method: :post, class: 'btn btn-primary' %>
-        <%= link_to 'Decline >>', {action: "decline",:controller=>"friendships",id: requests.id }, method: :delete, class: 'friend-request' %>
+        <%= link_to 'Accept', {action: "accept",:controller=>"friendships",id: requests.id }, method: :post, class: 'btn btn-primary' %>
+        <%= link_to 'Decline', {action: "decline",:controller=>"friendships",id: requests.id }, method: :delete, class: 'btn btn-primary' %>
       </li>
     <%end%>
   </ul>
 <%end%>
+</div>
+<div class="col-md-6">
 <%show_pending%>
 <%if @pending%>
 <h2>Friends pending</h2>
 <%@pending.each do |requests|%>
 <%= requests.friend.name%>
+<%= link_to 'Cancel', {action: "decline",:controller=>"friendships",id: requests.id }, method: :delete, class: 'btn btn-primary' %>
 <%end%>
 <%end%>
+</div>
+</div>
+</div>

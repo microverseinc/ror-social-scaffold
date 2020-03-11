@@ -1,3 +1,6 @@
+<div class="container">
+<div class="row">
+<div class="col-md-12">
 <section class="users-section">
   <ul class="users-list">
     <% @users.each do |user| %>
@@ -6,14 +9,13 @@
         <span class="profile-link">
           <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
         </span>
-
         <% if show_friend_request user %>
           <span class="friend-request-link">
-            <%= link_to 'Send Friend Request >>', {action: "send_request",:controller=>"friendships",friend_id: user.id }, method: :post, class: 'friend-request' %>
+            <p><%= link_to 'Send Friend Request', {action: "send_request",:controller=>"friendships",friend_id: user.id }, method: :post, class: 'btn btn-primary' %></p>
           </span>
         <% elsif pending_friend user %>
           <span class="friend-request-link">
-            <p class="friend-already">pending friended request</p>
+            <p class="friend-already">pending friended request <%= link_to 'Cancel', {action: "decline",:controller=>"friendships",friend_id: user.id }, method: :delete, class: 'btn btn-primary' %></p> 
           </span>
         <% elsif already_friend user %>
           <span class="friend-request-link">
@@ -24,3 +26,6 @@
     <% end %>
   </ul>
 </section>
+</div>
+</div>
+</div>
