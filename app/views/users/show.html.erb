@@ -1,13 +1,16 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2><br>
+
   <% if current_user.name == @user.name %>
     <h3>Friend Requests: </h3>
     <ul>
       <% current_user.friend_requests.each do |user| %>
-        <li>- <%= user.name %> <li>
-      <% end %>
+        <li>- <strong><%= user.name %></strong> <span><li>
+        <span><u><%= link_to 'Confirm', friendships_path(:friend_id => user), :method => :post %></u></span> or <span><u><%= link_to 'Decline', friendship_path(user), :method => :delete %></u></span>
+      <% end %><br>
     </ul>
   <% end %>
+
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">

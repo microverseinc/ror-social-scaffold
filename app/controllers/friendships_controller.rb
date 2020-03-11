@@ -8,4 +8,13 @@ class FriendshipsController < ApplicationController
       redirect_to root_url
     end
   end
+
+  def destroy
+    @friendship = Friendship.find_by(friend_id: params[:user_id])
+    if @friendship.present?
+      @friendship.destroy
+      flash[:notice] = 'Friend Declined'
+    end
+    redirect_to root_url
+  end
 end
