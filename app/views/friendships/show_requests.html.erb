@@ -1,14 +1,21 @@
 <%if @request%>
-<h1>Requests</h1>
-<%@request.each do |requests|%>
-<%= requests.user.name%>
-<%= link_to 'Accept >>', {action: "accept",:controller=>"friendships",id: requests.id }, method: :post, class: 'btn btn-primary' %>
-<%= link_to 'decline >>', {action: "decline",:controller=>"friendships",id: requests.id }, method: :delete, class: 'friend-request' %>
-<%end%>
+<h1>Requests List</h1>
+  <ul>
+
+    <%@request.each do |requests|%>
+      <li>
+        <h4>
+          <%= requests.user.name%>
+        </h4>
+        <%= link_to 'Accept >>', {action: "accept",:controller=>"friendships",id: requests.id }, method: :post, class: 'btn btn-primary' %>
+        <%= link_to 'Decline >>', {action: "decline",:controller=>"friendships",id: requests.id }, method: :delete, class: 'friend-request' %>
+      </li>
+    <%end%>
+  </ul>
 <%end%>
 <%show_pending%>
 <%if @pending%>
-<h1>Your pending</h1>
+<h2>Friends pending</h2>
 <%@pending.each do |requests|%>
 <%= requests.friend.name%>
 <%end%>
