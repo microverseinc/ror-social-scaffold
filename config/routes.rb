@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
   root 'posts#index'
 
+  put '/friendships/update', to: 'friendships#update'
+  delete '/friendships/destroy', to: 'friendships#destroy'
+
   devise_for :users
 
   resources :users, only: [:index, :show]

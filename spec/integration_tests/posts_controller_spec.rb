@@ -14,16 +14,20 @@ RSpec.describe 'Posts controller tests', type: :feature do
              password: 'password', password_confirmation: 'password')
   end
   let(:test_friendship) { Friendship.new(user_id: test_user.id, friend_id: test_user_3.id, confirmed: true) }
+  let(:inverse_test_friendship) { Friendship.new(user_id: test_user_3.id, friend_id: test_user.id, confirmed: true) }
   let(:test_post) { Post.new(user_id: test_user.id, content: 'Hello world!') }
-  let(:test_post_2) { Post.new(user_id: test_user_3.id, content: "I'm user 2") }
+  let(:test_post_2) { Post.new(user_id: test_user_3.id, content: "I'm user 3") }
+  let(:test_post_3) { Post.new(user_id: test_user_2.id, content: "I'm user 2") }
 
   def store_in_database
     test_user.save
     test_user_2.save
     test_user_3.save
     test_friendship.save
+    inverse_test_friendship.save
     test_post.save
     test_post_2.save
+    test_post_3.save
   end
 
   def log_in
@@ -33,16 +37,22 @@ RSpec.describe 'Posts controller tests', type: :feature do
     click_button 'Log in'
   end
 
-  scenario 'Timeline displays comments from the user' do
+  scenario 'Timeline displays posts from the user' do
     store_in_database
     log_in
     expect(page).to have_selector 'p', text: 'Hello world!'
   end
 
-  scenario "Timeline shows the comment from the user's friend" do
+  scenario "Timeline shows the post from the user's friend" do
     store_in_database
     log_in
-    expect(page).to have_selector 'p', text: "I'm user 2"
+    expect(page).to have_selector 'p', text: "I'm user 3"
+  end
+
+  scenario "Timeline doesn't shows the post from 'not friends'" do
+    store_in_database
+    log_in
+    expect(page).to_not have_selector 'p', text: "I'm user 2"
   end
 
   scenario 'Comment is succesfully created' do
