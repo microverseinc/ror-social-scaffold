@@ -63,7 +63,11 @@ TBA
 
 ## Authors
 
-TBA
+👤 **Amadou IBRAHIM**
+
+- Github: [@genzaraki](https://github.com/genzaraki)
+- Twitter: [@tigamadou](https://twitter.com/tigamadou)
+- Linkedin: [Amadou IBRAHIM](https://www.linkedin.com/in/amadou-ibrahim-75769167/)
 
 ## 🤝 Contributing
 
