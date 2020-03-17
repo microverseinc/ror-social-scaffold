@@ -1,0 +1,8 @@
+<% @friend_requests.each do |friend_request| %>
+  <% if current_user.friend_requests.include?(friend_request.user) %>
+    <p><%=friend_request.user.name%></p>
+    <span class="profile-link">
+      <%= link_to 'See Profile',  user_path(friend_request.user), class: 'profile-link' %>
+    </span>
+  <% end %>
+<% end %> 
