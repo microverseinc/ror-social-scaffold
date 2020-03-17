@@ -16,3 +16,17 @@
     <% end %>    
   </ul>
 </section>
+
+<h2>Friends</h2>
+<section class="users-section">
+  <ul class="users-list">
+    <% @friends.each do |friend| %>
+      <li>
+        Name: <%= friend.name %>
+        <span class="profile-link">
+          <%= link_to 'See Profile',  user_path(friend), class: 'profile-link' %>
+        </span>
+      </li>
+    <% end %>
+  </ul>
+</section>
