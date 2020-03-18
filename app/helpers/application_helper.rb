@@ -15,4 +15,8 @@ module ApplicationHelper
       link_to('Like!', post_likes_path(post_id: post.id), method: :post)
     end
   end
+
+  def number_of_likes(post)
+    Like.all.where(post_id: post.id).count
+  end
 end

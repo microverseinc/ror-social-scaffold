@@ -1,0 +1,16 @@
+<% @friend_requests.each do |friend_request| %>
+  <% if current_user.friend_requests.include?(friend_request.user) %>
+    <span class="profile-link">
+      <span><%=friend_request.user.name%> | </span>
+      <%= link_to 'see profile',  user_path(friend_request.user), class: 'profile-link' %>
+    </span>
+    <%= form_for(:requests, url: friendship_path(friend_request), method: 'put') do |f| %>
+      <%= f.hidden_field :status, value: true %>
+      <%= f.submit 'Accept' %>
+    <% end %>
+    <%= form_for(:requests, url: friendship_path(friend_request), method: 'put') do |f| %>
+      <%= f.hidden_field :status, value: false %>
+      <%= f.submit 'Decline' %>
+    <% end %>
+  <% end %>
+<% end %>

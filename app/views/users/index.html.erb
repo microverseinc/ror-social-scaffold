@@ -6,6 +6,26 @@
         <span class="profile-link">
           <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
         </span>
+        <% unless current_user.cannot_add?(user) %>
+          <%= form_for(:friendships, url: friendships_path, method: :post) do |f| %>        
+            <%= f.hidden_field :friend, value: user.id %>
+            <%= f.submit 'Send Request' %>
+          <% end %>
+        <% end%>
+      </li>
+    <% end %>    
+  </ul>
+</section>
+
+<h2>Friends</h2>
+<section class="users-section">
+  <ul class="users-list">
+    <% @friends.each do |friend| %>
+      <li>
+        Name: <%= friend.name %>
+        <span class="profile-link">
+          <%= link_to 'See Profile',  user_path(friend), class: 'profile-link' %>
+        </span>
       </li>
     <% end %>
   </ul>

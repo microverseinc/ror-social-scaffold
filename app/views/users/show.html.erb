@@ -1,5 +1,11 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
+  <% unless current_user.cannot_add?(@user) %>
+    <%= form_for(:friendships, url: friendships_path, method: 'post') do |f| %>
+      <%= f.hidden_field :friend, value: @user.id %>
+      <%= f.submit 'Send Request' %>
+    <% end %>
+  <% end %>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
