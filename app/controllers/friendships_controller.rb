@@ -8,6 +8,7 @@ class FriendshipsController < ApplicationController
    def cancel_friend_request
     @user = User.find(params[:id])
     current_user.pending_requested_friendship.delete(@user)
+    current_user.requested_friends.delete(@user)
     redirect_to @user
    end
   
