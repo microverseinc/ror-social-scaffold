@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :friendships, only: [:create, :destroy]
   post "/users/fiendships/:id/cancel", to: "friendships#cancel_friend_request", as: "cancel_friendship"
   post "/users/fiendships/:id/acept", to: "friendships#accept_friend_request", as: "acept_friendship"
-
+  post "/users/fiendships/:id/unfriend", to: "friendships#destroy", as: "unfriend"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -14,8 +14,8 @@ class FriendshipsController < ApplicationController
    end
 
    def accept_friend_request
-      @user = User.find(params[:id])
-      friendship = Friendship.find_by(friend_id: params[:user_id], user_id: current_user.id)
+    @user = User.find(params[:id])
+    friendship = Friendship.find_by(friend_id: params[:id], user_id: current_user.id)
       friendship.update(status: true)
       flash[:notice] = "You have accepted #{@user.name} as your friend!!!"
       redirect_to @user
@@ -28,4 +28,6 @@ class FriendshipsController < ApplicationController
     flash[:notice] = "You have canceled #{@user.name} request to be your friend!"
     redirect_to @user
   end
+
+  
 end
