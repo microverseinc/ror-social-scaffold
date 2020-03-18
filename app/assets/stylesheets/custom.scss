@@ -175,7 +175,7 @@ form {
 }
 
 .new_post,
-.new_comment{
+.new_comment {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -247,7 +247,7 @@ form {
   .post-liking {
     float: right;
 
-    a{
+    a {
       color: $primary-color-dark;
       font-weight: bold;
       font-size: 0.9em;
@@ -277,7 +277,7 @@ form {
       padding: 10px;
 
       p {
-        font-size: .8em;
+        font-size: 0.8em;
         width: 90%;
       }
       span {
