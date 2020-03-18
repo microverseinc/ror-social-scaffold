@@ -34,9 +34,8 @@ class User < ApplicationRecord
   end
 
   def cannot_add?(friend)
-    friends.include?(friend) ||
-      friend_requests.include?(friend) ||
-      pending_friends.include?(friend) ||
+    friendships.where(friend_id: friend.id).exists? ||
+      inverse_friendships.where(user_id: friend.id).exists? ||
       self == friend
   end
 end
