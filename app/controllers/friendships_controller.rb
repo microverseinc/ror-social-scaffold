@@ -7,8 +7,9 @@ class FriendshipsController < ApplicationController
  
    def cancel_friend_request
     @user = User.find(params[:id])
-    @user.inverse_friendships.delete(current_user.id)
-    current_user.requested_friends.delete(@user)
+    friendship = Friendship.find_by(friend_id: params[:id], user_id: current_user.id)
+    friendship.destroy
+    flash[:notice] = "You have canceled the friend request"
     redirect_to @user
    end
 
@@ -16,10 +17,15 @@ class FriendshipsController < ApplicationController
       @user = User.find(params[:id])
       friendship = Friendship.find_by(friend_id: params[:user_id], user_id: current_user.id)
       friendship.update(status: true)
-      flash[:notice] = "You have accepted #{user.name} as your friend!!!"
+      flash[:notice] = "You have accepted #{@user.name} as your friend!!!"
       redirect_to @user
    end
   
   def destroy
+    @user = User.find(params[:id])
+    friendship = Friendship.find_by(friend_id: params[:id], user_id: current_user.id)
+    friendship.destroy
+    flash[:notice] = "You have canceled #{@user.name} request to be your friend!"
+    redirect_to @user
   end
 end
