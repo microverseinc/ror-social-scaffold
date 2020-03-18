@@ -10,35 +10,44 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :friendships, dependent: :destroy
-  has_many :oposite_friendships, foreign_key: 'friend_id', class_name: 'Friendship', dependent: :destroy
+  has_many :inverse_friendships, class_name: 'Friendship',
+                                 foreign_key: 'friend_id',  
+                                 dependent: :destroy
+
+  has_many :requested_friends, through: :friendships, source: :friend
+  has_many :requested_from_friends, through: :inverse_friendships, source: :user
 
   def friends
     friends = friendships.map do |friendship| 
       friendship.friend if friendship.status
     end
-    friends = friends + oposite_friendships.map do |friendship| 
+    friends = friends + inverse_friendships.map do |friendship| 
       friendship.user if friendship.status
     end
     friends.compact
   end
 
-  def requested_friends
+  def pending_requested_friendship
     friendships.map{ |friendship| friendship.friend if !friendship.status }.compact
   end
 
-  def pending_friends
-    oposite_friendships.map{ |friendship| friendship.user if !friendship.status }.compact
+  def pending_requested_from_friendship
+    inverse_friendships.map{ |friendship| friendship.user if !friendship.status }.compact
   end
 
   def friend?(user)
     friends.include?(user)
   end
 
-  def pending?(user)
-    pending_friends.include?(user)
+  def pending_requested?(user)
+    pending_requested_friendship.include?(user)
   end
 
-  def requested?(user)
-    requested_friends.include?(user)
+  def pending_requested_from?(user)
+    pending_requested_from_friendship.include?(user)
+  end
+
+  def request_friendship(friend)
+    requested_friends << friend
   end
 end

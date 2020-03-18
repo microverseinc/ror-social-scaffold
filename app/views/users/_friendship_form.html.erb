@@ -2,9 +2,9 @@
   <div>
   <% if current_user.friend?(@user) %>
     <%= render 'unfriend_form' %>
-  <% elsif current_user.requested?(@user) %>
+  <% elsif current_user.pending_requested?(@user) %>
     <%= render 'cancel_form' %>
-  <% elsif current_user.pending?(@user) %>
+  <% elsif current_user.pending_requested_from?(@user) %>
     <%= render 'accept_form' %>
   <% else %>
     <%= render 'friend_form' %>
