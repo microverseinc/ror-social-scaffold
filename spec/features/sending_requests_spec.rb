@@ -15,7 +15,7 @@ RSpec.feature "SendingRequests", type: :feature do
     log_in(user2)
     expect(page).to have_content('Signed in successfully')
 
-    click_link('Friends')
+    click_link('Friend Requests')
     expect(page).to have_content('user1')
     expect(page).to have_selector(:link_or_button, 'Accept')
     expect(page).to have_selector(:link_or_button, 'Decline')
@@ -26,7 +26,7 @@ RSpec.feature "SendingRequests", type: :feature do
     log_in(user1)
     send_request_w_sign_out
     log_in(user2)
-    click_link('Friends')
+    click_link('Friend Requests')
     expect(page).to have_selector(:link_or_button, 'Accept')
     click_button('Accept')
     click_link('Sign out')
@@ -40,7 +40,7 @@ RSpec.feature "SendingRequests", type: :feature do
     log_in(user1)
     send_request_w_sign_out
     log_in(user2)
-    click_link('Friends')    
+    click_link('Friend Requests')    
     click_button('Decline')
     click_link('Sign out')
     log_in(user1)
