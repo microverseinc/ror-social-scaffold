@@ -17,6 +17,6 @@ module ApplicationHelper
   end
 
   def number_of_likes(post)
-    likes = Like.all.where(post_id: post.id).count
+    Like.all.where(post_id: post.id).count
   end
 end

@@ -10,23 +10,23 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :friendships
-  has_many :inverse_friendships, class_name: "Friendship", foreign_key: "friend_id"
+  has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
 
   def friends
-    friends_user = friendships.map{|friendship| friendship.friend if friendship.confirmed}
-    friends_friend = inverse_friendships.map{|friendship| friendship.user if friendship.confirmed}
+    friends_user = friendships.map { |friendship| friendship.friend if friendship.confirmed }
+    friends_friend = inverse_friendships.map { |friendship| friendship.user if friendship.confirmed }
     total_friends = friends_user + friends_friend
     total_friends.compact
   end
 
   # Users who have yet to confirme friend requests
   def pending_friends
-    friendships.map{|friendship| friendship.friend if !friendship.confirmed}.compact
+    friendships.map { |friendship| friendship.friend unless friendship.confirmed }.compact
   end
 
   # Users who have requested to be friends
   def friend_requests
-    inverse_friendships.map{|friendship| friendship.user if !friendship.confirmed}.compact
+    inverse_friendships.map { |friendship| friendship.user unless friendship.confirmed }.compact
   end
 
   def friend?(user)
@@ -34,9 +34,9 @@ class User < ApplicationRecord
   end
 
   def cannot_add?(friend)
-    friends.include?(friend) || 
-    friend_requests.include?(friend) || 
-    pending_friends.include?(friend) ||
-    self == friend
-  end     
+    friends.include?(friend) ||
+      friend_requests.include?(friend) ||
+      pending_friends.include?(friend) ||
+      self == friend
+  end
 end

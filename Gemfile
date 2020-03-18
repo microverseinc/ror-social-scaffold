@@ -44,10 +44,10 @@ group :development, :test do
 end
 
 group :test do
-  gem 'rspec-rails'
   gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
   gem 'chromedriver-helper'
+  gem 'rspec-rails'
+  gem 'selenium-webdriver'
   gem 'shoulda-matchers'
 end
 

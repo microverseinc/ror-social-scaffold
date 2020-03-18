@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'SendingRequests', type: :feature do
+RSpec.feature 'DecliningRequests', type: :feature do
   let(:user1) do
     User.create(name: 'user1',
                 email: 'user1@email.com',
@@ -14,15 +14,18 @@ RSpec.feature 'SendingRequests', type: :feature do
                 password_confirmation: 'foobar')
   end
 
-  scenario 'User sends friend request' do
+  scenario 'User decline friend request' do
     user2
     log_in(user1)
     send_request_w_sign_out
     log_in(user2)
     click_link('Friend Requests')
-    expect(page).to have_content('user1')
-    expect(page).to have_selector(:link_or_button, 'Accept')
-    expect(page).to have_selector(:link_or_button, 'Decline')
+    click_button('Decline')
+    click_link('Sign out')
+    log_in(user1)
+    click_link('All users')
+    expect(page).to have_content('user2', count: 1)
+    expect(page).to have_selector(:link_or_button, 'Send Request')
   end
 
   def send_request_w_sign_out
