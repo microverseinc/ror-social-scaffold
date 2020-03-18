@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
 
   resources :friendships, only: [:create, :destroy]
+  get "/fiendships/:id/cancel", to: "friendships#cancel_friend_request"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
