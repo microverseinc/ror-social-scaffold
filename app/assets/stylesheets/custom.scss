@@ -3,6 +3,7 @@
 $primary-color-dark: #689f38;
 $primary-color: #8bc34a;
 $primary-color-light: #dcedc8;
+$primary-color-danger: #dd413b;
 $primary-color-text: #212121;
 $divider-color: #bdbdbd;
 
@@ -138,6 +139,11 @@ form {
     color: $primary-color-light;
     text-transform: uppercase;
     font-weight: 900;
+  }
+
+  .submit {
+    background-color: $primary-color;
+    color: #fff;
   }
 
   input[type="submit"]:hover {
