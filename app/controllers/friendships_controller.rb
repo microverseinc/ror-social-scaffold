@@ -17,8 +17,8 @@ class FriendshipsController < ApplicationController
     @friendship = Friendship.find(params[:id])
     if params[:requests][:status] == 'true'
       @friendship.accept
-      Friendship.create(user_id: @friendship.friend_id, friend_id: @friendship.user_id, confirmed: true)
-      
+      current_user.friendships.create(friend_id: @friendship.user_id, confirmed: true)
+      # Friendship.create(user_id: @friendship.friend_id, friend_id: @friendship.user_id, confirmed: true)
     else
       @friendship.destroy
     end
