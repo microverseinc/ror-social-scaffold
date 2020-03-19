@@ -11,28 +11,28 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :friendships, dependent: :destroy
   has_many :inverse_friendships, class_name: 'Friendship',
-                                 foreign_key: 'friend_id',  
+                                 foreign_key: 'friend_id',
                                  dependent: :destroy
 
   has_many :requested_friends, through: :friendships, source: :friend
   has_many :requested_from_friends, through: :inverse_friendships, source: :user
 
   def friends
-    friends = friendships.map do |friendship| 
+    friends = friendships.map do |friendship|
       friendship.friend if friendship.status
     end
-    friends = friends + inverse_friendships.map do |friendship| 
+    friends += inverse_friendships.map do |friendship|
       friendship.user if friendship.status
     end
     friends.compact
   end
 
   def pending_requested_friendship
-    friendships.map{ |friendship| friendship.friend if !friendship.status }.compact
+    friendships.map { |friendship| friendship.friend unless friendship.status }.compact
   end
 
   def pending_requested_from_friendship
-    inverse_friendships.map{ |friendship| friendship.user if !friendship.status }.compact
+    inverse_friendships.map { |friendship| friendship.user unless friendship.status }.compact
   end
 
   def friend?(user)

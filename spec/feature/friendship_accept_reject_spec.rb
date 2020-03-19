@@ -17,7 +17,7 @@ RSpec.describe 'Process to accept a friendship request', type: :feature, js: tru
       fill_in 'Password', with: 'password'
       fill_in 'Password confirmation', with: 'password'
       find('input[value*="Sign up"]').click
-      
+
       visit users_path
       find('input[value*="Invite to friendship"]').click
       find('a[href*="/users/sign_ou"]').click

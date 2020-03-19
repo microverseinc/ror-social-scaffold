@@ -22,9 +22,9 @@ class PostsController < ApplicationController
   def timeline_posts
     friends_posts = current_user.posts
     current_user.friends.each do |friend|
-      friends_posts = friends_posts + friend.posts
+      friends_posts += friend.posts
     end
-    @timeline_posts = friends_posts.sort {|a, b| b.updated_at <=> a.updated_at}
+    @timeline_posts = friends_posts.sort { |a, b| b.updated_at <=> a.updated_at }
   end
 
   def post_params
