@@ -11,6 +11,7 @@ RSpec.feature 'CountLikes', type: :feature do
   end
 
   let(:friendship) { Friendship.create(user_id: user1.id, friend_id: user2.id, confirmed: true) }
+  let(:friendship_inverse) { Friendship.create(user_id: user2.id, friend_id: user1.id, confirmed: true) }
 
   scenario 'User 1 creates post and User 2 and 3 likes it' do
     log_in(user1)
@@ -20,6 +21,7 @@ RSpec.feature 'CountLikes', type: :feature do
     expect(page).to have_content('0 likes!')
     click_link('Sign out')
     friendship
+    friendship_inverse
     log_in(user2)
     expect(page).to have_content('user1')
     click_link('Like!')

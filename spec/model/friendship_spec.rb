@@ -20,10 +20,6 @@ RSpec.describe Friendship, type: :model do
     it 'belongs_to user' do
       expect(friend_request).to eq(user1.friendships.first)
     end
-
-    it 'belongs_to user' do
-      expect(friend_request).to eq(user2.inverse_friendships.first)
-    end
   end
 
   describe 'associations' do

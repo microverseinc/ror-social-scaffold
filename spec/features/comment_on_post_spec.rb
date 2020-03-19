@@ -10,14 +10,16 @@ RSpec.feature 'CommentPosts', type: :feature do
     end
   end
 
-  let(:friendship_2) { Friendship.create(user_id: user1.id, friend_id: user2.id, confirmed: true) }
+  let(:friendship) { Friendship.create(user_id: user1.id, friend_id: user2.id, confirmed: true) }
+  let(:friendship_inverse) { Friendship.create(user_id: user2.id, friend_id: user1.id, confirmed: true) }
 
   scenario "User 2 comments on User 1's post" do
     log_in(user1)
     fill_in 'post_content', with: 'This is a test post'
     click_button 'Save'
     click_link('Sign out')
-    friendship_2
+    friendship
+    friendship_inverse
     log_in(user2)
     expect(page).to have_content('user1')
     fill_in 'comment_content', with: 'This is a new test comment'
