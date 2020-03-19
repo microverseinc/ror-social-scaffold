@@ -1,5 +1,5 @@
 <% @friend_requests.each do |friend_request| %>
-  <% if current_user.friend_requests.include?(friend_request.user) %>
+  <% if current_user.pending_friends.include?(friend_request.user) %>
     <span class="profile-link">
       <span><%=friend_request.user.name%> | </span>
       <%= link_to 'see profile',  user_path(friend_request.user), class: 'profile-link' %>
