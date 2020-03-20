@@ -1,31 +1,45 @@
 class FriendshipsController < ApplicationController
   def create
-    @user = User.find(params[:friend_id])
-    current_user.request_friendship(@user)
+    friend = User.find(params[:friend_id])
+    current_user.request_friendship(friend)
     redirect_to stored_location_for(:user) || root_path
   end
 
   def cancel_friend_request
-    @user = User.find(params[:id])
-    friendship = Friendship.find_by(friend_id: params[:id], user_id: current_user.id)
-    friendship.destroy
+    friend = User.find(params[:id])
+    destroy_friendship(current_user, friend)
     flash[:notice] = 'You have canceled the friend request'
     redirect_to stored_location_for(:user) || root_path
   end
 
   def accept_friend_request
-    @user = User.find(params[:id])
-    friendship = Friendship.find_by(friend_id: current_user.id, user_id: params[:id])
-    friendship.update(status: true)
-    flash[:notice] = "You have accepted #{@user.name} as your friend!!!"
+    friend = User.find(params[:id])
+    accept_friendship(friend, current_user)
+    
+    # Making sure both row are created
+    current_user.request_friendship(friend)
+    accept_friendship(current_user, friend)
+
+    flash[:notice] = "You have accepted #{friend.name} as your friend!!!"
     redirect_to stored_location_for(:user) || root_path
   end
 
   def destroy
-    @user = User.find(params[:id])
-    friendship = Friendship.find_by(friend_id: current_user.id, user_id: params[:id])
-    friendship.destroy
-    flash[:notice] = "You have canceled #{@user.name} request to be your friend!"
+    friend = User.find(params[:id])
+    destroy_friendship(current_user, friend)
+
+    # Making sure both row are created
+    destroy_friendship(friend, current_user)
+
+    flash[:notice] = "You have canceled #{friend.name} request to be your friend!"
+    redirect_to stored_location_for(:user) || root_path
+  end
+
+  def reject
+    friend = User.find(params[:id])
+    destroy_friendship(friend, current_user)
+
+    flash[:notice] = "You have canceled #{friend.name} request to be your friend!"
     redirect_to stored_location_for(:user) || root_path
   end
 end
