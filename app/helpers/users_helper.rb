@@ -4,15 +4,12 @@ module UsersHelper
   end
 
   def check_relationship(user, other_user, form)
+    return nil if user == other_user
 
-    p other_user
-
-    message = 'friend' if user.friend?(other_user)
+    message = 'already friend' if user.friend?(other_user)
     message = 'pending friend request' if user.pending?(other_user)
-    message = 'send friend request'
+    message ||= 'send friend request'
 
-    return nil if message == 'friend'
-
-    form.submit message
+    form.submit message, disabled: (message == 'already friend' || message == 'pending friend request')
   end
 end

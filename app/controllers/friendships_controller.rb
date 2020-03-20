@@ -6,10 +6,11 @@ class FriendshipsController < ApplicationController
   end
 
   def create
-    @friendship = Friendship.new(user_id: current_user.id, friend_id: params[:id])
+    @user = User.find(params[:id])
+    @friendship = Friendship.new(user_id: current_user.id, friend_id: @user.id)
     if @friendship.save
       flash.now[:notice] = 'everthing good'
-      render users_path(@user)
+      redirect_to user_path(@user)
     else
       flash.now[:danger] = 'something went wrong'
     end

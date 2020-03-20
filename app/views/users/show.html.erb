@@ -2,9 +2,7 @@
   <div class="info">
     <%= gravatar_for @user %>
     <h2><%= "Name: #{@user.name}" %></h2>
-    <%= form_with model: @friendship do |f| %>
-      <%= check_relationship current_user, @user, f %>
-    <% end %>
+    <%= render  "shared/invite", invited: @user %>
   </div>
   <article class="timeline">
     <h3>Recent posts:</h3>
