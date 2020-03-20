@@ -28,7 +28,7 @@ class FriendshipsController < ApplicationController
     friend = User.find(params[:id])
     destroy_friendship(current_user, friend)
 
-    # Making sure both row are created
+    # Making sure both row are deleted
     destroy_friendship(friend, current_user)
 
     flash[:notice] = "You have canceled #{friend.name} request to be your friend!"
