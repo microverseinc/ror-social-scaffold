@@ -342,3 +342,14 @@ form {
     width: 50%;
   }
 }
+
+
+// extra
+
+.info {
+  display: flex;
+  align-items: baseline;
+  h2 {
+    margin-left: 12px;
+  }
+}

@@ -1,5 +1,11 @@
 <section class="user-section">
-  <h2><%= "Name: #{@user.name}" %></h2>
+  <div class="info">
+    <%= gravatar_for @user %>
+    <h2><%= "Name: #{@user.name}" %></h2>
+    <%= form_with model: @friendship do |f| %>
+      <%= check_relationship current_user, @user, f %>
+    <% end %>
+  </div>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">

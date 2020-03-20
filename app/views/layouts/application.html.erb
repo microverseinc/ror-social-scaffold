@@ -17,25 +17,30 @@
         <div class="menu-item">
           <%= menu_link_to 'All users', users_path %>
         </div>
-      </div>
-      <% if current_user %>
-        <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-      <% else %>
-        <%= link_to 'Sign in', user_session_path %>
+        <% if current_user %>
+          <div class="menu-item">
+            <%= menu_link_to 'Friends', user_friendships_path(current_user) %>
+          </div>
+        <% end %>
+        </div>
+        <% if current_user %>
+          <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+        <% else %>
+          <%= link_to 'Sign in', user_session_path %>
+        <% end %>
+      </nav>
+      <% if notice.present? %>
+        <div class="notice">
+          <p> <%= notice %> </p>
+        </div>
       <% end %>
-    </nav>
-    <% if notice.present? %>
-      <div class="notice">
-        <p> <%= notice %> </p>
-      </div>
-    <% end %>
-    <% if alert.present? %>
-      <div class="alert">
-        <p> <%= alert %> </p>
-      </div>
-    <% end %>
-    <main class="main">
-      <%= yield %>
-    </main>
-  </body>
-</html>
+      <% if alert.present? %>
+        <div class="alert">
+          <p> <%= alert %> </p>
+        </div>
+      <% end %>
+      <main class="main">
+        <%= yield %>
+      </main>
+    </body>
+  </html>

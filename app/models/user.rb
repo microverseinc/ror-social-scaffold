@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  attr_reader :friends_array
+  after_save :create_gravatar
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :posts
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+
   has_many :friendships
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
 
@@ -42,5 +43,15 @@ class User < ApplicationRecord
 
   def friend?(user)
     friends.include?(user)
+  end
+
+  def pending?(user)
+    pending_friends.any? { |pending| pending == user }
+  end
+
+  def create_gravatar
+    gravatar_id = Digest::MD5.hexdigest(email.downcase)
+    gravatar_url = "https://s.gravatar.com/avatar/#{gravatar_id}?s=80"
+    update_column(:gravatar_url, gravatar_url)
   end
 end
