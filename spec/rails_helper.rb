@@ -5,7 +5,8 @@ require 'spec_helper'
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 require 'capybara/rspec'
-require_relative './suppor/factory_bot.rb'
+require_relative './support/factory_bot.rb'
+require_relative './support/devise.rb'
 
 # Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
