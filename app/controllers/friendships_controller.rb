@@ -15,7 +15,7 @@ class FriendshipsController < ApplicationController
   def accept_friend_request
     friend = User.find(params[:id])
     accept_friendship(friend, current_user)
-    
+
     # Making sure both row are created
     current_user.request_friendship(friend)
     accept_friendship(current_user, friend)
