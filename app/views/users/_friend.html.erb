@@ -1,0 +1,4 @@
+<%= form_for(current_user.friendships.build) do |f| %>
+  <div><%= hidden_field_tag :friend_id, user.id %></div>
+  <%= f.submit "Invite to friendship" %>
+<% end %>

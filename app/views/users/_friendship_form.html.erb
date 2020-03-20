@@ -1,0 +1,13 @@
+<% unless current_user == user %>
+  <div>
+  <% if current_user.friend?(user) %>
+    <%= render partial: 'unfriend', locals: {user: user} %>
+  <% elsif current_user.pending_requested?(user) %>
+    <%= render partial: 'cancel', locals: {user: user} %>
+  <% elsif current_user.pending_requested_from?(user) %>
+    <%= render partial: 'accept', locals: {user: user} %>
+  <% else %>
+    <%= render partial: 'friend', locals: {user: user} %>
+  <% end %>
+  </div>
+<% end %>
