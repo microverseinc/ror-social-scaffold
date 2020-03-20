@@ -7,6 +7,7 @@ class FriendshipsController < ApplicationController
 
   def create
     @user = User.find(params[:id])
+    redirect_to friendship_path(@friendship) and return if friendship_exists?
     @friendship = Friendship.new(user_id: current_user.id, friend_id: @user.id)
     if @friendship.save
       flash.now[:notice] = 'everthing good'
@@ -14,5 +15,35 @@ class FriendshipsController < ApplicationController
     else
       flash.now[:danger] = 'something went wrong'
     end
+  end
+
+  def show
+    @friendship = Friendship.find(params[:id])
+    @user = @friendship.user
+    @friend = @friendship.friend
+  end
+
+  def edit
+    @friendship = Friendship.find(params[:id])
+    @friend = @friendship.friend
+    @friend.confirm_friend(@friendship.user)
+    redirect_to user_friendships_path(@friend)
+  end
+
+  def delete
+    @friendship = Friendship.find(params[:id])
+    @user = @friendship.friend
+    @friendship.delete
+    redirect_to user_friendships_path(@user)
+  end
+
+  private
+
+  def friendship_exists?
+    @friendship = Friendship.all.select do |fsh| 
+      (fsh.user_id == current_user.id && fsh.friend_id == @user.id) ||
+      (fsh.user_id == @user.id && fsh.friend_id == current_user.id)
+    end
+    !@friendship.empty?
   end
 end

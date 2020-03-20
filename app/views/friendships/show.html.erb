@@ -1,0 +1,8 @@
+<h1>Friendship</h1>
+<div class="wrapper">
+  <%= render @user %>
+  <%= render @friend %>
+  <h2>Status: <%= @friendship.confirmed %></h2>
+  <%= link_to  "accept_friendship", edit_friendship_path %>
+  <%= link_to  "reject_friendship", delete_friendship_path, method: :delete %>
+</div>
