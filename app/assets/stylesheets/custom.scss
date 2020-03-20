@@ -131,7 +131,7 @@ form {
   }
   input[type="submit"] {
     padding: 8px;
-    width: 50%;
+    width: 100%;
     border: none;
     border-radius: 4px;
     background-color: $primary-color-dark;
@@ -332,7 +332,7 @@ form {
 
 @media (min-width: 780px) {
   form {
-    width: 40%;
+    width: 70%;
   }
 
   .new_post,
@@ -352,4 +352,10 @@ form {
   h2 {
     margin-left: 12px;
   }
+}
+
+.friendships {
+  border: 1px solid green;
+  border-radius: 4px;
+  padding: 14px;
 }

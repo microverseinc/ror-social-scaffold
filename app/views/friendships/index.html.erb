@@ -1,12 +1,5 @@
-<h1><%= "#{@user.name} has #{pluralize(@user.friends.count, 'friends')}" %></h1>
-<ul class="users-list">
-  <%= render  @user.friends %>
-</ul>
-<h1><%= "#{@user.name} has #{pluralize(@user.pending_friends.count, 'pending friend')}" %></h1>
-<ul class="users-list">
-  <%= render  @user.pending_friends %>
-</ul>
-<h1><%= "#{@user.name} has #{pluralize(@user.friend_requests.count, 'friend request')}" %></h1>
-<ul class="users-list">
-  <%= render  @user.friend_requests %>
-</ul>
+<div class="friendships">
+  <%= render  "list", rendereable: @user.friends, message: 'Friend'%>
+  <%= render  "list", rendereable: @user.pending_friends, message: 'Pending request' %>
+  <%= render  "list", rendereable: @user.friend_requests, message: 'Friend request' %>
+</div>
