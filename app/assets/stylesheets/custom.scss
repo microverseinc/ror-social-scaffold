@@ -14,10 +14,11 @@ $divider-color: #bdbdbd;
 }
 
 body {
-  background: #fff;
+  background: #181a1b;
   position: relative;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
+  color: white;
 }
 
 h1,
@@ -32,7 +33,7 @@ ul {
 
 a {
   text-decoration: none;
-  color: $primary-color-text;
+  color: $divider-color;
 }
 
 .nav {
@@ -130,6 +131,7 @@ form {
     margin: 8px 0;
   }
   input[type="submit"] {
+    cursor: pointer;
     padding: 8px;
     width: 100%;
     border: none;
@@ -139,10 +141,17 @@ form {
     text-transform: uppercase;
     font-weight: 900;
   }
-
+  
   input[type="submit"]:hover {
-    background-color: $primary-color;
+    background-color: rgba(83, 120, 40, 0.342);
     color: #fff;
+  }
+  
+  input[disabled="disabled"] {
+    background-color: lightcoral;
+    &:hover {
+      background-color: lightcoral;
+    }
   }
 
   .actions.reset {
@@ -169,7 +178,7 @@ form {
 }
 
 .new_post,
-.new_comment{
+.new_comment {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -240,8 +249,11 @@ form {
 
   .post-liking {
     float: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 
-    a{
+    a {
       color: $primary-color-dark;
       font-weight: bold;
       font-size: 0.9em;
@@ -271,7 +283,7 @@ form {
       padding: 10px;
 
       p {
-        font-size: .8em;
+        font-size: 0.8em;
         width: 90%;
       }
       span {
@@ -343,7 +355,6 @@ form {
   }
 }
 
-
 // extra
 
 .info {
@@ -354,8 +365,34 @@ form {
   }
 }
 
-.friendships {
+.friendships,
+.friend-wrapper {
   border: 1px solid green;
   border-radius: 4px;
   padding: 14px;
+}
+
+.friend-wrapper {
+  li {
+    list-style: none;
+    margin-bottom: 24px;
+    margin-top: 12px;
+    &:last-child {
+      border-bottom: 1px green solid;
+      padding-bottom: 50px;
+    }
+  }
+  & > a {
+    display: inline-block;
+    background: $primary-color-dark;
+    border-radius: 4px;
+    margin-top: 24px;
+    padding: 15px;
+    &:last-child {
+      background: red;
+    }
+    &:hover {
+      background: rgba(59, 56, 56, 0.281);
+    }
+  }
 }

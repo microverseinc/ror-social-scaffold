@@ -1,5 +1,6 @@
 class FriendshipsController < ApplicationController
   before_action :authenticate_user!
+  before_action :correct_user?, only: %i[edit delete show]
 
   def index
     @user = User.find(params[:user_id])
@@ -40,10 +41,17 @@ class FriendshipsController < ApplicationController
   private
 
   def friendship_exists?
-    @friendship = Friendship.all.select do |fsh| 
+    @friendship = Friendship.all.select do |fsh|
       (fsh.user_id == current_user.id && fsh.friend_id == @user.id) ||
-      (fsh.user_id == @user.id && fsh.friend_id == current_user.id)
+        (fsh.user_id == @user.id && fsh.friend_id == current_user.id)
     end
     !@friendship.empty?
+  end
+
+  def correct_user?
+    @friendship = Friendship.find(params[:id])
+    return nil if current_user.id == @friendship.friend.id
+
+    redirect_to user_friendships_path(current_user.id)
   end
 end

@@ -61,3 +61,14 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 end
+
+def sign_in(user)
+  post user_session_path, params: { user: { email: user.email, password: user.password } }
+end
+
+def loads_navbar
+  it 'has a sign out link to the root' do expect(page).to have_link 'Stay in touch', href: '/' end
+  it 'has a sign out button' do expect(page).to have_link 'Sign out', href: destroy_user_session_path end
+  it 'has a timeline button' do expect(page).to have_link 'Timeline', href: posts_path end
+  it 'has a friends button' do expect(page).to have_link 'Friends', href: user_friendships_path(@user) end
+end

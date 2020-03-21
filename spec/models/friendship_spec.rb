@@ -12,12 +12,18 @@ RSpec.describe Friendship, type: :model do
   let(:user2) { User.create(name: 'User2', email: 'user2@email.com', password: 'password') }
 
   it 'needs valid sender' do
-    invalid_friendship = Friendship.new(user_id: user1.id, friend_id: different_number(than: user2.id, min: 1, max: 100))
+    invalid_friendship = Friendship.new(
+      user_id: user1.id,
+      friend_id: different_number(than: user2.id, min: 1, max: 100)
+    )
     expect(invalid_friendship.valid?).to be false
   end
 
   it 'needs valid reciever' do
-    invalid_friendship = Friendship.new(user_id: different_number(than: user2.id, min: 1, max: 100), friend_id: user2.id)
+    invalid_friendship = Friendship.new(
+      user_id: different_number(than: user2.id, min: 1, max: 100),
+      friend_id: user2.id
+    )
     expect(invalid_friendship.valid?).to be false
   end
 end

@@ -11,6 +11,6 @@ module UsersHelper
     message = 'pending friend request' if user.pending?(other_user)
     message ||= 'send friend request'
 
-    form.submit message, disabled: (message == 'already friend' || message == 'pending friend request')
+    form.submit message, disabled: ['already friend', 'pending friend request'].include?(message)
   end
 end
