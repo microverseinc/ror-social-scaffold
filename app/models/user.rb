@@ -18,13 +18,9 @@ class User < ApplicationRecord
   has_many :requested_from_friends, through: :inverse_friendships, source: :user
 
   def friends
-    friends = friendships.map do |friendship|
+    friendships.map do |friendship|
       friendship.friend if friendship.status
-    end
-    friends += inverse_friendships.map do |friendship|
-      friendship.user if friendship.status
-    end
-    friends.compact
+    end.compact
   end
 
   def pending_requested_friendship

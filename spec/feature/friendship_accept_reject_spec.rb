@@ -49,7 +49,7 @@ RSpec.describe 'Process to accept a friendship request', type: :feature, js: tru
     scenario 'reject request from index view' do
       visit users_path
       sleep(1)
-      find('a[href*="/users/fiendships/2/unfriend"]').click
+      find('a[href*="/users/fiendships/2/reject"]').click
       sleep(1)
       expect(page).to have_text 'You have canceled ivancito request to be your friend'
       sleep(1)
@@ -58,7 +58,7 @@ RSpec.describe 'Process to accept a friendship request', type: :feature, js: tru
     scenario 'reject request from show view' do
       visit user_path(2)
       sleep(1)
-      find('a[href*="/users/fiendships/2/unfriend"]').click
+      find('a[href*="/users/fiendships/2/reject"]').click
       sleep(1)
       expect(page).to have_text 'You have canceled ivancito request to be your friend'
       sleep(1)

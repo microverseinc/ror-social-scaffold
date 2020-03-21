@@ -34,6 +34,16 @@ RSpec.describe FriendshipsController, type: :controller do
       post :create, params: { friend_id: @remy.id }
       sign_out @ivan
       sign_in @remy
+      delete :reject, params: { id: @ivan.id }
+      expect(response).to have_http_status(302)
+    end
+
+    it 'unfriend' do
+      sign_in @ivan
+      post :create, params: { friend_id: @remy.id }
+      sign_out @ivan
+      sign_in @remy
+      post :accept_friend_request, params: { id: @ivan.id }
       delete :destroy, params: { id: @ivan.id }
       expect(response).to have_http_status(302)
     end
