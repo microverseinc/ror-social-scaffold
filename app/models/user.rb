@@ -37,10 +37,8 @@ class User < ApplicationRecord
   end
 
   def timeline_posts
-    timeline_array = friends.map do |friend|
-      friend.posts
-    end
-    timeline_array += posts.map do |post| post end
+    timeline_array = friends.map(&:posts)
+    timeline_array += posts.map { |post| post }
     timeline_array.flatten.compact
   end
 
