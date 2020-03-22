@@ -38,6 +38,8 @@ a {
 
 .nav {
   display: flex;
+  position: sticky;
+  top: 0;
   justify-content: space-between;
   padding: 16px 48px;
   background-color: $primary-color-dark;
@@ -45,11 +47,14 @@ a {
 
   .menu {
     width: 80%;
-    justify-content: space-between;
-
+    display: flex;
+    justify-content: left;
+    img {
+      height: 20px;
+    }
     .menu-item {
-      float: left;
-      margin: 0 15px;
+      display: flex;
+      margin: 0 5px;
 
       .active {
         a {

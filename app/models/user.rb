@@ -36,6 +36,14 @@ class User < ApplicationRecord
     friends_array.compact
   end
 
+  def timeline_posts
+    timeline_array = friends.map do |friend|
+      friend.posts
+    end
+    timeline_array += posts.map do |post| post end
+    timeline_array.flatten.compact
+  end
+
   def confirm_friend(user)
     friendships = inverse_friendships.find { |friendship| friendship.user == user }
     friendships.update_attribute('confirmed', true)
