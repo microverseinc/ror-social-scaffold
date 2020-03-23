@@ -1,0 +1,29 @@
+
+
+Friends<%= (@friends.count) %>
+
+<% if @friends.empty? %>
+	<p>You don't have any friends yet</p>
+<%end%>
+
+<% @friends.each do |friend| %>
+	<li><% link_to 'Unfriend', delete_request_path(user_id: friend.id, friend_id: current_user.id), method: 'delete', class: 'btn btn-danger'%> 
+		<%= link_to friend.name, user_path(friend)%>
+	</li>
+<%end%>
+
+Friend Requests <%= (@friend_requests.count) %>
+
+<% if @friend_requests.empty? %>
+	<p> You have no friend requests yet</p>
+<%end%>
+
+<% @friend_requests.each do |request| %>
+
+	From <%= link_to request.name, user_path(request)%>
+
+	<%= link_to 'Accept', accept_friend_path(user_id: request.id, friend_id: current_user.id), method: 'post', class: 'btn btn-success' %>
+
+	<%= link_to 'Cancel', delete_request_path(user_id: request.id), method: 'delete', class: 'btn btn-danger %>
+
+<%end%>
