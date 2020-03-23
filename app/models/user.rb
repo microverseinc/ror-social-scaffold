@@ -32,7 +32,7 @@ class User < ApplicationRecord
   end
 
   def timeline_posts
-    timeline_array = friends.map { |friend| friend.posts.includes(:likes, :comments)}
+    timeline_array = friends.map { |friend| friend.posts.includes(:likes, :comments) }
     timeline_array += posts.includes(:likes, :comments)
     timeline_array.flatten.compact
   end
