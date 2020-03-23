@@ -14,37 +14,33 @@ class User < ApplicationRecord
   has_many :friendships
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
 
-  # Users who have yet to confirme friend requests
-  has_many :pending_friends, lambda {
-                               User.joins(friendships: [:friend]).select('friends_friendships.*')
-                                 .where('friendships.confirmed = ?', false)
-                             }, class_name: 'User', foreign_key: 'id'
+  def pending_friends
+    pending_array = friendships.map { |friendship| friendship.friend if you_sent_it?(friendship) }
+    pending_array.compact
+  end
 
-  # Users who have requested to be friends
-  has_many :friend_requests, lambda {
-                               User.joins(inverse_friendships: [:user]).select('users_friendships.*')
-                                 .where('friendships.confirmed = ?', false)
-                             }, class_name: 'User', foreign_key: 'id'
+  def friend_requests
+    request_array = friendships.map { |friendship| friendship.friend if you_sent_it?(friendship.inverse) }
+    request_array.compact
+  end
 
   def friends
     friends_array = friendships.map do |friendship|
       friendship.friend if friendship.confirmed
     end
-    friends_array += inverse_friendships.map do |friendship|
-      friendship.user if friendship.confirmed
-    end
     friends_array.compact
   end
 
   def timeline_posts
-    timeline_array = friends.map(&:posts)
-    timeline_array += posts.map { |post| post }
+    timeline_array = friends.map { |friend| friend.posts.includes(:likes, :comments)}
+    timeline_array += posts.includes(:likes, :comments)
     timeline_array.flatten.compact
   end
 
   def confirm_friend(user)
-    friendships = inverse_friendships.find { |friendship| friendship.user == user }
-    friendships.update_attribute('confirmed', true)
+    user_to_confirm = friendships.find { |friendship| friendship.friend == user }
+    user_to_confirm.update_attribute('confirmed', true)
+    user_to_confirm.inverse.update_attribute('confirmed', true)
   end
 
   def friend?(user)
@@ -59,5 +55,9 @@ class User < ApplicationRecord
     gravatar_id = Digest::MD5.hexdigest(email.downcase)
     gravatar_url = "https://s.gravatar.com/avatar/#{gravatar_id}?s=80"
     update_column(:gravatar_url, gravatar_url)
+  end
+
+  def you_sent_it?(friendship)
+    ((friendship.id < friendship.inverse.id) && !friendship.confirmed)
   end
 end

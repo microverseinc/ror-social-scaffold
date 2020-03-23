@@ -35,6 +35,7 @@ class FriendshipsController < ApplicationController
     @friendship = Friendship.find(params[:id])
     @user = @friendship.friend
     @friendship.delete
+    @friendship.inverse.delete
     redirect_to user_friendships_path(@user)
   end
 
