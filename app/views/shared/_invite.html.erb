@@ -1,0 +1,3 @@
+<%= form_with model: @friendship, url: user_path(invited) do |f| %>
+  <%= check_relationship current_user, invited, f %>
+<% end %>

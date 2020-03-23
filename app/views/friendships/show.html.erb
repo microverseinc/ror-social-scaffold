@@ -1,0 +1,10 @@
+<h1>Friendship</h1>
+<div class="friend-wrapper">
+  <ul class="users-list">
+    <%= render @user %>
+    <%= render @friend %>
+  </ul>
+  <h2>Status: <%= @friendship.confirmed %></h2>
+  <%= link_to "accept friendship", edit_friendship_path %>
+  <%= link_to "reject friendship", delete_friendship_path, method: :delete %>
+</div>

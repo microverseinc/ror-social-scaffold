@@ -1,0 +1,5 @@
+<div class="friendships">
+  <%= render  "list", rendereable: @user.friends, message: 'Friend'%>
+  <%= render  "list", rendereable: @user.friend_requests, message: 'Friend request' %>
+  <%= render  "list", rendereable: @user.pending_friends, message: 'Pending request' %>
+</div>

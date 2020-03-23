@@ -1,0 +1,10 @@
+<li class="user">
+  <%= gravatar_for user %>
+  Name: <%= user.name %>
+  <span class="profile-link">
+    <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+  </span>
+  <% unless action_name == 'show' && controller_name == 'friendships' %>
+    <%= render  "shared/invite", invited: user %>
+  <% end %>
+</li>

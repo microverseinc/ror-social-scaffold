@@ -4,8 +4,14 @@
       <%= link_to post.user.name, user_path(post.user), class: 'post-author' %>
     </div>
     <div class='post-liking'>
-      <span class='post-date'> <%= post.created_at.strftime("%Y/%m/%d") %> </span>
+      <div class="data">
+        <span class='post-date'> <%= post.created_at.strftime("%Y/%m/%d") %> </span>
       <%= like_or_dislike_btn(post) %>
+      </div>
+      <div class="current">
+        <%= pluralize(post.comments.count, 'current comment') %>&nbsp | &nbsp
+      <%= pluralize(post.likes.count, 'current like') %>
+      </div>
     </div>
   </div>
   <p class="post-content">
