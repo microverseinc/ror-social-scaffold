@@ -9,7 +9,7 @@
 
 ## Live Demo
 
-TBA
+[Heroku site deployed](https://secure-lake-87647.herokuapp.com)
 
 
 ## Getting Started
@@ -46,6 +46,19 @@ Start server with:
 ```
     rails server
 ```
+
+
+To login you can use the following credentials,
+
+Email:
+```
+    user0@email.com ... user69@email.com
+```
+Password:
+```
+    password
+```
+
 
 Open `http://localhost:3000/` in your browser.
 
