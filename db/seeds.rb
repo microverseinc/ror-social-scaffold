@@ -38,9 +38,7 @@ def uniqueFriend
   user = Random.rand(User.first.id..User.last.id)
   friend = different_number(than:user, min: User.first.id, max:User.last.id)
   
-  same_frienship = Friendship.same_friendship(user,friend)
-  
-  if same_frienship.any?
+  if Friendship.same_friendship(user,friend).any?
     uniqueFriend
   else
     Friendship.create(user_id: user, friend_id: friend)
