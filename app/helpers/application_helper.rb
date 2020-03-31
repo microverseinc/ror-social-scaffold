@@ -1,10 +1,10 @@
 module ApplicationHelper
   def menu_link_to(link_text, link_path)
-    class_name = current_page?(link_path) ? 'menu-item active' : 'menu-item'
+    class_name = current_page?(link_path) ? 'navbar-item is-active' : 'navbar-item'
 
-    content_tag(:div, class: class_name) do
-      link_to link_text, link_path
-    end
+    link_to link_text, link_path,class:class_name
+    # content_tag(:div, class: class_name) do
+    # end
   end
 
   def like_or_dislike_btn(post)

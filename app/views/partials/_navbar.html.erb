@@ -1,0 +1,36 @@
+
+<nav class="navbar is-link" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <%= link_to 'Stay in touch', root_path,class:"navbar-item" %>
+
+      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+      
+          <%= menu_link_to 'Timeline', posts_path %>
+          <%= menu_link_to 'All users', users_path %>
+      
+      
+      </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+           
+           <% if current_user %>
+            <%= link_to 'Sign out', destroy_user_session_path, method: :delete,class:"button has-text-danger" %>
+            <% else %>
+            <%= link_to 'Sign in', user_session_path,class:"button is-primary" %>
+            <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+

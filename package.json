@@ -1,5 +1,10 @@
 {
   "name": "ror_social_scaffold",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "bulma": "^0.8.1"
+  },
+  "engines": {
+    "node": "13.x"
+  }
 }
