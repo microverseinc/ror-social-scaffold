@@ -33,7 +33,21 @@ class User < ApplicationRecord
     friendship.save
   end
 
+  # def reject_friend(user)
+  #   friendship = inverse_friendships.find { |friendship| friendship.user == user }
+  #   friendship.confirmed = false
+  # end
+
   def friend?(user)
     friends.include?(user)
   end
+
+  def user_timeline
+    Post.where(user: ([self] + friends))
+  end
+
+  def remove_inverse_friend(friend)
+    friendships.delete friend
+  end
+
 end

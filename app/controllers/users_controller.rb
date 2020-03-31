@@ -22,4 +22,12 @@ class UsersController < ApplicationController
     flash[:success] = "You are now friends with #{user.name}"
     redirect_to root_path
   end
+
+  # def reject_request
+  #   user = User.find(params[:id])
+  #   current_user.reject_friend(user)
+  #   flash[:success] = "request has been rejected"
+  #   redirect_to root_path
+  # end
+
 end
