@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe Friendship, type: :model do
   let(:user) { User.new(name: 'JohnDoe', email: 'johndoe@ymail.com', password: 'password') }
   let(:friend) { User.new(name: 'JaneDoe', email: 'janedoe@ymail.com', password: 'password') }
-  let(:friendship) { Friendship.new(user_id:user.id , friend_id: friend.id,confirmed: true) }
-  
+  let(:friendship) { Friendship.new(user_id: user.id, friend_id: friend.id, confirmed: true) }
+
   context 'It has friend_id, user_id and confirmed' do
     it 'has to have a friend_id' do
       expect(friendship.friend_id).to eq(friendship.friend_id)
@@ -26,6 +26,5 @@ RSpec.describe Friendship, type: :model do
       friendship.user_id = nil
       expect(friendship.save).to eq(false)
     end
-    
   end
 end

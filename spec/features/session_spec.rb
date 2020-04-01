@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Sessions", type: :feature do
+RSpec.feature 'Sessions', type: :feature do
   let!(:user) do
     User.create(
       name: 'amadou',
@@ -25,15 +25,15 @@ RSpec.feature "Sessions", type: :feature do
       fill_in 'Email', with: user.email
       fill_in 'Password', with: user.password
       click_button 'Log in'
-      expect(page).to have_content("#{user.name}")
-      expect(page).to have_content("Signed in successfully")
+      expect(page).to have_content(user.name.to_s)
+      expect(page).to have_content('Signed in successfully')
       expect(current_path).to eq root_path
       have_link 'Sign out', href: destroy_user_session_path
     end
 
     it 'Show error for wrong credentials' do
       fill_in 'Email', with: 'juda@juda.com'
-      fill_in 'Password', with: "password"
+      fill_in 'Password', with: 'password'
       click_button 'Log in'
       expect(page).to have_content('Sign in')
       expect(current_path).to eq new_user_session_path
@@ -62,5 +62,4 @@ RSpec.feature "Sessions", type: :feature do
       end
     end
   end
-  
 end

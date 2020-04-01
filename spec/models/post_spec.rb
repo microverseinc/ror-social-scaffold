@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Post, type: :model do
   let(:user) { User.new(name: 'JohnDoe', email: 'johndoe@ymail.com', password: 'password') }
-  let(:post) { Post.new(content: 'A simple post content',user_id:user.id) }
+  let(:post) { Post.new(content: 'A simple post content', user_id: user.id) }
 
   it 'has to have a content' do
     expect(post.content).to eq('A simple post content')
