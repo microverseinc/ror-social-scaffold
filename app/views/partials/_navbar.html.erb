@@ -1,5 +1,5 @@
 
-<nav class="navbar is-link" role="navigation" aria-label="main navigation">
+<nav class="navbar is-white is-fixed-top" role="navigation" aria-label="main navigation">
   <div class="container">
     <div class="navbar-brand">
       <%= link_to 'Stay in touch', root_path,class:"navbar-item" %>
@@ -13,9 +13,9 @@
 
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
-      
-          <%= menu_link_to 'Timeline', posts_path %>
-          <%= menu_link_to 'All users', users_path %>
+          
+          <%= menu_link_to '', posts_path,"home" %>
+          <%= menu_link_to '', users_path,"users" %>
       
       
       </div>
@@ -24,7 +24,7 @@
         <div class="navbar-item">
            
            <% if current_user %>
-            <%= link_to 'Sign out', destroy_user_session_path, method: :delete,class:"button has-text-danger" %>
+            <%= link_to 'Sign out', destroy_user_session_path, method: :delete,class:"button is-danger is-rounded is-small" %>
             <% else %>
             <%= link_to 'Sign in', user_session_path,class:"button is-primary" %>
             <% end %>

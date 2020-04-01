@@ -1,12 +1,26 @@
 <section class="users-section">
-  <ul class="users-list">
+
+  <div class="columns is-multiline">
     <% @users.each do |user| %>
-      <li>
-        Name: <%= user.name %>
-        <span class="profile-link">
-          <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-        </span>
-      </li>
+        <div class="column is-4-desktop">
+        
+          <div class="card">
+            
+            <div class="card-content">
+                <a  href="<%= user_path(user) %>"> 
+                <figure class="image">
+                  <%= image_tag 'avatar.jpg',class:"is-rounded" %>
+                </figure>
+                </a>
+            </div>
+            <div class="card-footer">
+                <div class="card-footer-item">
+                  
+                    <a  class="title has-text-centered is-size-6" title="See Profile" href="<%= user_path(user) %>"> <%= user.name %></a>
+                </div>
+            </div>
+          </div>
+        </div>
     <% end %>
-  </ul>
+  </div>
 </section>

@@ -1,30 +1,52 @@
 <li class="post">
-  <div>
-    <div class='post-attribution' >
-      <%= link_to post.user.name, user_path(post.user), class: 'post-author' %>
+ 
+  <div class="card">
+    <div class="card-header">
+      <div class="card-header-title">
+      <figure class="image" style="width:40px;">
+          <%= image_tag 'avatar.jpg',class:"is-rounded" %>
+        </figure>
+        <div>
+          <p>
+            <%= link_to post.user.name, user_path(post.user), class: 'title is-size-6 is-marginless' %>
+          </p>
+        <div class='date'> <%= post.created_at.strftime("%Y/%m/%d") %> </div>
+        </div>
+        </div>
+      
     </div>
-    <div class='post-liking'>
-      <span class='post-date'> <%= post.created_at.strftime("%Y/%m/%d") %> </span>
-      <%= like_or_dislike_btn(post) %>
-    </div>
-  </div>
-  <p class="post-content">
-    <%= post.content %>
-  </p>
-
-  <div class='post-comments-section'>
-    <% post.comments.each do |comment| %>
-      <div class="post-comments">
-        <p>
-          <b><%= comment.user.name %>:</b> <%= comment.content %>
-        </p>
-        <span> <%= comment.created_at.strftime("%Y/%m/%d") %> </span>
+    <div class="card-content">
+    
+      <p class="post-content">
+        <%= post.content.html_safe%>
+      </p>
+      <div class="actions-section">
+        <%= like_or_dislike_btn(post) %>
       </div>
-    <% end %>
+      
+    <div class='comments-section'>
+      <% post.comments.each do |comment| %>
+        <div class="post-comments">
+          <p>
+            <b><%= comment.user.name %>:</b> <%= comment.content %>
+          </p>
+          <span> <%= comment.created_at.strftime("%Y/%m/%d") %> </span>
+        </div>
+      <% end %>
 
-    <%= form_for(post.comments.new, url: post_comments_path(post)) do |form| %>
-      <%= form.text_field :content, id: :comment_content, class: 'form-control', placeholder: 'Add new Comment' %>
-      <%= form.submit 'Comment', class: 'btn btn-secondary' %>
-    <% end %>
+      <%= form_for(post.comments.new, url: post_comments_path(post)) do |form| %>
+        <div class="field has-addons">
+          <div class="control is-expanded">
+            <%= form.text_field :content, id: :comment_content, class: 'input is-small is-rounded has-background-light', placeholder: 'Add new Comment' %>
+          </div>
+          <div class="control">
+            <%= form.submit 'Comment', class: 'button is-light is-small is-rounded' %>
+          </div>
+        </div>
+        
+        
+      <% end %>
+    </div>
+    </div>
   </div>
 </li>

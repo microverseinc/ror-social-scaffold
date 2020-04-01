@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="has-navbar-fixed-top">
   <head>
     <title>Account</title>
     <%= csrf_meta_tags %>
@@ -7,12 +7,21 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <body>
+  <body class="account">
+    <main class="container">
+    <br/>  
     <%= render "partials/navbar"%>
     <%= render "partials/notice"%>
     <%= render "partials/alert"%>
-    <main class="container">
-      <%= yield %>
+      <div class="columns">
+        <div class="column is-4">
+        <%= render "partials/sidebar"%>
+        </div>
+        <div class="column">
+          <%= yield %>
+        </div>
+    </div>
+      
     </main>
   </body>
 </html>
