@@ -62,6 +62,7 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.5)
     crass (1.0.6)
+    database_cleaner (1.8.3)
     devise (4.7.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -170,6 +171,14 @@ GEM
     rspec-mocks (3.9.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.9.0)
+    rspec-rails (3.9.0)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec-core (~> 3.9.0)
+      rspec-expectations (~> 3.9.0)
+      rspec-mocks (~> 3.9.0)
+      rspec-support (~> 3.9.0)
     rspec-support (3.9.2)
     rubocop (0.79.0)
       jaro_winkler (~> 1.5.1)
@@ -240,6 +249,7 @@ DEPENDENCIES
   bootsnap (>= 1.1.0)
   byebug
   coffee-rails (~> 4.2)
+  database_cleaner
   devise
   font-awesome-rails
   jbuilder (~> 2.5)
@@ -248,6 +258,7 @@ DEPENDENCIES
   puma (~> 3.11)
   rails (~> 5.2.4)
   rspec
+  rspec-rails
   rubocop
   sass-rails (~> 5.0)
   spring
