@@ -47,6 +47,9 @@ end
 
 group :test do
   gem 'rspec'
+  gem "capybara"
+  gem "selenium-webdriver"
+  gem 'shoulda-matchers'
 end
 
 group :development do
