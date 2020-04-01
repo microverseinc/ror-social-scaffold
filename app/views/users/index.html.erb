@@ -2,7 +2,7 @@
 
   <div class="columns is-multiline">
     <% @users.each do |user| %>
-        <div class="column is-4-desktop">
+        <div class="column is-3-desktop">
         
           <div class="card">
             
@@ -16,7 +16,7 @@
             <div class="card-footer">
                 <div class="card-footer-item">
                   
-                    <a  class="title has-text-centered is-size-6" title="See Profile" href="<%= user_path(user) %>"> <%= user.name %></a>
+                    <a  class="has-text-black has-text-centered is-size-6" title="See Profile" href="<%= user_path(user) %>"> <%= user.name %></a>
                 </div>
             </div>
           </div>

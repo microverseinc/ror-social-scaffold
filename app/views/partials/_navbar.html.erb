@@ -14,21 +14,39 @@
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
           
-          <%= menu_link_to '', posts_path,"home" %>
-          <%= menu_link_to '', users_path,"users" %>
+        
       
       
       </div>
 
       <div class="navbar-end">
+        <%= menu_link_to '', posts_path,"home" %>
+          <%= menu_link_to '', users_path,"users" %>
+           <% if !current_user %>
         <div class="navbar-item">
            
-           <% if current_user %>
-            <%= link_to 'Sign out', destroy_user_session_path, method: :delete,class:"button is-danger is-rounded is-small" %>
-            <% else %>
+            
             <%= link_to 'Sign in', user_session_path,class:"button is-primary" %>
-            <% end %>
         </div>
+            <% end %>
+        <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link is-small">
+          <%= current_user.name %>
+        </a>
+
+        <div class="navbar-dropdown">
+          <%= link_to "Profile", user_path(current_user), class: 'navbar-item' %>
+         
+          
+  
+          <hr class="navbar-divider">
+          <% if current_user %>
+          <div class="navbar-item">
+            <%= link_to 'Sign out', destroy_user_session_path, method: :delete,class:"button is-danger is-rounded is-small" %>
+          </div>
+          <% end %>
+        </div>
+      </div>
       </div>
     </div>
   </div>

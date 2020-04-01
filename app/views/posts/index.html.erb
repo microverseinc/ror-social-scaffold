@@ -1,8 +1,6 @@
     <%= form_for(@post) do |form| %>
 <div class="card">
-  <div class="card-header">
-    <h2 class="card-header-title">Add New Post</h2>
-  </div>
+  
   <div class="card-content">
 
       <div class="field ">
@@ -10,17 +8,18 @@
           <%= form.text_area :content, id: :post_content, placeholder: 'Add New Post',class:"textarea" %>
         </p>      
       </div>
-      <div class="field has-text-right">
-        
-          <p class="control">
-            <%= form.submit 'Save', class: 'button is-light is-rounded is-small' %>
-          </p>          
-      </div>
       <% if @post.errors.full_messages.any? %>
         <p class="help is-danger">
           <%= "Post could not be saved. #{@post.errors.full_messages.join('. ')}" %>
         </p>
       <% end %>
+      <div class="field has-text-right">
+        
+          <p class="control">
+            <%= form.submit 'Publish', class: 'button is-danger is-rounded is-small' %>
+          </p>          
+      </div>
+      
   </div>
  
 

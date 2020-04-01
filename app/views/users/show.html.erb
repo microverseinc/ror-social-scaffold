@@ -1,7 +1,14 @@
+<div class="hero is-medium is-link">
+    <div class="hero-body">
+        <div class="title"><%= "#{@user.name}" %></div>
+        <div class="subtitle">
+          Registered since :<%= @user.created_at.strftime("%Y/%m/%d") %>
+        </div>
+    </div>
+</div>
+<br/>
 <section class="user-section">
-  <h2><%= "Name: #{@user.name}" %></h2>
   <article class="timeline">
-    <h3>Recent posts:</h3>
     <ul class="posts">
       <%= render @posts %>
     </ul>

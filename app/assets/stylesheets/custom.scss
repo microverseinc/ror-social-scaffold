@@ -38,8 +38,12 @@ body {
       .card-header-title{
         padding: 10px;
         font-weight: normal;
-        // display: flex;
-        // justify-content: space-between;
+        display: flex;
+        justify-content: space-between;
+        div:first-child{
+          display: flex;
+          justify-content: space-between;
+        }
         .image{
           margin-right: 15px;
         }
@@ -52,16 +56,34 @@ body {
     .card-content{
       padding: 15px;
       .post-content{
-        padding: 15px 0px;
+        //padding: 15px 0px;
+        
       }
-      .actions-section{
-        margin: 5px 0px;
-        padding: 5px;
-        border-top: 1px solid #f1f1f1;
-        border-bottom: 1px solid #f1f1f1;
-      }
+  
       .comments-section{
         padding-top: 10px;
+        border-top: 1px solid #f1f1f1;
+        margin-top: 16px;
+        .comment{
+          display: flex;
+          justify-content: flex-start;
+          align-items: flex-start;
+          margin-bottom: 4px;
+          .comment-body{
+            margin-left: 10px;
+          }
+          .comment-content{
+            background: #f1f1f1;
+            
+           
+            padding: 10px;
+            border-radius: 8px;
+          }
+          .comment-footer{
+            font-size: 12px;
+            color: #b9b9b9;
+          }
+        }
       }
     }
   }
