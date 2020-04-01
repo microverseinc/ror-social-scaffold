@@ -5,8 +5,7 @@ RSpec.describe Like, type: :model do
   let(:post) { Post.new(content: 'A simple post content',user_id:user.id) }
   let(:like) { Like.new(post_id: post.id,user_id:user.id) }
 
-  context 'it has name, email and password' do
-
+  context 'it has post_id and user_id' do
     it 'has to have a post_id' do
       expect(like.post_id).to eq(post.id)
     end
