@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'FriendshipFlows', type: :request do
+RSpec.describe 'Friendship', type: :request do
   describe 'User A sends a friend request to User B' do
     it 'True!' do
       get users_path
