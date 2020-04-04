@@ -11,7 +11,7 @@ end
 
 RSpec.describe 'SignUp user', type: :request do
   scenario 'with valid credentials' do
-    User.create!(name: 'elijah', email: 'jay@jay.com', password: 'foo1111')
+    User.create!(name: 'carl', email: 'carl@carl', password: 'carlbond')
     get new_user_registration_path
     expect(response).to have_http_status(200)
   end
