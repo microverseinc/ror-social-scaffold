@@ -28,4 +28,11 @@ RSpec.describe 'friendship controller', type: :feature do
     fill_in 'Password', with: test_user.password
     click_button 'Log in'
   end
+
+  scenario 'adding a friend' do
+   store_in_database
+   log_in
+   click_on('Add friend', :match => :first)
+   expect(page).to have_content ('Pending request')
+ end
 end
