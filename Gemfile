@@ -49,6 +49,7 @@ end
 group :test do
   gem 'rspec'
   gem 'rspec-rails'
+  gem 'factory_bot_rails'
   gem 'shoulda-matchers'
   gem 'capybara'
   gem 'selenium-webdriver'

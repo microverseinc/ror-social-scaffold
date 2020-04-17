@@ -1,38 +1,30 @@
 require 'rails_helper'
 
-RSpec.describe 'friendship controller', type: :feature do
-  let(:test_user) do
-    User.new(name: 'test_user', email: 'carl@carl',
-             password: 'password', password_confirmation: 'password')
-  end
-  let(:test_user_2) do
-    User.new(name: 'test_user_2', email: 'carl@carl',
-             password: 'password', password_confirmation: 'password')
-  end
+RSpec.feature 'Create new User', type: :feature do
+  scenario 'create friendship between two users' do
+    visit '/users/sign_up'
 
-  let(:friendship) { Friendship.new(user_id: test_user_2.id, friend_id: test_user.id, confirmed: false) }
-  let(:friendship_2) { Friendship.new(user_id: test_user.id, friend_id: test_user_2.id, confirmed: true) }
+    fill_in 'user_name', with: 'Carl'
+    fill_in 'user_email', with: 'carl@bond.com'
+    fill_in 'user_password', with: 'foobar'
+    fill_in 'user_password_confirmation', with: 'foobar'
+    click_button 'Sign up'
+    expect(page).to have_text('Welcome! You have signed up successfully.')
 
-  def store_in_database
-    test_user.save
-    test_user_2.save
+    click_on 'Sign out'
+    expect(page).to have_text('You need to sign in or sign up before continuing.')
+
+    visit '/users/sign_up'
+
+    fill_in 'user_name', with: 'Carlito'
+    fill_in 'user_email', with: 'carlito@carlito.com'
+    fill_in 'user_password', with: 'foobar2'
+    fill_in 'user_password_confirmation', with: 'foobar2'
+    click_button 'Sign up'
+    expect(page).to have_text('Welcome! You have signed up successfully.')
+    user_id = User.find_by(email: 'carlito@carlito.com').id
+    click_on 'All users' 
+    expect(page).to have_button('Add friend')
+    click_on('Add friend', :match => :first)
   end
-
-  def save_friendships
-    friendship.save
-  end
-
-  def log_in
-    visit users_path
-    fill_in 'Email', with: test_user.email
-    fill_in 'Password', with: test_user.password
-    click_button 'Log in'
-  end
-
-  scenario 'adding a friend' do
-   store_in_database
-   log_in
-   click_on('Add friend', :match => :first)
-   expect(page).to have_content ('Pending request')
- end
 end

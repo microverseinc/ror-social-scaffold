@@ -7,8 +7,8 @@ RSpec.describe Friendship, type: :model do
 		Friendship.new(user_id: 1, friend_id: 2, confirmed: true)
 	end
 
-	it 'is valid with all of the correct fields' do
-		expect(friend).to be_valid
+	  it 'is valid with all of the correct fields' do
+      expect(friend).to be_valid
   	end
 
   	it 'is not valid without user_id' do
