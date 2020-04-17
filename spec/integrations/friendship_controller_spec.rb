@@ -1,4 +1,4 @@
-require 'rails_helper'
+ommrequire 'rails_helper'
 
 RSpec.feature 'Create new User', type: :feature do
   scenario 'create friendship between two users' do
