@@ -4,6 +4,7 @@ class PostsController < ApplicationController
   def index
     @post = Post.new
     timeline_posts
+    @user_timeline = current_user.user_timeline
   end
 
   def create
