@@ -1,18 +1,9 @@
-CREATE TABLE "friendship" (
-  "id" Integer,
-  "sender" Integer,
-  "receiver" Integer,
-  "status" boolean,
-  PRIMARY KEY ("id")
-);
-
-CREATE INDEX "FK" ON  "friendship" ("sender", "receiver");
-
 CREATE TABLE "users" (
   "id" Integer,
   "username" string,
   "password" string,
   "email" string,
+  "image_link" string,
   PRIMARY KEY ("id")
 );
 
@@ -25,6 +16,25 @@ CREATE TABLE "likes" (
 
 CREATE INDEX "FK" ON  "likes" ("user_id", "post_id");
 
+CREATE TABLE "friendship" (
+  "id" Integer,
+  "sender" Integer,
+  "receiver" Integer,
+  "status" boolean,
+  PRIMARY KEY ("id")
+);
+
+CREATE INDEX "FK" ON  "friendship" ("sender", "receiver");
+
+CREATE TABLE "posts" (
+  "user_id" Type,
+  "content" Type,
+  "id" Type,
+  PRIMARY KEY ("id")
+);
+
+CREATE INDEX "FK" ON  "posts" ("user_id");
+
 CREATE TABLE "comments" (
   "id" Integer,
   "post_id" Integer,
@@ -34,13 +44,4 @@ CREATE TABLE "comments" (
 );
 
 CREATE INDEX "FK" ON  "comments" ("post_id", "user_id");
-
-CREATE TABLE "posts" (
-  "id" Type,
-  "user_id" Type,
-  "content" Type,
-  PRIMARY KEY ("id")
-);
-
-CREATE INDEX "FK" ON  "posts" ("user_id");
 
