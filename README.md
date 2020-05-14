@@ -7,11 +7,6 @@
 - Ruby v2.7.0
 - Ruby on Rails v5.2.4
 
-## Live Demo
-
-TBA
-
-
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
@@ -57,13 +52,22 @@ Open `http://localhost:3000/` in your browser.
 
 > Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
 
-### Deployment
-
-TBA
 
 ## Authors
 
-TBA
+
+👤 **Adewale Modupe**
+
+- Github: [@githubhandle](https://github.com/Eshy10)
+- Twitter: [@twitterhandle](https://twitter.com/AdesholaAdewal6)
+- Linkedin: [linkedin](https://www.linkedin.com/in/adewale-adeshola-b0b581139/)
+
+👤 **Theophile Kango**
+
+- Github: [@githubhandle](https://github.com/Theophile-Kango)
+- Twitter: [@twitterhandle](https://twitter.com/Theophadh)
+- Linkedin: [linkedin](https://www.linkedin.com/in/theophile-kango-b6b580194/)
+
 
 ## 🤝 Contributing
 
@@ -77,9 +81,7 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-TBA
+- Microverse
 
-## 📝 License
 
-TBA
 
