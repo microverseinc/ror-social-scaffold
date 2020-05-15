@@ -5,6 +5,9 @@
         Name: <%= user.name %>
         <span class="profile-link">
           <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+          <%= friend_request(@current_user.id,user.id) %>
+          
+          
         </span>
       </li>
     <% end %>
