@@ -5,5 +5,14 @@
     <ul class="posts">
       <%= render @posts %>
     </ul>
+    <% if current_user.friend?(@user) %>
+      <%= link_to 'Remove friend', remove_friend_path(user_id: @user.id), method: :delete, class: "btn btn-danger" %>
+    <% else %>
+      <%= form_for current_user.friendships.build(friend: @user) do |f| %>
+        <%= f.hidden_field :friend_id %>
+        <%= f.hidden_field :status %>
+        <button class="btn btn-primary">Add friend</button>
+      <% end %>
+    <% end %>
   </article>
 </section>
