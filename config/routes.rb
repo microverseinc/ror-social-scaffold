@@ -2,8 +2,10 @@ Rails.application.routes.draw do
 
   root 'posts#index'
 
-  devise_for :users
+  delete 'remove_friend' => 'friendships#destroy'
 
+  devise_for :users
+  resources :friendships
   resources :users, only: [:index, :show]
   resources :posts, only: [:index, :create] do
     resources :comments, only: [:create]
