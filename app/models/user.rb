@@ -19,7 +19,7 @@ class User < ApplicationRecord
     friends_array.compact
   end
 
-  # Users who have yet to confirmee friend invites
+  # Users who have yet to confirmed friend invites
   def pending_invites
     friendships.map{|friendship| friendship.friend if !friendship.status}.compact
   end
