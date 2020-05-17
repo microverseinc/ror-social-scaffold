@@ -5,14 +5,15 @@
     <ul class="posts">
       <%= render @posts %>
     </ul>
-    <% if current_user.friend?(@user) %>
-      <%= link_to 'Remove friend', remove_friend_path(user_id: @user.id), method: :delete, class: "btn btn-danger" %>
-    <% else %>
-      <%= form_for current_user.friendships.build(friend: @user) do |f| %>
-        <%= f.hidden_field :friend_id %>
-        <%= f.hidden_field :status %>
-        <button class="btn btn-primary">Add friend</button>
-      <% end %>
-    <% end %>
+    <% if current_user.friend_invites(@user) %>
+            <button class="btn btn-primary"> Pending Invitation </button>
+          <% elsif current_user.receive_invitation(@user)%>
+            <%= link_to 'Accept', accept_invite_path(user_id: @user.id), class:"btn btn-primary" %>
+            <%= link_to 'Decline', reject_invite_path(user_id: @user.id), method: :delete, class:"btn btn-primary" %>
+          <% elsif !current_user.friend?(@user) && current_user.id != @user.id %>
+            <%= link_to 'Add Friend', send_invite_path(user_id: @user.id) , class:"btn btn-primary" %>
+            <% elsif current_user.friend?(@user) %>
+            <%= link_to 'Remove friend', remove_friend_path(user_id: @user.id), method: :delete, data: {confirm: "Are you sure you want to remove friend?"}, class: "btn btn-danger" %>
+          <% end %>
   </article>
 </section>
