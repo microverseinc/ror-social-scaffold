@@ -1,13 +1,9 @@
 class FriendshipsController < ApplicationController
-    def create
-        current_user.friendships.create(friendship_params)
-        redirect_to users_path
-    end
 
     def send_invitation
         if current_user.send_invitation(params[:user_id])
             flash.notice = 'Friend invitation sent'
-        redirect_to users_path
+            redirect_to users_path
         else
             flash.now[:notice] = 'error occured'
             redirect_to users_path
@@ -41,10 +37,6 @@ class FriendshipsController < ApplicationController
       else
         flash.now[:notice] = 'error occurred'
       end
-    end
-
-    def friendship_params
-        params.require(:friendship).permit(:friend_id, :status)
     end
 
 end
