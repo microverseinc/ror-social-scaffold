@@ -17,7 +17,12 @@ module ApplicationHelper
   end
 
   def request_response(user1, user2)
-    return 'Accept request' if Friendship.where(user_id: user2, friend_id: user1, confirmed: nil).exists?
+    # rubocop:disable Layout/LineLength
+    if Friendship.where(user_id: user1, friend_id: user2, confirmed: true).exists? || Friendship.where(user_id: user2, friend_id: user1, confirmed: true).exists?
+      return 'friends!'
+    end
+    # rubocop:enable Layout/LineLength
+    return 'Accept request' if Friendship.where(user_id: user2, friend_id: user1, confirmed: false).exists?
     return 'cancel request' if Friendship.where(user_id: user1, friend_id: user2, confirmed: false).exists?
 
     'send request'
