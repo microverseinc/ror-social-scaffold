@@ -3,11 +3,24 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    @current_user=User.find(current_user.id)
+    @current_user = User.find(current_user.id)
   end
 
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.ordered_by_most_recent
+  end
+
+  def send_req
+    f = Friendship.where(user_id: current_user.id, friend_id: params[:id]).exists?
+    if !f
+      friend_obj = Friendship.new(user_id: current_user.id, friend_id: params[:id], confirmed: false)
+      friend_obj.save
+
+    else
+      friend_obj = Friendship.where(user_id: current_user.id, friend_id: params[:id]).select('id')
+      Friendship.destroy(friend_obj.ids)
+    end
+    redirect_to users_path
   end
 end

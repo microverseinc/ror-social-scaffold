@@ -15,19 +15,11 @@ module ApplicationHelper
       link_to('Like!', post_likes_path(post_id: post.id), method: :post)
     end
   end
-  def friend_request(user1,user2)
-    f=Friendship.where(user_id: user1,friend_id: user2).exists?
-    if f
-      friend_obj=Friendship.new(user_id: user1,friend_id: user2,confirmed: false)
-      friend_obj.save
-      
-      link_to('cancel friend request', users_path)
-    else
-      friend_obj=Friendship.where(user_id: user1,friend_id: user2)
-      friend_obj.destroy(friend_obj.ids)
-      link_to('send req', users_path)
-    end
-    
+
+  def request_response(user1, user2)
+    return 'Accept request' if Friendship.where(user_id: user2, friend_id: user1, confirmed: nil).exists?
+    return 'cancel request' if Friendship.where(user_id: user1, friend_id: user2, confirmed: false).exists?
+
+    'send request'
   end
-  
 end
