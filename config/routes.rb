@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show,:destroy] do
     member do
-      match 'send_req' => 'users#send_req', via: [:post]
+      match 'send_req' => 'users#send_req', via: [:get]
     end
   end
   resources :posts, only: [:index, :create] do
