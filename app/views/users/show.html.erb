@@ -1,5 +1,8 @@
 <section class="user-section">
-  <h2><%= "Name: #{@user.name}" %></h2>
+  <div><h2 class="inline"><%= "Name: #{@user.name}" %></h2>
+          <%if !(@current_user.id==@user.id)%>
+          <%= link_to request_response(@current_user.id,@user.id), send_req_user_path(:id => @user.id), class: "link"%>
+          <%end%></div>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">

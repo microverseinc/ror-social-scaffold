@@ -6,7 +6,7 @@
         <span class="profile-link">
           <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
           <%if !(@current_user.id==user.id)%>
-          <%= link_to request_response(current_user.id,user.id), send_req_user_path(:id => user.id)%>
+          <%= link_to request_response(current_user.id,user.id), send_req_user_path(:id => user.id), class: "link"%>
           
           
           <%end%>
