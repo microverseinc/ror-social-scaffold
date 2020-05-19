@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'send_invite' => 'friendships#send_invitation'
   get 'accept_invite' => 'friendships#accept_invitation'
   get 'pending_invite' => 'friendships#pending_invitation'
+  get 'friends_list' => 'friendships#friends_list'
   delete 'reject_invite' => 'friendships#reject_invitation'
 
   devise_for :users

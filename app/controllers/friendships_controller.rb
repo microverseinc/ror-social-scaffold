@@ -36,4 +36,8 @@ class FriendshipsController < ApplicationController
       flash.now[:notice] = 'error occurred'
     end
   end
+
+  def friends_list
+    @friends_list = current_user.friends
+  end
 end

@@ -1,0 +1,8 @@
+<div class= "container text-center">
+    <h3>Friends List</h3>
+    <% @friends_list.each do |friend| %>
+        <ul>
+            <li><%= link_to friend.name,  user_path(friend.id) %></li>
+        </ul>
+    <% end %>
+</div>
