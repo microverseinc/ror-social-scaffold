@@ -18,21 +18,18 @@ class PostsController < ApplicationController
   end
 
   private
+
   def friends(user)
     a = Friendship.where(user_id: current_user.id, friend_id: user, confirmed: true)
     b = Friendship.where(user_id: user, friend_id: current_user.id, confirmed: true)
-    if a.exists? ||  b.exists? || user == current_user.id
-      return user
-    end
+    user if a.exists? || b.exists? || user == current_user.id
   end
 
   def timeline_posts
     @timeline_posts = []
     @all = Post.all.ordered_by_most_recent.includes(:user)
     @all.each do |v|
-      if v.user_id == friends(v.user_id)
-        @timeline_posts.push(v)
-      end
+      @timeline_posts.push(v) if v.user_id == friends(v.user_id)
     end
   end
 
