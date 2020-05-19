@@ -14,6 +14,8 @@ class User < ApplicationRecord
 
   def friends
     friends_array = friendships.map { |friendship| friendship.friend if friendship.status }
+    friends_arrayb = inverse_friendships.map { |friendship| friendship.user if friendship.status }
+    friends_array.concat(friends_arrayb)
     friends_array.compact
   end
 
