@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   root 'posts#index'
 
   delete 'remove_friend' => 'friendships#destroy'
