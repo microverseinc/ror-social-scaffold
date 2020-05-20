@@ -11,9 +11,15 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :friendships
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
+  def mutual?(current_user, user)
+    number = 0
+    user.friendships.where(confirmed: true).each do |v|
+      number += 1 if current_user.isfriend?(v.friend_id)
+    end
+    number
+  end
   def isfriend?(id)
     Friendship.where(user_id: self.id,friend_id: id,confirmed: true).exists?
-    
   end
   
 end
