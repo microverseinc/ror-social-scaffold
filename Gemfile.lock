@@ -170,6 +170,8 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
+    sassc (2.3.0)
+      ffi (~> 1.9)
     spring (2.1.0)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -218,7 +220,8 @@ DEPENDENCIES
   rails (~> 5.2.4)
   rspec
   rubocop
-  sass-rails (~> 5.0)
+  sass-rails (~> 5.0, >= 5.0.4)
+  sassc
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)
