@@ -7,11 +7,6 @@
 - Ruby v2.7.0
 - Ruby on Rails v5.2.4
 
-## Live Demo
-
-TBA
-
-
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
@@ -57,13 +52,19 @@ Open `http://localhost:3000/` in your browser.
 
 > Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
 
-### Deployment
-
-TBA
 
 ## Authors
 
-TBA
+👤 **Jaspreet Singh** 
+    
+- [LinkedIn](https://www.linkedin.com/in/jaspreet-singh-a28286146/)
+- [GitHub](https://github.com/jaspreet-singh-sahota)
+- [E-mail](jaspreetsinghjassi01@gmail.com)
+
+👤 **Kartick** 
+    
+- [GitHub](https://github.com/karthi07)
+
 
 ## 🤝 Contributing
 
@@ -77,7 +78,7 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-TBA
+microverse
 
 ## 📝 License
 
