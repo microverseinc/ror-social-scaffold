@@ -5,6 +5,10 @@
         Name: <%= user.name %>
         <span class="profile-link">
           <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+
+           <%if !(@current_user.id == user.id)%>
+          <%= link_to request_status(current_user.id,user.id), send_req_user_path(:id => user.id), class: "link"%>
+          <% end%>
         </span>
       </li>
     <% end %>
