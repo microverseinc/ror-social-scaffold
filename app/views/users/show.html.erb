@@ -1,18 +1,28 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
-   <!-- change this for a helper for better practices-->
-  <% if @user.id != current_user.id and !@invited.any?(@user.id)%>
-  <% puts @invited %>
-    <%= link_to 'Invite', friendships_path(friendship: { sender_id: current_user.id, receiver_id: @user.id, status: false }), method: :post %> <span class="profile-link">
   
-  <% elsif @invited.any?(@user.id)%>
-  <!-- change this for a helper for better practices-->
-    <% if @user.received_friendships.find_by(sender_id: current_user.id).status %>
-      <p> You and <%= @user.name %> are already friends</p>
-    <% else %>
-      <p> pending invitation</p>
-    <% end %>
-  <% end %>
+      <% if @user.received_friendships.where(sender_id: current_user.id).exists? %>
+
+        <% if @user.received_friendships.where(sender_id: current_user.id).first.status %>
+          <span> You're friends with this person </span>
+        <% else %>
+          <span> Friendship pending </span>
+        <% end %>
+
+      <% elsif @user.sent_friendships.where(receiver_id: current_user.id).exists? %>
+
+        <% if @user.sent_friendships.where(receiver_id: current_user.id).first.status %>
+          <span> You're friends with this person </span>
+        <% else %>
+          <span> Accept / Decline friendship </span>
+        <% end %>
+
+      <% else %>
+
+        <%= link_to 'Invite', friendships_path(friendship: { sender_id: current_user.id, receiver_id: @user.id, status: false }), method: :post %> <span class="profile-link">
+
+      <% end %>
+
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
