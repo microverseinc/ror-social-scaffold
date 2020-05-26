@@ -1,11 +1,9 @@
 class User < ApplicationRecord
-  include ActiveModel::Validations
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates_with UserValidation
   validates :name, presence: true, length: { maximum: 20 }
 
   has_many :posts
@@ -21,7 +19,5 @@ class User < ApplicationRecord
 
   has_many :requesting_friends, through: :received_friendships
   has_many :requested_friends, through: :sent_friendships
-
-  
 
 end
