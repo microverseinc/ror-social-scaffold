@@ -22,8 +22,8 @@ describe 'Friend request testging', type: :feature do
   end
   it 'send request' do
     visit 'users'
-    first(:link, "send request").click
-    
+    first(:link, 'send request').click
+
     expect(page).to have_content 'cancel request'
   end
 end

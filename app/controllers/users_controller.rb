@@ -11,7 +11,6 @@ class UsersController < ApplicationController
     @posts = @user.posts.ordered_by_most_recent
   end
 
-
   def req_init
     set_friendship = Friendship.where(user_id: params[:id], friend_id: current_user.id)
     if set_friendship.exists?
