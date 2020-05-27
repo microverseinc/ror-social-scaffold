@@ -7,6 +7,16 @@ RSpec.describe 'User session actions', type: :feature do
 
   scenario 'creating a user' do
     visit new_user_registration_path
+    fill_in 'Name', with: 'Alexis'
+    fill_in 'Email', with: 'alexis@mail.com'
+    fill_in 'Password', with: '123123'
+    fill_in 'Password confirmation', with: '123123'
+    click_on 'Sign up'
+    expect(page).to have_content("Welcome! You have signed up successfully.")
+  end
+
+  scenario 'creating a user with duplicate name' do
+    visit new_user_registration_path
     fill_in 'Name', with: 'Oscar'
     fill_in 'Email', with: 'a@mail.com'
     fill_in 'Password', with: '123123'
@@ -15,32 +25,28 @@ RSpec.describe 'User session actions', type: :feature do
     expect(page).to have_content("Email has already been taken")
   end
 
-  # scenario 'creating a user with duplicate name' do
-  #   visit root_path
-  #   fill_in 'Name', with: 'Oscar'
-  #   click_on 'Submit'
-  #   expect(page).to have_content('Error while creating user. Maybe change name?')
-  # end
+  scenario 'user logs in successfully' do
+    visit user_session_path
+    fill_in 'Email', with: 'a@mail.com'
+    fill_in 'Password', with: '123456'
+    click_on 'Log in'
+    expect(page).to have_content('Signed in successfully.')
+  end
 
-  # scenario 'user logs in successfully' do
-  #   visit sessions_new_path
-  #   fill_in 'Name', with: 'Oscar'
-  #   click_on 'Submit'
-  #   expect(page).to have_content('Success: You are now LOGGED IN!')
-  # end
+  scenario 'User fails trying to log in' do
+    visit user_session_path
+    fill_in 'Email', with: 'a@mail.com'
+    fill_in 'Password', with: '123123'
+    click_on 'Log in'
+    expect(page).to have_content('Invalid Email or password.')
+  end
 
-  # scenario 'User fails trying to log in' do
-  #   visit sessions_new_path
-  #   fill_in 'Name', with: 'Inexistent'
-  #   click_on 'Submit'
-  #   expect(page).to have_content('Who the HECK is Inexistent??? That user name does not EXIST!!')
-  # end
-
-  # scenario 'user logs out' do
-  #   visit sessions_new_path
-  #   fill_in 'Name', with: 'Oscar'
-  #   click_on 'Submit'
-  #   click_on 'Log out'
-  #   expect(page).to have_content('Logged out!')
-  # end
+  scenario 'user logs out' do
+    visit user_session_path
+    fill_in 'Email', with: 'a@mail.com'
+    fill_in 'Password', with: '123456'
+    click_on 'Log in'
+    click_on 'Sign out'
+    expect(page).to have_content('You need to sign in or sign up before continuing.')
+  end
 end
