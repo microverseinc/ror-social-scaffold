@@ -1,5 +1,31 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
+  
+      <% if @user.received_friendships.where(sender_id: current_user.id).exists? %>
+
+        <% if @user.received_friendships.where(sender_id: current_user.id).first.status %>
+          <span> You're friends with this person </span>
+        <% else %>
+          <span> Friendship pending </span>
+        <% end %>
+
+      <% elsif @user.sent_friendships.where(receiver_id: current_user.id).exists? %>
+
+        <% if @user.sent_friendships.where(receiver_id: current_user.id).first.status %>
+          <span> You're friends with this person </span>
+        <% else %>
+          <span>
+            <%= link_to 'Accept', friendship_path(@user.sent_friendships.where(receiver_id: current_user.id).first, friendship: {status: true }), method: :patch %>
+            <%= link_to 'Decline', @user.sent_friendships.where(receiver_id: current_user.id).first , method: :delete %>
+          </span>
+        <% end %>
+
+      <% else %>
+
+        <%= link_to 'Invite', friendships_path(friendship: { sender_id: current_user.id, receiver_id: @user.id, status: false }), method: :post %>
+
+      <% end %>
+
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
