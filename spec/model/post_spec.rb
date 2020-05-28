@@ -22,7 +22,7 @@ RSpec.describe Post, type: :model do
     t = Post.reflect_on_association(:likes)
     expect(t.macro).to eq(:has_many)
   end
-  it 'shold belongs to user' do
+  it 'should belongs to user' do
     t = Post.reflect_on_association(:User)
   end
 end

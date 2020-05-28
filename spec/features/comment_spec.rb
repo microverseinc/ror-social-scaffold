@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Creating a new invitation', type: :feature do
+RSpec.describe 'Creating comments', type: :feature do
   before :each do
     User.create(name: 'Alexis', email: "a@mail.com",  password: '123456')
     user1 = User.create(name: 'Oscar', email: "o@mail.com",  password: '123456')

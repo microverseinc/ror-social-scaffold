@@ -11,10 +11,10 @@ RSpec.describe Like, type: :model do
     Like.create(post: post1, user: user1)
     expect(subject).to_not be_valid
     end
-    it 'shold belongs to user' do
+    it 'should belongs to user' do
       t = Like.reflect_on_association(:User)
     end
-    it 'shold belongs to post' do
+    it 'should belongs to post' do
       t = Like.reflect_on_association(:Post)
     end
 end

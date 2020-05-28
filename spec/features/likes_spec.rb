@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Creating a new invitation', type: :feature do
+RSpec.describe 'Liking and Disliking', type: :feature do
   before :each do
       user1 = User.create(name: 'Oscar', email: "o@mail.com",  password: '123456')
       user2 = User.create(name: 'Alexis', email: "a@mail.com",  password: '123456')
@@ -14,12 +14,12 @@ RSpec.describe 'Creating a new invitation', type: :feature do
     end
 
 
-    scenario 'Like a post ' do
+    scenario ' Like a post ' do
       click_on 'Like!'
       expect(page).to have_content("You liked a post.")
     end
 
-    scenario 'Dislike a post ' do
+    scenario ' Dislike a post ' do
       click_on 'Like!'
       click_on 'Dislike!'
       expect(page).to have_content("You disliked a post.")

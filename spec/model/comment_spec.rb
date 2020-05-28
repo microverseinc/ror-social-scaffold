@@ -22,7 +22,3 @@ RSpec.describe Comment, type: :Comment do
         t = Comment.reflect_on_association(:Post)
       end
   end
-
-#     # t.integer "user_id"
-#     # t.integer "post_id"
-#     # t.text "content"

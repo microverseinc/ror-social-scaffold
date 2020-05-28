@@ -1,10 +1,16 @@
 require 'rails_helper'
 
-RSpec.describe 'Creating a new invitation', type: :feature do
+RSpec.describe 'Creating friendship invitations', type: :feature do
     before :each do
         user1 = User.create(name: 'Oscar', email: "o@mail.com",  password: '123456')
         user2 = User.create(name: 'Alexis', email: "a@mail.com",  password: '123456')
+        user3 = User.create(name: 'Mememan', email: "m@mail.com",  password: '123456')
+        user4 = User.create(name: 'Ivan', email: "i@mail.com",  password: '123456')
         user1.posts.create(content: 'A new post by Oscar.')
+        user3.posts.create(content: 'A new post by Mememan.')
+        user4.posts.create(content: 'A new post by Ivan.')
+        Friendship.create(requesting_friend: user4, requested_friend: user2, status: true)
+        Friendship.create(requesting_friend: user2, requested_friend: user3, status: true)
         
     
         visit user_session_path
@@ -42,4 +48,17 @@ RSpec.describe 'Creating a new invitation', type: :feature do
         click_on 'Accept'
         expect(page).to have_content("Friendship was successfully updated.")
       end
+
+      scenario 'User can see posts from his requested friends' do
+        expect(page).to have_content('A new post by Mememan.')
+      end
+      scenario 'User can see posts from his requesting friends' do
+        expect(page).to have_content('A new post by Ivan.')
+      end
+
+      scenario " User would not be able to see a post of a user who's not his friend " do
+        expect(page).to_not have_content('A new post by Oscar.')
+      end
 end
+
+
