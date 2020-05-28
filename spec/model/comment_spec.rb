@@ -16,9 +16,9 @@ RSpec.describe Comment, type: :Comment do
     expect(subject).to_not be_valid
   end
   it 'shold belongs to user' do
-    t = Comment.reflect_on_association(:User)
+    Comment.reflect_on_association(:User)
   end
   it 'shold belongs to post' do
-    t = Comment.reflect_on_association(:Post)
+    Comment.reflect_on_association(:Post)
   end
 end
