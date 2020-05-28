@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'User session actions', type: :feature do
   before :each do
-    User.create(name: 'Oscar', email: "a@mail.com",  password: '123456')
+    User.create(name: 'Oscar', email: 'a@mail.com', password: '123456')
   end
 
   scenario 'creating a user' do
@@ -12,7 +12,7 @@ RSpec.describe 'User session actions', type: :feature do
     fill_in 'Password', with: '123123'
     fill_in 'Password confirmation', with: '123123'
     click_on 'Sign up'
-    expect(page).to have_content("Welcome! You have signed up successfully.")
+    expect(page).to have_content('Welcome! You have signed up successfully.')
   end
 
   scenario 'creating a user with duplicate name' do
@@ -22,7 +22,7 @@ RSpec.describe 'User session actions', type: :feature do
     fill_in 'Password', with: '123123'
     fill_in 'Password confirmation', with: '123123'
     click_on 'Sign up'
-    expect(page).to have_content("Email has already been taken")
+    expect(page).to have_content('Email has already been taken')
   end
 
   scenario 'user logs in successfully' do

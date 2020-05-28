@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe 'Creating comments', type: :feature do
   before :each do
-    User.create(name: 'Alexis', email: "a@mail.com",  password: '123456')
-    user1 = User.create(name: 'Oscar', email: "o@mail.com",  password: '123456')
+    User.create(name: 'Alexis', email: 'a@mail.com', password: '123456')
+    user1 = User.create(name: 'Oscar', email: 'o@mail.com', password: '123456')
     user1.posts.create(content: 'A new post by Oscar.')
 
     visit user_session_path
@@ -23,5 +23,4 @@ RSpec.describe 'Creating comments', type: :feature do
     click_on 'Comment'
     expect(page).to have_content("Content can't be blank")
   end
-
 end
