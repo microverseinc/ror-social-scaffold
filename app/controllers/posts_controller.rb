@@ -23,7 +23,7 @@ class PostsController < ApplicationController
     requested_friends_ids = current_user.requested_friends.includes(:sent_friendships).where("friendships.status = true").pluck("id")
     requesting_friends_ids = current_user.requesting_friends.includes(:sent_friendships).where("friendships.status = true").pluck("id")
     posts_filter = (requested_friends_ids + requesting_friends_ids).push(current_user.id)
-    @timeline_posts ||= Post.where("user_id IN (#{[1, 4, current_user.id].join(", ")})").ordered_by_most_recent.includes(:user)
+    @timeline_posts ||= Post.where("user_id IN (#{posts_filter.join(", ")})").ordered_by_most_recent.includes(:user)
     # @timeline_posts ||= Post.all.ordered_by_most_recent.includes(:user)
   end
 
