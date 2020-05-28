@@ -28,7 +28,6 @@ class PostsController < ApplicationController
       .where('friendships.status = true').pluck('id')
     posts_filter = (reqd_ids + reqing_ids).push(current_user.id)
     @timeline_posts ||= Post.where("user_id IN (#{posts_filter.join(', ')})").ordered_by_most_recent.includes(:user)
-    # @timeline_posts ||= Post.all.ordered_by_most_recent.includes(:user)
   end
 
   def post_params
