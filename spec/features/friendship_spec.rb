@@ -1,53 +1,45 @@
 require 'rails_helper'
 
-# RSpec.describe 'Creating a new invitation', type: :feature do
-#   before :each do
-#     create(:user, name: 'Alexis')
-#     user1 = create(:user, name: 'Oscar')
-#     create(:event, host_id: user1.id)
+RSpec.describe 'Creating a new invitation', type: :feature do
+    before :each do
+        user1 = User.create(name: 'Oscar', email: "o@mail.com",  password: '123456')
+        user2 = User.create(name: 'Alexis', email: "a@mail.com",  password: '123456')
+        user1.posts.create(content: 'A new post by Oscar.')
+        
+    
+        visit user_session_path
+        fill_in 'Email', with: 'a@mail.com'
+        fill_in 'Password', with: '123456'
+        click_on 'Log in'
+      end
+    
+      scenario 'Send a friendship invitation ' do
+        click_on 'All users'
+        click_on 'Invite'
+        expect(page).to have_content("Friendship was successfully created.")
+      end
 
-#     visit sessions_new_path
-#     fill_in 'Name', with: 'Oscar'
-#     click_on 'Submit'
+      scenario 'Decline a friendship invitation ' do
+        click_on 'All users'
+        click_on 'Invite'
+        click_on 'Sign out'
+        fill_in 'Email', with: 'o@mail.com'
+        fill_in 'Password', with: '123456'
+        click_on 'Log in'
+        click_on 'All users'
+        click_on 'Decline'
+        expect(page).to have_content("Friendship was successfully destroyed.")
+      end
 
-#     visit user_path(user1)
-#   end
-#   scenario 'Create a new invitation successfully' do
-#     click_on 'Show'
-#     click_on 'Invite'
-#     expect(page).to have_content('Event attendance was successfully created.')
-#   end
-
-#   scenario 'Checking for invitations to render' do
-#     click_on 'Show'
-#     click_on 'Invite'
-#     visit sessions_new_path
-#     fill_in 'Name', with: 'Alexis'
-#     click_on 'Submit'
-#     click_on 'My hosted events'
-#     expect(page).to have_content('Accept')
-#   end
-
-#   scenario 'Accepting an invitation' do
-#     click_on 'Show'
-#     click_on 'Invite'
-#     visit sessions_new_path
-#     fill_in 'Name', with: 'Alexis'
-#     click_on 'Submit'
-#     click_on 'My hosted events'
-#     click_on 'Accept'
-#     expect(page).to have_content('Event attendance was successfully updated.')
-#   end
-
-#   scenario 'Declining an invitation' do
-#     click_on 'Show'
-#     click_on 'Invite'
-#     visit sessions_new_path
-#     fill_in 'Name', with: 'Alexis'
-#     click_on 'Submit'
-#     click_on 'My hosted events'
-#     click_on 'Accept'
-#     click_on 'Decline'
-#     expect(page).to have_content('Event attendance was successfully updated.')
-#   end
-# end
+      scenario 'Accept a friendship invitation ' do
+        click_on 'All users'
+        click_on 'Invite'
+        click_on 'Sign out'
+        fill_in 'Email', with: 'o@mail.com'
+        fill_in 'Password', with: '123456'
+        click_on 'Log in'
+        click_on 'All users'
+        click_on 'Accept'
+        expect(page).to have_content("Friendship was successfully updated.")
+      end
+end
