@@ -5,6 +5,9 @@
         Name: <%= user.name %>
         <span class="profile-link">
           <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+          <% if !current_user.friend?(user) && current_user != user %>
+          <%= link_to 'Add Friend', new_friendship_path %>
+          <% end %>
         </span>
       </li>
     <% end %>
