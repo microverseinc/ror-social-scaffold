@@ -16,7 +16,7 @@
 
 
 ## Live Version 
-  [Social media app](https://fathomless-scrubland-44931.herokuapp.com)
+  [Social media app](https://shielded-journey-73134.herokuapp.com)
 
 ## Author
 
