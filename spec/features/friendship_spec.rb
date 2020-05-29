@@ -9,8 +9,10 @@ RSpec.describe 'Creating friendship invitations', type: :feature do
     user1.posts.create(content: 'A new post by Oscar.')
     user3.posts.create(content: 'A new post by Mememan.')
     user4.posts.create(content: 'A new post by Ivan.')
-    Friendship.create(requesting_friend: user4, requested_friend: user2, status: true)
-    Friendship.create(requesting_friend: user2, requested_friend: user3, status: true)
+    f1 = Friendship.create(requesting_friend: user4, requested_friend: user2, status: false) # request sent
+    f1.update(status: true) # request accepted
+    f2 = Friendship.create(requesting_friend: user2, requested_friend: user3, status: false) # request sent
+    f2.update(status: true) # request accepted
 
     visit user_session_path
     fill_in 'Email', with: 'a@mail.com'

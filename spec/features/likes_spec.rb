@@ -5,7 +5,8 @@ RSpec.describe 'Liking and Disliking', type: :feature do
     user1 = User.create(name: 'Oscar', email: 'o@mail.com', password: '123456')
     user2 = User.create(name: 'Alexis', email: 'a@mail.com', password: '123456')
     user1.posts.create(content: 'A new post by Oscar.')
-    Friendship.create(requesting_friend: user1, requested_friend: user2, status: true)
+    f1 = Friendship.create(requesting_friend: user1, requested_friend: user2, status: false) # request sent
+    f1.update(status: true) # request accepted
 
     visit user_session_path
     fill_in 'Email', with: 'a@mail.com'
