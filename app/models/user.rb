@@ -13,4 +13,10 @@ class User < ApplicationRecord
 
   has_many :requesting_friends, through: :received_friendships
   has_many :requested_friends, through: :sent_friendships
+
+  def friends
+    requested_friends
+    .includes(:sent_friendships)
+    .where('friendships.status = true')
+  end
 end
