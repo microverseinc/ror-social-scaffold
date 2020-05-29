@@ -1,6 +1,7 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %> </h2>
    <% if current_user.friend?(@user)  %>
+   <%= link_to 'Remove Friend',friendship_path(user_id: @user.id), method: :delete%>
   <p> Friend </p>
   <% elsif current_user.pending_friends.include?(@user) %>
    <p>Already sent request</p>

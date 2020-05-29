@@ -13,4 +13,12 @@ class FriendshipsController < ApplicationController
     current_user.confirm_friend(User.find_by(id: params[:user_id]))
     redirect_to users_path
   end
+
+  def destroy
+    f1 = Friendship.all.find_by(user_id: params[:user_id], friend_id: current_user.id)
+    f2 = Friendship.all.find_by(user_id: current_user.id, friend_id: params[:user_id])
+    f1&.destroy
+    f2&.destroy
+    redirect_to users_path
+  end
 end
