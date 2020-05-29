@@ -1,75 +1,40 @@
-# Scaffold for social media app with Ruby on Rails
+# Social media app made with Ruby on Rails
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+> This is the final project of the Ruby on Rails section from the Microverse curriculum which mimics basic functionallity of a social media app, like:
+
+- You can create an account
+- You can send and receivefriendship requests to and fromother users
+- You can create posts
+- You can see your profile pagewith all the posts you havecreated
+- You have a timeline where youcan see your friends posts, addcomments and like them.
+    
 
 ## Built With
 
 - Ruby v2.7.0
 - Ruby on Rails v5.2.4
 
-## Live Demo
 
-TBA
+## Live Version 
+  [Social media app](https://fathomless-scrubland-44931.herokuapp.com)
 
+## Author
 
-## Getting Started
+**Oscar Mier**
+- Github: [@voscarmv](https://github.com/voscarmv)
+- Twitter: [@voscarmv](https://twitter.com/voscarmv)
+- Linkedin: [Oscar Mier](https://www.linkedin.com/in/oscar-mier-072984196/) 
 
-To get a local copy up and running follow these simple example steps.
-
-### Prerequisites
-
-Ruby: 2.6.3
-Rails: 5.2.3
-Postgres: >=9.5
-
-### Setup
-
-Instal gems with:
-
-```
-bundle install
-```
-
-Setup database with:
-
-```
-   rails db:create
-   rails db:migrate
-```
-
-
-
-### Usage
-
-Start server with:
-
-```
-    rails server
-```
-
-Open `http://localhost:3000/` in your browser.
-
-### Run tests
-
-```
-    rpsec --format documentation
-```
-
-> Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
-
-### Deployment
-
-TBA
-
-## Authors
-
-TBA
+**Alexis Sanchez**
+- Github: [@Psiale](https://github.com/Psiale)
+- Twitter: [@TFH_](https://twitter.com/TFH_)
+- Linkedin: [Alexis Sanchez](https://www.linkedin.com/in/alexis-sanchez-dev/)
 
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the [issues page](issues/).
+Feel free to check the [issues page](https://github.com/Psiale/RoR-Blog-App/issues).
 
 ## Show your support
 
@@ -77,9 +42,10 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-TBA
+- Thanks to [Microverse](www.microverse.org) for the opportunity.
+- Thanks to [The Odin Project](https://www.theodinproject.com/) for the guidance.
+
 
 ## 📝 License
 
-TBA
-
+This project is MIT licensed.
