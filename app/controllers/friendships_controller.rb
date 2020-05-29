@@ -10,6 +10,7 @@ class FriendshipsController < ApplicationController
   end
 
   def accept
-    @friendship = current_user.friendships.build(friend_id: params[:user_id])
+    current_user.confirm_friend(User.find_by(id: params[:user_id]))
+    redirect_to users_path
   end
 end

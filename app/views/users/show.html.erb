@@ -1,14 +1,16 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %> </h2>
-  
- 
-  <% if current_user.pending_friends.include?(@user) && !current_user.friend?(@user) %>
-  <p> You have sent a friend request to this user </p>
-
+   <% if current_user.friend?(@user)  %>
+  <p> Friend </p>
+  <% elsif current_user.pending_friends.include?(@user) %>
+   <p>Already sent request</p>
+  <% elsif current_user.friend_requests.include?(@user)%>
+  <%= link_to 'Confirm',accept_path(user_id: @user.id), method: :post%>
+  <% elsif current_user == @user %>
+  <p>Your Profile</p>
   <% elsif !current_user.friend?(@user) && current_user != @user %>
   <%=  link_to('Add Friend', friendships_path(user_id: @user.id), method: :post) %>
-  <% else %>
-  <p>Your Profile</p>
+  
   <% end %>
    
   
