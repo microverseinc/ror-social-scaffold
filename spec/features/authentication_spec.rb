@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'spec_helper'
 
 feature 'the sigup process' do
   before(:example) do
@@ -44,15 +45,9 @@ end
 
 feature 'signing in as an existing user' do
   before(:example) do
-    visit '/users/sign_up'
-    fill_in 'user_name', with: 'testing'
-    fill_in 'user_email', with: 'test@gmail.com'
-    fill_in 'user_password', with: '123456'
-    fill_in 'user_password_confirmation', with: '123456'
-    click_on 'Sign up'
-    click_on 'Sign out'
+    FactoryBot.create(:user)
     visit '/users/sign_in'
-    fill_in 'user_email', with: 'test@gmail.com'
+    fill_in 'user_email', with: 'apple@gmail.com'
     fill_in 'user_password', with: '123456'
     click_on 'Log in'
   end
