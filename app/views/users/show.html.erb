@@ -2,10 +2,13 @@
   <h2><%= "Name: #{@user.name}" %></h2>
   <span class="profile-link">
     <%unless current_user.friends?(@user)%>
-    <%= link_to 'Add friend',  add_friend_path(@user), class: 'profile-link' %>
+    <p><%=current_user.friendship_status(@user)%></p>
     <%else%>
-    <p>Friends</p>
+    <%= link_to 'Add friend',  add_friend_path(@user), method: :post, class: 'profile-link', data: { confirm: "You sure?" } %>
     <%end%>
+  </span>
+  <span class="profile-link">
+    <%= link_to 'Check your sent friend request', pending_path, class: 'profile-link'%>
   </span>
   <article class="timeline">
     <h3>Recent posts:</h3>

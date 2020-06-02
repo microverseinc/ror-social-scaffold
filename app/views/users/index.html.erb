@@ -5,10 +5,10 @@
       Name: <%= user.name %>
       <span class="profile-link">
         <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-        <%unless current_user.friends?(@user)%>
-        <%= link_to 'Add friend',  add_friend_path(user), class: 'profile-link' %>
+        <%unless current_user.friends?(user)%>
+        <p><%=current_user.friendship_status(user)%></p>
         <%else%>
-        <p>Friends</p>
+        <%= link_to 'Add friend',  add_friend_path(user), method: :post, class: 'profile-link', data: { confirm: "You sure?" } %>
         <%end%>
       </span>
     </li>

@@ -22,12 +22,28 @@ class User < ApplicationRecord
     pending_list.compact
   end
 
-  def requested_list
+  def request_list
     requested_list = inverse_friendship.map { |f| f.user unless f.status }
     requested_list.compact
   end
 
+  def friendship_status(user)
+    if request_list.include?(user)
+      'You have a pending friend request from this user'
+    elsif pending_list.include?(user)
+      'You have already requested this user to be your friend'
+    elsif my_self?(user)
+      ''
+    else
+      'Friends'
+    end
+  end
+
   def friends?(user)
     friends_list.include?(user)
+  end
+
+  def my_self?(user)
+    self == user
   end
 end
