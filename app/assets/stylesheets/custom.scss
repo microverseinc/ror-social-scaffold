@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap');
 
 $primary-color-dark: #689f38;
 $primary-color: #8bc34a;
@@ -16,7 +16,7 @@ $divider-color: #bdbdbd;
 body {
   background: #fff;
   position: relative;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 400;
 }
 
@@ -33,6 +33,13 @@ ul {
 a {
   text-decoration: none;
   color: $primary-color-text;
+}
+
+.user-button {
+  padding: 0.5rem;
+  margin: 0 10px;
+  background-color: $primary-color;
+  border-radius: 10px;
 }
 
 .nav {
@@ -119,7 +126,7 @@ form {
       background-color: $primary-color-light;
     }
 
-    input[type="checkbox"] {
+    input[type='checkbox'] {
       width: fit-content;
     }
   }
@@ -129,7 +136,7 @@ form {
     justify-content: center;
     margin: 8px 0;
   }
-  input[type="submit"] {
+  input[type='submit'] {
     padding: 8px;
     width: 50%;
     border: none;
@@ -143,13 +150,13 @@ form {
     }
   }
 
-  input[type="submit"]:hover {
+  input[type='submit']:hover {
     background-color: $primary-color;
     color: #fff;
   }
 
   .actions.reset {
-    input[type="submit"] {
+    input[type='submit'] {
       width: 100%;
     }
   }
@@ -172,7 +179,7 @@ form {
 }
 
 .new_post,
-.new_comment{
+.new_comment {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -244,7 +251,7 @@ form {
   .post-liking {
     float: right;
 
-    a{
+    a {
       color: $primary-color-dark;
       font-weight: bold;
       font-size: 0.9em;
@@ -274,7 +281,7 @@ form {
       padding: 10px;
 
       p {
-        font-size: .8em;
+        font-size: 0.8em;
         width: 90%;
       }
       span {
@@ -304,7 +311,6 @@ form {
       text-decoration: underline;
     }
   }
-
 }
 
 .user-section {

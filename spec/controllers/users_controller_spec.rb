@@ -17,23 +17,20 @@ RSpec.describe UsersController, type: :controller do
 
   describe 'GET #show' do
     it 'Renders user show page' do
-      get :show, params: {id: @user.id}
+      get :show, params: { id: @user.id }
       expect(response).to be_successful
       expect(response).to render_template(:show)
       expect(response).to have_http_status(200)
     end
     context 'If user does not exis' do
       it 'is not a success' do
-      begin
-        get :show, params: {id: -1}
-      rescue 
-        
-         ActiveRecord::RecordNotFound
-        
-      end
-      expect(response).not_to render_template(:show)
+        begin
+          get :show, params: { id: -1 }
+        rescue StandardError
+          ActiveRecord::RecordNotFound
+        end
+        expect(response).not_to render_template(:show)
       end
     end
   end
-
 end
