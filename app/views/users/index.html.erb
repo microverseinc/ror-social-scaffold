@@ -7,9 +7,10 @@
           <%= link_to user.name,  user_path(user), class: 'profile-link' %>
           <% if current_user.friend?(user)  %>
           <%= link_to 'Remove Friend',friendship_path(id: current_user.id, user_id: user.id), method: :delete, class: 'user-button'%>
-          &nbsp; This is your Friend
+          &nbsp; You are Friends
           <% elsif current_user.pending_friends.include?(user) %>
            &nbsp; Request Pending
+          <%= link_to 'Cancel Request',cancel_path(user_id: user.id), method: :post, class: 'user-button'%>
           <% elsif current_user.friend_requests.include?(user)%>
           <%= link_to 'Confirm',accept_path(user_id: user.id), method: :post, class: 'user-button'%>
           <%= link_to 'Reject',reject_path(user_id: user.id), method: :post, class: 'user-button'%>

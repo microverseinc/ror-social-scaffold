@@ -2,15 +2,17 @@
   <h2><%= "Name: #{@user.name}" %> </h2>
    <% if current_user.friend?(@user)  %>
    <%= button_to 'Remove Friend',friendship_path(user_id: @user.id), method: :delete%>
-  <p> Friend </p>
+  <p> You are Friends </p>
   <% elsif current_user.pending_friends.include?(@user) %>
-   <p>Already sent request</p>
+   <p>Request Pending</p>
+   <%= button_to 'Cancel Request',cancel_path(user_id: @user.id), method: :post%>
+
   <% elsif current_user.friend_requests.include?(@user)%>
   <%= button_to 'Confirm',accept_path(user_id: @user.id), method: :post%>
   <%= button_to 'Reject',reject_path(user_id: @user.id), method: :post%>
 
   <% elsif current_user == @user %>
-  <p>Your Profile</p>
+  <p>This is You</p>
   <% elsif !current_user.friend?(@user) && current_user != @user %>
   <%=  button_to('Add Friend', friendships_path(user_id: @user.id), method: :post) %>
   

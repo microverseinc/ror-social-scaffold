@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 # rubocop:disable Metrics/BlockLength
-feature 'Adding and Removing Freinds' do
+feature 'Adding and Removing Friends' do
   before(:example) do
     FactoryBot.create(:user)
     FactoryBot.create(:user, email: 'apple2@gmail.com', name: 'User2')
@@ -18,7 +18,7 @@ feature 'Adding and Removing Freinds' do
 
   scenario 'Indicates if user page visited belongs to logged in user' do
     click_on 'User1'
-    expect(page).to have_content 'Your Profile'
+    expect(page).to have_content 'This is You'
   end
 
   scenario 'Gives option to add friend if user is not a freind' do
@@ -30,7 +30,7 @@ feature 'Adding and Removing Freinds' do
     click_on 'User2'
     click_on 'Add Friend'
     click_on 'User2'
-    expect(page).to have_content 'Already sent request'
+    expect(page).to have_content 'Request Pending'
   end
 
   scenario 'Can view confirmation, confirm freind and remove friend' do

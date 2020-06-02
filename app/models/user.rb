@@ -38,6 +38,11 @@ class User < ApplicationRecord
     friendship.destroy
   end
 
+  def cancel_request(user)
+    friendship = friendships.find { |ship| ship.friend == user }
+    friendship.destroy
+  end
+
   def friend?(user)
     friends.include?(user)
   end
