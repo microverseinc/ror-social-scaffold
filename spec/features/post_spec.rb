@@ -27,4 +27,10 @@ feature 'Post actions' do
     click_on 'Like!'
     expect(page).to have_content 'Dislike!'
   end
+
+  scenario 'Dislike a post' do
+    click_on 'Like!'
+    click_on 'Dislike!'
+    expect(page).to have_content 'Like!'
+  end
 end

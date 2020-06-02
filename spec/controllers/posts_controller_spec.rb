@@ -16,7 +16,7 @@ RSpec.describe PostsController, type: :controller do
     end
   end
 
-  describe 'Post #crete of post' do
+  describe 'Post #create of post' do
       context 'with valid params' do
       it 'creates a new post' do
         post :create, params: {post: {content: 'sjdjsbdjdjkkksnkcj'} }
