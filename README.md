@@ -2,14 +2,21 @@
 
 [![hire-badge](https://img.shields.io/badge/Consult%20/%20Hire%20Shabab-Click%20to%20Contact-brightgreen)](mailto:shababsaifi@gmail.com) [![Twitter Follow](https://img.shields.io/twitter/follow/shabab_ali?label=Follow%20Shabab%20on%20Twitter&style=social)](https://twitter.com/shabab_ali)
 
-# Private Events
+# Social Media Project
 
-> In this project, we designed an [ERD diagram](https://github.com/ikraamg/Social-Media/blob/milestone1/docs/Social%20Media%20ERD.pdf) which visually displays the database schema and structure.
+> In this project, we first designed an [ERD diagram](https://github.com/ikraamg/Social-Media/blob/milestone1/docs/Social%20Media%20ERD.pdf) which visually displays the database schema and structure.
+> We then added a friendship functionality using self-referencial relationships to the forked repositry.
+> Finally, we added 51 tests. Including rspec unit tests for the models, rspec controller tests and then capybara integration tests.
 
 ## Built With
 
 - Ruby v2.7.0
 - Ruby on Rails v5.2.4.2
+- Gems used for testing: Capybara, Rspec-Rails, Shoulda-matchers and FactoryBot.
+
+## Live Demo
+
+TBA
 
 ## Getting Started
 
@@ -27,10 +34,10 @@ To get a local copy up and running follow these steps:
 - Fork/Clone this project to your local machine
 - Open folder in your local enviroment and run thes lines of code to get started:
 
-Instal gems with:
+Install gems with:
 
 ```Ruby
-bundle install
+    bundle install
 ```
 
 Setup database with:
@@ -46,7 +53,17 @@ Start server with:
     rails server
 ```
 
-- Open a web page and go to [port 3000 on your local machine.](http://localhost:3000)
+Then open a web page and go to [port 3000 on your local machine.](http://localhost:3000)
+
+### Running tests
+
+```Ruby
+    bundle exec rpsec --format documentation
+```
+
+### Deployment
+
+TBA
 
 ## Authors
 
