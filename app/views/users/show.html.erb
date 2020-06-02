@@ -1,16 +1,16 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %> </h2>
    <% if current_user.friend?(@user)  %>
-   <%= link_to 'Remove Friend',friendship_path(user_id: @user.id), method: :delete%>
+   <%= button_to 'Remove Friend',friendship_path(user_id: @user.id), method: :delete%>
   <p> Friend </p>
   <% elsif current_user.pending_friends.include?(@user) %>
    <p>Already sent request</p>
   <% elsif current_user.friend_requests.include?(@user)%>
-  <%= link_to 'Confirm',accept_path(user_id: @user.id), method: :post%>
+  <%= button_to 'Confirm',accept_path(user_id: @user.id), method: :post%>
   <% elsif current_user == @user %>
   <p>Your Profile</p>
   <% elsif !current_user.friend?(@user) && current_user != @user %>
-  <%=  link_to('Add Friend', friendships_path(user_id: @user.id), method: :post) %>
+  <%=  button_to('Add Friend', friendships_path(user_id: @user.id), method: :post) %>
   
   <% end %>
    

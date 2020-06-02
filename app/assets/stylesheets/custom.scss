@@ -138,6 +138,9 @@ form {
     color: $primary-color-light;
     text-transform: uppercase;
     font-weight: 900;
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   input[type="submit"]:hover {
@@ -294,10 +297,14 @@ form {
   }
 
   .profile-link {
-    font-size: 0.8em;
+    font-size: 1em;
     margin: 0 0 8px 0;
     color: $primary-color-dark;
+    &:hover {
+      text-decoration: underline;
+    }
   }
+
 }
 
 .user-section {
