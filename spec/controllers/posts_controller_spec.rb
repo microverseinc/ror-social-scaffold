@@ -17,23 +17,19 @@ RSpec.describe PostsController, type: :controller do
   end
 
   describe 'Post #create of post' do
-      context 'with valid params' do
+    context 'with valid params' do
       it 'creates a new post' do
-        post :create, params: {post: {content: 'sjdjsbdjdjkkksnkcj'} }
+        post :create, params: { post: { content: 'sjdjsbdjdjkkksnkcj' } }
         # expect(response).to be_successful
         expect(response).to redirect_to(posts_path)
         expect(response).to have_http_status(302)
       end
     end
-       context 'with invalid params' do
-        it 'renders new template' do
-          post :create, params: { post: {content:""} }
-          expect(response).to render_template(:index)
-          
-        end
-
-       end
-
+    context 'with invalid params' do
+      it 'renders new template' do
+        post :create, params: { post: { content: '' } }
+        expect(response).to render_template(:index)
+      end
+    end
   end
-
 end

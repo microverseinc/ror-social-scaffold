@@ -11,7 +11,7 @@ RSpec.describe CommentsController, type: :controller do
   describe 'Post #create of comments' do
     context 'with valid params' do
       it 'creates a new post' do
-        post :create, params: { comment: { post_id: @post.id, content: 'sjdjsbdjdjkkksnkcj', user_id: @user.id } }
+        post :create, params: { post_id: @post.id, user_id: @user.id, comment: { content: 'abcd' } }
         expect(response).to redirect_to(posts_path)
         expect(response).to have_http_status(302)
         expect(flash[:notice]).to match(/Comment was successfully created./)
@@ -19,10 +19,10 @@ RSpec.describe CommentsController, type: :controller do
     end
     context 'with invalid params' do
       it 'renders new template' do
-        post :create, params: { post_id: @post.id, content: '', user_id: @user.id }
+        post :create, params: { post_id: @post.id, user_id: @user.id, comment: { content: '' } }
         expect(response).to redirect_to(posts_path)
         expect(response).to have_http_status(302)
-        expect(flash[:alert]).to match(//)
+        expect(flash[:alert]).to match(/Content can't be blank/)
       end
     end
   end
