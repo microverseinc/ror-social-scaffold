@@ -178,6 +178,12 @@ form {
   text-transform: capitalize;
 }
 
+.comments {
+  background-color: $primary-color-light;
+  padding: 0.8em;
+  display: inline-block;
+  margin: 5px 5px;
+}
 .new_post,
 .new_comment {
   display: flex;

@@ -12,6 +12,8 @@
            &nbsp; Request Pending
           <% elsif current_user.friend_requests.include?(user)%>
           <%= link_to 'Confirm',accept_path(user_id: user.id), method: :post, class: 'user-button'%>
+          <%= link_to 'Reject',reject_path(user_id: user.id), method: :post, class: 'user-button'%>
+          
           <% elsif current_user == user %>
           &nbsp; This is you
           <% elsif !current_user.friend?(user) && current_user != user %>

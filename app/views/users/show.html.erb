@@ -7,6 +7,8 @@
    <p>Already sent request</p>
   <% elsif current_user.friend_requests.include?(@user)%>
   <%= button_to 'Confirm',accept_path(user_id: @user.id), method: :post%>
+  <%= button_to 'Reject',reject_path(user_id: @user.id), method: :post%>
+
   <% elsif current_user == @user %>
   <p>Your Profile</p>
   <% elsif !current_user.friend?(@user) && current_user != @user %>
