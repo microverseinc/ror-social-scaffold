@@ -3,9 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # core
 ruby '~> 2.6'
+gem 'devise'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2'
-gem 'devise'
 
 # assets
 gem 'coffee-rails', '~> 4.2'
@@ -18,16 +18,16 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'turbolinks', '~> 5'
 
 group :development, :test do
-  gem 'sqlite3'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'sqlite3'
 end
 
 group :test do
-  gem 'rspec-rails'
   gem 'capybara'
+  gem 'database_cleaner'
+  gem 'rspec-rails'
   gem 'selenium-webdriver'
   gem 'webdrivers'
-  gem 'database_cleaner'
 end
 
 group :development do
