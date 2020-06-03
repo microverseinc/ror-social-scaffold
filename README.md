@@ -18,15 +18,29 @@
 ## Features
 
 <ul>
-  <li>Visitor can see events and make an account</li>
-  <li>Users can publish events and join in others</li>
-  <li>Each section has the properly page to display the informations</li>
+  <p>As a guest your can: </p>
+  <li>Create account and make login</li>
+  <li>Display properly content</li>
+</ul>
+
+<ul>
+  <p>As a logged-in user: </p>
+  <li>See other people profiles with they posts</li>
+  
+  <li>Send friendship invitations</li>
+  <li>See pending friendships and accept/reject</li>
+  
+  <li>Create posts and leave comments</li>  
+  <li>leave like/dislike once at any post</li>
+  
+  <li>Have a timeline with all friends posts</li>
 </ul>
 
 ## Built With
 
 - Ruby 2.7 <br>
 - Ruby on Rails 5.2 <br>
+- Postgres and Devise gem (AOT)
 - Rubocop (Linter) with Stickler (CI Tool) <br>
 - Git, Github and VScode <br>
 
@@ -50,7 +64,7 @@ Otherwise just hit (Download Zip) on green button (Clone or Download) at top of 
 
 #### Setup
 
-Instal gems with:
+Instal all dependencies with:
 
 ```
 bundle install
@@ -71,13 +85,12 @@ Now you can go to your favorite web browser like Google Crome and access the url
 <br> http://localhost:3000
 
 
-#### Test (remove before merge)
+#### Test (Remove before merge!)
 On terminal type:
 ```
 rake db:test:load
 ```
-
-to run the tests
+It will create database for testing, to run the tests:
 ```
 rspec
 ```
