@@ -7,39 +7,41 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 20 }
 
   has_many :friendships
-  has_many :inverse_friendships, class_name: 'Friendship',
-                                 foreign_key: 'friend_id'
+  has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
+
+
+  has_many :confirmed_friendships, -> { where(status: true) }, class_name: 'Friendship'
+  has_many :accepted_friendships, -> { where(status: true) }, class_name: 'Friendship',foreign_key: 'friend_id'
+  
+  has_many :friendship_requests, -> { where(status: nil) }, class_name: 'Friendship', foreign_key: 'user_id'
+  has_many :requested_friendships, -> { where(status: nil) }, class_name: 'Friendship', foreign_key: 'friend_id'
 
   has_many :posts
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
+  scope :all_users_except_me, ->(user) { where.not(id: user) }
+  
+  def effective_friendship
+    return confirmed_friendships + accepted_friendships
+  end
+
   def friends
-    friends_array = friendships
-      .map { |friendship| friendship.friend if friendship.confirmed }
-
-    friends_array += inverse_friendships
-      .map { |friendship| friendship.user if friendship.confirmed }
-    friends_array.compact
+    friends = []
+    effective_friendship.each {|f| confirmed_friendships.include?(f) ? friends<<f.friend : friends << f.user }
+    friends
   end
 
-  def pending_friends
-    friendships
-      .map { |friendship| friendship.friend unless friendship.confirmed }.compact
+  def is_friend(user)
+    friends.include?(user) ? true : false
   end
 
-  def friend_requests
-    inverse_friendships
-      .map { |friendship| friendship.user unless friendship.confirmed }.compact
+  def is_friendship_requested(user)
+    pending_requests = friendship_requests + requested_friendships
+    pending_requests.any?{|f| f.user_id==user.id || f.friend_id==user.id}
   end
 
-  def confirm_friend(user)
-    friendship = inverse_friendships.find { |f| f.user == user }
-    friendship.confirmed = true
-    friendship.save
-  end
-
-  def friend?(user)
-    friends.include?(user)
+  def is_demanding(user)
+    friendship_requests.any?{|f| f.friend_id==user.id}
   end
 end
