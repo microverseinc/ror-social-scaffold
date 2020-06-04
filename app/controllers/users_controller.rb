@@ -31,6 +31,4 @@ class UsersController < ApplicationController
     current_user.reject_friend(friendship_sender)
     redirect_to :users
   end
-
-  
 end

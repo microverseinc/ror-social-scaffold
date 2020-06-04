@@ -18,9 +18,8 @@ class User < ApplicationRecord
   def timeline
     friends_ids = []
     friends.each { |friend| friends_ids << friend.id }
-    Post.where( user_id: (friends_ids + [id]))
+    Post.where(user_id: (friends_ids + [id]))
   end
-
 
   def friends
     friends_array = friendships
@@ -46,11 +45,11 @@ class User < ApplicationRecord
     friendship.status = true
     friendship.save
   end
-  
+
   def reject_friend(user)
-      friendship = inverse_friendships.find { |f| f.user == user }
-      friendship.destroy
-    end
+    friendship = inverse_friendships.find { |f| f.user == user }
+    friendship.destroy
+  end
 
   def friend?(user)
     friends.include?(user)

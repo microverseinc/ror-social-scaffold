@@ -44,11 +44,11 @@ group :development, :test do
 end
 
 group :test do
+  gem 'capybara'
   gem 'rspec'
   gem 'rspec-rails'
-  gem 'shoulda-matchers'
-  gem 'capybara'
   gem 'selenium-webdriver'
+  gem 'shoulda-matchers'
   gem 'webdrivers'
 end
 
