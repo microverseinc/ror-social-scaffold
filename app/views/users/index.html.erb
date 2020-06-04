@@ -2,10 +2,10 @@
   <ul class="users-list">
     <% @users.each do |user| %>
     <li>
-      Name: <%= user.name %>
+      <p>Name: <%= user.name %></p>
       <span class="profile-link">
         <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-        <%unless current_user.friends?(user)%>
+        <%if current_user.status?(user)%>
         <p><%=current_user.friendship_status(user)%></p>
         <%else%>
         <%= link_to 'Add friend',  add_friend_path(user), method: :post, class: 'profile-link', data: { confirm: "You sure?" } %>

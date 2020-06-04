@@ -23,6 +23,6 @@ user = User.first
 10.times do |n|
   if user.id != n + 1
     friend = n + 1
-    user.friendships.create!(friend_id: friend)
+    user.friendships.create(friend_id: friend)
   end
 end

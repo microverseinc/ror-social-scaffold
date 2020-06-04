@@ -16,6 +16,7 @@ class FriendshipsController < ApplicationController
     friend_relation = @user.inverse_friendship.find_by(user_id: params[:id])
     friend_relation.status = true
     friend_relation.save
+    redirect_to root_path
   end
 
   private

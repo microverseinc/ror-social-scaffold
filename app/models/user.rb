@@ -39,6 +39,11 @@ class User < ApplicationRecord
     end
   end
 
+  def status?(user)
+    status_list = pending_list + request_list + friends_list << self
+    status_list.include?(user)
+  end
+
   def friends?(user)
     friends_list.include?(user)
   end
