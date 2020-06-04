@@ -1,8 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
 
   validates :name, presence: true, length: { maximum: 20 }
 
@@ -43,5 +42,11 @@ class User < ApplicationRecord
 
   def is_demanding(user)
     friendship_requests.any?{|f| f.friend_id==user.id}
+  end
+
+  def my_timeline
+    friend_ids = []
+    friends.each{|f| friend_ids<<f.id }
+    Post.where(user: (friend_ids + [id]))
   end
 end
