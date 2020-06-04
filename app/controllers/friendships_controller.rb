@@ -1,17 +1,21 @@
 class FriendshipsController < ApplicationController
   require 'will_paginate/array'
-  before_action :actual_user
 
+  before_action :actual_user
+  # method that gives the list of friend requests send to the user
   def requests
     @requests = @user.request_list.paginate(page: params[:page], per_page: 30)
   end
 
+  # method that gives the list of friend requests that the user has sent
   def pending
     @pendings = @user.pending_list.paginate(page: params[:page], per_page: 30)
   end
 
   def status
-    @user.friendships.find_by(friend_id: params[:id]).update(status: true)
+    friend_relation = @user.inverse_friendship.find_by(user_id: params[:id])
+    friend_relation.status = true
+    friend_relation.save
   end
 
   private

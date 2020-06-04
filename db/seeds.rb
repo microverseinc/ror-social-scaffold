@@ -18,20 +18,11 @@ User.create!(name: 'test1',
                password: password)
 end
 
-users = User.order(:created_at).take(6)
+user = User.first
 
 10.times do |n|
-  users.each do |user|
-    content = Faker::Date.between(from: 2.days.ago, to: 2.days.from_now)
-    location = "#{user.name}'s house #{n + 1}"
-    user.created_events.create!(date: date, location: location)
-  end
-end
-
-events = Event.all
-
-events.each do |event|
-  users.each do |user|
-    user.attended_events << event
+  if user.id != n + 1
+    friend = n + 1
+    user.friendships.create!(friend_id: friend)
   end
 end
