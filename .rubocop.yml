@@ -28,15 +28,15 @@ Metrics/BlockLength:
   ExcludedMethods: ['describe']
   Max: 30
 Lint/RaiseException:
-  Enabled: false
+  Enabled: true
 Lint/StructNewOverride:
-  Enabled: false
+  Enabled: true
 Style/HashEachMethods:
-  Enabled: false
+  Enabled: true
 Style/HashTransformKeys:
-  Enabled: false
+  Enabled: true
 Style/HashTransformValues:
-  Enabled: false
+  Enabled: true
 Style/Documentation:
   Enabled: false
 Style/ClassAndModuleChildren:
