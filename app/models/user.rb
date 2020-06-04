@@ -8,10 +8,9 @@ class User < ApplicationRecord
   has_many :friendships
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
 
-
   has_many :confirmed_friendships, -> { where(status: true) }, class_name: 'Friendship'
-  has_many :accepted_friendships, -> { where(status: true) }, class_name: 'Friendship',foreign_key: 'friend_id'
-  
+  has_many :accepted_friendships, -> { where(status: true) }, class_name: 'Friendship', foreign_key: 'friend_id'
+
   has_many :friendship_requests, -> { where(status: nil) }, class_name: 'Friendship', foreign_key: 'user_id'
   has_many :requested_friendships, -> { where(status: nil) }, class_name: 'Friendship', foreign_key: 'friend_id'
 
@@ -20,40 +19,43 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   scope :all_users_except_me, ->(user) { where.not(id: user) }
 
-  def timeline
-    friends_ids = []
-    friends.each { |friend| friends_ids << friend.id }
-    Post.where(user_id: (friends_ids + [id]))
-  end
-
-  scope :all_users_except_me, ->(user) { where.not(id: user) }
-  
   def effective_friendship
-    return confirmed_friendships + accepted_friendships
+    confirmed_friendships + accepted_friendships
   end
 
   def friends
     friends = []
-    effective_friendship.each {|f| confirmed_friendships.include?(f) ? friends<<f.friend : friends << f.user }
+    effective_friendship.each { |f| friends << (confirmed_friendships.include?(f) ? f.friend : f.user) }
     friends
   end
 
-  def is_friend(user)
-    friends.include?(user) ? true : false
+  def friend?(user)
+    friends.include?(user)
   end
 
-  def is_friendship_requested(user)
+  def friendship_requested?(user)
     pending_requests = friendship_requests + requested_friendships
-    pending_requests.any?{|f| f.user_id==user.id || f.friend_id==user.id}
+    pending_requests.any? { |f| f.user_id == user.id || f.friend_id == user.id }
   end
 
-  def is_demanding(user)
-    friendship_requests.any?{|f| f.friend_id==user.id}
+  def demanding?(user)
+    friendship_requests.any? { |f| f.friend_id == user.id }
+  end
+
+  def confirm_friend(user)
+    friendship = inverse_friendships.find { |f| f.user == user }
+    friendship.status = true
+    friendship.save
+  end
+
+  def reject_friend(user)
+    friendship = inverse_friendships.find { |f| f.user == user }
+    friendship.destroy
   end
 
   def my_timeline
     friend_ids = []
-    friends.each{|f| friend_ids<<f.id }
+    friends.each { |f| friend_ids << f.id }
     Post.where(user: (friend_ids + [id]))
   end
 end
