@@ -1,7 +1,7 @@
 # Stay in touch
 > A social media app where you can have friends, make posts, comment and drop likes.
 
-![screenshot](screenshot.png)
+![screenshot](docs/screenshot.png)
 
 <br>The main point on this project is to practice industry standards to implement new features on existing applications.<br>
 
@@ -9,6 +9,7 @@
 
 * [Features](#features)
 * [Built With](#built-with)
+* [Database Diagram](#database-diagram)
 * [Getting Start](#getting-start)
 * [Contributing](#contributing)
 * [Acknowledgments](#acknowledgments)
@@ -44,6 +45,9 @@
 - Rubocop (Linter) with Stickler (CI Tool) <br>
 - Git, Github and VScode <br>
 
+## Database Diagram
+![erd](docs/diagram.png)
+
 
 ## Getting Start
 
@@ -73,7 +77,7 @@ bundle install
 Setup database with:
 
 ```
-db:schema:load
+rake db:schema:load
 ```
 
 #### Run App
