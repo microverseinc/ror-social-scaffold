@@ -27,18 +27,17 @@ Postgres: >=9.5
 
 ### Setup
 
-Instal gems with:
+- Clone the repository on your local machine
+- cd into the folder
+- install the the bundles with the `bundle` or `bundle install` command. If you are asked to do `bundle update` before, do it.
+- Set up the database using `rake db:migrate` or `rails db:migrate`
 
-```
-bundle install
-```
+### Install
 
-Setup database with:
+- Install VSCode or any code editor you like
+- Install Ruby on rails 5.1.6 or later if you don't have it yet
+- Run this command on your terminal in order to install rubocop: gem install rubocop 
 
-```
-   rails db:create
-   rails db:migrate
-```
 
 
 
@@ -66,7 +65,16 @@ TBA
 
 ## Authors
 
-TBA
+
+👤 **Manezeu Patricia Chrystelle**
+- Github: [@githubhandle](https://github.com/patriciachrysy)
+- Twitter: [@twitterhandle](https://twitter.com/ManezeuP)
+- Linkedin: [linkedin](https://www.linkedin.com/in/manezeu-patricia-chrystelle-095072118/)
+
+👤 **Stefan Dili**
+- Github: [@githubhandle](https://github.com/dili021)
+- Twitter: [@twitterhandle](https://twitter.com/DiliStefan)
+- Linkedin: [linkedin](https://www.linkedin.com/in/stefan-dili/)
 
 ## 🤝 Contributing
 
@@ -77,12 +85,4 @@ Feel free to check the [issues page](issues/).
 ## Show your support
 
 Give a ⭐️ if you like this project!
-
-## Acknowledgments
-
-TBA
-
-## 📝 License
-
-TBA
 
