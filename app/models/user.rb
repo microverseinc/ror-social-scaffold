@@ -18,6 +18,13 @@ class User < ApplicationRecord
   has_many :posts
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+  scope :all_users_except_me, ->(user) { where.not(id: user) }
+
+  def timeline
+    friends_ids = []
+    friends.each { |friend| friends_ids << friend.id }
+    Post.where(user_id: (friends_ids + [id]))
+  end
 
   scope :all_users_except_me, ->(user) { where.not(id: user) }
   

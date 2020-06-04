@@ -1,0 +1,20 @@
+<span class='profile-link'>
+  <%= link_to 'Accept friendship', 
+                                       {controller: :users, 
+                                       action: :accept_friendship,
+                                       id: user.id},
+                                       method: :post,
+                                       class: 'profile-link'
+                                                       %>
+          
+</span>
+<span class='profile-link'>
+  <%= link_to 'Reject friendship', 
+                                       {controller: :users, 
+                                       action: :reject_friendship,
+                                       id: user.id},
+                                       method: :delete,
+                                       class: 'profile-link'
+                                                       %>
+          
+</span>

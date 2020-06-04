@@ -1,0 +1,10 @@
+<span class='profile-link'>
+  <%= link_to 'Invite friend', 
+                                       {controller: :users, 
+                                       action: :request_friendship,
+                                       id: user.id},
+                                       method: :post,
+                                       class: 'profile-link'
+                                                       %>
+          
+</span>
