@@ -4,11 +4,20 @@ class FriendshipsController < ApplicationController
   end
 
   def create
-    # user A requests to be a friend of user B
-    # User B must accept it later
-    @friendship = current_user.friendships.build(friend_id: params[:id])
-    @friendship.save
-    redirect_to root_path
+    # error
+    @friendship = Friendship.new(
+      friend_id: params[:id], user_id: current_user
+    )
+
+    if @friendship.save
+      puts '-----------------------'
+      puts 'ACERTOU'
+      puts '-----------------------'
+    else
+      puts '-----------------------'
+      puts 'ERROU'
+      puts '-----------------------'
+    end
   end
 
   def destroy

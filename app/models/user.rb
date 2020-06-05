@@ -10,5 +10,5 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
 
   has_many :friendships
-  has_many :user_friends, :class_name => "friendship", :foreign_key => "friend_id"
+  has_many :user_friends, class_name: 'friendship', foreign_key: 'friend_id'
 end
