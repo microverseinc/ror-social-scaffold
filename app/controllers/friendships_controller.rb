@@ -20,7 +20,7 @@ class FriendshipsController < ApplicationController
   end
 
   def friendship_delete
-    friend_relation = @user.inverse_friendship.find_by(user_id: params[:id]).destroy
+    @user.inverse_friendship.find_by(user_id: params[:id]).destroy
     redirect_to requests_path
   end
 
