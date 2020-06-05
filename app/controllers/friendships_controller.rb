@@ -1,4 +1,8 @@
 class FriendshipsController < ApplicationController
+  def index
+    @friend_list = current_user.friendships.all
+  end
+
   def create
     # user A requests to be a friend of user B
     # User B must accept it later
