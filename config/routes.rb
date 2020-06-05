@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/user/pending', to: 'friendships#pending', as: 'pending'
   get '/user/requests', to: 'friendships#requests', as: 'requests'
   post '/user/requests/:id', to: 'friendships#status', as: 'status'
+  delete '/user/requests/:id', to: 'friendships#friendship_delete', as: 'friendship_delete'
   resources :posts, only: %i[index create] do
     resources :comments, only: [:create]
     resources :likes, only: %i[create destroy]
