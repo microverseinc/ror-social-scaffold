@@ -34,7 +34,8 @@ class UsersController < ApplicationController
   end
 
   def already_sent?
-    retunr unless (fstatus = current_user.status?(find_user))
+    return unless (fstatus = current_user.status?(find_user))
+
     flash[:warnign] = fstatus
     redirect_to User_path(current_user)
   end

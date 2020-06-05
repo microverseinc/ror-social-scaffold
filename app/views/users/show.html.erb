@@ -12,10 +12,12 @@
     <%= link_to 'Check your sent friend request', pending_path, class: 'profile-link'%>
     <%end%>
   </span>
+  <%if current_user.friends?(@user)||current_user.my_self?(@user)%>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
       <%= render @posts %>
     </ul>
   </article>
+  <%end%>
 </section>
