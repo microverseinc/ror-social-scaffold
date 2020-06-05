@@ -26,8 +26,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-gem 'will_paginate', '~> 3.3'
 gem 'faker', '~> 2.10', '>= 2.10.1'
+gem 'will_paginate', '~> 3.3'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
@@ -47,8 +47,8 @@ group :development, :test do
 end
 
 group :test do
-  gem 'rspec'
   gem 'capybara'
+  gem 'rspec'
   gem 'selenium-webdriver'
 end
 

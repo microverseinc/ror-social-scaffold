@@ -1,4 +1,5 @@
 require 'rails_helper'
+
 def log_in_with(email, password)
   visit new_user_session_path
 

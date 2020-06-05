@@ -27,20 +27,19 @@ class UsersController < ApplicationController
 
   def my_self?
     user = find_user
-    if current_user == user
-      flash[:warnign] = 'You cannot befriend yourself'
-      redirect_to users_path
-    end
+    return unless current_user == user
+
+    flash[:warnign] = 'You cannot befriend yourself'
+    redirect_to users_path
   end
 
   def already_sent?
-    if (fstatus = current_user.status?(find_user))
-      flash[:warnign] = fstatus
-      redirect_to User_path(current_user)
-    end
+    retunr unless (fstatus = current_user.status?(find_user))
+    flash[:warnign] = fstatus
+    redirect_to User_path(current_user)
   end
 
   def find_user
-    user = User.find_by(id: params[:id])
+    User.find_by(id: params[:id])
   end
 end
