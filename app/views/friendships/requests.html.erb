@@ -1,0 +1,6 @@
+<h1>Pending friend requests</h1>
+<p>You have recieved friend requests from the following users:</p>
+
+<%=will_paginate @requests%>
+<%=render partial: 'friendships/request', collection: @requests%>
+<%=will_paginate @requests%>

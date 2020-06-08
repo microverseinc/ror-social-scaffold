@@ -1,0 +1,5 @@
+<p><%=request.name%></p>
+<%= link_to "Accept friend request", status_path(request), method: :post,
+                                       data: { confirm: "You sure?" } %>
+<%= link_to "Reject friend request", friendship_delete_path(request), method: :delete,
+                                       data: { confirm: "You sure?" } %>

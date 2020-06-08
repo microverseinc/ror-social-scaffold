@@ -1,9 +1,23 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
+  <span class="profile-link">
+    <%if current_user.status?(@user)%>
+    <p><%=current_user.friendship_status(@user)%></p>
+    <%else%>
+    <%= link_to 'Add friend',  add_friend_path(@user), method: :post, class: 'profile-link', data: { confirm: "You sure?" } %>
+    <%end%>
+  </span>
+  <span class="profile-link">
+    <%if current_user.my_self?(@user)%>
+    <%= link_to 'Check your sent friend request', pending_path, class: 'profile-link'%>
+    <%end%>
+  </span>
+  <%if current_user.friends?(@user)||current_user.my_self?(@user)%>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
       <%= render @posts %>
     </ul>
   </article>
+  <%end%>
 </section>
