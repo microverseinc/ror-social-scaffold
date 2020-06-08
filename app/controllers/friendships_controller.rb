@@ -5,17 +5,7 @@ class FriendshipsController < ApplicationController
 
   def create
     # error
-    @friend = Friendship.new(friendship_params)
-
-    if @friend.save
-      puts '-----------------------'
-      puts 'ACERTOU'
-      puts '-----------------------'
-    else
-      puts '-----------------------'
-      puts 'ERROU'
-      puts '-----------------------'
-    end
+    @friend = Friendship.create(friendship_params)
   end
 
   def destroy
