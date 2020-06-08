@@ -1,7 +1,7 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
 
-  <%= button_to 'Add as Friend', 
+  <%= button_to 'Add Friend', 
     friendships_path(:friend_id => @user,
     :user_id => current_user),
     :method => :post %>
