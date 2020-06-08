@@ -5,11 +5,9 @@ class FriendshipsController < ApplicationController
 
   def create
     # error
-    @friendship = Friendship.new(
-      friend_id: params[:id], user_id: current_user
-    )
+    @friend = Friendship.new(friendship_params)
 
-    if @friendship.save
+    if @friend.save
       puts '-----------------------'
       puts 'ACERTOU'
       puts '-----------------------'
@@ -22,5 +20,10 @@ class FriendshipsController < ApplicationController
 
   def destroy
     @relationship = Friendship.find_by(user_id: current_user.id, friend_id: params[:id])
+  end
+
+  private
+  def friendship_params
+    params.permit(:user_id, :friend_id)
   end
 end
