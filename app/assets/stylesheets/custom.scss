@@ -106,7 +106,8 @@ form {
 
   .field {
     width: 100%;
-    padding: 8px 0px;
+    padding: 8px 0;
+
     label {
       margin-bottom: 8px;
     }
@@ -129,6 +130,7 @@ form {
     justify-content: center;
     margin: 8px 0;
   }
+
   input[type="submit"] {
     padding: 8px;
     width: 50%;
@@ -156,6 +158,7 @@ form {
       color: $primary-color-text;
       font-size: 1em;
     }
+
     ul {
       color: #f00;
     }
@@ -169,7 +172,7 @@ form {
 }
 
 .new_post,
-.new_comment{
+.new_comment {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -241,12 +244,13 @@ form {
   .post-liking {
     float: right;
 
-    a{
+    a {
       color: $primary-color-dark;
       font-weight: bold;
       font-size: 0.9em;
       margin: 0 4px;
     }
+
     .post-date {
       font-size: 0.6em;
     }
@@ -271,9 +275,10 @@ form {
       padding: 10px;
 
       p {
-        font-size: .8em;
+        font-size: 0.8em;
         width: 90%;
       }
+
       span {
         position: absolute;
         right: 3px;
@@ -310,9 +315,11 @@ form {
 
   .timeline {
     width: 100%;
+
     h3 {
       width: 100%;
     }
+
     justify-content: start;
   }
 }
