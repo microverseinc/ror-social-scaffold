@@ -3,6 +3,8 @@
     <div class='post-attribution' >
       <%= link_to post.user.name, user_path(post.user), class: 'post-author' %>
       <br><small> Comments ( <%= post.comments.size %> ) </small>
+      <small> Likes ( <%= post.likes.size %> ) </small>
+
       </div>
     <div class='post-liking'>
       <span class='post-date'> <%= post.created_at.strftime("%Y/%m/%d") %> </span>
