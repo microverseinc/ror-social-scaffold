@@ -17,14 +17,21 @@ describe Friendship do
   it { should belong_to(:friend) }
 
   it 'is valid with valid attributes' do
-    Friendship.create(user_id: 1, friend_id: 2)
     expect(subject).to be_valid
   end
 
-  it 'is no valid without valid attributes' do
-    Friendship.create(user_id: 1)
+  it 'is not valid if friend_id is nil' do
+    subject.friend_id = nil
     expect(subject).to_not be_valid
   end
 
-  
+  it 'is not valid if user_id is nil' do
+    subject.user_id = nil
+    expect(subject).to_not be_valid
+  end
+
+  it 'is invalid if the friendship already exists' do
+    Friendship.create(user_id: User.first.id, friend_id: User.last.id)
+    expect(subject).to_not be_valid
+  end
 end
