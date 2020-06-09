@@ -12,8 +12,11 @@ class FriendshipsController < ApplicationController
     @relationship = Friendship.find_by(user_id: current_user.id, friend_id: params[:id])
   end
 
-  private
+  def update
+    # TODO: change column to TRUE when accept
+  end
 
+  private
   def friendship_params
     params.permit(:user_id, :friend_id)
   end
