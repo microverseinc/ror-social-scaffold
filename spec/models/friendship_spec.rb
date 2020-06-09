@@ -7,7 +7,7 @@ describe Friendship do
   let(:name) { 'Franco' }
   let(:email) { 'franco@mail.com' }
   let(:password) { '123123' }
-  
+
   let!(:user2) { User.create(name: name, email: email, password: password) }
   let(:name) { 'Zak' }
   let(:email) { 'zak@mail.com' }
