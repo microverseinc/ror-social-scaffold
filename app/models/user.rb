@@ -14,24 +14,27 @@ class User < ApplicationRecord
   has_many :inverse_friendships, class_name: "Friendship", foreign_key: :friend_id
 
   def friends
-    friends = self.friendships.collect{ |x| x.friend_id if x.confirmed }
-    friends += self.inverse_friendships.collect{ |x| x.user_id if x.confirmed }
+    friends = friendships.collect{ |friend| friend.friend if friend.confirmed }
+    friends += inverse_friendships.collect{ |friend| friend.user if friend.confirmed }
     friends.compact
   end
 
-  # Users who have yet to confirme friend requests
   def pending_friends
+    new_friends = friendships.collect{|friend| friend.friend unless friend.confirmed }
+    new_friends.compact
   end
 
-  # Users who have requested to be friends
   def friend_requests
+    requests = inverse_friendships.collect{|friend| friend.friend unless friend.confirmed }
+    requests.compact
   end
 
   def confirm_friend(friend)
-    self.friendships.find_by(friend_id: friend[:id] ).update(confirmed: true)
+    friendships.find_by(friend_id: friend[:id] ).update(confirmed: true)
   end
 
   def friend?(user)
+    friends.include?(user)
   end
 
 end
