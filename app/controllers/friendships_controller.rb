@@ -12,7 +12,9 @@ class FriendshipsController < ApplicationController
   end
 
   def update
-    # TODO: change column to TRUE when accept
+    @friendship = Friendship.find_by(id: params[:id])
+    @friendship.update(acceptance: true)
+    render friendships_path
   end
 
   private
