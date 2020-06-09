@@ -1,6 +1,15 @@
+<h1> Sent Requests </h1>
+  <% @friend_list.each do |friend| %>
+    <% if friend.acceptance == false %>
+      Friend Name: <%= User.find_by(id: friend.friend_id).name %> </p>
+    <% end %>
+  <% end %>
+<br><br>
+
 <h1>Friends List</h1>
 
 <% @friend_list.each do |friend| %>
-  <p> Friends ID: <%= friend.friend_id %> </p>
-  <br>
+  <% if friend.acceptance == true %>
+    Friend Name: <%= User.find_by(id: friend.friend_id).name %> </p>
+  <% end %>
 <% end %>

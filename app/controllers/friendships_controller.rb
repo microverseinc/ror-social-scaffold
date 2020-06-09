@@ -4,7 +4,6 @@ class FriendshipsController < ApplicationController
   end
 
   def create
-    # error
     @friend = Friendship.create(friendship_params)
   end
 
