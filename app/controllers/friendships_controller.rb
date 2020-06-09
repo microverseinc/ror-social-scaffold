@@ -1,6 +1,7 @@
 class FriendshipsController < ApplicationController
   def index
-    @friend_list = current_user.friendships.all
+    # @friend_list = current_user.friendships.where('acceptance =?', true)
+    @friend_list = current_user.friendships.isfriend
   end
 
   def create
@@ -8,7 +9,9 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
-    @relationship = Friendship.find_by(user_id: current_user.id, friend_id: params[:id])
+    @relationship = Friendship.find_by(
+      user_id: current_user.id, 
+      friend_id: params[:id])
   end
 
   def update
