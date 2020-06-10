@@ -1,19 +1,23 @@
 <h1> Sent Requests </h1>
 <% @friend_list.each do |friendship| %>
-  Friend Name: <%= User.find_by(id: friendship.friend_id).name %>
-  
-  <%= button_to 'Confirm', friendship_path(friendship.id),
-  :method => :put  %>
+  <% if friendship.acceptance == false %>
 
-  <%= button_to 'Refuse', friendship_path(friendship.id),
-  :method => :delete  %>
+    <% if current_user.id == friendship.friend_id %>
+      Friend Name: <%= User.find_by(id: friendship.user_id).name %>
+      <%= button_to 'Confirm', friendship_path(friendship.id),
+      :method => :put  %>
+
+      <%= button_to 'Refuse', friendship_path(friendship.id),
+      :method => :delete  %>
+
+    <% end %>
+  <% end %>
 <% end %>
-
 
 
 <br><br>
 <h1>Friends List</h1>
-<% @friend_list.each do |friendship| %>
+<% Friendship.my_friends(current_user).each do |friendship| %>
   <% if friendship.acceptance == true %>
     Friend Name: <%= User.find_by(id: friendship.friend_id).name %> </p>
   <% end %>

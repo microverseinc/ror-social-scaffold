@@ -1,7 +1,6 @@
 class FriendshipsController < ApplicationController
   def index
-    # @friend_list = current_user.friendships.where('acceptance =?', true)
-    @friend_list = current_user.friendships.is_friend
+    @friend_list = Friendship.all
   end
 
   def create
