@@ -20,7 +20,7 @@ class PostsController < ApplicationController
   private
 
   def timeline_posts
-    all_my_friends = []
+    all_my_friends = [current_user.id]
     
     current_user.friendships.each do |c|
       all_my_friends << c.friend_id
