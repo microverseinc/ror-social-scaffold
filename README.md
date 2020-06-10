@@ -60,19 +60,19 @@ Open `http://localhost:3000/` in your browser.
     You can be able to create posts
 ```
 
-![Alt image](https://github.com/Sick-Carlito/ror-social-scaffold/blob/readme/app/assets/images/image1.png)
+![Alt image](https://github.com/Sick-Carlito/ror-social-scaffold/blob/master/app/assets/images/image1.png)
 
 ```
     You can be able to comment on a post and like or deslike posts
 ```
 
-![Alt image](https://github.com/Sick-Carlito/ror-social-scaffold/blob/readme/app/assets/images/image2.png)
+![Alt image](https://github.com/Sick-Carlito/ror-social-scaffold/blob/master/app/assets/images/image2.png)
 
 ```
     You can also see a list of all users and add them as your friends
 ```
 
-![Alt image](https://github.com/Sick-Carlito/ror-social-scaffold/blob/readme/app/assets/images/image3.png)
+![Alt image](https://github.com/Sick-Carlito/ror-social-scaffold/blob/master/app/assets/images/image3.png)
 
 ### Potential future features
 
