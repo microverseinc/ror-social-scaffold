@@ -1,15 +1,14 @@
-# Scaffold for social media app with Ruby on Rails
+This is a simple web app that has basic faebook-like functions.
+It allows users to register new acounts and create posts. They can also comment on the posts and like or dislike them as well. Users can also add other users as friends by sending them a friend request. Which can either be rejected or accepted by the other user.  
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+
 
 ## Built With
 
 - Ruby v2.7.0
 - Ruby on Rails v5.2.4
 
-## Live Demo
 
-TBA
 
 
 ## Getting Started
@@ -55,15 +54,38 @@ Open `http://localhost:3000/` in your browser.
     rpsec --format documentation
 ```
 
-> Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
+### A few pictures showing implemented features
 
-### Deployment
+```
+    You can be able to create posts
+```
 
-TBA
+![Alt image](https://github.com/Sick-Carlito/ror-social-scaffold/blob/readme/app/assets/images/image1.png)
 
-## Authors
+```
+    You can be able to comment on a post and like or deslike posts
+```
 
-TBA
+![Alt image](https://github.com/Sick-Carlito/ror-social-scaffold/blob/readme/app/assets/images/image2.png)
+
+```
+    You can also see a list of all users and add them as your friends
+```
+
+![Alt image](https://github.com/Sick-Carlito/ror-social-scaffold/blob/readme/app/assets/images/image3.png)
+
+### Potential future features
+
+* Abbility to chat privately with friends
+* Abbility to see other users profiles
+* Abbility to see other user's friends
+
+## Author
+
+- [Carl](https://github.com/Sick-Carlito/ror-social-scaffold)
+
+## Email
+carlb1319@gmail.com
 
 ## 🤝 Contributing
 
@@ -81,6 +103,6 @@ TBA
 
 ## 📝 License
 
-## Link to deployed app
+## Live version
 
-https://boiling-plateau-13640.herokuapp.com/users/sign_in
+- [Link](https://boiling-plateau-13640.herokuapp.com/users/sign_in)
