@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  post '/users/accept_friendship', to: 'users#accept_friendship', as: 'friend'
   resources :users, only: [:index, :show]
   resources :posts, only: [:index, :create] do
     resources :comments, only: [:create]

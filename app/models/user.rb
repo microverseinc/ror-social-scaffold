@@ -13,13 +13,13 @@ class User < ApplicationRecord
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
 
   def friends
-    friends_array = friendships.map { |friendship| friendship.friend if frienship.confirmed }
-    friends_array + inverse_friendships.map { |friendship| friendship.user if freindship.confirmed }
+    friends_array = friendships.map { |friendship| friendship.friend if friendship.confirmed }
+    friends_array + inverse_friendships.map { |friendship| friendship.user if friendship.confirmed }
     friends_array.compact
   end
 
   def pending_friends
-    frienship.map { |frienship| friendship.friend if !friendship.confirmed }.compact
+    friendships.map { |friendship| friendship.friend if !friendship.confirmed }.compact
   end
 
   def friend_request
@@ -27,7 +27,7 @@ class User < ApplicationRecord
   end
 
   def confirm_friend(user)
-    frienship = inverse_friendships.find{ |friendship| friendship.user == user }
+    friendship = inverse_friendships.find{ |friendship| friendship.user == user }
     friendship.confirmed = true
     friendship.save
   end
