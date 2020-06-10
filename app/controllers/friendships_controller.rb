@@ -8,12 +8,14 @@ class FriendshipsController < ApplicationController
     @friend = Friendship.create(friendship_params)
   end
 
+  # POST route
   def destroy
     @relationship = Friendship.find_by(
       user_id: current_user.id, 
       friend_id: params[:id])
   end
 
+  # PUT route
   def update
     @friendship = Friendship.find_by(id: params[:id])
     @friendship.update(acceptance: true)

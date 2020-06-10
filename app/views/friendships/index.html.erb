@@ -2,8 +2,11 @@
 <% @friend_list.each do |friendship| %>
   Friend Name: <%= User.find_by(id: friendship.friend_id).name %>
   
-  <%= button_to 'Friended', friendship_path(friendship.id),
+  <%= button_to 'Confirm', friendship_path(friendship.id),
   :method => :put  %>
+
+  <%= button_to 'Refuse', friendship_path(friendship.id),
+  :method => :delete  %>
 <% end %>
 
 
