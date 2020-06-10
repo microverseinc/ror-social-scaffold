@@ -9,9 +9,9 @@ class FriendshipsController < ApplicationController
 
   # POST route
   def destroy
-    @relationship = Friendship.find_by(
-      user_id: current_user.id, 
-      friend_id: params[:id])
+    @relationship = Friendship.find(params[:id])
+    @relationship.destroy
+    redirect_to friendships_path
   end
 
   # PUT route
