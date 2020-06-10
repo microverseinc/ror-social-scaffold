@@ -18,6 +18,8 @@
 <h1>Friends List</h1>
 <% Friendship.my_friends(current_user).each do |friendship| %>
   <% if friendship.acceptance == true %>
-    Friend Name: <%= User.find_by(id: friendship.friend_id).name %>
+    <%= link_to User.find_by(id: friendship.friend_id).name, user_path(friendship.friend_id) %>
+
+    <%= button_to 'Unfriend', friendship_path(friendship.id), method: :delete %>
   <% end %>
 <% end %>
