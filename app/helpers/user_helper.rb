@@ -7,7 +7,7 @@ module UserHelper
     elsif current_user.pending_friends.include?(User.find(params[:id]))
       "Waiting for confirmation"
     elsif User.find(params[:id]).pending_friends.include?(current_user)
-      link_to 'Accept friend', friend_path, :id => params[:id]
+      link_to 'Accept friend', friend_path(params[:id]), method: :post
     else
       "Send friend request"
     end
