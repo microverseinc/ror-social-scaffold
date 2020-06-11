@@ -11,15 +11,15 @@ RSpec.describe 'Main Flow', type: :system do
       sleep 1
 
       # Fill the fields
-      fill_in('user[name]', with:'Crunchy Bacon')
-      fill_in('user[email]', with:'crunchy@bacon.com')
-      fill_in('user[password]', with:'123123')
-      fill_in('user[password_confirmation]', with:'123123')
+      fill_in('user[name]', with: 'Crunchy Bacon')
+      fill_in('user[email]', with: 'crunchy@bacon.com')
+      fill_in('user[password]', with: '123123')
+      fill_in('user[password_confirmation]', with: '123123')
       sleep 1
       click_button 'Sign up'
       sleep 1
 
-      fill_in('post[content]', with:'This test worked')
+      fill_in('post[content]', with: 'This test worked')
       click_button 'Save'
       sleep 1
       click_link 'Sign out'
@@ -32,10 +32,10 @@ RSpec.describe 'Main Flow', type: :system do
       sleep 1
 
       # Fill the fields
-      fill_in('user[name]', with:'Salty Bacon')
-      fill_in('user[email]', with:'salty@bacon.com')
-      fill_in('user[password]', with:'123123')
-      fill_in('user[password_confirmation]', with:'123123')
+      fill_in('user[name]', with: 'Salty Bacon')
+      fill_in('user[email]', with: 'salty@bacon.com')
+      fill_in('user[password]', with: '123123')
+      fill_in('user[password_confirmation]', with: '123123')
       sleep 1
       click_button 'Sign up'
 
@@ -47,8 +47,8 @@ RSpec.describe 'Main Flow', type: :system do
       click_link 'Sign out'
 
       sleep 1
-      fill_in('user[email]', with:'crunchy@bacon.com')
-      fill_in('user[password]', with:'123123')
+      fill_in('user[email]', with: 'crunchy@bacon.com')
+      fill_in('user[password]', with: '123123')
       click_button 'Log in'
       sleep 1
       click_link 'Friends'

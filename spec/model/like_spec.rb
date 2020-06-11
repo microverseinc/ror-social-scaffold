@@ -6,7 +6,7 @@ RSpec.describe Like, type: :model do
   let(:comment1) { post1.comments.create(user_id: 1, content: 'abc') }
   let(:like1) { user1.likes.create(post_id: 1) }
 
-  context 'check associations' do 
+  context 'check associations' do
     it 'retrieve user who leave the like' do
       user1
       post1
