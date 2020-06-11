@@ -9,9 +9,10 @@ require 'faker'
 include Faker
 
 10.times do
-   User.create(
-     email: Faker::Internet.email,
-     name: Faker::Name.first_name,
-     encrypted_password: Faker::Internet.password
-    )
+  User.create(
+    email: Faker::Internet.email,
+    name: Faker::Name.first_name,
+    password: 'C.1234567',
+    password_confirmation: 'C.1234567'
+   )
 end
