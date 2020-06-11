@@ -1,0 +1,47 @@
+# This code can be used to generate SQL from the created Relational Schema
+
+CREATE TABLE User
+(
+  id INT NOT NULL,
+  Name VARCHAR NOT NULL,
+  Email VARCHAR NOT NULL,
+  Password VARCHAR NOT NULL,
+  PRIMARY KEY (id),
+  UNIQUE (Email)
+);
+
+CREATE TABLE Post
+(
+  id INT NOT NULL,
+  Post VARCHAR(250) NOT NULL,
+  user_id INT NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (user_id) REFERENCES User(id)
+);
+
+CREATE TABLE Like
+(
+  Count INT NOT NULL,
+  post_id INT NOT NULL,
+  user_id INT NOT NULL,
+  FOREIGN KEY (post_id) REFERENCES Post(id),
+  FOREIGN KEY (user_id) REFERENCES User(id)
+);
+
+CREATE TABLE Comment
+(
+  Text VARCHAR(150) NOT NULL,
+  post_id INT NOT NULL,
+  user_id INT NOT NULL,
+  FOREIGN KEY (post_id) REFERENCES Post(id),
+  FOREIGN KEY (user_id) REFERENCES User(id)
+);
+
+CREATE TABLE Friend
+(
+  status VARCHAR NOT NULL,
+  sender_id INT NOT NULL,
+  receiver_id INT NOT NULL,
+  FOREIGN KEY (sender_id) REFERENCES User(id),
+  FOREIGN KEY (receiver_id) REFERENCES User(id)
+);
