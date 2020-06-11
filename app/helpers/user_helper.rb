@@ -9,7 +9,7 @@ module UserHelper
     elsif User.find(params[:id]).pending_friends.include?(current_user)
       link_to 'Accept friend', friend_path(params[:id]), method: :post
     else
-      "Send friend request"
+      link_to "Send friend request", create_friend_path(params[:id]), method: :post
     end
   end
 end
