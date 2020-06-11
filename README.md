@@ -1,6 +1,6 @@
-# Scaffold for social media app with Ruby on Rails
+# Stay-in-touch
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+> This is a social media app.
 
 ## Built With
 
