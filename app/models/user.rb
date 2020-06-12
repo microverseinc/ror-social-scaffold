@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :friendships
   has_many :inverse_friendships, :class_name => 'Friendship', :foreign_key => 'friend_id'
+  has_many :friends, through: :friendships, :class_name => 'User', :foreign_key => 'user_id'
 
   def friends
     friends_array = friendships.map { |friendship| friendship.friend if friendship.confirmed }
@@ -29,11 +30,16 @@ class User < ApplicationRecord
   end
 
   def confirm_friend(user)
+    ActiveRecord::Base.transaction do
     # friendship = user.friendships.find_by friend_id: current_user.id
     # friendship = inverse_friendships.find { |friendship| friendship.user == user }
     friendship = inverse_friendships.find_by user_id: user.id
-    friendship.confirmed = true
+    friend = User.find(friendship.friend_id)
+    friendship.update!(confirmed: true)
     friendship.save
+    inverse_rel=friendships.new(friend_id: user.id, confirmed: true)
+    inverse_rel.save!
+    end
   end
 
   def friend?(user)
