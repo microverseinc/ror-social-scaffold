@@ -31,14 +31,11 @@ class User < ApplicationRecord
 
   def confirm_friend(user)
     ActiveRecord::Base.transaction do
-    # friendship = user.friendships.find_by friend_id: current_user.id
-    # friendship = inverse_friendships.find { |friendship| friendship.user == user }
-    friendship = inverse_friendships.find_by user_id: user.id
-    friend = User.find(friendship.friend_id)
-    friendship.update!(confirmed: true)
-    friendship.save
-    inverse_rel=friendships.new(friend_id: user.id, confirmed: true)
-    inverse_rel.save!
+      friendship = inverse_friendships.find_by user_id: user.id
+      friendship.update!(confirmed: true)
+      friendship.save
+      inverse_rel = friendships.new(friend_id: user.id, confirmed: true)
+      inverse_rel.save!
     end
   end
 
