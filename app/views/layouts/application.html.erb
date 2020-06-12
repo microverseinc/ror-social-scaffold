@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RorSocialScaffold</title>
+    <title>Social Team</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,19 +9,20 @@
   </head>
   <body>
     <nav class="nav">
-      <%= link_to 'Stay in touch', root_path %>
       <div class="menu">
         <div class="menu-item">
-          <%= menu_link_to 'Timeline', posts_path %>
+          <%= menu_link_to 'Timeline', root_path %>
         </div>
         <div class="menu-item">
           <%= menu_link_to 'All users', users_path %>
         </div>
       </div>
       <% if current_user %>
+        <%= link_to 'Friends', friendships_path %>
         <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
       <% else %>
         <%= link_to 'Sign in', user_session_path %>
+        <%= link_to 'Sign up', new_user_registration_path, id:'sign-up-link'%>
       <% end %>
     </nav>
     <% if notice.present? %>
