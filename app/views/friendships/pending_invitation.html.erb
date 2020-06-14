@@ -1,0 +1,8 @@
+ <div class= "container text-center">
+ <h3>Pending invitations</h3>
+  <% @pending_invitations.uniq.each do |invitation| %>
+  <ul>
+  <li><strong>Name:</strong> <%= invitation.name.capitalize%></li>
+  </ul>
+  <% end %>
+  </div>

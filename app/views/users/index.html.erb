@@ -2,11 +2,27 @@
   <ul class="users-list">
     <% @users.each do |user| %>
       <li>
-        Name: <%= user.name %>
+         Name: <%= user.name %>
         <span class="profile-link">
-          <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+          <%= link_to 'See Profile',  user_path(user), class: "btn btn-secondary" %>
+           <% if current_user.friend_invites(user) %>
+            <button class="btn btn-warning"> Pending Invitation </button>
+          <% elsif current_user.receive_invitation(user)%>
+            <%= link_to 'Accept', accept_invite_path(user_id: user.id), class:"btn btn-primary" %>
+            <%= link_to 'Decline', reject_invite_path(user_id: user.id), method: :delete, class:"btn btn-danger" %>
+          <% elsif !current_user.friend?(user) && current_user.id != user.id %>
+            <%= link_to 'Add Friend', send_invite_path(user_id: user.id) , class:"btn btn-success" %>
+            <% elsif current_user.friend?(user) %>
+            <%= link_to 'Remove friend', remove_friend_path(user_id: user.id), method: :delete, data: {confirm: "Are you sure you want to remove friend?"}, class: "btn btn-danger" %>
+          <% end %>
         </span>
       </li>
     <% end %>
   </ul>
+  <h3>Pending invitations</h3>
+  <% @pending_invitations.uniq.each do |invitation| %>
+  <ul>
+  <li>Name: <%= invitation.name.capitalize%></li>
+  </ul>
+  <% end %>
 </section>
