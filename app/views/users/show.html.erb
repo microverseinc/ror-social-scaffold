@@ -1,4 +1,25 @@
 <section class="user-section">
+  <%= flash[:message] %>
+
+  <h1>Send A Friend Request</h1>
+
+  <%= form_for :friendship, url: friendships_path do |f|%>
+    <%= f.select :confirmer_id, 
+      User.all.collect { |u| [ u.name, u.id ] if u.id != current_user.id }.select(&:present?), 
+      {:prompt => 'Select Person'}, class: "select_friend"
+    %>
+
+    <%= f.submit "Send Friend Request" %>
+  <% end %>
+
+
+<h1>Friend Requests From Others</h1>
+  <%= @pending_requests.each do |name| %> 
+    <ul>
+      <li><% name %></li>
+    </ul>
+  <% end %>
+
   <h2><%= "Name: #{@user.name}" %></h2>
   <article class="timeline">
     <h3>Recent posts:</h3>
