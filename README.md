@@ -9,7 +9,7 @@
 
 ## Live Demo
 
-TBA
+[Try live demo!](https://socialmediawebsite-c-j.herokuapp.com)
 
 
 ## Getting Started
@@ -90,4 +90,3 @@ TBA
 ## 📝 License
 
 TBA
-
