@@ -25,10 +25,24 @@ class FriendshipsController < ApplicationController
 
   def update
     @user = current_user.id
-    @friendship = Friendship.find_by(confirmer: @user)
-    puts "*******- #{@friendship} -*******"
-    @friendship.update_attribute(:status, params[:status] = true)
+    @friendship = Friendship.find_by(confirmer: @user)  
+    accepted = @friendship.update_attribute(:status, params[:status] = true)
 
-    redirect_to user_path(@user)
+    if accepted
+      redirect_to user_path(@user), notice: 'Friend request Succesfully Accepted'
+    else
+      redirect_to user_path(@user), alert: 'Something Went wrong'
+    end
+  end
+
+  def destroy
+    @user = current_user.id
+    @friendship = Friendship.find_by(confirmer: @user)
+    deleted = @friendship.destroy
+    if deleted
+      redirect_to user_path(@user), notice: 'Friend request Succesfully Rejected'
+    else
+      redirect_to user_path(@user), alert: 'Something Went wrong'
+    end
   end
 end

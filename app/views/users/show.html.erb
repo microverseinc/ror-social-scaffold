@@ -17,24 +17,28 @@
 <ul>
 <% @f.each do |x| %>
   <li>
-    <p><%= x.requester.name %></p>
-    <%= form_for(:friendships, url: friendship_path(@i), method: :patch ) do |f| %>
-      <%= f.hidden_field :status %>
-      <%if x.status != false %>
-      <div class = "btn-div">
-        <%= f.submit 'Accept' %>
+    <% if x.status == false %>
+      <p><%= x.requester.name %></p>
+      <div class='btn-div'>
+        <%= form_for(:friendships, url: friendship_path(@i), method: :patch ) do |f| %>
+          <%= f.hidden_field :status %>
+          <div>
+            <%= f.submit 'Accept' %> 
+          </div>
+        <% end %>
+        <%= form_for(:friendships, url: friendship_path(@i), method: :delete ) do |f| %>
+          <%= f.hidden_field :status %>
 
-        <%= f.submit 'Reject', class: 'btn-right'%>
+          <div>
+            <%= f.submit 'Reject', class: 'btn-right'%>
+          </div>
+        <% end %>
       </div>
-      <% end %>
     <% end %>
-
   </li>
 <% end %>
 </ul>
 
-
-  <h2><%= "User Name: #{@user.name}" %></h2>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">

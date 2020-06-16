@@ -6,6 +6,17 @@
         <span class="profile-link">
           <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
         </span>
+
+        <span class="profile-link">
+
+        <%= form_for :friendships, url: friendship_path(user.friendships) do |f| %>
+          <%= f.hidden_field :confirmer_id => user.id %>
+
+          <div>
+            <%= f.submit 'Send Friend Request'%>
+          </div>
+        <% end %>
+        </span>
       </li>
     <% end %>
   </ul>
