@@ -14,6 +14,10 @@ class User < ApplicationRecord
   def friend
     friendships.map{|friendship| friendship.friend if(friendship.status)}.compact
   end
+  
+  def pending_friend
+    friendship.map{|f| f.friend if(!friendship.status)}.compact
+  end
 
   def friends(user)
     friends.include?(user)
