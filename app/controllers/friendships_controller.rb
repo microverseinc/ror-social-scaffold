@@ -18,6 +18,7 @@ class FriendshipsController < ApplicationController
   def update
     @friendship = Friendship.find_by(id: params[:id])
     @friendship.update(acceptance: true)
+    Friendship.create(user_id: current_user.id, friend_id: @friendship.user_id, acceptance: true)
     redirect_to friendships_path
   end
 

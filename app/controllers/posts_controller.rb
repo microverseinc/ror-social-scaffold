@@ -26,9 +26,6 @@ class PostsController < ApplicationController
       all_my_friends << c.friend_id
     end
 
-    Friendship.all.each do |c|
-      all_my_friends << c.user_id if c.friend_id == current_user.id
-    end
     @timeline_posts ||= Post.where(user_id: all_my_friends).ordered_by_most_recent
   end
 
