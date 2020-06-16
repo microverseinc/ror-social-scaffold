@@ -14,13 +14,27 @@
 
 
 <h1>Friend Requests From Others</h1>
-  <%= @pending_requests.each do |name| %> 
-    <ul>
-      <li><% name %></li>
-    </ul>
-  <% end %>
+<ul>
+<% @f.each do |x| %>
+  <li>
+    <p><%= x.requester.name %></p>
+    <%= form_for(:friendships, url: friendship_path(@i), method: :patch ) do |f| %>
+      <%= f.hidden_field :status %>
+      <%if x.status != false %>
+      <div class = "btn-div">
+        <%= f.submit 'Accept' %>
 
-  <h2><%= "Name: #{@user.name}" %></h2>
+        <%= f.submit 'Reject', class: 'btn-right'%>
+      </div>
+      <% end %>
+    <% end %>
+
+  </li>
+<% end %>
+</ul>
+
+
+  <h2><%= "User Name: #{@user.name}" %></h2>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">

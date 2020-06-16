@@ -26,3 +26,6 @@ Gemfile.lock
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Ignore database file.
+/config/database.yml

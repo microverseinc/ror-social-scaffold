@@ -24,6 +24,11 @@ class FriendshipsController < ApplicationController
   end
 
   def update
-    
+    @user = current_user.id
+    @friendship = Friendship.find_by(confirmer: @user)
+    puts "*******- #{@friendship} -*******"
+    @friendship.update_attribute(:status, params[:status] = true)
+
+    redirect_to user_path(@user)
   end
 end

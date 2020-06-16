@@ -3,4 +3,5 @@ class Friendship < ApplicationRecord
   belongs_to :requester, foreign_key: :requester_id, class_name: 'User'
 
   validates :confirmer, uniqueness: {scope: :requester, :message => "Friend Request Already Sent"}
+
 end

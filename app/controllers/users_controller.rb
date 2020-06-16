@@ -8,14 +8,13 @@ class UsersController < ApplicationController
   def show
     @user = User.find(current_user.id)
     friendships = Friendship.all
+    @f = Friendship.where(confirmer: @user.id)
+    @i = Friendship.find_by(confirmer: @user.id)
     @posts = @user.posts.ordered_by_most_recent
     @users = User.all
-    @pending_requests = []
-    
-    friendships.each {|f| 
-      @pending_requests << f.requester_id if f.requester_id != current_user.id
-    }
-    # puts "<<< #{user_friend_requests} >>>>"
+    #@i = Friendship.find_by(invitee_id: @user)
+
 
   end
 end
+
