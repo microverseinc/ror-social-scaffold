@@ -16,7 +16,6 @@ class FriendshipsController < ApplicationController
   def update
     @friendship = Friendship.find(params[:id])
     @friendship.update(acceptance: true)
-
     redirect_to friendships_path
   end
 

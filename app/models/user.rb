@@ -24,4 +24,8 @@ class User < ApplicationRecord
            class_name: 'Friendship', foreign_key: 'friend_id'
   # has_many :pending_friends,
   #   through: :pending_friendships, source: :friend
+
+  # def timeline_posts
+  #   @timeline_posts ||= Post.where(user: (current_user.friends))
+  # end
 end

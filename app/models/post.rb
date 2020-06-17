@@ -7,8 +7,4 @@ class Post < ApplicationRecord
   scope :ordered_by_most_recent, -> { order(created_at: :desc) }
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
-
-  def friends_plus_own_posts
-    Post.where(user: (self.friends + self))
-  end
 end
