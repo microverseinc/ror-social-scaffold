@@ -19,7 +19,7 @@ class User < ApplicationRecord
     friendship.map{|f| f.friend if(!friendship.status)}.compact
   end
 
-  def friends(user)
-    friends.include?(user)
+  def friend?(user)
+    friend.include?(user)
   end
 end

@@ -34,31 +34,3 @@ User.create!([
 
 
 
-Friendship.create!([
-    {
-        user_id:1,
-        friend_id:5,
-        status:false
-    },
-    {
-        user_id:3,
-        friend_id:2,
-        status:true
-    },
-    {
-        user_id:1,
-        friend_id:4,
-        status:true
-    },
-    {
-        user_id:2,
-        friend_id:5,
-        status:false
-    },
-    {
-        user_id:1,
-        friend_id:3,
-        status:true
-    }
-
-])

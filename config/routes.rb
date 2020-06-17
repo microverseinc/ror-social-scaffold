@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :users, only: [:index, :show]
+
+
+  # put '/friendships/:id', to: 'friendships#update', as: 'request'
+
   resources :friendships
   resources :posts, only: [:index, :create] do
     resources :comments, only: [:create]
