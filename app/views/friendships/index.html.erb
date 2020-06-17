@@ -1,6 +1,7 @@
 <h1> Pending invitations </h1>
 <% current_user.pending_friendships.each do |friendship| %>
-  Friend Name: <%= User.find_by(id: friendship.user_id).name %>
+
+  Friend Name: <%= current_user.inverted_friendships.name %>
 
   <%= button_to 'Confirm', friendship_path(friendship.id),
   :method => :put %>

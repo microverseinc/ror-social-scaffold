@@ -13,12 +13,12 @@ class User < ApplicationRecord
   # FRIENDS
   has_many :confirmed_friendships, -> { where acceptance: true },
            class_name: 'Friendship'
-  # has_many :friends, through: :confirmed_friendships
+  has_many :friends, through: :confirmed_friendships
 
   # INVERSE PAIR
-  # has_many :inverted_friendships, -> { where acceptance: false },
-  #          class_name: 'Friendship', foreign_key: 'friend_id'
-  # has_many :friend_requests, through: :inverted_friendships
+  has_many :inverted_friendships, -> { where acceptance: false },
+           class_name: 'Friendship', foreign_key: 'friend_id'
+  has_many :friend_requests, through: :inverted_friendships
 
   # PENDING FRIEND
   has_many :pending_friendships, -> { where acceptance: false },
