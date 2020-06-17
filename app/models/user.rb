@@ -9,5 +9,5 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
 
   has_many :friendships # , :class_name => "Friendship"
-  has_many :friends, class_name: 'Friendship', foreign_key: 'friend_id' # , :through => :friendships
+  
 end
