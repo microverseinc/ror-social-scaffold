@@ -26,7 +26,8 @@ class PostsController < ApplicationController
       all_my_friends << c.friend_id
     end
 
-    @timeline_posts ||= Post.where(user_id: all_my_friends).ordered_by_most_recent
+    @timeline_posts ||= Post.where(user_id: all_my_friends)
+      .ordered_by_most_recent
   end
 
   def post_params
