@@ -1,6 +1,8 @@
 # Scaffold for social media app with Ruby on Rails
 
 > This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+> This is a social media app that provides the facilities to add the other user as a friend, add the post, and his friend can see posts, add a comment, and like the posts. To achieve these functionalities, I used the active record association in rails to connect my
+> database
 
 ## Built With
 
@@ -11,10 +13,9 @@
 
 TBA
 
-
 ## Getting Started
 
-To get a local copy up and running follow these simple example steps.
+- Clone the repository using `https://github.com/shubhsk88/ror-social-scaffold.git`
 
 ### Prerequisites
 
@@ -35,9 +36,15 @@ Setup database with:
 ```
    rails db:create
    rails db:migrate
+
 ```
 
+Insert Sample database
 
+```
+rails db:seed
+
+```
 
 ### Usage
 
@@ -52,18 +59,18 @@ Open `http://localhost:3000/` in your browser.
 ### Run tests
 
 ```
-    rpsec --format documentation
+    bundle exec rspec
 ```
-
-> Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
 
 ### Deployment
 
-TBA
-
 ## Authors
 
-TBA
+👤 **Shubham Singh**
+
+- Github: [@shubhsk88](https://github.com/shubhsk88)
+- Twitter: [@shubhski](twitter.com/shubski)
+- Linkedin: [linkedin](https://www.linkedin.com/in/shubhski/)
 
 ## 🤝 Contributing
 
@@ -77,9 +84,5 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-TBA
-
-## 📝 License
-
-TBA
-
+- Rails Documentation
+- Related Article
