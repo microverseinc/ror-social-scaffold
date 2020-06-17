@@ -12,6 +12,5 @@
 
 <% current_user.confirmed_friendships.each do |friendship| %>
   Friend Name: <%= friendship.user.name %>
-
   <%= button_to 'Unfriend', friendship_path(friendship.id), method: :delete %>
 <% end %>
