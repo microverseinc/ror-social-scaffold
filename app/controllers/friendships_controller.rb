@@ -1,9 +1,9 @@
 class FriendshipsController < ApplicationController
   before_action :authenticate_user!
   def index
-    @request = Friendship.where(friend_id: current_user.id, status: nil)
+    @friend_request=current_user.friend_requests
+    @pending_request=current_user.pending_friend
   end
-
   def create
     @user = User.find(params[:user_id])
 

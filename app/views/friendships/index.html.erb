@@ -1,16 +1,25 @@
 
-<h2>People list </h1>
+<h2>Friend Request </h1>
 
 
 
-<%@request.each do |request|%>
+<%@friend_request.each do |request|%>
 
 
   
-   <h2> <%=request.user.name%></h2>
+   <h2> <%=request.name%></h2>
     
     <%= button_to "Accept",friendship_path(request,status:1),method: :put%>
     
    <%= button_to "Decline",friendship_path(request,status:0),method: :put%>
 
 <%end%>
+
+<h2> Pending Friend Request</h2>
+<ul>
+<%@pending_request.each do |request|%>
+
+   <li><h2><%=request.name%></h2></li>
+
+<%end%>
+</ul>

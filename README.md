@@ -62,6 +62,7 @@ Open `http://localhost:3000/` in your browser.
     bundle exec rspec
 ```
 
+
 ### Deployment
 
 ## Authors
@@ -84,5 +85,6 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-- Rails Documentation
+- Rails Documentation 
 - Related Article
+
