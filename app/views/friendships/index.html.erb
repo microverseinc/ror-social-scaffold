@@ -1,22 +1,16 @@
 
-<h1>People list </h1>
+<h2>People list </h1>
 
-<div class="container">
-<div class="row">
+
+
 <%@request.each do |request|%>
 
 
-    <div class="col">
-    <%=request.user.name%>
-    </div>
-    <div class="col-12">
-      <%= button_to "Accept",friendship_path(request,status:1),method: :put%>
-    </div>
-
-    <div class="col">
-        <%= button_to "Decline",friendship_path(request,status:0),method: :put%>
+  
+   <h2> <%=request.user.name%></h2>
     
+    <%= button_to "Accept",friendship_path(request,status:1),method: :put%>
+    
+   <%= button_to "Decline",friendship_path(request,status:0),method: :put%>
 
 <%end%>
-</div>
-</div>

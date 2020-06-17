@@ -5,13 +5,17 @@ class FriendshipsController < ApplicationController
     end
 
     def create
-        
+    
         @user=User.find(params[:user_id])
-      
+        
+        if(@user!=current_user)
         current_user.friendships.create(friend:@user)
        
         redirect_to request.referrer,notice:"Friend request succesffuly sent"
-      
+        else
+            redirect_to request.referrer,alert:"You can not send request to yourself"
+
+        end    
     end
 
     def update
