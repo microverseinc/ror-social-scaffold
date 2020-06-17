@@ -44,10 +44,9 @@ group :development, :test do
 end
 
 group :test do
+  gem 'capybara'
   gem 'rspec'
-   gem "capybara"
-  gem "selenium-webdriver"
-  
+  gem 'selenium-webdriver'
 end
 
 group :development do
@@ -55,11 +54,11 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'database_cleaner'
+  gem 'rspec-rails'
   gem 'rubocop'
-  gem "database_cleaner"
-  gem "rspec-rails"
-  gem 'spring'
   gem 'shoulda-matchers', '~> 4.0'
+  gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
