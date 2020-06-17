@@ -1,25 +1,26 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+    :recoverable, :rememberable, :validatable
 
   validates :name, presence: true, length: { maximum: 20 }
 
   has_many :posts
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
-  has_many :friendships # , :class_name => "Friendship"
 
-  # confirmed friend
+  has_many :friendships
+
+  # FRIENDS
   has_many :confirmed_friendships, -> { where acceptance: true },
            class_name: 'Friendship'
-  has_many :friends, through: :confirmed_friendships
+  # has_many :friends, through: :confirmed_friendships
 
-  # inverse pair
-  has_many :inverted_friendships, -> { where acceptance: false },
-           class_name: 'Friendship', foreign_key: 'friend_id'
-  has_many :friend_requests, through: :inverted_friendships
+  # INVERSE PAIR
+  # has_many :inverted_friendships, -> { where acceptance: false },
+  #          class_name: 'Friendship', foreign_key: 'friend_id'
+  # has_many :friend_requests, through: :inverted_friendships
 
-  # pending friends
+  # PENDING FRIEND
   has_many :pending_friendships, -> { where acceptance: false },
            class_name: 'Friendship', foreign_key: 'user_id'
   # has_many :pending_friends,
