@@ -25,7 +25,8 @@ class User < ApplicationRecord
   # has_many :pending_friends,
   #   through: :pending_friendships, source: :friend
 
-  # def timeline_posts
-  #   @timeline_posts ||= Post.where(user: (current_user.friends))
-  # end
+  def friends_and_own_posts
+    Post.where( user: (self.friends))
+      .or(Post.where( user: (self))).ordered_by_most_recent
+  end
 end
