@@ -12,32 +12,33 @@
     <%= f.submit "Send Friend Request" %>
   <% end %>
 
+<% if current_user == @show_user %>
+  <h1>Friend Requests From Others</h1>
+  <ul>
+  <% @f.each do |x| %>
+    <li>
+      <% if x.status == false %>
+        <p><%= x.requester.name %></p>
+        <div class='btn-div'>
+          <%= form_for(:friendships, url: friendship_path(@i), method: :patch ) do |f| %>
+            <%= f.hidden_field :status %>
+            <div>
+              <%= f.submit 'Accept' %> 
+            </div>
+          <% end %>
+          <%= form_for(:friendships, url: friendship_path(@i), method: :delete ) do |f| %>
+            <%= f.hidden_field :status %>
 
-<h1>Friend Requests From Others</h1>
-<ul>
-<% @f.each do |x| %>
-  <li>
-    <% if x.status == false %>
-      <p><%= x.requester.name %></p>
-      <div class='btn-div'>
-        <%= form_for(:friendships, url: friendship_path(@i), method: :patch ) do |f| %>
-          <%= f.hidden_field :status %>
-          <div>
-            <%= f.submit 'Accept' %> 
-          </div>
-        <% end %>
-        <%= form_for(:friendships, url: friendship_path(@i), method: :delete ) do |f| %>
-          <%= f.hidden_field :status %>
-
-          <div>
-            <%= f.submit 'Reject', class: 'btn-right'%>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-  </li>
+            <div>
+              <%= f.submit 'Reject', class: 'btn-right'%>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </li>
+  <% end %>
+  </ul>
 <% end %>
-</ul>
 
   <article class="timeline">
     <h3>Recent posts:</h3>
