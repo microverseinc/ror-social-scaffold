@@ -19,8 +19,8 @@ class PostsController < ApplicationController
 
   private
   def timeline_posts
-    @timeline_posts ||= Post.where(
-      user: (current_user.friends)
+    @timeline_posts ||= Post.where( user: (current_user.friends))
+                      .or(Post.where( user: (current_user))
     )
   end
 
