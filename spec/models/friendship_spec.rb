@@ -3,14 +3,15 @@ require 'rails_helper'
 RSpec.describe Friendship, type: :model do
   describe 'friendship' do
     let(:user1) do
-      User.create(name: 'Dan',
-                  email: 'dan@email.com',
+      User.create(name: 'Test1',
+                  email: 'test1@email.com',
                   password: 'password',
                   password_confirmation: 'password')
     end
+
     let(:user2) do
-      User.create(name: 'Fred',
-                  email: 'fred@email.com',
+      User.create(name: 'Test2',
+                  email: 'test2@email.com',
                   password: 'password',
                   password_confirmation: 'password')
     end
