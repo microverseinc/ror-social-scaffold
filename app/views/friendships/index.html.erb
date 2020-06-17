@@ -1,16 +1,17 @@
 <h1> Pending invitations </h1>
 <% current_user.pending_friendships.each do |friendship| %>
   Friend Name: <%= friendship.user.name %>
+
   <%= button_to 'Confirm', friendship_path(friendship.id),
   :method => :put %>
+
   <%= button_to 'Refuse', friendship_path(friendship.id), method: :delete %>
 <% end %>
 
 <br><br>
-
 <h1>Friends List</h1>
-
 <% current_user.confirmed_friendships.each do |friendship| %>
   Friend Name: <%= friendship.user.name %>
+
   <%= button_to 'Unfriend', friendship_path(friendship.id), method: :delete %>
 <% end %>
