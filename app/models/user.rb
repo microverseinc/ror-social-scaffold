@@ -11,11 +11,10 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
-  
   def friend
-    friends_array = friendships.map { |friendship| friendship.friend if friendship.status }
-    friends_array + inverse_friendships.map { |friendship| friendship.user if friendship.status }
-    friends_array.compact
+    friends_array = friendships.map { |f| f.friend if f.status }
+    new_array = friends_array + inverse_friendships.map { |f| f.user if f.status }
+    new_array.compact
   end
 
   def pending_friend
@@ -23,7 +22,7 @@ class User < ApplicationRecord
   end
 
   def friend_requests
-    inverse_friendships.map { |friendship| friendship.user unless friendship.status }.compact
+    inverse_friendships.map { |f| f.user unless f.status }.compact
   end
 
   def friend?(user)
@@ -31,7 +30,7 @@ class User < ApplicationRecord
   end
 
   def confirm_friend(user)
-    friendship = inverse_friendships.find { |friendship| friendship.user == user }
+    friendship = inverse_friendships.find { |f| f.user == user }
     friendship.status = true
     friendship.save
   end

@@ -13,6 +13,4 @@ RSpec.describe User, type: :model do
 
     it { should have_many(:friendships).dependent(:destroy) }
   end
-
-  
 end

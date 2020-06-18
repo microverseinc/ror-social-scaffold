@@ -107,6 +107,7 @@ form {
   .field {
     width: 100%;
     padding: 8px 0px;
+    
     label {
       margin-bottom: 8px;
     }
@@ -129,6 +130,7 @@ form {
     justify-content: center;
     margin: 8px 0;
   }
+
   input[type="submit"] {
     padding: 8px;
     width: 50%;
@@ -156,6 +158,7 @@ form {
       color: $primary-color-text;
       font-size: 1em;
     }
+
     ul {
       color: #f00;
     }
@@ -169,7 +172,7 @@ form {
 }
 
 .new_post,
-.new_comment{
+.new_comment {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -310,9 +313,11 @@ form {
 
   .timeline {
     width: 100%;
+
     h3 {
       width: 100%;
     }
+
     justify-content: start;
   }
 }

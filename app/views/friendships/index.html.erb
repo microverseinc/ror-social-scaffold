@@ -6,14 +6,14 @@
 <%@friend_request.each do |request|%>
 
 
-  
+ 
    <h2> <%=request.name%></h2>
     
     <%= button_to "Accept",friendship_path(request,status:1),method: :put%>
     
    <%= button_to "Decline",friendship_path(request,status:0),method: :put%>
+   <%end%>
 
-<%end%>
 
 <h2> Pending Friend Request</h2>
 <ul>

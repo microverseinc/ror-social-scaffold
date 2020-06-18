@@ -7,13 +7,11 @@ class FriendshipsController < ApplicationController
 
   def create
     @user = User.find(params[:user_id])
+    return unless @user != current_user
 
-    if @user != current_user
-      current_user.friendships.create(friend: @user)
+    current_user.friendships.create(friend: @user)
 
-      redirect_to request.referrer, notice: 'Friend request succesffuly sent'
-    
-    end
+    redirect_to request.referrer, notice: 'Friend request succesffuly sent'
   end
 
   def update
