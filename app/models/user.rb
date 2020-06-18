@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
+  
   def friend
     friends_array = friendships.map { |friendship| friendship.friend if friendship.status }
     friends_array + inverse_friendships.map { |friendship| friendship.user if friendship.status }
@@ -26,7 +27,7 @@ class User < ApplicationRecord
   end
 
   def friend?(user)
-    friend.include?(user)
+    pending_friend.include?(user)
   end
 
   def confirm_friend(user)

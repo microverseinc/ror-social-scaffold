@@ -14,7 +14,5 @@ RSpec.describe User, type: :model do
     it { should have_many(:friendships).dependent(:destroy) }
   end
 
-  it 'has a valid factory' do
-    expect(user).to be_valid
-  end
+  
 end

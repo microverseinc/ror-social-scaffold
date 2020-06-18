@@ -12,9 +12,7 @@ class FriendshipsController < ApplicationController
       current_user.friendships.create(friend: @user)
 
       redirect_to request.referrer, notice: 'Friend request succesffuly sent'
-    else
-      redirect_to request.referrer, alert: 'You can not send request to yourself'
-
+    
     end
   end
 

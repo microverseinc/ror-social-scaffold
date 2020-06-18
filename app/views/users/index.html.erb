@@ -5,10 +5,14 @@
         Name: <%= user.name %>
         <span class="profile-link">
           <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-          <%if(current_user!=user)%>
+          <%=current_user.friend?(user)%>
+          <%if(current_user!=user && !current_user.friend?(user) )%>
           <%= button_to "Invite to Friendship",friendships_path(user_id:user)%>
+          
+          
           <%end%>
         </span>
+        
       </li>
     <% end %>
   </ul>
