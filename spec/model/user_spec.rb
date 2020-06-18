@@ -53,4 +53,13 @@ RSpec.describe User, type: :model do
       expect(user1.pending_friendships.first.friend).to eql(user2)
     end
   end
+
+  context 'Check for inverted_friendships' do
+    it 'association for user2 should return user1' do
+      user1
+      user2
+      friend1
+      expect(user2.inverted_friendships.first.user).to eql(user1)
+    end
+  end
 end
