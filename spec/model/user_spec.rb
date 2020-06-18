@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   let(:user) { User.new }
-  let(:user1) { User.create(name: 'test', email: 'email@email.com', password: 'abc123') }
+  let(:user1) { User.create(name: 'first', email: 'first@email.com', password: 'abc123') }
+  let(:user2) { User.create(name: 'second', email: 'second@email.com', password: 'abc123') }
+  let(:friend1) { user1.friendships.create(friend_id: 2) }
   let(:post1) { user1.posts.create(content: 'abc') }
 
   context 'Model' do
@@ -29,6 +31,17 @@ RSpec.describe User, type: :model do
     it 'leave a like' do
       user1.likes.create(post_id: 1)
       expect(post1.likes).not_to be_nil
+    end
+  end
+
+  context 'Check for confirmed_friendships' do
+    it 'user1.confirmed should return user2' do
+      user1
+      user2
+      friend1
+      friend1.acceptance = true
+      friend1.save
+      expect(user1.confirmed_friendships.first.friend).to eql(user2)
     end
   end
 end
