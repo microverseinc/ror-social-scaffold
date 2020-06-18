@@ -1,5 +1,5 @@
 <h1> Pending invitations </h1>
-<% current_user.pending_friendships.each do |friendship| %>
+<% current_user.inverted_friendships.each do |friendship| %>
   Friend Name: <%= friendship.user.name %>
 
   <%= button_to 'Confirm', friendship_path(friendship.id),

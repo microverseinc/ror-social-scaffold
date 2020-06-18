@@ -9,19 +9,19 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :friendships
 
-  # FRIENDS
+  # FRIENDS (current_user all friendships that accp = true)
   has_many :confirmed_friendships, -> { where acceptance: true },
            class_name: 'Friendship'
   has_many :friends, through: :confirmed_friendships
 
-  # INVERSE PAIR
+  # INVERSE PAIR (current_user as friend_id)
   has_many :inverted_friendships, -> { where acceptance: false },
            class_name: 'Friendship', foreign_key: 'friend_id'
   has_many :friend_requests, through: :inverted_friendships
 
-  # PENDING FRIEND
+  # PENDING FRIEND (current_user as user_id)
   has_many :pending_friendships, -> { where acceptance: false },
-           class_name: 'Friendship', foreign_key: 'friend_id'
+           class_name: 'Friendship', foreign_key: 'user_id'
   # has_many :pending_friends,
   #   through: :pending_friendships, source: :friend
 
