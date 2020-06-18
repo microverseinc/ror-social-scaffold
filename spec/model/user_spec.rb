@@ -35,13 +35,22 @@ RSpec.describe User, type: :model do
   end
 
   context 'Check for confirmed_friendships' do
-    it 'user1.confirmed should return user2' do
+    it 'association for user1 should return user2' do
       user1
       user2
       friend1
       friend1.acceptance = true
       friend1.save
       expect(user1.confirmed_friendships.first.friend).to eql(user2)
+    end
+  end
+
+  context 'Check for pending_friendships' do
+    it 'association for user1 should return user2' do
+      user1
+      user2
+      friend1
+      expect(user1.pending_friendships.first.friend).to eql(user2)
     end
   end
 end
