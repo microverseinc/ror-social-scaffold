@@ -13,4 +13,13 @@ RSpec.describe Like, type: :model do
       expect(Friendship.first.user_id).not_to be_nil
     end
   end
+  context 'Check for reverse-friendship creation' do
+    it 'check if second created friendship has user_id as user2' do
+      user1
+      user2
+      friend1
+      friend1.reverse_friend
+      expect(Friendship.second.user_id).to be(user2.id)
+    end
+  end
 end

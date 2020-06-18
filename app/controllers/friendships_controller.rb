@@ -5,7 +5,6 @@ class FriendshipsController < ApplicationController
 
   def create
     @friend = Friendship.create(friendship_params)
-
     # dinamic redirect since is caled in different pages
     redirect_back(fallback_location: root_path)
   end
