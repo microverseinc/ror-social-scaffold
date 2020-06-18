@@ -34,4 +34,10 @@ class User < ApplicationRecord
     friendship.status = true
     friendship.save
   end
+
+  # rubocop:disable Layout/LineLength
+  def check_friendship?(friend)
+    Friendship.where(user_id: id, friend_id: friend.id, status: true).exists? || Friendship.where(user_id: friend.id, friend_id: id, status: true).exists?
+  end
+  # rubocop:enable Layout/LineLength
 end
