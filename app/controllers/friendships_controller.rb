@@ -5,14 +5,18 @@ class FriendshipsController < ApplicationController
 
   def create
     @friend = Friendship.create(friendship_params)
+
+    # dinamic redirect since is caled in different pages
     redirect_back(fallback_location: root_path)
   end
 
   def destroy
     @relationship = Friendship.find(params[:id])
     @relationship.destroy
-    @reverse_relationship = Friendship.find_by(user_id: @relationship.friend_id, friend_id: @relationship.user_id)
-    @reverse_relationship.destroy
+
+    # @reverse_relationship = Friendship.find_by(user_id: @relationship.friend_id, friend_id: @relationship.user_id)
+    # @reverse_relationship.destroy
+
     redirect_to friendships_path
   end
 

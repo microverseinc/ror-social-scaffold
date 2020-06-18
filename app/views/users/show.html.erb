@@ -1,13 +1,13 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
   <% if @user != current_user %>
-    <% unless (current_user.pending_friendships.find_by(friend_id: @user.id) or current_user.confirmed_friendships.find_by(friend_id: @user.id)) %>
+    <% unless list_pending(@user) %>
       <%= button_to 'Add Friend', 
         friendships_path(:friend_id => @user,
         :user_id => current_user),
         :method => :post %>
     <% else %>
-      <p>Request Sent </p>
+      <p>Waiting Friendship</p>
     <% end %>
   <% end %>
   <article class="timeline">

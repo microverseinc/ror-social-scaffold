@@ -5,8 +5,9 @@
         <% if user.id != current_user.id %>
           Name: <%= user.name %>
           <span class="profile-link">
-            <%= link_to 'See Profile', user_path(user.id), class: 'profile-link' %>
-            <% unless current_user.pending_friendships.find_by(friend_id: user.id) or current_user.confirmed_friendships.find_by(friend_id: user.id) %>
+            <%= link_to 'See Profile', user_path(user.id),
+              class: 'profile-link' %>
+            <% unless list_pending(user) %>
               <%= button_to 'Add Friend', 
                 friendships_path(:friend_id => user.id,
                 :user_id => current_user),
@@ -14,7 +15,6 @@
             <% else %>
               <p>Request Sent</p>
             <% end %>
-            
           </span>
         <% end %>
       </li>

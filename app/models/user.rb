@@ -23,10 +23,10 @@ class User < ApplicationRecord
   has_many :pending_friendships, -> { where acceptance: false },
            class_name: 'Friendship', foreign_key: 'user_id'
   has_many :pending_friends,
-    through: :pending_friendships, source: :friend
+           through: :pending_friendships, source: :friend
 
   def friends_and_own_posts
-    Post.where( user: (self.friends))
-      .or(Post.where( user: (self))).ordered_by_most_recent
+    Post.where(user: friends)
+      .or(Post.where(user: self)).ordered_by_most_recent
   end
 end

@@ -15,4 +15,9 @@ module ApplicationHelper
       link_to('Like!', post_likes_path(post_id: post.id), method: :post)
     end
   end
+
+  def list_pending(user)
+    current_user.pending_friendships.find_by(friend_id: user.id) \
+    or current_user.confirmed_friendships.find_by(friend_id: user.id)
+  end
 end
