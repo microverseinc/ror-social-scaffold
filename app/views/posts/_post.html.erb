@@ -1,3 +1,4 @@
+<%if(current_user.friend.include?(post.user) || current_user==post.user)%>
 <li class="post">
   <div>
     <div class='post-attribution' >
@@ -28,3 +29,4 @@
     <% end %>
   </div>
 </li>
+<%end%>
