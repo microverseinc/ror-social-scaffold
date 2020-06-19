@@ -35,6 +35,16 @@ a {
   color: $primary-color-text;
 }
 
+.nav a {
+  color: $primary-color-light;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.nav a:hover {
+  color: #fff;
+}
+
 .nav {
   display: flex;
   justify-content: space-between;
@@ -57,16 +67,6 @@ a {
       }
     }
   }
-}
-
-.nav a {
-  color: $primary-color-light;
-  text-transform: uppercase;
-  font-weight: 900;
-}
-
-.nav a:hover {
-  color: #fff;
 }
 
 .main {
@@ -278,7 +278,7 @@ form {
         font-size: 0.8em;
         width: 90%;
       }
-      
+
       span {
         position: absolute;
         right: 3px;
