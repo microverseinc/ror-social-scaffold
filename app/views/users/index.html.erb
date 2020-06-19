@@ -6,8 +6,8 @@
         <span class="profile-link">
           <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
         
-          <%if(!current_user.friendships.where(friend_id:user.id ).exists?)%>
-          <%= button_to "Invite to Friendship",friendships_path(user_id:user)%>
+          <%if check_profile(user)%>
+          <%= button_to "Add Friend",friendships_path(user_id:user)%>
           
           
           <%end%>
