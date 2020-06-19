@@ -1,4 +1,4 @@
-<%if(current_user.friend.include?(post.user) || current_user==post.user)%>
+<%if check_post(post)%>
 <li class="post">
   <div>
     <div class='post-attribution' >

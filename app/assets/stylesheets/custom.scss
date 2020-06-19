@@ -106,8 +106,8 @@ form {
 
   .field {
     width: 100%;
-    padding: 8px 0px;
-    
+    padding: 8px 0;
+
     label {
       margin-bottom: 8px;
     }
@@ -244,12 +244,13 @@ form {
   .post-liking {
     float: right;
 
-    a{
+    a {
       color: $primary-color-dark;
       font-weight: bold;
       font-size: 0.9em;
       margin: 0 4px;
     }
+
     .post-date {
       font-size: 0.6em;
     }
@@ -274,9 +275,10 @@ form {
       padding: 10px;
 
       p {
-        font-size: .8em;
+        font-size: 0.8em;
         width: 90%;
       }
+      
       span {
         position: absolute;
         right: 3px;
