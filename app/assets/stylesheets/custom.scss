@@ -12,7 +12,7 @@ $divider-color: #bdbdbd;
   box-sizing: border-box;
   outline: none;
 }
-
+/* stylelint-disable no-descending-specificity*/
 body {
   background: #fff;
   position: relative;
@@ -349,3 +349,4 @@ form {
     width: 50%;
   }
 }
+/* stylelint-enable no-descending-specificity*/
