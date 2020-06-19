@@ -2,10 +2,15 @@
   <ul class="users-list">
     <% @users.each do |user| %>
       <li>
-        Name: <%= user.name %>
-        <span class="profile-link">
-          <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-        </span>
+        <div>
+          Name:
+          <span class="profile-link">
+            <%= link_to "#{user.name}",  user_path(user), class: 'profile-link' %>          
+          </span>
+        </div>
+        <div class="button-friendship">
+          <%= button_to 'Invite to friendship', friendships_path(friend_id: user.id, user_id: current_user.id), method: :post, class: 'button-friendship' %>
+        </div>
       </li>
     <% end %>
   </ul>
