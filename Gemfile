@@ -57,7 +57,7 @@ group :development do
   gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'database_cleaner'
-   gem 'database_cleaner-active_record'
+  gem 'database_cleaner-active_record'
   gem 'rspec-rails'
   gem 'rubocop'
   gem 'shoulda-matchers', '~> 4.0', require: false

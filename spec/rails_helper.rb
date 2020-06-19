@@ -27,9 +27,7 @@ Shoulda::Matchers.configure do |config|
   end
 end
 
-
 RSpec.configure do |config|
-
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
@@ -40,6 +38,4 @@ RSpec.configure do |config|
       example.run
     end
   end
-
 end
-
