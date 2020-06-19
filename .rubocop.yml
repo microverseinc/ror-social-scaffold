@@ -6,6 +6,7 @@ AllCops:
     - "Guardfile"
     - "Rakefile"
     - "node_modules/**/*"
+    - "app/assets/stylesheets/*"
 
   DisplayCopNames: true
 
