@@ -1,0 +1,17 @@
+
+<% if sent_friend_request?(user) %>
+  <% status = friendship_status(user) %>
+  <% case status %>
+  <% when 'pending' %>
+    <p class="button-friendship status pending"> Pending Response </p>
+  <% when 'rejected' %>
+    <p class="button-friendship status rejected"> Rejected </p>
+  <% else %>
+  <% end  %>
+<% else %>
+  <div class="button-friendship">
+    <%= button_to 'Invite to friendship', friendships_path(params: { friendship: { friend_id: user.id, user_id: current_user.id }}), method: :post, class: 'button-friendship' %>
+  </div>
+<% end %>
+
+

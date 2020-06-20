@@ -1,8 +1,8 @@
 <section class="user-section">
   
-  <h2><%= "Name: #{@user.name}" %></h2>
-  <div class="button-friendship">    
-    <%= button_to 'Invite to friendship', friendships_path(friend_id: @user.id, user_id: current_user.id), method: :post, class: 'button-friendship' %>
+  <div class="button-parent">
+    <h2><%= "Name: #{@user.name}" %></h2>
+    <%= render 'friendship_button', user: @user %>    
   </div>
   
   <article class="timeline">

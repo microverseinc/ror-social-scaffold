@@ -288,9 +288,6 @@ form {
   margin: 10px;
 
   .users-list li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     margin-bottom: 16px;
     text-transform: capitalize;
     font-size: 1.2em;    
@@ -322,9 +319,35 @@ form {
   }
 }
 
+.button-parent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .button-friendship {
   display: inline-block;
 }
+
+.status {
+  margin: 8px 0;
+  padding: 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 13.33px;
+}
+
+.pending {  
+  color: $primary-color-text;
+  background-color: $divider-color;
+}
+
+.rejected {
+  color: #fff;
+  background-color: rgb(219, 84, 84);
+}
+
 
 @media only screen and (min-width: 480px) {
   form {

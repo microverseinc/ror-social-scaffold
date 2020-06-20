@@ -4,15 +4,18 @@ class FriendshipsController < ApplicationController
   end
 
   def create
-    @friendship = Friendship.new
-    @friendship.user_id = params[:user_id]
-    @friendship.friend_id = params[:friend_id]
-    @friendship.status = false
+    @friendship = Friendship.new(friendship_params)
     if @friendship.save
       flash[:notice] = 'Friendship request sent successfully'
     else
-      flash[:notice] = 'Friendship couldn\'t be sent'
+      flash[:notice] = 'Friendship request couldn\'t be sent'
     end
-    redirect_to users_path
+    redirect_back(fallback_location: root_path)
+  end
+
+  private
+
+  def friendship_params
+    params.require(:friendship).permit(:friend_id, :user_id)
   end
 end
