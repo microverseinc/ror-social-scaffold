@@ -1,6 +1,7 @@
 <li class="post">
   <div>
     <div class='post-attribution' >
+      <%= gravatar_for post.user %>
       <%= link_to post.user.name, user_path(post.user), class: 'post-author' %>
     </div>
     <div class='post-liking'>
@@ -11,6 +12,14 @@
   <p class="post-content">
     <%= post.content %>
   </p>
+  <div class="comments-likes-size">
+    <p class='button-friendship'>
+      COMMENTS: <%= post.comments.count %>
+    </p>
+    <p class='button-friendship'>
+      LIKES: <%= post.likes.count %>
+    </p>
+  </div>
 
   <div class='post-comments-section'>
     <% post.comments.each do |comment| %>

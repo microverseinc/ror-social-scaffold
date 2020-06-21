@@ -256,6 +256,7 @@ form {
   .post-content {
     font-size: 1.1em;
     padding: 4px 0;
+    margin: 0 0 5px 0;
   }
 
   .post-comments-section {
@@ -343,6 +344,21 @@ form {
 .pending {  
   color: $primary-color-text;
   background-color: $divider-color;
+}
+
+.comments-likes-size {
+  font-size: 0.7em;
+  font-weight: 600;
+  color: $primary-color-dark;
+}
+
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+
+.gravatar_edit {
+  margin-top: 15px;
 }
 
 @media only screen and (min-width: 480px) {
