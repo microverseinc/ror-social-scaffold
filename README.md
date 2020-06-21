@@ -74,6 +74,10 @@ Open `http://localhost:3000/` in your browser.
 
 ![Alt image](https://github.com/Sick-Carlito/ror-social-scaffold/blob/master/app/assets/images/image3.png)
 
+## Live version
+
+- [Link](https://boiling-plateau-13640.herokuapp.com/users/sign_in)
+
 ### Potential future features
 
 * Abbility to chat privately with friends
@@ -84,8 +88,12 @@ Open `http://localhost:3000/` in your browser.
 
 - [Carl](https://github.com/Sick-Carlito/ror-social-scaffold)
 
-## Email
+#### Email
 carlb1319@gmail.com
+
+- [LinkedIn](https://www.linkedin.com/in/carlb420/)
+
+- [Twitter](https://twitter.com/cbond_420)
 
 ## 🤝 Contributing
 
@@ -96,13 +104,3 @@ Feel free to check the [issues page](issues/).
 ## Show your support
 
 Give a ⭐️ if you like this project!
-
-## Acknowledgments
-
-TBA
-
-## 📝 License
-
-## Live version
-
-- [Link](https://boiling-plateau-13640.herokuapp.com/users/sign_in)
