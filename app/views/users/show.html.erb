@@ -1,10 +1,12 @@
 <section class="user-section">
-  
-  <div class="button-parent">
-    <h2><%= "Name: #{@user.name}" %></h2>
-    <%= render 'friendship_button', user: @user %>    
+  <% if @user.id == current_user.id %>
+    <h2><%= "Welcome #{@user.name}!" %></h2>
+  <% else %>
+    <div class="button-parent">
+      <h2><%= "Name: #{@user.name}" %></h2>
+      <%= render 'friendship_button', user: @user %>    
   </div>
-  
+  <% end %>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">

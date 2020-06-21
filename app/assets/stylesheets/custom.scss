@@ -5,6 +5,7 @@ $primary-color: #8bc34a;
 $primary-color-light: #dcedc8;
 $primary-color-text: #212121;
 $divider-color: #bdbdbd;
+$secondary-color: #fff;
 
 * {
   margin: 0;
@@ -14,7 +15,7 @@ $divider-color: #bdbdbd;
 }
 
 body {
-  background: #fff;
+  background: $secondary-color;
   position: relative;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
@@ -52,7 +53,7 @@ a {
 
       .active {
         a {
-          color: #fff;
+          color: $secondary-color;
         }
       }
     }
@@ -66,7 +67,7 @@ a {
 }
 
 .nav a:hover {
-  color: #fff;
+  color: $secondary-color;
 }
 
 .main {
@@ -142,7 +143,7 @@ form {
 
   input[type="submit"]:hover {
     background-color: $primary-color;
-    color: #fff;
+    color: $secondary-color;
   }
 
   .actions.reset {
@@ -327,6 +328,7 @@ form {
 
 .button-friendship {
   display: inline-block;
+  justify-items: right;
 }
 
 .status {
@@ -342,12 +344,6 @@ form {
   color: $primary-color-text;
   background-color: $divider-color;
 }
-
-.rejected {
-  color: #fff;
-  background-color: rgb(219, 84, 84);
-}
-
 
 @media only screen and (min-width: 480px) {
   form {
