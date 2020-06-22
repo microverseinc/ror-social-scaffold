@@ -1,5 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Friendship, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'Friendship' do
+    # User
+    it { should belong_to(:user) }
+
+    # Post
+    it { should belong_to(:friend).class_name('User') }
+  end
 end
