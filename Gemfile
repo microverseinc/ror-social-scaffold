@@ -46,7 +46,7 @@ group :development, :test do
   gem 'rspec-rails'
 end
 
-group :test do  
+group :test do
   gem 'capybara', '>= 2.15'
   gem 'rspec'
   gem 'shoulda-matchers', '~> 4.0'
