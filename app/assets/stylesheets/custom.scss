@@ -62,7 +62,9 @@ a {
 .nav a {
   color: $primary-color-light;
   text-transform: uppercase;
-  font-weight: 900;
+  font-weight: 600;
+  font-size: 13px;
+  text-align: center;
 }
 
 .nav a:hover {
@@ -308,6 +310,10 @@ form {
     font-size: 0.8em;
     margin: 0 0 8px 0;
     color: $primary-color-dark;
+
+    &:hover {
+      color: green;
+    }
   }
 }
 

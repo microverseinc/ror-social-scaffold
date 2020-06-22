@@ -3,15 +3,20 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    @user = User.find(current_user.id)
-    @f_request = @user.friendships.create(params[:confirmer_id])
 
-    puts "|||||| #{@f_request} >>>>>>>>>>>"
+    @friendship = Friendship.new
+    
+    # @f_request = 
+    # current_user.friendships.create(params.require(:friendship)
+    # .permit(:confirmer_id => 2, :requester_id => current_user.id))
+
+    # puts "|||||| #{@f_request.confirmer_id} >>>>>>>>>>>"
   end
 
   def show
     @user = User.find(current_user.id)
     @show_user = User.find(params[:id])
+  
     @f = Friendship.where(confirmer: @user.id)
     @i = Friendship.find_by(confirmer: @user.id)
 

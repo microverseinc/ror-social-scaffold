@@ -24,3 +24,27 @@
    background-color: red !important;
  }
 
+ .form-index-req {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+ }
+
+ .btn-idx-req {
+   background-color: #fff !important;
+   color: #689f38 !important;
+   margin-left: 10px;
+   font-size: 12px;
+ }
+
+ .btn-idx-req:hover {
+   cursor: pointer;
+   color: green !important;
+ }
+
+.idx-user-name {
+  font-size: 16px;
+  margin-right: 10px;
+  margin-bottom: 6px;
+}
+

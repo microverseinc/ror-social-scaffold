@@ -1,22 +1,23 @@
 <section class="users-section">
   <ul class="users-list">
     <% @users.each do |user| %>
-      <li>
-        Name: <%= user.name %>
+      <li class = 'form-index-req' >
+        <% if user.id != current_user.id %>
+          <span class="idx-user-name"><%= user.name %> </span>
         <span class="profile-link">
           <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
         </span>
 
         <span class="profile-link">
+          <%= form_for @friendship do |f| %>
+            <%= hidden_field_tag "confirmer_id", user.id %>
 
-        <%= form_for :friendships, url: friendship_path(user.friendships) do |f| %>
-          <%= f.hidden_field :confirmer_id => user.id %>
-
-          <div>
-            <%= f.submit 'Send Friend Request'%>
-          </div>
-        <% end %>
+            <div>
+              <%= f.submit 'Send Friend Request', class: 'btn-idx-req' %>
+            </div>
+          <% end %>
         </span>
+      <% end %>
       </li>
     <% end %>
   </ul>
