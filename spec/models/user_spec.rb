@@ -49,6 +49,6 @@ RSpec.describe User, type: :model do
     it { should have_many(:friendships) }
 
     # Received Friendships
-    it { should have_many(:received_friendships).with_foreign_key('friend_id').class_name('Friendship')}
+    it { should have_many(:received_friendships).with_foreign_key('friend_id').class_name('Friendship') }
   end
 end
