@@ -30,11 +30,11 @@ RSpec.describe 'Main flow', type: :system do
       click_button 'Send Friend Request'
       click_link 'Sign out'
 
+
       # Login User 1
       fill_in('user[email]', with: 'test@mail.com')
       fill_in('user[password]', with: 'password')
       click_button 'Log in'
-      click_link('My Profile')
       click_link 'Sign out'
     end
   end

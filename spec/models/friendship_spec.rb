@@ -19,7 +19,7 @@ RSpec.describe Friendship, type: :model do
     let(:friend_request) { Friendship.create(requester_id: user1.id, confirmer_id: user2.id) }
 
     it 'belongs_to user' do
-      expect(friend_request).to eq(user1.friendships.first)
+      expect(friend_request).to eq(user2.friendships.first)
     end
   end
 

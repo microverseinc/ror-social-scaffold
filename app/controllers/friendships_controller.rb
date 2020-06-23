@@ -1,16 +1,22 @@
 class FriendshipsController < ApplicationController
   include FriendshipsHelper
 
+  def index
+    @friendship = Friendship.all
+    @f = Friendship.where(confirmer: current_user.id)
+    @i = Friendship.find_by(confirmer: current_user.id)
+  end
+
   def new
     @friendship = Friendship.new
   end
 
   def create
-    @friendship = current_user.friendships.build(friendship_params)
+    @friendship = Friendship.new(friendship_params)
 
     if @friendship.save
       flash.notice = 'Friend Request Succesfully Sent'
-      redirect_to user_path(current_user)
+      redirect_to users_path
     else
       flash.alert = @friendship.errors.full_messages[0]
       redirect_to users_path
@@ -22,7 +28,7 @@ class FriendshipsController < ApplicationController
   def update
     user_id = current_user.id
     @friendship = Friendship.find_by(confirmer: user_id)
-    accepted = @friendship.update_attribute(:status, params[:status] = true)
+    accepted = @friendship.update_attribute(:confirmed, params[:confirmed] = true)
 
     if accepted
       redirect_to user_path(user_id), notice: 'Friend request Succesfully Accepted'

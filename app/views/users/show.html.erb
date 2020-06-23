@@ -1,48 +1,25 @@
 <section class="user-section">
   <%= flash[:message] %>
 
-<%= "#{@show_user.name.upcase }'s PROFILE'" %>
+<div>
+<h1><%= "#{@show_user.name.upcase }'S PROFILE'" %></h1>
 
-<% if current_user == @show_user %>
+<% if current_user != @show_user &&  !current_user.friend?(@show_user)%>
 
-  <h1>Send A Friend Request</h1>
+  <%= form_for @new_friendship do |f| %>
+    <%= hidden_field_tag "confirmer_id", @show_user.id %>
 
-  <%= form_for :friendship, url: friendships_path do |f|%>
-    <%= f.select :confirmer_id, 
-      User.all.collect { |u| [ u.name, u.id ] if u.id != current_user.id }.select(&:present?), 
-      {:prompt => 'Select Person'}, class: "select_friend"
-    %>
-
-    <%= f.submit "Send Friend Request" %>
+    <div>
+      <%= f.submit 'Send Friend Request', class: "select_friend" %>
+    </div>
   <% end %>
 
-
-  <h1>Friend Requests From Others</h1>
-  <ul>
-    <% @f.each do |x| %>
-      <li>
-        <% if x.status == false %>
-          <p><%= x.requester.name %></p>
-          <div class='btn-div'>
-            <%= form_for(:friendships, url: friendship_path(@i), method: :patch ) do |f| %>
-              <%= f.hidden_field :status %>
-              <div>
-                <%= f.submit 'Accept' %> 
-              </div>
-            <% end %>
-            <%= form_for(:friendships, url: friendship_path(@i), method: :delete ) do |f| %>
-              <%= f.hidden_field :status %>
-
-              <div>
-                <%= f.submit 'Reject', class: 'btn-right'%>
-              </div>
-            <% end %>
-          </div>
-        <% end %>
-      </li>
-    <% end %>
-  </ul>
 <% end %>
+</div>
+<br>
+
+
+<% if current_user.friend?(@show_user) || current_user == @show_user %>
 
   <article class="timeline">
     <h3>Recent posts:</h3>
@@ -51,3 +28,5 @@
     </ul>
   </article>
 </section>
+
+<% end %>

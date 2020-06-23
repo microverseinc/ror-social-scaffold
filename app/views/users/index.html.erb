@@ -4,21 +4,25 @@
       <li class = 'form-index-req' >
         <% if user.id != current_user.id %>
           <span class="idx-user-name"><%= user.name %> </span>
-        <span class="profile-link">
-          <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-        </span>
+          <span class="profile-link">
+            <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+          </span>
 
-        <span class="profile-link">
-          <%= form_for @friendship do |f| %>
-            <%= hidden_field_tag "confirmer_id", user.id %>
+          <span class="profile-link">
 
-            <div>
-              <%= f.submit 'Send Friend Request', class: 'btn-idx-req' %>
-            </div>
-          <% end %>
-        </span>
-      <% end %>
+              <%= form_for @friendship do |f| %>
+                <%= hidden_field_tag "confirmer_id", user.id %>
+                <%= hidden_field_tag "requester_id", current_user.id %>
+                <div>
+                  <%= f.submit 'Send Friend Request', class: 'btn-idx-req' %>
+                </div>
+              <% end %>
+          </span>
+        <% end %>
       </li>
+
+
+
     <% end %>
   </ul>
 </section>

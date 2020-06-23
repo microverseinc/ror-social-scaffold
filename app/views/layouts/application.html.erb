@@ -20,6 +20,7 @@
       </div>
       <% if current_user %>
         <small><%= menu_link_to "My Profile", user_path(current_user) %></small>
+        <small><%= menu_link_to "Friend Requests", friendships_path %></small>
         <small><%= menu_link_to "Signed in as: #{current_user.name}", users_path %></small>
         <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
       <% else %>
