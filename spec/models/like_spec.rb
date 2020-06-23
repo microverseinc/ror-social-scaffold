@@ -13,7 +13,7 @@ RSpec.describe Like, type: :model do
   end
 
   let(:like1) do
-      user1.likes.create(post_id: 1)
+    user1.likes.create(post_id: 1)
   end
 
   it 'belongs_to user' do

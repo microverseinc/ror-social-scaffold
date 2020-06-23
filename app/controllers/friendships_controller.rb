@@ -13,17 +13,15 @@ class FriendshipsController < ApplicationController
       redirect_to user_path(current_user)
     else
       flash.alert = @friendship.errors.full_messages[0]
-      redirect_to user_path(current_user)
+      redirect_to users_path
     end
   end
 
-  def edit
-    
-  end
+  def edit; end
 
   def update
     user_id = current_user.id
-    @friendship = Friendship.find_by(confirmer: user_id)  
+    @friendship = Friendship.find_by(confirmer: user_id)
     accepted = @friendship.update_attribute(:status, params[:status] = true)
 
     if accepted
@@ -37,7 +35,7 @@ class FriendshipsController < ApplicationController
     user_id = current_user.id
     friendship = Friendship.find_by(confirmer: user_id)
     deleted = friendship.destroy
-  
+
     if deleted
       redirect_to user_path(user_id), notice: 'Friend request Succesfully Rejected'
     else

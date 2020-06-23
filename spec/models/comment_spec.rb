@@ -12,10 +12,9 @@ RSpec.describe Comment, type: :model do
     user1.posts.create(content: 'Test')
   end
 
-  let(:comment1) do 
+  let(:comment1) do
     post1.comments.create(user_id: 1,
-                          content: 'test comments content'
-                          )
+                          content: 'test comments content')
   end
 
   it 'belongs_to user' do
