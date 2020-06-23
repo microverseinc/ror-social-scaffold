@@ -19,7 +19,7 @@ class FriendshipsController < ApplicationController
       redirect_to users_path
     else
       flash.alert = @friendship.errors.full_messages[0]
-      redirect_to users_path
+      redirect_to root
     end
   end
 

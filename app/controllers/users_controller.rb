@@ -4,9 +4,7 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     @friendship = Friendship.new
-    #@friendships = Friendship.where(confirmer_id: current_user.id).or(Friendship.where(requester_id: current_user.id))
-
-
+    # @friendships = Friendship.where(confirmer_id: current_user.id).or(Friendship.where(requester_id: current_user.id))
   end
 
   def show
@@ -14,7 +12,6 @@ class UsersController < ApplicationController
     @show_user = User.find(params[:id])
 
     @new_friendship = Friendship.new
-
 
     @f = Friendship.where(confirmer: @user.id)
     @i = Friendship.find_by(confirmer: @user.id)
