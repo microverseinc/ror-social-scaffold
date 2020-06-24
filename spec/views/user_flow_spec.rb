@@ -25,11 +25,9 @@ RSpec.describe 'Main flow', type: :system do
       fill_in('user[password_confirmation]', with: 'password')
       click_button('Sign up')
 
-
       # Send Friend Request
       click_link 'All users'
       click_button 'Send Friend Request'
-      
       click_link 'Sign out'
     end
   end
