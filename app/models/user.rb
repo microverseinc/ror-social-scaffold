@@ -48,7 +48,6 @@ class User < ApplicationRecord
   end
 
   def friends_with(user)
-    friends.include?(user) 
+    friends.include?(user)
   end
-
 end
