@@ -102,7 +102,7 @@ GEM
       ast (~> 2.4.0)
     pg (1.2.2)
     puma (3.12.6)
-    rack (2.2.2)
+    rack (2.2.3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.4.1)
