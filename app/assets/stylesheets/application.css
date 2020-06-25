@@ -31,6 +31,7 @@
  }
 
  .btn-idx-req {
+   display: inline-block;
    background-color: #fff !important;
    color: #689f38 !important;
    margin-left: 10px;

@@ -1,0 +1,9 @@
+<span class="profile-link">
+  <%= form_for @friendship do |f| %>
+    <%= hidden_field_tag "confirmer_id", user.id %>
+    <%= hidden_field_tag "requester_id", current_user.id %>
+
+      <%= f.submit 'Send Friend Request', class: 'btn-idx-req' %>
+
+  <% end %>
+</span>
