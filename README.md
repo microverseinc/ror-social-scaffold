@@ -77,8 +77,6 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-TBA
-
 ## 📝 License
 
 TBA
