@@ -5,6 +5,10 @@ class FriendshipsController < ApplicationController
     @friendship = Friendship.all
     @f = Friendship.where(confirmer: current_user.id)
     @i = Friendship.find_by(confirmer: current_user.id)
+
+    @f.each do |friendship|
+      @single_friendship = friendship.id
+    end
   end
 
   def new
@@ -39,8 +43,8 @@ class FriendshipsController < ApplicationController
 
   def destroy
     user_id = current_user.id
-    friendship = Friendship.find_by(confirmer: user_id)
-    deleted = friendship.destroy
+    @friendship = Friendship.find_by(confirmer: user_id)
+    deleted = @friendship.destroy
 
     if deleted
       redirect_to user_path(user_id), notice: 'Friend request Succesfully Rejected'
