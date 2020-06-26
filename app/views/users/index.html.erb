@@ -6,7 +6,7 @@
       <span class="profile-link">
         <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
         <%if current_user.status?(user)%>
-        <p><%=current_user.friendship_status(user)%></p>
+        <p><%=friendship_status(user)%></p>
         <%else%>
         <%= link_to 'Add friend',  add_friend_path(user), method: :post, class: 'profile-link', data: { confirm: "You sure?" } %>
         <%end%>
