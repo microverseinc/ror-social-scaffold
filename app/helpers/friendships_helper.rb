@@ -7,8 +7,14 @@ module FriendshipsHelper
   def pending_friendships(f, i)
     content_tag(:ul) do
       f.each do |x|
-          if x.confirmed == false
-            concat(content_tag(:li, (x.requester.name)).concat(render partial: 'confirm_decline'))
+          if x.confirmed == false            
+            # concat(
+              content_tag(:li) do                
+                  content_tag(:div, :class => 'btn-div') do
+                    x.requester.name.concat(render partial: 'confirm_decline')
+                  end
+            end
+            # )
           end
       end
     end
