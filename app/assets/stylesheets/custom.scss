@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap");
 
-$primary-color-dark: #689f38;
-$primary-color: #8bc34a;
+$primary-color-dark: #3b5998;
+$primary-color: #1877f2;
 $primary-color-light: #dcedc8;
 $primary-color-text: #212121;
 $divider-color: #bdbdbd;
@@ -80,13 +80,14 @@ a {
 
 .notice,
 .alert {
-  margin-bottom: 8px;
-  width: 100%;
+  margin: 1% auto auto auto;
+  width: 70%;
   height: 30px;
   text-align: center;
   padding: 5px;
   color: dimgrey;
   font-size: 14px;
+  border-radius: 3px;
 }
 
 .notice {
@@ -94,7 +95,8 @@ a {
 }
 
 .alert {
-  background-color: #d5e40d;
+  background-color: tomato;
+  color: #fff;
 }
 
 .errors {
@@ -358,4 +360,13 @@ form {
   .user-section {
     width: 50%;
   }
+}
+
+.auth-forms {
+  width: 80%;
+  margin: 3em auto 0;
+  border: 1px solid $primary-color;
+  border-radius: 3px;
+  padding: 1em 0;
+  padding-left: 30%;
 }
