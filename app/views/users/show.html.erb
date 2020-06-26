@@ -1,32 +1,14 @@
 <section class="user-section">
   <%= flash[:message] %>
+  <div>
+    <h1><%= "#{@show_user.name.upcase }'S PROFILE'" %></h1>
+    <%= user_friend_request(@show_user) %>
+  </div>
 
-<div>
-<h1><%= "#{@show_user.name.upcase }'S PROFILE'" %></h1>
-
-<% if current_user != @show_user &&  !current_user.friend?(@show_user)%>
-
-  <%= form_for @new_friendship do |f| %>
-    <%= hidden_field_tag "confirmer_id", @show_user.id %>
-
-    <div>
-      <%= f.submit 'Send Friend Request', class: "select_friend" %>
-    </div>
-  <% end %>
-
-<% end %>
-</div>
 <br>
 
+<%= user_posts(@show_user) %>
 
-<% if current_user.friend?(@show_user) || current_user == @show_user %>
-
-  <article class="timeline">
-    <h3>Recent posts:</h3>
-    <ul class="posts">
-      <%= render @posts %>
-    </ul>
-  </article>
 </section>
 
-<% end %>
+

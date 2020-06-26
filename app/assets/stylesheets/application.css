@@ -20,7 +20,7 @@
  }
 
  .btn-right{
-   margin-left: -230px;
+   margin-left: 30px;
    background-color: red !important;
  }
 
@@ -49,3 +49,6 @@
   margin-bottom: 6px;
 }
 
+.right-side {
+  display: flex;
+}

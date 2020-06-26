@@ -15,4 +15,18 @@ module ApplicationHelper
       link_to('Like!', post_likes_path(post_id: post.id), method: :post)
     end
   end
+
+  def nav_right_side
+    if current_user
+      menu_link_to('My Profile', user_path(current_user)).concat(
+        menu_link_to('Friend Requests', friendships_path)
+      ).concat(
+        content_tag(:small, "SIGNED IN AS: #{current_user.name}")
+      ).concat(
+        link_to('Sign out', destroy_user_session_path, method: :delete)
+      )
+    else
+      link_to('Sign in', user_session_path)
+    end
+  end
 end
