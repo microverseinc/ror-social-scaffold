@@ -1,14 +1,16 @@
 example_id                                   | status | run_time        |
 -------------------------------------------- | ------ | --------------- |
-./spec/integration/pending_spec.rb[1:1]      | passed | 0.06137 seconds |
-./spec/integration/requests_spec.rb[1:1]     | passed | 0.0846 seconds  |
-./spec/integration/requests_spec.rb[1:2]     | passed | 8.33 seconds    |
-./spec/integration/user_index_spec.rb[1:1]   | passed | 0.08417 seconds |
-./spec/integration/user_index_spec.rb[1:2]   | passed | 0.09437 seconds |
-./spec/integration/user_index_spec.rb[1:3]   | passed | 0.06596 seconds |
-./spec/integration/user_profile_spec.rb[1:1] | passed | 0.06169 seconds |
-./spec/integration/user_profile_spec.rb[1:2] | passed | 0.06541 seconds |
-./spec/integration/user_profile_spec.rb[1:3] | passed | 0.05521 seconds |
-./spec/integration/user_profile_spec.rb[1:4] | passed | 0.05463 seconds |
-./spec/model/friendships_spec.rb[1:1:1]      | passed | 0.0212 seconds  |
-./spec/model/friendships_spec.rb[1:1:2]      | passed | 0.0183 seconds  |
+./spec/integration/pending_spec.rb[1:1]      | passed | 5.29 seconds    |
+./spec/integration/posts_spec.rb[1:1]        | passed | 0.06784 seconds |
+./spec/integration/requests_spec.rb[1:1]     | passed | 0.07244 seconds |
+./spec/integration/requests_spec.rb[1:2]     | passed | 0.04861 seconds |
+./spec/integration/user_index_spec.rb[1:1]   | passed | 0.05192 seconds |
+./spec/integration/user_index_spec.rb[1:2]   | passed | 0.07757 seconds |
+./spec/integration/user_index_spec.rb[1:3]   | passed | 0.06119 seconds |
+./spec/integration/user_profile_spec.rb[1:1] | passed | 0.05206 seconds |
+./spec/integration/user_profile_spec.rb[1:2] | passed | 0.04717 seconds |
+./spec/integration/user_profile_spec.rb[1:3] | passed | 0.04934 seconds |
+./spec/integration/user_profile_spec.rb[1:4] | passed | 0.05349 seconds |
+./spec/model/friendships_spec.rb[1:1:1]      | passed | 0.0139 seconds  |
+./spec/model/friendships_spec.rb[1:1:2]      | passed | 0.01289 seconds |
+./spec/model/friendships_spec.rb[1:1:3]      | passed | 0.02039 seconds |

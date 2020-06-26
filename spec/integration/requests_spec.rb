@@ -16,7 +16,7 @@ RSpec.feature 'Requests', type: :feature do
     log_in_with(user2.email, user2.password)
     visit requests_path
 
-    requests = user2.request_list.paginate(page: 1)
+    requests = user2.friend_requests.map(&:user).paginate(page: 1)
 
     requests.each do |user|
       expect(page).to have_css('p', text: user.name.to_s)
@@ -34,7 +34,7 @@ RSpec.feature 'Requests', type: :feature do
     log_in_with(user1.email, user1.password)
     visit requests_path
 
-    requests = user1.request_list.paginate(page: 1)
+    requests = user1.friend_requests.map(&:user).paginate(page: 1)
 
     requests.each do |user|
       expect(page).to have_no_css('p', text: user.name.to_s)
