@@ -50,9 +50,8 @@ class User < ApplicationRecord
   def friendship_created?(confirmer)
     friendships.find_by(confirmer_id: confirmer.id).nil? && created_inverse?(confirmer)
   end
-  
-  def created_inverse?(confirmer)
-    confirmer.friendships.find_by(confirmer_id: id).nil?
-  end
 
+  def created_inverse?(confirmer)
+    confirmer.inverse_friendships.find_by(confirmer_id: id).nil?
+  end
 end

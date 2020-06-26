@@ -1,0 +1,8 @@
+<%= form_for @new_friendship do |f| %>
+  <%= hidden_field_tag "confirmer_id", @show_user.id %>
+  <%= hidden_field_tag "requester_id", current_user.id %>
+
+  <div>
+      <%= f.submit 'Send Friend Request', class: "select_friend" %>
+    </div>
+<% end %>

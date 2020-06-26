@@ -1,4 +1,3 @@
-<% if current_user.friend?(post.user) || post.user.friend?(current_user) || current_user.id  == post.user.id %>
 <li class="post">
   <div>
     <div class='post-attribution' >
@@ -29,5 +28,5 @@
     <% end %>
   </div>
 </li>
-<% end %>
+
 
