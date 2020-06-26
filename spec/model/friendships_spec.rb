@@ -18,8 +18,12 @@ RSpec.describe Friendship, type: :model do
       u = user1.friendships.find_by(friend_id: user2.id)
       u.status = true
       u.save
-      expect(user2.friendships.find_by(friend_id: user1.id).user_id).to eql(user1.friendships.find_by(friend_id: user2.id).friend_id)
-      expect(user2.friendships.find_by(friend_id: user1.id).friend_id).to eql(user1.friendships.find_by(friend_id: user2.id).user_id)
+      expect(user2.friendships.find_by(friend_id: user1.id).user_id).to eql(
+        user1.friendships.find_by(friend_id: user2.id).friend_id
+      )
+      expect(user2.friendships.find_by(friend_id: user1.id).friend_id).to eql(
+        user1.friendships.find_by(friend_id: user2.id).user_id
+      )
     end
   end
 end
