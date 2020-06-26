@@ -10,27 +10,24 @@ class UsersController < ApplicationController
     @posts = @user.posts.ordered_by_most_recent
   end
 
-  def add_friend 
-    friendship = current_user.friendships.build(friend_id: params[:id], confirmed: false ) 
-    if friendship.save
-      flash[:notice] = "Friends request has been sent"
-      redirect_to users_path
-    else
-      flash[:notice] = "Error occured during sending request please try again"
-      redirect_to users_path
-    end
+  def add_friend
+    friendship = current_user.friendships.build(friend_id: params[:id], confirmed: false)
+    flash[:notice] = if friendship.save
+                       'Friends request has been sent'
+                     else
+                       'Error occured during sending request please try again'
+                     end
+    redirect_to users_path
   end
 
-  def accepts_friend 
+  def accepts_friend
     mutal = current_user.inverse_friendships.find_by(user_id: params[:id])
     mutal.confirmed = true
-    if mutal.save
-      flash[:notice] = "You have been accepted friendship"
-      redirect_to users_path
-    else
-      flash[:notice] = "Error occuredto accept please try again"
-      redirect_to users_path
-    end
-  
+    flash[:notice] = if mutal.save
+                       'You have been accepted friendship'
+                     else
+                       'Error occuredto accept please try again'
+                     end
+    redirect_to users_path
   end
 end
