@@ -13,3 +13,42 @@
  *= require_tree .
  *= require_self
  */
+
+ .btn-div{
+   display: flex;
+   justify-content: space-between;
+ }
+
+ .btn-right{
+   margin-left: 30px;
+   background-color: red !important;
+ }
+
+ .form-index-req {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+ }
+
+ .btn-idx-req {
+   display: inline-block;
+   background-color: #fff !important;
+   color: #689f38 !important;
+   margin-left: 10px;
+   font-size: 12px;
+ }
+
+ .btn-idx-req:hover {
+   cursor: pointer;
+   color: green !important;
+ }
+
+.idx-user-name {
+  font-size: 16px;
+  margin-right: 10px;
+  margin-bottom: 6px;
+}
+
+.right-side {
+  display: flex;
+}
