@@ -33,8 +33,10 @@ class FriendshipsController < ApplicationController
     user_id = current_user.id
     @friendship = Friendship.find_by(confirmer: user_id)
     accepted = @friendship.update_attribute(:confirmed, params[:confirmed] = true)
+    # requester_id = @friendship.requester.id
 
     if accepted
+      # Friendship.new(confirmer_id: requester_id, requester_id: user_id, confirmed: true).save
       redirect_to user_path(user_id), notice: 'Friend request Succesfully Accepted'
     else
       redirect_to user_path(user_id), alert: 'Something Went wrong'
