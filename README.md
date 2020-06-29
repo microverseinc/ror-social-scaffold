@@ -1,11 +1,6 @@
 # Social media app with Ruby on Rails
 
-> Social Media app where user can sign in and post new post. In this project we implement light way of the Facebook app where users could send user request and comment/like to the other's post  
-
-## Built With
-
-- Ruby v2.7.0
-- Ruby on Rails v5.2.4
+> Social Media app where user can sign in and post new post. In this project we implement light way of the Facebook app where users could send user request and comment/like to the other's post
 
 ### Prerequisites
 
@@ -48,14 +43,14 @@ In order to start with the project:
 👤 **Bekhzod Akhrorov**
 
 - Github:[@Bekhzod96](https://github.com/Bekhzod96)
-- Twitter: [ @Begzod](https://twitter.com/25d47e8987f740b)
+- Twitter: [@Begzod](https://twitter.com/25d47e8987f740b)
 - Linkedin:[@Bekhzod AKhrorov](https://www.linkedin.com/in/bekhzod-akhrorov/)
 
 
 👤 **Javier Botero**
 
 - Github: [@Javierbotero](https://github.com/javierbotero)
-- Twitter: [@@Javierbotero1](https://twitter.com/JavierBotero1)
+- Twitter: [@Javierbotero1](https://twitter.com/JavierBotero1)
 - Linkedin: [Javierbotero](https://www.linkedin.com/in/javier-botero-044686155/)
 
 ## 🤝 Contributing
