@@ -3,10 +3,9 @@ class FriendshipsController < ApplicationController
 
   def index
     @friendship = Friendship.all
-    @f = Friendship.where(confirmer: current_user.id)
-    @i = Friendship.find_by(confirmer: current_user.id)
+    @cu_friendships = Friendship.where(confirmer: current_user.id)
 
-    @f.each do |friendship|
+    @cu_friendships.each do |friendship|
       @single_friendship = friendship.id
     end
   end
@@ -33,10 +32,8 @@ class FriendshipsController < ApplicationController
     user_id = current_user.id
     @friendship = Friendship.find_by(confirmer: user_id)
     accepted = @friendship.update_attribute(:confirmed, params[:confirmed] = true)
-    # requester_id = @friendship.requester.id
 
     if accepted
-      # Friendship.new(confirmer_id: requester_id, requester_id: user_id, confirmed: true).save
       redirect_to user_path(user_id), notice: 'Friend request Succesfully Accepted'
     else
       redirect_to user_path(user_id), alert: 'Something Went wrong'

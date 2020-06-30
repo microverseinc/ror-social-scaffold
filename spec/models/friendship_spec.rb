@@ -44,22 +44,6 @@ RSpec.describe Friendship, type: :model do
                   password_confirmation: 'password')
     end
 
-    # it 'validates against duplicate friendship' do
-    # requester.friendships.new(requester: confirmer).save
-    # subject.requester = requester
-    # subject.confirmer = confirmer
-    # error_message = 'Validation failed: This relationship already exists'
-    # expect { subject.save! }.to raise_error(ActiveRecord::RecordInvalid, error_message)
-    # end
-
-    # it 'validates against duplicate inverse-friendship' do
-    # confirmer.inverse_friendships.new(confirmer: requester).save
-    # subject.requester = requester
-    # subject.confirmer = confirmer
-    # error_message = 'Validation failed: This relationship already exists'
-    # expect { subject.save! }.to raise_error(ActiveRecord::RecordInvalid, error_message)
-    # end
-
     it 'validates against self-friendship' do
       subject.requester = requester
       subject.confirmer = requester
