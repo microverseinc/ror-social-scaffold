@@ -62,7 +62,8 @@ Open `http://localhost:3000/` in your browser.
 TBA
 
 ## Authors
-
+[Kingsley McSimon O.](https://github.com/KingsleyMcSimon)
+[Roheem Olayemi](https://github.com/Tekcoder)
 TBA
 
 ## 🤝 Contributing
