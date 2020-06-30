@@ -40,7 +40,7 @@ Timeline page should be the root page of the app.
   - GET localhost:3000 /friendships - For accepting friendship requests from other users.
 
 ## Installation
-  - Make sure to have [PostreSQL](https://www.postgresql.org/) installed and configured as the database.
+  - Make sure to have [PostgreSQL](https://www.postgresql.org/) installed and configured as the database.
   - Ensure the project dependencies are installed.
   - Clone the repo locally with the command `git clone git@github.com:dansantander/stay-in-touch.git`.
   - Navigate to the project folder.

@@ -18,9 +18,6 @@ class User < ApplicationRecord
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'requester_id'
   has_many :requesters, through: :friendships, source: :requester
 
-  # has_many :friendships, :class_name => "Friendship", :foreign_key => "confirmer_id"
-  # has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "requester_id"
-
   def friends
     friends_array = friendships.map { |friendship| friendship.requester if friendship.confirmed }
     friends_array + inverse_friendships.map { |friendship| friendship.confirmer if friendship.confirmed }

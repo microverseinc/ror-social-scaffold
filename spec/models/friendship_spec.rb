@@ -21,6 +21,11 @@ RSpec.describe Friendship, type: :model do
     it 'belongs_to user' do
       expect(friend_request).to eq(user2.friendships.first)
     end
+
+    it 'creates second row for friendship after confirmation' do
+      friend_request.inverse_friend
+      expect(Friendship.second).not_to be_nil
+    end
   end
 
   describe 'Custom Validation tests' do
@@ -37,22 +42,6 @@ RSpec.describe Friendship, type: :model do
                   email: 'test2@email.com',
                   password: 'password',
                   password_confirmation: 'password')
-    end
-
-    it 'validates against duplicate friendship' do
-      requester.friendships.new(requester: confirmer).save
-      subject.requester = requester
-      subject.confirmer = confirmer
-      error_message = 'Validation failed: This relationship already exists'
-      expect { subject.save! }.to raise_error(ActiveRecord::RecordInvalid, error_message)
-    end
-
-    it 'validates against duplicate inverse-friendship' do
-      confirmer.inverse_friendships.new(confirmer: requester).save
-      subject.requester = requester
-      subject.confirmer = confirmer
-      error_message = 'Validation failed: This relationship already exists'
-      expect { subject.save! }.to raise_error(ActiveRecord::RecordInvalid, error_message)
     end
 
     it 'validates against self-friendship' do

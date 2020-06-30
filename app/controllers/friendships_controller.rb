@@ -3,10 +3,9 @@ class FriendshipsController < ApplicationController
 
   def index
     @friendship = Friendship.all
-    @f = Friendship.where(confirmer: current_user.id)
-    @i = Friendship.find_by(confirmer: current_user.id)
+    @cu_friendships = Friendship.where(confirmer: current_user.id)
 
-    @f.each do |friendship|
+    @cu_friendships.each do |friendship|
       @single_friendship = friendship.id
     end
   end
