@@ -1,5 +1,8 @@
 # Stay In Touch
-In this project we built the MVP for a social media app called “Stay in touch”.
+In this project we built the MVP for a social media app called “Stay in touch” that mimicks most of the functionalities of the popular [facebook](https://web.facebook.com/) app. 
+
+The app can be accessed via the link below
+[Live Demo](https://salty-lowlands-16667.herokuapp.com/)
 
 ## Features
 
@@ -28,16 +31,29 @@ Timeline page should be the root page of the app.
 
 ## Endpoints covered in this project
   ## users & sessions
-  - POST localhost:3000 /users/sign_up  - For Signing up a new client.
-  - POST localhost:3000 /users/sign_in - For logging in a user.
-  - GET localhost:3000 /users/id - For viewing a users profile.
-  - POST localhost:3000 /users/sign_out - For signing out a user.
+  - POST  /users/sign_up  - For Signing up a new client.
+  - POST  /users/sign_in - For logging in a user.
+  - GET  /users/user_id - For viewing a users profile.
+  - POST  /users/sign_out - For signing out a user.
+  - GET /users/password/new - For setting a new password
+  - GET /users/password/edit - For edit a password
+  - PATCH  /users/password - For updating a password
 
 ## Posts
-  - GET localhost:3000 /posts  - For creating a new post, comments and likes.
+  - POST  /posts  - For creating a new post, comments and likes.
+  - GET /posts - For viewing a post.
+
+## Comments
+  - POST   /posts/:post_id/comments - For making a comment about a post.
+
+## Likes
+  - POST   /posts/:post_id/likes - For liking a post.
 
 ## Friendships
-  - GET localhost:3000 /friendships - For accepting friendship requests from other users.
+  - GET  /friendships/friendship_id - For viewing friendship requests from other users.
+  - POST  /friendships - For making new friendship requests to other users and creating a mutual friendship with other users.
+  - DELETE /friendships/:id - For rejecting a friend request from others.
+
 
 ## Installation
   - Make sure to have [PostgreSQL](https://www.postgresql.org/) installed and configured as the database.
