@@ -30,4 +30,14 @@ class UsersController < ApplicationController
                      end
     redirect_to users_path
   end
+
+  def reject_friend
+    res = Friendship.find_by(id: params[:id]).destroy
+    flash[:notice] = if res
+                       'Friendship request rejected Successfully'
+                     else
+                       'Error occuredto accept please try again'
+                     end
+    redirect_to users_path
+  end
 end
