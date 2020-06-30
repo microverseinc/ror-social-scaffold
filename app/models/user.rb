@@ -15,8 +15,13 @@ class User < ApplicationRecord
 
   def friends
     friends_array = friendships.map { |friendship| friendship.friend if friendship.confirmed }
-    friends_array + inverse_friendships.map { |friendship| friendship.user if friendship.confirmed }
+    inverse_friendships.map { |friendship| friends_array << friendship.user if friendship.confirmed }
     friends_array.compact
+  end
+
+  def inverse_friends
+    array = inverse_friendships.map { |f| f.user if f.confirmed }
+    array.compact
   end
 
   def pending_friends
@@ -34,7 +39,7 @@ class User < ApplicationRecord
   end
 
   def friend?(user)
-    byebug
     friends.include?(user)
   end
+
 end
