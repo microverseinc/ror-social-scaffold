@@ -11,6 +11,10 @@
 
 TBA
 
+## Diagram of Database
+
+![diagram](https://drive.google.com/file/d/14o8QUM-jUIWWWw3wmM3uWH6BPYOuOabV/view?usp=sharing)
+
 
 ## Getting Started
 
@@ -82,4 +86,3 @@ TBA
 ## 📝 License
 
 TBA
-
