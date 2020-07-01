@@ -9,6 +9,11 @@
         
           <% if current_user.friend?(user) %>
             <%= button_to "Unfriend", friendship_path(user), method: :delete, data: { confirm: "Are you sure you want to Unfriend"} %>
+          <% elsif current_user.pending_friends.include?(user) %>
+            <%= link_to "Request pending #{user.name}",  user_path(user), class: 'profile-link' %>                
+          <% elsif current_user.friend_requests.include?(user) %>
+            <%= button_to "Accept", friendship_confirm_path(user), method: :post %>         
+            <%= button_to "Reject", friendship_reject_path(user), method: :post %>         
           <% else %>
             <%= button_to "Send Request", friendships_path(user_id: current_user.id, friend_id: user.id), method: :post %>
           <% end %>

@@ -9,8 +9,13 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
     resources :likes, only: [:create, :destroy]
   end
-  resources :friendships, only: [:create, :destroy, :index]
+  resources :friendships, only: [:create, :destroy, :index, :confirm, :reject] do
+    post 'confirm'
+    post 'reject'
+  end
 
+  # post '/confirm/:id', to: 'friendships#confirm'
+  # post '/reject/:id', to: 'friendships#reject'
   
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
