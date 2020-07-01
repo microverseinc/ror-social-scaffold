@@ -8,10 +8,11 @@
           <% if current_user.friend?(user)%>
           <%= link_to 'remove friend', user_remove_path(user), method: :delete, class: 'profile-link' %>
           <% elsif current_user.pending_friends.include?(user) %>
-          <%= link_to 'pending', user_path(user), class: 'profile-link' %>
+          <%= link_to ' your friend request is pending ', user_path(user), class: 'profile-link' %>
           <% elsif current_user.friend_requests.include?(user) %>
+          <%= link_to user.name + ' sent a friend request ', user_path(user), class: 'profile-link' %> |
           <%= link_to 'Accept',  user_accept_path(user), class: 'profile-link', method: :post %> |  
-          <%= link_to ' Reject',  user_reject_path(user), class: 'profile-link', method: :delete %>
+          <%= link_to ' or Reject',  user_reject_path(user), class: 'profile-link', method: :delete %>
           <% else %>
           <%= link_to 'add friend', user_invite_path(friend_id: user.id, user_id: current_user.id), method: :post, class: 'profile-link' %>
           <% end %>
