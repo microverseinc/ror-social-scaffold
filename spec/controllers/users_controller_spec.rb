@@ -7,44 +7,34 @@ RSpec.describe UsersController, type: :controller do
       @ana = User.create(name: 'ana', email: 'ana@mail.com', password: '1234567')
     end
 
-    it 'request' do
+    it 'index' do
       sign_in @jhon
-      post :create, params: { friend_id: @ana.id }
-      expect(response).to have_http_status(302)
+      get :index
+      expect(response).to have_http_status(200)
     end
 
-    it 'cancel' do
+    it 'show' do
       sign_in @jhon
-      post :create, params: { friend_id: @ana.id }
-      post :cancel_friend_request, params: { id: @ana.id }
-      expect(response).to have_http_status(302)
+      post :show, params: { id: @ana.id }
+      expect(response).to have_http_status(200)
     end
 
-    it 'accept' do
+    it 'add_and_accept_friends' do
       sign_in @jhon
-      post :create, params: { friend_id: @ana.id }
+      get :add_friend, params: { id: @ana.id }
       sign_out @jhon
       sign_in @ana
-      post :accept_friend_request, params: { id: @jhon.id }
+      get :accepts_friend, params: {id: @jhon.id }
       expect(response).to have_http_status(302)
     end
 
-    it 'reject' do
+    it 'add_and_reject_friendship' do
       sign_in @jhon
-      post :create, params: { friend_id: @ana.id }
+      get :add_friend, params: {id: @ana.id }
       sign_out @jhon
       sign_in @ana
-      delete :reject, params: { id: @jhon.id }
-      expect(response).to have_http_status(302)
-    end
-
-    it 'unfriend' do
-      sign_in @jhon
-      post :create, params: { friend_id: @ana.id }
-      sign_out @jhon
-      sign_in @ana
-      post :accept_friend_request, params: { id: @jhon.id }
-      delete :destroy, params: { id: @jhon.id }
+      ids = Friendship.last.id
+      get :accepts_friend, params: { id: ids  }
       expect(response).to have_http_status(302)
     end
   end
