@@ -1,7 +1,12 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
+    <h2><%= "Name: #{@user.email}" %></h2>
   <article class="timeline">
     <h3>Recent posts:</h3>
+    <h4>mutual friends</h4>
+    <% @mutual.each do |friend| %>
+      <%= friend.name %>
+    <% end %>
     <ul class="posts">
       <%= render @posts %>
     </ul>

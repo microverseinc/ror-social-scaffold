@@ -5,9 +5,22 @@
         Name: <%= user.name %>
         <span class="profile-link">
           <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>&nbsp;
-          <%= link_to 'Add friend',  user_path(user), class: 'profile-link' %>
+          <% if current_user.friend?(user)%>
+          <%= link_to 'remove friend', user_remove_path(user), method: :delete, class: 'profile-link' %>
+          <% elsif current_user.pending_friends.include?(user) %>
+          <%= link_to 'pending', user_path(user), class: 'profile-link' %>
+          <% elsif current_user.friend_requests.include?(user) %>
+          <%= link_to 'Accept',  user_accept_path(user), class: 'profile-link', method: :post %> |  
+          <%= link_to ' Reject',  user_reject_path(user), class: 'profile-link', method: :delete %>
+          <% else %>
+          <%= link_to 'add friend', user_invite_path(friend_id: user.id, user_id: current_user.id), method: :post, class: 'profile-link' %>
+          <% end %>
         </span>
       </li>
     <% end %>
   </ul>
 </section>
+
+<% @common_friends.each do |fr| %>
+<% fr.posts %>
+<% end %>
