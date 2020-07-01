@@ -7,6 +7,7 @@ AllCops:
     - "Rakefile"
     - "README.md"
     - "node_modules/**/*"
+    - "app/models/user.rb"
 
   DisplayCopNames: true
 
