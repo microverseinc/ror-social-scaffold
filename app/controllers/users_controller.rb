@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @users = User.all.where("id != ?", current_user.id)
+    @users = User.all.where('id != ?', current_user.id)
     @common_friends = current_user.friends
   end
 
@@ -17,7 +17,6 @@ class UsersController < ApplicationController
     current_user.confirm_friend(@user)
     redirect_to users_path
   end
-
 
   def reject
     @user = User.find(params[:user_id])
