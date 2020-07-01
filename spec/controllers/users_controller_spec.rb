@@ -22,10 +22,10 @@ RSpec.describe UsersController, type: :controller do
 
     it 'accept' do
       sign_in @jhon
-      post :create, params: { friend_id: @ana.id }
+      post :add_friend, params: { friend_id: @ana.id }
       sign_out @jhon
       sign_in @ana
-      post :accept_friend_request, params: { id: @jhon.id }
+      post :accepts_friend, params: { id: @jhon.id }
       expect(response).to have_http_status(302)
     end
 
