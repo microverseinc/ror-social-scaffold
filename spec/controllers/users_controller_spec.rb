@@ -24,17 +24,17 @@ RSpec.describe UsersController, type: :controller do
       get :add_friend, params: { id: @ana.id }
       sign_out @jhon
       sign_in @ana
-      get :accepts_friend, params: {id: @jhon.id }
+      get :accepts_friend, params: { id: @jhon.id }
       expect(response).to have_http_status(302)
     end
 
     it 'add_and_reject_friendship' do
       sign_in @jhon
-      get :add_friend, params: {id: @ana.id }
+      get :add_friend, params: { id: @ana.id }
       sign_out @jhon
       sign_in @ana
       ids = Friendship.last.id
-      get :accepts_friend, params: { id: ids  }
+      get :accepts_friend, params: { id: ids }
       expect(response).to have_http_status(302)
     end
   end

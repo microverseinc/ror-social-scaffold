@@ -10,8 +10,9 @@ class User < ApplicationRecord
   has_many :friendships
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
   has_many :confirmed_friendships, -> { where confirmed: true }, class_name: 'Friendship'
-  has_many :pending_friendships, -> { where confirmed: false }, class_name: "Friendship", foreign_key: "user_id"
-  has_many :inverted_pending_friendships, -> { where confirmed: false }, class_name: "Friendship", foreign_key: "friend_id"
-  has_many :inverted_confirmed_friendships, -> { where confirmed: true }, class_name: "Friendship", foreign_key: "friend_id"
-
+  has_many :pending_friendships, -> { where confirmed: false }, class_name: 'Friendship', foreign_key: 'user_id'
+  has_many :inverted_pending_friendships, -> { where confirmed: false },
+           class_name: 'Friendship', foreign_key: 'friend_id'
+  has_many :inverted_confirmed_friendships, -> { where confirmed: true },
+           class_name: 'Friendship', foreign_key: 'friend_id'
 end
