@@ -8,6 +8,7 @@ AllCops:
     - "node_modules/**/*"
     - "test/controllers/users_controller_test.rb"
     - "test/controllers/users_controller_test.rb"
+    - "app/models/user.rb"
 
   DisplayCopNames: true
 
