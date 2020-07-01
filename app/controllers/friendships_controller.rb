@@ -1,32 +1,26 @@
 class FriendshipsController < ApplicationController
+  def index
+    @friendships = Friendship.all
+  end
 
-	def index
-		@friendships = Friendship.all
-	end
+  def create
+    # byebug
+    @friendship = Friendship.new(friendship_params)
 
-	def create
-		# byebug
-		@friendship = Friendship.new(friendship_params)
+    redirect_to root_path, notice: "Request was successfully sent to #{@friendship.friend.name}" if @friendship.save
+  end
 
-		if @friendship.save
-			redirect_to root_path, notice: "Request was successfully sent to #{@friendship.friend.name}"
-		end
-	end
+  def destroy
+    @user = User.find(params[:id])
+    @friendship = current_user.find_friendship(@user)
 
-	# def destroy
- #    @friendship = Friendship.find(params[:id])
+    flash[:alert] = "You have unfriended #{@user.name}" if @friendship.destroy
+    redirect_to users_path
+  end
 
- #    @friendship.destroy
+  private
 
- #    respond_to do |format|
- #      format.html { redirect_to portfolios_url, notice: 'Record was Removed'}
- #    end
- #  end
-
-
-	private
-
-	def friendship_params
-		params.permit(:user_id, :friend_id)
-	end
+  def friendship_params
+    params.permit(:user_id, :friend_id)
+  end
 end

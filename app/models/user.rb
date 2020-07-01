@@ -19,6 +19,12 @@ class User < ApplicationRecord
     friends_array.compact
   end
 
+  def find_friendship(user)
+    arr = friendships.find { |friendship| friendship.user == user || friendship.friend == user } ||
+          inverse_friendships.find { |friendship| friendship.friend == user || friendship.user == user }
+    arr
+  end
+
   def pending_friends
     friendships.map { |friendship| friendship.friend unless friendship.confirmed }.compact
   end
@@ -36,5 +42,4 @@ class User < ApplicationRecord
   def friend?(user)
     friends.include?(user)
   end
-
 end
