@@ -22,10 +22,10 @@
           <%= menu_link_to current_user.name, user_path(current_user) %>
         </div>
         <div class="menu-item">
-          <%= link_to 'Pending requests', user_pending_friends_path(current_user) %>
+          <%= link_to 'Pending friends', user_pending_friends_path(current_user) %>
         </div>
         <div class="menu-item">
-          <%= link_to 'Sent requests', user_friend_requests_path(current_user) %>
+          <%= link_to 'Friend requests', user_friend_requests_path(current_user) %>
         </div>
         <% end %>
       </div>

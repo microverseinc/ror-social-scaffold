@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   end
   resources :friendships, only: [:create, :destroy, :index, :confirm, :reject] do
     post 'confirm'
-    post 'reject'
+    delete 'reject'
   end
 
   # post '/confirm/:id', to: 'friendships#confirm'

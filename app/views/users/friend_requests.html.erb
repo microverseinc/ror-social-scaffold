@@ -9,7 +9,7 @@
       <tr>
         <td><%= user.name %></td>
         <td><%= link_to '<button type="button">Accept</button>'.html_safe, friendship_confirm_path(user), method: :post, class: 'btn-primary' %></td>     
-        <td><%= link_to '<button type="button">Reject</button>'.html_safe, friendship_reject_path(user), method: :post %></td>
+        <td><%= link_to '<button type="button">Reject</button>'.html_safe, friendship_reject_path(user), method: :delete %></td>
       </tr>
     <% end %>
 </table>
