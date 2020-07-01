@@ -16,12 +16,4 @@
 //= require_tree .
 
 
-function toggleDiv() {
-  var confirmFriendship = document.getElementById('#confirmFriendship')
-
-  confirmFriendship.addEventListener('click', () => {
-    confirmFriendship.classList.add('d-none')
-  })
-}
-
 
