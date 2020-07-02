@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   def accept
     @user = User.find(params[:user_id])
     current_user.confirm_friend(@user)
-    redirect_to users_path, notice: 'Friend Successfully Accepted!'
+    redirect_to users_path, notice: 'you are now friends with ' + @user.name.to_s
   end
 
   def reject
@@ -26,6 +26,12 @@ class UsersController < ApplicationController
   def invite
     @friendship = Friendship.new(user_id: current_user.id, friend_id: params[:friend_id])
     @friendship.save
+    redirect_to users_path
+  end
+
+  def cancel
+    @friendship = Friendship.find_by(user_id: current_user.id, friend_id: params[:friend_id])
+    @friendship.destroy
     redirect_to users_path
   end
 end
