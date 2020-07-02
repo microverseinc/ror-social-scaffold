@@ -6,4 +6,32 @@
       <%= render @posts %>
     </ul>
   </article>
+  <article class="timeline">
+    <h3>Actual Friends:</h3>
+    <% @friends.each do |friend| %>
+      <ul class="posts">
+        <li> <%= link_to friend.name, friend %></li>
+      </ul>
+    <% end %>  
+  </article>
+  <% if current_user == @user %>
+    <article class="timeline">
+      <h3>Pending Friends:</h3>
+      <% @pending_friends.each do |friend| %>
+        <ul class="posts">
+          <li> <%= link_to friend.name, friend %></li>
+        </ul>
+      <% end %>  
+    </article>
+    <article class="timeline">
+      <h3>Friends Requests:</h3>
+      <% @friend_requests.each do |friend| %>
+        <ul class="posts">
+          <li> <%= link_to friend.name, friend %>: 
+           <%= link_to 'Accept Friend Request', user_create_friend_path({friend_id: friend.id, user_id: current_user.id}) %>
+          </li>
+        </ul>
+      <% end %>  
+    </article>
+  <% end %>
 </section>

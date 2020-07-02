@@ -14,24 +14,27 @@ class User < ApplicationRecord
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
 
 
-
-
-
-  # def friends
-  #   friends_array = friendships.map{|friendship| friendship.friend if friendship.status == 1} 
-  #   friends_array + inverse_friendships.map{|friendship| friendship.user if friendship.status == 1}
-  #   friends_array.compact
-  # end
+  # status = 1 --> Friends
+  # status = 0 --> Not Friends
+  # status = -1 --> Pending Friends
 
 
   def friends
-    sent = Friendship.where(user_id: id, status: 1).pluck(:friend_id)
-    received = Friendship.where(friend_id: id, status: 1).pluck(:user_id)
-
-    friendship = sent + received
-
-    User.where(id: friendship)
+    friends_array = []
+    friendships.map{|friendship| friends_array << friendship.friend if friendship.status == 1} 
+    inverse_friendships.map{|friendship| friends_array << friendship.user if friendship.status == 1}
+    friends_array
   end
+
+
+  # def friends
+  #   sent = Friendship.where(user_id: id, status: 1).pluck(:friend_id)
+  #   received = Friendship.where(friend_id: id, status: 1).pluck(:user_id)
+
+  #   friendship = sent + received
+
+  #   User.where(id: friendship)
+  # end
 
 
 
@@ -44,7 +47,7 @@ class User < ApplicationRecord
   end
 
   def confirm_friend(user)
-    friendship = inverse_friendships.find{|friendship| friendship.user == user}
+    friendship = inverse_friendships.find{|friendship| friendship.user == user if friendship.status == -1}
     friendship.status = 1
     friendship.save
   end
@@ -53,8 +56,14 @@ class User < ApplicationRecord
     friends.include?(user)
   end
 
-  def reject_friend(user)
-    friendship = inverse_friendships.find{|friendship| friendship.user == user}
+  def unfriend(user)
+    friendship = inverse_friendships.find{|friendship| friendship.user == user if friendship.status == 1}
+    friendship.status = 0
+    friendship.save
+  end
+
+  def reject_friend_request(user)
+    friendship = inverse_friendships.find{|friendship| friendship.user == user if friendship.status == -1}
     friendship.status = 0
     friendship.save
   end
