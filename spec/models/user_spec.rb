@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   user = User.create!(email: 'dbcoacnosa@example.com', password: '123456', name: 'Example2')
-  friend = User.create!(email: 'asicasxsa@example.com', password: '123456', name: 'Example1')
+  User.create!(email: 'asicasxsa@example.com', password: '123456', name: 'Example1')
 
   describe 'validations' do
     it 'should validate presence of content' do
