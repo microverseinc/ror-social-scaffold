@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe Post, type: :model do
   describe 'validations' do
     it 'should validate presence of content' do
-      User.create!(email: 'abc@example.com', password: '123456', name: 'Example')
-      post = Post.create!(user_id: 3, content: 'adskcascascsaicaccscxisahxsa')
+      @user = User.create!(email: 'abc@example.com', password: '123456', name: 'Example')
+      post = Post.create!(user_id: @user.id, content: 'adskcascascsaicaccscxisahxsa')
 
       expect(post.valid?).to be true
     end

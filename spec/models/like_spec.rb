@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe Like, type: :model do
   describe 'validations' do
     it 'should validate presence of content' do
-      User.create!(email: 'abc@example.com', password: '123456', name: 'Example')
-      Post.create!(user_id: 2, content: 'ascascacascsacsac')
-      like = Like.create!(user_id: 2, post_id: 2)
+      @user = User.create!(email: 'abc@example.com', password: '123456', name: 'Example')
+      @post = Post.create!(user_id: @user.id, content: 'ascascacascsacsac')
+      like = Like.create!(user_id: @user.id, post_id: @post.id)
       expect(like.valid?).to be true
     end
 

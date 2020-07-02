@@ -29,11 +29,10 @@ feature 'sign in process' do
   end
 
   feature 'signing in a user' do
-      before(:each) do
-        @user = User.create!(name: "Test", 
-                              email: 'test@example.com', 
-                              password: 'cake,biscuitsandtea'
-                              )
+    before(:each) do
+      @user = User.create!(name: 'Test',
+                           email: 'test@example.com',
+                           password: 'cake,biscuitsandtea')
       visit new_user_session_path
       fill_in 'Email', with: 'test@example.com'
       fill_in 'Password', with: 'cake,biscuitsandtea'

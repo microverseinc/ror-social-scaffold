@@ -2,12 +2,11 @@ require 'rails_helper'
 
 feature 'create a post' do
   before(:each) do
-      @user = User.create!(name: "Test", 
-                              email: 'test@example.com', 
-                              password: 'cake,biscuitsandtea'
-                              )
-      sign_in @user    
-      visit posts_path     
+    @user = User.create!(name: 'Test1',
+                         email: 'test1@example.com',
+                         password: 'cake,biscuitsandtea')
+    sign_in @user
+    visit posts_path
   end
 
   scenario 'has a create post page' do
@@ -16,9 +15,9 @@ feature 'create a post' do
   end
 
   feature 'create a new post' do
-    before(:each) do  
-      fill_in 'post_content', with: 'content here'      
-      click_on 'Save'      
+    before(:each) do
+      fill_in 'post_content', with: 'content here'
+      click_on 'Save'
     end
 
     scenario 'renders post page' do
@@ -27,9 +26,9 @@ feature 'create a post' do
   end
 
   feature 'create a new post with invalid params' do
-    before(:each) do  
-      fill_in 'post_content', with: ''      
-      click_on 'Save'      
+    before(:each) do
+      fill_in 'post_content', with: ''
+      click_on 'Save'
     end
 
     scenario 'renders post could not be saved error' do

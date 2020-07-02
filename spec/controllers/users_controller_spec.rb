@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
   before(:each) do
-    @user = User.create(name: "Test", email: "test@xyz.com",
-      password: "123456")
+    @user = User.create(name: 'Test', email: 'test@xyz.com',
+                        password: '123456')
     sign_in @user
   end
 
@@ -36,10 +36,9 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
-
   describe 'GET #pending_friends' do
     it 'gets all the users pending friends' do
-      get(:pendinging_friends, params: { user_id: @user.id })
+      get(:pending_friends, params: { user_id: @user.id })
       expect(response).to be_successful
       expect(response).to render_template(:pending_friends)
       expect(response).to have_http_status(200)
@@ -54,5 +53,4 @@ RSpec.describe UsersController, type: :controller do
       expect(response).to have_http_status(200)
     end
   end
-
 end

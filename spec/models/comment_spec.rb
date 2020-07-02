@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe Comment, type: :model do
   describe 'validations' do
     it 'should validate presence of content' do
-      User.create!(email: 'abc@example.com', password: '123456', name: 'Example')
-      Post.create!(user_id: 1, content: 'ascascacascsacsac')
-      comment = Comment.create!(user_id: 1, post_id: 1, content: 'adskcascascsaicaccscxisahxsa')
+      @user = User.create!(email: 'abc@example.com', password: '123456', name: 'Example')
+      @post = Post.create!(user_id: @user.id, content: 'ascascacascsacsac')
+      comment = Comment.create!(user_id: @user.id, post_id: @post.id, content: 'adskcascascsaicaccscxisahxsa')
 
       expect(comment.valid?).to be true
     end

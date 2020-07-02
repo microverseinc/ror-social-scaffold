@@ -28,8 +28,7 @@ class PostsController < ApplicationController
   end
 
   def friend_posts
-    posts = Post.all
     friends = current_user.friends
-    f_posts = Post.where(user_id: friends.each(&:id)).or(Post.where(user_id: current_user.id))
+    Post.where(user_id: friends.each(&:id)).or(Post.where(user_id: current_user.id))
   end
 end
