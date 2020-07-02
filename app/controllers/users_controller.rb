@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  include ApplicationHelper
   before_action :authenticate_user!
   before_action :my_self?, only: :add_friend
   before_action :already_sent?, only: :add_friend

@@ -16,7 +16,7 @@ RSpec.feature 'Pending', type: :feature do
     log_in_with(user1.email, user1.password)
     visit pending_path
 
-    pending = user1.pending_list.paginate(page: 1)
+    pending = user1.pending_friends.map(&:friend).paginate(page: 1)
 
     pending.each do |p|
       expect(page).to have_css('p', text: p.name.to_s)

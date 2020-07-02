@@ -9,43 +9,20 @@ class User < ApplicationRecord
   has_many :posts
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
-  has_many :inverse_friendship, foreign_key: :friend_id, class_name: 'Friendship'
+
   has_many :friendships
 
-  def friends_list
-    friend_list = friendships.map { |f| f.friend if f.status } + inverse_friendship.map { |f| f.user if f.status }
-    friend_list.compact
-  end
-
-  def pending_list
-    pending_list = friendships.map { |f| f.friend unless f.status }
-    pending_list.compact
-  end
-
-  def request_list
-    requested_list = inverse_friendship.map { |f| f.user unless f.status }
-    requested_list.compact
-  end
-
-  def friendship_status(user)
-    if request_list.include?(user)
-      'You have a pending friend request from this user'
-    elsif pending_list.include?(user)
-      'You have already requested this user to be your friend'
-    elsif my_self?(user)
-      ''
-    else
-      'Friends'
-    end
-  end
+  has_many :friends, -> { where status: true }, class_name: 'Friendship'
+  has_many :pending_friends, -> { where status: false }, foreign_key: :user_id, class_name: 'Friendship'
+  has_many :friend_requests, -> { where status: false }, foreign_key: :friend_id, class_name: 'Friendship'
 
   def status?(user)
-    status_list = pending_list + request_list + friends_list << self
+    status_list = (pending_friends + friends).map(&:friend) + friend_requests.map(&:user) << self
     status_list.include?(user)
   end
 
   def friends?(user)
-    friends_list.include?(user)
+    friends.map(&:friend).include?(user)
   end
 
   def my_self?(user)
