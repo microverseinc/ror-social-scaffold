@@ -6,7 +6,7 @@
         <span class="profile-link">
           <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>&nbsp;
           <% if current_user.friend?(user)%>
-          <%= link_to 'remove friend', user_remove_path(user), method: :delete, class: 'profile-link' %>
+          <%= link_to 'remove friend', user_reject_path(user), method: :delete, class: 'profile-link' %>
           <% elsif current_user.pending_friends.include?(user) %>
           <%= link_to ' your friend request is pending ', user_path(user), class: 'profile-link' %>
           <% elsif current_user.friend_requests.include?(user) %>
@@ -22,6 +22,3 @@
   </ul>
 </section>
 
-<% @common_friends.each do |fr| %>
-<% fr.posts %>
-<% end %>
