@@ -10,7 +10,6 @@ RSpec.describe Like, type: :model do
     end
 
     it { should validate_uniqueness_of(:user_id).scoped_to(:post_id) }
-
   end
 
   describe 'associations' do

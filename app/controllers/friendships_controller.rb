@@ -21,7 +21,9 @@ class FriendshipsController < ApplicationController
   def create
     @friendship = Friendship.new(friendship_params)
 
-    redirect_to request.referrer, notice: "Request was successfully sent to #{@friendship.friend.name}" if @friendship.save
+    if @friendship.save
+      redirect_to request.referrer, notice: "Request was successfully sent to #{@friendship.friend.name}"
+    end
   end
 
   def destroy
