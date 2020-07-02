@@ -17,14 +17,26 @@ class User < ApplicationRecord
 
 
 
+  # def friends
+  #   friends_array = friendships.map{|friendship| friendship.friend if friendship.status == 1} 
+  #   friends_array + inverse_friendships.map{|friendship| friendship.user if friendship.status == 1}
+  #   friends_array.compact
+  # end
+
+
   def friends
-    friends_array = friendships.map{|friendship| friendship.friend if friendship.status == 1} 
-    friends_array + inverse_friendships.map{|friendship| friendship.user if friendship.status == 1}
-    friends_array.compact
+    sent = Friendship.where(user_id: id, status: 1).pluck(:friend_id)
+    received = Friendship.where(friend_id: id, status: 1).pluck(:user_id)
+
+    friendship = sent + received
+
+    User.where(id: friendship)
   end
 
+
+
   def friend_requests
-    inverse_friendships.map{|friendship| friendship.friend if friendship.status == -1}.compact 
+    inverse_friendships.map{|friendship| friendship.user if friendship.status == -1}.compact 
   end
 
   def pending_friends
