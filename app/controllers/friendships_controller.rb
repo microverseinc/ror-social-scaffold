@@ -11,7 +11,6 @@ class FriendshipsController < ApplicationController
   end
 
   def reject
-    byebug
     @user = User.find(params[:friendship_id])
     @friendship = current_user.find_friendship(@user)
     flash[:alert] = "You have rejected #{@user.name} request" if @friendship.destroy
