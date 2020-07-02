@@ -63,7 +63,17 @@ TBA
 
 ## Authors
 
-TBA
+👤 **Christopher Amanor**
+
+- Github: [@krys2fa](https://github.com/krys2fa)
+- Twitter: [@krys2fa](https://twitter.com/krys2fa)
+- Linkedin: [Christopher Amanor](https://www.linkedin.com/in/christopher-amanor-81a7b93b/)
+
+👤 **Safa ERDEN**
+
+- Github: [@SafaErden](https://github.com/SafaErden)
+- Twitter: [@safaerden](https://twitter.com/safaerden)
+- Linkedin: [SafaErden](https://www.linkedin.com/in/safaerden/)
 
 ## 🤝 Contributing
 
@@ -77,9 +87,9 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-TBA
+- Microverse
 
 ## 📝 License
 
-TBA
+MIT License
 
