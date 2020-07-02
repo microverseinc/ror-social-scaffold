@@ -7,7 +7,7 @@ class FriendshipsController < ApplicationController
     @user = User.find(params[:friendship_id])
     current_user.confirm_friend(@user)
     flash[:notice] = "You have accepted #{@user.name} request"
-    redirect_to users_path
+    redirect_to request.referrer
   end
 
   def reject
@@ -15,13 +15,13 @@ class FriendshipsController < ApplicationController
     @user = User.find(params[:friendship_id])
     @friendship = current_user.find_friendship(@user)
     flash[:alert] = "You have rejected #{@user.name} request" if @friendship.destroy
-    redirect_to users_path
+    redirect_to request.referrer
   end
 
   def create
     @friendship = Friendship.new(friendship_params)
 
-    redirect_to root_path, notice: "Request was successfully sent to #{@friendship.friend.name}" if @friendship.save
+    redirect_to request.referrer, notice: "Request was successfully sent to #{@friendship.friend.name}" if @friendship.save
   end
 
   def destroy
@@ -29,7 +29,7 @@ class FriendshipsController < ApplicationController
     @friendship = current_user.find_friendship(@user)
 
     flash[:alert] = "You have unfriended #{@user.name}" if @friendship.destroy
-    redirect_to users_path
+    redirect_to request.referrer
   end
 
   private
