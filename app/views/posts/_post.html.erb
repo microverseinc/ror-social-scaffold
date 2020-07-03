@@ -22,7 +22,6 @@
         <span> <%= comment.created_at.strftime("%Y/%m/%d") %> </span>
       </div>
     <% end %>
-      <%#= post.comments.size %>
 
     <%= form_for(post.comments.new, url: post_comments_path(post)) do |form| %>
       <%= form.text_field :content, id: :comment_content, class: 'form-control', placeholder: 'Add new Comment' %>

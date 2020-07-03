@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     delete 'reject', to:'users/reject', as: 'reject'
     post 'invite', to:'users/invite', as: 'invite'    
     delete 'cancel', to:'users/cancel', as: 'cancel'
+    delete 'remove', to:'users/cancel', as: 'remove'
   end
   resources :posts, only: [:index, :create] do
     resources :comments, only: [:create]

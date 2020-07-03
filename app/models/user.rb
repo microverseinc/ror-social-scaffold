@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :friendships, dependent: :destroy
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
+  
   def friends
     friends_array = []
     friendships.map { |friendship| friends_array << friendship.friend if friendship.confirmed }
@@ -37,6 +38,12 @@ class User < ApplicationRecord
     friendship.confirmed
     friendship.destroy
   end
+
+  # def remove_friend(user)
+  #   friendship = inverse_friendships.find { |friendship| friendship.user == user } # rubocop:disable Metrics/ShadowingOuterLocalVariable
+  #   friendship.confirmed
+  #   friendship.destroy
+  # end
 
   def friend?(user)
     friends.include?(user)
