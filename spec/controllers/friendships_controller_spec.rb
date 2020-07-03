@@ -9,9 +9,10 @@ RSpec.describe FriendshipsController, type: :controller do
     sign_in @user
     request.env['HTTP_REFERER'] = '/users'
     Friendship.create!(user_id: @user.id, friend_id: @user1.id, confirmed: true)
+    Friendship.create!(user_id: @user1.id, friend_id: @user.id, confirmed: true)
   end
 
-  describe 'Post #create friendship' do
+  describe '#create friendship' do
     context 'with valid params' do
       it 'creates a new friendship' do
         post :create, params: { user_id: @user.id, friend_id: @user1.id }
@@ -21,7 +22,7 @@ RSpec.describe FriendshipsController, type: :controller do
     end
   end
 
-  describe 'Post #destroy friendship' do
+  describe '#destroy friendship' do
     context 'with valid params' do
       it 'destroys a friendship' do
         delete :destroy, params: { id: @user1.id }

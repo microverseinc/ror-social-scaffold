@@ -20,24 +20,15 @@ RSpec.describe User, type: :model do
     it { should have_many(:likes).dependent(:destroy) }
     it { should have_many(:friendships) }
     it { should have_many(:posts) }
-    it { should have_many(:inverse_friendships) }
+    it { should have_many(:inverted_friendships) }
+    it { should have_many(:friend_requests) }
+    it { should have_many(:pending_friendships) }
+    it { should have_many(:pending_friends) }
   end
 
   describe '#friends' do
     it 'should return array of friends' do
       expect(user.friends).to be_an_instance_of(Array)
-    end
-  end
-
-  describe '#pending_friends' do
-    it 'should return array of pending friends request' do
-      expect(user.pending_friends).to be_an_instance_of(Array)
-    end
-  end
-
-  describe '#friend_requests' do
-    it 'should return array of received friends request' do
-      expect(user.friend_requests).to be_an_instance_of(Array)
     end
   end
 end

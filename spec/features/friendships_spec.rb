@@ -46,10 +46,10 @@ feature 'create a friendship' do
       expect(page).to have_content "You have accepted #{@user1.name} request"
     end
 
-    scenario 'renders unfriending a friend Request' do
+    scenario ' Rejecting a friend Request' do
       visit users_path
       first(:link, 'Reject').click
-      expect(page).to have_content "You have unfriended #{@user1.name}"
+      expect(page).to have_content "You have rejected #{@user1.name} request"
     end
   end
 end

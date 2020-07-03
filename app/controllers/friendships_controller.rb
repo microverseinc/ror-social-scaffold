@@ -29,7 +29,6 @@ class FriendshipsController < ApplicationController
     @friendship1 = Friendship.find_by(user_id: current_user.id, friend_id: params[:id])
     @friendship2 = Friendship.find_by(user_id: params[:id], friend_id: current_user.id)
 
-
     flash[:alert] = "You have unfriended #{@user.name}" if @friendship1.destroy && @friendship2.destroy
     redirect_to request.referrer
   end

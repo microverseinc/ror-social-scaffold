@@ -7,7 +7,7 @@
 	    <%= link_to "Request pending #{@user.name}",  user_path(@user), class: 'profile-link' %>             
 	  <% elsif current_user.friend_requests.include?(@user) %>
 	    <%= link_to '<button type="button">Accept</button>'.html_safe, friendship_confirm_path(@user), method: :post %>         
-	    <%= link_to '<button type="button">Reject</button>'.html_safe, friendship_path(@user), method: :delete %>         
+	    <%= link_to '<button type="button">Reject</button>'.html_safe, friendship_reject_path(@user), method: :delete %>         
 	  <% else %>
 	    <%= link_to '<button type="button">Send Request</button>'.html_safe, friendships_path(user_id: current_user.id, friend_id: @user.id), method: :post %>
 	  <% end %>
