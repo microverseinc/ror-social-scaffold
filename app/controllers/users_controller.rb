@@ -36,6 +36,4 @@ class UsersController < ApplicationController
   #   @unfriend = current_user.unfriend(@friend)
   #   redirect_to root_path, notice: 'Unfriend successfully'
   # end
-  
-
 end

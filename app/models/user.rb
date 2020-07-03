@@ -13,33 +13,31 @@ class User < ApplicationRecord
   has_many :friendships
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
 
-
   # status = 1 --> Friends
   # status = 0 --> Not Friends
   # status = -1 --> Pending Friends
 
-
   def friends
     friends_array = []
-    friendships.map{|friendship| friends_array << friendship.friend if friendship.status == 1} 
-    inverse_friendships.map{|friendship| friends_array << friendship.user if friendship.status == 1}
+    friendships.map { |friendship| friends_array << friendship.friend if friendship.status == 1 }
+    inverse_friendships.map { |friendship| friends_array << friendship.user if friendship.status == 1 }
     friends_array
   end
 
   def friend_requests
-    inverse_friendships.map{|friendship| friendship.user if friendship.status == -1}.compact 
+    inverse_friendships.map { |friendship| friendship.user if friendship.status == -1 }.compact
   end
 
   def pending_friends
     pending_friends_array = []
-    friendships.map{|friendship| pending_friends_array << friendship.friend if friendship.status == -1}.compact
+    friendships.map { |friendship| pending_friends_array << friendship.friend if friendship.status == -1 }.compact
     pending_friends_array
   end
 
   def confirm_friend(user)
-    friendship = inverse_friendships.find{|friendship| friendship.user == user if friendship.status == -1}
-    friendship.status = 1
-    friendship.save
+    friendshipz = inverse_friendships.find { |friendship| friendship.user == user if friendship.status == -1 }
+    friendshipz.status = 1
+    friendshipz.save
   end
 
   def friend?(user)
@@ -53,9 +51,9 @@ class User < ApplicationRecord
   # end
 
   def reject_friend_request(user)
-    friendship = inverse_friendships.find{|friendship| friendship.user == user if friendship.status == -1}
-    friendship.status = 0
-    friendship.save
+    friendshipz = inverse_friendships.find { |friendship| friendship.user == user if friendship.status == -1 }
+    friendshipz.status = 0
+    friendshipz.save
   end
 
   def send_friend_request(user, friend)

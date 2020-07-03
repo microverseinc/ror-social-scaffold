@@ -17,13 +17,12 @@ module ApplicationHelper
   end
 
   def friend_request_link(user)
-    if !current_user.friends.include?(user) && !user.friend_requests.include?(current_user) && current_user != user
-      link_to 'Send Friend Request', user_create_friend_request_path({user_id: current_user.id, friend_id: user.id}), class: 'link-btn' 
+    if !current_user.friends.include?(user) && !user.friend_requests.include?(current_user) && current_user != user # rubocop:disable Style/GuardClause
+      link_to 'Send Friend Request', user_create_friend_request_path({ user_id: current_user.id, friend_id: user.id }), class: 'link-btn' # rubocop:disable Layout/LineLength
     end
   end
 
   def actual_user
     current_user == @user
   end
-  
 end
