@@ -311,6 +311,31 @@ form {
   }
 }
 
+.lists {
+  width: 100%;
+
+  .name-links {
+    color: rgb(24, 230, 17);
+    text-transform: uppercase;
+  }
+}
+
+.link-btn {
+  border: 1px solid rgb(20, 187, 20);
+  border-radius: 5px;
+  padding: 2px;
+  background-color: rgb(20, 187, 20);
+  color: whitesmoke;
+}
+
+.link-btn2 {
+  border: 1px solid rgb(187, 20, 42);
+  border-radius: 5px;
+  padding: 2px;
+  background-color: rgb(187, 20, 42);
+  color: whitesmoke;
+}
+
 #error_explanation {
   h2 {
     color: $primary-color-text;

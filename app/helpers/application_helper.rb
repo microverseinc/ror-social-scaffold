@@ -15,4 +15,15 @@ module ApplicationHelper
       link_to('Like!', post_likes_path(post_id: post.id), method: :post)
     end
   end
+
+  def friend_request_link(user)
+    if !current_user.friends.include?(user) && !user.friend_requests.include?(current_user) && current_user != user
+      link_to 'Send Friend Request', user_create_friend_request_path({user_id: current_user.id, friend_id: user.id}), class: 'link-btn' 
+    end
+  end
+
+  def actual_user
+    current_user == @user
+  end
+  
 end
