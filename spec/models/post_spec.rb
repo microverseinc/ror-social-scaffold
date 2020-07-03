@@ -9,4 +9,10 @@ RSpec.describe Post, type: :model do
         .with_message('1000 characters in post is the maximum allowed.')
     }
   end
+
+  describe 'Association tests' do
+    it { should belong_to(:user) }
+    it { should have_many(:likes).dependent(:destroy) }
+    it { should have_many(:comments).dependent(:destroy) }
+  end
 end
