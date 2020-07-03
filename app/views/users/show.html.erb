@@ -6,4 +6,16 @@
       <%= render @posts %>
     </ul>
   </article>
+
+  <article class="timeline">
+    <h3>All Frinds</h3>
+    <ul class="posts">
+      <% for friendships in @user.friendships %>
+        <li>
+          <%= friendships.friend.name %>
+          (<%= link_to "Remove Friend", friendships, method: :delete %>)
+        </li>
+      <% end%>
+    </ul>
+  </article>
 </section>
