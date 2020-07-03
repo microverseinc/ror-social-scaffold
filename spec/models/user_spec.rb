@@ -28,35 +28,36 @@ RSpec.describe 'User' do
     end
   end
 
-  # context 'user already exist' do
-  #   user1 = User.create(user_params)
-  #   user2 = User.create()
-  #   user3 = User.create()
-  #   user4 = User.create()
-  #
-  #   it 'can send friendship request' do
-  #     expect
-  #   end
-  #
-  #   it 'can check pending friends' do
-  #     expect
-  #   end
-  #
-  #   it 'can check friend requests' do
-  #     expect
-  #   end
-  #
-  #   it 'can check friends' do
-  #     expect
-  #   end
-  #
-  #   it 'can check if a user is a friend' do
-  #     expect
-  #   end
-  #
-  #   it 'can confirm friends' do
-  #     expect
-  #   end
+  context 'users already exist' do
+    # let(:user) { create(:random_user) }
+    # let(:friend) { create(:random_user) }
+    # let(:confirmed) { create(:confirmed_friendship) }
 
-  # end
+    it 'can check pending friends' do
+      @user = create(:user)
+      @friend = create(:friend)
+      create(:unconfirmed_friendship)
+      pending = @user.pending_friends.include? @friend
+      expect(pending).to eql(true)
+
+      # expect(user.pending_friends).to eql([:friend])
+    end
+
+    # it 'can check friend requests' do
+    #   expect
+    # end
+    #
+    # it 'can check friends' do
+    #   expect
+    # end
+    #
+    # it 'can check if a user is a friend' do
+    #   expect
+    # end
+    #
+    # it 'can confirm friends' do
+    #   expect
+    # end
+
+  end
 end
