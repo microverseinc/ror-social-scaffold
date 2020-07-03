@@ -26,7 +26,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-#gem 'better_errors'
+# gem 'better_errors'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -42,12 +42,16 @@ gem 'devise'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'database_cleaner'
   # gem 'binding_of_caller'
   # gem 'better_errors'
+  gem 'rspec-rails'
 end
 
 group :test do
+  gem 'capybara'
   gem 'rspec'
+  gem 'selenium-webdriver'
 end
 
 group :development do

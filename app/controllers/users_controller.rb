@@ -27,10 +27,10 @@ class UsersController < ApplicationController
   end
 
   def remove
-      @friendship1 = Friendship.find_by(user_id: current_user.id, friend_id: params[:user_id] )
-      @friendship2 = Friendship.find_by(user_id: params[:user_id], friend_id: current_user.id )
-      @friendship1.destroy
-      @friendship2.destroy
+    @friendship1 = Friendship.find_by(user_id: current_user.id, friend_id: params[:user_id])
+    @friendship2 = Friendship.find_by(user_id: params[:user_id], friend_id: current_user.id)
+    @friendship1.destroy
+    @friendship2.destroy
     redirect_to users_path
   end
 
@@ -47,6 +47,7 @@ class UsersController < ApplicationController
   end
 
   private
+
   def friendship_params
     params.require(:friendships).permit(:user_id, :friend_id, :confirmed)
   end

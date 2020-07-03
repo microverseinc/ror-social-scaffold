@@ -5,22 +5,14 @@
         Name: <%= user.name %>
         <span class="profile-link">
           <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>&nbsp;
-          <% if current_user.friend?(user) %>
-          <%#= link_to 'remove friend', user_reject_path(user), method: :delete, class: 'profile-link' %>
-          <%= link_to 'remove friend', user_remove_path(user), method: :delete, class: 'profile-link' %>
-          <% elsif current_user.pending_friends.include?(user) %>
-          <%= link_to ' your friend request is pending ', user_path(user), class: 'profile-link' %> |
-          <%= link_to ' cancel friend request ', user_cancel_path(friend_id: user.id, user_id: current_user.id), class: 'profile-link', method: :delete %>
-          <% elsif current_user.friend_requests.include?(user) %>
-          <%= link_to user.name + ' sent a friend request ', user_path(user), class: 'profile-link' %> |
-          <%= link_to 'Accept',  user_accept_path(user), class: 'profile-link', method: :post %> |  
-          <%= link_to ' or Reject',  user_reject_path(user), class: 'profile-link', method: :delete %>
-          <% else %>
-          <%= link_to 'add friend', user_invite_path(friend_id: user.id, user_id: current_user.id), method: :post, class: 'profile-link' %>
-          <% end %>
+          <%= current_user_friend(user) %>
+          <%= pending(user) %>
+          <%= friend_request1(user) %>
+          <%= friend_request2(user) %>
+          <%= friend_request3(user) %>
+          <%= add_friend(user) %>
         </span>
       </li>
     <% end %>
   </ul>
 </section>
-
