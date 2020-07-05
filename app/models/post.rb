@@ -7,4 +7,10 @@ class Post < ApplicationRecord
   scope :ordered_by_most_recent, -> { order(created_at: :desc) }
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+
+  def self.timeline_posts(current_user)
+    friendz = current_user.friends
+    friendz << current_user.id
+    Post.all.where(user_id: friendz)
+  end
 end

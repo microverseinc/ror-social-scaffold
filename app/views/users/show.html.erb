@@ -1,5 +1,5 @@
 <section class="user-section">
-  <h2><%= "Name: #{@user.name}" %></h2>
+  <h2><%= "Name: #{@user.name}" %>  <%= friend_request_link(@user) %></h2>
   <article class="timeline">
   <div class="lists">
   <article class="timeline">
@@ -11,31 +11,8 @@
           </li>
         </ul>
       <% end %>  
-    </article>
-  <% if actual_user %>
-    <article class="timeline">
-      <h3>Pending Friends:</h3>
-      <% @pending_friends.each do |friend| %>
-        <ul class="posts">
-          <li><%= link_to friend.name, friend, class: 'name-links' %></li>
-        </ul>
-      <% end %>  
-    </article>
-
-    <article class="timeline">
-      <h3>Friends Requests:</h3>
-      <% @friend_requests.each do |friend| %>
-        <ul class="posts">
-          <li> <%= link_to friend.name, friend, class: 'name-links' %> : 
-           <%= link_to 'Accept Friend Request', user_create_friend_path({friend_id: friend.id, user_id: current_user.id}), class: 'link-btn' %> &nbsp; 
-           <%= link_to 'Reject Friend Request', user_reject_friend_request_path({friend_id: friend.id, user_id: current_user.id}), class: 'link-btn2' %> 
-          </li>
-        </ul>
-        <br>
-      <% end %>  
-    </article>
-
-  <% end %>
+  </article>
+  <%= render_friends %>
  </div>
     <h3>Recent posts:</h3>
     <ul class="posts">
