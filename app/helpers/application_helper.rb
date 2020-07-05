@@ -16,11 +16,13 @@ module ApplicationHelper
     end
   end
 
+  # rubocop:disable Layout/LineLength
   def friend_request_link(user)
     if !current_user.friends.include?(user) && !user.friend_requests.include?(current_user) && current_user != user && !current_user.friend_requests.include?(user) # rubocop:disable Style/GuardClause
-      link_to 'Send Friend Request', user_create_friend_request_path({ user_id: current_user.id, friend_id: user.id }), class: 'link-btn' # rubocop:disable Layout/LineLength
+      link_to 'Send Friend Request', user_create_friend_request_path({ user_id: current_user.id, friend_id: user.id }), class: 'link-btn'
     end
   end
+  # rubocop:enable Layout/LineLength
 
   def actual_user
     current_user == @user
