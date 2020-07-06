@@ -17,9 +17,7 @@ module ApplicationHelper
   end
 
   def current_user_friend(user)
-    if current_user.friend?(user) # rubocop:disable Style/GuardClause
-      link_to 'unfriend', user_remove_path(user), method: :delete, class: 'profile-link'
-    end
+    link_to 'unfriend', user_remove_path(user), method: :delete, class: 'profile-link' if current_user.friend?(user)
   end
 
   def pending(user)
