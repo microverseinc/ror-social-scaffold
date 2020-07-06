@@ -10,7 +10,7 @@ class Post < ApplicationRecord
 
   def self.timeline_posts(current_user)
     friendz = current_user.friends
-    friendz << current_user.id
+    friendz << current_user
     Post.all.where(user_id: friendz)
   end
 end
