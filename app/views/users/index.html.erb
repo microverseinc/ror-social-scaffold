@@ -6,6 +6,7 @@
         <span class="profile-link">
           <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>&nbsp;
           <%= current_user_friend(user) %>
+          <%= pending1(user) %>
           <%= pending(user) %>
           <%= friend_request1(user) %>
           <%= friend_request2(user) %>

@@ -18,14 +18,19 @@ module ApplicationHelper
 
   def current_user_friend(user)
     if current_user.friend?(user) # rubocop:disable Style/GuardClause
-      link_to 'remove friend', user_remove_path(user), method: :delete, class: 'profile-link'
+      link_to 'unfriend', user_remove_path(user), method: :delete, class: 'profile-link'
     end
   end
 
   def pending(user)
     if current_user.pending_friends.include?(user) # rubocop:disable Style/GuardClause
-      link_to ' your friend request is pending ', user_path(user), class: 'profile-link'
       link_to ' cancel friend request ', user_cancel_path(friend_id: user.id, user_id: current_user.id), class: 'profile-link', method: :delete # rubocop:disable Metrics/LineLength: Line is too long
+    end
+  end
+
+  def pending1(user)
+    if current_user.pending_friends.include?(user) # rubocop:disable Style/GuardClause
+      link_to ' your friend request is pending ', user_path(user), class: 'profile-link'
     end
   end
 
