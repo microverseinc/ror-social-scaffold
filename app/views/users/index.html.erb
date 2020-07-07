@@ -8,7 +8,7 @@
           <tr><td>
             <%= user.name %>
           </td><td>
-            <% unless notFriends(user.id)    %>
+            <% unless not_friends(user.id)    %>
             <%= link_to 'Add friend', add_friend_path(:id => user.id) %>
              <% end %>
             <% friendship = invert_pending_friendship(user.id) %>
