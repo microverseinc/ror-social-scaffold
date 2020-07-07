@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   def friends
     friends_array = friendships.map { |friendship| friendship.friend if friendship.confirmed }
     friends_array += inverse_friendships.map { |friendship| friendship.user if friendship.confirmed }
