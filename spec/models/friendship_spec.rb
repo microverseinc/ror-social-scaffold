@@ -7,21 +7,20 @@ RSpec.describe Friendship, type: :model do
   end
 
   before(:all) do
-    User.create(name:'Bekhzod', password:'1234567', email:'email@mail.ru')
-    User.create(name:'Javiar', password:'1234567', email:'emaial@ail.ru')
+    User.create(name: 'Bekhzod', password: '1234567', email: 'email@mail.ru')
+    User.create(name: 'Javiar', password: '1234567', email: 'emaial@ail.ru')
   end
 
-  describe "#valides" do
+  describe '#valides' do
     it 'validates friendship instance' do
-      friendship = Friendship.new(user_id:2, friend_id: 1)
+      friendship = Friendship.new(user_id: 2, friend_id: 1)
       expect(friendship).to be_valid
     end
 
     it 'validates friendship instance' do
-      friendship = Friendship.new(user_id:2, friend_id: 1)
+      friendship = Friendship.new(user_id: 2, friend_id: 1)
       friendship.user_id = ''
       expect(friendship).not_to be_valid
     end
   end
-  
 end
