@@ -16,6 +16,12 @@ module ApplicationHelper
     end
   end
 
+  def see_profile(user)
+    if current_user == (user)
+       link_to 'See Profile',  user_path(user), class: 'profile-link' 
+    end
+  end
+
   def which_user(user)
     if current_user == (user)
       ''
@@ -31,7 +37,7 @@ module ApplicationHelper
   end
 
   def friends
-    current_user.friends
+    current_user.friends + current_user.inverse_friends
   end
 
   def pending_friends

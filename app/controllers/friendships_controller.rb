@@ -11,7 +11,7 @@ class FriendshipsController < ApplicationController
 
   def update
     @friendship = Friendship.find_by(user_id: params[:id], friend_id: current_user.id)
-    @friendship.update(user_id: current_user.id, friend_id: params[:id], confirmed: true)
+    @friendship.update(confirmed: true)
     @friendship.save
     redirect_to users_path
   end
