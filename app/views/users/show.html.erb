@@ -10,12 +10,35 @@
   <article class="timeline">
     <h3>All Frinds</h3>
     <ul class="posts">
-      <% for friendships in @user.friendships %>
+      <% for friend in friends %>
         <li>
-          <%= friendships.friend.name %>
-          (<%= link_to "Remove Friend", friendships, method: :delete %>)
+          <%= friend.name %>
+          <%= link_to 'Remove Friend', friendship_path(id: friend.id), method: :delete, class: 'button3' %>
         </li>
       <% end%>
     </ul>
   </article>
+  <article class="timeline">
+  <h3>Pending Friends</h3>
+  <ul class="posts">
+    <% for friend in pending_friends %>
+      <li>
+        <%= friend.name %>
+        <%= link_to 'Cancel', friendship_path(id: friend.id), method: :delete, class: 'button3' %>
+      </li>
+    <% end%>
+  </ul>
+</article>
+<article class="timeline">
+<h3>Frend Requests</h3>
+<ul class="posts">
+  <% for friend in friend_requests %>
+    <li>
+      <%= friend.name %>
+      <%= link_to 'Accept',  friendship_path(id: friend.id), method: :put, class: 'button2' %>
+      <%= link_to 'Reject',  friendship_path(id: friend.id), method: :delete, class: 'button3' %>
+    </li>
+  <% end%>
+</ul>
+</article>
 </section>

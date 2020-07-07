@@ -15,4 +15,32 @@ module ApplicationHelper
       link_to('Like!', post_likes_path(post_id: post.id), method: :post)
     end
   end
+
+  def which_user(user)
+    if current_user == (user)
+      ''
+    elsif current_user.friend?(user)
+      link_to "Remove Friend", friendship_path(id: user.id), method: :delete, class: 'button3'
+    elsif current_user.pending_friends.include?(user)
+      link_to "Cancel Request", friendship_path(id: user.id), method: :delete, class: 'button3'
+    elsif current_user.friend_requests.include?(user)
+      link_to "Accept Request", friendship_path(id: user.id), method: :put, class: 'button2'
+    else
+      link_to 'Add Friend', friendships_path(friend_id: user), method: :post, class: 'button1'
+    end
+  end
+
+  def friends
+    current_user.friends
+  end
+
+  def pending_friends
+    current_user.pending_friends
+  end
+
+  def friend_requests
+    current_user.friend_requests
+  end
 end
+
+
