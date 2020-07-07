@@ -3,6 +3,10 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    @invers_pending = current_user.inverted_pending_friendships
+    @pending = current_user.pending_friendships
+    @confirmed_friendship = current_user.confirmed_friendships
+    @invert_confirmed_friendship = current_user.inverted_confirmed_friendships
   end
 
   def show

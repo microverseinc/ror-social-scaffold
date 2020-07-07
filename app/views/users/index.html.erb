@@ -8,18 +8,19 @@
           <tr><td>
             <%= user.name %>
           </td><td>
-            <% unless current_user.friendships.find_by(friend_id:user.id) or current_user.inverse_friendships.find_by(user_id: user.id)   %>
+            <% unless notFriends(user.id)    %>
             <%= link_to 'Add friend', add_friend_path(:id => user.id) %>
              <% end %>
+            <% friendship = invert_pending_friendship(user.id) %>
+            <% if friendship %>
 
-            <% if friendship = current_user.inverted_pending_friendships.find_by(user_id: user.id) %>
               <span class="accept">|<%= link_to ' Accept ', accepts_friend_path(:id => user.id) %> |</span>
               <span class="reject">|<%= link_to ' Reject ', reject_friend_path(:id => friendship.id) %> |</span>
             <% end %>
 
-            <% if  current_user.confirmed_friendships.find_by(friend_id: user.id) or current_user.inverted_confirmed_friendships.find_by(user_id: user.id)%>
+            <% if  friends(user.id)%>
               <span>Friends</span>
-          <% elsif  current_user.pending_friendships.find_by(friend_id: user.id)%>
+          <% elsif  pending_friendship(user.id)%>
               <span>Pending Friendship</span>
 
             <% end %>

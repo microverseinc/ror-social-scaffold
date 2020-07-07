@@ -1,14 +1,8 @@
-
-<% if post.user.confirmed_friendships.find_by(friend_id: current_user.id) or
-      post.user.id == current_user.id or 
-      current_user.confirmed_friendships.find_by(friend_id: post.user.id)%>
   <li class="post">
     <div>
       <div class='post-attribution' >
         <%= link_to post.user.name, user_path(post.user), class: 'post-author' %>
       </div>
-
-      <!-- <%= post.user.confirmed_friendships.find_by(friend_id:3) %> -->
 
       <div class='post-liking'>
         <span class='post-date'> <%= post.created_at.strftime("%Y/%m/%d") %> </span>
@@ -36,4 +30,3 @@
       <% end %>
     </div>
   </li>
-<% end %>
