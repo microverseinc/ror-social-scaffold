@@ -61,4 +61,3 @@ Lint/RaiseException:
   Enable: false
 Lint/StructNewOverride:
   Enable: false
-
