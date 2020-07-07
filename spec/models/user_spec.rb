@@ -20,7 +20,7 @@ RSpec.describe User, type: :model do
  
   describe "#valides" do
     it 'validates user instanse' do
-      user = User.new(name:'Bekhzod', password:'1234567', email:'email@mail.ru')
+      user = User.new(name:'Bekhzod', password:'1234567', email:'emaiwl@mail.ru')
       expect( user).to be_valid
     end
 
