@@ -1,9 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'User' do
-  let(:frienship_send) { Friendship.create(user_id: 1, friend_id: 2, confirmed: false) }
 
-  context 'doesn\'t exist' do
+  context 'user doesn\'t exist' do
     # let(:user_params) { { name: 'Tester', email: 'test@testing.com', password: '123456'} }
     let(:long_name) { 'a' * 25 }
 
@@ -12,7 +11,7 @@ RSpec.describe 'User' do
       expect(User.last).to be_present
     end
 
-    it 'can\'t create a new user due to not password' do
+    it 'can\'t create a new user due to not having a password' do
       user = build(:random_user)
       user.password = nil
       expect(user.valid?).to_not eql(true)
@@ -41,14 +40,18 @@ RSpec.describe 'User' do
         expect(test).to eql(true)
       end
 
-      it 'not return true if friend is not confirmed like friend' do
+      it 'return false if friend is not confirmed like friend' do
         create(:unconfirmed_friendship)
         test = user.friends.include? friend
         expect(test).to_not eql(true)
       end
+   end
 
       # expect(user.pending_friends).to eql([:friend])
-    end    # it 'can check friend requests' do
+
+
+
+     # it 'can check friend requests' do
     #   expect
     # end
     #

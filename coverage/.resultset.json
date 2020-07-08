@@ -1,77 +1,26 @@
 {
   "RSpec": {
     "coverage": {
-      "/home/juan/Documentos/Microverse/odin_on_rails/ror-social-scaffold/spec/models/user_spec.rb": {
+      "/home/phfdonda/dev/microverse/ror-social-scaffold/spec/features/users_spec.rb": {
         "lines": [
           1,
           null,
           1,
-          1,
           null,
           1,
-          null,
-          1,
-          null,
-          1,
+          2,
           1,
           1,
           null,
-          null,
           1,
           1,
-          1,
-          1,
-          null,
-          null,
-          1,
-          1,
-          1,
-          1,
-          null,
-          null,
-          1,
-          1,
-          1,
-          1,
-          null,
-          null,
-          null,
-          1,
-          3,
-          3,
-          null,
-          1,
-          1,
-          1,
-          1,
-          null,
-          null,
-          1,
-          1,
-          1,
-          1,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
           null,
           null,
           null,
           null
         ]
       },
-      "/home/juan/Documentos/Microverse/odin_on_rails/ror-social-scaffold/spec/rails_helper.rb": {
+      "/home/phfdonda/dev/microverse/ror-social-scaffold/spec/rails_helper.rb": {
         "lines": [
           null,
           1,
@@ -140,7 +89,7 @@
           null
         ]
       },
-      "/home/juan/Documentos/Microverse/odin_on_rails/ror-social-scaffold/config/environment.rb": {
+      "/home/phfdonda/dev/microverse/ror-social-scaffold/config/environment.rb": {
         "lines": [
           null,
           1,
@@ -149,7 +98,7 @@
           1
         ]
       },
-      "/home/juan/Documentos/Microverse/odin_on_rails/ror-social-scaffold/config/application.rb": {
+      "/home/phfdonda/dev/microverse/ror-social-scaffold/config/application.rb": {
         "lines": [
           1,
           null,
@@ -186,7 +135,7 @@
           null
         ]
       },
-      "/home/juan/Documentos/Microverse/odin_on_rails/ror-social-scaffold/config/boot.rb": {
+      "/home/phfdonda/dev/microverse/ror-social-scaffold/config/boot.rb": {
         "lines": [
           1,
           null,
@@ -194,7 +143,7 @@
           1
         ]
       },
-      "/home/juan/Documentos/Microverse/odin_on_rails/ror-social-scaffold/config/environments/test.rb": {
+      "/home/phfdonda/dev/microverse/ror-social-scaffold/config/environments/test.rb": {
         "lines": [
           1,
           null,
@@ -244,7 +193,7 @@
           null
         ]
       },
-      "/home/juan/Documentos/Microverse/odin_on_rails/ror-social-scaffold/config/initializers/application_controller_renderer.rb": {
+      "/home/phfdonda/dev/microverse/ror-social-scaffold/config/initializers/application_controller_renderer.rb": {
         "lines": [
           null,
           null,
@@ -256,7 +205,7 @@
           null
         ]
       },
-      "/home/juan/Documentos/Microverse/odin_on_rails/ror-social-scaffold/config/initializers/assets.rb": {
+      "/home/phfdonda/dev/microverse/ror-social-scaffold/config/initializers/assets.rb": {
         "lines": [
           null,
           null,
@@ -274,7 +223,7 @@
           null
         ]
       },
-      "/home/juan/Documentos/Microverse/odin_on_rails/ror-social-scaffold/config/initializers/backtrace_silencers.rb": {
+      "/home/phfdonda/dev/microverse/ror-social-scaffold/config/initializers/backtrace_silencers.rb": {
         "lines": [
           null,
           null,
@@ -285,7 +234,7 @@
           null
         ]
       },
-      "/home/juan/Documentos/Microverse/odin_on_rails/ror-social-scaffold/config/initializers/content_security_policy.rb": {
+      "/home/phfdonda/dev/microverse/ror-social-scaffold/config/initializers/content_security_policy.rb": {
         "lines": [
           null,
           null,
@@ -314,7 +263,7 @@
           null
         ]
       },
-      "/home/juan/Documentos/Microverse/odin_on_rails/ror-social-scaffold/config/initializers/cookies_serializer.rb": {
+      "/home/phfdonda/dev/microverse/ror-social-scaffold/config/initializers/cookies_serializer.rb": {
         "lines": [
           null,
           null,
@@ -323,7 +272,7 @@
           1
         ]
       },
-      "/home/juan/Documentos/Microverse/odin_on_rails/ror-social-scaffold/config/initializers/devise.rb": {
+      "/home/phfdonda/dev/microverse/ror-social-scaffold/config/initializers/devise.rb": {
         "lines": [
           null,
           null,
@@ -626,7 +575,7 @@
           null
         ]
       },
-      "/home/juan/Documentos/Microverse/odin_on_rails/ror-social-scaffold/config/initializers/filter_parameter_logging.rb": {
+      "/home/phfdonda/dev/microverse/ror-social-scaffold/config/initializers/filter_parameter_logging.rb": {
         "lines": [
           null,
           null,
@@ -634,7 +583,7 @@
           1
         ]
       },
-      "/home/juan/Documentos/Microverse/odin_on_rails/ror-social-scaffold/config/initializers/inflections.rb": {
+      "/home/phfdonda/dev/microverse/ror-social-scaffold/config/initializers/inflections.rb": {
         "lines": [
           null,
           null,
@@ -654,7 +603,7 @@
           null
         ]
       },
-      "/home/juan/Documentos/Microverse/odin_on_rails/ror-social-scaffold/config/initializers/mime_types.rb": {
+      "/home/phfdonda/dev/microverse/ror-social-scaffold/config/initializers/mime_types.rb": {
         "lines": [
           null,
           null,
@@ -662,7 +611,7 @@
           null
         ]
       },
-      "/home/juan/Documentos/Microverse/odin_on_rails/ror-social-scaffold/config/initializers/wrap_parameters.rb": {
+      "/home/phfdonda/dev/microverse/ror-social-scaffold/config/initializers/wrap_parameters.rb": {
         "lines": [
           null,
           null,
@@ -680,7 +629,7 @@
           null
         ]
       },
-      "/home/juan/Documentos/Microverse/odin_on_rails/ror-social-scaffold/spec/factories/friendship.rb": {
+      "/home/phfdonda/dev/microverse/ror-social-scaffold/spec/factories/friendship.rb": {
         "lines": [
           1,
           1,
@@ -697,14 +646,14 @@
           null
         ]
       },
-      "/home/juan/Documentos/Microverse/odin_on_rails/ror-social-scaffold/spec/factories/users.rb": {
+      "/home/phfdonda/dev/microverse/ror-social-scaffold/spec/factories/users.rb": {
         "lines": [
           1,
           1,
-          7,
-          7,
-          7,
-          7,
+          8,
+          8,
+          8,
+          8,
           null,
           null,
           1,
@@ -716,7 +665,7 @@
           null
         ]
       },
-      "/home/juan/Documentos/Microverse/odin_on_rails/ror-social-scaffold/config/routes.rb": {
+      "/home/phfdonda/dev/microverse/ror-social-scaffold/config/routes.rb": {
         "lines": [
           1,
           null,
@@ -734,7 +683,7 @@
           null
         ]
       },
-      "/home/juan/Documentos/Microverse/odin_on_rails/ror-social-scaffold/app/models/user.rb": {
+      "/home/phfdonda/dev/microverse/ror-social-scaffold/app/models/user.rb": {
         "lines": [
           1,
           null,
@@ -775,21 +724,21 @@
           null
         ]
       },
-      "/home/juan/Documentos/Microverse/odin_on_rails/ror-social-scaffold/app/models/application_record.rb": {
+      "/home/phfdonda/dev/microverse/ror-social-scaffold/app/models/application_record.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/home/juan/Documentos/Microverse/odin_on_rails/ror-social-scaffold/app/helpers/application_helper.rb": {
+      "/home/phfdonda/dev/microverse/ror-social-scaffold/app/helpers/application_helper.rb": {
         "lines": [
           1,
           1,
-          0,
+          4,
           null,
-          0,
-          0,
+          4,
+          4,
           null,
           null,
           null,
@@ -804,7 +753,7 @@
           null
         ]
       },
-      "/home/juan/Documentos/Microverse/odin_on_rails/ror-social-scaffold/spec/support/factory_bot.rb": {
+      "/home/phfdonda/dev/microverse/ror-social-scaffold/spec/support/factory_bot.rb": {
         "lines": [
           null,
           null,
@@ -813,7 +762,143 @@
           null
         ]
       },
-      "/home/juan/Documentos/Microverse/odin_on_rails/ror-social-scaffold/app/models/friendship.rb": {
+      "/home/phfdonda/dev/microverse/ror-social-scaffold/spec/models/user_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          3,
+          3,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/home/phfdonda/dev/microverse/ror-social-scaffold/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          2,
+          2,
+          null,
+          null
+        ]
+      },
+      "/home/phfdonda/dev/microverse/ror-social-scaffold/app/controllers/posts_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null
+        ]
+      },
+      "/home/phfdonda/dev/microverse/ror-social-scaffold/app/models/post.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          2,
+          1,
+          1,
+          null
+        ]
+      },
+      "/home/phfdonda/dev/microverse/ror-social-scaffold/app/models/friendship.rb": {
         "lines": [
           1,
           1,
@@ -822,6 +907,6 @@
         ]
       }
     },
-    "timestamp": 1594228083
+    "timestamp": 1594231118
   }
 }
