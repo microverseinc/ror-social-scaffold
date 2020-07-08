@@ -1,14 +1,22 @@
 require 'rails_helper'
 
 RSpec.describe Friendship, type: :model do
-  describe '#reciprocate_friendship' do
-    let(:user) { create :user }
-    let(:friend) { create :user }
-    let(:friendship) { build :friendship, user_id: user.id, friend_id: friend.id }
+  let(:user) { create :user }
+  let(:friend) { create :user }
+  let!(:friendship) do
+    create(:friendship, user_id: user.id, friend_id: friend.id)
+  end
 
-    it "appends user to friend friends" do
+  context '::reciprocate_friendship' do
+    it 'appends user to friend friends' do
       expect(friend.friends).to include(user)
     end
   end
-end
 
+  context '::destroy_frienship' do
+    it 'removes user to friend friends' do
+      friendship.destroy
+      expect(friend.friends).not_to include(user)
+    end
+  end
+end
