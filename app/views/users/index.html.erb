@@ -8,23 +8,9 @@
           <tr><td>
             <%= user.name %>
           </td><td>
-            <% unless not_friends(user.id)    %>
-            <%= link_to 'Add friend', add_friend_path(:id => user.id) %>
-             <% end %>
-            <% friendship = invert_pending_friendship(user.id) %>
-            <% if friendship %>
-
-              <span class="accept">|<%= link_to ' Accept ', accepts_friend_path(:id => user.id) %> |</span>
-              <span class="reject">|<%= link_to ' Reject ', reject_friend_path(:id => friendship.id) %> |</span>
-            <% end %>
-
-            <% if  friends(user.id)%>
-              <span>Friends</span>
-          <% elsif  pending_friendship(user.id)%>
-              <span>Pending Friendship</span>
-
-            <% end %>
-
+            <% friendship = status(user.id)%>
+            <%= friendship[0] %>
+            <%= friendship[1] %>
           </td><td>
             <span class="profile-link">
               <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
