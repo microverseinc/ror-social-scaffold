@@ -10,16 +10,4 @@ FactoryBot.define do
     friend_id { 2 }
     confirmed { false }
   end
-
-  factory :confirmed_request, class: 'Friendship' do
-    user_id { 2 }
-    friend_id { 1 }
-    confirmed { true }
-  end
-
-  factory :unconfirmed_request, class: 'Friendship' do
-    user_id { 2 }
-    friend_id { 1 }
-    confirmed { false }
-  end
 end

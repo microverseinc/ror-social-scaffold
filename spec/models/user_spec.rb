@@ -31,44 +31,33 @@ RSpec.describe 'User' do
   end
 
     context 'Model\'s user method' do
-      let!(:user) { create(:random_user) }
-      let!(:friend) { create(:random_friend) }
+      let(:user) { create(:random_user) }
+      let(:friend) { create(:random_friend) }
 
-      it 'can check if friend is include in friends' do
+      it 'can check if friend is included in friends' do
         create(:confirmed_friendship)
         test = user.friends.include? friend
         expect(test).to eql(true)
       end
 
-      it 'return false if friend is not confirmed like friend' do
+      it 'friend should be among pending friends' do
         create(:unconfirmed_friendship)
-        test = user.friends.include? friend
-        expect(test).to_not eql(true)
+        expect(user.pending_friends).to include(friend)
       end
 
-      it 'return true if friend is not confirmed like friend' do
+      it 'should be able to confirm friendship' do
         create(:unconfirmed_friendship)
-        test = user.pending_friends.include? friend
-        expect(test).to eql(true)
+        expect(friend.confirm_friend(user)).to eql(true)
       end
 
-      it 'not return true if friend is confirmed like friend' do
+      it 'should be able to find friend among friend requests' do
+        create(:unconfirmed_friendship)
+        expect(user.friend_requests).to include(friend)
+      end
+
+      it 'return true if friend is among accepted friends' do
         create(:confirmed_friendship)
-        test = user.pending_friends.include? friend
-        expect(test).to_not eql(true)
-      end
-
-      it 'return not true if already friend is confirmed like friend' do
-        create(:confirmed_request)
-        test = user.friend_requests.include? friend
-        expect(test).to_not eql(true)
-      end
-
-      it 'return true if friend is not confirmed like friend' do
-        create(:unconfirmed_request)
-        test = user.friend_requests.include? friend
-        byebug
-        expect(test).to eql(true)
+        expect(user.friend?(friend)).to eql(true)
       end
 
    end
