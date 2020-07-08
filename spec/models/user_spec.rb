@@ -30,7 +30,7 @@ RSpec.describe 'User' do
     end
   end
 
-  context 'users already exist' do
+    context 'Model\'s user method' do
       let!(:user) { create(:random_user) }
       let!(:friend) { create(:random_friend) }
 
@@ -45,6 +45,32 @@ RSpec.describe 'User' do
         test = user.friends.include? friend
         expect(test).to_not eql(true)
       end
+
+      it 'return true if friend is not confirmed like friend' do
+        create(:unconfirmed_friendship)
+        test = user.pending_friends.include? friend
+        expect(test).to eql(true)
+      end
+
+      it 'not return true if friend is confirmed like friend' do
+        create(:confirmed_friendship)
+        test = user.pending_friends.include? friend
+        expect(test).to_not eql(true)
+      end
+
+      it 'return not true if already friend is confirmed like friend' do
+        create(:confirmed_request)
+        test = user.friend_requests.include? friend
+        expect(test).to_not eql(true)
+      end
+
+      it 'return true if friend is not confirmed like friend' do
+        create(:unconfirmed_request)
+        test = user.friend_requests.include? friend
+        byebug
+        expect(test).to eql(true)
+      end
+
    end
 
       # expect(user.pending_friends).to eql([:friend])
