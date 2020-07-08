@@ -13,4 +13,12 @@ class User < ApplicationRecord
 
   has_many :friendships
   has_many :friends, through: :friendships, source: :friend
+
+  def friendable?(current_user)
+    !current_user.friends.include?(self)
+  end
+
+  def unfriendable?(current_user)
+    !friendable?(current_user)
+  end
 end

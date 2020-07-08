@@ -12,4 +12,5 @@ class Friendship < ApplicationRecord
   def destroy_friendship
     friend.friends.delete(user)
   end
+
 end
