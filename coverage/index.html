@@ -5,7 +5,7 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <script src='./assets/0.12.2/application.js' type='text/javascript'></script>
     <link href='./assets/0.12.2/application.css' media='screen, projection, print' rel='stylesheet' type='text/css' />
-    <link rel="shortcut icon" type="image/png" href="./assets/0.12.2/favicon_yellow.png" />
+    <link rel="shortcut icon" type="image/png" href="./assets/0.12.2/favicon_green.png" />
     <link rel="icon" type="image/png" href="./assets/0.12.2/favicon.png" />
   </head>
 
@@ -14,7 +14,7 @@
       <img src="./assets/0.12.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2020-07-03T17:59:25-05:00">2020-07-03T17:59:25-05:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2020-07-08T12:08:03-05:00">2020-07-08T12:08:03-05:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -22,15 +22,15 @@
   <h2>
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
-      <span class="yellow">
-  84.18%
+      <span class="green">
+  90.85%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
-       <span class="red">
-         0.92
+       <span class="green">
+         1.2
        </span>
     </span> hits/line
     )
@@ -43,11 +43,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>158</b> relevant lines,
-    <span class="green"><b>133</b> lines covered</span> and
-    <span class="red"><b>25</b> lines missed. </span>
-    (<span class="yellow">
-  84.18%
+    <b>164</b> relevant lines,
+    <span class="green"><b>149</b> lines covered</span> and
+    <span class="red"><b>15</b> lines missed. </span>
+    (<span class="green">
+  90.85%
 </span>
 )
   </div>
@@ -105,12 +105,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#28139741a524e5953dc276864fdf4ae5035ad45e" class="src_link" title="app/models/user.rb">app/models/user.rb</a></td>
-            <td class="red strong cell--number t-file__coverage">63.64 %</td>
-            <td class="cell--number">38</td>
+            <td class="red strong cell--number t-file__coverage">72.73 %</td>
+            <td class="cell--number">37</td>
             <td class="cell--number">22</td>
-            <td class="cell--number">14</td>
-            <td class="cell--number">8</td>
-            <td class="cell--number">0.68</td>
+            <td class="cell--number">16</td>
+            <td class="cell--number">6</td>
+            <td class="cell--number">0.95</td>
             
           </tr>
         
@@ -286,7 +286,7 @@
             <td class="cell--number">9</td>
             <td class="cell--number">9</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">1.33</td>
+            <td class="cell--number">1.67</td>
             
           </tr>
         
@@ -297,18 +297,18 @@
             <td class="cell--number">11</td>
             <td class="cell--number">11</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">1.73</td>
+            <td class="cell--number">3.91</td>
             
           </tr>
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#45075e636dad970663322f31d7a91efc4a0ed756" class="src_link" title="spec/models/user_spec.rb">spec/models/user_spec.rb</a></td>
-            <td class="red strong cell--number t-file__coverage">68.00 %</td>
-            <td class="cell--number">63</td>
-            <td class="cell--number">25</td>
-            <td class="cell--number">17</td>
-            <td class="cell--number">8</td>
-            <td class="cell--number">0.68</td>
+            <td class="green strong cell--number t-file__coverage">100.00 %</td>
+            <td class="cell--number">66</td>
+            <td class="cell--number">31</td>
+            <td class="cell--number">31</td>
+            <td class="cell--number">0</td>
+            <td class="cell--number">1.13</td>
             
           </tr>
         
@@ -724,7 +724,7 @@
     <h3>app/models/user.rb</h3>
     <h4>
       <span class="red">
-  63.64%
+  72.73%
 </span>
 
       lines covered
@@ -734,8 +734,8 @@
 
     <div class="t-line-summary">
       <b>22</b> relevant lines.
-      <span class="green"><b>14</b> lines covered</span> and
-      <span class="red"><b>8</b> lines missed.</span>
+      <span class="green"><b>16</b> lines covered</span> and
+      <span class="red"><b>6</b> lines missed.</span>
     </div>
 
     
@@ -900,8 +900,8 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="15">
-            
+          <li class="covered" data-hits="4" data-linenumber="15">
+            <span class="hits">4</span>
             
 
             
@@ -911,19 +911,19 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="16">
-            
-            
-
+          <li class="covered" data-hits="2" data-linenumber="16">
+            <span class="hits">2</span>
             
 
-            <code class="ruby">    friends_array + inverse_friendships.map { |friendship| friendship.friendship.user if friendship.confirmed }</code>
+            
+
+            <code class="ruby">    friends_array += inverse_friendships.map { |friendship| friendship.friendship.user if friendship.confirmed }</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="17">
-            
+          <li class="covered" data-hits="2" data-linenumber="17">
+            <span class="hits">2</span>
             
 
             
@@ -966,13 +966,13 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="21">
-            <span class="hits">2</span>
+          <li class="missed" data-hits="0" data-linenumber="21">
+            
             
 
             
 
-            <code class="ruby">    friendships.map { |friendship| friendship.friend if !friendship.confirmed }.compact</code>
+            <code class="ruby">    friendships.map { |friendship| friendship.friend unless friendship.confirmed }.compact</code>
           </li>
         </div>
       
@@ -1016,7 +1016,7 @@
 
             
 
-            <code class="ruby">    friendships.map { |friendship| friendship.user if !friendship.confirmed }.compact</code>
+            <code class="ruby">    friendships.map { |friendship| friendship.user unless friendship.confirmed }.compact</code>
           </li>
         </div>
       
@@ -1060,7 +1060,7 @@
 
             
 
-            <code class="ruby">    friendship = inverse_friendships.find { |friendship| friendship.user == user }</code>
+            <code class="ruby">    friendship = inverse_friendships.find { |f| f.user == user }</code>
           </li>
         </div>
       
@@ -1143,17 +1143,6 @@
       
         <div>
           <li class="never" data-hits="" data-linenumber="37">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="38">
             
             
 
@@ -7160,35 +7149,35 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="3">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="2" data-linenumber="3">
+            <span class="hits">2</span>
             
 
             
 
-            <code class="ruby">    user_id {1}</code>
+            <code class="ruby">    user_id { 1 }</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="4">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="2" data-linenumber="4">
+            <span class="hits">2</span>
             
 
             
 
-            <code class="ruby">    friend_id {2}</code>
+            <code class="ruby">    friend_id { 2 }</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="5">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="2" data-linenumber="5">
+            <span class="hits">2</span>
             
 
             
 
-            <code class="ruby">    confirmed {true}</code>
+            <code class="ruby">    confirmed { true }</code>
           </li>
         </div>
       
@@ -7232,7 +7221,7 @@
 
             
 
-            <code class="ruby">    user_id {1}</code>
+            <code class="ruby">    user_id { 1 }</code>
           </li>
         </div>
       
@@ -7243,7 +7232,7 @@
 
             
 
-            <code class="ruby">    friend_id {2}</code>
+            <code class="ruby">    friend_id { 2 }</code>
           </li>
         </div>
       
@@ -7254,7 +7243,7 @@
 
             
 
-            <code class="ruby">    confirmed {false}</code>
+            <code class="ruby">    confirmed { false }</code>
           </li>
         </div>
       
@@ -7329,24 +7318,24 @@
 
             
 
-            <code class="ruby">  factory :user, class: &#39;User&#39; do</code>
+            <code class="ruby">  factory :random_user, class: &#39;User&#39; do</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="3">
-            <span class="hits">2</span>
+          <li class="covered" data-hits="7" data-linenumber="3">
+            <span class="hits">7</span>
             
 
             
 
-            <code class="ruby">    id {1}</code>
+            <code class="ruby">    id { 1 }</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="4">
-            <span class="hits">2</span>
+          <li class="covered" data-hits="7" data-linenumber="4">
+            <span class="hits">7</span>
             
 
             
@@ -7356,8 +7345,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="5">
-            <span class="hits">2</span>
+          <li class="covered" data-hits="7" data-linenumber="5">
+            <span class="hits">7</span>
             
 
             
@@ -7367,8 +7356,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="6">
-            <span class="hits">2</span>
+          <li class="covered" data-hits="7" data-linenumber="6">
+            <span class="hits">7</span>
             
 
             
@@ -7406,24 +7395,24 @@
 
             
 
-            <code class="ruby">  factory :friend, class: &#39;User&#39; do</code>
+            <code class="ruby">  factory :random_friend, class: &#39;User&#39; do</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="10">
-            <span class="hits">2</span>
+          <li class="covered" data-hits="3" data-linenumber="10">
+            <span class="hits">3</span>
             
 
             
 
-            <code class="ruby">    id {2}</code>
+            <code class="ruby">    id { 2 }</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="11">
-            <span class="hits">2</span>
+          <li class="covered" data-hits="3" data-linenumber="11">
+            <span class="hits">3</span>
             
 
             
@@ -7433,8 +7422,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="12">
-            <span class="hits">2</span>
+          <li class="covered" data-hits="3" data-linenumber="12">
+            <span class="hits">3</span>
             
 
             
@@ -7444,8 +7433,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="13">
-            <span class="hits">2</span>
+          <li class="covered" data-hits="3" data-linenumber="13">
+            <span class="hits">3</span>
             
 
             
@@ -7485,8 +7474,8 @@
   <div class="header">
     <h3>spec/models/user_spec.rb</h3>
     <h4>
-      <span class="red">
-  68.0%
+      <span class="green">
+  100.0%
 </span>
 
       lines covered
@@ -7495,9 +7484,9 @@
     
 
     <div class="t-line-summary">
-      <b>25</b> relevant lines.
-      <span class="green"><b>17</b> lines covered</span> and
-      <span class="red"><b>8</b> lines missed.</span>
+      <b>31</b> relevant lines.
+      <span class="green"><b>31</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
     </div>
 
     
@@ -7574,13 +7563,13 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="7">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="7">
+            
             
 
             
 
-            <code class="ruby">    let(:user_params) { { name: &#39;Tester&#39;, email: &#39;test@testing.com&#39;, password: &#39;123456&#39;} }</code>
+            <code class="ruby">    # let(:user_params) { { name: &#39;Tester&#39;, email: &#39;test@testing.com&#39;, password: &#39;123456&#39;} }</code>
           </li>
         </div>
       
@@ -7618,19 +7607,19 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="11">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="11">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">      User.create(user_params)</code>
+            
+
+            <code class="ruby">      create(:random_user)</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="12">
-            
+          <li class="covered" data-hits="1" data-linenumber="12">
+            <span class="hits">1</span>
             
 
             
@@ -7673,35 +7662,35 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="16">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="16">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">      User.create(user_params.merge(password: nil))</code>
+            
+
+            <code class="ruby">      user = build(:random_user)</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="17">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="17">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">      expect(User.last).to_not be_present</code>
+            
+
+            <code class="ruby">      user.password = nil</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="18">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="18">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">    end</code>
+            
+
+            <code class="ruby">      expect(user.valid?).to_not eql(true)</code>
           </li>
         </div>
       
@@ -7712,12 +7701,23 @@
 
             
 
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="20">
+            
+            
+
+            
+
             <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="20">
+          <li class="covered" data-hits="1" data-linenumber="21">
             <span class="hits">1</span>
             
 
@@ -7728,29 +7728,40 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="21">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="22">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">      User.create(user_params.merge(password: &#39;123&#39;))</code>
+            
+
+            <code class="ruby">      user = build(:random_user)</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="22">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="23">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">      expect(User.last).to_not be_present</code>
+            
+
+            <code class="ruby">      user.password = &#39;123&#39;</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="23">
+          <li class="covered" data-hits="1" data-linenumber="24">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(user.valid?).to_not eql(true)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="25">
             
             
 
@@ -7761,7 +7772,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="24">
+          <li class="never" data-hits="" data-linenumber="26">
             
             
 
@@ -7772,7 +7783,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="25">
+          <li class="covered" data-hits="1" data-linenumber="27">
             <span class="hits">1</span>
             
 
@@ -7783,68 +7794,46 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="26">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="28">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">      User.create(user_params.merge(name: long_name))</code>
+            
+
+            <code class="ruby">      user = build(:random_user)</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="27">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="29">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">      expect(User.last).to_not be_present</code>
+            
+
+            <code class="ruby">      user.name = &#39;a&#39; * 25</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="28">
+          <li class="covered" data-hits="1" data-linenumber="30">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      expect(user.valid?).to eql(false)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="31">
             
             
 
             
 
             <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="29">
-            
-            
-
-            
-
-            <code class="ruby">  end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="30">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="31">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  context &#39;users already exist&#39; do</code>
           </li>
         </div>
       
@@ -7855,7 +7844,7 @@
 
             
 
-            <code class="ruby">    # let(:user) { create(:random_user) }</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -7866,51 +7855,51 @@
 
             
 
-            <code class="ruby">    # let(:friend) { create(:random_user) }</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="34">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="34">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">    # let(:confirmed) { create(:confirmed_friendship) }</code>
+            
+
+            <code class="ruby">  context &#39;users already exist&#39; do</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="35">
+          <li class="covered" data-hits="3" data-linenumber="35">
+            <span class="hits">3</span>
+            
+
+            
+
+            <code class="ruby">      let!(:user) { create(:random_user) }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="3" data-linenumber="36">
+            <span class="hits">3</span>
+            
+
+            
+
+            <code class="ruby">      let!(:friend) { create(:random_friend) }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="37">
             
             
 
             
 
             <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="36">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    it &#39;can check pending friends&#39; do</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="37">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">      @user = create(:user)</code>
           </li>
         </div>
       
@@ -7921,7 +7910,7 @@
 
             
 
-            <code class="ruby">      @friend = create(:friend)</code>
+            <code class="ruby">      it &#39;can check if friend is include in friends&#39; do</code>
           </li>
         </div>
       
@@ -7932,7 +7921,7 @@
 
             
 
-            <code class="ruby">      create(:unconfirmed_friendship)</code>
+            <code class="ruby">        create(:confirmed_friendship)</code>
           </li>
         </div>
       
@@ -7943,7 +7932,7 @@
 
             
 
-            <code class="ruby">      pending = @user.pending_friends.include? @friend</code>
+            <code class="ruby">        test = user.friends.include? friend</code>
           </li>
         </div>
       
@@ -7954,7 +7943,7 @@
 
             
 
-            <code class="ruby">      expect(pending).to eql(true)</code>
+            <code class="ruby">        expect(test).to eql(true)</code>
           </li>
         </div>
       
@@ -7965,7 +7954,7 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">      end</code>
           </li>
         </div>
       
@@ -7976,51 +7965,51 @@
 
             
 
-            <code class="ruby">      # expect(user.pending_friends).to eql([:friend])</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="44">
-            
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="45">
-            
-            
-
-            
-
             <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="46">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="44">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">    # it &#39;can check friend requests&#39; do</code>
+            
+
+            <code class="ruby">      it &#39;not return true if friend is not confirmed like friend&#39; do</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="47">
+          <li class="covered" data-hits="1" data-linenumber="45">
+            <span class="hits">1</span>
             
+
+            
+
+            <code class="ruby">        create(:unconfirmed_friendship)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="46">
+            <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    #   expect</code>
+            <code class="ruby">        test = user.friends.include? friend</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="47">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        expect(test).to_not eql(true)</code>
           </li>
         </div>
       
@@ -8031,7 +8020,7 @@
 
             
 
-            <code class="ruby">    # end</code>
+            <code class="ruby">      end</code>
           </li>
         </div>
       
@@ -8042,7 +8031,7 @@
 
             
 
-            <code class="ruby">    #</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -8053,7 +8042,7 @@
 
             
 
-            <code class="ruby">    # it &#39;can check friends&#39; do</code>
+            <code class="ruby">      # expect(user.pending_friends).to eql([:friend])</code>
           </li>
         </div>
       
@@ -8064,7 +8053,7 @@
 
             
 
-            <code class="ruby">    #   expect</code>
+            <code class="ruby">    end    # it &#39;can check friend requests&#39; do</code>
           </li>
         </div>
       
@@ -8075,7 +8064,7 @@
 
             
 
-            <code class="ruby">    # end</code>
+            <code class="ruby">    #   expect</code>
           </li>
         </div>
       
@@ -8086,7 +8075,7 @@
 
             
 
-            <code class="ruby">    #</code>
+            <code class="ruby">    # end</code>
           </li>
         </div>
       
@@ -8097,7 +8086,7 @@
 
             
 
-            <code class="ruby">    # it &#39;can check if a user is a friend&#39; do</code>
+            <code class="ruby">    #</code>
           </li>
         </div>
       
@@ -8108,7 +8097,7 @@
 
             
 
-            <code class="ruby">    #   expect</code>
+            <code class="ruby">    # it &#39;can check friends&#39; do</code>
           </li>
         </div>
       
@@ -8119,7 +8108,7 @@
 
             
 
-            <code class="ruby">    # end</code>
+            <code class="ruby">    #   expect</code>
           </li>
         </div>
       
@@ -8130,7 +8119,7 @@
 
             
 
-            <code class="ruby">    #</code>
+            <code class="ruby">    # end</code>
           </li>
         </div>
       
@@ -8141,7 +8130,7 @@
 
             
 
-            <code class="ruby">    # it &#39;can confirm friends&#39; do</code>
+            <code class="ruby">    #</code>
           </li>
         </div>
       
@@ -8152,7 +8141,7 @@
 
             
 
-            <code class="ruby">    #   expect</code>
+            <code class="ruby">    # it &#39;can check if a user is a friend&#39; do</code>
           </li>
         </div>
       
@@ -8163,7 +8152,7 @@
 
             
 
-            <code class="ruby">    # end</code>
+            <code class="ruby">    #   expect</code>
           </li>
         </div>
       
@@ -8174,7 +8163,7 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">    # end</code>
           </li>
         </div>
       
@@ -8185,12 +8174,45 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">    #</code>
           </li>
         </div>
       
         <div>
           <li class="never" data-hits="" data-linenumber="63">
+            
+            
+
+            
+
+            <code class="ruby">    # it &#39;can confirm friends&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="64">
+            
+            
+
+            
+
+            <code class="ruby">    #   expect</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="65">
+            
+            
+
+            
+
+            <code class="ruby">    # end  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="66">
             
             
 
@@ -8293,7 +8315,7 @@
 
             
 
-            <code class="ruby">abort(&quot;The Rails environment is running in production mode!&quot;) if Rails.env.production?</code>
+            <code class="ruby">abort(&#39;The Rails environment is running in production mode!&#39;) if Rails.env.production?</code>
           </li>
         </div>
       
@@ -9017,7 +9039,7 @@
 
             
 
-            <code class="ruby">config.include FactoryBot::Syntax::Methods</code>
+            <code class="ruby">  config.include FactoryBot::Syntax::Methods</code>
           </li>
         </div>
       
