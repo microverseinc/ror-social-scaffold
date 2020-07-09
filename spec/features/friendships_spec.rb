@@ -1,16 +1,16 @@
 require 'rails_helper'
 
-RSpec.feature 'Friendship' do
+RSpec.feature 'Friendship', type: :feature do
   let!(:user) { create(:random_user) }
-  let!(:friend) { create(:random_user) }
+  let!(:friend) { create(:random_friend) }
 
   context 'User add a friend' do
-    it 'friend request is created' do
-      Friendship.create
-      expect(Friendship.last).to exist
+    it 'should create a friendship request' do
+      Friendship.create(user_id: 1, friend_id: 2)
+      expect(Friendship.last).to be_kind_of(Friendship)
     end
 
-    it 'two objects are created when you send a friend request' do
+    it 'should create two objects you send a friend request' do
       Friendship.create
       friendship = Friendship.last
       friendship_two = Friendship.first
