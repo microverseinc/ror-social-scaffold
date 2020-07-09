@@ -29,10 +29,10 @@ User.create(
   )
 end
 
-User.all.each do |user|
-  friendable = User.all.ids
-  3.times do
-    friend_id = friendable.delete(rand(0..User.all.length))
-    Friendship.create({ user_id: user.id, friend_id: friend_id })
-  end
-end
+# User.all.each do |user|
+  # friendable = User.all.ids
+  # 3.times do
+    # friend_id = friendable.delete(rand(0..User.all.length))
+    # Friendship.create({ user_id: user.id, friend_id: friend_id })
+  # end
+# end
