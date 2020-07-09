@@ -5,6 +5,11 @@ RSpec.describe 'Post' do
     let!(:user) { create(:random_user) }
     let(:long_text) { 'X' * 1001 }
 
+    it 'should create a post' do
+      post = Post.create(content: 'text', user_id: 1)
+      expect(post.content).to eql('text')
+    end
+
     it 'should refuse the creation of a post longer than 1000 char' do
       post = Post.new(content: long_text, user_id: 1)
       post.valid?
