@@ -18,6 +18,9 @@ class User < ApplicationRecord
   has_many :friends,
            class_name: "User", through: :confirmed_friendships, source: :friend
 
+  # TODO: write pending friendships and requested friendships
+  # TODO: find the user from the has_many above
+
   has_many :not_confirmed_friends,
            class_name: "User", through: :not_confirmed_friendships, source: :friend
 
