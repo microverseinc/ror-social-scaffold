@@ -3,21 +3,21 @@
     <% @users.each do |user| %>
       <li>
         Name: <%= user.name %>
-        <span class="profile-link">
-          <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+      <span class="profile-link">
+        <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
 
-          <% if user.friendable?(current_user) %>
-            <%= link_to 'Add Friend',  friendships_path({user_id: current_user.id, friend_id: user.id}), method: :post, class: 'profile-link' %>
-          <% end %>
+        <% if user.friendable?(current_user) %>
+          <%= link_to 'Add Friend',  friendships_path({user_id: current_user.id, friend_id: user.id}), method: :post, class: 'profile-link' %>
+        <% end %>
 
-          <% if user.unfriendable?(current_user) %>
-            <%= link_to 'Unfriend',
+        <% if user.unfriendable?(current_user) %>
+          <%= link_to 'Unfriend',
             Friendship.find_by_user_id_and_friend_id(current_user.id, user.id),
             method: :delete,
             class: 'profile-link' %>
-          <% end %>
+        <% end %>
 
-        </span>
+      </span>
       </li>
     <% end %>
   </ul>
