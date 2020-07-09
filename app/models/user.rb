@@ -15,6 +15,7 @@ class User < ApplicationRecord
   has_many :friends, through: :friendships, source: :friend
 
   def friendable?(current_user)
+    false if current_user == self
     current_user.friends.exclude?(self)
   end
 

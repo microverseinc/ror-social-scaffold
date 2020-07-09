@@ -1,5 +1,8 @@
 module UserHelper
   def friendship_interaction(user)
+    if user == current_user
+      return nil
+    end
     friend_path =
       friendships_path({ user_id: current_user.id, friend_id: user.id })
     unfriend_path =

@@ -3,10 +3,12 @@ class FriendshipsController < ApplicationController
   def create
     @friendship = Friendship.create(friendship_params)
     @friendship.save
+    redirect_to request.referrer
   end
 
   def destroy
     @friendship.destroy
+    redirect_to request.referrer
   end
 
   private
