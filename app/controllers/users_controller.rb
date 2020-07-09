@@ -12,6 +12,10 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.ordered_by_most_recent
+    @invers_pending = current_user.inverted_pending_friendships
+    @pending = current_user.pending_friendships
+    @confirmed_friendship = current_user.confirmed_friendships
+    @invert_confirmed_friendship = current_user.inverted_confirmed_friendships
   end
 
   def add_friend
