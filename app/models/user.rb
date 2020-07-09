@@ -12,7 +12,18 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
 
   has_many :friendships
-  has_many :friends, through: :friendships, source: :friend
+
+  has_many :friends,
+           -> { where(confirmed: true) },
+           class_name: "User", through: :friendships, source: :friend
+
+  def requested_friendships
+    friendships.requested_friendships
+  end
+
+  def pending_friendships
+    friendships.requested_friendships.where("friend_id =?", id)
+  end
 
   def friendable?(current_user)
     false if current_user == self
