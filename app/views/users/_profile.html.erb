@@ -1,0 +1,22 @@
+<article class="timeline">
+  <h3>Pending Friends</h3>
+  <ul class="posts">
+    <% for friend in pending_friends %>
+      <li>
+        <%= friend.name %>
+        <%= see_profile(@user, friend) %>
+      </li>
+    <% end%>
+  </ul>
+</article>
+<article class="timeline">
+<h3>Frend Requests</h3>
+<ul class="posts">
+  <% for friend in friend_requests %>
+    <li>
+      <%= friend.name %>
+      <%= see_profile(@user, friend) %>
+    </li>
+  <% end%>
+</ul>
+</article>

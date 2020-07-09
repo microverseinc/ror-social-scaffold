@@ -16,10 +16,20 @@ module ApplicationHelper
     end
   end
 
-  def see_profile(user)
+  def see_profile(user, friend)    
     if current_user == (user)
-       link_to 'See Profile',  user_path(user), class: 'profile-link' 
+      which_user(friend)
     end
+  end
+
+  def my_profile(user)
+    if current_user == (user)
+      render partial: 'profile'
+    end
+  end
+
+  def see_posts
+    render @timeline_posts
   end
 
   def which_user(user)
@@ -32,12 +42,12 @@ module ApplicationHelper
     elsif current_user.friend_requests.include?(user)
       link_to "Accept Request", friendship_path(id: user.id), method: :put, class: 'button2'
     else
-      link_to 'Add Friend', friendships_path(friend_id: user), method: :post, class: 'button1'
+      link_to 'Invite Friend', friendships_path(friend_id: user), method: :post, class: 'button1'
     end
   end
 
   def friends
-    current_user.friends + current_user.inverse_friends
+    current_user.forward_friends + current_user.inverse_friends
   end
 
   def pending_friends
