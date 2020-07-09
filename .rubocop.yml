@@ -8,7 +8,6 @@ AllCops:
     - "README.md"
     - "node_modules/**/*"
 
-
   DisplayCopNames: true
 
 Layout/LineLength:
@@ -49,7 +48,6 @@ Layout/ExtraSpacing:
 Layout/MultilineMethodCallIndentation:
   Enabled: true
   EnforcedStyle: indented
-
 Lint/RaiseException:
   Enabled: false
 Lint/StructNewOverride:
@@ -60,3 +58,4 @@ Style/HashTransformKeys:
   Enabled: false
 Style/HashTransformValues:
   Enabled: false
+

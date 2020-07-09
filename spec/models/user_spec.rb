@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'User' do
-
   context 'user doesn\'t exist' do
     # let(:user_params) { { name: 'Tester', email: 'test@testing.com', password: '123456'} }
     let(:long_name) { 'a' * 25 }
@@ -31,39 +30,37 @@ RSpec.describe 'User' do
   end
 
   context 'users already exist' do
-      let!(:user) { create(:random_user) }
-      let!(:friend) { create(:random_friend) }
+    let!(:user) { create(:random_user) }
+    let!(:friend) { create(:random_friend) }
 
-      it 'can check if friend is include in friends' do
-        create(:confirmed_friendship)
-        test = user.friends.include? friend
-        expect(test).to eql(true)
-      end
+    it 'can check if friend is include in friends' do
+      create(:confirmed_friendship)
+      test = user.friends.include? friend
+      expect(test).to eql(true)
+    end
 
-      it 'return false if friend is not confirmed like friend' do
-        create(:unconfirmed_friendship)
-        test = user.friends.include? friend
-        expect(test).to_not eql(true)
-      end
-   end
+    it 'return false if friend is not confirmed like friend' do
+      create(:unconfirmed_friendship)
+      test = user.friends.include? friend
+      expect(test).to_not eql(true)
+    end
+  end
 
-      # expect(user.pending_friends).to eql([:friend])
+  # expect(user.pending_friends).to eql([:friend])
 
-
-
-     # it 'can check friend requests' do
-    #   expect
-    # end
-    #
-    # it 'can check friends' do
-    #   expect
-    # end
-    #
-    # it 'can check if a user is a friend' do
-    #   expect
-    # end
-    #
-    # it 'can confirm friends' do
-    #   expect
-    # end  end
+  # it 'can check friend requests' do
+  #   expect
+  # end
+  #
+  # it 'can check friends' do
+  #   expect
+  # end
+  #
+  # it 'can check if a user is a friend' do
+  #   expect
+  # end
+  #
+  # it 'can confirm friends' do
+  #   expect
+  # end  end
 end
