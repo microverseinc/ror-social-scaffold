@@ -16,16 +16,12 @@ module ApplicationHelper
     end
   end
 
-  def see_profile(user, friend)    
-    if current_user == (user)
-      which_user(friend)
-    end
+  def see_profile(user, friend)
+    which_user(friend) if current_user == user
   end
 
   def my_profile(user)
-    if current_user == (user)
-      render partial: 'profile'
-    end
+    render partial: 'profile' if current_user == user
   end
 
   def see_posts
@@ -33,14 +29,14 @@ module ApplicationHelper
   end
 
   def which_user(user)
-    if current_user == (user)
+    if current_user == user
       ''
     elsif current_user.friend?(user)
-      link_to "Remove Friend", friendship_path(id: user.id), method: :delete, class: 'button3'
+      link_to 'Remove Friend', friendship_path(id: user.id), method: :delete, class: 'button3'
     elsif current_user.pending_friends.include?(user)
-      link_to "Cancel Request", friendship_path(id: user.id), method: :delete, class: 'button3'
+      link_to 'Cancel Request', friendship_path(id: user.id), method: :delete, class: 'button3'
     elsif current_user.friend_requests.include?(user)
-      link_to "Accept Request", friendship_path(id: user.id), method: :put, class: 'button2'
+      link_to 'Accept Request', friendship_path(id: user.id), method: :put, class: 'button2'
     else
       link_to 'Invite Friend', friendships_path(friend_id: user), method: :post, class: 'button1'
     end
@@ -58,5 +54,3 @@ module ApplicationHelper
     current_user.friend_requests
   end
 end
-
-
