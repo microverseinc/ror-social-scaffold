@@ -12,13 +12,19 @@ RSpec.describe 'User' do
     it 'can\'t create a new user due to not having a password' do
       user = build(:random_user)
       user.password = nil
-      expect(user.valid?).to_not eql(true)
+      expect(user.valid?).to eql(false)
+    end
+
+    it 'can\'t create a new user due to not having a name' do
+      user = build(:random_user)
+      user.name = nil
+      expect(user.valid?).to eql(false)
     end
 
     it 'can\'t create a new user due to short password' do
       user = build(:random_user)
       user.password = '123'
-      expect(user.valid?).to_not eql(true)
+      expect(user.valid?).to eql(false)
     end
 
     it 'can\'t create a new user due to long name' do
@@ -58,22 +64,4 @@ RSpec.describe 'User' do
       expect(user.friend?(friend)).to eql(true)
     end
   end
-
-  # expect(user.pending_friends).to eql([:friend])
-
-  # it 'can check friend requests' do
-  #   expect
-  # end
-  #
-  # it 'can check friends' do
-  #   expect
-  # end
-  #
-  # it 'can check if a user is a friend' do
-  #   expect
-  # end
-  #
-  # it 'can confirm friends' do
-  #   expect
-  # end  end
 end
