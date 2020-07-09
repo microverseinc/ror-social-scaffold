@@ -5,8 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :name, presence: true, length: { maximum: 20 }
-  has_many :friendships
-  has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
+  has_many :friendships, dependent: :destroy
+  has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id', dependent: :destroy
   has_many :posts
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
@@ -22,7 +22,7 @@ class User < ApplicationRecord
   end
 
   def friend_requests
-    friendships.map { |friendship| friendship.user unless friendship.confirmed }.compact
+    inverse_friendships.map { |friendship| friendship.user unless friendship.confirmed }.compact
   end
 
   def confirm_friend(user)

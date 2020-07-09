@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.feature 'Likes', type: :feature do
-  context 'In Main Page'do
-  let!(:user) { create(:random_user) }
-  let(:friend) { create(:random_friend) }
-  let(:frienship_not_accepted) { create(:unconfirmed_friendship) }
+  context 'In Main Page' do
+    let!(:user) { create(:random_user) }
+    let(:friend) { create(:random_friend) }
+    let(:frienship_not_accepted) { create(:unconfirmed_friendship) }
 
     it 'user should successfully like a post' do
       create(:random_post)
