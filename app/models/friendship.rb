@@ -4,7 +4,9 @@ class Friendship < ApplicationRecord
 
   after_destroy :destroy_friendship
 
-  scope :requested_friendships, -> { where(confirmed: false) }
+  scope :not_confirmed, -> { where(confirmed: false) }
+
+  scope :confirmed, -> { where(confirmed: true) }
 
   def destroy_friendship
     friend.friends.delete(user)
