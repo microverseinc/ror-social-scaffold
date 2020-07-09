@@ -26,7 +26,7 @@ end
 group :test do
   gem 'capybara', '~> 3.33'
   gem 'faker', '~> 2.13'
-  gem 'simplecov', '~> 0.18.5'
+  gem 'simplecov', '~> 0.18.5', require: false
 end
 
 group :development do
