@@ -7,5 +7,11 @@ RSpec.describe 'Like' do
       like = Like.create(post_id: post.id, user_id: user.id)
       expect(Like.last).to eql(like)
     end
+
+    it 'shouldn\'t give a like' do
+      Like.create(post_id: post.id, user_id: user.id)
+      like = Like.new(post_id: post.id, user_id: user.id)
+      expect(like.valid?).to eql(false)
+    end
   end
 end
