@@ -22,5 +22,10 @@ RSpec.describe Friendship, type: :model do
       friendship.user_id = ''
       expect(friendship).not_to be_valid
     end
+
+    it 'User cannot be friend to himself/herself' do
+      friendship = Friendship.new(user_id: 1, friend_id: 1)
+      expect(friendship).not_to be_valid
+    end
   end
 end

@@ -1,22 +1,28 @@
-example_id                                         | status | run_time        |
--------------------------------------------------- | ------ | --------------- |
-./spec/controllers/users_controller_spec.rb[1:1:1] | passed | 0.01441 seconds |
-./spec/controllers/users_controller_spec.rb[1:1:2] | passed | 0.0377 seconds  |
-./spec/controllers/users_controller_spec.rb[1:1:3] | passed | 0.05475 seconds |
-./spec/models/friendship_spec.rb[1:1:1]            | passed | 0.0114 seconds  |
-./spec/models/friendship_spec.rb[1:1:2]            | passed | 0.01576 seconds |
-./spec/models/friendship_spec.rb[1:2:1]            | passed | 0.0144 seconds  |
-./spec/models/friendship_spec.rb[1:2:2]            | passed | 0.01176 seconds |
-./spec/models/user_spec.rb[1:1:1]                  | passed | 0.01597 seconds |
-./spec/models/user_spec.rb[1:1:2]                  | passed | 0.0142 seconds  |
-./spec/models/user_spec.rb[1:1:3]                  | passed | 0.01203 seconds |
-./spec/models/user_spec.rb[1:1:4]                  | passed | 0.00386 seconds |
-./spec/models/user_spec.rb[1:1:5]                  | passed | 0.00355 seconds |
-./spec/models/user_spec.rb[1:1:6]                  | passed | 0.00799 seconds |
-./spec/models/user_spec.rb[1:1:7]                  | passed | 0.00434 seconds |
-./spec/models/user_spec.rb[1:1:8]                  | passed | 0.00761 seconds |
-./spec/models/user_spec.rb[1:1:9]                  | passed | 0.00785 seconds |
-./spec/models/user_spec.rb[1:2:1]                  | passed | 0.0119 seconds  |
-./spec/models/user_spec.rb[1:2:2]                  | passed | 0.07749 seconds |
-./spec/models/user_spec.rb[1:3:1]                  | passed | 0.00975 seconds |
-./spec/models/user_spec.rb[1:3:2]                  | passed | 0.01963 seconds |
+example_id                                            | status | run_time        |
+----------------------------------------------------- | ------ | --------------- |
+./spec/controllers/users_controller_spec.rb[1:1:1]    | passed | 0.01177 seconds |
+./spec/controllers/users_controller_spec.rb[1:1:2]    | passed | 0.01715 seconds |
+./spec/controllers/users_controller_spec.rb[1:1:3]    | passed | 0.02772 seconds |
+./spec/controllers/users_controller_spec.rb[1:1:4]    | passed | 0.02042 seconds |
+./spec/integration/friendship_management_spec.rb[1:1] | passed | 9.16 seconds    |
+./spec/integration/friendship_management_spec.rb[1:2] | passed | 9.34 seconds    |
+./spec/integration/friendship_management_spec.rb[1:3] | passed | 9.18 seconds    |
+./spec/integration/friendship_management_spec.rb[1:4] | passed | 6.16 seconds    |
+./spec/models/friendship_spec.rb[1:1:1]               | passed | 0.01032 seconds |
+./spec/models/friendship_spec.rb[1:1:2]               | passed | 0.00874 seconds |
+./spec/models/friendship_spec.rb[1:2:1]               | passed | 0.03895 seconds |
+./spec/models/friendship_spec.rb[1:2:2]               | passed | 0.01019 seconds |
+./spec/models/friendship_spec.rb[1:2:3]               | passed | 0.00625 seconds |
+./spec/models/user_spec.rb[1:1:1]                     | passed | 0.00423 seconds |
+./spec/models/user_spec.rb[1:1:2]                     | passed | 0.00795 seconds |
+./spec/models/user_spec.rb[1:1:3]                     | passed | 0.00367 seconds |
+./spec/models/user_spec.rb[1:1:4]                     | passed | 0.0072 seconds  |
+./spec/models/user_spec.rb[1:1:5]                     | passed | 0.00299 seconds |
+./spec/models/user_spec.rb[1:1:6]                     | passed | 0.0059 seconds  |
+./spec/models/user_spec.rb[1:1:7]                     | passed | 0.00593 seconds |
+./spec/models/user_spec.rb[1:1:8]                     | passed | 0.00679 seconds |
+./spec/models/user_spec.rb[1:1:9]                     | passed | 0.0036 seconds  |
+./spec/models/user_spec.rb[1:2:1]                     | passed | 0.01455 seconds |
+./spec/models/user_spec.rb[1:2:2]                     | passed | 0.01302 seconds |
+./spec/models/user_spec.rb[1:3:1]                     | passed | 0.0082 seconds  |
+./spec/models/user_spec.rb[1:3:2]                     | passed | 0.01045 seconds |

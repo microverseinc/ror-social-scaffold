@@ -1,5 +1,7 @@
 module PostHelper
-  def friends_and_own_posts
-    Post.where(user: (self.friends + self))
+  def show_post(user_id)
+    post.user.confirmed_friendships.find_by(friend_id: current_user.id) or
+    post.user.id == current_user.id or 
+    current_user.confirmed_friendships.find_by(friend_id: post.user.id)
   end
 end
