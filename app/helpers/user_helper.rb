@@ -17,19 +17,16 @@ module UserHelper
 
   def status(id)
     res = {}
-    unless not_friends(id)
-      res[0] = link_to 'Add friend', add_friend_path(id: id)
-    end 
+    res[0] = link_to 'Add friend', add_friend_path(id: id) unless not_friends(id)
     friendship = invert_pending_friendship(id)
     if friendship
-      res[0] =result = link_to ' Accept ', accepts_friend_path(id: id) 
-      res[1] =result1 = link_to ' Reject ', reject_friend_path(id: friendship.id), method: :delete
-    elsif  isfriends(id)
-      res[0] ='Friends' 
-    elsif  pending_friendship(id)
-      res[0] ='Pending Friendship'
+      res[0] = link_to ' Accept ', accepts_friend_path(id: id)
+      res[1] = link_to ' Reject ', reject_friend_path(id: friendship.id), method: :delete
+    elsif isfriends(id)
+      res[0] = 'Friends'
+    elsif pending_friendship(id)
+      res[0] = 'Pending Friendship'
     end
     res
   end
-
 end

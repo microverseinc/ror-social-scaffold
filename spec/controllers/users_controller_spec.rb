@@ -23,25 +23,25 @@ RSpec.describe UsersController, type: :controller do
       sign_in @jhon
       get :add_friend, params: { id: @ana.id }
       expect(response).to redirect_to users_path
-      expect(flash[:notice]).to match("Friends request has been sent")
+      expect(flash[:notice]).to match('Friends request has been sent')
       sign_out @jhon
       sign_in @ana
       get :accepts_friend, params: { id: @jhon.id }
       expect(response).to redirect_to users_path
-      expect(flash[:notice]).to match("You have been accepted friendship")
+      expect(flash[:notice]).to match('You have been accepted friendship')
     end
 
     it 'send_and_reject_friendship' do
       sign_in @jhon
       get :add_friend, params: { id: @ana.id }
-      expect(flash[:notice]).to match("Friends request has been sent")
+      expect(flash[:notice]).to match('Friends request has been sent')
       expect(response).to redirect_to users_path
       sign_out @jhon
       sign_in @ana
       ids = Friendship.last.id
       delete :reject_friend, params: { id: ids }
       expect(response).to redirect_to users_path
-      expect(flash[:notice]).to match("Friendship request rejected Successfully")
+      expect(flash[:notice]).to match('Friendship request rejected Successfully')
     end
   end
 end
