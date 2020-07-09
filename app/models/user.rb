@@ -18,33 +18,21 @@ class User < ApplicationRecord
   has_many :friends,
            class_name: "User", through: :confirmed_friendships, source: :friend
 
-  # TODO: write pending friendships and requested friendships
-  # TODO: find the user from the has_many above
+  has_many :pending_friendships,
+    -> (object) {
+    where("user_id =? and confirmed=?", object.id, true)},
+    class_name: 'Friendship'
 
-  has_many :not_confirmed_friends,
-           class_name: "User", through: :not_confirmed_friendships, source: :friend
-
-
-  has_many :pending_friends,
-           -> (object) {
-           where("friend_id = ?", object.id)
-           },
-           class_name: 'User',
-           through: 'not_confirmed_friendships',
-           source: 'friend'
-
+  has_many :requested_friendships,
+    -> (object) {
+    where("friend_id =? and confirmed =?", object.id, true)},
+    class_name: 'Friendship'
 
   has_many :requested_friends,
-           -> (object) {
-           where("user_id = ?", object.id)
-           },
-           class_name: 'User',
-           through: 'not_confirmed_friendships',
-           source: 'user'
+           class_name: "User", through: :requested_friendships, source: :user
 
-  def pending_friendships
-    not_confirmed_friendships.where('user_id =?', id)
-  end
+  has_many :pending_friends,
+           class_name: "User", through: :pending_friendships, source: :friend
 
 
   def friendable?(current_user)
