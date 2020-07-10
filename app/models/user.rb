@@ -27,14 +27,20 @@ class User < ApplicationRecord
            source: :requester
 
   has_many :confirmed_friendships,
-           lambda { |object|
-             where("requester_id =? or receiver_id =?", object.id, object.id)
-           },
-           class_name: "Friendship"
+    lambda { |object|
+      unscope(where: :user_id)
+       .where('(requester_id = ? OR receiver_id = ?) AND (confirmed =? )',
+                 object.id, object.id, true)
+    },
+      class_name: 'Friendship'
 
   def friends
     requested_friends.or(received_friends)
   end
+
+  # def confirmed_friendships
+    # Friendship.where("requester_id =? or receiver_id =?", self.id, self.id)
+  # end
 
   def friendable?(current_user)
     false if current_user == self
