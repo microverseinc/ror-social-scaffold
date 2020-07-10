@@ -1,69 +1,57 @@
-# Scaffold for social media app with Ruby on Rails
+# Social media app with Ruby on Rails
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
-
-## Built With
-
-- Ruby v2.7.0
-- Ruby on Rails v5.2.4
-
-## Live Demo
-
-TBA
-
-
-## Getting Started
-
-To get a local copy up and running follow these simple example steps.
+> Social Media app where user can sign in and post new post. In this project we implement light way of the Facebook app where users could send user request and comment/like to the other's post
 
 ### Prerequisites
 
-Ruby: 2.6.3
+Ruby: 2.7.0
 Rails: 5.2.3
 Postgres: >=9.5
 
-### Setup
+### Getting Started
 
-Instal gems with:
+In order to start with the project:
 
-```
-bundle install
-```
+1. You need to have Rails environment installed. [Click here for instructions](https://github.com/Bekhzod96/ror-social-scaffold.git)
+2. Clone [this repository :blue_book:](https://github.com/Bekhzod96/ror-social-scaffold.git)
+3. Check your Ruby and Rails version should be corresponding to project version, if not run these command to
+    - rbenv install 2.2.0
+    - gem install bundler
+    - rbenv rehash
+    - gem install rails
+    - rbenv rehash
 
-Setup database with:
+4. Run the migration to database
 
-```
-   rails db:create
-   rails db:migrate
-```
+`````
+    - rails db:migrate
+`````
 
+5. Run the rails server
 
-
-### Usage
-
-Start server with:
-
-```
-    rails server
-```
-
-Open `http://localhost:3000/` in your browser.
+`````
+    - rails server
+`````
 
 ### Run tests
 
 ```
     rpsec --format documentation
 ```
-
-> Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
-
-### Deployment
-
-TBA
-
 ## Authors
 
-TBA
+👤 **Bekhzod Akhrorov**
+
+- Github:[@Bekhzod96](https://github.com/Bekhzod96)
+- Twitter: [@Begzod](https://twitter.com/25d47e8987f740b)
+- Linkedin:[@Bekhzod AKhrorov](https://www.linkedin.com/in/bekhzod-akhrorov/)
+
+
+👤 **Javier Botero**
+
+- Github: [@Javierbotero](https://github.com/javierbotero)
+- Twitter: [@Javierbotero1](https://twitter.com/JavierBotero1)
+- Linkedin: [Javierbotero](https://www.linkedin.com/in/javier-botero-044686155/)
 
 ## 🤝 Contributing
 
@@ -76,8 +64,6 @@ Feel free to check the [issues page](issues/).
 Give a ⭐️ if you like this project!
 
 ## Acknowledgments
-
-TBA
 
 ## 📝 License
 

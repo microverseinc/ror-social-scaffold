@@ -1,12 +1,15 @@
 AllCops:
   Exclude:
     - "db/**/*"
-    - "bin/*" 
+    - "bin/*"
+    - "test/*"
     - "config/**/*"
     - "Guardfile"
+    - "Gemfile"
     - "Rakefile"
     - "README.md"
     - "node_modules/**/*"
+
 
   DisplayCopNames: true
 
@@ -48,3 +51,13 @@ Layout/ExtraSpacing:
 Layout/MultilineMethodCallIndentation:
   Enabled: true
   EnforcedStyle: indented
+Style/HashEachMethods:
+  Enabled: false
+Style/HashTransformKeys:
+  Enabled: false
+Style/HashTransformValues:
+  Enabled: false
+Lint/RaiseException:
+  Enable: false
+Lint/StructNewOverride:
+  Enable: false

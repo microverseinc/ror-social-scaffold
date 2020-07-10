@@ -1,12 +1,24 @@
 <section class="users-section">
   <ul class="users-list">
+    <table>
+      <tr><td>Name</td><td>Friendship status</td><td>More..</td></tr>
     <% @users.each do |user| %>
-      <li>
-        Name: <%= user.name %>
-        <span class="profile-link">
-          <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-        </span>
-      </li>
+      <% if current_user.id != user.id  %>
+        <li>
+          <tr><td>
+            <%= user.name %>
+          </td><td>
+            <% friendship = status(user.id)%>
+            <span class="item"><%= friendship[0] %></span>
+            <%= friendship[1] %>
+          </td><td>
+            <span class="profile-link">
+              <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+            </span>
+          </td></tr>         
+        </li>
+      <% end %>
     <% end %>
+  </table>
   </ul>
 </section>

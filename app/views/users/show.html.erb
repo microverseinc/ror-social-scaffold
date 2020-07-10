@@ -1,5 +1,8 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
+  <% friendship = status(@user.id)%>
+  <p>Friendship Status:  <span class="item"><%= friendship[0] %></span>
+  <%= friendship[1] %></p>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
