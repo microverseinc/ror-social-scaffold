@@ -1,8 +1,6 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
-  <a href="friendships/new" class="add_friend">
-  <h4>Add Friend</h4>
-  </a>
+  <h4><%= link_to 'Add friend', new_friendship_path(friend_id: @user.id), class: 'add_friend' %></h4>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
