@@ -2,6 +2,9 @@
 
 > Social Media app where user can sign in and post new post. In this project we implement light way of the Facebook app where users could send user request and comment/like to the other's post
 
+
+## Live view  - - [Friendship-Twitter](https://friendship-twitter.herokuapp.com/) - - 
+
 ### Prerequisites
 
 Ruby: 2.7.0
