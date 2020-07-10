@@ -8,13 +8,9 @@
           <tr><td>
             <%= user.name %>
           </td><td>
-            <% unless current_user.friendships.find_by(friend_id:user.id) or current_user.inverse_friendships.find_by(user_id: user.id)   %>
-            <%= link_to 'Add friend', add_friend_path(:id => user.id) %>
-             <% end %>
-
-            <% if current_user.inverse_friendships.find_by(user_id: user.id) && current_user.inverse_friendships.find_by(user_id: user.id).confirmed == false %>
-              <%= link_to 'Accept Friend', accepts_friend_path(:id => user.id) %>
-            <% end %>
+            <% friendship = status(user.id)%>
+            <span class="item"><%= friendship[0] %></span>
+            <%= friendship[1] %>
           </td><td>
             <span class="profile-link">
               <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
