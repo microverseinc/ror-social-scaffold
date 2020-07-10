@@ -11,29 +11,14 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
-  has_many :friendships
-  has_many :confirmed_friendships, -> { confirmed }, class_name: "Friendship"
-
-  has_many :not_confirmed_friendships,
-           -> { not_confirmed },
-           class_name: "Friendship"
-
-  has_many :friends,
-           class_name: "User", through: :confirmed_friendships, source: :friend
-
-  has_many :pending_friendships,
-           ->(object) { where("requester_id =? and confirmed=?", object.id, false) },
-           class_name: "Friendship"
-
-  has_many :requested_friendships,
-           lambda { |object| where("receiver_id =? and confirmed =?", object.id, false) },
-           class_name: "Friendship"
+  has_many :requested_friendships, class_name: "Friendship", foreign_key: "requester_id"
+  has_many :received_friendships, class_name: "Friendship", foreign_key: "receiver_id"
 
   has_many :requested_friends,
-           class_name: "User", through: :requested_friendships, source: :user
+           class_name: "User", through: :requested_friendships, source: :receiver
 
-  has_many :pending_friends,
-           class_name: "User", through: :pending_friendships, source: :friend
+  has_many :received_friends,
+           class_name: "User", through: :received_friendships, source: :requester
 
   def friendable?(current_user)
     false if current_user == self
