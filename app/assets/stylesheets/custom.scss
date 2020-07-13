@@ -42,20 +42,6 @@ a {
   background-color: $primary-color-dark;
   color: $primary-color-light;
 
-  a {
-    color: $primary-color-light;
-    text-transform: uppercase;
-    font-weight: 900;
-  }
-
-  .active a {
-    color: #fff;
-  }
-
-  a:hover {
-    color: #fff;
-  }
-
   .menu {
     width: 80%;
     justify-content: space-between;
@@ -63,8 +49,24 @@ a {
     .menu-item {
       float: left;
       margin: 0 15px;
+
+      .active {
+        a {
+          color: #fff;
+        }
+      }
     }
   }
+}
+
+.nav a {
+  color: $primary-color-light;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.nav a:hover {
+  color: #fff;
 }
 
 .main {
@@ -73,6 +75,97 @@ a {
   align-items: center;
   padding: 16px;
 }
+
+#notify {
+  position: relative;
+}
+
+.pending {
+  position: absolute;
+  top: 5px;
+  right: 9.4%;
+  background-color:#ff0000;
+  padding: 0 2px;
+  border-radius: 5px;
+}
+
+.pending-btn {
+  margin-left: auto;
+  margin-top: 0.8rem;
+}
+
+.reject-btn,
+.accept-btn {
+  border: 1px solid grey;
+  background-color: $primary-color-dark;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.2rem;
+}
+
+.reject-btn {
+  margin-left: 0.5rem;
+  padding-left: 1.5rem;
+}
+
+.center-align {
+  text-align: center;
+}
+
+.card {
+  display: flex;
+  height: auto;
+  margin-bottom: 15px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid rgba(104, 104, 104, 0.8);
+  box-shadow: 3px 3px #888888;
+}
+
+.friend_request {
+  margin-left: auto;
+  padding: 10px;
+  background-color: $primary-color-dark;
+  color: white;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+.profile-name {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.profile-name h2 {
+  margin: 30px 0 0 20px;
+}
+
+.profile {
+  display: flex;
+  flex-direction: row;
+}
+
+.group-item h4,
+.accept,
+.reject {
+  margin: 20px 0 0 15px;
+}
+
+.accept {
+  color: #ffd700;
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.reject {
+  color: red;
+  border: 1px solid black;
+  padding: 10px;
+}
+
+
+
 
 .notice,
 .alert {
@@ -98,8 +191,76 @@ a {
   color: red;
 }
 
+form {
+  width: 80%;
+  margin: 8px 0;
+
+  .field {
+    width: 100%;
+    padding: 8px 0px;
+    label {
+      margin-bottom: 8px;
+    }
+
+    input {
+      width: 100%;
+      border: 1px solid $divider-color;
+      border-radius: 4px;
+      padding: 8px;
+      background-color: $primary-color-light;
+    }
+
+    input[type="checkbox"] {
+      width: fit-content;
+    }
+  }
+
+  .actions {
+    display: flex;
+    justify-content: center;
+    margin: 8px 0;
+  }
+  input[type="submit"] {
+    padding: 8px;
+    width: 50%;
+    border: none;
+    border-radius: 4px;
+    background-color: $primary-color-dark;
+    color: $primary-color-light;
+    text-transform: uppercase;
+    font-weight: 900;
+  }
+
+  input[type="submit"]:hover {
+    background-color: $primary-color;
+    color: #fff;
+  }
+
+  .actions.reset {
+    input[type="submit"] {
+      width: 100%;
+    }
+  }
+
+  #error_explanation {
+    h2 {
+      color: $primary-color-text;
+      font-size: 1em;
+    }
+    ul {
+      color: #f00;
+    }
+  }
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 16px;
+  text-transform: capitalize;
+}
+
 .new_post,
-.new_comment {
+.new_comment{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -134,66 +295,6 @@ a {
     width: 30%;
     margin-left: 70%;
   }
-}
-
-form {
-  width: 80%;
-  margin: 8px 0;
-
-  .field {
-    width: 100%;
-    padding: 8px 0;
-
-    label {
-      margin-bottom: 8px;
-    }
-
-    input {
-      width: 100%;
-      border: 1px solid $divider-color;
-      border-radius: 4px;
-      padding: 8px;
-      background-color: $primary-color-light;
-    }
-
-    input[type="checkbox"] {
-      width: fit-content;
-    }
-  }
-
-  .actions {
-    display: flex;
-    justify-content: center;
-    margin: 8px 0;
-  }
-
-  input[type="submit"] {
-    padding: 8px;
-    width: 50%;
-    border: none;
-    border-radius: 4px;
-    background-color: $primary-color-dark;
-    color: $primary-color-light;
-    text-transform: uppercase;
-    font-weight: 900;
-  }
-
-  input[type="submit"]:hover {
-    background-color: $primary-color;
-    color: #fff;
-  }
-
-  .actions.reset {
-    input[type="submit"] {
-      width: 100%;
-    }
-  }
-}
-
-.title {
-  text-align: center;
-  margin-bottom: 16px;
-  text-transform: capitalize;
 }
 
 .timeline {
@@ -231,13 +332,12 @@ form {
   .post-liking {
     float: right;
 
-    a {
+    a{
       color: $primary-color-dark;
       font-weight: bold;
       font-size: 0.9em;
       margin: 0 4px;
     }
-
     .post-date {
       font-size: 0.6em;
     }
@@ -262,10 +362,9 @@ form {
       padding: 10px;
 
       p {
-        font-size: 0.8em;
+        font-size: .8em;
         width: 90%;
       }
-
       span {
         position: absolute;
         right: 3px;
@@ -286,8 +385,10 @@ form {
   }
 
   .profile-link {
-    font-size: 0.8em;
-    margin: 0 0 8px 0;
+    justify-content: center;
+    font-size: 1.2em;
+    bottom: -20px;
+    margin: 15px 0 0px 35px;
     color: $primary-color-dark;
   }
 }
@@ -302,23 +403,10 @@ form {
 
   .timeline {
     width: 100%;
-
     h3 {
       width: 100%;
     }
-
     justify-content: start;
-  }
-}
-
-#error_explanation {
-  h2 {
-    color: $primary-color-text;
-    font-size: 1em;
-  }
-
-  ul {
-    color: #f00;
   }
 }
 
@@ -346,4 +434,5 @@ form {
   .user-section {
     width: 50%;
   }
+
 }

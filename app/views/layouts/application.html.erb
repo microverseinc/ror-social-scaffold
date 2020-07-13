@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RorSocialScaffold</title>
+    <title>Stay In Touch</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"/>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -15,11 +16,19 @@
           <%= menu_link_to 'Timeline', posts_path %>
         </div>
         <div class="menu-item">
-          <%= menu_link_to 'All users', users_path %>
+          <%= menu_link_to 'Find Friends', users_path %>
         </div>
       </div>
       <% if current_user %>
-        <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+        <%= link_to received_requests_path do %>
+          <i class="fas fa-user-friends" id="notify"></i>
+          <% if pending_requests.positive? %>
+              <span class="pending">
+                <%= pending_requests %>
+              </span>
+          <% end %>
+        <% end %> 
+        <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>  
       <% else %>
         <%= link_to 'Sign in', user_session_path %>
       <% end %>
