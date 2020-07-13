@@ -25,6 +25,10 @@ class User < ApplicationRecord
     friends.include?(user)
   end
 
+  def friends_post(current_user)
+    Post.where(user: friends).or(Post.where(user: current_user))
+  end
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
