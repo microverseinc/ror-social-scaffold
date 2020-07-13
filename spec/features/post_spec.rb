@@ -6,14 +6,13 @@ RSpec.feature 'Posts', type: :feature do
     @post = Post.create(content: 'An awesome post', user_id: @user.id)
   end
 
-  it 'Should create comment' do
-    visit root_path
+  it 'Should create a post' do
+    visit new_user_session_path
     fill_in 'user_email', with: 'user@mail.com'
     fill_in 'user_password', with: '1234567'
     click_button 'Log in'
-    expect(page).to have_content('User')
-    fill_in 'comment[content]', with: 'First comment'
-    click_on 'Comment'
-    expect(page).to have_content('User')
+    fill_in 'post[content]', with: 'This is a post content'
+    click_on 'Save'
+    expect(page).to have_content('This is a post content')
   end
 end

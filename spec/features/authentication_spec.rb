@@ -1,5 +1,5 @@
 require 'rails_helper'
-
+# rubocop: disable Metrics/BlockLength
 RSpec.feature 'Authentications', type: :feature do
   before :each do
     @user = User.create(name: 'user', email: 'user@mail.com', password: 'password', password_confirmation: 'password')
@@ -41,3 +41,4 @@ RSpec.feature 'Authentications', type: :feature do
     expect(page).to have_content('Sign in')
   end
 end
+# rubocop: enable Metrics/BlockLength

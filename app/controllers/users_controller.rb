@@ -13,5 +13,4 @@ class UsersController < ApplicationController
   def invite
     @requests = Friendship.where('receiver_id = ? and status = ?', current_user.id, 'pending')
   end
-
 end
