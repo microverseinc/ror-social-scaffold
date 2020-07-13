@@ -1,5 +1,21 @@
 <section class="user-section">
-  <h2><%= "Name: #{@user.name}" %></h2>
+  <div class="profile-name">
+    <div class="profile">
+      <%= gravatar_for current_user, size: 100 %> 
+        <h2><%= "#{@user.name}" %></h2>
+    </div>
+    <div>
+      <% if request_sent?(@user.id) == 'pending' %>
+        <button class="friend_request">Pending</button>
+      <% elsif request_sent?(@user.id) == 'rejected' %>
+        <button class="friend_request">
+          <%= link_to 'Invite to friendship',  send_request_path(@user.id), class: 'friend_request' %>
+        </button>
+      <% else %>
+        <%= nil %>
+      <% end %>
+    </div>
+  </div>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
@@ -7,3 +23,4 @@
     </ul>
   </article>
 </section>
+

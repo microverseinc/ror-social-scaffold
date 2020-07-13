@@ -1,0 +1,23 @@
+<div class="user-section">
+  <p id="danger" class="center center-align green-text"><%= notice %></p>
+  <% if @requests.empty? %>
+    <h2 class="center center-align">No Pending Requests</h2>
+  <% end %>
+  <% @requests.each do |request|%>
+    <div class="card">
+      <span>
+        <%= gravatar_for sender_information(request.sender_id), size: 50 %>
+      </span>
+      <div class="group-item">
+        <h4><%= sender_information(request.sender_id).name %></h4>
+      </div>
+
+      <span class="pending-btn">
+
+        <%= link_to accept_request_path(request.sender_id), method: :put, class: 'accept-btn' do %>
+          <i class="fas fa-check"></i> Accept
+        <% end %>
+
+        <%= link_to reject_request_path(request.sender_id), method: :delete, class: 'reject-btn' do %>
+          <i class="fas fa-times"></i> Reject
+        <% end %>

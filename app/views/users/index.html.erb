@@ -1,12 +1,23 @@
 <section class="users-section">
   <ul class="users-list">
     <% @users.each do |user| %>
-      <li>
-        Name: <%= user.name %>
-        <span class="profile-link">
-          <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-        </span>
-      </li>
+     <div class="card">
+         <%= gravatar_for sender_information(user.id), size: 50 %>
+         <span class="profile-link">
+           <%= link_to user.name, user_path(user), class: 'profile-link' %>
+         </span>
+         <% if request_sent?(user.id) == 'pending' %>
+           <button class="friend_request">Pending</button>
+         <% elsif request_sent?(user.id) == 'rejected' %>
+             <button class="friend_request">
+               <%= link_to 'Invite to friendship',  send_request_path(user.id), class: 'friend_request' %>
+             </button>
+         <% else %>
+           <%= nil %>
+         <% end %>
+     </div>
+
     <% end %>
   </ul>
 </section>
+
