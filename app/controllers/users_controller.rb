@@ -9,4 +9,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @posts = @user.posts.ordered_by_most_recent
   end
+
+  def invite
+    @requests = Friendship.where('receiver_id = ? and status = ?', current_user.id, 'pending')
+  end
+
 end
