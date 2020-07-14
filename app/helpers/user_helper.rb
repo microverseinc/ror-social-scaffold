@@ -4,43 +4,43 @@ module UserHelper
 
     new_friendship_path =
       friendships_path({ requester_id: current_user.id, receiver_id: user.id })
-    class_html = "profile-link"
+    class_html = 'profile-link'
 
     if current_user.friends.include?(user)
       render html: link_to(
-        "Unfriend",
+        'Unfriend',
         find_friendship(user),
-        method: :delete, class: class_html,
+        method: :delete, class: class_html
       )
     elsif current_user.received_friends.include?(user)
       id = find_friendship(user, true)
 
       reject_friendship =
         link_to(
-          "Reject Friendship",
+          'Reject Friendship',
           find_friendship(user),
-          method: :delete, class: class_html,
+          method: :delete, class: class_html
         )
 
       accept_friendship =
         link_to(
-          "Accept Friendship",
+          'Accept Friendship',
           friendship_path({ id: id, confirmed: true }),
-          method: :patch, class: class_html,
+          method: :patch, class: class_html
         )
 
       render html: "#{accept_friendship} | #{reject_friendship} ".html_safe
     elsif current_user.requested_friends.include?(user)
       render html: link_to(
-        "Drop invitation",
+        'Drop invitation',
         find_friendship(user),
-        method: :delete, class: class_html,
+        method: :delete, class: class_html
       )
     else
       render html: link_to(
-        "Invite friend",
+        'Invite friend',
         new_friendship_path,
-        method: :post, class: class_html,
+        method: :post, class: class_html
       )
     end
   end
