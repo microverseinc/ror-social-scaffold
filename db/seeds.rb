@@ -33,8 +33,10 @@ end
 
 User.all.each do |user|
   friendable = User.all.ids
-  3.times do
+  5.times do
     friend_id = friendable.delete(rand(0..User.all.length))
-    Friendship.create({ requester_id: user.id, receiver_id: friend_id })
+    confirmed = [true, false].sample
+    Friendship.create({ requester_id: user.id, receiver_id: friend_id, confirmed: confirmed })
+    Post.create(user: user, content: Faker::Quotes::Shakespeare.romeo_and_juliet_quote)
   end
 end
