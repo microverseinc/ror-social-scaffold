@@ -49,8 +49,4 @@ class User < ApplicationRecord
       User.where("id =?", id)
   end
 
-  def related_posts
-    ids = friends.pluck(:id) << id
-    Post.ordered_by_most_recent.where(user_id: ids)
-  end
 end
