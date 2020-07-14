@@ -19,17 +19,23 @@
     <% end  %>
   </div>
 
-  <div>
-    <h3>Pending Invitations</h3>
-    <% @user.received_friends.each do |pending_friend| %>
-      <ul>
-        <li>
-          <%= pending_friend.name %>
-          <%= friendship_interaction(pending_friend) %>
-        </li>
-      </ul>
-    <% end  %>
-  </div>
+  <% if current_user == @user %>
+    <div>
+      <h3>Pending Invitations</h3>
+      <% if current_user.received_friends.empty? %>
+        <p> No pending friendships request </p>
+      <% else %>
+        <% @user.received_friends.each do |pending_friend| %>
+          <ul>
+            <li>
+              <%= pending_friend.name %>
+              <%= friendship_interaction(pending_friend) %>
+            </li>
+          </ul>
+        <% end %>
+      <% end  %>
+    </div>
+  <% end %>
 
   <article class="timeline">
     <h3>Recent posts:</h3>
