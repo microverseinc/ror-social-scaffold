@@ -11,4 +11,10 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :friend_requests
   has_many :friends, class_name: 'FriendRequest', foreign_key: "friend_id"
+
+  def friends
+    friends_array = friend_requests.map{|request| request.friend if request.confirmed}
+    friends_array + friends.map{|f| f.user if f.confirmed}
+    friends_array.compact
+  end
 end
