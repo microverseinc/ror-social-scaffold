@@ -1,0 +1,6 @@
+<h4>Pending invitations:</h4>
+<%= pending_invitations.count %>
+<% pending_invitations.each do |friendship| %>
+  <p><%= friendship.user.name %> </p>
+  <%= accept(friendship, friendship.user) %>
+<% end %>

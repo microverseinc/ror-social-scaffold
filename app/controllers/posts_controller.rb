@@ -22,3 +22,8 @@ class PostsController < ApplicationController
     params.require(:post).permit(:content)
   end
 end
+
+# Before showing post
+# => Check if user is friend of Author's post
+# => if true then show the posts
+# => else, don't show the post

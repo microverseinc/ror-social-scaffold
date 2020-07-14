@@ -86,3 +86,9 @@ TBA
 ## 📝 License
 
 TBA
+
+## TODO
+
+- Posts in timeline are the ones created by user and friends
+- Check all the other points if they are working
+- Check tests for Frienship

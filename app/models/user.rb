@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :friendships
   has_many :pending_friendships, -> { where(confirmed: false) }, class_name: 'Friendship'
   has_many :confirmed_friendships, -> { where(confirmed: true) }, class_name: 'Friendship'
-  has_many :posts
+  has_many :posts # as: Author, class_name Posts
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 

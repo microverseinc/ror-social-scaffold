@@ -3,9 +3,9 @@ class FriendshipsController < ApplicationController
   def create
     user = User.find_by(id: current_user)
     friend = User.find(params[:id])
-    @friendship = Friendship.new(user_id: current_user.id, friend_id: friend.id, confirmed: false)
-    @inverse_friendship = Friendship.new(user_id: friend.id, friend_id: current_user.id, confirmed: false)
-    @inverse_friendship.save if @friendship.save
+    @friendship = Friendship.new(user_id: user.id, friend_id: friend.id, confirmed: false)
+    # @inverse_friendship = Friendship.new(user_id: friend.id, friend_id: current_user.id, confirmed: false)
+    # @inverse_friendship.save if @friendship.save
     redirect_to users_path
   end
 
