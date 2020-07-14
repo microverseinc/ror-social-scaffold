@@ -1,5 +1,36 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
+
+  <div class='users-section'>
+    <span class='profile-link'>
+      <%= friendship_interaction(@user) %>
+    </span>
+  </div>
+
+  <div>
+    <h3>Friends</h3>
+    <% @user.friends.each do |confirmed_friend| %>
+      <ul>
+        <li>
+          <%= confirmed_friend.name %>
+          <%= friendship_interaction(confirmed_friend) %>
+        </li>
+      </ul>
+    <% end  %>
+  </div>
+
+  <div>
+    <h3>Pending Invitations</h3>
+    <% @user.received_friends.each do |pending_friend| %>
+      <ul>
+        <li>
+          <%= pending_friend.name %>
+          <%= friendship_interaction(pending_friend) %>
+        </li>
+      </ul>
+    <% end  %>
+  </div>
+
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
