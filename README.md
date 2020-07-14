@@ -45,7 +45,7 @@ Setup database with:
 
 ### Usage
 
-Start server with:
+Start server witid: 1h:
 
 ```
     rails server

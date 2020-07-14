@@ -44,7 +44,14 @@ group :development, :test do
 end
 
 group :test do
-  gem 'rspec'
+  gem 'rspec-rails', '>= 1.4.4'
+  gem 'capybara', '>= 2.15'
+  gem 'simplecov'
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'selenium-webdriver'
+  # Easy installation and use of web drivers to run system tests with browsers
+  gem 'webdrivers'
 end
 
 group :development do
