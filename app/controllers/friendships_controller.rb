@@ -1,9 +1,14 @@
 class FriendshipsController < ApplicationController
-  before_action :set_friendship, only: :destroy
+  before_action :set_friendship, only: %i[destroy update]
 
   def create
     @friendship = Friendship.create(friendship_params)
     @friendship.save
+    redirect_to request.referrer
+  end
+
+  def update
+    @friendship.update(friendship_params)
     redirect_to request.referrer
   end
 

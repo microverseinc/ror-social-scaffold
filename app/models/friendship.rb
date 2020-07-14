@@ -2,8 +2,8 @@ class Friendship < ApplicationRecord
   # belongs_to :user
   # belongs_to :friend, class_name: "User"
 
-  belongs_to :receiver, class_name: "User"
-  belongs_to :requester, class_name: "User"
+  belongs_to :receiver, class_name: 'User'
+  belongs_to :requester, class_name: 'User'
 
   # after_create :request_friendship
   # after_destroy :destroy_friendship
