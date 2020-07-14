@@ -1,0 +1,149 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/home/fc-anjos/programming/microverse/main-curriculum/rails/ror-social-scaffold/app/models/friendship.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          0,
+          null,
+          null
+        ]
+      },
+      "/home/fc-anjos/programming/microverse/main-curriculum/rails/ror-social-scaffold/app/models/application_record.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "/home/fc-anjos/programming/microverse/main-curriculum/rails/ror-social-scaffold/app/models/user.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null
+        ]
+      },
+      "/home/fc-anjos/programming/microverse/main-curriculum/rails/ror-social-scaffold/app/helpers/application_helper.rb": {
+        "lines": [
+          1,
+          1,
+          0,
+          null,
+          0,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          null
+        ]
+      },
+      "/home/fc-anjos/programming/microverse/main-curriculum/rails/ror-social-scaffold/app/helpers/friendships_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/home/fc-anjos/programming/microverse/main-curriculum/rails/ror-social-scaffold/app/helpers/user_helper.rb": {
+        "lines": [
+          1,
+          1,
+          0,
+          0,
+          null,
+          null,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      }
+    },
+    "timestamp": 1594334934
+  }
+}

@@ -11,28 +11,40 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
-  has_many :friendships
-  has_many :accepted_friendships, through: Friendship.accepted_friendships
-  has_many :friends, through: :accepted_friendships
-  has_many :pending_friends
-  has_many :requested_friends
+  has_many :requested_friendships,
+           -> { not_confirmed },
+           class_name: 'Friendship', foreign_key: 'requester_id'
 
-  def friendable?(current_user)
-    false if current_user == self
-    current_user.friends.exclude?(self)
-  end
+  has_many :received_friendships,
+           -> { not_confirmed },
+           class_name: 'Friendship', foreign_key: 'receiver_id'
 
-  def unfriendable?(current_user)
-    friendship = find_friendship(current_user)
-    !friendable?(current_user) && friendship.confirmed
-  end
+  has_many :received_friends,
+           class_name: 'User',
+           through: :received_friendships,
+           source: :requester
 
-  def pending_friendship?(current_user)
-    friendship = find_friendship(current_user)
-    !friendable?(current_user) && !friendship.confirmed
-  end
+  has_many :requested_friends,
+           class_name: 'User',
+           through: :requested_friendships,
+           source: :receiver
 
-  def find_friendship(current_user)
-    Friendship.find_by_user_id_and_friend_id(id, current_user.id)
+  has_many :confirmed_friendships,
+           lambda { |object|
+             unscope(where: :user_id).where(
+               '(requester_id = ? OR receiver_id = ?) AND (confirmed =? )',
+               object.id,
+               object.id,
+               true
+             )
+           },
+           class_name: 'Friendship'
+
+  def friends
+    User.where(
+      id: confirmed_friendships.pluck(:requester_id) +
+          confirmed_friendships.pluck(:receiver_id)
+    ) -
+      User.where('id =?', id)
   end
 end
