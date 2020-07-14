@@ -17,4 +17,10 @@ class User < ApplicationRecord
     friends_array + friends.map{|f| f.user if f.confirmed}
     friends_array.compact
   end
+
+  def self.check_request(current_user, friend_id)
+    current_user.friend_requests.exists?(friend_id: friend_id)
+  end
+
+  scope :exclude_current_user, ->(id) { where("id != ?", id)}
 end

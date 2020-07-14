@@ -57,7 +57,7 @@ a {
   }
 
   .menu {
-    width: 80%;
+    width: 70%;
     justify-content: space-between;
 
     .menu-item {
@@ -320,6 +320,10 @@ form {
   ul {
     color: #f00;
   }
+}
+
+.nav-item-name {
+  margin-right: 1em;
 }
 
 @media only screen and (min-width: 480px) {
