@@ -13,7 +13,7 @@ TBA
 
 ## Diagram of Database
 
-![diagram](https://drive.google.com/file/d/14o8QUM-jUIWWWw3wmM3uWH6BPYOuOabV/view?usp=sharing)
+![diagram](https://user-images.githubusercontent.com/46613531/86180392-6cecac00-bb02-11ea-8199-e806edbe6a76.png)
 
 
 ## Getting Started
