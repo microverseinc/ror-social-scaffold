@@ -33,7 +33,7 @@ RSpec.describe 'User' do
       expect(user.valid?).to eql(false)
     end
   end
-  
+
   context 'Model\'s user method' do
     let!(:user) { create(:random_user) }
     let!(:friend) { create(:random_friend) }
