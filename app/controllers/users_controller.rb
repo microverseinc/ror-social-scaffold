@@ -3,7 +3,6 @@ class UsersController < ApplicationController
 
   def index
     @users = User.exclude_current_user(current_user.id)
-    requests = current_user.friend_requests
   end
 
   def show
@@ -12,15 +11,12 @@ class UsersController < ApplicationController
   end
 
   def invite
-    # pp user_requests = check_request
     invitation = current_user.friend_requests.build(friend_id: params[:user_id])
-    if (User.check_request(current_user, params[:user_id]))
-      flash.notice = "You already have a pending invitation"
+    if User.check_request(current_user, params[:user_id])
+      flash.notice = 'You already have a pending invitation'
       redirect_to users_path
-    else
-      if invitation.save
-        redirect_to users_path, notice: "Your invitation has been sent!"
-      end
+    elsif invitation.save
+      redirect_to users_path, notice: 'Your invitation has been sent!'
     end
   end
 
@@ -28,6 +24,6 @@ class UsersController < ApplicationController
     request = current_user.friends.find_by(user_id: params[:user_id])
     request.confirmed = true
     request.save
-    redirect_to user_path(current_user), notice: "Invitation accepted successfully"
+    redirect_to user_path(current_user), notice: 'Invitation accepted successfully'
   end
 end

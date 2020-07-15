@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :friend_requests
-  has_many :friends, class_name: 'FriendRequest', foreign_key: "friend_id"
+  has_many :friends, class_name: 'FriendRequest', foreign_key: 'friend_id'
 
   # def friends
   #   friends_array = friend_requests.map{|request| request.friend if request.confirmed}
@@ -22,5 +22,5 @@ class User < ApplicationRecord
     current_user.friend_requests.exists?(friend_id: friend_id)
   end
 
-  scope :exclude_current_user, ->(id) { where("id != ?", id)}
+  scope :exclude_current_user, ->(id) { where('id != ?', id) }
 end

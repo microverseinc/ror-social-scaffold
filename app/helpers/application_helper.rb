@@ -26,10 +26,6 @@ module ApplicationHelper
   end
 
   def pending_invitations
-    pp current_user.friends.map{ |frnd| frnd.user if !frnd.confirmed }.compact
+    pp current_user.friends.map { |frnd| frnd.user unless frnd.confirmed }.compact
   end
-
-  #   def pending_friends
-  #   friendships.map{|friendship| friendship.friend if !friendship.confirmed}.compact
-  # end
 end
