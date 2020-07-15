@@ -59,9 +59,15 @@ RSpec.describe 'User' do
       expect(friend.friend_requests).to include(user)
     end
 
+    it 'return true if friend have a pending invitation' do
+      create(:unconfirmed_friendship)
+      expect(invited?(friend)).to include(friend)
+    end
+
     it 'return true if friend is among accepted friends' do
       create(:confirmed_friendship)
       expect(user.friend?(friend)).to eql(true)
     end
+    
   end
 end

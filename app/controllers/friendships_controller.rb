@@ -3,7 +3,7 @@ class FriendshipsController < ApplicationController
     @friend_to_be = User.find(params[:friend_id])
     if current_user.id == @friend_to_be.id
       redirect_to users_path, notice: "You can't be friends to yourself, you narsistic!"
-    elsif current_user.friends?(@friend_to_be)
+    elsif current_user.friend?(@friend_to_be) || @friend_to_be.friend?(current_user)
       redirect_to users_path, notice: "You're already friends. We don't have a BFF option here..."
     else
       @friendship = current_user.friendships.new(friend_id: @friend_to_be.id, confirmed: false)

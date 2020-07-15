@@ -8,10 +8,12 @@ class User < ApplicationRecord
   has_many :friendships
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
   has_many :pending_friendships, -> { where(confirmed: false) }, class_name: 'Friendship'
-  has_many :confirmed_friendships, -> { where(confirmed: true) }, class_name: 'Friendship'
+  has_many :confirmed_friendships, -> { where(confirmed: true) }, foreign_key: 'friend_id', class_name: 'Friendship'
   has_many :posts # as: Author, class_name Posts
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+
+  scope :find_friendship, ->(friend) { where(friend_id: friend) }
 
   def friends
     friends_array = friendships.map { |f| f.friend if f.confirmed }
@@ -35,5 +37,26 @@ class User < ApplicationRecord
 
   def friend?(user)
     friends.include?(user)
+  end
+
+  def pending_invitations
+    invitations = []
+    invitations << pending_friends
+    invitations << friend_requests
+    invitations
+  end
+
+  def invited?(friend)
+    pending_invitations.include?(friend)
+  end
+
+  def friendships_sent(friend)
+    friendship = friendships.where(friend_id: friend.id).ids
+    friendship[0]
+  end
+
+  def friendships_received(friend)
+    friendship = friendships.where(user_id: friend.id).ids
+    friendship[0]
   end
 end
