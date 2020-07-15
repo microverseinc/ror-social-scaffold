@@ -15,4 +15,15 @@ module ApplicationHelper
       link_to('Like!', post_likes_path(post_id: post.id), method: :post)
     end
   end
+
+  def sent_requests(id)
+    current_user.friend_requests.exists?(user_id: current_user.id, friend_id: id)
+  end
+
+  # def pending_requests(id)
+  #   request = current_user.friend_requests(user_id: current_user.id, friend_id: id)
+  #   if request.confirmed
+      
+  #   end
+  # end
 end

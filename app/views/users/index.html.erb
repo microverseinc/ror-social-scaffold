@@ -5,7 +5,11 @@
         Name: <%= user.name %>
         <span class="profile-link">
           <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-          <%= link_to 'invite to friendship', user_invite_path(user), class: 'profile-link', method: :post%>
+          <% if sent_requests(user.id) %>
+            pending
+          <% else %>
+            <%= link_to 'invite to friendship', user_invite_path(user), class: 'profile-link', method: :post%>
+          <% end %>
         </span>
       </li>
     <% end %>

@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.exclude_current_user(current_user.id)
+    requests = current_user.friend_requests
   end
 
   def show
