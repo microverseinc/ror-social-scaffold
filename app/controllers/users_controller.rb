@@ -23,4 +23,11 @@ class UsersController < ApplicationController
       end
     end
   end
+
+  def accept
+    request = current_user.friends.find_by(user_id: params[:user_id])
+    request.confirmed = true
+    request.save
+    redirect_to user_path(current_user), notice: "Invitation accepted successfully"
+  end
 end

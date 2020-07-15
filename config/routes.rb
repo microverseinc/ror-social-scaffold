@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show] do
     post '/invite', to: 'users#invite', as: "invite"
+    post '/accept', to: 'users#accept', as: "accept"
   end
   resources :posts, only: [:index, :create] do
     resources :comments, only: [:create]

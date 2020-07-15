@@ -20,10 +20,16 @@ module ApplicationHelper
     current_user.friend_requests.exists?(user_id: current_user.id, friend_id: id)
   end
 
-  # def pending_requests(id)
-  #   request = current_user.friend_requests(user_id: current_user.id, friend_id: id)
-  #   if request.confirmed
-      
-  #   end
+  def pending_requests(id)
+    request = current_user.friend_requests.find_by(friend_id: id)
+    request.confirmed
+  end
+
+  def pending_invitations
+    pp current_user.friends.map{ |frnd| frnd.user if !frnd.confirmed }.compact
+  end
+
+  #   def pending_friends
+  #   friendships.map{|friendship| friendship.friend if !friendship.confirmed}.compact
   # end
 end

@@ -14,3 +14,10 @@
     </ul>
   </article>
 </section>
+<h2>Invitations</h2>
+<div>
+<% pending_invitations.each do |sender| %>
+  <%= sender.name %>
+  <%= link_to 'Accept Invitation', user_accept_path(sender), method: :post %>
+<% end %>
+</div>
