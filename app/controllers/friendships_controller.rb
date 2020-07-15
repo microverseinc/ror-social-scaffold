@@ -1,12 +1,15 @@
 class FriendshipsController < ApplicationController
 
   def create
-    user = User.find_by(id: current_user)
-    friend = User.find(params[:id])
-    @friendship = Friendship.new(user_id: user.id, friend_id: friend.id, confirmed: false)
-    # @inverse_friendship = Friendship.new(user_id: friend.id, friend_id: current_user.id, confirmed: false)
-    # @inverse_friendship.save if @friendship.save
-    redirect_to users_path
+    @friend_to_be = User.find(params[:friend_id])
+    if current_user.id == @friend_to_be.id
+      redirect_to users_path, notice: "You can't be friends to yourself, you narsistic!"
+    elsif current_user.friends?(@friend_to_be)
+      redirect_to users_path, notice: "You're already friends. We don't have a BFF option here..."
+    else
+      @friendship = current_user.friendships.new(friend_id: @friend_to_be.id, confirmed: false)
+      redirect_to users_path, notice: 'You sent a friend request!' if @friendship.save
+    end
   end
 
   def update
