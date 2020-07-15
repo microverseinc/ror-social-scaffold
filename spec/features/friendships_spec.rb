@@ -21,6 +21,5 @@ RSpec.feature 'Friendship' do
       friendship.destroy
       expect(friendship).to_not exist
     end
-
   end
 end

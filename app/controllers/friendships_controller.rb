@@ -1,5 +1,4 @@
 class FriendshipsController < ApplicationController
-
   def create
     @friend_to_be = User.find(params[:friend_id])
     if current_user.id == @friend_to_be.id

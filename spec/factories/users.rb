@@ -14,7 +14,7 @@ FactoryBot.define do
   end
 
   factory :random_user_list, class: 'User' do
-    sequence(:id){|n| n }
+    sequence(:id) { |n| n }
     name { Faker::Name.first_name }
     email { Faker::Internet.email }
     password { Faker::Internet.password }
