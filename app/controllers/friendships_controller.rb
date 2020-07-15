@@ -13,20 +13,24 @@ class FriendshipsController < ApplicationController
 
   def update
     user = User.find_by(id: current_user)
-    friend = User.find(params[:id])
-    @friendship = Friendship.find_by(user_id: friend, friend_id: user)
-    @inverse_friendship = Friendship.find_by(user_id: user, friend_id: friend)
-    @friendship.confirm = true
-    @inverse_friendship.confirm = true
-    @inverse_friendship.save if @friendship.save
+    friend = User.find(params[:friend_id])
+    byebug
+    @friendship = Friendship.find_by(user_id: user, friend_id: friend)
+
+    if @friendship.nil?
+      redirect_to users_path, notice: 'How do you break something that doesn\'t exist?'
+    else
+      @friendship.confirmed = true
+      redirect_to users_path, notice: 'How sad! You\'re no friends no longer!' if
+      @friendship.save
+    end
   end
 
   def destroy
     user = User.find_by(id: current_user)
-    friend = User.find(params[:id])
-    @friendship = Friendship.find_by(user_id: friend, friend_id: user)
-    @inverse_friendship = Friendship.find_by(user_id: user, friend_id: friend)
-    @inverse_friendship.delete if @friendship.delete
+    friend = User.find(params[:friend_id])
+    @friendship = Friendship.find_by(user_id: user, friend_id: friend)
+    redirect_to users_path, notice: 'How sad! You\'re no friends no longer!' if @friendship.destroy
   end
 
   private
