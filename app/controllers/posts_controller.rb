@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 
   def index
     @post = Post.new
-    timeline_posts
+    @timeline_posts = timeline_posts(current_user.friends)
   end
 
   def create
@@ -15,8 +15,12 @@ class PostsController < ApplicationController
 
   private
 
-  def timeline_posts
-    @timeline_posts ||= Post.all.ordered_by_most_recent
+  def timeline_posts(list_of_friends)
+    timeline_posts = Post.all.user_posts(current_user)
+    list_of_friends.each do |friend|
+      timeline_posts += Post.all.user_posts(friend)
+    end
+    timeline_posts
   end
 
   def post_params
