@@ -35,6 +35,16 @@ a {
   color: $primary-color-text;
 }
 
+.user-link {
+  font-style: italic;
+
+  a {
+    margin-top: 8px;
+    display: inline-block;
+    color: green;
+  }
+}
+
 .nav {
   display: flex;
   justify-content: space-between;
@@ -334,15 +344,15 @@ form {
 }
 
 .flex-item {
-  margin-top: .5em;
+  margin-top: 0.5em;
 }
 
 .invite-btn {
   color: white;
   background-color: $primary-color-dark;
-  border-radius: .3em;
+  border-radius: 0.3em;
   margin: 0 2em;
-  padding: .3em;
+  padding: 0.3em;
 }
 
 @media only screen and (min-width: 480px) {
@@ -356,16 +366,6 @@ form {
   .user-section {
     width: 70%;
   }
-}
-
-.user-link {
-  font-style: italic;
-  a {
-    margin-top: 8px;
-    display: inline-block;
-    color: green;
-  }
-  
 }
 
 @media (min-width: 780px) {

@@ -31,7 +31,6 @@ class UsersController < ApplicationController
     request = current_user.friends.find_by(user_id: params[:user_id])
     request.destroy
 
-    redirect_to users_path, notice: "Invitation has been declined"
-
+    redirect_to users_path, notice: 'Invitation has been declined'
   end
 end
