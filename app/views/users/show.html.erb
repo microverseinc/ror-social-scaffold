@@ -1,7 +1,7 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
   <% unless @user == current_user %>
-    <span class="profile-link">
+    <span class="user-link">
       <% if sent_requests(@user.id) %>
         pending
       <% else %>
@@ -19,11 +19,13 @@
 </section>
 <% if @user == current_user %>
   <h2>Invitations</h2>
-  <div>
-    <% pending_invitations.each do |sender| %>
-      <%= sender.name %>
-      <%= link_to 'Accept Invitation', user_accept_path(sender), method: :post %>
-      <%= link_to 'Reject Invitation', user_reject_path(sender), method: :post %>
-    <% end %>
-  </div>
+  <% pending_invitations.each do |sender| %>
+    <div class="invitation">
+      <p class="flex-item"><%= sender.name %> wants to be your friend</p>
+      <%= link_to 'accept', user_accept_path(sender), method: :post, class: 'invite-btn' %>
+      <%= link_to 'reject', user_reject_path(sender), method: :post, class: 'invite-btn' %>
+    </div>
+    
+
+  <% end %>
 <% end %>

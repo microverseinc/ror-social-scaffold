@@ -7,12 +7,12 @@
           <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
           <% if sent_requests(user.id) %>
             <% if pending_requests(user.id) %>
-              Friend
+              <span class="profile-link">Friend</span>
             <% else %>
-              Pending
+              <span class="profile-link">Pending</span>
             <% end %>
           <% else %>
-            <%= link_to 'invite to friendship', user_invite_path(user), class: 'profile-link', method: :post%>
+            <%= link_to 'invite to friendship', user_invite_path(user), class: 'invite-btn', method: :post%>
           <% end %>
         </span>
       </li>
