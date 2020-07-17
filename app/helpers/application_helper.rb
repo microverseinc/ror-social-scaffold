@@ -22,6 +22,10 @@ module ApplicationHelper
     a || b
   end
 
+  def current_user_requests(id)
+    current_user.friend_requests.exists?(user_id: current_user.id, friend_id: id)
+  end
+
   def pending_requests(id)
     request = current_user.friend_requests.find_by(friend_id: id)
     request_two = current_user.friends.find_by(user_id: id)
@@ -34,6 +38,12 @@ module ApplicationHelper
   end
 
   def pending_invitations
-    pp current_user.friends.map { |frnd| frnd.user unless frnd.confirmed }.compact
+    current_user.friends.map { |frnd| frnd.user unless frnd.confirmed }.compact
+  end
+
+  def current_user_and_friends_posts
+    pp current_user.friend_requests.where(confirmed: true).class
+    # current_user_and_friends = frnds + [current_user]
+    # pp current_user_and_friends.map { |user| user.posts }.compact.flatten.class
   end
 end

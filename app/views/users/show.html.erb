@@ -5,7 +5,7 @@
       <% if sent_requests(@user.id) %>
         pending
       <% else %>
-        <%= link_to 'invite to friendship', user_invite_path(@user), class: 'profile-link', method: :post%>
+        <%= link_to 'invite to friendship', user_invite_path(@user), class: 'invite-btn', method: :post%>
       <% end %>
     </span>
   <% end %>
