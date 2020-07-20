@@ -44,10 +44,6 @@ class User < ApplicationRecord
     invitations
   end
 
-  def invited?(friend)
-    pending_invitations.include?(friend)
-  end
-
   def friendships_sent(friend)
     friendship = friendships.where(friend_id: friend.id).ids
     friendship[0]

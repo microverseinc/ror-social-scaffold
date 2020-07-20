@@ -12,8 +12,17 @@ RSpec.feature 'Friendship' do
 
     it 'friend request is accepted' do
       friendship = create(:unconfirmed_friendship)
-      friendship.update(confirmed: true)
-      expect(friendship.confirmed).to eql(true)
+      login_user(friend)
+      visit root_path
+      click_link 'All users'
+      within 'ul' do
+        within('li', text: user.name) do
+          click_button 'Accept friendship'
+          sleep(2)
+        end
+      end
+
+      expect(page).to have_content()
     end
 
     it 'friend request is rejected' do
