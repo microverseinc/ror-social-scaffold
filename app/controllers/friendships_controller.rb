@@ -27,7 +27,7 @@ class FriendshipsController < ApplicationController
   def destroy
     user = User.find_by(id: current_user)
     friend = User.find(params[:friend_id])
-    @friendship = Friendship.find_by(user_id: user, friend_id: friend)
+    @friendship = Friendship.find_by(user_id: user, friend_id: friend) || Friendship.find_by(user_id: friend, friend_id: user)
     if @friendship.nil?
       redirect_to users_path, notice: 'How do you break something that doesn\'t exist?'
     else
