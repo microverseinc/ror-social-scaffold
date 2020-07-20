@@ -14,7 +14,6 @@ class FriendshipsController < ApplicationController
   def update
     user = User.find_by(id: current_user)
     friend = User.find(params[:friend_id])
-    byebug
     @friendship = Friendship.find_by(user_id: user, friend_id: friend)
 
     if @friendship.nil?

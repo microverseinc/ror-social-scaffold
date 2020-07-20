@@ -92,4 +92,4 @@ TBA
 - Posts in timeline are the ones created by user and friends - DONE
 - Check all the other points if they are working - TODO
 - Check tests for Friendship
-- Add 'Hello, User' in the navbar that shows who's logged in - TODO
+- Add 'Hello, User' in the navbar that shows who's logged in - DONE
