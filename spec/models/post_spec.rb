@@ -1,8 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  let(:user) { User.create(name: 'test_user', email: 'test_user@test.com', password: "123456", password_confirmation: "123456") }
-  subject { described_class.new(user_id: user.id, content: "This is a post created for the purpose of testing the post model.") }
+  let(:user) do
+    User.create(name: 'test_user', email: 'test_user@test.com',
+                password: '123456', password_confirmation: '123456')
+  end
+  subject do
+    described_class.new(user_id: user.id, content: 'This is a post created
+      for the purpose of testing the post model.')
+  end
 
   it 'is valid with valid attributes' do
     expect(subject).to be_valid
