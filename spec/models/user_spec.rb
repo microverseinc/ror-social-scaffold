@@ -68,6 +68,5 @@ RSpec.describe 'User' do
       create(:confirmed_friendship)
       expect(user.friend?(friend)).to eql(true)
     end
-    
   end
 end
