@@ -10,6 +10,5 @@ RSpec.describe 'posts_controller', type: :system do
     do_login('taofeek@gmail.com', '123456')
     create_post('This is a valid post')
     expect(page).to have_content('Post was successfully created')
-    
   end
 end
