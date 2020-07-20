@@ -1,16 +1,24 @@
 require 'rails_helper'
 
-RSpec.describe Like, type: :model do
-  let(:user1) { User.create(name: 'test', email: 'email@email.com', password: 'abc123') }
-  let(:user2) { User.create(name: 'test2', email: 'email2@email.com', password: 'abc123') }
-  let(:friend1) { user1.friendships.create(friend_id: 2) }
+RSpec.describe Friendship, type: :model do
+  let(:user) { User.create(name: 'Kotoku', email: 'kotoku@gmail.com', password: 'sports') }
+  let(:friend) { User.create(name: 'Tamara', email: 'tam@gmail.com', password: 'chocolate') }
+  let(:friendship) { Friendship.create(user_id: user.id, friend_id: friend.id) }
 
-  context 'check associations' do
-    it 'frienship belongs to a user' do
-      user1
-      user2
-      friend1
-      expect(Friendship.first.user_id).not_to be_nil
+  describe 'Validations' do
+    it 'should validate valid relationship' do
+      expect(friendship).to be_valid
+    end
+  end
+
+  describe 'Associations' do
+    it 'should belong to user' do
+      t = Friendship.reflect_on_association(:user)
+      expect(t.macro).to eql (:belongs_to)
+    end
+    it 'should belong to friend' do
+      t = Friendship.reflect_on_association(:friend)
+      expect(t.macro).to eql (:belongs_to)
     end
   end
 end
