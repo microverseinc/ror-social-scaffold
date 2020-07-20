@@ -17,4 +17,10 @@ module IntegrationTestHelpers
     fill_in('post_content', with: content)
     click_button('commit')
   end
+
+  def like(email, password, post)
+    do_login(email, password)
+    create_post(post)
+    click_link('Like!')
+  end
 end

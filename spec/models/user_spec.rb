@@ -1,7 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  subject { described_class.new(name: 'test_user', email: 'test_user@test.com', password: "123456", password_confirmation: "123456") }
+  subject do
+    described_class.new(name: 'test_user', email: 'test_user@test.com',
+                        password: '123456', password_confirmation: '123456')
+  end
 
   it 'is valid with valid attributes' do
     expect(subject).to be_valid
@@ -13,7 +16,7 @@ RSpec.describe User, type: :model do
   end
 
   it 'is invalid when length of name is more than 20' do
-    subject.name = "Taofeek Olalere Teekaytech Laravel advocate"
+    subject.name = 'Taofeek Olalere Teekaytech Laravel advocate'
     expect(subject).to_not be_valid
   end
 
