@@ -13,7 +13,6 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
-  scope :find_friendship, ->(friend) { where(friend_id: friend) }
 
   def friends
     friends_array = friendships.map { |f| f.friend if f.confirmed }
@@ -56,7 +55,7 @@ class User < ApplicationRecord
   end
 
   def friendships_received(friend)
-    friendship = friendships.where(user_id: friend.id).ids
+    friendship = friend.friendships.where(friend_id: id).ids
     friendship[0]
   end
 end

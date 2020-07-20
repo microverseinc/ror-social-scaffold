@@ -14,7 +14,7 @@ class FriendshipsController < ApplicationController
   def update
     user = User.find_by(id: current_user)
     friend = User.find(params[:friend_id])
-    @friendship = Friendship.find_by(user_id: user, friend_id: friend)
+    @friendship = Friendship.find_by(user_id: friend, friend_id: user)
 
     if @friendship.nil?
       redirect_to users_path, notice: 'Are you delusional? How can you confirm a proposition that does not exist?'
