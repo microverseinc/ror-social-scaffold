@@ -16,6 +16,10 @@ module ApplicationHelper
     end
   end
 
+  def is_user_friend(user, friend)
+    user == friend ? 'hidden' : ''
+  end
+
   def add_friend(friend)
     friend = User.find_by(id: friend.id)
     user = current_user

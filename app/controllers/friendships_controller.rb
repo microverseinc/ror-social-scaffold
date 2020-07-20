@@ -17,11 +17,10 @@ class FriendshipsController < ApplicationController
     @friendship = Friendship.find_by(user_id: user, friend_id: friend)
 
     if @friendship.nil?
-      redirect_to users_path, notice: 'How do you break something that doesn\'t exist?'
+      redirect_to users_path, notice: 'Are you delusional? How can you confirm a proposition that does not exist?'
     else
       @friendship.confirmed = true
-      redirect_to users_path, notice: 'How sad! You\'re no friends no longer!' if
-      @friendship.save
+      redirect_to users_path, notice: 'Yeah, you\'re friends for real now! No more pretending!' if @friendship.save
     end
   end
 
@@ -29,7 +28,11 @@ class FriendshipsController < ApplicationController
     user = User.find_by(id: current_user)
     friend = User.find(params[:friend_id])
     @friendship = Friendship.find_by(user_id: user, friend_id: friend)
-    redirect_to users_path, notice: 'How sad! You\'re no friends no longer!' if @friendship.destroy
+    if @friendship.nil?
+      redirect_to users_path, notice: 'How do you break something that doesn\'t exist?'
+    else
+      redirect_to users_path, notice: 'How sad! You\'re no friends no longer!' if @friendship.destroy
+    end
   end
 
   private
