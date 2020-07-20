@@ -40,10 +40,4 @@ module ApplicationHelper
   def pending_invitations
     current_user.friends.map { |frnd| frnd.user unless frnd.confirmed }.compact
   end
-
-  def current_user_and_friends_posts
-    pp current_user.friend_requests.where(confirmed: true).class
-    # current_user_and_friends = frnds + [current_user]
-    # pp current_user_and_friends.map { |user| user.posts }.compact.flatten.class
-  end
 end

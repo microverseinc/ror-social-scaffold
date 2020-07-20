@@ -17,6 +17,7 @@
     </ul>
   </article>
 </section>
+
 <% if @user == current_user %>
   <h2>Invitations</h2>
   <% pending_invitations.each do |sender| %>
@@ -25,7 +26,5 @@
       <%= link_to 'accept', user_accept_path(sender), method: :post, class: 'invite-btn' %>
       <%= link_to 'reject', user_reject_path(sender), method: :post, class: 'invite-btn' %>
     </div>
-    
-
   <% end %>
 <% end %>
