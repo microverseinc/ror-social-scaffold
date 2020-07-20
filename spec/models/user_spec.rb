@@ -68,7 +68,6 @@ RSpec.describe User, type: :model do
       user.valid?
       expect(user.errors[:email]).to_not include('is invalid')
     end
-
   end
 
   describe '#password' do
@@ -84,5 +83,4 @@ RSpec.describe User, type: :model do
       expect(user.valid?).to eql(true)
     end
   end
-
 end

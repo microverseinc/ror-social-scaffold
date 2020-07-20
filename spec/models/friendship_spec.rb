@@ -14,11 +14,11 @@ RSpec.describe Friendship, type: :model do
   describe 'Associations' do
     it 'should belong to user' do
       a = Friendship.reflect_on_association(:user)
-      expect(a.macro).to eql (:belongs_to)
+      expect(a.macro).to eql: belongs_to
     end
     it 'should belong to friend' do
       a = Friendship.reflect_on_association(:friend)
-      expect(a.macro).to eql (:belongs_to)
+      expect(a.macro).to eql: belongs_to
     end
   end
 end
