@@ -1,95 +1,102 @@
-# Scaffold for social media app with Ruby on Rails
+# Social Media App
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+## Description
+
+This app is a Rails project for the Microverse's RoR curriculum, following TOP curriculum for webdevelopment. We have practiced how to deal with self-join tables and much more.
+
+## About the project
+
+In this app, you can create ask people to be friends! (we don't guarantee they'll accept)
+
+## Authorization
+
+For asking someone to be your friend, or even see their posts, you need to log in first. You have to create an account if you don't have one - that'll require name, password and email.
+
+## Screenshots
+
+### Logged out. You can't see any posts, nor add friends.
+
+![Page with user logged out](./docs/log_in.png)
+
+### Sign Up page.
+
+![Sign Up page](./docs/sign_up.png)
+
+### Posts Index - you can see all your posts - and all your friends' too!
+
+![Index posts](./docs/posts_index.png)
+
+### User's profile page. You can see all their posts, and if it's not the current user, you can add them too.
+
+![User's show page](./docs/user_show.png)
+
+### Users' index - see all users. You can add them if you want - or break up too, your treat.
+![Show all users](.docs/show_all_users.png)
+
+## Validations
+
+- New users need to have an username, and it has a max of 20 char.
+- A Post must have a text with a max of 1000 char.
 
 ## Built With
 
-- Ruby v2.7.0
-- Ruby on Rails v5.2.4
+- [Ruby](https://www.ruby-lang.org/en/) 2.7.0 - A programming language.
+- [Ruby on Rails](https://rubyonrails.org/) 6.0.3.1 - A Ruby framework for web development
 
-## Live Demo
-
-TBA
-
-## Diagram of Database
-
-![diagram](https://user-images.githubusercontent.com/46613531/86180392-6cecac00-bb02-11ea-8199-e806edbe6a76.png)
-
-
-## Getting Started
-
-To get a local copy up and running follow these simple example steps.
+## Getting started
 
 ### Prerequisites
 
-Ruby: 2.6.3
-Rails: 5.2.3
-Postgres: >=9.5
+- Ruby
+- Rails
+- Bundle
+- SQLite3. **Note**: You can change the database in GemFile.
 
-### Setup
+#### For testing
 
-Instal gems with:
+- Capybara
+- Rspec-Rails
 
-```
-bundle install
-```
+### Installing
 
-Setup database with:
+1. Download this repository
 
-```
-   rails db:create
-   rails db:migrate
-```
+`$ git clone repo_url`
 
+2. Install all required gem.
 
+`$ bundle install`
 
-### Usage
+3. Migrate the database.
 
-Start server witid: 1h:
+`$ rails db:migrate`
 
-```
-    rails server
-```
+### Running the tests
 
-Open `http://localhost:3000/` in your browser.
+You can run tests with
 
-### Run tests
-
-```
-    rpsec --format documentation
-```
-
-> Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
-
-### Deployment
-
-TBA
+`$ rspec `
 
 ## Authors
 
-TBA
+👤 **Pedro Donda**
 
-## 🤝 Contributing
+- Github: [@Phfdonda](https://github.com/phfdonda)
+- Twitter: [@srjuanpapas](https://twitter.com/phfdonda)
+- Linkedin: [Pedro Donda](https://www.linkedin.com/in/pedro-donda-808621bb/)
+- Contact: [E-mail](phfdonda@gmail.com)
 
-Contributions, issues and feature requests are welcome!
+👤 **Juan Paulo Perez Tejada**
 
-Feel free to check the [issues page](issues/).
+- Github: [@Maclenn77](https://github.com/Maclenn77)
+- Twitter: [@srjuanpapas](https://twitter.com/srjuanpapas)
+- Linkedin: [Juan Paulo Perez Tejada](https://mx.linkedin.com/in/juanpaulopereztejada)
+- Visit [my blog](https://developerz.software/)
 
-## Show your support
+## License
 
-Give a ⭐️ if you like this project!
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
 
-TBA
-
-## 📝 License
-
-TBA
-
-## TODO
-
-- Posts in timeline are the ones created by user and friends - DONE
-- Check all the other points if they are working - TODO
-- Check tests for Friendship
-- Add 'Hello, User' in the navbar that shows who's logged in - DONE
+* Hat tip to anyone whose code was used
