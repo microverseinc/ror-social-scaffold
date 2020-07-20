@@ -27,11 +27,12 @@ class FriendshipsController < ApplicationController
   def destroy
     user = User.find_by(id: current_user)
     friend = User.find(params[:friend_id])
-    @friendship = Friendship.find_by(user_id: user, friend_id: friend) || Friendship.find_by(user_id: friend, friend_id: user)
+    @friendship = Friendship.find_by(user_id: user, friend_id: friend) || Friendship.find_by(user_id: friend,
+                                                                                             friend_id: user)
     if @friendship.nil?
       redirect_to users_path, notice: 'How do you break something that doesn\'t exist?'
-    else
-      redirect_to users_path, notice: 'How sad! You\'re no friends no longer!' if @friendship.destroy
+    elsif @friendship.destroy
+      redirect_to users_path, notice: 'How sad! You\'re no friends no longer!'
     end
   end
 

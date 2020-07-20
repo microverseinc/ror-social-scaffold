@@ -6,7 +6,7 @@
         <span class="profile-link">
           <%= link_to 'See Profile',  user_path(friend), class: 'profile-link' %>
         </span>
-        <button type="button" <%= is_user_friend(current_user, friend) %> name="button"> <%= add_friend(friend) %></button>
+        <button type="button" <%= user_friend?(current_user, friend) %> name="button"> <%= add_friend(friend) %></button>
       </li>
     <% end %>
   </ul>

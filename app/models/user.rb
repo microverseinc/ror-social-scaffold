@@ -13,7 +13,6 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
-
   def friends
     friends_array = friendships.map { |f| f.friend if f.confirmed }
     friends_array += inverse_friendships.map { |f| f.user if f.confirmed }
