@@ -16,7 +16,7 @@ RSpec.describe 'users_controller', type: :system do
     click_link('Sign out')
     do_login('teeboy@gmail.com', '123456')
     click_link('Teeboy')
-    click_link('Accept Invitation')
+    click_link('accept')
     expect(page).to have_content 'Invitation accepted successfully'
   end
 
@@ -25,7 +25,7 @@ RSpec.describe 'users_controller', type: :system do
     click_link('Sign out')
     do_login('teeboy@gmail.com', '123456')
     click_link('Teeboy')
-    click_link('Reject Invitation')
+    click_link('reject')
     expect(page).to have_content 'Invitation has been declined'
   end
 end

@@ -4,6 +4,7 @@ class Post < ApplicationRecord
 
   belongs_to :user
 
+  scope :ordered_by_most_recent, -> { order(created_at: :desc) }
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
@@ -12,6 +13,6 @@ class Post < ApplicationRecord
     inverse = user.friends.where(confirmed: true).pluck(:user_id)
     frnds_and_inverse = frnds + inverse
     frnds_and_inverse << user.id
-    Post.where(user_id: frnds_and_inverse).order(created_at: :desc).includes(:user)
+    Post.where(user_id: frnds_and_inverse).ordered_by_most_recent.includes(:user)
   end
 end
