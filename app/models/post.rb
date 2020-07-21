@@ -9,8 +9,8 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
 
   def self.current_user_and_friends_posts(user)
-    frnds = user.friend_requests.where(confirmed: true).pluck(:friend_id)
-    inverse = user.friends.where(confirmed: true).pluck(:user_id)
+    frnds = FriendRequest.where(user_id: user.id, confirmed: true).pluck(:friend_id)
+    inverse = user.friends.pluck(:user_id)
     frnds_and_inverse = frnds + inverse
     frnds_and_inverse << user.id
     Post.where(user_id: frnds_and_inverse).ordered_by_most_recent.includes(:user)

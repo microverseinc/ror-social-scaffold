@@ -21,14 +21,14 @@ class UsersController < ApplicationController
   end
 
   def accept
-    request = current_user.friends.find_by(user_id: params[:user_id])
+    request = FriendRequest.find_by(user_id: params[:user_id], friend_id: current_user.id)
     request.confirmed = true
     request.save
     redirect_to user_path(current_user), notice: 'Invitation accepted successfully'
   end
 
   def reject
-    request = current_user.friends.find_by(user_id: params[:user_id])
+    request = FriendRequest.find_by(user_id: params[:user_id], friend_id: current_user.id)
     request.destroy
 
     redirect_to users_path, notice: 'Invitation has been declined'
