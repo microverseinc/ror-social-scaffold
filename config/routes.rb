@@ -2,6 +2,11 @@ Rails.application.routes.draw do
 
   root 'posts#index'
 
+  get 'friendships/new'
+  get 'friendships/create'
+  get 'friendships/update'
+  get 'friendships/destroy'
+
   devise_for :users
 
   resources :users, only: [:index, :show]
