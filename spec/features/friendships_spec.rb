@@ -19,16 +19,17 @@ RSpec.feature 'Friendship' do
     end
 
     it 'friend request is accepted' do
+      create(:unconfirmed_friendship)
       login_user(friend)
       visit root_path
       click_link 'All users'
       within 'ul' do
         within('li', text: user.name) do
-          click_link 'Accept friendship'
+          click_button 'Accept friendship'
           sleep(2)
         end
       end
-      expect(page).to have_content('Yeah, you\'re friends for real now! No more pretending!')
+      expect(page).to have_content('You\'re already friends!')
     end
   end
 end
