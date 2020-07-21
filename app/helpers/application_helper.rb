@@ -15,4 +15,27 @@ module ApplicationHelper
       link_to('Like!', post_likes_path(post_id: post.id), method: :post)
     end
   end
+
+  def user_friend?(user, friend)
+    user == friend ? 'hidden' : ''
+  end
+
+  def add_friend(friend)
+    friend = User.find_by(id: friend.id)
+    user = current_user
+    if user.friend?(friend)
+      link_to('Dismiss Friendship', user_friendship_path(id: user.confirmed_friendships.find_friendship(friend),
+                                                         user_id: user.id, friend_id: friend.id), method: :delete)
+    elsif !user.friendships_received(friend).nil?
+      link_to('Accept friendship', user_friendship_path(id: user.friendships_received(friend),
+                                                        user_id: user, friend_id: friend), method: :patch)
+
+    elsif !user.friendships_sent(friend).nil?
+      link_to('Cancel request', user_friendship_path(id: user.friendships_sent(friend),
+                                                     user_id: user.id, friend_id: friend.id), method: :delete)
+    else
+      link_to('Request Friendship', user_friendships_path(user_id: user.id,
+                                                          friend_id: friend.id), method: :post)
+    end
+  end
 end

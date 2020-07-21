@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'Users', type: :feature do
   context 'Users exist' do
-    let(:user) { create(:random_user) }
+    let!(:user) { create(:random_user) }
     let(:friend) { create(:random_friend) }
     let(:frienship_not_accepted) { create(:unconfirmed_friendship) }
 

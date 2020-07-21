@@ -1,11 +1,12 @@
 <section class="users-section">
   <ul class="users-list">
-    <% @users.each do |user| %>
+    <% @users.each do |friend| %>
       <li>
-        Name: <%= user.name %>
+        Name: <%= friend.name %>
         <span class="profile-link">
-          <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+          <%= link_to 'See Profile',  user_path(friend), class: 'profile-link' %>
         </span>
+        <button type="button" <%= user_friend?(current_user, friend) %> name="button"> <%= add_friend(friend) %></button>
       </li>
     <% end %>
   </ul>
