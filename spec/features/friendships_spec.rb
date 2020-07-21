@@ -4,10 +4,18 @@ RSpec.feature 'Friendship' do
   let!(:user) { create(:random_user) }
   let!(:friend) { create(:random_friend) }
 
-  context 'User creates' do
-    it 'a friend request' do
-      friend_request = create(:unconfirmed_friendship)
-      expect(friend_request).to exist
+  context 'User adds a friend and' do
+    it 'the request is sent successfully' do
+      login_user(user)
+      visit root_path
+      click_link 'All users'
+      within 'ul' do
+        within('li', text: friend.name) do
+          click_link 'Request Friendship'
+          sleep(2)
+        end
+      end
+      expect(page).to have_content('You sent a friend request!')
     end
 
     it 'friend request is accepted' do
@@ -17,18 +25,11 @@ RSpec.feature 'Friendship' do
       click_link 'All users'
       within 'ul' do
         within('li', text: user.name) do
-          click_button 'Accept friendship'
+          click_link 'Accept friendship'
           sleep(2)
         end
       end
-
-      expect(page).to have_content()
-    end
-
-    it 'friend request is rejected' do
-      friendship = create(:unconfirmed_friendship)
-      friendship.destroy
-      expect(friendship).to_not exist
+      expect(page).to have_content('Yeah, you\'re friends for real now! No more pretending!')
     end
   end
 end
