@@ -45,7 +45,7 @@ For asking someone to be your friend, or even see their posts, you need to log i
 
 ## Database
 
-- Whenever you ask someone to befriend someone, you create an instance of Friendship table.
+- Whenever you ask to befriend someone, you create an instance of Friendship table.
 - Whenever you accept the friendship, you create another instance, with ids reversed.
 
 ## Getting started
