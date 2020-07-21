@@ -1,5 +1,15 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
+  <% unless @user == current_user %>
+    <span class="user-link">
+      <% if sent_requests(@user.id) %>
+        pending
+      <% else %>
+        <%= link_to 'invite to friendship', user_invite_path(@user), class: 'invite-btn', method: :post%>
+      <% end %>
+    </span>
+  <% end %>
+
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
@@ -7,3 +17,14 @@
     </ul>
   </article>
 </section>
+
+<% if @user == current_user %>
+  <h2>Invitations</h2>
+  <% pending_invitations.each do |sender| %>
+    <div class="invitation">
+      <p class="flex-item"><%= sender.name %> wants to be your friend</p>
+      <%= link_to 'accept', user_accept_path(sender), method: :post, class: 'invite-btn' %>
+      <%= link_to 'reject', user_reject_path(sender), method: :post, class: 'invite-btn' %>
+    </div>
+  <% end %>
+<% end %>

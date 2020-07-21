@@ -7,4 +7,12 @@ class Post < ApplicationRecord
   scope :ordered_by_most_recent, -> { order(created_at: :desc) }
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+
+  def self.current_user_and_friends_posts(user)
+    frnds = FriendRequest.where(user_id: user.id, confirmed: true).pluck(:friend_id)
+    inverse = user.friends.pluck(:user_id)
+    frnds_and_inverse = frnds + inverse
+    frnds_and_inverse << user.id
+    Post.where(user_id: frnds_and_inverse).ordered_by_most_recent.includes(:user)
+  end
 end

@@ -15,4 +15,25 @@ module ApplicationHelper
       link_to('Like!', post_likes_path(post_id: post.id), method: :post)
     end
   end
+
+  def sent_requests(id)
+    a = FriendRequest.exists?(user_id: current_user.id, friend_id: id)
+    b = FriendRequest.exists?(user_id: id, friend_id: current_user.id)
+    a || b
+  end
+
+  def current_user_requests(id)
+    FriendRequest.exists?(user_id: current_user.id, friend_id: id)
+  end
+
+  def pending_requests(id)
+    request = FriendRequest.find_by(user_id: current_user.id, friend_id: id)
+    request_two = FriendRequest.find_by(user_id: id, friend_id: current_user.id)
+
+    request.nil? ? request_two.confirmed : request.confirmed
+  end
+
+  def pending_invitations
+    FriendRequest.where(friend_id: current_user.id).map { |frnd| frnd.user unless frnd.confirmed }.compact
+  end
 end

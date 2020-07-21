@@ -35,6 +35,15 @@ a {
   color: $primary-color-text;
 }
 
+.user-link {
+  font-style: italic;
+
+  a {
+    margin-top: 8px;
+    display: inline-block;
+  }
+}
+
 .nav {
   display: flex;
   justify-content: space-between;
@@ -57,7 +66,7 @@ a {
   }
 
   .menu {
-    width: 80%;
+    width: 70%;
     justify-content: space-between;
 
     .menu-item {
@@ -287,7 +296,7 @@ form {
 
   .profile-link {
     font-size: 0.8em;
-    margin: 0 0 8px 0;
+    margin: 0 2px 8px 5px;
     color: $primary-color-dark;
   }
 }
@@ -320,6 +329,29 @@ form {
   ul {
     color: #f00;
   }
+}
+
+.nav-item-name {
+  margin-right: 1em;
+}
+
+.invitation {
+  margin-top: 1em;
+  width: 40%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex-item {
+  margin-top: 0.5em;
+}
+
+.invite-btn {
+  color: white;
+  background-color: $primary-color-dark;
+  border-radius: 0.3em;
+  margin: 0 2em;
+  padding: 0.3em;
 }
 
 @media only screen and (min-width: 480px) {
