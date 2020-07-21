@@ -46,4 +46,10 @@ module ApplicationHelper
       link_to(' Add as a friend', friendships_create_path(user), class: 'profile-link')
     end
   end
+
+  def show_comments(post)
+    tag1 = content_tag(:i, nil, class: ['far fa-comment-alt likes-comments'])
+    tag2 = content_tag(:span, post.count_comments(post).to_s, class: 'counter comment-counter')
+    tag1 + tag2
+  end
 end

@@ -29,11 +29,6 @@ class User < ApplicationRecord
     Post.where(user: friends).or(Post.where(user: current_user))
   end
 
-  def latest_friends
-    friends_ids = friendships.limit(5).order(created_at: :desc).where(confirmed: true).pluck(:friend_id)
-    User.find(friends_ids)
-  end
-
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
