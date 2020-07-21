@@ -29,7 +29,7 @@ module ApplicationHelper
     elsif !user.friendships_received(friend).nil?
       link_to('Accept friendship', user_friendship_path(id: user.friendships_received(friend),
                                                         user_id: user, friend_id: friend), method: :patch)
-      
+
     elsif !user.friendships_sent(friend).nil?
       link_to('Cancel request', user_friendship_path(id: user.friendships_sent(friend),
                                                      user_id: user.id, friend_id: friend.id), method: :delete)

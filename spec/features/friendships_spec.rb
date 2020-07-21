@@ -19,7 +19,6 @@ RSpec.feature 'Friendship' do
     end
 
     it 'friend request is accepted' do
-      friendship = create(:unconfirmed_friendship)
       login_user(friend)
       visit root_path
       click_link 'All users'
