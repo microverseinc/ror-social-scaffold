@@ -4,7 +4,7 @@ RSpec.describe Comment, type: :model do
   context 'Comment model' do
     let(:user) { User.new(name: 'test', email: 'test@email.com', password: 'testing') }
     let(:post) { Post.new(content: 'Hello World!') }
-    let(:comment) {Comment.new(content: 'This is a test!')}
+    let(:comment) { Comment.new(content: 'This is a test!') }
 
     it 'VALID if not empty' do
       user.save
@@ -18,7 +18,7 @@ RSpec.describe Comment, type: :model do
       user.save
       post.save
       comment.user = user
-      comment.post = post 
+      comment.post = post
       comment.content = ''
       expect(comment).not_to be_valid
     end
@@ -40,9 +40,8 @@ RSpec.describe Comment, type: :model do
     end
 
     context 'Associations for comment model' do
-     it { should belong_to(:post) }
-     it { should belong_to(:user) }
+      it { should belong_to(:post) }
+      it { should belong_to(:user) }
     end
-
   end
 end

@@ -19,7 +19,6 @@ RSpec.describe 'Sign Up Feature', type: :feature do
     fill_in 'Password confirmation', with: 'testpassword'
     click_button 'Sign up'
     expect(page).to have_content("Password confirmation doesn\'t match Password")
-    
   end
   scenario 'empty name field raises error during sign up' do
     visit new_user_registration_path

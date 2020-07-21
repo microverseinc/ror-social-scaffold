@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Log In Feature', type: :feature do
-  let(:user) { User.new(name: 'newlog', email: 'user@site.com', password: 'some123pass')}
+  let(:user) { User.new(name: 'newlog', email: 'user@site.com', password: 'some123pass') }
 
   scenario 'empty email field cant log in' do
     user.save
@@ -19,7 +19,6 @@ RSpec.describe 'Log In Feature', type: :feature do
     fill_in 'Password', with: user.password
     click_button 'Log in'
     expect(page).to have_content('Signed in successfully')
-    
   end
 
   scenario 'form with empty password field will not be logged in' do
@@ -29,7 +28,5 @@ RSpec.describe 'Log In Feature', type: :feature do
     fill_in 'Password', with: nil
     click_button 'Log in'
     expect(page).to have_content('Invalid Email or password.')
-    
   end
-
 end
