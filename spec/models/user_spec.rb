@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   context 'validations for new user' do
-    let(:user) { User.new(name: 'Testuser', email: 'testuser@test.com' password: 'password123') }
+  let(:user) { User.new(name: 'test', email: 'test@email.com', password: 'testing') }
     
     it 'check if user is valid' do
       expect(user).to be_valid
