@@ -6,7 +6,7 @@ This app is a Rails project for the Microverse's RoR curriculum, following TOP c
 
 ## About the project
 
-In this app, you can create ask people to be friends! (we don't guarantee they'll accept)
+In this app, you can ask people to be friends! (we don't guarantee they'll accept)
 
 ## Authorization
 
@@ -42,6 +42,11 @@ For asking someone to be your friend, or even see their posts, you need to log i
 
 - [Ruby](https://www.ruby-lang.org/en/) 2.7.0 - A programming language.
 - [Ruby on Rails](https://rubyonrails.org/) 6.0.3.1 - A Ruby framework for web development
+
+## Database
+
+- Whenever you ask someone to befriend someone, you create an instance of Friendship table.
+- Whenever you accept the friendship, you create another instance, with ids reversed.
 
 ## Getting started
 
@@ -82,7 +87,7 @@ You can run tests with
 👤 **Pedro Donda**
 
 - Github: [@Phfdonda](https://github.com/phfdonda)
-- Twitter: [@srjuanpapas](https://twitter.com/phfdonda)
+- Twitter: [@phfdonda](https://twitter.com/phfdonda)
 - Linkedin: [Pedro Donda](https://www.linkedin.com/in/pedro-donda-808621bb/)
 - Contact: [E-mail](phfdonda@gmail.com)
 
