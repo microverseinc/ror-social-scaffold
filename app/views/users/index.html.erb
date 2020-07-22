@@ -6,17 +6,7 @@
         <span class="profile-link">
           <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
         </span>
-
-        <% if current_user.friend?(user) %>
-  <%= link_to  "Delete", user_friendship_path(user, current_user), method: :delete, id: "user_#{user.id}",  class: "btn-cancel" %>
-<% elsif current_user.pending_friendships %>
-  <%= link_to  "Accept", user_friendship_path(user, current_user), method: :put, id: "user_#{user.id}" , class: "btn-accept"  %>
-  <%= link_to  "Cancel", user_friendship_path(user, current_user), method: :delete, id: "user_#{user.id}",  class: "btn-cancel" %>
-<% elsif current_user.friend_request?(user) %>
-  <%= link_to  "Cancel", user_friendship_path(user, current_user), method: :delete, id: "user_#{user.id}",  class: "btn-cancel" %>
-<% elsif user != current_user %>
-  <%= link_to "Add", user_friendships_path(user), method: :post, class: "btn-add" %>
-<% end %>
+        <span><%= render 'shared/friendship_status', user: user%></span>
       </li>
     <% end %>
   </ul>
