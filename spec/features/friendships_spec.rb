@@ -4,31 +4,33 @@ RSpec.feature 'Friendship' do
   let!(:user) { create(:random_user) }
   let!(:friend) { create(:random_friend) }
 
+  context 'friendship does not exist' do
+    it 'should create only one instance when request friendship' do
+      login_user(user)
+      visit_and_click(friend, 'Request Friendship')
+      expect(Friendship.all.count).to eql(1)
+    end
+
+    it 'should create a second instance when friend accepts friendship' do
+      create(:unconfirmed_friendship)
+      login_user(friend)
+      visit_and_click(user, 'Accept friendship')
+      expect(Friendship.all.count).to eql(2)
+    end
+  end
+
   context 'User adds a friend and' do
     it 'the request is sent successfully' do
       login_user(user)
-      visit root_path
-      click_link 'All users'
-      within 'ul' do
-        within('li', text: friend.name) do
-          click_link 'Request Friendship'
-          sleep(2)
-        end
-      end
+      visit_and_click(friend, 'Request Friendship')
       expect(page).to have_content('You sent a friend request!')
     end
 
     it 'friend request is accepted' do
+      create(:unconfirmed_friendship)
       login_user(friend)
-      visit root_path
-      click_link 'All users'
-      within 'ul' do
-        within('li', text: user.name) do
-          click_link 'Accept friendship'
-          sleep(2)
-        end
-      end
-      expect(page).to have_content('Yeah, you\'re friends for real now! No more pretending!')
+      visit_and_click(user, 'Accept friendship')
+      expect(page).to have_content("You can tell everyone, you're friends now!!!")
     end
   end
 end

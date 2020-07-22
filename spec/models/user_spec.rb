@@ -51,7 +51,7 @@ RSpec.describe 'User' do
 
     it 'should be able to confirm friendship' do
       create(:unconfirmed_friendship)
-      expect(friend.confirm_friend(user)).to eql(true)
+      expect(user.confirm_friend(friend)).to eql(true)
     end
 
     it 'should be able to find friend among friend requests' do

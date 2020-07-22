@@ -27,8 +27,8 @@ module ApplicationHelper
       link_to('Dismiss Friendship', user_friendship_path(id: user.confirmed_friendships.find_friendship(friend),
                                                          user_id: user.id, friend_id: friend.id), method: :delete)
     elsif !user.friendships_received(friend).nil?
-      link_to('Accept friendship', user_friendship_path(id: user.friendships_received(friend),
-                                                        user_id: user, friend_id: friend), method: :patch)
+      link_to('Accept friendship', user_friendships_path(user_id: user.id,
+                                                         friend_id: friend.id), method: :post)
 
     elsif !user.friendships_sent(friend).nil?
       link_to('Cancel request', user_friendship_path(id: user.friendships_sent(friend),
