@@ -49,7 +49,7 @@ Layout/MultilineMethodCallIndentation:
   Enabled: true
   EnforcedStyle: indented
 
-Lint/RaiseException:
+Lint/Raise Exception:
   Enabled: false
 Lint/StructNewOverride:
   Enabled: false
