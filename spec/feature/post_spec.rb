@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'posts_controller', type: :feature do
+RSpec.describe 'posts_controller', type: :system do
   before do
     User.create(name: 'Taofeek', email: 'taofeek@gmail.com', password: '123456',
                 password_confirmation: '123456')

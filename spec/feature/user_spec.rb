@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'users_controller', type: :feature do
+RSpec.describe 'users_controller', type: :system do
   before :each do
     User.create(name: 'Taofeek', email: 'taofeek@gmail.com', password: '123456', password_confirmation: '123456')
     User.create(name: 'Teeboy', email: 'teeboy@gmail.com', password: '123456', password_confirmation: '123456')
