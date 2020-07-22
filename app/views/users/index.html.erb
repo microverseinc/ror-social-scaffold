@@ -7,13 +7,13 @@
           <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
           <% if sent_requests(user.id) %>
             <% if pending_requests(user.id) %>
-              <span class="profile-link">Friend</span>
-            <% else %>
               <span class="profile-link">Pending</span>
               <% unless current_user_requests(user.id) %>
                 <%= link_to 'accept', user_accept_path(user), method: :post, class: 'invite-btn' %>
                 <%= link_to 'reject', user_reject_path(user), method: :post, class: 'invite-btn' %>
               <% end %>
+            <% else %>
+              <span class="profile-link">Friend</span>
             <% end %>
           <% else %>
             <%= link_to 'invite to friendship', user_invite_path(user), class: 'invite-btn', method: :post%>

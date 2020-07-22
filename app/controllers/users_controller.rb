@@ -24,6 +24,7 @@ class UsersController < ApplicationController
     request = FriendRequest.find_by(user_id: params[:user_id], friend_id: current_user.id)
     request.confirmed = true
     request.save
+    FriendRequest.create(user_id: current_user.id, friend_id: params[:user_id], confirmed: true)
     redirect_to user_path(current_user), notice: 'Invitation accepted successfully'
   end
 
