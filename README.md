@@ -30,8 +30,6 @@ For asking someone to be your friend, or even see their posts, you need to log i
 
 ![User's show page](./docs/user_show.png)
 
-### Users' index - see all users. You can add them if you want - or break up too, your treat.
-![Show all users](.docs/show_all_users.png)
 
 ## Validations
 
