@@ -14,7 +14,7 @@ class User < ApplicationRecord
   has_many :friendships, through: :confirmed_friendships
 
   has_many :pending_friendships, -> { where confirmed: false}, class_name: 'Friendship', foreign_key:'user_id'
-  has_many :pending_friends, through: :pending_friendships, source: :friendship
+  has_many :pending_friends, through: :pending_friendships, source: :friend
 
   has_many :inverse_friendships, -> { where confirmed: false}, class_name: 'Friendship', foreign_key: 'friend_id'
   has_many :friend_requests, through: :inverse_friendships
@@ -26,6 +26,6 @@ class User < ApplicationRecord
   end
 
   def friend?(user)
-    friends.include?(user)
+    confirmed_friendships.include?(user)
   end
 end
