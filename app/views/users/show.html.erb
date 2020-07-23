@@ -1,18 +1,18 @@
-<section class="user-section">
+<div class="col-sm-7">
   <h3><%= "#{@user.name}" %></h3>
 	  
-	  <p><strong>Friends:</strong></p>
+	 <p><strong>Friends:</strong></p>
 
-	  <ol>
+	  <ul class='list-unstyled row g-3'>
 	    <% @user.friends.each do |friend| %>
-	      <li>
+	      <li class="col-sm-7 mt-1">
 	        <%= friend.name %>
 	        <% if @user == current_user %>
-	          <%= link_to 'Unfriend', friendships_destroy_path(friendship_id: Friendship.find_request(@user.id, friend.id))  %>
-	        <% end %>
-	      </li>
+	          <%= link_to 'Unfriend', friendships_destroy_path(friendship_id: Friendship.find_request(@user.id, friend.id)), class: 'btn btn-danger btn-sm'  %>
+                <% end %>
+              </li><br>
 	    <% end %>
-	  </ol>
+	  </ul>
 
 	  
 	  <p><strong>Friend Requests:</strong></p>
@@ -21,17 +21,18 @@
 	    <% @user.pending_friendships.each do |friendship| %>
 	      <li>
 	        <%= User.find(friendship.user_id).name %>
-	        <%= link_to 'Accept Invitation', friendships_update_path(friendship_id: friendship.id) %>
-	        <%= link_to 'Reject Invitation', friendships_destroy_path(friendship_id: friendship.id) %>
+	        <%= link_to 'Accept', friendships_update_path(friendship_id: friendship.id),  class: 'btn btn-success btn-sm'  %>
+	        <%= link_to 'Reject', friendships_destroy_path(friendship_id: friendship.id),  class: 'btn btn-danger btn-sm' %>
 	      </li>
 	    <% end %>
-	  </l></br>
+	  </li><br>
 	  
-	<div class="card col-sm-8">
+	<div class="card col-sm-9">
     <h3>Recent posts:</h3>
     <ul class="posts">
-      <%= render 'shared/user_posts', posts: @posts %>
       <%= render @posts %>
     </ul>
+   </div>
+
 </div>
-</section>
+

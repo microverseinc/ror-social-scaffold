@@ -237,7 +237,6 @@ form {
 
 .users-section {
   width: 100%;
-  margin: 10px;
 
   .users-list li {
     margin-bottom: 16px;
@@ -252,24 +251,6 @@ form {
   }
 }
 
-.user-section {
-  width: 100%;
-  margin-left: 16px;
-
-  h2 {
-    text-transform: capitalize;
-  }
-
-  .timeline {
-    width: 100%;
-
-    h3 {
-      width: 100%;
-    }
-
-    justify-content: start;
-  }
-}
 
 #error_explanation {
   h2 {
