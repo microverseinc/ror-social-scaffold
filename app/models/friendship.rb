@@ -1,7 +1,7 @@
 class Friendship < ApplicationRecord
   belongs_to :user
   belongs_to :friend, class_name: 'User'
-  
+
   def self.reacted?(id1, id2)
     case1 = !Friendship.where(user_id: id1, friend_id: id2).empty?
     case2 = !Friendship.where(user_id: id2, friend_id: id1).empty?
@@ -21,5 +21,5 @@ class Friendship < ApplicationRecord
       Friendship.where(user_id: id1, friend_id: id2, confirmed: true)[0].id
     end
   end
-  
+
 end

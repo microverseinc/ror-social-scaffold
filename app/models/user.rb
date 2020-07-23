@@ -9,10 +9,10 @@ class User < ApplicationRecord
   has_many :posts
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
-  
+
   has_many :friendships
-  has_many :pending_friendships, -> { where confirmed: nil }, class_name: 'Friendship', foreign_key: "friend_id"
-  
+  has_many :pending_friendships, -> { where confirmed: nil }, class_name: 'Friendship', foreign_key: 'friend_id'
+
   def friends
     sent_request = Friendship.where(user_id: id, confirmed: true).pluck(:friend_id)
     received_request = Friendship.where(friend_id: id, confirmed: true).pluck(:user_id)
