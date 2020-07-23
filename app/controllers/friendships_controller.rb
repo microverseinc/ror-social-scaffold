@@ -1,5 +1,4 @@
 class FriendshipsController < ApplicationController
-
   def create
     id1 = params[:ids][:id1]
     id2 = params[:ids][:id2]
