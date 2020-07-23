@@ -1,12 +1,36 @@
 <section class="user-section">
-  <h2><%= "Name: #{@user.name}" %></h2>
-  <%unless current_user.friend?(@user) %>
-  <p>Be friends</p>
-  <% end %>
-  <article class="timeline">
+  <h3><%= "#{@user.name}" %></h3>
+	  
+	  <h4>Friends:</h4>
+
+	  <ol>
+	    <% @user.friends.each do |friend| %>
+	      <li>
+	        <%= friend.name %>
+	        <% if @user == current_user %>
+	          <%= link_to 'Unfriend', friendships_destroy_path(friendship_id: Friendship.find_request(@user.id, friend.id))  %>
+	        <% end %>
+	      </li>
+	    <% end %>
+	  </ol>
+
+	  
+	  <h4>Friend Requests:</h4>
+
+	  <ul>
+	    <% @user.pending_friendships.each do |friendship| %>
+	      <li>
+	        <%= User.find(friendship.user_id).name %>
+	        <%= link_to 'Accept Invitation', friendships_update_path(friendship_id: friendship.id) %>
+	        <%= link_to 'Reject Invitation', friendships_destroy_path(friendship_id: friendship.id) %>
+	      </li>
+	    <% end %>
+	  </l>
+	  
+	<div class="card col-sm-12">
     <h3>Recent posts:</h3>
     <ul class="posts">
-      <%= render @posts %>
+      <%= render 'shared/user_posts', posts: @posts %>
     </ul>
-  </article>
+</div>
 </section>

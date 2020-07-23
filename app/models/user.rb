@@ -9,23 +9,22 @@ class User < ApplicationRecord
   has_many :posts
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
-
-  has_many :confirmed_friendships, -> { where confirmed: true}, class_name: 'Friendship'
-  has_many :friendships, through: :confirmed_friendships
-
-  has_many :pending_friendships, -> { where confirmed: false}, class_name: 'Friendship', foreign_key:'user_id'
-  has_many :pending_friends, through: :pending_friendships, source: :friend
-
-  has_many :inverse_friendships, -> { where confirmed: false}, class_name: 'Friendship', foreign_key: 'friend_id'
-  has_many :friend_requests, through: :inverse_friendships
-
-  def confirm_friend(user)
-    friendship = inverse_friendships.find { |friend| friend.user == user }
-    friendship.confirmed = true
-    friendship.save
+  
+  has_many :friendships
+  has_many :pending_friendships, -> { where confirmed: nil }, class_name: 'Friendship', foreign_key: "friend_id"
+  
+  def friends
+    sent_request = Friendship.where(user_id: id, confirmed: true).pluck(:friend_id)
+    received_request = Friendship.where(friend_id: id, confirmed: true).pluck(:user_id)
+    ids = sent_request + received_request
+    User.where(id: ids)
   end
 
-  def friend?(user)
-    confirmed_friendships.include?(user)
+  def friend_with?(user)
+    Friendship.confirmed_record?(id, user.id)
+  end
+
+  def send_friend_request(user)
+    friendships.create(friend_id: user.id)
   end
 end

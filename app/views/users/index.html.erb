@@ -6,7 +6,9 @@
         <span class="profile-link">
           <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
         </span>
-        <span><%= render 'shared/friendship_status', user: user%></span>
+        <% if signed_in? && !Friendship.reacted?(current_user.id, user.id) && current_user != user %>
+          <td> <%= link_to 'Add Friend', friendships_create_path(ids: {id1: current_user.id, id2: user.id}) %></td>
+		<% end %>
       </li>
     <% end %>
   </ul>

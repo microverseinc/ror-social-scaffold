@@ -1,18 +1,23 @@
 class FriendshipsController < ApplicationController
+  
   def create
-    @friendship = current_user.friendships.build(friend_id: params[:user_id])
-    @friendship.confirmed = 'Request'
+    id1 = params[:ids][:id1]
+    id2 = params[:ids][:id2]
+    @friendship = Friendship.new(user_id: id1, friend_id: id2)
+    @friendship.save
+    redirect_to users_path
+  end
 
-    @inverse = Friendship.new
-    @inverse.user_id = params[user_id]
-    @inverse.friend_id = current_user.id
-    @inverse.confirmed = 'Pending'
+  def destroy
+    friendship = Friendship.find(params[:friendship_id])
+    friendship.destroy
+    redirect_to user_path(current_user.id)
+  end
 
-    if @friendship.save && @inverse.save
-      redirect_to users_path, notice: 'Friend request successful'
-    else
-      redirect_to users_path, alert: 'Friend request not accepted'
-    end
-    
+  def update
+    friendship = Friendship.find(params[:friendship_id])
+    p current_user
+    friendship.update(confirmed: true)
+    redirect_to user_path(friendship.friend_id)
   end
 end
