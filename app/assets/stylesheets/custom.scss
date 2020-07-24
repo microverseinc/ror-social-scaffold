@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap");
 
-$primary-color-dark: #689f38;
+$primary-color-dark: #007bff;
 $primary-color: #8bc34a;
 $primary-color-light: #dcedc8;
 $primary-color-text: #212121;
@@ -211,15 +211,10 @@ form {
   .post-comments-section {
     margin: 5px;
     width: 90%;
-    margin-left: 10%;
 
     .post-comments {
       position: relative;
       display: flex;
-      border-bottom: 1px solid $divider-color;
-      border-radius: 3px;
-      margin-bottom: 2px;
-      padding: 10px;
 
       p {
         font-size: 0.8em;
@@ -227,9 +222,9 @@ form {
       }
 
       span {
-        position: absolute;
         right: 3px;
-        font-size: 0.6em;
+        font-size: 0.7rem;
+        padding: 0.4rem;
       }
     }
   }

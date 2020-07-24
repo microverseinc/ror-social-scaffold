@@ -13,6 +13,7 @@
       <%= link_to 'STAY IN TOUCH', root_path, class: "nav-item navbar-text nav-link text-decoration-none" %>
       <%= link_to 'Timeline', posts_path, class: "nav-item navbar-text nav-link text-decoration-none" %>
       <%= link_to 'All users', users_path, class: "nav-item navbar-text nav-link text-decoration-none" %>
+      <%= link_to 'Profile', current_user, class: "nav-item navbar-text nav-link text-decoration-none" %>
       <% if current_user %>
         <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: "nav-item navbar-text nav-link text-decoration-none" %>
       <% else %>

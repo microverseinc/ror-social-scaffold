@@ -27,3 +27,11 @@
 /config/master.key
 .DS_Store
 *.swp
+.idea/.generators
+.idea/.rakeTasks
+.idea/dictionaries/edie.xml
+.idea/inspectionProfiles/Project_Default.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/stay-in-touch.iml
+.idea/vcs.xml
