@@ -33,5 +33,4 @@ class FriendshipsController < ApplicationController
       redirect_to root_path, alert: @friendship.errors.full_messages.join('. ').to_s
     end
   end
-
 end
