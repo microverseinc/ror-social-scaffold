@@ -6,7 +6,9 @@
           <%= link_to 'See Profile',  user_path(user), class: 'btn btn-outline-success btn-sm' %>
         <% if signed_in? && !Friendship.reacted?(current_user.id, user.id) && current_user != user %>
           <td> <%= link_to 'Add Friend', friendships_create_path(ids: {id1: current_user.id, id2: user.id}), class: 'btn btn-success btn-sm' %></td>
-		<% end %>
+        <% elsif signed_in? && !Friendship.confirmed_record?(current_user.id, user.id) && current_user != user %>
+        <td> <%= link_to 'Invitation pending',users_path, class: 'btn btn-success btn-sm' %></td>
+        <% end %>
       </li>
     <% end %>
   </ul>
