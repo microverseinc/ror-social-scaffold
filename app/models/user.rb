@@ -25,8 +25,9 @@ class User < ApplicationRecord
     friends.include?(user)
   end
 
-  def friends_post(current_user)
-    Post.where(user: friends).or(Post.where(user: current_user))
+  def friends_post
+    Post.where(user: (self.friends + self))
+    # This will produce SQL query with IN. Something like: select * from posts where user_id IN (1,45,874,43);
   end
 
   devise :database_authenticatable, :registerable,
