@@ -6,7 +6,7 @@ class FriendshipsController < ApplicationController
   def create
     @friendship = current_user.friendships.new
     @friendship.user_id = current_user.id
-    @friendship.friend_id = friendship_params
+    @friendship.friend_id = params[:format]
     @friendship.status = false
     if @friendship.save
       redirect_to users_path, notice: 'Friend request sent.'
