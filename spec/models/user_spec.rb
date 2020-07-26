@@ -90,6 +90,16 @@ RSpec.describe User, type: :model do
 
       expect(frodo.friend?(bilbo)).to eql(true)
     end
+
+    it 'returns post if post was written by user or a friend' do
+      frodo
+      gandalf
+      bilbo
+      friendship_1
+      bilbo_post = bilbo.posts.create(content: 'Test')
+
+      expect(frodo.friends_post(bilbo).first.content).to include(bilbo_post.content)
+    end
   end
   # rubocop:enable Metrics/BlockLength
 end
