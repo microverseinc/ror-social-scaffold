@@ -10,15 +10,15 @@ class FriendshipsController < ApplicationController
   def destroy
     friendship = Friendship.find(params[:friendship_id])
     friendship.destroy
-    flash[:notice] = 'Unfriended successfully'
-    redirect_to user_path(current_user.id)
+    flash[:notice] = 'Friendship Canceled'
+    redirect_to users_path
   end
 
   def update
     friendship = Friendship.find(params[:friendship_id])
     p current_user
     friendship.update(confirmed: true)
-    flash[:notice] = 'Request Accepted'
+    flash[:notice] = 'Friendship Accepted'
     redirect_to user_path(friendship.friend_id)
   end
 end
