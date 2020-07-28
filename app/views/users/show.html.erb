@@ -17,16 +17,20 @@
 	  
 	  <p><strong>Friend Requests:</strong></p>
 
-	  <ul>
-	      <% @user.pending_friendships.each do |friendship| %>
+	     
+		 
+		 <ul>
+	      <% current_user.pending_friendships.each do |friendship| %>
 	        <li>
 	          <%= User.find(friendship.user_id).name %>
 	          <%= link_to 'Accept', friendships_update_path(friendship_id: friendship.id),  class: 'btn btn-success btn-sm'  %>
 	          <%= link_to 'Reject', friendships_destroy_path(friendship_id: friendship.id),  class: 'btn btn-danger btn-sm' %>
 	        </li>
 	      <% end %>
-	  </ul>
-	  <br>
+	     </ul>
+	
+	<br>
+	
 	<div class="card col-sm-9">
 	  <h3>Recent posts:</h3>
        <% if signed_in? && Friendship.reacted?(current_user.id, @user.id) %>
