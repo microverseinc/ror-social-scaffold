@@ -41,4 +41,9 @@ class User < ApplicationRecord
   def friends_post(current_user)
     Post.where(user: friends).or(Post.where(user: current_user))
   end
+
+  def latest_friends
+    friends_ids = friendships.limit(5).order(created_at: :desc).where(status: true).pluck(:friend_id)
+    User.find(friends_ids)
+  end
 end

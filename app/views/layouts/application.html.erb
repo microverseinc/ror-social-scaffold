@@ -2,11 +2,12 @@
 <html>
 
 <head>
-  <title>RorSocialScaffold</title>
+  <title>Stay in Touch</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <script src="https://kit.fontawesome.com/17f821a36f.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -20,13 +21,14 @@
         <%= menu_link_to 'All users', users_path, class: "nav-link" %>
       </div>
       <% if user_signed_in? %>
-      <div class="menu-item">
-        <%= link_to current_user.name, user_path(current_user) %>
+      <div class="menu-item-right">
+        <%= image_tag("usuario.png", size: "40x40", alt: "User Placeholder", class: "menu-avatar")%>
+        <%= link_to current_user.name, user_path(current_user), class: "user-name " %>
       </div>
       <% end %>
     </div>
     <% if current_user %>
-    <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: "nav-link" %>
+    <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "nav-link" %>
     <% else %>
     <%= link_to 'Sign in', user_session_path, class: "nav-link" %>
     <% end %>
