@@ -4,7 +4,7 @@
 	 <p><strong>Friends:</strong></p>
 
 	  <ul class='list-unstyled row g-3'>
-	    <% @user.friends.each do |friend| %>
+	    <% (@user.friends + @user.users).each do |friend| %>
 	      <li class="col-sm-7 mt-1">
 	        <%= friend.name %>
 	        <% if @user == current_user %>
