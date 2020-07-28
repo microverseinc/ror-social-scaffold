@@ -21,7 +21,7 @@ class PostsController < ApplicationController
 
   def timeline_posts
     @user_posts = current_user.posts.ordered_by_most_recent
-    @friend_posts = Post.ordered_by_most_recent.where(user_id: current_user.friends.select(:friend_id))
+    @friend_posts = Post.ordered_by_most_recent.where(user_id: current_user.friends)
     @timeline_posts = @user_posts + @friend_posts
   end
 

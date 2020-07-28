@@ -10,7 +10,6 @@
           <% user.pending_friendships.each do |friendship| %>
             <% if current_user %>
               <%= link_to 'Cancel Request', friendships_destroy_path(friendship_id: friendship.id),  class: 'btn btn-danger btn-sm' %>
-
               <% end %>
           <% end %>
         <% end %>
@@ -19,3 +18,5 @@
   </ul>
 </section>
 
+	   
+	  

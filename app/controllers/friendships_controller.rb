@@ -4,14 +4,15 @@ class FriendshipsController < ApplicationController
     id2 = params[:ids][:id2]
     @friendship = Friendship.new(user_id: id1, friend_id: id2)
     @friendship.save
-    redirect_to users_path
+    flash[:notice] = 'Friendship Created'
+    redirect_to user_path(current_user.id)
   end
 
   def destroy
     friendship = Friendship.find(params[:friendship_id])
     friendship.destroy
     flash[:notice] = 'Friendship Canceled'
-    redirect_to users_path
+    redirect_to user_path(current_user.id) 
   end
 
   def update
