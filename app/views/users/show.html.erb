@@ -1,5 +1,8 @@
-<section class="user-section">
-  <h2><%= "Name: #{@user.name}" %></h2>
+<section class="user-section show-user">
+  <%= image_tag("usuario.png", size: "60x60", alt: "placeholder image", class: "avatar-user-show")%>
+  <h2 class="h2-user"><%= "#{@user.name}"%></h2>
+  <%= show_friend_request(@user) %>
+
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
