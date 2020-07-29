@@ -1,10 +1,15 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
 
-$primary-color-dark: #689f38;
-$primary-color: #8bc34a;
-$primary-color-light: #dcedc8;
-$primary-color-text: #212121;
+$primary-color-dark: #1a535c;
+$primary-color: #4ecdc4;
+$primary-color-light: #f7fff7;
+$primary-color-text: #1a535c;
 $divider-color: #bdbdbd;
+$highlight-color: #ffe66d;
+$mid-bg-color: #fefffe;
 
 * {
   margin: 0;
@@ -14,9 +19,11 @@ $divider-color: #bdbdbd;
 }
 
 body {
-  background: #fff;
+  background: $primary-color-light;
   position: relative;
-  font-family: "Roboto", sans-serif;
+  //font-family: 'Overpass Mono', monospace;
+  //font-family: 'Space Mono', monospace;
+  font-family: 'Nunito', sans-serif;
   font-weight: 400;
 }
 
@@ -38,33 +45,49 @@ a {
 .nav {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 16px 48px;
-  background-color: $primary-color-dark;
-  color: $primary-color-light;
-
-  a {
-    color: $primary-color-light;
-    text-transform: uppercase;
-    font-weight: 900;
-  }
-
-  .active a {
-    color: #fff;
-  }
-
-  a:hover {
-    color: #fff;
-  }
+  background-color: $mid-bg-color;
+  color: $primary-color-dark;
 
   .menu {
     width: 80%;
-    justify-content: space-between;
+    display: flex;
+    align-items: center;
+
+    .menu-avatar {
+      margin-right: 20px;
+    }
+
+    .menu-item-right {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-grow: 1;
+      margin: 0 15px;
+    }
 
     .menu-item {
       float: left;
       margin: 0 15px;
+
+      .active {
+        a {
+          color: #4ecdc4;
+        }
+      }
     }
   }
+}
+
+.nav .nav-link {
+  color: $primary-color-dark;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.nav .nav-link:hover {
+  color: $highlight-color;
 }
 
 .main {
@@ -72,6 +95,11 @@ a {
   flex-direction: column;
   align-items: center;
   padding: 16px;
+}
+
+.user-name {
+  color: #ff6b6b;
+  text-transform: capitalize;
 }
 
 .notice,
@@ -96,44 +124,6 @@ a {
 .errors {
   font-size: 10px;
   color: red;
-}
-
-.new_post,
-.new_comment {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-
-  label {
-    display: none;
-  }
-
-  .form-control {
-    width: 100%;
-    border: 1px solid $divider-color;
-    height: 64px;
-    padding: 8px;
-    margin: 4px 0;
-    border-radius: 4px;
-  }
-
-  .field_with_errors {
-    width: 100%;
-
-    .form-control {
-      border: 1px solid #f00;
-    }
-  }
-
-  .btn-primary {
-    width: 100%;
-  }
-
-  .btn-secondary {
-    width: 30%;
-    margin-left: 70%;
-  }
 }
 
 form {
@@ -172,15 +162,18 @@ form {
     width: 50%;
     border: none;
     border-radius: 4px;
-    background-color: $primary-color-dark;
+    background-color: $primary-color;
+    border-bottom: 2px solid $primary-color-dark;
     color: $primary-color-light;
-    text-transform: uppercase;
-    font-weight: 900;
+    font-weight: 600;
+    //text-transform: uppercase;
   }
 
   input[type="submit"]:hover {
-    background-color: $primary-color;
-    color: #fff;
+    background-color: $primary-color-dark;
+    border-bottom: 2px solid $primary-color;
+    color: $primary-color-light;
+    cursor: pointer;
   }
 
   .actions.reset {
@@ -188,6 +181,21 @@ form {
       width: 100%;
     }
   }
+
+  #error_explanation {
+    h2 {
+      color: $primary-color-text;
+      font-size: 1em;
+    }
+
+    ul {
+      color: #f00;
+    }
+  }
+}
+
+.avatar-user-show {
+  margin: 20px;
 }
 
 .title {
@@ -196,15 +204,88 @@ form {
   text-transform: capitalize;
 }
 
-.timeline {
+.new_post,
+.new_comment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
+  align-self: center;
+
+  .label-no-display {
+    display: none;
+  }
+
+  .form-control {
+    width: 100%;
+    border: 1px solid $divider-color;
+    height: 64px;
+    padding: 8px;
+    margin: 4px 0;
+    border-radius: 4px;
+  }
+
+  .field_with_errors {
+    width: 100%;
+
+    .form-control {
+      border: 1px solid #f00;
+    }
+  }
+
+  .btn-primary {
+    //width: 100%;
+    font-size: 0.8em;
+  }
+
+  .btn-secondary {
+    width: 30%;
+    margin-left: 70%;
+  }
+}
+
+.fa-thumbs-up:hover {
+  color: $primary-color-dark;
+}
+
+.fa-thumbs-down {
+  color: #ff6b6b !important;
+}
+
+.fa-thumbs-down:hover {
+  color: #e03d3d !important;
+}
+
+.likes-comments-container {
+  margin-top: 10px;
+  font-size: 1em;
+}
+
+.likes-comments {
+  margin-right: 5px;
+  color: $primary-color;
+}
+
+.counter {
+  font-size: 0.7em;
+  color: $primary-color-dark;
+}
+
+.comment-counter {
+  margin-right: 40px;
+}
+
+.timeline {
   margin: 16px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: $primary-color-light;
+  border-radius: 10px;
 
   h3 {
     margin: 8px 0;
+    color: $primary-color-text;
   }
 
   .posts {
@@ -216,13 +297,18 @@ form {
     margin: 16px 0;
     display: flex;
     flex-direction: column;
+    background-color: $primary-color-light;
+    padding: 30px;
+    border-radius: 10px;
   }
 
   .post-attribution {
     float: left;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
 
     .post-author {
-      margin: 0 0 8px 0;
       color: $primary-color-dark;
       text-transform: capitalize;
     }
@@ -231,16 +317,16 @@ form {
   .post-liking {
     float: right;
 
-    a {
+    .like-link {
       color: $primary-color-dark;
       font-weight: bold;
       font-size: 0.9em;
       margin: 0 4px;
     }
+  }
 
-    .post-date {
-      font-size: 0.6em;
-    }
+  .post-date {
+    font-size: 0.7em;
   }
 
   .post-content {
@@ -250,16 +336,15 @@ form {
 
   .post-comments-section {
     margin: 5px;
-    width: 90%;
-    margin-left: 10%;
 
     .post-comments {
       position: relative;
       display: flex;
       border-bottom: 1px solid $divider-color;
       border-radius: 3px;
-      margin-bottom: 2px;
+      margin-bottom: 10px;
       padding: 10px;
+      background-color: $highlight-color;
 
       p {
         font-size: 0.8em;
@@ -275,33 +360,137 @@ form {
   }
 }
 
+.timeline-bg-color {
+  background-color: $mid-bg-color;
+}
+
+.user-btns-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+}
+
+.latest-friends-section {
+  width: 100%;
+  margin: 10px;
+}
+
+.h3-latest-friends {
+  color: $primary-color-text;
+  width: 50%;
+  background-color: $mid-bg-color;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+}
+
+.timeline-top-section {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  width: 100%;
+}
+
 .users-section {
   width: 100%;
   margin: 10px;
 
+  .users-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .users-list li {
-    margin-bottom: 16px;
+    margin-bottom: 2px;
     text-transform: capitalize;
     font-size: 1.2em;
   }
+}
 
-  .profile-link {
-    font-size: 0.8em;
-    margin: 0 0 8px 0;
-    color: $primary-color-dark;
+.profile-link {
+  font-size: 0.8em;
+  margin: 0 0 8px 0;
+  padding: 5px 15px;
+  border-radius: 3px;
+  color: $primary-color-light;
+  background-color: $primary-color;
+  border-bottom: 2px solid $primary-color-dark;
+}
+
+.profile-link:hover {
+  background-color: $primary-color-dark;
+  border-bottom: 2px solid $primary-color;
+}
+
+.profile-link-accept {
+  padding: 3px 8px;
+  margin-right: 5px;
+}
+
+.profile-link-reject {
+  padding: 3px 10px;
+  background-color: #ff6b6b;
+}
+
+.profile-link-reject:hover {
+  background-color: #e03d3d;
+  border-bottom: 2px solid #ff6b6b;
+}
+
+.fa-user-friends {
+  color: $primary-color-text;
+}
+
+.request-text {
+  color: $primary-color-text;
+  font-size: 14px;
+  text-align: center;
+}
+
+.accept-container {
+  text-align: center;
+
+  .accept-text {
+    font-size: 15px;
+    color: $primary-color-text;
   }
+}
+
+.all-users {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+}
+
+.latest-friends {
+  grid-template-columns: 1fr 1fr;
+}
+
+.show-user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .user-section {
   width: 100%;
-  margin-left: 16px;
+  background-color: $mid-bg-color;
+  border-radius: 5px;
+  padding: 10px;
 
-  h2 {
+  .h2-user {
     text-transform: capitalize;
+    color: $primary-color-text;
+    //display: flex;
+    //justify-content: center;
+    //margin-bottom: 15px;
+    //padding-top: 20px;
   }
 
   .timeline {
-    width: 100%;
+    width: 90%;
+    padding: 30px;
 
     h3 {
       width: 100%;
@@ -311,15 +500,8 @@ form {
   }
 }
 
-#error_explanation {
-  h2 {
-    color: $primary-color-text;
-    font-size: 1em;
-  }
-
-  ul {
-    color: #f00;
-  }
+.hidden {
+  display: none;
 }
 
 @media only screen and (min-width: 480px) {
