@@ -6,6 +6,17 @@
         <span class="profile-link">
           <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
         </span>
+          <% if user != current_user  %>
+            <% if current_user.is_friend?(user) %>
+              <span>You're friends</span>
+            <% elsif current_user.outgoing_requests.include?(user) %>
+              <span> Pending request </span>
+            <% elsif current_user.incoming_requests.include?(user) %>
+              <span><%= link_to 'Confirm friend', recieverequest_path(user), method: 'post' %></span>
+            <% elsif !current_user.is_friend?(user) %>
+              <span><%= link_to 'Add friend', sendrequest_path(user.id), method: 'post' %></span>
+            <% end %>  
+          <% end %>      
       </li>
     <% end %>
   </ul>
