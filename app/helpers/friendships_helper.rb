@@ -1,8 +1,10 @@
 module FriendshipsHelper
   def friends
-    friend_id = Friendship.where(user_id: id, confirmed: true).pluck(:friend_id)
-    user_id = Friendship.where(friend_id: id, confirmed: true).pluck(:user_id)
-    ids = friend_id + user_id
-    User.where(id: ids)
+    @user.friends + @user.users
   end
+  
+  def adding_friend
+    signed_in? && !Friendship.reacted?(current_user.id, user.id) && current_user != user
+  end
+  
 end
