@@ -82,6 +82,6 @@ RSpec.describe 'Friendship Features', type: :feature do
     fill_in 'Password', with: user1.password
     click_button 'Log in'
     click_link user1.name.to_s
-    expect(page).to have_content("#{user2.name}")
+    expect(page).to have_content(user2.name.to_s)
   end
 end
