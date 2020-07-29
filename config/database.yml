@@ -78,8 +78,7 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-production:
-  <<: *default
-  database: ror_social_scaffold_production
-  username: ror_social_scaffold
-  password: <%= ENV['ROR_SOCIAL_SCAFFOLD_DATABASE_PASSWORD'] %>
+ production:
+   <<: *default
+   adapter: postgresql
+   database: db/production.sqlite3
