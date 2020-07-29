@@ -25,7 +25,7 @@ RSpec.describe 'Friendship Features', type: :feature do
     fill_in 'Password', with: user1.password
     click_button 'Log in'
     visit users_path
-    click_link 'See Profile',match: :first
+    click_link 'See Profile', match: :first
     expect(page).to have_content('Recent posts')
   end
   scenario 'user can cancel sent request' do
@@ -49,7 +49,7 @@ RSpec.describe 'Friendship Features', type: :feature do
     fill_in 'Email', with: user2.email
     fill_in 'Password', with: user2.password
     click_button 'Log in'
-    click_link "#{user2.name}"
+    click_link user2.name.to_s
     click_link 'Accept'
     expect(page).to have_content('Friendship Accepted')
   end
@@ -61,7 +61,7 @@ RSpec.describe 'Friendship Features', type: :feature do
     fill_in 'Email', with: user2.email
     fill_in 'Password', with: user2.password
     click_button 'Log in'
-    click_link "#{user2.name}"
+    click_link user2.name.to_s
     click_link 'Accept'
     click_link 'Un-friend'
     expect(page).to have_content('Friendship Canceled')
@@ -74,15 +74,14 @@ RSpec.describe 'Friendship Features', type: :feature do
     fill_in 'Email', with: user2.email
     fill_in 'Password', with: user2.password
     click_button 'Log in'
-    click_link "#{user2.name}"
+    click_link user2.name.to_s
     click_link 'Accept'
     click_link 'Sign out'
     visit new_user_session_path
     fill_in 'Email', with: user1.email
     fill_in 'Password', with: user1.password
     click_button 'Log in'
-    click_link "#{user1.name}"
+    click_link user1.name.to_s
     expect(page).to have_content("#{user2.name}")
   end
-
 end

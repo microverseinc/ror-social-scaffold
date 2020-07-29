@@ -12,7 +12,7 @@ class FriendshipsController < ApplicationController
     friendship = Friendship.find(params[:friendship_id])
     friendship.destroy
     flash[:notice] = 'Friendship Canceled'
-    redirect_to user_path(current_user.id) 
+    redirect_to user_path(current_user.id)
   end
 
   def update
