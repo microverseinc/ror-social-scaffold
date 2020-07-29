@@ -57,13 +57,19 @@ Open `http://localhost:3000/` in your browser.
 
 > Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
 
-### Deployment
-
-TBA
-
 ## Authors
 
-TBA
+👤 **Hemant soni**
+
+- Github: [@githubhandle](https://github.com/hemant-soni-vst-au4)
+- Twitter: [@twitterhandle](https://twitter.com/abdelperez11)
+- Linkedin: [linkedin](https://www.linkedin.com/in/hemant-soni-97427b193/)
+
+👤 **Luis Mauricio Fow Aranibar **
+
+- Github: [@githubhandle](https://github.com/thedekerone)
+- Twitter: [@twitterhandle](https://twitter.com/mauricio_fow)
+- Linkedin: [linkedin](https://www.linkedin.com/in/mauricio-fow-aranibar-b2173514b/)
 
 ## 🤝 Contributing
 
