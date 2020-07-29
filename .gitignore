@@ -35,3 +35,6 @@
 .idea/modules.xml
 .idea/stay-in-touch.iml
 .idea/vcs.xml
+.idea/workspace.xml
+.generators
+.rakeTasks

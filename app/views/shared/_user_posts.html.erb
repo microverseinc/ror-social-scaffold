@@ -1,5 +1,0 @@
-<% if signed_in? && Friendship.reacted?(current_user.id, @user.id) %>
-  <ul class="posts"><%= render @posts %></ul>
-<% elsif signed_in? && @user == current_user %>
-  <ul class="posts"><%= render @user.posts %></ul>
-<% end %>
