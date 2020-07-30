@@ -12,7 +12,7 @@ class FriendshipsController < ApplicationController
     friendship = Friendship.find(params[:friendship_id])
     user = friendship.user_id
     friend = friendship.friend_id
-    if ( friendship2 = Friendship.find_by(user_id: friend, friend_id: user) )
+    if (friendship2 = Friendship.find_by(user_id: friend, friend_id: user))
       friendship2.destroy
     end
     friendship.destroy
