@@ -3,3 +3,467 @@
   [1m[36mFriendship Load (0.6ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" LIMIT $1[0m  [["LIMIT", 11]]
   [1m[36mFriendship Load (1.6ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" LIMIT $1[0m  [["LIMIT", 11]]
   [1m[36mFriendship Load (1.4ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" LIMIT $1[0m  [["LIMIT", 11]]
+Started GET "/users" for ::1 at 2020-07-30 13:10:50 +0300
+  [1m[35m (44.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+Completed 401 Unauthorized in 20ms (ActiveRecord: 0.0ms | Allocations: 3643)
+
+
+Started GET "/users/sign_in" for ::1 at 2020-07-30 13:10:51 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 2.6ms | Allocations: 598)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 73.6ms | Allocations: 5347)
+Completed 200 OK in 347ms (Views: 291.6ms | ActiveRecord: 31.1ms | Allocations: 38861)
+
+
+Started POST "/users/sign_in" for ::1 at 2020-07-30 13:10:59 +0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"vp0eZy/KaO6YaLMdBCRzAGOS7XmGaKcSV9pe61mqjfpdkMALjCLE+avP20L+5Oyg1shQ7f6WkoJFffX1U9iTKw==", "user"=>{"email"=>"joe@test.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (8.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "joe@test.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/users
+Completed 302 Found in 232ms (ActiveRecord: 9.1ms | Allocations: 5768)
+
+
+Started GET "/users" for ::1 at 2020-07-30 13:10:59 +0300
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/shared/_friendship_status.html.erb:1
+  [1m[36mFriendship Exists? (6.8ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 LIMIT $3[0m  [["user_id", 1], ["friend_id", 1], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:6:in `reacted?'
+  [1m[36mCACHE Friendship Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 LIMIT $3[0m  [["user_id", 1], ["friend_id", 1], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:7:in `reacted?'
+  [1m[36mFriendship Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 AND "friendships"."confirmed" = $3 LIMIT $4[0m  [["user_id", 1], ["friend_id", 1], ["confirmed", true], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:12:in `confirmed_record?'
+  [1m[36mCACHE Friendship Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 AND "friendships"."confirmed" = $3 LIMIT $4[0m  [["user_id", 1], ["friend_id", 1], ["confirmed", true], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:13:in `confirmed_record?'
+  [1m[36mCACHE Friendship Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 AND "friendships"."confirmed" = $3 LIMIT $4[0m  [["user_id", 1], ["friend_id", 1], ["confirmed", true], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:12:in `confirmed_record?'
+  [1m[36mCACHE Friendship Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 AND "friendships"."confirmed" = $3 LIMIT $4[0m  [["user_id", 1], ["friend_id", 1], ["confirmed", true], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:13:in `confirmed_record?'
+  [1m[36mFriendship Load (0.6ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" WHERE "friendships"."friend_id" = $1 AND "friendships"."confirmed" = $2[0m  [["friend_id", 1], ["confirmed", false]]
+  ↳ app/views/shared/_friendship_status.html.erb:16
+  [1m[36mFriendship Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 LIMIT $3[0m  [["user_id", 1], ["friend_id", 2], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:6:in `reacted?'
+  [1m[36mFriendship Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 LIMIT $3[0m  [["user_id", 2], ["friend_id", 1], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:7:in `reacted?'
+  [1m[36mFriendship Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 LIMIT $3[0m  [["user_id", 1], ["friend_id", 3], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:6:in `reacted?'
+  [1m[36mFriendship Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 LIMIT $3[0m  [["user_id", 3], ["friend_id", 1], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:7:in `reacted?'
+  Rendered shared/_friendship_status.html.erb (Duration: 84.5ms | Allocations: 15993)
+  Rendered users/index.html.erb within layouts/application (Duration: 85.9ms | Allocations: 16293)
+Completed 200 OK in 101ms (Views: 84.0ms | ActiveRecord: 11.6ms | Allocations: 23022)
+
+
+Started GET "/users/2" for ::1 at 2020-07-30 13:11:03 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (7.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "friendships"."confirmed" = $2[0m  [["user_id", 2], ["confirmed", true]]
+  ↳ app/helpers/friendships_helper.rb:3:in `friends'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."user_id" WHERE "friendships"."friend_id" = $1 AND "friendships"."confirmed" = $2[0m  [["friend_id", 2], ["confirmed", true]]
+  ↳ app/helpers/friendships_helper.rb:3:in `friends'
+  Rendered shared/_unfriend.html.erb (Duration: 58.6ms | Allocations: 7116)
+  [1m[36mFriendship Load (5.9ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" WHERE "friendships"."friend_id" = $1 AND "friendships"."confirmed" = $2[0m  [["friend_id", 1], ["confirmed", false]]
+  ↳ app/views/users/show.html.erb:8
+  [1m[36mFriendship Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 LIMIT $3[0m  [["user_id", 1], ["friend_id", 2], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:6:in `reacted?'
+  [1m[36mFriendship Exists? (2.4ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 LIMIT $3[0m  [["user_id", 2], ["friend_id", 1], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:7:in `reacted?'
+  Rendered users/show.html.erb within layouts/application (Duration: 89.3ms | Allocations: 10049)
+Completed 200 OK in 171ms (Views: 93.6ms | ActiveRecord: 19.3ms | Allocations: 20290)
+
+
+Started GET "/users/3" for ::1 at 2020-07-30 13:11:05 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "friendships"."confirmed" = $2[0m  [["user_id", 3], ["confirmed", true]]
+  ↳ app/helpers/friendships_helper.rb:3:in `friends'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."user_id" WHERE "friendships"."friend_id" = $1 AND "friendships"."confirmed" = $2[0m  [["friend_id", 3], ["confirmed", true]]
+  ↳ app/helpers/friendships_helper.rb:3:in `friends'
+  Rendered shared/_unfriend.html.erb (Duration: 27.7ms | Allocations: 2271)
+  [1m[36mFriendship Load (0.5ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" WHERE "friendships"."friend_id" = $1 AND "friendships"."confirmed" = $2[0m  [["friend_id", 1], ["confirmed", false]]
+  ↳ app/views/users/show.html.erb:8
+  [1m[36mFriendship Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 LIMIT $3[0m  [["user_id", 1], ["friend_id", 3], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:6:in `reacted?'
+  [1m[36mFriendship Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 LIMIT $3[0m  [["user_id", 3], ["friend_id", 1], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:7:in `reacted?'
+  Rendered users/show.html.erb within layouts/application (Duration: 51.6ms | Allocations: 4822)
+Completed 200 OK in 86ms (Views: 56.6ms | ActiveRecord: 5.4ms | Allocations: 11810)
+
+
+Started GET "/users/2" for ::1 at 2020-07-30 13:11:08 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (7.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (6.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "friendships"."confirmed" = $2[0m  [["user_id", 2], ["confirmed", true]]
+  ↳ app/helpers/friendships_helper.rb:3:in `friends'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."user_id" WHERE "friendships"."friend_id" = $1 AND "friendships"."confirmed" = $2[0m  [["friend_id", 2], ["confirmed", true]]
+  ↳ app/helpers/friendships_helper.rb:3:in `friends'
+  Rendered shared/_unfriend.html.erb (Duration: 10.9ms | Allocations: 2272)
+  [1m[36mFriendship Load (1.5ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" WHERE "friendships"."friend_id" = $1 AND "friendships"."confirmed" = $2[0m  [["friend_id", 1], ["confirmed", false]]
+  ↳ app/views/users/show.html.erb:8
+  [1m[36mFriendship Exists? (3.8ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 LIMIT $3[0m  [["user_id", 1], ["friend_id", 2], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:6:in `reacted?'
+  [1m[36mFriendship Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 LIMIT $3[0m  [["user_id", 2], ["friend_id", 1], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:7:in `reacted?'
+  Rendered users/show.html.erb within layouts/application (Duration: 29.3ms | Allocations: 4821)
+Completed 200 OK in 65ms (Views: 28.0ms | ActiveRecord: 21.5ms | Allocations: 11760)
+
+
+Started GET "/friendships/create?ids%5Bid1%5D=1&ids%5Bid2%5D=2" for ::1 at 2020-07-30 13:11:11 +0300
+Processing by FriendshipsController#create as HTML
+  Parameters: {"ids"=>{"id1"=>"1", "id2"=>"2"}}
+  [1m[35m (6.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/friendships_controller.rb:6:in `create'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/friendships_controller.rb:6:in `create'
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/friendships_controller.rb:6:in `create'
+  [1m[36mFriendship Create (64.2ms)[0m  [1m[32mINSERT INTO "friendships" ("user_id", "friend_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 1], ["friend_id", 2], ["created_at", "2020-07-30 10:11:11.534569"], ["updated_at", "2020-07-30 10:11:11.534569"]]
+  ↳ app/controllers/friendships_controller.rb:6:in `create'
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/friendships_controller.rb:6:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/friendships_controller.rb:8:in `create'
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 113ms (ActiveRecord: 81.2ms | Allocations: 9957)
+
+
+Started GET "/users/1" for ::1 at 2020-07-30 13:11:11 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "friendships"."confirmed" = $2[0m  [["user_id", 1], ["confirmed", true]]
+  ↳ app/helpers/friendships_helper.rb:3:in `friends'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."user_id" WHERE "friendships"."friend_id" = $1 AND "friendships"."confirmed" = $2[0m  [["friend_id", 1], ["confirmed", true]]
+  ↳ app/helpers/friendships_helper.rb:3:in `friends'
+  Rendered shared/_unfriend.html.erb (Duration: 5.2ms | Allocations: 2271)
+  [1m[36mFriendship Load (0.2ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" WHERE "friendships"."friend_id" = $1 AND "friendships"."confirmed" = $2[0m  [["friend_id", 1], ["confirmed", false]]
+  ↳ app/views/users/show.html.erb:8
+  [1m[36mFriendship Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 LIMIT $3[0m  [["user_id", 1], ["friend_id", 1], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:6:in `reacted?'
+  [1m[36mCACHE Friendship Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 LIMIT $3[0m  [["user_id", 1], ["friend_id", 1], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:7:in `reacted?'
+  [1m[36mPost Load (2.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/helpers/user_posts_helper.rb:6:in `render_user_posts'
+  [1m[36mLike Load (18.9ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1 AND "likes"."user_id" = $2 LIMIT $3[0m  [["post_id", 1], ["user_id", 1], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:11:in `like_or_dislike_btn'
+  [1m[36mComment Load (7.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/_post.html.erb:16
+  Rendered collection of posts/_post.html.erb [1 times] (Duration: 59.7ms | Allocations: 13306)
+  Rendered users/show.html.erb within layouts/application (Duration: 85.6ms | Allocations: 22926)
+Completed 200 OK in 99ms (Views: 56.1ms | ActiveRecord: 36.7ms | Allocations: 29890)
+
+
+Started GET "/users" for ::1 at 2020-07-30 13:11:14 +0300
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/shared/_friendship_status.html.erb:1
+  [1m[36mFriendship Exists? (2.3ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 LIMIT $3[0m  [["user_id", 1], ["friend_id", 1], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:6:in `reacted?'
+  [1m[36mCACHE Friendship Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 LIMIT $3[0m  [["user_id", 1], ["friend_id", 1], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:7:in `reacted?'
+  [1m[36mFriendship Exists? (4.8ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 AND "friendships"."confirmed" = $3 LIMIT $4[0m  [["user_id", 1], ["friend_id", 1], ["confirmed", true], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:12:in `confirmed_record?'
+  [1m[36mCACHE Friendship Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 AND "friendships"."confirmed" = $3 LIMIT $4[0m  [["user_id", 1], ["friend_id", 1], ["confirmed", true], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:13:in `confirmed_record?'
+  [1m[36mCACHE Friendship Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 AND "friendships"."confirmed" = $3 LIMIT $4[0m  [["user_id", 1], ["friend_id", 1], ["confirmed", true], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:12:in `confirmed_record?'
+  [1m[36mCACHE Friendship Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 AND "friendships"."confirmed" = $3 LIMIT $4[0m  [["user_id", 1], ["friend_id", 1], ["confirmed", true], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:13:in `confirmed_record?'
+  [1m[36mFriendship Load (1.2ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" WHERE "friendships"."friend_id" = $1 AND "friendships"."confirmed" = $2[0m  [["friend_id", 1], ["confirmed", false]]
+  ↳ app/views/shared/_friendship_status.html.erb:16
+  [1m[36mFriendship Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 LIMIT $3[0m  [["user_id", 1], ["friend_id", 2], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:6:in `reacted?'
+  [1m[36mFriendship Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 LIMIT $3[0m  [["user_id", 2], ["friend_id", 1], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:7:in `reacted?'
+  [1m[36mFriendship Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 AND "friendships"."confirmed" = $3 LIMIT $4[0m  [["user_id", 1], ["friend_id", 2], ["confirmed", true], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:12:in `confirmed_record?'
+  [1m[36mFriendship Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 AND "friendships"."confirmed" = $3 LIMIT $4[0m  [["user_id", 2], ["friend_id", 1], ["confirmed", true], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:13:in `confirmed_record?'
+  [1m[36mFriendship Load (0.3ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" WHERE "friendships"."friend_id" = $1 AND "friendships"."confirmed" = $2[0m  [["friend_id", 2], ["confirmed", false]]
+  ↳ app/views/shared/_friendship_status.html.erb:9
+  [1m[36mFriendship Exists? (2.8ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 LIMIT $3[0m  [["user_id", 1], ["friend_id", 3], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:6:in `reacted?'
+  [1m[36mFriendship Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 LIMIT $3[0m  [["user_id", 3], ["friend_id", 1], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:7:in `reacted?'
+  Rendered shared/_friendship_status.html.erb (Duration: 102.5ms | Allocations: 11816)
+  Rendered users/index.html.erb within layouts/application (Duration: 102.9ms | Allocations: 11880)
+Completed 200 OK in 148ms (Views: 97.8ms | ActiveRecord: 16.0ms | Allocations: 18029)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2020-07-30 13:11:17 +0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"HNx6bs2wvOKgsJ4RzV1cXcXfKbQ4Gp63tywRRtH8NvQUwV2Oz0tHOu8zhMGzUwSVLaLjKNSRvSxo4aV0h9iSwQ=="}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 13ms (ActiveRecord: 0.2ms | Allocations: 2885)
+
+
+Started GET "/" for ::1 at 2020-07-30 13:11:17 +0300
+Processing by PostsController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 346)
+
+
+Started GET "/users/sign_in" for ::1 at 2020-07-30 13:11:17 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 131)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 2.1ms | Allocations: 1046)
+Completed 200 OK in 12ms (Views: 11.0ms | ActiveRecord: 0.0ms | Allocations: 5985)
+
+
+Started POST "/users/sign_in" for ::1 at 2020-07-30 13:11:23 +0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6jboR0Zka8sEORLkccjj+Rt7O2hvDEWHc8Up4rZBKeT9BdIZ61VV9hOwTOpIWomCKxviyA8GHliLa7lhH+08yw==", "user"=>{"email"=>"edie@test.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "edie@test.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 164ms (ActiveRecord: 0.4ms | Allocations: 2603)
+
+
+Started GET "/" for ::1 at 2020-07-30 13:11:23 +0300
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" DESC[0m  [["user_id", 2]]
+  ↳ app/controllers/posts_controller.rb:26:in `timeline_posts'
+  [1m[36mPost Load (9.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" IN (SELECT "users"."id" FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "friendships"."confirmed" = $2) ORDER BY "posts"."created_at" DESC[0m  [["user_id", 2], ["confirmed", true]]
+  ↳ app/controllers/posts_controller.rb:26:in `timeline_posts'
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" IN (SELECT "users"."id" FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."user_id" WHERE "friendships"."friend_id" = $1 AND "friendships"."confirmed" = $2) ORDER BY "posts"."created_at" DESC[0m  [["friend_id", 2], ["confirmed", true]]
+  ↳ app/controllers/posts_controller.rb:26:in `+'
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1 AND "likes"."user_id" = $2 LIMIT $3[0m  [["post_id", 2], ["user_id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:11:in `like_or_dislike_btn'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 2]]
+  ↳ app/views/posts/_post.html.erb:16
+  Rendered collection of posts/_post.html.erb [1 times] (Duration: 6.0ms | Allocations: 2061)
+  Rendered posts/index.html.erb within layouts/application (Duration: 9.3ms | Allocations: 2895)
+Completed 200 OK in 44ms (Views: 16.6ms | ActiveRecord: 11.4ms | Allocations: 12646)
+
+
+Started GET "/users" for ::1 at 2020-07-30 13:11:26 +0300
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/shared/_friendship_status.html.erb:1
+  [1m[36mFriendship Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 LIMIT $3[0m  [["user_id", 2], ["friend_id", 1], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:6:in `reacted?'
+  [1m[36mFriendship Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 LIMIT $3[0m  [["user_id", 1], ["friend_id", 2], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:7:in `reacted?'
+  [1m[36mFriendship Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 AND "friendships"."confirmed" = $3 LIMIT $4[0m  [["user_id", 2], ["friend_id", 1], ["confirmed", true], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:12:in `confirmed_record?'
+  [1m[36mFriendship Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 AND "friendships"."confirmed" = $3 LIMIT $4[0m  [["user_id", 1], ["friend_id", 2], ["confirmed", true], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:13:in `confirmed_record?'
+  [1m[36mFriendship Load (2.2ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" WHERE "friendships"."friend_id" = $1 AND "friendships"."confirmed" = $2[0m  [["friend_id", 1], ["confirmed", false]]
+  ↳ app/views/shared/_friendship_status.html.erb:9
+  [1m[36mFriendship Exists? (9.2ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 LIMIT $3[0m  [["user_id", 2], ["friend_id", 2], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:6:in `reacted?'
+  [1m[36mCACHE Friendship Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 LIMIT $3[0m  [["user_id", 2], ["friend_id", 2], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:7:in `reacted?'
+  [1m[36mFriendship Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 AND "friendships"."confirmed" = $3 LIMIT $4[0m  [["user_id", 2], ["friend_id", 2], ["confirmed", true], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:12:in `confirmed_record?'
+  [1m[36mCACHE Friendship Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 AND "friendships"."confirmed" = $3 LIMIT $4[0m  [["user_id", 2], ["friend_id", 2], ["confirmed", true], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:13:in `confirmed_record?'
+  [1m[36mCACHE Friendship Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 AND "friendships"."confirmed" = $3 LIMIT $4[0m  [["user_id", 2], ["friend_id", 2], ["confirmed", true], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:12:in `confirmed_record?'
+  [1m[36mCACHE Friendship Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 AND "friendships"."confirmed" = $3 LIMIT $4[0m  [["user_id", 2], ["friend_id", 2], ["confirmed", true], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:13:in `confirmed_record?'
+  [1m[36mFriendship Load (0.4ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" WHERE "friendships"."friend_id" = $1 AND "friendships"."confirmed" = $2[0m  [["friend_id", 2], ["confirmed", false]]
+  ↳ app/views/shared/_friendship_status.html.erb:16
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_friendship_status.html.erb:18
+  [1m[36mFriendship Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 LIMIT $3[0m  [["user_id", 2], ["friend_id", 3], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:6:in `reacted?'
+  [1m[36mFriendship Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 LIMIT $3[0m  [["user_id", 3], ["friend_id", 2], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:7:in `reacted?'
+  Rendered shared/_friendship_status.html.erb (Duration: 49.4ms | Allocations: 12493)
+  Rendered users/index.html.erb within layouts/application (Duration: 49.6ms | Allocations: 12557)
+Completed 200 OK in 65ms (Views: 41.3ms | ActiveRecord: 19.1ms | Allocations: 18720)
+
+
+Started GET "/users/2" for ::1 at 2020-07-30 13:11:34 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "friendships"."confirmed" = $2[0m  [["user_id", 2], ["confirmed", true]]
+  ↳ app/helpers/friendships_helper.rb:3:in `friends'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."user_id" WHERE "friendships"."friend_id" = $1 AND "friendships"."confirmed" = $2[0m  [["friend_id", 2], ["confirmed", true]]
+  ↳ app/helpers/friendships_helper.rb:3:in `friends'
+  Rendered shared/_unfriend.html.erb (Duration: 6.1ms | Allocations: 2272)
+  [1m[36mFriendship Load (0.4ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" WHERE "friendships"."friend_id" = $1 AND "friendships"."confirmed" = $2[0m  [["friend_id", 2], ["confirmed", false]]
+  ↳ app/views/users/show.html.erb:8
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:10
+  [1m[36mFriendship Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 LIMIT $3[0m  [["user_id", 2], ["friend_id", 2], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:6:in `reacted?'
+  [1m[36mCACHE Friendship Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 LIMIT $3[0m  [["user_id", 2], ["friend_id", 2], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:7:in `reacted?'
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/helpers/user_posts_helper.rb:6:in `render_user_posts'
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1 AND "likes"."user_id" = $2 LIMIT $3[0m  [["post_id", 2], ["user_id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:11:in `like_or_dislike_btn'
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 2]]
+  ↳ app/views/posts/_post.html.erb:16
+  Rendered collection of posts/_post.html.erb [1 times] (Duration: 4.7ms | Allocations: 2059)
+  Rendered users/show.html.erb within layouts/application (Duration: 29.4ms | Allocations: 8365)
+Completed 200 OK in 49ms (Views: 37.0ms | ActiveRecord: 4.7ms | Allocations: 15277)
+
+
+Started GET "/users" for ::1 at 2020-07-30 13:11:36 +0300
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/shared/_friendship_status.html.erb:1
+  [1m[36mFriendship Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 LIMIT $3[0m  [["user_id", 2], ["friend_id", 1], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:6:in `reacted?'
+  [1m[36mFriendship Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 LIMIT $3[0m  [["user_id", 1], ["friend_id", 2], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:7:in `reacted?'
+  [1m[36mFriendship Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 AND "friendships"."confirmed" = $3 LIMIT $4[0m  [["user_id", 2], ["friend_id", 1], ["confirmed", true], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:12:in `confirmed_record?'
+  [1m[36mFriendship Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 AND "friendships"."confirmed" = $3 LIMIT $4[0m  [["user_id", 1], ["friend_id", 2], ["confirmed", true], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:13:in `confirmed_record?'
+  [1m[36mFriendship Load (0.3ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" WHERE "friendships"."friend_id" = $1 AND "friendships"."confirmed" = $2[0m  [["friend_id", 1], ["confirmed", false]]
+  ↳ app/views/shared/_friendship_status.html.erb:9
+  [1m[36mFriendship Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 LIMIT $3[0m  [["user_id", 2], ["friend_id", 2], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:6:in `reacted?'
+  [1m[36mCACHE Friendship Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 LIMIT $3[0m  [["user_id", 2], ["friend_id", 2], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:7:in `reacted?'
+  [1m[36mFriendship Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 AND "friendships"."confirmed" = $3 LIMIT $4[0m  [["user_id", 2], ["friend_id", 2], ["confirmed", true], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:12:in `confirmed_record?'
+  [1m[36mCACHE Friendship Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 AND "friendships"."confirmed" = $3 LIMIT $4[0m  [["user_id", 2], ["friend_id", 2], ["confirmed", true], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:13:in `confirmed_record?'
+  [1m[36mCACHE Friendship Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 AND "friendships"."confirmed" = $3 LIMIT $4[0m  [["user_id", 2], ["friend_id", 2], ["confirmed", true], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:12:in `confirmed_record?'
+  [1m[36mCACHE Friendship Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 AND "friendships"."confirmed" = $3 LIMIT $4[0m  [["user_id", 2], ["friend_id", 2], ["confirmed", true], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:13:in `confirmed_record?'
+  [1m[36mFriendship Load (0.2ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" WHERE "friendships"."friend_id" = $1 AND "friendships"."confirmed" = $2[0m  [["friend_id", 2], ["confirmed", false]]
+  ↳ app/views/shared/_friendship_status.html.erb:16
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_friendship_status.html.erb:18
+  [1m[36mFriendship Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 LIMIT $3[0m  [["user_id", 2], ["friend_id", 3], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:6:in `reacted?'
+  [1m[36mFriendship Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 LIMIT $3[0m  [["user_id", 3], ["friend_id", 2], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:7:in `reacted?'
+  Rendered shared/_friendship_status.html.erb (Duration: 64.1ms | Allocations: 12481)
+  Rendered users/index.html.erb within layouts/application (Duration: 64.8ms | Allocations: 12545)
+Completed 200 OK in 79ms (Views: 65.8ms | ActiveRecord: 7.6ms | Allocations: 18750)
+
+
+Started GET "/friendships/update?friendship_id=24" for ::1 at 2020-07-30 13:11:37 +0300
+Processing by FriendshipsController#update as HTML
+  Parameters: {"friendship_id"=>"24"}
+  [1m[36mFriendship Load (0.3ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" WHERE "friendships"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+  ↳ app/controllers/friendships_controller.rb:19:in `update'
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/friendships_controller.rb:20:in `update'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/friendships_controller.rb:21:in `update'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/friendships_controller.rb:21:in `update'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/friendships_controller.rb:21:in `update'
+  [1m[36mFriendship Update (25.0ms)[0m  [1m[33mUPDATE "friendships" SET "confirmed" = $1, "updated_at" = $2 WHERE "friendships"."id" = $3[0m  [["confirmed", true], ["updated_at", "2020-07-30 10:11:37.621881"], ["id", 24]]
+  ↳ app/controllers/friendships_controller.rb:21:in `update'
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/friendships_controller.rb:21:in `update'
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 50ms (ActiveRecord: 28.8ms | Allocations: 6751)
+
+
+Started GET "/users/2" for ::1 at 2020-07-30 13:11:37 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1 AND "friendships"."confirmed" = $2[0m  [["user_id", 2], ["confirmed", true]]
+  ↳ app/helpers/friendships_helper.rb:3:in `friends'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."user_id" WHERE "friendships"."friend_id" = $1 AND "friendships"."confirmed" = $2[0m  [["friend_id", 2], ["confirmed", true]]
+  ↳ app/helpers/friendships_helper.rb:3:in `friends'
+  [1m[36mFriendship Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 AND "friendships"."confirmed" = $3 LIMIT $4[0m  [["user_id", 2], ["friend_id", 1], ["confirmed", true], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:18:in `find_request'
+  [1m[36mFriendship Load (0.2ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 AND "friendships"."confirmed" = $3[0m  [["user_id", 1], ["friend_id", 2], ["confirmed", true]]
+  ↳ app/models/friendship.rb:19:in `find_request'
+  Rendered shared/_unfriend.html.erb (Duration: 10.6ms | Allocations: 3876)
+  [1m[36mFriendship Load (0.2ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" WHERE "friendships"."friend_id" = $1 AND "friendships"."confirmed" = $2[0m  [["friend_id", 2], ["confirmed", false]]
+  ↳ app/views/users/show.html.erb:8
+  [1m[36mFriendship Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 LIMIT $3[0m  [["user_id", 2], ["friend_id", 2], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:6:in `reacted?'
+  [1m[36mCACHE Friendship Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 LIMIT $3[0m  [["user_id", 2], ["friend_id", 2], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:7:in `reacted?'
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/helpers/user_posts_helper.rb:6:in `render_user_posts'
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1 AND "likes"."user_id" = $2 LIMIT $3[0m  [["post_id", 2], ["user_id", 2], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:11:in `like_or_dislike_btn'
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 2]]
+  ↳ app/views/posts/_post.html.erb:16
+  Rendered collection of posts/_post.html.erb [1 times] (Duration: 6.3ms | Allocations: 2056)
+  Rendered users/show.html.erb within layouts/application (Duration: 33.6ms | Allocations: 9218)
+Completed 200 OK in 46ms (Views: 36.8ms | ActiveRecord: 3.2ms | Allocations: 16186)
+
+
+Started GET "/users" for ::1 at 2020-07-30 13:11:40 +0300
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/shared/_friendship_status.html.erb:1
+  [1m[36mFriendship Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 LIMIT $3[0m  [["user_id", 2], ["friend_id", 1], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:6:in `reacted?'
+  [1m[36mFriendship Exists? (4.8ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 LIMIT $3[0m  [["user_id", 1], ["friend_id", 2], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:7:in `reacted?'
+  [1m[36mFriendship Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 AND "friendships"."confirmed" = $3 LIMIT $4[0m  [["user_id", 2], ["friend_id", 1], ["confirmed", true], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:12:in `confirmed_record?'
+  [1m[36mFriendship Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 AND "friendships"."confirmed" = $3 LIMIT $4[0m  [["user_id", 1], ["friend_id", 2], ["confirmed", true], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:13:in `confirmed_record?'
+  [1m[36mCACHE Friendship Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 AND "friendships"."confirmed" = $3 LIMIT $4[0m  [["user_id", 2], ["friend_id", 1], ["confirmed", true], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:12:in `confirmed_record?'
+  [1m[36mCACHE Friendship Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 AND "friendships"."confirmed" = $3 LIMIT $4[0m  [["user_id", 1], ["friend_id", 2], ["confirmed", true], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:13:in `confirmed_record?'
+  [1m[36mFriendship Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 LIMIT $3[0m  [["user_id", 2], ["friend_id", 2], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:6:in `reacted?'
+  [1m[36mCACHE Friendship Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 LIMIT $3[0m  [["user_id", 2], ["friend_id", 2], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:7:in `reacted?'
+  [1m[36mFriendship Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 AND "friendships"."confirmed" = $3 LIMIT $4[0m  [["user_id", 2], ["friend_id", 2], ["confirmed", true], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:12:in `confirmed_record?'
+  [1m[36mCACHE Friendship Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 AND "friendships"."confirmed" = $3 LIMIT $4[0m  [["user_id", 2], ["friend_id", 2], ["confirmed", true], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:13:in `confirmed_record?'
+  [1m[36mCACHE Friendship Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 AND "friendships"."confirmed" = $3 LIMIT $4[0m  [["user_id", 2], ["friend_id", 2], ["confirmed", true], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:12:in `confirmed_record?'
+  [1m[36mCACHE Friendship Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 AND "friendships"."confirmed" = $3 LIMIT $4[0m  [["user_id", 2], ["friend_id", 2], ["confirmed", true], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:13:in `confirmed_record?'
+  [1m[36mFriendship Load (0.2ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" WHERE "friendships"."friend_id" = $1 AND "friendships"."confirmed" = $2[0m  [["friend_id", 2], ["confirmed", false]]
+  ↳ app/views/shared/_friendship_status.html.erb:16
+  [1m[36mFriendship Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 LIMIT $3[0m  [["user_id", 2], ["friend_id", 3], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:6:in `reacted?'
+  [1m[36mFriendship Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 LIMIT $3[0m  [["user_id", 3], ["friend_id", 2], ["LIMIT", 1]]
+  ↳ app/models/friendship.rb:7:in `reacted?'
+  Rendered shared/_friendship_status.html.erb (Duration: 52.5ms | Allocations: 12115)
+  Rendered users/index.html.erb within layouts/application (Duration: 52.8ms | Allocations: 12179)
+Completed 200 OK in 68ms (Views: 55.6ms | ActiveRecord: 9.8ms | Allocations: 18331)
+
+
