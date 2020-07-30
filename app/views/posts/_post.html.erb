@@ -14,7 +14,7 @@
 
   <div class='post-comments-section'>
     <% post.comments.each do |comment| %>
-      <div class="post-comments">
+      <div class="post-comments alert alert-primary" role="alert">
         <p>
           <b><%= comment.user.name %>:</b> <%= comment.content %>
         </p>
