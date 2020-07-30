@@ -12,8 +12,8 @@ class FriendshipsController < ApplicationController
     friendship = Friendship.find(params[:friendship_id])
     user = friendship.user_id
     friend = friendship.friend_id
-    if friendship2 = Friendship.find_by(user_id:friend, friend_id:user)
-     friendship2.destroy
+    if ( friendship2 = Friendship.find_by(user_id: friend, friend_id: user) )
+      friendship2.destroy
     end
     friendship.destroy
     flash[:notice] = 'Friendship Canceled'
@@ -26,7 +26,7 @@ class FriendshipsController < ApplicationController
     if friendship.update(confirmed: true)
       friendship = Friendship.new(user_id: friendship.friend_id, friend_id: friendship.user_id, confirmed: true)
       friendship.save
-     end
+    end
     flash[:notice] = 'Friendship Accepted'
     redirect_to user_path(friendship.friend_id)
   end
