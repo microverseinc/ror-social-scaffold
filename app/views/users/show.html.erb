@@ -1,22 +1,9 @@
-<div class="col-sm-7">
-  <h3><%= "#{@user.name}" %></h3>
-	  
-	 <p><strong>Friends:</strong></p>
-	 <%= render 'shared/unfriend' %>
-	  <p><strong>Friend Requests:</strong></p>
-		 <ul>
-	      <% current_user.pending_friendships.each do |friendship| %>
-	        <li>
-	          <%= User.find(friendship.user_id).name %>
-	          <%= link_to 'Accept', friendships_update_path(friendship_id: friendship.id),  class: 'btn btn-success btn-sm'  %>
-	          <%= link_to 'Reject', friendships_destroy_path(friendship_id: friendship.id),  class: 'btn btn-danger btn-sm' %>
-	        </li>
-	      <% end %>
-	     </ul><br>
-	<div class="card col-sm-9">
-	  <h3>Recent posts:</h3>
-    <ul class="posts"> <%= render_user_posts %> </ul>
-  </div>
-
-</div>
-
+<section class="user-section">
+  <h2><%= "Name: #{@user.name}" %></h2>
+  <article class="timeline">
+    <h3>Recent posts:</h3>
+    <ul class="posts">
+      <%= render @posts %>
+    </ul>
+  </article>
+</section>
