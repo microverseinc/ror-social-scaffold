@@ -6,31 +6,27 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   </head>
   <body>
-    <nav class="nav">
-      <%= link_to 'Stay in touch', root_path %>
-      <div class="menu">
-        <div class="menu-item">
-          <%= menu_link_to 'Timeline', posts_path %>
-        </div>
-        <div class="menu-item">
-          <%= menu_link_to 'All users', users_path %>
-        </div>
-      </div>
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary justify-content-between">
+      <%= link_to 'STAY IN TOUCH', root_path, class: "nav-item navbar-text nav-link text-decoration-none" %>
+      <%= link_to 'Timeline', posts_path, class: "nav-item navbar-text nav-link text-decoration-none" %>
+      <%= link_to 'Friends', users_path, class: "nav-item navbar-text nav-link text-decoration-none" %>
       <% if current_user %>
-        <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+        <%= link_to "#{current_user.name}", current_user, class: "nav-item navbar-text nav-link text-decoration-none" %>
+        <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: "nav-item navbar-text nav-link text-decoration-none" %>
       <% else %>
-        <%= link_to 'Sign in', user_session_path %>
+        <%= link_to 'Sign in', user_session_path, class: "nav-item navbar-text nav-link text-decoration-none" %>
       <% end %>
     </nav>
     <% if notice.present? %>
-      <div class="notice">
+      <div class="alert alert-success" role="alert">
         <p> <%= notice %> </p>
       </div>
     <% end %>
     <% if alert.present? %>
-      <div class="alert">
+      <div class="alert alert-danger" role="alert">
         <p> <%= alert %> </p>
       </div>
     <% end %>
