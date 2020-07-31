@@ -22,7 +22,6 @@ class FriendshipsController < ApplicationController
 
   def update
     friendship = Friendship.find(params[:friendship_id])
-    p current_user
     if friendship.update(confirmed: true)
       friendship = Friendship.new(user_id: friendship.friend_id, friend_id: friendship.user_id, confirmed: true)
       friendship.save
