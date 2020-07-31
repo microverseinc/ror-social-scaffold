@@ -1,5 +1,4 @@
 module FriendshipsHelper
-
   def friends
     @user.friends
     # @user.friends + @user.users
@@ -7,14 +6,12 @@ module FriendshipsHelper
 
   def friend_status(user)
     cancel = ''
-    if signed_in? && 
-      !Friendship.reacted?(current_user.id, user.id) && 
+    if signed_in? && !Friendship.reacted?(current_user.id, user.id) &&
       current_user != user
       link_to 'Add Friend', 
       friendships_create_path(ids: { id1: current_user.id, id2: user.id }), 
       class: 'friend btn btn-success btn-sm'
-    elsif signed_in? && 
-      !Friendship.confirmed_record?(current_user.id, user.id) && 
+    elsif signed_in? && !Friendship.confirmed_record?(current_user.id, user.id) &&
       current_user != user
       user.pending_friendships.each do |friendship|
         cancel = link_to 'Cancel Request', 
