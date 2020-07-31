@@ -1,0 +1,285 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap");
+
+$primary-color-dark: #007bff;
+$primary-color: #8bc34a;
+$primary-color-light: #dcedc8;
+$primary-color-text: #212121;
+$divider-color: #bdbdbd;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+body {
+  background: #fff;
+  position: relative;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 700;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: $primary-color-text;
+}
+
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+}
+
+
+
+.notice {
+  background-color: #d4f6c6;
+}
+
+.alert {
+  background-color: #f6cfc6;
+}
+
+.errors {
+  font-size: 10px;
+  color: red;
+}
+
+.new_post,
+.new_comment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  label {
+    display: none;
+  }
+
+  .form-control {
+    width: 100%;
+    border: 1px solid $divider-color;
+    height: 64px;
+    padding: 8px;
+    margin: 4px 0;
+    border-radius: 4px;
+  }
+
+  .field_with_errors {
+    width: 100%;
+
+    .form-control {
+      border: 1px solid #f00;
+    }
+  }
+
+  .btn-primary {
+    width: 100%;
+  }
+
+  .btn-secondary {
+    width: 30%;
+    margin-left: 70%;
+  }
+}
+
+form {
+  width: 80%;
+  margin: 8px 0;
+
+  .field {
+    width: 100%;
+    padding: 8px 0;
+
+    label {
+      margin-bottom: 8px;
+    }
+
+    input {
+      width: 100%;
+      border: 1px solid $divider-color;
+      border-radius: 4px;
+      padding: 8px;
+      background-color: $primary-color-light;
+    }
+
+    input[type="checkbox"] {
+      width: fit-content;
+    }
+  }
+
+  .actions {
+    display: flex;
+    justify-content: center;
+    margin: 8px 0;
+  }
+
+  input[type="submit"] {
+    padding: 8px;
+    width: 50%;
+    border: none;
+    border-radius: 4px;
+    background-color: $primary-color-dark;
+    color: $primary-color-light;
+    text-transform: uppercase;
+    font-weight: 900;
+  }
+
+  input[type="submit"]:hover {
+    background-color: $primary-color;
+    color: #fff;
+  }
+
+  .actions.reset {
+    input[type="submit"] {
+      width: 100%;
+    }
+  }
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 16px;
+  text-transform: capitalize;
+}
+
+.timeline {
+  width: 100%;
+  margin: 16px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h3 {
+    margin: 8px 0;
+  }
+
+  .posts {
+    width: 100%;
+  }
+
+  .post {
+    width: 100%;
+    margin: 16px 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .post-attribution {
+    float: left;
+
+    .post-author {
+      margin: 0 0 8px 0;
+      color: $primary-color-dark;
+      text-transform: capitalize;
+    }
+  }
+
+  .post-liking {
+    float: right;
+
+    a {
+      color: $primary-color-dark;
+      font-weight: bold;
+      font-size: 0.9em;
+      margin: 0 4px;
+    }
+
+    .post-date {
+      font-size: 0.6em;
+    }
+  }
+
+  .post-content {
+    font-size: 1.1em;
+    padding: 4px 0;
+  }
+
+  .post-comments-section {
+    margin: 5px;
+    width: 90%;
+
+    .post-comments {
+      position: relative;
+      display: flex;
+
+      p {
+        font-size: 0.8em;
+        width: 90%;
+      }
+
+      span {
+        right: 3px;
+        font-size: 0.7rem;
+        padding: 0.4rem;
+      }
+    }
+  }
+}
+
+.users-section {
+  width: 100%;
+
+  .users-list li {
+    margin-bottom: 16px;
+    text-transform: capitalize;
+    font-size: 1.2em;
+  }
+
+  .profile-link {
+    font-size: 0.8em;
+    margin: 0 0 8px 0;
+    color: $primary-color-dark;
+  }
+}
+
+
+#error_explanation {
+  h2 {
+    color: $primary-color-text;
+    font-size: 1em;
+  }
+
+  ul {
+    color: #f00;
+  }
+}
+
+@media only screen and (min-width: 480px) {
+  form {
+    width: 60%;
+  }
+
+  .new_post,
+  .timeline,
+  .users-section,
+  .user-section {
+    width: 70%;
+  }
+}
+
+@media (min-width: 780px) {
+  form {
+    width: 40%;
+  }
+
+  .new_post,
+  .timeline,
+  .users-section,
+  .user-section {
+    width: 50%;
+  }
+}

@@ -1,0 +1,19 @@
+<%= form_for(@post) do |form| %>
+  <%= form.label :content %>
+  <%= form.text_field :content, id: :post_content, class: 'form-control', placeholder: 'Add New Post' %>
+  <% if @post.errors.full_messages.any? %>
+    <p class="errors">
+      <%= "Post could not be saved. #{@post.errors.full_messages.join('. ')}" %>
+    </p>
+  <% end %>
+  <%= form.submit 'Save', class: 'btn btn-primary' %>
+<% end %>
+
+<article class="timeline">
+  <h3>
+    Recent posts
+  </h3>
+  <ul class="posts">
+    <%= render @timeline_posts %>
+  </ul>
+</article>
