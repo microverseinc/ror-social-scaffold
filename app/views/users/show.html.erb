@@ -1,8 +1,13 @@
 <div class="col-sm-7">
   <h3><%= "#{@user.name}" %></h3>
-	  
 	 <p><strong>Friends:</strong></p>
-	 <%= render 'shared/unfriend' %>
+  <ul class='list-unstyled row g-3'>
+    <% friends.each do |friend| %>
+      <li class="col-sm-7 mt-1">
+        <%= friend.name %> <%= unfriend(friend) %>
+      </li><br>
+    <% end %>
+  </ul>
 	  <p><strong>Friend Requests:</strong></p>
 		 <ul>
 	      <% current_user.pending_friendships.each do |friendship| %>
