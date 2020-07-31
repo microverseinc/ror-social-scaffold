@@ -1,15 +1,28 @@
-<section class="users-section">
+<section class="users-section d-flex justify-content-center">
+<div class="card col-sm-5 m-3 p-3">
+<p><strong>Users:</strong></p>
   <ul class="users-list">
     <% @users.each do |user| %>
       <li>
         <%= user.name %>
         <br>
         <%= link_to 'See Profile',  user_path(user), class: 'profile btn btn-outline-success btn-sm' %>
-        <%= friend_status(user) %>
-        <%= display_name(user) %>
-        <%= reject_response(user) %>
-        <%= accept_response(user) %>
+        <%= display_links(user) %>
       </li>
     <% end %>
   </ul>
+  </div>
+
+   <div class="card col-sm-5 m-3 p-3">
+   <p><strong>Friend Requests:</strong></p>
+		 <ul>
+	      <% current_user.pending_friendships.each do |friendship| %>
+	        <li>
+	          <%= User.find(friendship.user_id).name %>
+	          <%= link_to 'Accept', friendships_update_path(friendship_id: friendship.id),  class: 'btn btn-success btn-sm'  %>
+	          <%= link_to 'Reject', friendships_destroy_path(friendship_id: friendship.id),  class: 'btn btn-danger btn-sm' %>
+	        </li>
+	      <% end %>
+	     </ul><br>
+       </div>
 </section>
