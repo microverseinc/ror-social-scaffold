@@ -66,7 +66,6 @@ RSpec.describe 'Friendship Features', type: :feature do
     click_link user2.name.to_s
     click_link 'Un-friend'
     expect(page).to have_content('Friendship Canceled')
-  
   end
   scenario ' inverse friendship is reflected when a request is accepted' do
     user1.save
