@@ -1,11 +1,8 @@
 module FriendshipsHelper
   def friends
     @user.friends
-    # @user.friends + @user.users
   end
 
-  # rubocop:disable Metrics/PerceivedComplexity
-  # rubocop:disable Metrics/CyclomaticComplexity
   def friend_status(user)
     cancel = ''
     if signed_in? && !Friendship.reacted?(current_user.id, user.id) && current_user != user
@@ -22,8 +19,6 @@ module FriendshipsHelper
     end
   end
 
-  # rubocop:enable Metrics/PerceivedComplexity
-  # rubocop:enable Metrics/CyclomaticComplexity
   def reject_response(user)
     reject = ''
     if signed_in? &&
@@ -68,7 +63,7 @@ module FriendshipsHelper
   def unfriend(friend)
     un_friend = ''
     if @user == current_user
-      un_friend = link_to 'Un-friend',
+      un_friend = link_to 'Un-friend', 
                           friendships_destroy_path(friendship_id: Friendship.find_request(@user.id, friend.id)),
                           class: 'btn btn-danger btn-sm'
     end
