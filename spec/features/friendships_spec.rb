@@ -63,7 +63,7 @@ RSpec.describe 'Friendship Features', type: :feature do
     click_button 'Log in'
     click_link user2.name.to_s
     click_link 'Accept'
-    click_link 'Un-friend'
+    click_link 'Un-friend', match: :first
     expect(page).to have_content('Friendship Canceled')
   end
   scenario ' inverse friendship is reflected when a request is accepted' do
