@@ -63,7 +63,7 @@ module FriendshipsHelper
   def unfriend(friend)
     un_friend = ''
     if @user == current_user
-      un_friend = link_to 'Un-friend', 
+      un_friend = link_to 'Un-friend',
                           friendships_destroy_path(friendship_id: Friendship.find_request(@user.id, friend.id)),
                           class: 'btn btn-danger btn-sm'
     end
