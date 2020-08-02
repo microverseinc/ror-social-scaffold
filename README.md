@@ -63,23 +63,40 @@ TBA
 
 ## Authors
 
-TBA
+👤 **Edie Atha**
+
+- Github: [@edieatha](https://github.com/edieatha)
+- Twitter: [@edieatha](https://twitter.com/edieatha)
+- Linkedin: [linkedin](https://www.linkedin.com/in/edieatha/)
+ Email: [email](edieatha@gmail.com)
+
+👤 **Joseph Mindo**
+
+- Github: [@MindoJoseph](https://github.com/Mindo-Joseph)
+- Twitter: [@mindoJoseph](https://twitter.com/mindoJoseph)
+- Linkedin: [Joseph Mindo](https://www.linkedin.com/in/joseph-mindo-367284132/)
+
 
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the [issues page](issues/).
+Feel free to check the [issues page](https://github.com/edieatha/members-only//issues).
+
+
+## Acknowledgments
+
+* [Microverse](https://www.microverse.org/)
+* [The Odin Project](https://www.theodinproject.com/)
+
+
+## 📝 License
+
+This project is [MIT](lic.url) licensed.
+
 
 ## Show your support
 
 Give a ⭐️ if you like this project!
 
-## Acknowledgments
-
-TBA
-
-## 📝 License
-
-TBA
 
