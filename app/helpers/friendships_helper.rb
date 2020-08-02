@@ -4,23 +4,23 @@ module FriendshipsHelper
   end
 
   def add_friend(user)
-    if signed_in? && !Friendship.reacted?(current_user.id, user.id) && current_user != user
-      link_to 'Add Friend', friendships_create_path(ids: { id1: current_user.id, id2: user.id }),
-              class: 'friend btn btn-success btn-sm'
-    end
+    return unless signed_in? && !Friendship.reacted?(current_user.id, user.id) && current_user != user
+
+    link_to 'Add Friend', friendships_create_path(ids: { id1: current_user.id, id2: user.id }),
+            class: 'friend btn btn-success btn-sm'
   end
 
   def cancel_request(user)
     cancel = ''
-    if signed_in? && !Friendship.confirmed_record?(current_user.id, user.id) && current_user != user
-      user.pending_friendships.each do |friendship|
-        if current_user
-          cancel = link_to 'Cancel Request', friendships_destroy_path(friendship_id: friendship.id),
+    return unless signed_in? && !Friendship.confirmed_record?(current_user.id, user.id) && current_user != user
+
+    user.pending_friendships.each do |friendship|
+      if current_user
+        cancel = link_to 'Cancel Request', friendships_destroy_path(friendship_id: friendship.id),
                          class: 'btn btn-danger btn-sm'
-        end
       end
-      cancel.html_safe
     end
+    cancel.html_safe
   end
 
   def reject_response(user)
