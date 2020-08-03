@@ -1,15 +1,11 @@
-# Scaffold for social media app with Ruby on Rails
+# social media app with Ruby on Rails
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+> This repo includes a social media app that will allow the user to signin and signup,add friends , add posts , comment and like/dislike posts
 
 ## Built With
 
 - Ruby v2.7.0
 - Ruby on Rails v5.2.4
-
-## Live Demo
-
-TBA
 
 
 ## Getting Started
@@ -49,37 +45,36 @@ Start server with:
 
 Open `http://localhost:3000/` in your browser.
 
-### Run tests
 
-```
-    rpsec --format documentation
-```
 
-> Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
 
-### Deployment
-
-TBA
 
 ## Authors
+👤 **Rashid Mammadli**
 
-TBA
+- Github: [8Bts](https://github.com/8Bts)
+- Twitter: [@Rasheed49705929](https://twitter.com/Rasheed49705929)
+- Linkedin: [linkedin](https://www.linkedin.com/in/mcmizze-price-238a70135/)
+- Email: mcmizze@yahoo.com
+
+👤 **Rida Elbahtouri**
+- [Github](https://github.com/rida-elbahtouri)
+- [Twitter](https://twitter.com/RElbahtouri)
+- [Linkedin](https://www.linkedin.com/in/rida-elbahtouri-36a8a7185/)
 
 ## 🤝 Contributing
 
+
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the [issues page](issues/).
+Feel free to check the <a href="https://github.com/8bts/ror-social-scaffold/issues" target="_blank">issues page</a>.
 
 ## Show your support
 
 Give a ⭐️ if you like this project!
 
 ## Acknowledgments
-
-TBA
-
-## 📝 License
-
-TBA
+ 
+- <a href="https://www.theodinproject.com/" target="_blank">The Odin Project</a>
+- <a href="https://guides.rubyonrails.org/" target="_blank">Rails Guides</a>
 
