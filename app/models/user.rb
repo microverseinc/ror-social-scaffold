@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :name, presence: true, length: { maximum: 20 }
+  validates :name, uniqueness: true, presence: true, length: { maximum: 20 }
 
   has_many :posts
   has_many :comments, dependent: :destroy
@@ -31,7 +31,7 @@ class User < ApplicationRecord
 
   def confirm_friendship(user)
     friendship_record = inverse_friendships.find { |friendship| friendship.user == user }
-
+    return false if friendship_record
     friendship_record.status = true
     friendship_record.save
   end

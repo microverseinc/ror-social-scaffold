@@ -6,7 +6,8 @@ Rails.application.routes.draw do
 
 
   get '/send_request/:id' , to: 'friendships#send_request',as: "send_request"
-  get '/accept_friend/:id', to: 'friendships#accept_request',as: "accept_request"
+  get '/accept_friend/:id', to: 'friendships#accept_friend',as: "accept_friend"
+  get '/destroy_friendship/:id', to: 'friendships#destroy_friendship', as: "destroy_friendship"
 
   resources :users, only: [:index, :show]
   resources :posts, only: [:index, :create] do

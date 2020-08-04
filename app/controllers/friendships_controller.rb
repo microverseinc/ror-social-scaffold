@@ -24,6 +24,17 @@ class FriendshipsController < ApplicationController
         else
             flash[:notice]="something went wrong"
         end
+        redirect_to users_path
     end
+
+    def destroy_friendship
+        friend = User.find(params[:id])
+        friendship = Friendship.find do |friendship|
+            (friendship.user_id == current_user.id && friendship.friend_id == friend.id)||
+            (friendship.user_id == friend.id && friendship.friend_id == current_user.id)
+        end
+        friendship.destroy if friendship
+        redirect_to users_path
+    end 
 
 end
