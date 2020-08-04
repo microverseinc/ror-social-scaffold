@@ -10,11 +10,15 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
-  has_many :friendships,foreign_key: "user_id"
-  has_many :friends ,through: :friendships
-  
-  has_many :users ,through: :friendships
-  has_many :friendships,foreign_key: "friend_id",class_name: "User"
+  has_many :friendships
+  has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
 
 
+  def friends
+    friends_list = friendships.map{ |friendship| friendship.friend if friendship.status}
+    
+    friends_list + inverse_friendships.map{ |friendship| friendship.user if friendship.status}
+
+    friends_list.compact
+  end
 end
