@@ -1,2 +1,2 @@
-<%= link_to 'Accept friendship request', accept_friend_path(locals[:friend_id]), class: 'mx-1' %>
-<%= link_to 'Reject friendship request', destroy_friendship_path(locals[:friend_id]) %>
+<%= link_to 'Accept friendship request', accept_friend_path(locals[:friend_id]), class: 'mx-1 btn btn-sm bg-success' %>
+<%= link_to 'Reject friendship request', destroy_friendship_path(locals[:friend_id]), class: 'mx-1 btn btn-sm bg-danger text-light' %>
