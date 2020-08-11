@@ -40,6 +40,17 @@ Style/DefWithParentheses:
   Enabled: false
 Style/FrozenStringLiteralComment:
   EnforcedStyle: never
+Style/HashEachMethods:
+  enabled: false
+Style/HashTransformKeys:
+  enabled: false
+Style/HashTransformValues:
+  enabled: false
+
+Lint/RaiseException:
+  enabled: false
+Lint/StructNewOverride:
+  enabled: false
 
 Layout/HashAlignment:
   EnforcedColonStyle: key
