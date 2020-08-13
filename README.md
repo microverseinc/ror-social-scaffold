@@ -77,7 +77,7 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-TBA
+- <a href="https://www.theodinproject.com/" target="_blank">The Odin Project</a>
 
 ## 📝 License
 
