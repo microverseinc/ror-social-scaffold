@@ -9,4 +9,6 @@ class User < ApplicationRecord
   has_many :posts
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :inviters, dependent: :destroy
+  has_many :invitees, dependent: :destroy
 end
