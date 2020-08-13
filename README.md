@@ -63,7 +63,16 @@ TBA
 
 ## Authors
 
-TBA
+👤 **Ignatius Sani**
+
+- Github: [ignatius22](https://github.com/ignatius22)
+- Twitter: [@Iggy_code](https://twitter.com/iggy_code)
+- Linkedin: [linkedin](https://www.linkedin.com/in/ignatiussani)
+
+👤 **Tendongze Godson**
+- Github: [tGodson](https://github.com/tGodson)
+- Twitter: [@tendongze95](https://twitter.com/tendongze95)
+- Linkedin: [linkedin](https://www.linkedin.com/in/tendongzegodson)
 
 ## 🤝 Contributing
 
@@ -77,7 +86,7 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-TBA
+- <a href="https://www.theodinproject.com/" target="_blank">The Odin Project</a>
 
 ## 📝 License
 
