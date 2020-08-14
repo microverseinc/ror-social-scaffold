@@ -6,4 +6,5 @@ class CreateFriendships < ActiveRecord::Migration[5.2]
       t.boolean :status, default: false
     end
   end
+  
 end
