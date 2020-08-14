@@ -5,7 +5,12 @@
         Name: <%= user.name %>
         <span class="profile-link">
           <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+          <% if current_user.friend_requests(user) %>
+                <button> pending </button>
+          <% end %>
+          <button> <%= link_to 'Invite', users_path(user_id: user.id) %> </button>
         </span>
+        
       </li>
     <% end %>
   </ul>
