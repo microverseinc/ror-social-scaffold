@@ -20,4 +20,16 @@ class User < ApplicationRecord
     friends_array.compact
   end
 
+  def pending_friends
+    friendships.map{|friendship| friendship.invitee if !friendship.status}.compact
+  end
+
+  def friend_requests
+    friendships.map{|friendship| friendship.user if !friendship.status}.compact
+  end
+
+  def friend?(user)
+    friends.include?(user)
+  end
+
 end
