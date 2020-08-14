@@ -5,7 +5,10 @@
         Name: <%= user.name %>
         <span class="profile-link">
           <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+          
+          <button> <%= link_to 'Invite', users_path(user_id: user.id) %> </button>
         </span>
+        
       </li>
     <% end %>
   </ul>
