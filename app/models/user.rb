@@ -19,12 +19,10 @@ class User < ApplicationRecord
     friends_array.compact
   end
 
-  # Users who have yet to confirme friend requests
   def pending_friends
     friendships.map{|friendship| friendship.friend if !friendship.confirmed}.compact
   end
 
-  # Users who have requested to be friends
   def friend_requests(user_id)
     friendship = friendships.where(friend_id: user_id).first
     true if friendship && friendship.confirmed == false

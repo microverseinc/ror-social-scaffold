@@ -1,0 +1,4 @@
+<h1>Pending friend requests</h1>
+<% @pending_requests.each do |request| %>
+   <ul> <li> Name: <%= link_to request.name, user_path(request) %> </li> </ul>
+<% end %>

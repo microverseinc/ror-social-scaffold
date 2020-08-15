@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   delete 'deny_friend_request', to: 'friendships#reject_request'
   get 'friends', to: 'friendships#all_friends'
   delete 'unfriend', to: 'friendships#unfriend'
+  get 'pending_requests', to: 'friendships#pending_requests'
+
 
 
 
