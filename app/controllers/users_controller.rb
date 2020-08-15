@@ -12,7 +12,8 @@ class UsersController < ApplicationController
   end
 
   private
-    def friendship_invites
-      @friendship_invites ||= Friendship.all.ordered_by_most_recent.includes(:user)
-    end
+
+  def friendship_invites
+    @friendship_invites ||= Friendship.all.ordered_by_most_recent.includes(:user)
+  end
 end
