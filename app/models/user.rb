@@ -11,12 +11,12 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
 
   has_many :friendships, foreign_key: :inviter_id
-  has_many :inviters, class_name: 'Friendship', foreign_key: :invitee_id
+  has_many :invitations, class_name: 'Friendship', foreign_key: :invitee_id
 
   def friends
     friends_array = friendships.map{|friendship| friendship.invitee if friendship.status}
 
-    friends_array + inviters.map{|friendship| friendship.user if friendship.status}
+    friends_array + invitations.map{|friendship| friendship.user if friendship.status}
     friends_array.compact
   end
 
