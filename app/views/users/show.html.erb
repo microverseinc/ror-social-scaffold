@@ -3,6 +3,7 @@
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
+    <%= pluralize(@user.posts.count," post")%>
       <%= render @posts %>
     </ul>
   </article>
