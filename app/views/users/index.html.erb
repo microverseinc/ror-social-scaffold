@@ -1,9 +1,9 @@
-<section class="users-section">
+<section class="users-section container">
   <ul class="users-list">
     <% @users.each do |user| %>
-      <li>
-         Name: <%= user.name %> <br>
-         <%= pluralize(user.posts.count," post")%>
+      <li class="card container shadow  p-2">
+          <h5 class="card-title p-2"><%= user.name %></h5> <br>
+          <%= pluralize(user.posts.count,"post")%>
         <span class="profile-link">
           <%= link_to 'See Profile',  user_path(user), class: "btn  btn-sm btn-secondary" %>
            <% if current_user.friend_invites(user) %>
@@ -20,10 +20,13 @@
       </li>
     <% end %>
   </ul>
-  <h3>Pending invitations</h3>
+
+  <h3 class="container">Pending invitations</h3>
   <% @pending_invitations.uniq.each do |invitation| %>
   <ul>
-  <li>Name: <%= invitation.name.capitalize%></li>
+  <li class="card container shadow  p-2">
+  <h5 class="card-title"><%= invitation.name.capitalize%></h5>  
+  </li>
   </ul>
   <% end %>
 </section>

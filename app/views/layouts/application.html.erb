@@ -8,22 +8,32 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <nav class="nav">
-      <%= link_to 'Stay in touch', root_path %>
-      <div class="menu">
-        <div class="menu-item">
-          <%= menu_link_to 'Timeline', posts_path %>
-        </div>
-        <div class="menu-item">
-          <%= menu_link_to 'All users', users_path %>
-        </div>
-      </div>
+    <nav class="navbar navbar-expand-lg navbar-light  bg-info">
+      <%= link_to 'Stay in touch', root_path, class: "nav-link space " %>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <%= link_to 'Timeline', posts_path, class: "nav-link space text-white" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'All users', users_path, class: "nav-link space text-white" %>
+        </li>
+      </ul>
       <% if current_user %>
-        <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <%=link_to current_user.name, user_path(current_user), class: "nav-link space text-white"%>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: "nav-link space text-white" %>
+        </li>
+        
+        </ul>
       <% else %>
         <%= link_to 'Sign in', user_session_path %>
       <% end %>
     </nav>
+
+
     <% if notice.present? %>
       <div class="notice">
         <p> <%= notice %> </p>
@@ -39,3 +49,6 @@
     </main>
   </body>
 </html>
+
+
+

@@ -13,10 +13,11 @@ class User < ApplicationRecord
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
 
     def friends
-    friends_array = friendships.map { |friendship| friendship.friend if friendship.confirmed }
-     friends_array += inverse_friendships.map{|friendship| friendship.user if friendship.confirmed}
-    friends_array.compact
-    friends_array.compact.uniq
+     friends_array = friendships.map { |friendship| friendship.friend if friendship.confirmed }
+     friends_array2 = inverse_friendships.map{|friendship| friendship.user if friendship.confirmed}
+     friends_array.concat(friends_array2)
+     friends_array.compact
+     friends_array.compact.uniq
   end
    
 
