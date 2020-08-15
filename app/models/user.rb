@@ -13,10 +13,12 @@ class User < ApplicationRecord
   has_many :friendships, foreign_key: :inviter_id
   has_many :invitations, class_name: 'Friendship', foreign_key: :invitee_id
 
+
+  
   def friends
     friends_array = friendships.map { |friendship| friendship.invitee if friendship.status }
     invitations_array = invitations.map { |friendship| friendship.user if friendship.status }
-    friends_array.compact + invitations_array.compact
+    friends_array + invitations_array
   end
 
   def pending_friends
