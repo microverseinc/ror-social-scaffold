@@ -25,9 +25,11 @@ class User < ApplicationRecord
   end
 
   # Users who have requested to be friends
-  def friend_requests
-    inverse_friendships.map{|friendship| friendship.user if !friendship.confirmed}.compact
+  def friend_requests(user_id)
+    friendship = friendships.where(friend_id: user_id).first
+    true if friendship && friendship.confirmed == false
   end
+ 
 
   def receive_invitation(user_id)
     friendship = inverse_friendships.where(user_id: user_id).first
