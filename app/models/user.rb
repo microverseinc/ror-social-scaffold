@@ -49,4 +49,10 @@ class User < ApplicationRecord
     friendship.confirmed = true
     friendship.save
   end
+
+  def reject_friend(user)
+    friendship = inverse_friendships.where(user_id: user).first
+    friendship.confirmed = false
+    friendship.destroy
+  end
 end

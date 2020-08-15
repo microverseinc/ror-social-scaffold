@@ -8,7 +8,8 @@
         </span>
 
         <% if current_user.receive_invitation(user)%>
-           <%= link_to 'Accept', accept_friend_request_path(user_id: user.id) %>
+          <%= link_to 'Accept', accept_friend_request_path(user_id: user.id) %>
+          <%= link_to 'Decline', deny_friend_request_path(user_id: user.id), method: :delete%>
         <% elsif !current_user.friend?(user)  && user.id != current_user.id%>
           <%= link_to 'Add Friend', send_friend_request_path(user_id: user.id) %>
         <% end %>

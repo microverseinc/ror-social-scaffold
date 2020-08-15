@@ -10,4 +10,10 @@ class FriendshipsController < ApplicationController
           redirect_to users_path, notice: 'Friend request accepted'
         end
     end
+
+    def reject_request
+        if current_user.reject_friend(params[:user_id])
+          redirect_to users_path, notice: 'Friend request denied'
+        end
+      end
 end
