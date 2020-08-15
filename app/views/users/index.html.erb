@@ -7,7 +7,9 @@
           <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
         </span>
 
-        <% if !current_user.friend?(user)  && user.id != current_user.id%>
+        <% if current_user.receive_invitation(user)%>
+           <%= link_to 'Accept', accept_friend_request_path(user_id: user.id) %>
+        <% elsif !current_user.friend?(user)  && user.id != current_user.id%>
           <%= link_to 'Add Friend', send_friend_request_path(user_id: user.id) %>
         <% end %>
       </li>
