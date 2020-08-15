@@ -1,0 +1,4 @@
+<h1>Friends</h1>
+<% @all_friends.each do |friend| %>
+   <ul> <li> <%= link_to friend.name, user_path(friend) %> </li> </ul>
+<% end %>

@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get 'send_friend_request', to: 'friendships#send_invitation'
   get 'accept_friend_request', to: 'friendships#confirm_request'
   delete 'deny_friend_request', to: 'friendships#reject_request'
+  get 'friends', to: 'friendships#all_friends'
+
 
 
 
