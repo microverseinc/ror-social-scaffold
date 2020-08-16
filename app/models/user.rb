@@ -17,8 +17,8 @@ class User < ApplicationRecord
   
   def friends
     friends_array = friendships.map { |friendship| friendship.invitee if friendship.status }
-    invitations_array = invitations.map { |friendship| friendship.user if friendship.status }
-    friends_array + invitations_array
+    invitations_array = invitations.map { |friendship| friendship.inviter if friendship.status }
+    friends_array.compact + invitations_array.compact
   end
 
   def pending_friends
@@ -26,7 +26,7 @@ class User < ApplicationRecord
   end
 
   def friend_requests
-    friendships.map { |friendship| friendship.user unless friendship.status }.compact
+    invitations.map { |friendship| friendship.inviter unless friendship.status }.compact
   end
 
   def friend?(user)

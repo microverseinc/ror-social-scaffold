@@ -1,0 +1,42 @@
+<div class="container-sm">
+  <div class="row">
+    <div class="col-6">
+      <div class="card" style="width: 18rem;">
+        <div class="card-header bg-danger text-white">
+          Pending Friendships
+        </div>
+        <% if @pending_friends %>
+          <ul class="list-group list-group-flush">
+            <% @pending_friends.each do |friend| %>
+              <li class="list-group-item bg-warning">
+                <%= friend.name %> <br>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="card" style="width: 18rem;">
+        <div class="card-header bg-primary text-white">
+          Friendship Requests
+        </div>
+        <% if @friend_requests %>
+          <ul class="list-group list-group-flush">
+            <% @friend_requests.each do |request| %>
+              <li class="list-group-item bg-info text-white">
+                <%= request.name %> <br>
+
+                <% if current_user %>
+                  <a href="/users/<%= request.id %>/accept" class="badge badge-primary text-white">Accept Friendship</a>
+                <% end %>
+
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
