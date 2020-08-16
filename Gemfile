@@ -39,7 +39,6 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'devise'
 
-
 group :production, :test do
   gem 'pg', '>= 0.18', '< 2.0'
 end
