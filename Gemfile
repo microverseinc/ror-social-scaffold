@@ -48,7 +48,6 @@ group :production, :test do
   gem 'pg', '>= 0.18', '< 2.0'
 end
 
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
@@ -63,7 +62,6 @@ group :test do
   gem 'chromedriver-helper'
 end
 
-
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'listen', '>= 3.0.5', '< 3.2'
@@ -72,7 +70,6 @@ group :development do
   gem 'rubocop'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
