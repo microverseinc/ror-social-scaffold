@@ -1,17 +1,21 @@
 example_id                              | status | run_time        |
 --------------------------------------- | ------ | --------------- |
-./spec/feature/sign_up_spec.rb[1:1]     | passed | 0.46208 seconds |
-./spec/feature/user_login_spec.rb[1:1]  | passed | 0.04745 seconds |
-./spec/models/friendship_spec.rb[1:1:1] | passed | 0.18782 seconds |
-./spec/models/friendship_spec.rb[1:2:1] | passed | 0.02337 seconds |
-./spec/models/friendship_spec.rb[1:2:2] | passed | 0.00438 seconds |
-./spec/models/user_spec.rb[1:1:1]       | passed | 0.00667 seconds |
-./spec/models/user_spec.rb[1:1:2]       | passed | 0.00805 seconds |
-./spec/models/user_spec.rb[1:1:3]       | passed | 0.00629 seconds |
-./spec/models/user_spec.rb[1:2:1]       | passed | 0.01901 seconds |
-./spec/models/user_spec.rb[1:2:2]       | passed | 0.02397 seconds |
-./spec/models/user_spec.rb[1:3:1]       | passed | 0.0035 seconds  |
-./spec/models/user_spec.rb[1:3:2]       | passed | 0.00317 seconds |
-./spec/models/user_spec.rb[1:3:3]       | passed | 0.00276 seconds |
-./spec/models/user_spec.rb[1:3:4]       | passed | 0.0031 seconds  |
-./spec/models/user_spec.rb[1:3:5]       | passed | 0.00273 seconds |
+./spec/feature/friendships_spec.rb[1:1] | passed | 0.0754 seconds  |
+./spec/feature/friendships_spec.rb[1:2] | passed | 0.34183 seconds |
+./spec/feature/friendships_spec.rb[1:3] | passed | 0.15567 seconds |
+./spec/feature/friendships_spec.rb[1:4] | passed | 0.25801 seconds |
+./spec/feature/sign_up_spec.rb[1:1]     | passed | 0.49265 seconds |
+./spec/feature/user_login_spec.rb[1:1]  | passed | 0.03861 seconds |
+./spec/models/friendship_spec.rb[1:1:1] | passed | 0.15031 seconds |
+./spec/models/friendship_spec.rb[1:2:1] | passed | 0.00442 seconds |
+./spec/models/friendship_spec.rb[1:2:2] | passed | 0.00409 seconds |
+./spec/models/user_spec.rb[1:1:1]       | passed | 0.00622 seconds |
+./spec/models/user_spec.rb[1:1:2]       | passed | 0.00747 seconds |
+./spec/models/user_spec.rb[1:1:3]       | passed | 0.00721 seconds |
+./spec/models/user_spec.rb[1:2:1]       | passed | 0.01721 seconds |
+./spec/models/user_spec.rb[1:2:2]       | passed | 0.02062 seconds |
+./spec/models/user_spec.rb[1:3:1]       | passed | 0.00285 seconds |
+./spec/models/user_spec.rb[1:3:2]       | passed | 0.00305 seconds |
+./spec/models/user_spec.rb[1:3:3]       | passed | 0.0039 seconds  |
+./spec/models/user_spec.rb[1:3:4]       | passed | 0.00305 seconds |
+./spec/models/user_spec.rb[1:3:5]       | passed | 0.00292 seconds |
