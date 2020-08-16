@@ -23,8 +23,4 @@ class FriendshipsController < ApplicationController
     inverse_friend&.delete
     redirect_to users_path
   end
-
-  def pending_requests
-    @pending_requests = current_user.pending_friends
-  end
 end
