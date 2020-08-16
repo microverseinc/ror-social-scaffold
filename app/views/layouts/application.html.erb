@@ -8,7 +8,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light  bg-info">
+    <nav class="navbar navbar-expand-lg navbar-light  bg-success">
       <%= link_to 'Stay in touch', root_path, class: "nav-link space " %>
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
@@ -29,7 +29,9 @@
         
         </ul>
       <% else %>
-        <%= link_to 'Sign in', user_session_path %>
+   
+        <%= link_to 'Sign in', user_session_path , class: "nav-link space text-white"%>
+
       <% end %>
     </nav>
 

@@ -3,7 +3,6 @@
     <% @users.each do |user| %>
       <li class="card container shadow  p-2">
           <h5 class="card-title p-2"><%= user.name %></h5> <br>
-          <%= pluralize(user.posts.count,"post")%>
         <span class="profile-link">
           <%= link_to 'See Profile',  user_path(user), class: "btn  btn-sm btn-secondary" %>
            <% if current_user.friend_invites(user) %>
