@@ -19,7 +19,7 @@ class PostsController < ApplicationController
 
   private
 
-  def timeline_post
+  def timeline_posts
     friends_ids = current_user.friends.pluck(:id).push(current_user.id)
     @timeline_posts ||= Post.where(user_id: friends_ids).ordered_by_most_recent
   end
