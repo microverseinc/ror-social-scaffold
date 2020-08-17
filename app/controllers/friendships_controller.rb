@@ -29,13 +29,4 @@ class FriendshipsController < ApplicationController
     redirect_to friends_path
   end
 
-  private
-
-  def already_invited?(user_id)
-    if current_user.friendships.find_by(invitee_id: user_id, status: false)
-      true
-    else
-      false
-    end
-  end
 end
