@@ -1,16 +1,15 @@
-# Scaffold for social media app with Ruby on Rails
+# Stay in Touch
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+> This repo includes intial code for a social media app, with basic styling. Its purpose is to be a starting point.
 
 ## Built With
 
-- Ruby v2.7.0
+- Ruby v2.6.5
 - Ruby on Rails v5.2.4
 
 ## Live Demo
 
 TBA
-
 
 ## Getting Started
 
@@ -18,7 +17,7 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-Ruby: 2.6.3
+Ruby: 2.6.5
 Rails: 5.2.3
 Postgres: >=9.5
 
@@ -37,8 +36,6 @@ Setup database with:
    rails db:migrate
 ```
 
-
-
 ### Usage
 
 Start server with:
@@ -55,21 +52,32 @@ Open `http://localhost:3000/` in your browser.
     rpsec --format documentation
 ```
 
-> Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
+> There are no tests for initial features in order to make sure that you write all tests from scratch.
 
 ### Deployment
 
 TBA
 
-## Authors
+## Author
 
-TBA
+👤 **Clifton Davies**
+
+- Github: [@githubhandle](https://github.com/cliftondavies)
+- Twitter: [@twitterhandle](https://twitter.com/cliftonaedavies)
+- Linkedin: [linkedin](https://www.linkedin.com/in/clifton-davies-mbcs/)
 
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the [issues page](issues/).
+1. Fork it
+2. Create feature branch
+`git checkout -b feature/fooBar`
+3. Commit changes
+`git commit -am 'Add some fooBar'`
+4. Push to the branch
+`git push origin feature/fooBar`
+5. Create new Pull Request
 
 ## Show your support
 
@@ -77,9 +85,9 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-TBA
+- TBA
 
-## 📝 License
+## 📝 Copyright & License
 
-TBA
-
+Copyright (c) 2020 Clifton Davies.
+This project is licensed under [MIT](https://opensource.org/licenses/MIT). See LICENSE file for details.
