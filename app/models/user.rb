@@ -18,7 +18,7 @@ class User < ApplicationRecord
     friends_array.concat(friends_array2)
     friends_array.compact
     friends_array.compact.uniq
-end
+  end
 
   # Users who have yet to confirmed friend invites
   def pending_invites
