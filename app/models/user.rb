@@ -17,7 +17,7 @@ class User < ApplicationRecord
   
   def friends
     friends_array = friendships.map { |friendship| friendship.invitee if friendship.status }
-    invitations_array = invitations.map { |friendship| friendship.inviter if friendship.status }
+    invitations_array = invitations.map { |invitation| invitation.inviter if invitation.status }
     friends_array.compact + invitations_array.compact
   end
 

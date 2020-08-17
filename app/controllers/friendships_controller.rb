@@ -1,5 +1,6 @@
 class FriendshipsController < ApplicationController
-
+  before_action :authenticate_user!
+  
   def index
     @friends = current_user.friends
     @pending_friends = current_user.pending_friends
@@ -38,5 +39,5 @@ class FriendshipsController < ApplicationController
       false
     end
   end
-  
+
 end

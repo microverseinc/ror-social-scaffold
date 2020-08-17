@@ -14,6 +14,12 @@
     Recent posts
   </h3>
   <ul class="posts">
-    <%= render @timeline_posts %>
+  
+  
+    <% @timeline_posts.each do |post| %>
+      <%= render 'post', post: post %>
+    <% end %>
+
+  <!-- <%= @timeline_posts %> -->
   </ul>
 </article>
