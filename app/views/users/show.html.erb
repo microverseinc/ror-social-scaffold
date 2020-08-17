@@ -1,8 +1,13 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
   <% unless current_user == @user %>
-    <a href="/users/<%= @user.id %>/invite" class="badge badge-danger text-white">Invite to friendship</a>
+    <% if current_user.friend?(@user) %>
+      <span class="badge badge-success">Friend</span>
+    <% elsif !current_user.friend?(@user) %>
+      <a href="/users/<%= @user.id %>/invite" class="badge badge-danger text-white">Invite to friendship</a>
+    <% end %>
   <% end %>
+
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">

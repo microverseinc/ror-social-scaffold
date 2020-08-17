@@ -6,7 +6,11 @@
         <span class="profile-link">
           <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
           <% unless current_user == user %>
-            <a href="/users/<%= user.id %>/invite" class="badge badge-danger text-white">Invite to friendship</a>
+            <% if current_user.friend?(user) %>
+              <span class="badge badge-success">Friend</span>
+            <% elsif !current_user.friend?(user) %>
+              <a href="/users/<%= user.id %>/invite" class="badge badge-danger text-white">Invite to friendship</a>
+            <% end %>
           <% end %>
         </span>
       </li>
