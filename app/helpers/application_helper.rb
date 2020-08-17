@@ -24,7 +24,7 @@ module ApplicationHelper
         content_tag(:span, 'Pending', class: 'badge badge-warning')
       else
         link_to('Invite to friendship', "/users/#{user.id}/invite", class: 'badge badge-danger text-white')
-      end unless current_user == user
+      end
     end
   end
 end
