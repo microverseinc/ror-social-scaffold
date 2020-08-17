@@ -15,4 +15,29 @@ module ApplicationHelper
       link_to('Like!', post_likes_path(post_id: post.id), method: :post)
     end
   end
+
+  def friendship_status(user)
+    unless current_user == user
+      if current_user.friend?(user)
+        content_tag(:span, 'Friend', class: "badge badge-success")
+      elsif already_invited?(user.id)
+        content_tag(:span, 'Pending', class: "badge badge-warning")
+      else
+        link_to('Invite to friendship', "/users/#{user.id}/invite" , class: 'badge badge-danger text-white' )
+      end
+    end
+  end
+
 end
+
+
+
+# <% unless current_user == user %>
+#   <% if current_user.friend?(user) %>
+#     <span class="badge badge-success">Friend</span>
+#   <% elsif already_invited?(user.id) %>
+#     <span class="badge badge-warning">Pending</span>
+#   <% else %>
+#     <a href="/users/<%= user.id %>/invite" class="badge badge-danger text-white">Invite to friendship</a>
+#   <% end %>
+# <% end %>

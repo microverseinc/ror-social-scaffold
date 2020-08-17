@@ -5,16 +5,7 @@
         Name: <%= user.name %>
         <span class="profile-link">
           <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-
-          <% unless current_user == user %>
-            <% if current_user.friend?(user) %>
-              <span class="badge badge-success">Friend</span>
-            <% elsif already_invited?(user.id) %>
-              <span class="badge badge-warning">Pending</span>
-            <% else %>
-              <a href="/users/<%= user.id %>/invite" class="badge badge-danger text-white">Invite to friendship</a>
-            <% end %>
-          <% end %>
+          <%= friendship_status(user) %>
 
         </span>
       </li>
