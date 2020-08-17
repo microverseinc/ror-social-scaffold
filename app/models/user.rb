@@ -10,11 +10,19 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :friendships, dependent: :destroy
-  has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
+  # has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
+  has_many :confirmed_friendships, -> { where confirmed: true }, class_name: 'Friendship'
+  has_many :friends, through: :confirmed_friendships
+  # Users who needs to confirm friendship
+  has_many :pending_friendships, -> { where confirmed: false }, class_name: 'Friendship', foreign_key: 'user_id'
+  has_many :pending_friends, through: :pending_friendships, source: :friend
+  # Users who requested to be friends (needed for notifications)
+  has_many :inverted_friendships, -> { where confirmed: false }, class_name: 'Friendship', foreign_key: 'friend_id'
+  has_many :friend_requests, through: :inverted_friendships
 
   def friends
     friends_array = friendships.map { |friendship| friendship.friend if friendship.confirmed }
-    friends_array2 = inverse_friendships.map { |friendship| friendship.user if friendship.confirmed }
+    friends_array2 = inverted_friendships.map { |friendship| friendship.user if friendship.confirmed }
     friends_array.concat(friends_array2)
     friends_array.compact
     friends_array.compact.uniq
@@ -32,7 +40,7 @@ class User < ApplicationRecord
   end
 
   def receive_invitation(user_id)
-    friendship = inverse_friendships.where(user_id: user_id).first
+    friendship = inverted_friendships.where(user_id: user_id).first
     true if friendship && friendship.confirmed == false
   end
 
@@ -43,7 +51,7 @@ class User < ApplicationRecord
   end
 
   def confirm_invites(user)
-    friendship = inverse_friendships.where(user_id: user).first
+    friendship = inverted_friendships.where(user_id: user).first
     friendship.confirmed = true
     friendship.save
     reverse_confirmation = friendships.create(friend_id: user)
