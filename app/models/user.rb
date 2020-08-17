@@ -13,8 +13,6 @@ class User < ApplicationRecord
   has_many :friendships, foreign_key: :inviter_id
   has_many :invitations, class_name: 'Friendship', foreign_key: :invitee_id
 
-
-  
   def friends
     friends_array = friendships.map { |friendship| friendship.invitee if friendship.status }
     invitations_array = invitations.map { |invitation| invitation.inviter if invitation.status }

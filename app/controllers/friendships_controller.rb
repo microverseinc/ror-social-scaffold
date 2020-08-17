@@ -1,21 +1,19 @@
 class FriendshipsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def index
     @friends = current_user.friends
     @pending_friends = current_user.pending_friends
-    @friend_requests =  current_user.friend_requests
+    @friend_requests = current_user.friend_requests
   end
 
   def invite
     @friendship = current_user.friendships.new(invitee_id: params[:id])
 
-    unless already_invited?(params[:id])
-      if @friendship.save
-        redirect_to friends_path
-      end
-    else
+    if already_invited?(params[:id])
       redirect_to users_path, alert: 'You already invited this User'
+    elsif @friendship.save
+      redirect_to friends_path
     end
   end
 
@@ -32,6 +30,7 @@ class FriendshipsController < ApplicationController
   end
 
   private
+
   def already_invited?(user_id)
     if current_user.friendships.find_by(invitee_id: user_id, status: false)
       true
@@ -39,5 +38,4 @@ class FriendshipsController < ApplicationController
       false
     end
   end
-
 end

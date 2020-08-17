@@ -21,7 +21,7 @@ class PostsController < ApplicationController
 
   def timeline_posts
     users_posts = current_user.posts
-    friends_posts = current_user.friends.map{|friend| friend.posts if friend.posts.any?}.compact
+    friends_posts = current_user.friends.map { |friend| friend.posts if friend.posts.any? }.compact
     friends_posts = friends_posts.flatten
     @timeline_posts = users_posts + friends_posts
   end
