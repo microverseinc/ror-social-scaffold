@@ -19,18 +19,15 @@ module ApplicationHelper
   def friendship_status(user)
     unless current_user == user
       if current_user.friend?(user)
-        content_tag(:span, 'Friend', class: "badge badge-success")
+        content_tag(:span, 'Friend', class: 'badge badge-success')
       elsif already_invited?(user.id)
-        content_tag(:span, 'Pending', class: "badge badge-warning")
+        content_tag(:span, 'Pending', class: 'badge badge-warning')
       else
-        link_to('Invite to friendship', "/users/#{user.id}/invite" , class: 'badge badge-danger text-white' )
-      end
+        link_to('Invite to friendship', "/users/#{user.id}/invite", class: 'badge badge-danger text-white')
+      end unless current_user == user
     end
   end
-
 end
-
-
 
 # <% unless current_user == user %>
 #   <% if current_user.friend?(user) %>

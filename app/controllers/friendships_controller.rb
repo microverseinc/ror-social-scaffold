@@ -28,5 +28,4 @@ class FriendshipsController < ApplicationController
     this_friendship.delete_all
     redirect_to friends_path
   end
-
 end
