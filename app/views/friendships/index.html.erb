@@ -1,24 +1,7 @@
 <div class="container-sm">
   <div class="row">
 
-   <div class="col-4">
-      <div class="card" style="width: 18rem;">
-        <div class="card-header bg-light text-dark">
-          Friends
-        </div>
-        <% if @friends %>
-          <ul class="list-group list-group-flush">
-            <% @friends.each do |friend| %>
-              <li class="list-group-item bg-dark text-white">
-                <%= friend.name %> <br>
-              </li>
-            <% end %>
-          </ul>
-        <% end %>
-      </div>
-    </div>
-
-    <div class="col-4">
+    <div class="col-6">
       <div class="card" style="width: 18rem;">
         <div class="card-header bg-danger text-white">
           Pending Friendships
@@ -35,7 +18,7 @@
       </div>
     </div>
 
-    <div class="col-4">
+    <div class="col-6">
       <div class="card" style="width: 18rem;">
         <div class="card-header bg-primary text-white">
           Friendship Requests

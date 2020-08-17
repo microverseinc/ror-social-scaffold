@@ -26,7 +26,7 @@ class User < ApplicationRecord
   end
 
   def friend_requests
-    invitations.map { |friendship| friendship.inviter unless friendship.status }.compact
+    invitations.map { |invitation| invitation.inviter unless invitation.status }.compact
   end
 
   def friend?(user)
