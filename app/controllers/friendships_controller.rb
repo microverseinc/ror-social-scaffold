@@ -27,14 +27,10 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
-    user = User.find(params[:user_id])
-    friend = current_user.friendships.find_by_friend_id(user)
-
-    if friend.delete
-      flash.notice = "#{user.name} has been removed as your friend"
-      redirect_to users_path
-    else
-      flash.now[:notice] = 'error occurred'
-    end
+    friend = Friendship.find_by(user_id: params[:user_id], friend_id: current_user.id)
+    inverse_friend = Friendship.find_by(user_id: current_user.id, friend_id: params[:user_id])
+    friend&.delete
+    inverse_friend&.delete
+    redirect_to users_path
   end
 end

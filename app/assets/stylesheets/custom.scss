@@ -20,6 +20,7 @@ body {
   position: relative;
   font-family: 'Catamaran', sans-serif;
   font-weight: 400;
+  background: whitesmoke;
 }
 
 h1,
@@ -64,9 +65,14 @@ a {
 
     .menu-item {
       float: left;
-      margin: 0 15px;
+      margin: 0 18px;
     }
   }
+}
+
+.space{
+  font-size: 20px;
+  color: white;
 }
 
 .main {

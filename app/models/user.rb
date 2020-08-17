@@ -6,16 +6,19 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 20 }
 
-  has_many :posts, dependent: :destroy
+  has_many :posts
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :friendships, dependent: :destroy
-  has_many :inverse_friendships, class_name: 'Friendship', foreign_key: :friend_id
+  has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
 
   def friends
     friends_array = friendships.map { |friendship| friendship.friend if friendship.confirmed }
+    friends_array2 = inverse_friendships.map { |friendship| friendship.user if friendship.confirmed }
+    friends_array.concat(friends_array2)
     friends_array.compact
-  end
+    friends_array.compact.uniq
+end
 
   # Users who have yet to confirmed friend invites
   def pending_invites
@@ -43,6 +46,9 @@ class User < ApplicationRecord
     friendship = inverse_friendships.where(user_id: user).first
     friendship.confirmed = true
     friendship.save
+    reverse_confirmation = friendships.create(friend_id: user)
+    reverse_confirmation.confirmed = true
+    reverse_confirmation.save
   end
 
   def reject_invites(user)
