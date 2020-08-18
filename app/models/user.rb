@@ -20,13 +20,7 @@ class User < ApplicationRecord
   has_many :inverted_friendships, -> { where confirmed: false }, class_name: 'Friendship', foreign_key: 'friend_id'
   has_many :friend_requests, through: :inverted_friendships
 
-  def friends
-    friends_array = friendships.map { |friendship| friendship.friend if friendship.confirmed }
-    friends_array2 = inverted_friendships.map { |friendship| friendship.user if friendship.confirmed }
-    friends_array.concat(friends_array2)
-    friends_array.compact
-    friends_array.compact.uniq
-  end
+ 
 
   # Users who have yet to confirmed friend invites
   def pending_invites
