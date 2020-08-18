@@ -26,13 +26,3 @@ module ApplicationHelper
     end
   end
 end
-
-# <% unless current_user == user %>
-#   <% if current_user.friend?(user) %>
-#     <span class="badge badge-success">Friend</span>
-#   <% elsif already_invited?(user.id) %>
-#     <span class="badge badge-warning">Pending</span>
-#   <% else %>
-#     <a href="/users/<%= user.id %>/invite" class="badge badge-danger text-white">Invite to friendship</a>
-#   <% end %>
-# <% end %>
