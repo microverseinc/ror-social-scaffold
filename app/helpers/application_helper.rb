@@ -27,15 +27,10 @@ module ApplicationHelper
   end
 
   def pending_friendships
-    if @pending_friends
-      render 'pending'
-    end
+    render 'pending' if @pending_friends
   end
-  
 
   def friendship_requests
-    if @friend_requests
-      render 'requests'
-    end
+    render 'requests' if @friend_requests
   end
 end

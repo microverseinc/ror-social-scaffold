@@ -18,6 +18,5 @@ RSpec.describe Post, type: :feature do
       click_on 'Save'
       expect(page).to have_content 'life is beautiful'
     end
-
   end
 end
