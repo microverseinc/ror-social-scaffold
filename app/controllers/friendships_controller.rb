@@ -18,9 +18,7 @@ class FriendshipsController < ApplicationController
   end
 
   def accept
-    this_friendship = Friendship.where(inviter_id: params[:id], invitee_id: current_user.id)
-    this_friendship.update(status: true)
-    redirect_to friends_path
+    redirect_to friends_path if current_user.accept_friend(params[:id])
   end
 
   def reject
