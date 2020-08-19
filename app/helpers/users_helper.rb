@@ -1,7 +1,7 @@
-module FriendshipsHelper
+module UsersHelper
 
 		def render_friendships(user)
-			if current_user.friend_invites(user)
+			  if current_user.friend_invites(user)
             content_tag(:button, "Pending Invitations", class: "btn btn-sm btn-warning")
            elsif current_user.receive_invitation(user)
               link_to( 'Accept', accept_invite_path(user_id: user.id), class: "btn btn-sm btn-primary")
