@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Catamaran&display=swap');
+@import "bootstrap";
 
 $primary-color-dark: #689f38;
 $primary-color: #8bc34a;
@@ -14,10 +16,10 @@ $divider-color: #bdbdbd;
 }
 
 body {
-  background: #fff;
   position: relative;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Catamaran', sans-serif;
   font-weight: 400;
+  background: whitesmoke;
 }
 
 h1,
@@ -62,9 +64,14 @@ a {
 
     .menu-item {
       float: left;
-      margin: 0 15px;
+      margin: 0 18px;
     }
   }
+}
+
+.space {
+  font-size: 20px;
+  color: white;
 }
 
 .main {
