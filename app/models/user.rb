@@ -31,10 +31,9 @@ class User < ApplicationRecord
     friends.include?(user)
   end
 
-  def accept_friend(invitee_id)
-    invitees_friendship = Friendship.create(inviter_id: invitee_id, invitee_id: self.id)
-    inviters_friendship = Friendship.where(inviter_id: invitee_id, invitee_id: self.id)
+  def accept_friend(inviterid)
+    Friendship.create(inviter_id: id, invitee_id: inviterid, status: true)
+    inviters_friendship = Friendship.where(inviter_id: inviterid, invitee_id: id)
     inviters_friendship.update(status: true)
   end
-
 end
