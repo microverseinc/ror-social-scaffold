@@ -1,4 +1,4 @@
-module FriendshipsHelper
+module UsersHelper
   def render_friendships(user)
     if current_user.friend_invites(user)
       content_tag(:button, 'Pending Invitations', class: 'btn btn-sm btn-warning')
