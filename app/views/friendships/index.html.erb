@@ -1,0 +1,29 @@
+<div class="container-sm">
+  <div class="row">
+
+    <div class="col-6">
+      <div class="card" style="width: 18rem;">
+        <div class="card-header bg-danger text-white">
+          Pending Friendships
+        </div>
+        <ul class="list-group list-group-flush">
+          <%= pending_friendships %>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="card" style="width: 18rem;">
+        <div class="card-header bg-primary text-white">
+          Friendship Requests
+        </div>
+        <% if @friend_requests %>
+          <ul class="list-group list-group-flush">
+            <%= friendship_requests %>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+    
+  </div>
+</div>

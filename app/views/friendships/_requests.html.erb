@@ -1,0 +1,7 @@
+<% @friend_requests.each do |request| %>
+  <li class="list-group-item bg-info text-white">
+    <%= request.name %> <br>
+    <a href="/users/<%= request.id %>/accept" class="badge badge-dark text-white">Accept Friendship</a>
+    <a href="/users/<%= request.id %>/reject" class="badge badge-danger text-white">Reject Friendship</a>
+  </li>
+<% end %>
