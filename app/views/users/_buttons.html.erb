@@ -1,10 +1,10 @@
 <% if current_user.friend_requests(user)%>
          <button> pending request</button>
         <% elsif current_user.receive_invitation(user)%>
-          <%= link_to 'Accept', accept_friend_request_path(user_id: user.id) %>
-          <%= link_to 'Decline', deny_friend_request_path(user_id: user.id), method: :delete%>
+          <button><%= link_to 'Accept', accept_friend_request_path(user_id: user.id) %></button>
+          <button><%= link_to 'Decline', deny_friend_request_path(user_id: user.id), method: :delete%></button>
         <% elsif !current_user.friend?(user)  && user.id != current_user.id%>
-          <%= link_to 'Add Friend', send_friend_request_path(user_id: user.id) %>
+          <button><%= link_to 'Add Friend', send_friend_request_path(user_id: user.id) %></button>
         <% elsif current_user.friend?(user)%>
-         <%= link_to 'Unfriend', unfriend_path(user_id: user.id), method: :delete, data: {confirm: "Are you sure you want to unfriend this user?"}  %>
+         <button><%= link_to 'Unfriend', unfriend_path(user_id: user.id), method: :delete, data: {confirm: "Are you sure you want to unfriend this user?"}  %></button>
         <% end %>
