@@ -20,8 +20,6 @@ class User < ApplicationRecord
   has_many :inverted_friendships, -> { where confirmed: false }, class_name: 'Friendship', foreign_key: 'friend_id'
   has_many :friend_requests, through: :inverted_friendships
 
- 
-
   # Users who have yet to confirmed friend invites
   def pending_invites
     pending_friends
