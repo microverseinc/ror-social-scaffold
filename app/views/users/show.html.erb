@@ -3,7 +3,13 @@
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
+   <span class="profile-link">
+          <%= link_to 'See Profile',  user_path(@user), class: "btn  btn-sm btn-secondary" %>
+           <%= render_friendships(@user) %>
+        </span>
+     
       <%= render @posts %>
     </ul>
   </article>
 </section>
+
