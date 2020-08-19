@@ -1,15 +1,21 @@
 <section class="user-section">
-  <h2><%= "Name: #{@user.name}" %></h2>
-  <article class="timeline">
-    <h3>Recent posts:</h3>
-    <ul class="posts">
-   <span class="profile-link">
-          <%= link_to 'See Profile',  user_path(@user), class: "btn  btn-sm btn-secondary" %>
-           <%= render_friendships(@user) %>
-        </span>
-     
-      <%= render @posts %>
-    </ul>
-  </article>
+
+    <h2>
+        <%= "Name: #{@user.name}" %>
+    </h2>
+    <article class="timeline">
+        <h3>Recent posts:</h3>
+        <ul class="posts">
+            <li>
+             <%= render_friendships(@user)%>
+            <li>
+                <%= pluralize(@user.comments.count,"comments")%>
+            </li>
+            <li>
+                <%= pluralize(@user.likes.count,"likes")%>
+            </li>
+            <%= render @posts %>
+        </ul>
+    </article>
 </section>
 
