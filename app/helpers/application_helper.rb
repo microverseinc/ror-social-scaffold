@@ -25,4 +25,17 @@ module ApplicationHelper
       link_to('Invite to friendship', "/users/#{user.id}/invite", class: 'badge badge-danger text-white')
     end
   end
+
+  def pending_friendships
+    if @pending_friends
+      render 'pending'
+    end
+  end
+  
+
+  def friendship_requests
+    if @friend_requests
+      render 'requests'
+    end
+  end
 end
