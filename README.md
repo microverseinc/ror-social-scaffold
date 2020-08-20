@@ -7,6 +7,8 @@
 - Ruby v2.7.0
 - Ruby on Rails v5.2.4
 
+## live demo
+Click [here](https://damp-sea-10941.herokuapp.com/)
 
 ## Getting Started
 
