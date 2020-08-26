@@ -1,0 +1,15 @@
+<h1>All you requested friends</h1>
+<table>
+  <tr>
+    <th>User</th>
+    <th>Accept</th>
+    <th>Reject</th>
+  </tr>
+    <% @users.each do |user|%>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= link_to '<button type="button">Accept</button>'.html_safe, friendship_confirm_path(user), method: :post, class: 'btn-primary' %></td>     
+        <td><%= link_to '<button type="button">Reject</button>'.html_safe, friendship_reject_path(user), method: :delete %></td>
+      </tr>
+    <% end %>
+</table>

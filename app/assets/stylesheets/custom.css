@@ -1,0 +1,392 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap");
+
+th,
+td {
+  padding: 20px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  outline: none;
+}
+
+body {
+  background: #fff;
+  position: relative;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 700;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: #212121;
+}
+
+.nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 16px 48px;
+  background-color: #689f38;
+  color: #dcedc8;
+}
+
+.nav a {
+  color: #dcedc8;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.nav .active a {
+  color: #fff;
+}
+
+.nav a:hover {
+  color: #fff;
+}
+
+.nav .menu {
+  width: 80%;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.nav .menu .menu-item {
+  float: left;
+  margin: 0 15px;
+}
+
+.main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 16px;
+}
+
+.notice,
+.alert {
+  margin-bottom: 8px;
+  width: 100%;
+  height: 30px;
+  text-align: center;
+  padding: 5px;
+  color: dimgrey;
+  font-size: 14px;
+}
+
+.notice {
+  background-color: #d4f6c6;
+}
+
+.alert {
+  background-color: #f6cfc6;
+}
+
+.errors {
+  font-size: 10px;
+  color: red;
+}
+
+.new_post,
+.new_comment {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+}
+
+.new_post label,
+.new_comment label {
+  display: none;
+}
+
+.new_post .form-control,
+.new_comment .form-control {
+  width: 100%;
+  border: 1px solid #bdbdbd;
+  height: 64px;
+  padding: 8px;
+  margin: 4px 0;
+  border-radius: 4px;
+}
+
+.new_post .field_with_errors,
+.new_comment .field_with_errors {
+  width: 100%;
+}
+
+.new_post .field_with_errors .form-control,
+.new_comment .field_with_errors .form-control {
+  border: 1px solid #f00;
+}
+
+.new_post .btn-primary,
+.new_comment .btn-primary {
+  width: 100%;
+}
+
+.new_post .btn-secondary,
+.new_comment .btn-secondary {
+  width: 30%;
+  margin-left: 70%;
+}
+
+form {
+  width: 80%;
+  margin: 8px 0;
+}
+
+form .field {
+  width: 100%;
+  padding: 8px 0;
+}
+
+form .field label {
+  margin-bottom: 8px;
+}
+
+form .field input {
+  width: 100%;
+  border: 1px solid #bdbdbd;
+  border-radius: 4px;
+  padding: 8px;
+  background-color: #dcedc8;
+}
+
+form .field input[type="checkbox"] {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+form .actions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin: 8px 0;
+}
+
+form input[type="submit"] {
+  padding: 8px;
+  width: 50%;
+  border: none;
+  border-radius: 4px;
+  background-color: #689f38;
+  color: #dcedc8;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+form input[type="submit"]:hover {
+  background-color: #8bc34a;
+  color: #fff;
+}
+
+form .actions.reset input[type="submit"] {
+  width: 100%;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 16px;
+  text-transform: capitalize;
+}
+
+.timeline {
+  width: 100%;
+  margin: 16px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.timeline h3 {
+  margin: 8px 0;
+}
+
+.timeline .posts {
+  width: 100%;
+}
+
+.timeline .post {
+  width: 100%;
+  margin: 16px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.timeline .post-attribution {
+  float: left;
+}
+
+.timeline .post-attribution .post-author {
+  margin: 0 0 8px 0;
+  color: #689f38;
+  text-transform: capitalize;
+}
+
+.timeline .post-liking {
+  float: right;
+}
+
+.timeline .post-liking a {
+  color: #689f38;
+  font-weight: bold;
+  font-size: 0.9em;
+  margin: 0 4px;
+}
+
+.timeline .post-liking .post-date {
+  font-size: 0.6em;
+}
+
+.timeline .post-content {
+  font-size: 1.1em;
+  padding: 4px 0;
+}
+
+.timeline .post-comments-section {
+  margin: 5px;
+  width: 90%;
+  margin-left: 10%;
+}
+
+.timeline .post-comments-section .post-comments {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-bottom: 1px solid #bdbdbd;
+  border-radius: 3px;
+  margin-bottom: 2px;
+  padding: 10px;
+}
+
+.timeline .post-comments-section .post-comments p {
+  font-size: 0.8em;
+  width: 90%;
+}
+
+.timeline .post-comments-section .post-comments span {
+  position: absolute;
+  right: 3px;
+  font-size: 0.6em;
+}
+
+.users-section {
+  width: 100%;
+  margin: 10px;
+}
+
+.users-section .users-list li {
+  margin-bottom: 16px;
+  text-transform: capitalize;
+  font-size: 1.2em;
+}
+
+.users-section .profile-link {
+  font-size: 0.8em;
+  margin: 0 0 8px 0;
+  color: #689f38;
+}
+
+.user-section {
+  width: 100%;
+  margin-left: 16px;
+}
+
+.user-section h2 {
+  text-transform: capitalize;
+}
+
+.user-section .timeline {
+  width: 100%;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: start;
+}
+
+.user-section .timeline h3 {
+  width: 100%;
+}
+
+#error_explanation h2 {
+  color: #212121;
+  font-size: 1em;
+}
+
+#error_explanation ul {
+  color: #f00;
+}
+
+@media only screen and (min-width: 480px) {
+  form {
+    width: 60%;
+  }
+
+  .new_post,
+  .timeline,
+  .users-section,
+  .user-section {
+    width: 70%;
+  }
+}
+
+@media (min-width: 780px) {
+  form {
+    width: 40%;
+  }
+
+  .new_post,
+  .timeline,
+  .users-section,
+  .user-section {
+    width: 50%;
+  }
+}

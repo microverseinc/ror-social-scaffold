@@ -1,0 +1,13 @@
+<h1>All your pending friend requests</h1>
+<table>
+  <tr>
+    <th>User</th>
+    <th>Profile</th>
+  </tr>
+    <% @users.each do |user|%>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= link_to '<button type="button">View Profile</button>'.html_safe, user_path(user) %></td>
+      </tr>
+    <% end %>
+</table>

@@ -1,12 +1,34 @@
 <section class="users-section">
   <ul class="users-list">
-    <% @users.each do |user| %>
-      <li>
-        Name: <%= user.name %>
-        <span class="profile-link">
-          <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-        </span>
-      </li>
-    <% end %>
+<table>
+<tr>
+  <th>User</th>
+  <th>See profile</th>
+  <th colspan="2">Action</th>
+</tr>
+      <% @users.each do |user| %>
+      <% if current_user != user %>
+        <tr>
+            <td>
+              <%= user.name %>
+              <span class="profile-link">
+            </td>
+              <td><%= link_to 'See Profile',  user_path(user), class: 'profile-link' %></td>
+            
+              <% if current_user.friend?(user) %>
+                <td><%= link_to '<button type="button">Unfriend</button>'.html_safe, friendship_path(user), method: :delete, data: { confirm: "Are you sure you want to Unfriend"} %></td>
+              <% elsif current_user.pending_friends.include?(user) %>
+                <td><%= link_to "Request pending #{user.name}",  user_path(user), class: 'profile-link' %> </>               
+              <% elsif current_user.friend_requests.include?(user) %>
+                <td><%= link_to '<button type="button">Accept</button>'.html_safe, friendship_confirm_path(user), method: :post %>    </td>     
+                <td><%= link_to '<button type="button">Reject</button>'.html_safe, friendship_reject_path(user), method: :delete %>   </td>      
+              <% else %>
+                <td><%= link_to '<button type="button">Send Request</button>'.html_safe, friendships_path(user_id: current_user.id, friend_id: user.id), method: :post %></td>
+              <% end %>
+            </span>        
+        </tr>
+        <% end %>
+      <% end %>
+</table>
   </ul>
-</section>
+</section>  

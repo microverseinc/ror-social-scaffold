@@ -6,6 +6,11 @@ $primary-color-light: #dcedc8;
 $primary-color-text: #212121;
 $divider-color: #bdbdbd;
 
+th,
+td {
+  padding: 20px;
+}
+
 * {
   margin: 0;
   padding: 0;
