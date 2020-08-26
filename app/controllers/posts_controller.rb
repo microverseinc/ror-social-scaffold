@@ -26,4 +26,10 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:content)
   end
+
+  def friend_posts
+    friends = current_user.friends
+    Post.where(user_id: friends.each(&:id)).or(Post.where(user_id: current_user.id))
+  end
+  
 end

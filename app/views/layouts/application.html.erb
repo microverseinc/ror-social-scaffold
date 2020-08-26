@@ -19,11 +19,22 @@
         </div>
       </div>
       <% if current_user %>
-        <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-      <% else %>
-        <%= link_to 'Sign in', user_session_path %>
+      <div class="menu-item">
+        <%= menu_link_to current_user.name, user_path(current_user) %>
+      </div>
+      <div class="menu-item">
+        <%= link_to 'Pending friends', user_pending_friends_path(current_user) %>
+      </div>
+      <div class="menu-item">
+        <%= link_to 'Friend requests', user_friend_requests_path(current_user) %>
+      </div>
       <% end %>
-    </nav>
+    </div>
+    <% if current_user %>
+      <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+    <% else %>
+      <%= link_to 'Sign in', user_session_path %>
+    <% end %>
     <% if notice.present? %>
       <div class="notice">
         <p> <%= notice %> </p>
