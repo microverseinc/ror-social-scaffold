@@ -20,4 +20,4 @@ RSpec.describe Post, type: :model do
     it { should have_many(:likes).dependent(:destroy) }
   end
 end
-# rubocop:enable Layout/LineLength,  Lint/RedundantCopDisableDirective
+# rubocop:enable
