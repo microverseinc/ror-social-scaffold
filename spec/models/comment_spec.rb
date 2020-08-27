@@ -1,4 +1,4 @@
-# rubocop:disable Layout/LineLength
+# rubocop:disable Layout/LineLength,  Lint/RedundantCopDisableDirective
 require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
@@ -20,4 +20,4 @@ RSpec.describe Comment, type: :model do
     it { should belong_to(:post) }
   end
 end
-# rubocop:enable Layout/LineLength
+# rubocop:enable Layout/LineLength,  Lint/RedundantCopDisableDirective
