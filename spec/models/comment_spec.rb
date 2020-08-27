@@ -1,3 +1,4 @@
+# rubocop:disable Layout/LineLength
 require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
@@ -19,3 +20,4 @@ RSpec.describe Comment, type: :model do
     it { should belong_to(:post) }
   end
 end
+# rubocop:enable Layout/LineLength

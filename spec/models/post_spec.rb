@@ -1,3 +1,4 @@
+# rubocop:disble Layout/LineLength
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
@@ -19,3 +20,4 @@ RSpec.describe Post, type: :model do
     it { should have_many(:likes).dependent(:destroy) }
   end
 end
+# rubocop:enable Layout/LineLength
