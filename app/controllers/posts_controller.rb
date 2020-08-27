@@ -16,10 +16,9 @@ class PostsController < ApplicationController
       render :index, alert: 'Post not created.'
     end
   end
-           
-  
-          private
-          
+
+  private
+
   def timeline_posts
     @timeline_posts ||= friend_posts.ordered_by_most_recent
   end
@@ -32,7 +31,4 @@ class PostsController < ApplicationController
     friends = current_user.friends
     Post.where(user_id: friends.each(&:id)).or(Post.where(user_id: current_user.id))
   end
-
-  
-
 end
