@@ -8,11 +8,11 @@
 /.bundle
 
 # Ignore all logfiles and tempfiles.
-/log/*
-/tmp/*
+/log/
+/tmp/
 !/log/.keep
 !/tmp/.keep
-
+.DS_Store
 # Ignore uploaded files in development
 /storage/*
 !/storage/.keep
