@@ -18,7 +18,7 @@ module UserHelper
   end
 
   def user
-    return unless current_user == @user
+    return unless current_user != @user
 
     if current_user.friend?(@user)
       link_to '<button type="button">Unfriend</button>'.html_safe, friendship_path(@user),
