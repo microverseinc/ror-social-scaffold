@@ -8,7 +8,7 @@
         </span>
       </li>
        <li>
-       <%=link_to('Add friend', user_friendships_path(friend_id: user.id, user_id: current_user ), method: :post)%>
+       <%= add_friend(user) %>
       </li>
     <% end %>
   </ul>
