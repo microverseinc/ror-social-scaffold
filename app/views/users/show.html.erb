@@ -5,5 +5,16 @@
     <ul class="posts">
       <%= render @posts %>
     </ul>
+    <% if @is_current_user %>
+      <h3>Pending Friend Requests:</h3>
+      <ul class="posts">
+        <%= render @pending_friend_requests %>
+      </ul>
+    <% end %>
+    <% if @add_friend %>
+      <button class="actions btn">
+        <input type="submit" name="commit" value="Add Friend">
+      </button>
+    <% end %>
   </article>
 </section>
