@@ -1,0 +1,5 @@
+<h3>Pending Friend Requests:</h3>
+<% @pending_friend_requests.each do |request|%>
+<%= link_to request.sender.name, user_path(request.sender.id), class: 'request-sender' %> 
+<%= button_to "Accept", user_friendship_request_path(request.sender.id), :method => :patch, class:"btn add-friend btn-secondary", type:"submit" %>
+<% end %>

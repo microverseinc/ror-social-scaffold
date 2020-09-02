@@ -13,16 +13,15 @@ class User < ApplicationRecord
   has_many :sent_requests, foreign_key: :sender_id, class_name: :FriendRequest   
   has_many :received_requests, foreign_key: :receiver_id, class_name: :FriendRequest
 
-  has_many :friendships, foreign_key: :friend_id
-  has_many :friends, through: :friendships
-
-  def friendship_joins
-    friends_array = friendships.map{|friendship| friendship.user }
-    .concat(friendships.map{|friendship| friendship.friend})
-    friends_array.compact
-  end
+  has_many :friendships, foreign_key: :friend_id, class_name: "Friendship"
+  has_many :friends, through: :friendships, source: :friend
+  has_many :inverse_friends, through: :friendships, source: :inverse_friend
 
   def friend?(user)
-    friendship_joins.include?(user)
+    inverse_friends.include?(user)
+  end
+
+  def pending?(user)
+    sent_requests.find_by(receiver_id: user.id, status: 'pending')
   end
 end

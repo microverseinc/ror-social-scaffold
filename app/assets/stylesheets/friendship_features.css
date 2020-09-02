@@ -1,0 +1,7 @@
+form input[type="submit"].add-friend {
+    width: 72%
+}
+
+input[type="submit"]:hover {
+    cursor: pointer;
+}
