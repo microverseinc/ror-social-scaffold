@@ -5,9 +5,12 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :friendships
+  patch "Confirm", to: "friendships#confirm", as: "confirm"
+  delete "Reject", to: "friendships#reject", as: "reject"
+  get 'signup', to: 'users#new', as: 'signup'
 
   resources :users, only: [:index, :show, :create] do
-    resources :friendships, only: [:create]
+    resources :friendships
   end
 
   resources :posts, only: [:index, :create] do

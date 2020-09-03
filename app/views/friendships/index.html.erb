@@ -1,0 +1,17 @@
+<section class="users-section">
+  <ul class="users-list" >
+    <% @friendships.each do |friendship| %>
+    <% if friendship.confirmed == false %>
+      <li>
+       <%= friendship.user.name %>
+      </li>
+       <li>
+       <%= link_to "accept friend request", confirm_path(user_id: friendship.user), method: :patch %>
+      </li>
+      <li style="border-bottom: 1px solid">
+       <%= link_to "reject friend request", reject_path(user_id: friendship.user), method: :delete %>
+      </li>
+      <% end %>
+    <% end %>
+  </ul>
+</section>
