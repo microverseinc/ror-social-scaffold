@@ -17,10 +17,18 @@ class User < ApplicationRecord
   has_many :friends, through: :friendships, source: :inverse_friend
 
   def friend?(user)
-    inverse_friends.include?(user)
+    friends.include?(user)
   end
 
   def pending?(user)
+    request_to?(user) || request_from?(user) ? true : false
+  end
+
+  def request_to?(user)
     sent_requests.find_by(receiver_id: user.id, status: 'pending')
+  end
+
+  def request_from?(user)
+    received_requests.find_by(sender_id: user.id, status: 'pending')
   end
 end

@@ -8,13 +8,12 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.ordered_by_most_recent
-    
     @pending_friend_requests = @user.received_requests.select {|request| request.status == 'pending'}
-    
     @is_current_user = is_current_user
+    @pending_friend = pending_friend?
     @add_friend = add_friend?
     if pending? 
-      flash[:notice] = "A friendship request was sent to #{@user.name} and is awaiting confirmation"
+      flash[:notice] = "A friendship request was sent and is awaiting confirmation"
     end
   end
 end
@@ -31,4 +30,8 @@ end
 
 def pending?
   @current_user.pending?(@user)
+end
+
+def pending_friend? 
+  current_user.request_from?(@user)
 end

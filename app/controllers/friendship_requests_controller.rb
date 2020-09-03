@@ -11,7 +11,7 @@ class FriendshipRequestsController < ApplicationController
   end
 
   def update
-    sent_request = FriendRequest.find_by(sender_id: params[:user_id])
+    sent_request = current_user.received_requests.find_by(sender_id: params[:user_id])
     sent_request.status = "confirmed"
     if sent_request.save
       flash[:notice] = "The friendship request from #{@user.name} was successfully accepted"

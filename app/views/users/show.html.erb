@@ -6,11 +6,14 @@
       <%= render @posts %>
     </ul>
     <% if @is_current_user %>
+      <h3>Pending Friend Requests:</h3>
       <ul class="posts">
         <%= render 'friendship_requests/pending_friend_requests' %>
       </ul>
     <% end %>
     <% if @add_friend %>
-    <%= button_to "Add Friend", user_friendship_requests_path(@user.id), class:"btn add-friend btn-secondary", type:"submit", method: :post %>
+      <%= button_to "Add Friend", user_friendship_requests_path(@user.id), class:"btn add-friend btn-secondary", type:"submit", method: :post %>
+    <% elsif @pending_friend %>
+      <%= button_to "Accept", user_friendship_request_path(@user.id), :method => :patch, class:"btn add-friend btn-secondary", type:"submit" %>
     <% end %>
-</section>
+  </section>
