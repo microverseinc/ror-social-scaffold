@@ -1,15 +1,15 @@
 # Scaffold for social media app with Ruby on Rails
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+> This repo includes intial code for social media app with basic styling of the ERD, a relationship diagram which signifies how the different entities and the various entity keys are related. It is contained in the doc folder. 
 
 ## Built With
 
 - Ruby v2.7.0
 - Ruby on Rails v5.2.4
+- LucidChart
 
 ## Live Demo
 
-TBA
 
 
 ## Getting Started
@@ -59,17 +59,27 @@ Open `http://localhost:3000/` in your browser.
 
 ### Deployment
 
-TBA
 
 ## Authors
+- Okikiola Apelehin
+- Prajwal Thapa
 
-TBA
+👤 **Author1**
+
+- Github: [@okikiola11](https://github.com/okikiola11)
+- Twitter: [@Kikiolla3](https://twitter.com/Kikiolla3)
+- Linkedin: [@okikiola-apelehin](https://www.linkedin.com/in/okikiola-apelehin-459008122/)
+
+👤 **Author2**
+- LinkedIn: [Prazwalthapa](www.linkedin.com/in/prazwal-thapa/) 
+- GitHub: [@praz99](https://github.com/praz99)
+- E-mail: t.prazwal@gmail.com 
 
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the [issues page](issues/).
+Feel free to check the [issues page](https://github.com/okikiola11/ror-social_scaffold/issues).
 
 ## Show your support
 
