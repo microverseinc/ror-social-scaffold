@@ -14,8 +14,7 @@ class User < ApplicationRecord
   has_many :received_requests, foreign_key: :receiver_id, class_name: :FriendRequest
 
   has_many :friendships, foreign_key: :friend_id, class_name: "Friendship"
-  has_many :friends, through: :friendships, source: :friend
-  has_many :inverse_friends, through: :friendships, source: :inverse_friend
+  has_many :friends, through: :friendships, source: :inverse_friend
 
   def friend?(user)
     inverse_friends.include?(user)

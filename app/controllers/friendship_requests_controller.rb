@@ -24,12 +24,16 @@ class FriendshipRequestsController < ApplicationController
 
   def add_friendship
     friendship = current_user.friendships.build(inverse_friend: @user)
+    inverse_friendship = @user.friendships.build(inverse_friend: current_user)
     
-    if friendship.save
+    unless friendship.save && inverse_friendship.save
+      errors = []
+      errors.concat(current_user.errors.full_messages).concat(@user.errors.full_messages)
+      flash[:alert] = "An error occurred while trying to save the friendship #{errors}"
+    else
       flash[:notice] = "You are now friends with #{@user.name}"
-    else 
-      flash[:alert] = "An error occurred while trying to save the friendship #{@user.errors.full_messages}"
     end
+    
   end
 end
 
