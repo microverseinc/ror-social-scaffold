@@ -5,7 +5,7 @@
     <ul class="posts">
       <%= render @posts %>
     </ul>
-    <% if @is_current_user %>
+    <% if @logged_in_user %>
       <h3>Pending Friend Requests:</h3>
       <ul class="posts">
         <%= render 'friendship_requests/pending_friend_requests' %>

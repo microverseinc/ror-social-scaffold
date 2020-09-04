@@ -10,11 +10,11 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
-  has_many :sent_requests, foreign_key: :sender_id, class_name: :FriendRequest   
-  has_many :received_requests, foreign_key: :receiver_id, class_name: :FriendRequest
+  has_many :sent_requests, foreign_key: :sender_id, class_name: :FriendRequest, dependent: :destroy
+  has_many :received_requests, foreign_key: :receiver_id, class_name: :FriendRequest, dependent: :destroy
 
-  has_many :friendships, foreign_key: :friend_id, class_name: "Friendship"
-  has_many :friends, through: :friendships, source: :inverse_friend
+  has_many :friendships, foreign_key: :friend_id, class_name: 'Friendship', dependent: :destroy
+  has_many :friends, through: :friendships, source: :inverse_friend, dependent: :destroy
 
   def friend?(user)
     friends.include?(user)

@@ -1,4 +1,4 @@
-name: Linters
+name: CI Checks
 
 on: pull_request
 
@@ -34,3 +34,22 @@ jobs:
           [ -f .stylelintrc.json ] || wget https://raw.githubusercontent.com/microverseinc/linters-config/master/ror/.stylelintrc.json
       - name: Stylelint Report
         run: npx stylelint "**/*.{css,scss}"
+  tests:
+    name: Tests
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.6.x
+      - name: Install Sqlite
+        run: |
+          sudo apt-get install libsqlite3-dev
+      - name: Install Test dependencies
+        run: |
+          gem install bundler
+          bundle install --jobs 4 --retry 3
+          bundle exec rails db:create
+          bundle exec rails db:migrate
+      - name: Tests Report
+        run: bundle exec rake
