@@ -17,7 +17,7 @@ module ApplicationHelper
   end
 
   def likes_count(post)
-     "#{post.likes.count} likes" 
+    "#{post.likes.count} likes"
   end
 
   def comments_count(post)
