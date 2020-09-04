@@ -18,18 +18,18 @@ end
 
 private
 
-def current_user?
-  current_user == @user
+def current_user?(user = @user)
+  current_user == user
 end
 
-def add_friend?
-  true unless current_user? || @user.friend?(@current_user) || pending?
+def add_friend?(user = @user)
+  true unless current_user?(user) || user.friend?(current_user) || pending?(user)
 end
 
-def pending?
-  @current_user.pending?(@user)
+def pending?(user = @user)
+  current_user.pending?(user)
 end
 
-def pending_friend?
-  current_user.request_from?(@user)
+def pending_friend?(user = @user)
+  current_user.request_from?(user)
 end

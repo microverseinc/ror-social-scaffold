@@ -1,5 +1,6 @@
 class FriendshipRequestsController < ApplicationController
-  before_action :set_user, only: %i[update create]
+  before_action :set_user, only: %i[update create destroy]
+  before_action :set_request, only: %i[update destroy]
   def create
     current_user.sent_requests.build(receiver: @user)
     if current_user.save
@@ -11,9 +12,8 @@ class FriendshipRequestsController < ApplicationController
   end
 
   def update
-    sent_request = current_user.received_requests.find_by(sender_id: params[:user_id])
-    sent_request.status = 'confirmed'
-    if sent_request.save
+    @sent_request.status = 'confirmed'
+    if @sent_request.save
       flash[:notice] = "The friendship request from #{@user.name} was successfully accepted"
       add_friendship
     else
@@ -34,10 +34,24 @@ class FriendshipRequestsController < ApplicationController
       flash[:alert] = "An error occurred while trying to save the friendship #{errors}"
     end
   end
+
+  def destroy
+    if @sent_request.destroy
+      flash[:notice] = "The friendship request from #{@user.name} was successfully rejected"
+    else
+      flash[:alert] = "An error occurred while trying to reject the friendship #{@user.errors.full_messages}"
+    end
+
+    redirect_to user_path(@user.id)
+  end
 end
 
 private
 
 def set_user
   @user = User.find(params[:user_id])
+end
+
+def set_request
+  @sent_request = current_user.received_requests.find(params[:id])
 end
