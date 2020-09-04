@@ -8,10 +8,8 @@
     <% if @logged_in_user %>
       <h3>Pending Friend Requests:</h3>
       <ul class="posts">
-        <%= render 'friendship_requests/pending_friend_requests' %>
+        <%= render 'pending_friend_requests' %>
       </ul>
     <% end %>
-    <%= add_btn(@user) %>
-    <%= accept_btn(@user) %>
-    <%= reject_btn(@user) %>
+    <%= render 'add_or_accept_or_reject_friend' %>
   </section>

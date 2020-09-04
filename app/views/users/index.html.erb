@@ -6,9 +6,8 @@
         <span class="profile-link">
           <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
         </span>
-        <%= add_btn(user) %>
-        <%= accept_btn(user) %>
-        <%= reject_btn(user) %>
+        <% set_user(user)%>
+        <%= render 'add_or_accept_or_reject_friend' %>
       </li>
     <% end %>
   </ul>
