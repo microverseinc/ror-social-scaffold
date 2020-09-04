@@ -20,6 +20,7 @@ module FriendshipRequestsHelper
   def check_pending_request(user, action)
     if pending_friend?(user)
       sent_request = current_user.received_requests.find_by(sender_id: user.id)
+      p 'sent_request.id:::::::::::', sent_request.id
       button_to action, user_friendship_request_path(user.id, sent_request.id), method: :patch, class: 'btn add-friend btn-secondary', type: 'submit'
     end
   end

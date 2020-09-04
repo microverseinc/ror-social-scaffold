@@ -15,4 +15,12 @@ module ApplicationHelper
       link_to('Like!', post_likes_path(post_id: post.id), method: :post)
     end
   end
+
+  def likes_count(post)
+     "#{post.likes.count} likes" 
+  end
+
+  def comments_count(post)
+    "#{post.comments.count} comments"
+  end
 end
