@@ -3,8 +3,4 @@ class Like < ApplicationRecord
 
   belongs_to :user
   belongs_to :post
-
-  def likes_count
-    Like.count
-  end
 end
