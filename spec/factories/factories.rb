@@ -1,8 +1,7 @@
 FactoryBot.define do
-
-  factory :user, aliases: [:receiver, :sender] do
+  factory :user, aliases: %i[receiver sender] do
     name { 'username' }
-    email {'email@web.com'}
-    password {'password'}
+    email { 'email@web.com' }
+    password { 'password' }
   end
 end

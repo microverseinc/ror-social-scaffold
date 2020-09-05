@@ -74,7 +74,7 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 
-  config.include Devise::Test::ControllerHelpers, :type => :controller
+  config.include Devise::Test::ControllerHelpers, type: :controller
 
   config.include Warden::Test::Helpers
 

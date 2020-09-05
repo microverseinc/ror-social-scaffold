@@ -23,9 +23,8 @@ class FriendshipRequestsController < ApplicationController
   end
 
   def add_friendship
- 
     friendship = current_user.friendships.build(inverse_friend: @user)
-   
+
     inverse_friendship = @user.friendships.build(inverse_friend: current_user)
 
     if friendship.save && inverse_friendship.save
