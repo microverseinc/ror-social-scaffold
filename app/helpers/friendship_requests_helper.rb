@@ -28,4 +28,28 @@ module FriendshipRequestsHelper
               user_friendship_request_path(user.id, sent_request.id),
               method: method, class: 'btn add-friend btn-secondary', type: 'submit'
   end
+
+  def logged_in_user
+    @logged_in_user
+  end
+
+  def usr
+    @user
+  end
+
+  def pending_friend_requests
+    @pending_friend_requests
+  end
+
+  def sender_id(request)
+    request.friend.id
+  end
+
+  def request_id request
+    request.id
+  end
+
+  def sender_name request
+    request.friend.name
+  end
 end

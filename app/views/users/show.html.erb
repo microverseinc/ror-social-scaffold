@@ -5,11 +5,6 @@
     <ul class="posts">
       <%= render @posts %>
     </ul>
-    <% if @logged_in_user %>
-      <h3>Pending Friend Requests:</h3>
-      <ul class="posts">
-        <%= render 'pending_friend_requests' %>
-      </ul>
-    <% end %>
+    <%= render 'logged_in_user' %>
     <%= render 'add_or_accept_or_reject_friend' %>
   </section>
