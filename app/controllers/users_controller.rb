@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.ordered_by_most_recent
-    @pending_friend_requests = @user.received_requests.select { |request| request.status == 'pending' }
+    @pending_friend_requests = Friendship.where(status: 'pending', inverse_friend: current_user)
     @logged_in_user = current_user?
     @pending_friend = pending_friend?
     @add_friend = add_friend?

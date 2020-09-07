@@ -1,5 +1,5 @@
 <% @pending_friend_requests.each do |request|%>
-<%= link_to request.sender.name, user_path(request.sender.id), class: 'request-sender' %> 
-<%= button_to "Accept", user_friendship_request_path(request.sender.id, request.id), :method => :patch, class:"btn add-friend btn-secondary", type:"submit" %>
-<%= button_to "Reject", user_friendship_request_path(request.sender.id, request.id), :method => :delete, class:"btn add-friend btn-secondary", type:"submit" %>
+<%= link_to request.friend.name, user_path(request.friend.id), class: 'request-sender' %> 
+<%= button_to "Accept", user_friendship_request_path(request.friend.id, request.id), :method => :patch, class:"btn add-friend btn-secondary", type:"submit" %>
+<%= button_to "Reject", user_friendship_request_path(request.friend.id, request.id), :method => :delete, class:"btn add-friend btn-secondary", type:"submit" %>
 <% end %>

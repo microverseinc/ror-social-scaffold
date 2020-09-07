@@ -3,12 +3,14 @@ class FriendshipRequestsController < ApplicationController
   before_action :set_request, only: %i[update destroy]
 
   def create
-    current_user.sent_requests.build(receiver: @user)
-    if current_user.save
-      flash[:notice] = "A friendship request was successfully sent to #{@user.name}"
+    friendship = current_user.friendships.build(inverse_friend: @user)
+
+    if friendship.save
+        flash[:notice] = "A friendship request was successfully sent to #{@user.name}"
     else
-      flash[:alert] = "An error occurred while trying to request the friendship #{current_user.errors.full_messages}"
+      flash[:alert] = "An error occurred while trying to request the friendship #{friendship.errors.full_messages}"
     end
+
     redirect_to user_path(@user.id)
   end
 
@@ -23,15 +25,13 @@ class FriendshipRequestsController < ApplicationController
   end
 
   def add_friendship
-    friendship = current_user.friendships.build(inverse_friend: @user)
 
-    inverse_friendship = @user.friendships.build(inverse_friend: current_user)
+    inverse_friendship = current_user.friendships.build(inverse_friend: @user, status:'confirmed')
 
-    if friendship.save && inverse_friendship.save
+    if inverse_friendship.save
       flash[:notice] = "You are now friends with #{@user.name}"
     else
-      errors = []
-      errors.concat(friendship.errors.full_messages).concat(inverse_friendship.errors.full_messages)
+      errors = inverse_friendship.errors.full_messages
       flash[:alert] = "An error occurred while trying to save the friendship #{errors}"
     end
   end
@@ -54,5 +54,5 @@ def set_user
 end
 
 def set_request
-  @sent_request = current_user.received_requests.find(params[:id])
+  @sent_request = Friendship.find(params[:id])
 end

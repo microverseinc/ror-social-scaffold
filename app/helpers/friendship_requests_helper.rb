@@ -23,7 +23,7 @@ module FriendshipRequestsHelper
   def check_pending_request(user, action, method)
     return unless pending_friend?(user)
 
-    sent_request = current_user.received_requests.find_by(sender_id: user.id)
+    sent_request = Friendship.find_by(friend: user)
     button_to action,
               user_friendship_request_path(user.id, sent_request.id),
               method: method, class: 'btn add-friend btn-secondary', type: 'submit'
