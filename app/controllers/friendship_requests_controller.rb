@@ -6,7 +6,7 @@ class FriendshipRequestsController < ApplicationController
     friendship = current_user.friendships.build(inverse_friend: @user)
 
     if friendship.save
-        flash[:notice] = "A friendship request was successfully sent to #{@user.name}"
+      flash[:notice] = "A friendship request was successfully sent to #{@user.name}"
     else
       flash[:alert] = "An error occurred while trying to request the friendship #{friendship.errors.full_messages}"
     end
@@ -25,8 +25,7 @@ class FriendshipRequestsController < ApplicationController
   end
 
   def add_friendship
-
-    inverse_friendship = current_user.friendships.build(inverse_friend: @user, status:'confirmed')
+    inverse_friendship = current_user.friendships.build(inverse_friend: @user, status: 'confirmed')
 
     if inverse_friendship.save
       flash[:notice] = "You are now friends with #{@user.name}"
