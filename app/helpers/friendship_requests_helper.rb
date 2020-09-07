@@ -9,23 +9,23 @@ module FriendshipRequestsHelper
   end
 
   def accept_btn(user)
-    check_pending_request(user, 'Accept')
+    check_pending_request(user, 'Accept', :patch)
   end
 
   def reject_btn(user)
-    check_pending_request(user, 'Reject')
+    check_pending_request(user, 'Reject', :delete)
   end
 
   def retrieve_user(user)
     @user = user
   end
 
-  def check_pending_request(user, action)
+  def check_pending_request(user, action, method)
     return unless pending_friend?(user)
 
     sent_request = current_user.received_requests.find_by(sender_id: user.id)
     button_to action,
               user_friendship_request_path(user.id, sent_request.id),
-              method: :patch, class: 'btn add-friend btn-secondary', type: 'submit'
+              method: method, class: 'btn add-friend btn-secondary', type: 'submit'
   end
 end

@@ -76,7 +76,7 @@ RSpec.describe FriendshipRequestsController, type: :controller do
 
       sent_request = FriendRequest.find_by(sender: sender, status: 'pending')
 
-      patch :destroy, params: { user_id: sender.id, id: sent_request.id }
+      delete :destroy, params: { user_id: sender.id, id: sent_request.id }
       expect(response.code).to eq '302'
       expect(response).to have_http_status(:found)
       expect(flash[:notice]).to eq "The friendship request from #{sender.name} was successfully rejected"
