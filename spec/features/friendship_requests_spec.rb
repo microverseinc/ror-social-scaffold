@@ -79,6 +79,42 @@ RSpec.describe 'Friendship Management Features', type: :feature do
     click_button 'Save'
     click_on mary[:name]
     expect(page).to have_content('Pending Friend Requests:')
+    click_on jane[:name]
+    click_button 'Accept'
+    expect(page).to have_content("You are now friends with #{jane[:name]}")
+    click_on 'Timeline'
+    expect(page).to have_content(jane_post)
+    click_on 'Sign out'
+
+    # Sign in as Jane
+    visit new_user_session_path
+    fill_in 'Email', with: jane[:email]
+    fill_in 'Password', with: jane[:password]
+    click_button 'Log in'
+    expect(page).to have_content(mary_post)
+  end
+
+  scenario 'a user with a pending friendship request can accept it on their profile page' do
+    # Jane creates a post and sends a friend request to Mary
+    jane_post = 'Hello users, I am Jane.'
+    fill_in :post_content, with: jane_post
+    click_button 'Save'
+    click_on 'All users'
+    click_button 'Add Friend'
+    click_on 'Sign out'
+
+    # Sign in as Mary
+    visit new_user_session_path
+    fill_in 'Email', with: mary[:email]
+    fill_in 'Password', with: mary[:password]
+    click_button 'Log in'
+
+    # Mary creates a post and accepts Jane's friend request
+    mary_post = 'Hello users, I am Mary.'
+    fill_in :post_content, with: mary_post
+    click_button 'Save'
+    click_on mary[:name]
+    expect(page).to have_content('Pending Friend Requests:')
     click_button 'Accept'
     expect(page).to have_content("You are now friends with #{jane[:name]}")
     click_on 'Timeline'
@@ -117,7 +153,7 @@ RSpec.describe 'Friendship Management Features', type: :feature do
     expect(page).not_to have_content(jane_post)
   end
 
-  scenario 'a user with a pending friendship request can accept it on the user\'s profile page' do
+  scenario 'a user with a pending friendship request can reject it on the user\'s profile page' do
     # Jane creates a post and sends a friend request to Mary
     jane_post = 'Hello users, I am Jane.'
     fill_in :post_content, with: jane_post
@@ -139,6 +175,42 @@ RSpec.describe 'Friendship Management Features', type: :feature do
     click_on mary[:name]
     expect(page).to have_content('Pending Friend Requests:')
     click_on jane[:name]
+    click_button 'Reject'
+    expect(page).not_to have_content("You are now friends with #{jane[:name]}")
+    expect(page).to have_content("The friendship request from #{jane[:name]} was successfully rejected")
+    click_on 'Timeline'
+    expect(page).not_to have_content(jane_post)
+    click_on 'Sign out'
+
+    # Sign in as Jane
+    visit new_user_session_path
+    fill_in 'Email', with: jane[:email]
+    fill_in 'Password', with: jane[:password]
+    click_button 'Log in'
+    expect(page).not_to have_content(mary_post)
+  end
+
+  scenario 'a user with a pending friendship request can reject it on their profile page' do
+    # Jane creates a post and sends a friend request to Mary
+    jane_post = 'Hello users, I am Jane.'
+    fill_in :post_content, with: jane_post
+    click_button 'Save'
+    click_on 'All users'
+    click_button 'Add Friend'
+    click_on 'Sign out'
+
+    # Sign in as Mary
+    visit new_user_session_path
+    fill_in 'Email', with: mary[:email]
+    fill_in 'Password', with: mary[:password]
+    click_button 'Log in'
+
+    # Mary creates a post and accepts Jane's friend request
+    mary_post = 'Hello users, I am Mary.'
+    fill_in :post_content, with: mary_post
+    click_button 'Save'
+    click_on mary[:name]
+    expect(page).to have_content('Pending Friend Requests:')
     click_button 'Reject'
     expect(page).not_to have_content("You are now friends with #{jane[:name]}")
     expect(page).to have_content("The friendship request from #{jane[:name]} was successfully rejected")
