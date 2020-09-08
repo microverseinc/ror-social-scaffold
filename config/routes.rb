@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :friendships
   patch "Confirm", to: "friendships#confirm", as: "confirm"
   delete "Reject", to: "friendships#reject", as: "reject"
+  delete "Unfriend", to: "users#unfriend", as: "unfriend"
   get 'signup', to: 'users#new', as: 'signup'
 
   resources :users, only: [:index, :show, :create] do

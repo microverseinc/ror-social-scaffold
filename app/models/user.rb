@@ -46,4 +46,15 @@ class User < ApplicationRecord
     f = inverse_friendships.find { |friendship| friendship.user == user }
     f.destroy
   end
+
+  def remove_friend(user)
+    friendhsip_confirmed = friendships.where(confirmed: true).or(inverse_friendships.where(confirmed: true))
+    friendships = friendship_confirmed.where(user_id: user.id).or(friendship_confirmed.where(friend_id: user.id))
+    friend = friendships.find { |friendship| friendship.user_id == user.id || friendship.friend_id == user.id }
+    friend.destroy
+  end
+
+  def friends_post(current_user) 
+    Post.where(user: friends).or(Post.where(user: current_user)) 
+  end 
 end
