@@ -4,6 +4,10 @@ on: pull_request
 
 env:
   FORCE_COLOR: 1
+  POSTGRES_PASSWORD: postgres
+  POSTGRES_USER: postgres
+  POSTGRES_HOST: localhost
+  RAILS_ENV: test
 
 jobs:
   rubocop:
@@ -37,19 +41,34 @@ jobs:
   tests:
     name: Tests
     runs-on: ubuntu-18.04
+    services:
+      db:
+        image: postgres:11@sha256:85d79cba2d4942dad7c99f84ec389a5b9cc84fb07a3dcd3aff0fb06948cdc03b
+        ports: ['5432:5432']
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-ruby@v1
         with:
           ruby-version: 2.6.x
-      - name: Install Sqlite
-        run: |
-          sudo apt-get install libsqlite3-dev
-      - name: Install Test dependencies
-        run: |
+        env:
+          POSTGRES_HOST: 127.0.0.1
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          RAILS_ENV: test
+      - name: Run Tests
+        run: | 
+          sudo apt-get -yqq install libpq-dev 
           gem install bundler
           bundle install --jobs 4 --retry 3
-          bundle exec rails db:create
+          sudo service postgresql restart
+          bundle exec rake db:create
           bundle exec rails db:migrate
-      - name: Tests Report
-        run: bundle exec rake
+          bundle exec rake

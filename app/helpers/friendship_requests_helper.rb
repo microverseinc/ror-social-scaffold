@@ -45,11 +45,11 @@ module FriendshipRequestsHelper
     request.friend.id
   end
 
-  def request_id request
+  def request_id(request)
     request.id
   end
 
-  def sender_name request
+  def sender_name(request)
     request.friend.name
   end
 end
