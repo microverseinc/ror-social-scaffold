@@ -11,10 +11,15 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
 
   has_many :friendships, foreign_key: :friend_id, class_name: 'Friendship', dependent: :destroy
-  has_many :friends, through: :friendships, source: :inverse_friend, dependent: :destroy
+
+  has_many :friends, through: :friendships, source: :inverse_friend, dependent: :destroy do
+    def confirmed
+      where('friendships.status = ?', 'confirmed')
+    end
+  end
 
   def friend?(user)
-    friends.include?(user)
+    friends.confirmed.include?(user)
   end
 
   def pending?(user)

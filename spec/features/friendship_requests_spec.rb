@@ -101,6 +101,7 @@ RSpec.describe 'Friendship Management Features', type: :feature do
     click_button 'Save'
     click_on 'All users'
     click_button 'Add Friend'
+
     click_on 'Sign out'
 
     # Sign in as Mary
@@ -144,13 +145,46 @@ RSpec.describe 'Friendship Management Features', type: :feature do
     fill_in 'Password', with: mary[:password]
     click_button 'Log in'
 
-    # Mary accepts Jane's friend request
+    # Mary rejects Jane's friend request
     click_on 'All users'
     click_button 'Reject'
 
     expect(page).to have_content("The friendship request from #{jane[:name]} was successfully rejected")
     click_on 'Timeline'
     expect(page).not_to have_content(jane_post)
+  end
+
+  scenario 'a user with an awaiting friendship request cannot see time posts of requested pending friend' do
+    # Jane creates a post and sends a friend request to Mary
+    jane_post = 'Hello users, I am Jane.'
+    fill_in :post_content, with: jane_post
+    click_button 'Save'
+    click_on 'All users'
+    click_button 'Add Friend'
+    click_on 'Sign out'
+
+    # Sign in as Mary
+    visit new_user_session_path
+    fill_in 'Email', with: mary[:email]
+    fill_in 'Password', with: mary[:password]
+    click_button 'Log in'
+
+    # Mary creates a post and ignores Jane's friend request
+    mary_post = 'Hello users, I am Mary.'
+    fill_in :post_content, with: mary_post
+    click_button 'Save'
+    click_on mary[:name]
+    expect(page).to have_content('Pending Friend Requests:')
+    click_on 'Timeline'
+    expect(page).not_to have_content(jane_post)
+    click_on 'Sign out'
+
+    # Sign in as Jane
+    visit new_user_session_path
+    fill_in 'Email', with: jane[:email]
+    fill_in 'Password', with: jane[:password]
+    click_button 'Log in'
+    expect(page).not_to have_content(mary_post)
   end
 
   scenario 'a user with a pending friendship request can reject it on the user\'s profile page' do
@@ -205,7 +239,7 @@ RSpec.describe 'Friendship Management Features', type: :feature do
     fill_in 'Password', with: mary[:password]
     click_button 'Log in'
 
-    # Mary creates a post and accepts Jane's friend request
+    # Mary creates a post and rejects Jane's friend request
     mary_post = 'Hello users, I am Mary.'
     fill_in :post_content, with: mary_post
     click_button 'Save'
