@@ -1,0 +1,10 @@
+// Place all the styles related to the friendship_requests controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+$primary-color-dark: #689f38;
+
+.request-sender {
+  margin: 0 0 8px 0;
+  color: $primary-color-dark;
+  text-transform: capitalize;
+}

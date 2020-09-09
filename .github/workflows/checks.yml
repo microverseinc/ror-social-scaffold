@@ -1,0 +1,74 @@
+name: CI Checks
+
+on: pull_request
+
+env:
+  FORCE_COLOR: 1
+  POSTGRES_PASSWORD: postgres
+  POSTGRES_USER: postgres
+  POSTGRES_HOST: localhost
+  RAILS_ENV: test
+
+jobs:
+  rubocop:
+    name: Rubocop
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.6.x
+      - name: Setup Rubocop
+        run: |
+          gem install --no-document rubocop:'~>0.81.0' # https://docs.rubocop.org/en/stable/installation/
+          [ -f .rubocop.yml ] || wget https://raw.githubusercontent.com/microverseinc/linters-config/master/ror/.rubocop.yml
+      - name: Rubocop Report
+        run: rubocop --color
+  stylelint:
+    name: Stylelint
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+      - name: Setup Stylelint
+        run: |
+          npm install --save-dev stylelint@13.3.x stylelint-scss@3.17.x stylelint-config-standard@20.0.x
+          [ -f .stylelintrc.json ] || wget https://raw.githubusercontent.com/microverseinc/linters-config/master/ror/.stylelintrc.json
+      - name: Stylelint Report
+        run: npx stylelint "**/*.{css,scss}"
+  tests:
+    name: Tests
+    runs-on: ubuntu-18.04
+    services:
+      db:
+        image: postgres:11@sha256:85d79cba2d4942dad7c99f84ec389a5b9cc84fb07a3dcd3aff0fb06948cdc03b
+        ports: ['5432:5432']
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.6.x
+        env:
+          POSTGRES_HOST: 127.0.0.1
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          RAILS_ENV: test
+      - name: Run Tests
+        run: | 
+          sudo apt-get -yqq install libpq-dev 
+          gem install bundler
+          bundle install --jobs 4 --retry 3
+          sudo service postgresql restart
+          bundle exec rake db:create
+          bundle exec rails db:migrate
+          bundle exec rake
