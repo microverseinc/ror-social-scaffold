@@ -4,7 +4,7 @@ class FriendshipsController < ApplicationController
     current_user.request_friend(@user)
     redirect_to users_path(@user)
     flash[:notice] = 'Success'
-    end
+  end
 
   def show
     redirect_to users_path
