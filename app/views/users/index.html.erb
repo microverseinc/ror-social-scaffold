@@ -1,12 +1,34 @@
 <section class="users-section">
   <ul class="users-list">
     <% @users.each do |user| %>
-      <li>
-        Name: <%= user.name %>
-        <span class="profile-link">
-          <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-        </span>
-      </li>
+    <div class="container-fluid">
+     <div class="row d-flex">
+    <div class="col-12 col-md-6 d-flex justify-content-center">
+     <li>
+          Name: <%= user.name %>
+                <span class="profile-link">
+                <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+              </span>
+            </li>
+          </div>
+          <div class="col-12 col-md-6 d-flex justify-content-center">
+            <% if current_user.friend?(user)%>
+              <p><%= user.name %> is your friend!</p>
+            <% elsif current_user == user %>
+              <p class="text-success">You are the same person</p>
+            <%else%>
+              <% if current_user.friend_requests.include?(user) %>
+                <button class="border border-info"> <%=link_to 'Accept', friendship_path(user), method: :patch%> </button>
+                <button class="border border-info"> <%=link_to 'Decline', friendship_path(user), method: :delete %> </button>
+              <% elsif current_user.pending_friends.include?(user) %>
+                <p class="text-success">You have sent a friend request to <%= user.name %></p>
+              <% else %>
+                <button class="border border-info"> <%=link_to 'friend request', friend_req_path(user)%> </button>
+              <% end %>
+            <%end%>
+          </div>
+        </div>
+      </div>
     <% end %>
   </ul>
 </section>
