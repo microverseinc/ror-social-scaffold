@@ -43,7 +43,6 @@ RSpec.describe FriendshipRequestsController, type: :controller do
       expect(response).to have_http_status(:found)
       expect(flash[:notice]).to eq "You are now friends with #{sender.name}"
       expect(Friendship.find_by(friend: sender, inverse_friend: receiver)).not_to eq nil
-      expect(Friendship.find_by(friend: receiver, inverse_friend: sender)).not_to eq nil
     end
   end
 

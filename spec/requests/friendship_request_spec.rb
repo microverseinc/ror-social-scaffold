@@ -39,7 +39,6 @@ RSpec.describe 'Friendship Requests', type: :request do
       expect(response).to have_http_status(302)
       expect(flash[:notice]).to eq "You are now friends with #{sender.name}"
       expect(Friendship.find_by(friend: sender, inverse_friend: receiver, status: 'confirmed')).not_to eq nil
-      expect(Friendship.find_by(friend: receiver, inverse_friend: sender, status: 'confirmed')).not_to eq nil
     end
 
     it 'should be able to reject a friend request from another user' do

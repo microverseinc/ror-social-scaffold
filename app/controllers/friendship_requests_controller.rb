@@ -17,22 +17,11 @@ class FriendshipRequestsController < ApplicationController
   def update
     @sent_request.status = 'confirmed'
     if @sent_request.save
-      add_friendship
+      flash[:notice] = "You are now friends with #{@user.name}"
     else
       flash[:alert] = "An error occurred while trying to accept the friendship #{@user.errors.full_messages}"
     end
     redirect_to user_path(@user.id)
-  end
-
-  def add_friendship
-    inverse_friendship = current_user.friendships.build(inverse_friend: @user, status: 'confirmed')
-
-    if inverse_friendship.save
-      flash[:notice] = "You are now friends with #{@user.name}"
-    else
-      errors = inverse_friendship.errors.full_messages
-      flash[:alert] = "An error occurred while trying to save the friendship #{errors}"
-    end
   end
 
   def destroy

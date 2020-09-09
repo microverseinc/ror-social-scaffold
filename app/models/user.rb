@@ -10,16 +10,18 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
-  has_many :friendships, foreign_key: :friend_id, class_name: 'Friendship', dependent: :destroy
+  has_many :friendships, class_name: 'Friendship', foreign_key: 'friend_id'
+  has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'inverse_friend_id'
 
-  has_many :friends, through: :friendships, source: :inverse_friend, dependent: :destroy do
-    def confirmed
-      where('friendships.status = ?', 'confirmed')
-    end
+  def friends
+    friends = friendships.map { |friendship| friendship.inverse_friend if friendship.status == 'confirmed' }
+    inverse_friends = inverse_friendships.map { |friendship| friendship.friend if friendship.status == 'confirmed' }
+
+    (friends + inverse_friends).compact
   end
 
   def friend?(user)
-    friends.confirmed.include?(user)
+    friends.include?(user)
   end
 
   def pending?(user)
