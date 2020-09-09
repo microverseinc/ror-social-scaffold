@@ -10,8 +10,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
-  has_many :friendships, foreign_key: :friend_id, class_name: 'Friendship'
-  # has_many :friend, through: :friendships, source: :friend
+  has_many :friendships
 
   has_many :confirmed_friendships, ->{where status: true}, class_name: 'Friendship'
   has_many :friends, through: :confirmed_friendships
@@ -19,6 +18,6 @@ class User < ApplicationRecord
   has_many :pending_friendships, ->{where status: false}, class_name: 'Friendship', foreign_key: :user_id
   has_many :pending_friendrequests, through: :pending_friendships, source: :user
 
-  has_many :friendrequests, ->{where status: false}, class_name: 'Friendship', foreign_key: :friend_id
-  has_many :sent_friendrequests, through: :friendrequests, source: :user
+  has_many :received_friendrequests, ->{where status: false}, class_name: 'Friendship', foreign_key: :friend_id
+  has_many :friendrequests, through: :received_friendrequests, source: :user
 end
