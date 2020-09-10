@@ -1,7 +1,10 @@
 {
   "name": "ror_social_scaffold",
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "@fullhuman/postcss-purgecss": "^2.3.0",
+    "tailwindcss": "^1.8.6"
+  },
   "devDependencies": {
     "stylelint": "^13.3.3",
     "stylelint-config-standard": "^20.0.0",

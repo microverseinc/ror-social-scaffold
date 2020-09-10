@@ -1,10 +1,14 @@
 <section class="users-section">
   <ul class="users-list">
     <% @users.each do |user| %>
+
+    <%= user.inspect %>
+
       <li>
         Name: <%= user.name %>
         <span class="profile-link">
-          <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+          <%= link_to 'See Profile',  user_path(user), class: 'bg-blue profile-link' %>
+          <%= connection_links?(user) %>
         </span>
       </li>
     <% end %>

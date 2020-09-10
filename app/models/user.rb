@@ -10,4 +10,13 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :friendships
+
+  scope :join_friends, lambda { |id|
+    joins("LEFT OUTER JOIN friendships ON
+             ((friendships.user_id = users.id or
+             friendships.friend_id = users.id) and (user_id == #{id} or friend_id == #{id}))")
+  }
+  scope :users, lambda { |id|
+    join_friends(id).select('users.*, friend_id, user_id, friendships.status').where('users.id != ?', id).group('users.id')
+  }
 end
