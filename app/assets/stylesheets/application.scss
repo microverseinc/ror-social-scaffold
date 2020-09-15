@@ -13,17 +13,4 @@
  *= require_tree .
  *= require_self
  */
- @import "tailwindcss/base";
- @import "tailwindcss/components";
- 
-body {
-     background-color: #d5c600; 
-     /* #baad04 */
-     color: #fff;
- }
- 
- @import "tailwindcss/utilities";
-
- 
-
  

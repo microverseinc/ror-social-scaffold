@@ -2,7 +2,11 @@
   <ul class="users-list">
     <% @users.each do |user| %>
 
-    <%= user.inspect %>
+    <%
+=begin%>
+ <%= user.inspect %> 
+<%
+=end%>
 
       <li>
         Name: <%= user.name %>
