@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.0'
+ruby '2.6.6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4'
@@ -38,9 +38,15 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'devise'
 
+# For creating env variables
+gem 'figaro'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+
+  # Rails console beautifier
+  gem 'hirb'
 end
 
 group :test do
@@ -59,3 +65,6 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+
+# Required by rails db:migrate
+gem 'wdm', '>= 0.1.0' if Gem.win_platform?
