@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="Rails ror-social-scaffold: test" uuid="d2827671-5a26-4134-bf7a-b102884daca8">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/ror_social_scaffold_test</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="Rails ror-social-scaffold: development" uuid="f5b56ab9-fbde-41d3-aad3-fbe3917cb257">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/ror_social_scaffold_development</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="Rails ror-social-scaffold: production" uuid="cdfac131-426d-44bc-9c11-a4f7b5a4f4ae">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/ror_social_scaffold_production</jdbc-url>
+    </data-source>
+  </component>
+</project>

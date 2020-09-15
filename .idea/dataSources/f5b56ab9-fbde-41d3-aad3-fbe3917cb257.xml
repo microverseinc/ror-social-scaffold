@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="Rails ror-social-scaffold: development">
+  <database-model serializer="dbm" dbms="SQLITE" family-id="SQLITE" format-version="4.19">
+    <root id="1">
+      <ServerVersion>3.31.1</ServerVersion>
+    </root>
+    <schema id="2" parent="1" name="main">
+      <Current>1</Current>
+    </schema>
+    <collation id="3" parent="1" name="BINARY"/>
+    <collation id="4" parent="1" name="NOCASE"/>
+    <collation id="5" parent="1" name="RTRIM"/>
+    <table id="6" parent="2" name="ar_internal_metadata"/>
+    <table id="7" parent="2" name="comments"/>
+    <table id="8" parent="2" name="friendships"/>
+    <table id="9" parent="2" name="likes"/>
+    <table id="10" parent="2" name="posts"/>
+    <table id="11" parent="2" name="schema_migrations"/>
+    <table id="12" parent="2" name="sqlite_master">
+      <System>1</System>
+    </table>
+    <table id="13" parent="2" name="sqlite_sequence">
+      <System>1</System>
+    </table>
+    <table id="14" parent="2" name="users"/>
+    <column id="15" parent="6" name="key">
+      <Position>1</Position>
+      <DataType>varchar|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="16" parent="6" name="value">
+      <Position>2</Position>
+      <DataType>varchar|0s</DataType>
+    </column>
+    <column id="17" parent="6" name="created_at">
+      <Position>3</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="18" parent="6" name="updated_at">
+      <Position>4</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="19" parent="6" name="sqlite_autoindex_ar_internal_metadata_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>key</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="20" parent="6">
+      <ColNames>key</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_ar_internal_metadata_1</UnderlyingIndexName>
+    </key>
+    <column id="21" parent="7" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="22" parent="7" name="user_id">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <column id="23" parent="7" name="post_id">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <column id="24" parent="7" name="content">
+      <Position>4</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="25" parent="7" name="created_at">
+      <Position>5</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="26" parent="7" name="updated_at">
+      <Position>6</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="27" parent="7" name="index_comments_on_user_id">
+      <ColNames>user_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="28" parent="7" name="index_comments_on_post_id">
+      <ColNames>post_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="29" parent="7">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="30" parent="8" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="31" parent="8" name="user_id">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <column id="32" parent="8" name="friend_id">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <column id="33" parent="8" name="status">
+      <Position>4</Position>
+      <DataType>varchar(12)|0s</DataType>
+    </column>
+    <column id="34" parent="8" name="created_at">
+      <Position>5</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="35" parent="8" name="updated_at">
+      <Position>6</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="36" parent="8" name="index_friendships_on_user_id">
+      <ColNames>user_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="37" parent="8">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="38" parent="8" name="fk_rails_e3733b59b7">
+      <ColNames>user_id</ColNames>
+      <RefTableName>users</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="39" parent="9" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="40" parent="9" name="post_id">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <column id="41" parent="9" name="user_id">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <index id="42" parent="9" name="index_likes_on_post_id">
+      <ColNames>post_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="43" parent="9" name="index_likes_on_user_id">
+      <ColNames>user_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="44" parent="9">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="45" parent="10" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="46" parent="10" name="user_id">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <column id="47" parent="10" name="content">
+      <Position>3</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="48" parent="10" name="created_at">
+      <Position>4</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="49" parent="10" name="updated_at">
+      <Position>5</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="50" parent="10" name="index_posts_on_user_id">
+      <ColNames>user_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="51" parent="10">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="52" parent="11" name="version">
+      <Position>1</Position>
+      <DataType>varchar|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="53" parent="11" name="sqlite_autoindex_schema_migrations_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>version</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="54" parent="11">
+      <ColNames>version</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_schema_migrations_1</UnderlyingIndexName>
+    </key>
+    <column id="55" parent="12" name="type">
+      <Position>1</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="56" parent="12" name="name">
+      <Position>2</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="57" parent="12" name="tbl_name">
+      <Position>3</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="58" parent="12" name="rootpage">
+      <Position>4</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="59" parent="12" name="sql">
+      <Position>5</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="60" parent="13" name="name">
+      <Position>1</Position>
+    </column>
+    <column id="61" parent="13" name="seq">
+      <Position>2</Position>
+    </column>
+    <column id="62" parent="14" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="63" parent="14" name="email">
+      <Position>2</Position>
+      <DataType>varchar|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="64" parent="14" name="encrypted_password">
+      <Position>3</Position>
+      <DataType>varchar|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="65" parent="14" name="reset_password_token">
+      <Position>4</Position>
+      <DataType>varchar|0s</DataType>
+    </column>
+    <column id="66" parent="14" name="reset_password_sent_at">
+      <Position>5</Position>
+      <DataType>datetime|0s</DataType>
+    </column>
+    <column id="67" parent="14" name="remember_created_at">
+      <Position>6</Position>
+      <DataType>datetime|0s</DataType>
+    </column>
+    <column id="68" parent="14" name="created_at">
+      <Position>7</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="69" parent="14" name="updated_at">
+      <Position>8</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="70" parent="14" name="name">
+      <Position>9</Position>
+      <DataType>varchar|0s</DataType>
+    </column>
+    <column id="71" parent="14" name="gravatar_url">
+      <Position>10</Position>
+      <DataType>varchar|0s</DataType>
+    </column>
+    <index id="72" parent="14" name="index_users_on_email">
+      <ColNames>email</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="73" parent="14" name="index_users_on_reset_password_token">
+      <ColNames>reset_password_token</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="74" parent="14">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>
