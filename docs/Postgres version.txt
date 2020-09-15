@@ -1,0 +1,41 @@
+CREATE TABLE "Friendships" (
+  "user_id" integer,
+  "friend_id" integer,
+  "confirmed" boolean,
+  "created_at" datetime,
+  "updated_at" datetime
+);
+
+CREATE TABLE "Comments" (
+  "id" integer,
+  "content" text,
+  "user_id" integer,
+  "post_id" integer,
+  PRIMARY KEY ("id")
+);
+
+CREATE TABLE "Posts" (
+  "id" integer,
+  "user_id" integer,
+  "content" text,
+  PRIMARY KEY ("id")
+);
+
+CREATE TABLE "Likes" (
+  "id" integer,
+  "user_id" integer,
+  "post_id" integer,
+  PRIMARY KEY ("id")
+);
+
+CREATE TABLE "Users" (
+  "id" integer,
+  "name" varchar(20),
+  "email" varchar(20),
+  "gravatar_url" varchar(50),
+  "devise_fields" varchar(100),
+  "created_at" datetime,
+  "updated_at" datetime,
+  PRIMARY KEY ("id")
+);
+
