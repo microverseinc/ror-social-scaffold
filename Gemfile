@@ -49,8 +49,13 @@ group :development, :test do
   gem 'hirb'
 end
 
+# Shoulda-matchers for testing
 group :test do
-  gem 'rspec'
+  gem 'shoulda-matchers', '~> 4.0'
+end
+
+group :test do
+  gem 'rspec-rails'
 end
 
 group :development do
