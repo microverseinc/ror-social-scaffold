@@ -15,7 +15,7 @@ RSpec.describe Friendship, type: :model do
      expect(Friendship.find_friendship(user1, user2).to_a).to eq([])
     end
    
-   it 'return false when there is not friendship' do 
+   it 'It should check for existence friendship' do 
     friendship = Friendship.create!(user_id: user1.id,friend_id:user2.id)
      expect(Friendship.first).to eq(friendship)
     #  expect(Friendship.all.size).not_to eq(1)
