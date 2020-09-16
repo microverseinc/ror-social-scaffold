@@ -30,6 +30,13 @@ ul {
   list-style-type: none;
 }
 
+.btn-primary {
+  background-color: $primary-color-dark;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 2px;
+}
+
 a {
   text-decoration: none;
   color: $primary-color-text;
@@ -346,4 +353,8 @@ form {
   .user-section {
     width: 50%;
   }
+}
+
+.friendship-actions {
+  margin-top: 15px;
 }
