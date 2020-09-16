@@ -18,10 +18,11 @@ module ApplicationHelper
 
   def add_friend(user)
     return unless current_user != user
+
     if current_user.pending_request_with user
-      "Friendship Request"
+      'Friendship Request'
     elsif current_user.friend?(user) || current_user.inverse_friend?(user)
-     link_to("Unfriend", unfriend_path(user_id: user), method: :delete)
+      link_to('Unfriend', unfriend_path(user_id: user), method: :delete)
     elsif current_user.pending_friend?(user)
       'Pending to confirm friend request'
     else
