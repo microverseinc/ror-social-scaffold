@@ -20,11 +20,11 @@ module ApplicationHelper
     return unless current_user != user
 
     if current_user.friend?(user)
-     link_to("Unfriend", unfriend_path(user_id: user), method: :delete)
+      link_to('Unfriend', unfriend_path(user_id: user), method: :delete)
     elsif current_user.pending_friend?(user)
       'Pending to confirm friend request'
     else
-      link_to('Add friend', user_friendships_path(friend_id: user.id, user_id: current_user), method: :post)
+      link_to('Add friend', user_friendships_path(friend_id: user.id, user_id: current_user), method: :post, id: 'Add')
     end
   end
 end
