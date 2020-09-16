@@ -26,7 +26,6 @@ RSpec.describe 'get a new friend', type: :system do
     visit users_path
     click_link 'Add'
     click_on 'Sign out'
-    sleep(3)
     visit user_session_path
     fill_in 'user[email]', with: 'mauricio@example.com'
     fill_in 'user[password]', with: 'password'
@@ -48,7 +47,6 @@ RSpec.describe 'get a new friend', type: :system do
     visit users_path
     click_link 'Add'
     click_on 'Sign out'
-    sleep(3)
     visit user_session_path
     fill_in 'user[email]', with: 'mauricio@example.com'
     fill_in 'user[password]', with: 'password'
