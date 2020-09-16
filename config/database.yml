@@ -58,6 +58,8 @@ development:
 test:
   <<: *default
   database: ror_social_scaffold_test
+  username: yahir
+  password: 4822
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
