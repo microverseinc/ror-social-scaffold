@@ -1,6 +1,5 @@
 require 'rails_helper'
 RSpec.describe 'get a new friend', type: :system do
-
   it 'send a friend request' do
     @user = User.new(name: 'Yahir', email: 'yahir@example.com', password: 'password')
     @user.save
@@ -58,5 +57,4 @@ RSpec.describe 'get a new friend', type: :system do
     click_on 'reject friend request'
     expect(page).to have_content('You reject a friend request.')
   end
-
 end

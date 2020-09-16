@@ -11,7 +11,7 @@ RSpec.describe 'Authentification', type: :system do
     expect(page).to have_content('Welcome! You have signed up successfully.')
   end
 
-  it'Sign in' do
+  it 'Sign in' do
     @user = User.new(name: 'Yahir', email: 'yahir@example.com', password: 'password')
     @user.save
     visit new_user_session_path
