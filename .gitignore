@@ -29,3 +29,7 @@
 .history
 
 .vscode
+.idea
+
+docs/.DS_Store
+
