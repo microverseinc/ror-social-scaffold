@@ -46,7 +46,7 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
 
   # Database cleaner
-   gem 'database_cleaner'
+  gem 'database_cleaner'
 
   # Rails console beautifier
   gem 'hirb'
