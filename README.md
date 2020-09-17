@@ -46,7 +46,7 @@ Run `yarn install` to install the npm packages from the `package.json` file.<br>
 **Step 5**<br>
 Run `bundle exec figaro install`, this will create a file called `application.yml` in the `config` folder.<br>
 **Step 6**<br>
-Open  `config/application.yml` and you credenatials for your postgres account like  this:<br>
+Open  `config/application.yml` and add your credenatials for your postgres account like  this:<br>
 `ROR_SOCIAL_SCAFFOLD_DATABASE_PASSWORD: "examplePassword"` <br>
 `ROR_SOCIAL_SCAFFOLD_DATABASE_USER: "exampleUser"`<br>
 **Step 7**<br>
