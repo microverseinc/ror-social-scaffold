@@ -21,7 +21,7 @@ module ApplicationHelper
 
     if current_user.pending_request_with user
       'Friendship Request'
-    elsif current_user.friend?(user) || current_user.inverse_friend?(user)
+    elsif current_user.friend?(user)
       link_to('Unfriend', unfriend_path(user_id: user), method: :delete)
     elsif current_user.pending_friend?(user)
       'Pending to confirm friend request'

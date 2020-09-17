@@ -13,17 +13,10 @@ class User < ApplicationRecord
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
   has_many :confirmed_friendships, -> { where confirmed: true }, class_name: 'Friendship'
   has_many :friends, through: :confirmed_friendships
-  has_many :confirmed_inverse_friends, -> { where confirmed: true }, class_name: 'Friendship', foreign_key: 'friend_id'
-  has_many :inverse_friends, through: :confirmed_inverse_friends, source: :user
   has_many :pending_friendships, -> { where confirmed: false }, class_name: 'Friendship', foreign_key: 'user_id'
   has_many :pending_friends, through: :pending_friendships, source: :friend
   has_many :incoming_friendships, -> { where confirmed: false }, class_name: 'Friendship', foreign_key: 'friend_id'
   has_many :incoming_friends, through: :incoming_friendships, source: :user
-
-  def inverse_friend?(user)
-    all_friends = inverse_friends.include?(user)
-    all_friends
-  end
 
   def friend?(user)
     all_friends = friends.include?(user)
@@ -42,9 +35,8 @@ class User < ApplicationRecord
     f = incoming_friendships.find_by(user_id: user)
     f.confirmed = true
     f.save
+    Friendship.create(friend: f.user, user: f.friend, confirmed: true)
   end
-
-  # ---------------------------------------------------------------------
 
   def pending_friend?(user)
     pending_friends.include?(user)
@@ -62,7 +54,7 @@ class User < ApplicationRecord
     friend.destroy
   end
 
-  def friends_post(current_user)
-    Post.where(user: friends).or(Post.where(user: current_user))
+  def friends_and_own_posts
+    Post.where(user: (friend_ids + [id]))
   end
 end
