@@ -7,7 +7,7 @@ RSpec.describe Like, type: :model do
 
   context 'Associations' do
     it { expect(subject).to belong_to(:user) }
-    
+
     it { expect(subject).to belong_to(:post) }
   end
 end

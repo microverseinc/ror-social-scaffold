@@ -12,7 +12,10 @@ RSpec.describe Comment, type: :model do
 
     it { expect(subject).to validate_presence_of(:content) }
 
-    it { expect(subject).to validate_length_of(:content).is_at_most(200).with_message(/200 characters in comment is the maximum allowed./) }
+    it {
+      expect(subject).to validate_length_of(:content).is_at_most(200)
+        .with_message(/200 characters in comment is the maximum allowed./)
+    }
   end
 
   context 'Association' do

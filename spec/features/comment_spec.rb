@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature 'Comments', type: :feature do
- login
+  login
 
   scenario 'commenting on a post' do
     visit posts_path
