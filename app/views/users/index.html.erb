@@ -1,13 +1,6 @@
 <section class="users-section">
   <ul class="users-list">
     <% @users.each do |user| %>
-
-    <%
-=begin%>
- <%= user.inspect %> 
-<%
-=end%>
-
       <li>
         Name: <%= user.name %>
         <span class="profile-link">

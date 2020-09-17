@@ -32,8 +32,6 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
-  config.include Devise::TestHelpers, type: :controller
-  config.include SpecTestHelper, type: :controller
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
@@ -72,3 +70,5 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
+
+Capybara.default_driver = :selenium_chrome
