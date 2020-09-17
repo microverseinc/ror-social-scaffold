@@ -3,26 +3,30 @@
 # Social web app built in rails with users, posts, comments, likes and friendship functionality
 
 > In this project, we built by a social app where users can register/sign in/sign out, create posts and comments, can like other posts and request/accept friendships with other users. The project enforced our skills in using most core functionalities of the Rails framework.
+> The app is equally deplyed to Heroku, you can check the Link :point_right:https://microverse-rails-social-app.herokuapp.com/
 
 ## App functionality
-* Users can sign up, sign out, recover forgotten passwords
-* Users can create posts and comments
-* Users can like posts
-* Users can request or accept friendships and they also have the possibility to cancel a friendship
+
+- Users can sign up, sign out, recover forgotten passwords
+- Users can create posts and comments
+- Users can like posts
+- Users can request or accept friendships and they also have the possibility to cancel a friendship
 
 ## This web app is live, you can check it here: [Live demo](https://microverse-rails-social-app.herokuapp.com/)
 
 ## Check the Entity Relathionship Diagram of the Database on [lucidchart.com](https://app.lucidchart.com/documents/edit/d5990996-0f54-4a99-b135-bc363b345728/0_0#?folder_id=home&browser=icon)
 
 ## Screenshots of the app.
+
 ![image](.github/app-screenshot2.png)
 ![image](.github/app-screenshot1.png)
 
 ## Built With
-* Ruby
-* Rails
-* RSpec
-* PostgreSQL
+
+- Ruby
+- Rails
+- RSpec
+- PostgreSQL
 
 ## Prerequisities
 
@@ -46,7 +50,7 @@ Run `yarn install` to install the npm packages from the `package.json` file.<br>
 **Step 5**<br>
 Run `bundle exec figaro install`, this will create a file called `application.yml` in the `config` folder.<br>
 **Step 6**<br>
-Open  `config/application.yml` and add your credenatials for your postgres account like  this:<br>
+Open `config/application.yml` and add your credenatials for your postgres account like this:<br>
 `ROR_SOCIAL_SCAFFOLD_DATABASE_PASSWORD: "examplePassword"` <br>
 `ROR_SOCIAL_SCAFFOLD_DATABASE_USER: "exampleUser"`<br>
 **Step 7**<br>
@@ -62,11 +66,11 @@ You can visit the app at `http://localhost:3000`. Enjoy!<br>
 
 2. Migrate the test database:
 
-    `rails db:migrate RAILS_ENV=test`
+   `rails db:migrate RAILS_ENV=test`
 
-2. Run the tests with the command:
+3. Run the tests with the command:
 
-    `rspec`
+   `rspec`
 
 ## Authors
 
