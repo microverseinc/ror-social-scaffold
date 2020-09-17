@@ -1,11 +1,12 @@
-<section class="users-section">
+<section class="users-section text-center my-4 py-4">
   <ul class="users-list">
     <% @users.each do |user| %>
-      <li>
+      <li class="border p-3 my-4">
         Name: <%= user.name %>
-        <span class="profile-link">
-          <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+        <span class="profile-link d-block">
+          <i class="fa fa-user" aria-hidden="true"></i> <%= link_to 'See Profile ',  user_path(user), class: 'profile-link display-3' %>
         </span>
+        <%= friendship_action(current_user, user) %>
       </li>
     <% end %>
   </ul>

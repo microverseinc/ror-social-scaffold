@@ -1,0 +1,8 @@
+<%= form_with(model: @friendships, url: unfriend_path, method: method, local: true, class: 'mx-auto') do |form| %>
+  <div>
+    <%= form.hidden_field :user_id, value: user.id %>
+    <div class="actions">
+      <%= form.submit submit_text, class: 'btn btn-success btn-block' %>
+    </div>
+  </div>
+<% end %>
