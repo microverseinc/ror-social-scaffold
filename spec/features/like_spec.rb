@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Likes", type: :feature do
+RSpec.feature 'Likes', type: :feature do
   login
   scenario 'Like a post' do
     visit posts_path

@@ -1,5 +1,5 @@
 RSpec.configure do |config|
-  config.before(:type => :feature) do
+  config.before(type: :feature) do
     @user = User.create(name: 'Amero G', email: 'amero@opal.com', password: 'itsG00d2Have$')
     @user2 = User.create(name: 'Lencha B', email: 'lencha@opal.com', password: 'itsG00d2Have$')
     @user3 = User.create(name: 'Selam Y', email: 'selam@opal.com', password: 'itsG00d2Have$')

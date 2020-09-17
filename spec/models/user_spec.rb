@@ -15,13 +15,13 @@ RSpec.describe User, type: :model do
     it { expect(subject).to validate_length_of(:password).is_at_least(6) }
     it { expect(subject).to validate_length_of(:name).is_at_most(20) }
 
-    it { expect(subject).to allow_value("a.aziz@opal.com").for(:email) }
-    it { expect(subject).to_not allow_value("recca").for(:email) }
+    it { expect(subject).to allow_value('a.aziz@opal.com').for(:email) }
+    it { expect(subject).to_not allow_value('recca').for(:email) }
 
     it 'is expected to validate that :password cannot be empty/falsy' do
       subject.password = nil
       subject.valid?
-      expect(subject.errors[:password]).to_not include("Password can't be blank")
+      expect(subject.errors[:password]).to_not include('Password can\'t be blank')
     end
   end
 

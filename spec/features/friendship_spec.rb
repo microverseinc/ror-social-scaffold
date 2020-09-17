@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Friendships", type: :feature do
+RSpec.feature 'Friendships', type: :feature do
   login
 
   scenario 'send a request' do
