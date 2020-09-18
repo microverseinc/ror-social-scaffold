@@ -48,10 +48,10 @@ class User < ApplicationRecord
   end
 
   def remove_friend(user)
-    friendship_confirmed = friendships.where(confirmed: true).or(inverse_friendships.where(confirmed: true))
-    friendships = friendship_confirmed.where(user_id: user.id).or(friendship_confirmed.where(friend_id: user.id))
-    friend = friendships.find { |friendship| friendship.user_id == user.id || friendship.friend_id == user.id }
+    friend = confirmed_friendships.find_by(friend_id: user.id)
+    inverse_friend = Friendship.find_by(user_id: user.id, friend_id: id)
     friend.destroy
+    inverse_friend.destroy
   end
 
   def friends_and_own_posts

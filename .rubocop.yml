@@ -11,7 +11,7 @@ AllCops:
   DisplayCopNames: true
 
 Layout/LineLength:
-  Max: 120
+  Max: 250
 Metrics/MethodLength:
   Include:
     - "app/controllers/*"
