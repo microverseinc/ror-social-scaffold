@@ -11,31 +11,31 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :friendships
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
-  
-  def friends
-    friends_array = friendships.map { |friendship| friendship.friend if friendship.confirmed }
-    friends_array += inverse_friendships.map { |friendship| friendship.user if friendship.confirmed }
-    friends_array.compact
+  has_many :confirmed_friendships, -> { where confirmed: true }, class_name: 'Friendship'
+  has_many :friends, through: :confirmed_friendships
+  has_many :pending_friendships, -> { where confirmed: false }, class_name: 'Friendship', foreign_key: 'user_id'
+  has_many :pending_friends, through: :pending_friendships, source: :friend
+  has_many :incoming_friendships, -> { where confirmed: false }, class_name: 'Friendship', foreign_key: 'friend_id'
+  has_many :incoming_friends, through: :incoming_friendships, source: :user
+
+  def friend?(user)
+    all_friends = friends.include?(user)
+    all_friends
   end
 
-  # Users who have yet to confirme friend requests
-  def pending_friends
-    friendships.map { |friendship| friendship.friend unless friendship.confirmed }.compact
+  def pending_request_with(user)
+    incoming_friends.include? user
   end
 
-  # Users who have requested to be friends
-  def friend_requests
-    inverse_friendships.map { |friendship| friendship.user unless friendship.confirmed }.compact
+  def sent_request?(user)
+    pending_friends.include? user
   end
 
   def confirm_friend(user)
-    f = inverse_friendships.find { |friendship| friendship.user == user }
+    f = incoming_friendships.find_by(user_id: user)
     f.confirmed = true
     f.save
-  end
-
-  def friend?(user)
-    friends.include?(user)
+    Friendship.create(friend: f.user, user: f.friend, confirmed: true)
   end
 
   def pending_friend?(user)
@@ -48,13 +48,13 @@ class User < ApplicationRecord
   end
 
   def remove_friend(user)
-    friends_array = friendships.where(confirmed: true).or(inverse_friendships.where(confirmed: true))
-    friends_array = friends_array.where(user_id: user.id).or(friends_array.where(friend_id: user.id))
-    friend = friends_array.find { |friendship| friendship.user_id == user.id || friendship.friend_id == user.id }
+    friend = confirmed_friendships.find_by(friend_id: user.id)
+    inverse_friend = Friendship.find_by(user_id: user.id, friend_id: id)
     friend.destroy
+    inverse_friend.destroy
   end
 
-  def friends_post(current_user)
-    Post.where(user: friends).or(Post.where(user: current_user))
+  def friends_and_own_posts
+    Post.where(user: (friend_ids + [id]))
   end
 end
