@@ -43,4 +43,6 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  config.active_record.maintain_test_schema = true
+  config.active_record.migration_error = false
 end
