@@ -26,7 +26,7 @@ module ApplicationHelper
     elsif current_user.pending_friend?(user)
       'Pending to confirm friend request'
     else
-      link_to('Add friend', user_friendships_path(friend_id: user.id, user_id: current_user), method: :post)
+      link_to('Add friend', user_friendships_path(friend_id: user.id, user_id: current_user), method: :post, id: 'Add')
     end
   end
 end
