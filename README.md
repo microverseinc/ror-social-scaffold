@@ -1,6 +1,6 @@
 # Scaffold for social media app with Ruby on Rails
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+> In this project, we build a social media website.
 
 ## Built With
 
@@ -10,7 +10,6 @@
 ## Live Demo
 
 TBA
-
 
 ## Getting Started
 
@@ -55,15 +54,20 @@ Open `http://localhost:3000/` in your browser.
     rpsec --format documentation
 ```
 
-> Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
-
-### Deployment
-
-TBA
-
 ## Authors
 
-TBA
+👤 **Mauricio Santos**
+
+- Github: [@maosan132](https://github.com/maosan132)
+- Twitter: [@maosan132](https://twitter.com/maosan132)
+- Linkedin: [@maosan132](https://www.linkedin.com/in/mauricio-santos-a7292910/)
+
+👤 **Yahir Cardona**
+
+- Github: [@yahir91](https://github.com/yahir91)
+- Twitter: [@YahirCardona3](https://twitter.com/YahirCardona3)
+- Linkedin: [linkedin](https://www.linkedin.com/in/osmar-yahir-cardona-reyes-54b40b1a7/)
+
 
 ## 🤝 Contributing
 
@@ -75,11 +79,7 @@ Feel free to check the [issues page](issues/).
 
 Give a ⭐️ if you like this project!
 
-## Acknowledgments
-
-TBA
-
 ## 📝 License
 
-TBA
+This project is [MIT](lic.url) licensed.
 

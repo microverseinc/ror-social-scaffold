@@ -1,0 +1,11 @@
+<section class="users-section">
+  <ul class="users-list" >
+    <% @friendships.each do |friendship| %>
+    <li style="border-bottom: 1px solid">
+    <%= friendship.user.name%>
+    <br>
+<%= accept_reject_friend(friendship) %>
+    <% end %>
+    </li>
+  </ul>
+</section>

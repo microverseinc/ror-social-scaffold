@@ -15,4 +15,18 @@ module ApplicationHelper
       link_to('Like!', post_likes_path(post_id: post.id), method: :post)
     end
   end
+
+  def add_friend(user)
+    return unless current_user != user
+
+    if current_user.pending_request_with user
+      'Friendship Request'
+    elsif current_user.friend?(user)
+      link_to('Unfriend', unfriend_path(user_id: user), method: :delete)
+    elsif current_user.pending_friend?(user)
+      'Pending to confirm friend request'
+    else
+      link_to('Add friend', user_friendships_path(friend_id: user.id, user_id: current_user), method: :post, id: 'Add')
+    end
+  end
 end
