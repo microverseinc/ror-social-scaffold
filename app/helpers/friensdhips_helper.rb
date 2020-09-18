@@ -1,0 +1,2 @@
+module FriensdhipsHelper
+end

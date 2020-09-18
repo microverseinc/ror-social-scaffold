@@ -4,7 +4,10 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :users, only: [:index, :show]
+  resources :friendships
+  resources :users, only: [:index, :show, :create] do
+    resources :friendships, only: [:create]
+  end
   resources :posts, only: [:index, :create] do
     resources :comments, only: [:create]
     resources :likes, only: [:create, :destroy]
