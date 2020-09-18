@@ -26,7 +26,7 @@ class FriendshipsController < ApplicationController
     current_user.destroy_friend(user)
     redirect_to friendships_path, notice: 'You reject a friend request.'
   end
-  
+
   private
 
   def friendships_params
