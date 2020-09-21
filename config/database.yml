@@ -87,5 +87,5 @@ production:
 development:
   <<: *default
   database: ror_social_scaffold_development
-  username: magero
+  username: guirecordon
   password: '12345678'
