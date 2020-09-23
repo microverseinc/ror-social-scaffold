@@ -1,15 +1,13 @@
 class FriendshipsController < ApplicationController
-  
-  def index
-   
-  end
-  
-  
+    
   def create
-    @friendship = Friendship.new
-    @friendship.user_id = current_user.id
-    @friendship.status = "pending"
-    @friendship.friend_id = User.find(user.id)
+    Friendship.create(user_id: current_user.id, friend_id: params[:friend_id], status: 'pending')
   end
   
 end
+
+# The button is working, it activates the FriendshipsController#create
+# FriendshipsController#create is also working, creating a new item in the table.
+
+# It is saving the current_user.id as the user_id for the Friendship it makes.
+
