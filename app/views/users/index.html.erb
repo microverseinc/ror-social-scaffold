@@ -6,7 +6,10 @@
         <span class="profile-link">
           <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
         </span>
+        Id: <%= user.id%>
+        <%= button_to "Send Friendship Invitation", friendships_path(user), method: "post" %>
       </li>
     <% end %>
   </ul>
+ 
 </section>
