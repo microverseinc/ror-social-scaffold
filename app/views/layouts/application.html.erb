@@ -18,6 +18,7 @@
           <%= menu_link_to 'All users', users_path %>
         </div>
       </div>
+      
       <% if current_user %>
         <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
       <% else %>
@@ -34,6 +35,8 @@
         <p> <%= alert %> </p>
       </div>
     <% end %>
+    
+    <div> <%= pending_friend_requests(current_user)%></div>
     <main class="main">
       <%= yield %>
     </main>
