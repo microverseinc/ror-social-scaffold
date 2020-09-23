@@ -36,7 +36,12 @@
       </div>
     <% end %>
     
-    <div> <%= pending_friend_requests(current_user)%></div>
+    <div> 
+    <% pending_friend_requests(current_user).each do |request| %>
+        <p><%= request.user%></p>
+    
+    <% end %>
+    </div>
     <main class="main">
       <%= yield %>
     </main>
