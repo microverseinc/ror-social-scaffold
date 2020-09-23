@@ -6,5 +6,7 @@
       <%= render @posts %>
     </ul>
   </article>
-   <%= button_to "Invite Friend" %>
+   <% unless @user.id == current_user.id || current_user.friends.include?(@user) %> 
+      <%= button_to "Invite To Friendship", friendships_path, params: {friend_id: @user.id} %>
+    <% end %>
 </section>
