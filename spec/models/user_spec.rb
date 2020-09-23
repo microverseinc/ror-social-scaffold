@@ -1,17 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  # let(:user1) do
-  #   User.create(name: 'Visva', email: 'visva.rapalis@gmail.com', password: '123456789', password_confirmation: '123456789')
-  # end
-  # let(:friend) do
-  #   User.create(name: "Sercan", email: 'sercan@gmail.com', password: '123456', password_confirmation: '123456')
-  # end
-
-  #tests
+  # tests
   context 'validation' do
     subject do
-      described_class.new(name: "Sercan", email: 'sercan@gmail.com', password: '123456', password_confirmation: '123456')
+      described_class.new(name: 'Sercan', email: 'sercan@gmail.com',
+                          password: '123456', password_confirmation: '123456')
     end
 
     it 'Is it valid with requirements' do
@@ -29,7 +23,7 @@ RSpec.describe User, type: :model do
     end
   end
 
-  #Associations testing
+  # Associations testing
   context 'Association' do
     it 'User has many posts' do
       u = User.reflect_on_association(:posts)
