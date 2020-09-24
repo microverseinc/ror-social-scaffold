@@ -1,5 +1,4 @@
 class FriendshipsController < ApplicationController
-    
   def create
     Friendship.create(user_id: current_user.id, friend_id: params[:friend_id], status: 'pending')
   end
@@ -12,7 +11,6 @@ class FriendshipsController < ApplicationController
     end
   end
 
-
   def destroy
     Friendship.find(params[:id]).destroy
   end
@@ -22,6 +20,4 @@ class FriendshipsController < ApplicationController
   def friendship_params
     params.require(:friendship).permit(:status)
   end
-
 end
-
