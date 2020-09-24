@@ -42,8 +42,8 @@ RSpec.describe User, type: :model do
       u = User.reflect_on_association(:friendships)
       expect(u.macro).to eq(:has_many)
     end
-    it 'should have many inverse_friendships' do
-      u = User.reflect_on_association(:inverse_friendships)
+    it 'should have many friends' do
+      u = User.reflect_on_association(:friends)
       expect(u.macro).to eq(:has_many)
     end
   end
