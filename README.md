@@ -9,12 +9,20 @@
 
 ## Live Demo
 
-TBA
+-   Heroku: [live link](https://social-by-visva-sercan.herokuapp.com/)
+
+
 
 
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
+
+- Clone this repository with ```git clone git@github.com:eypsrcnuygr/ror-social-scaffold.git``` using your terminal or command line.<br>
+- Change to the project directory by entering ```cd ror-social-scaffold``` in the terminal<br>
+- Next run ```bundle install``` to install the necessary dependencies<br>
+- Run ```rails db:migrate``` to setup your local database.<br>
+- Finally run ```rails s``` to start the application.<br>
 
 ### Prerequisites
 
@@ -67,11 +75,22 @@ Open `http://localhost:3000/` in your browser.
 
 ### Deployment
 
-TBA
+[live link](https://social-by-visva-sercan.herokuapp.com)
 
 ## Authors
 
-TBA
+👤 **Eyüp Sercan UYGUR**
+
+-   Github: [@eypsrcnuygr](https://github.com/eypsrcnuygr)
+-   Twitter: [@eypsrcnuygr](https://twitter.com/eypsrcnuygr)
+-   LinkedIn: [eypsrcnuygr](https://www.linkedin.com/in/eypsrcnuygr/)
+-   Email: [Eyüp Sercan UYGUR](sercanuygur@gmail.com)
+
+👤 **Visvaldas Rapalis**
+
+-   Github: [@visva-dev](https://github.com/visva-dev)
+-   LinkedIn: [Visvaldas Rapalis](https://www.linkedin.com/in/visvaldas-rapalis/)
+-   Email: [Visvaldas Rapalis](visva.rapalis@gmail.com)
 
 ## 🤝 Contributing
 
@@ -85,9 +104,10 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-TBA
+-   This Project was part of an assignment available on The Odin Project.
+-   Our thanks to Microverse and all our peers and colleagues there.
 
 ## 📝 License
 
-TBA
+This project is [MIT](lic.url) licensed.
 
