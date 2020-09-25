@@ -23,9 +23,9 @@ class PostsController < ApplicationController
     @array = []
     @array.push(current_user.id)
     current_user.accepted_friends.each do |friend|
-    @array.push(friend.id)
+      @array.push(friend.id)
     end
-    @timeline_posts ||= Post.where(user_id: @array).ordered_by_most_recent 
+    @timeline_posts ||= Post.where(user_id: @array).ordered_by_most_recent
   end
 
   def post_params
