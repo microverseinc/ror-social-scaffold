@@ -24,8 +24,8 @@ default: &default
 development:
   <<: *default
   database: ror_social_scaffold_development
-  username: admin
-  password: <%= ENV['ROR_SOCIAL_SCAFFOLD_DATABASE_PASSWORD'] %>
+  username: postgres
+  password: postgres
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -60,8 +60,8 @@ development:
 test:
   <<: *default
   database: ror_social_scaffold_test
-  username: admin
-  password: <%= ENV['ROR_SOCIAL_SCAFFOLD_DATABASE_PASSWORD'] %>
+  username: postgres
+  password: postgres
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -85,5 +85,5 @@ test:
 production:
   <<: *default
   database: ror_social_scaffold_production
-  username: admin
-  password: <%= ENV['ROR_SOCIAL_SCAFFOLD_DATABASE_PASSWORD'] %>
+  username: postgres
+  password: postgres

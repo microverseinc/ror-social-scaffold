@@ -20,18 +20,12 @@ class PostsController < ApplicationController
   private
 
   def timeline_posts
-    @post_var = [current_user.id]
-    @friends = Friendship.all.select do |x|
-      (x.user_id == current_user.id) ||
-        (x.friend_id == current_user.id)
+    @array = []
+    @array.push(current_user.id)
+    current_user.accepted_friends.each do |friend|
+    @array.push(friend.id)
     end
-    @friends.each do |x|
-      if x.status == 'accepted'
-        @post_var << x.user_id
-        @post_var << x.friend_id
-      end
-    end
-    @timeline_posts ||= Post.all.where(user_id: @post_var).ordered_by_most_recent.includes(:user)
+    @timeline_posts ||= Post.where(user_id: @array).ordered_by_most_recent 
   end
 
   def post_params
