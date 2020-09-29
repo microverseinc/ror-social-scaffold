@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :name, presence: true, length: { maximum: 20 }
+  validates :password, presence: true, length: { minimum: 6 }
+  validates :password_confirmation, presence: true, confirmation: { case_sensitive: true }
 
   has_many :posts
   has_many :comments, dependent: :destroy
