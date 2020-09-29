@@ -1,8 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe 'Registration', type: :system do
-  let(:user) { User.create(name: 'example_user', email: 'user@example.com', password: 'password', password_confirmation: 'password') }
-  
+  let(:user) do
+    User.create(name: 'example_user',
+                email: 'user@example.com',
+                password: '123456',
+                password_confirmation: '123456')
+  end
+
   context 'user sign up' do
     it 'registers a new user into the users table' do
       visit('/users/sign_up')
@@ -26,7 +31,7 @@ RSpec.describe 'Registration', type: :system do
       click_button('Log in')
       sleep(3)
       expect(page).to have_content('Signed in successfully')
-    
+
       fill_in('post[content]', with: 'Example Post')
       click_button('Save')
       sleep(3)
@@ -35,7 +40,4 @@ RSpec.describe 'Registration', type: :system do
       sleep(3)
     end
   end
-
-
-
 end

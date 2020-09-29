@@ -1,38 +1,49 @@
-require "rails_helper"
+require 'rails_helper'
 
-RSpec.describe Friendship, :type => :model do
-    let(:user1) { User.create(name: 'Thing 1', email: 'thing1@email.com', password: 'password', password_confirmation: 'password') }
-    let(:user2) { User.create(name: 'Thing 2', email: 'thing2@email.com', password: 'password', password_confirmation: 'password') }
-    let(:friendship1) { Friendship.create(user_id: user1.id, friend_id: user2.id, confirmed: false) }
+RSpec.describe Friendship, type: :model do
+  let(:user1) do
+    User.create(name: 'Thing 1',
+                email: 'thing1@email.com',
+                password: 'password',
+                password_confirmation: 'password')
+  end
 
-    context 'validations' do
-        it 'creates friendship when user accepts invitation' do
-            f = Friendship.new(user_id: user1.id, friend_id: user2.id, confirmed: true)
-            expect(f).to be_valid
-        end
+  let(:user2) do
+    User.create(name: 'Thing 2',
+                email: 'thing2@email.com',
+                password: 'password',
+                password_confirmation: 'password')
+  end
+  let(:friendship1) { Friendship.create(user_id: user1.id, friend_id: user2.id, confirmed: false) }
 
-        it 'doesn\'t create frienshitp when user does not accept invitation' do
-            f = Friendship.new(user_id: user1.id, friend_id: user2.id, confirmed: false)
-            expect(f).not_to be_valid
-        end
-
-        it 'allows the creation of an inverse relationship, on request approval, only if the inverse relationship does not yet exist' do
-            friendship1
-            friendship1.accepted
-            f = Friendship.new(user_id: user2.id, friend_id: user1.id, confirmed: true)
-            expect(f).to be_valid
-        end
+  context 'validations' do
+    it 'creates friendship when user accepts invitation' do
+      f = Friendship.new(user_id: user1.id, friend_id: user2.id, confirmed: true)
+      expect(f).to be_valid
     end
 
-    context 'testing associations' do
-        it 'belongs to a user' do
-            x = Friendship.reflect_on_association(:user)
-            expect(x.macro).to eq(:belongs_to)
-        end
-
-        it 'belongs to a friend (another user)' do
-            x = Friendship.reflect_on_association(:friend)
-            expect(x.macro).to eq(:belongs_to)
-        end
+    it 'doesn\'t create frienshitp when user does not accept invitation' do
+      f = Friendship.new(user_id: user1.id, friend_id: user2.id, confirmed: false)
+      expect(f).not_to be_valid
     end
+
+    it 'allows the creation of an inverse relationship' do
+      friendship1
+      friendship1.accepted
+      f = Friendship.new(user_id: user2.id, friend_id: user1.id, confirmed: true)
+      expect(f).to be_valid
+    end
+  end
+
+  context 'testing associations' do
+    it 'belongs to a user' do
+      x = Friendship.reflect_on_association(:user)
+      expect(x.macro).to eq(:belongs_to)
+    end
+
+    it 'belongs to a friend (another user)' do
+      x = Friendship.reflect_on_association(:friend)
+      expect(x.macro).to eq(:belongs_to)
+    end
+  end
 end
