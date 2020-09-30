@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @posts = @user.posts.ordered_by_most_recent
   end
 
-  def params
+  def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 end
