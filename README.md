@@ -65,13 +65,15 @@ Open `http://localhost:3000/` in your browser.
 
 > Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
 
-### Deployment
+### MIlestone 1
 
-TBA
+![screenshot](docs/Diagrama.png)
 
 ## Authors
 
-TBA
+- Github: [@Alexoid1](https://github.com/Alexoid1)
+- Twitter: [@pablo_acz](https://twitter.com/pablo_acz)
+- Linkedin: [linkedin](https://www.linkedin.com/in/pablo-alexis-zambrano-coral-7a614a189/)
 
 ## 🤝 Contributing
 
