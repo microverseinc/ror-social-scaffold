@@ -1,16 +1,15 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
-require 'spec_helper'
-require 'rspec/rails'
+
 # Add additional requires below this line. Rails is not loaded until this point!
 require 'shoulda/matchers'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
 # Prevent database truncation if the environment is production
-if Rails.env.production?
+unless !Rails.env.production?
   abort('The Rails environment is running in production mode!')
-else
-  return ''
 end
+require 'spec_helper'
+require 'rspec/rails'
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
     with.test_framework :rspec
