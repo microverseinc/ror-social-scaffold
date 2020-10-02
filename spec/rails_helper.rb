@@ -5,9 +5,11 @@ require 'shoulda/matchers'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
 # Prevent database truncation if the environment is production
+# rubocop:disable Style/IfUnlessModifier
 if Rails.env.production?
   abort('The Rails environment is running in production mode!')
 end
+# rubocop:enable Style/IfUnlessModifier
 require 'spec_helper'
 require 'rspec/rails'
 Shoulda::Matchers.configure do |config|
