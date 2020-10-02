@@ -37,6 +37,10 @@ Setup database with:
    rails db:create
    rails db:migrate
 ```
+### Test 
+- ```rails spec```
+
+
 
 ### Github Actions
 
