@@ -9,6 +9,7 @@ require File.expand_path('../config/environment', __dir__)
 if Rails.env.production?
   abort('The Rails environment is running in production mode!')
 else
+  return ''
 end
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
