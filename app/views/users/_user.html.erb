@@ -1,6 +1,24 @@
 <li>
-  Name: <%= user.name %>
+  <p>Name: <%= user.name %></p>
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+   
+
+    <% if current_user.friendships.find_by(friend_id: user.id) %>
+    <%= link_to current_user.friendships.find_by(friend_id:user.id), method: :delete, data: { confirm: "Are you sure you want to delete this event?" } do %>
+      <button type="button" class="btn btn-danger btn-block mb-3">
+
+          Delete friendship
+      </button>
+  <% end %>
+      
+    <% else  %>
+      <%= form_for current_user.friendships.build(friend: user) do |f| %>
+        <%= f.hidden_field :user_id %>
+        <%= f.hidden_field :friend_id %>
+        <%= f.submit %>
+      <% end %>  
+    <% end %>
+   
   </span>
 </li>

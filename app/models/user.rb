@@ -9,4 +9,11 @@ class User < ApplicationRecord
   has_many :posts
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :friendships
+  
+  def add_friend (user)
+    Friendship.create(user_ud:current_user.id, friend_id:user.id)
+  end  
+
+ 
 end
