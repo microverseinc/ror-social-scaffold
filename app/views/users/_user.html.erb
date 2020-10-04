@@ -2,5 +2,17 @@
   Name: <%= user.name %>
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+    <% unless user == current_user %>
+      <% if current_user.friend? user %>
+        Is a friend
+      <% elsif current_user.pending_friends.include? user %>
+        <%= link_to 'Friend Request Sent' %>
+      <% elsif current_user.friend_requests.include? user %>
+        <%= link_to 'Accept Friend Request' %> |
+        <%= link_to 'Decline Friend Request' %> 
+      <% else %>
+        <%= link_to 'Send a Friend request' %>
+      <% end %>
+    <% end %>
   </span>
 </li>
