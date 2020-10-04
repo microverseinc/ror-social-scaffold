@@ -13,18 +13,18 @@ class User < ApplicationRecord
   has_many :inverse_friendships, foreign_key: :invitee_id, class_name: :Friendship
   # rubocop: disable Lint/Void
   def friends
-    friends_array = friendships.map { |friendship| friendship.user if friendship.status }
-    friends_array + friendships.map { |friendship| friendship.friend if friendship.status }
+    friends_array = friendships.map { |friendship| friendship.invitor if friendship.status }
+    friends_array + friendships.map { |friendship| friendship.invitee if friendship.status }
     friends_array.compact
   end
 
   # rubocop: enable Lint/Void
   def pending_friends
-    friendships.map { |friendship| friendship.friend unless friendship.status }.compact
+    friendships.map { |friendship| friendship.invitee unless friendship.status }.compact
   end
 
   def friend_requests
-    inverse_friendships.map { |_frienship| friendship.user unless friendship.status }.compact
+    inverse_friendships.map { |_frienship| friendship.invitor unless friendship.status }.compact
   end
 
   # rubocop: disable Lint/ShadowingOuterLocalVariable
