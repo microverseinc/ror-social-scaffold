@@ -9,15 +9,13 @@ class FriendshipsController < ApplicationController
     if @friendship.save
       redirect_to users_path, notice: "Friend request sent to #{@user.name}"
     else
-      redirect_to users_path, alert: "Could not send request now, try again"
+      redirect_to users_path, alert: 'Could not send request now, try again'
     end
   end
 
   def destroy
     @friendship = Friendship.find(params[:id])
-    if @friendship.destroy
-      redirect_to users_path, notice: 'Request declined'
-    end
+    redirect_to users_path, notice: 'Request declined' if @friendship.destroy
   end
 
   private
