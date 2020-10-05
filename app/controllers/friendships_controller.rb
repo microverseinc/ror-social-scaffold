@@ -4,7 +4,7 @@ class FriendshipsController < ApplicationController
   def new; end
 
   def create
-    @user = User.find_by(id: params[:user_id])
+    @user = User.find_by(id: params[:invitee_id])
     @friendship = current_user.friendships.new(friendship_params)
     if @friendship.save
       redirect_to users_path, notice: "Friend request sent to #{@user.name}"
