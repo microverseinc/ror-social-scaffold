@@ -4,8 +4,8 @@ class FriendshipsController < ApplicationController
   def new; end
 
   def create
-    @user = User.find(params[:id])
-    @friendship = current_user.friendships.new(user_id: @user.id, status: false)
+    @user = User.find_by(id: params[:user_id])
+    @friendship = current_user.friendships.new(friendship_params)
     if @friendship.save
       redirect_to users_path, notice: "Friend request sent to #{@user.name}"
     else
@@ -23,6 +23,6 @@ class FriendshipsController < ApplicationController
   private
 
   def friendship_params
-    params.require(:friendship).permit(:user_id, :status)
+    params.permit(:invitee_id)
   end
 end

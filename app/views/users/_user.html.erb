@@ -9,7 +9,7 @@
         <%= link_to 'Friend Request Sent' %>
       <% else %>
         <%= form_with(url: '/send_request', local: true) do |f| %>
-          <%= f.hidden_field :friend_id, value: :friend_id %>
+          <%= f.hidden_field :invitee_id, value: :invitee_id %>
           <%= f.submit 'Send Request' %>
         <% end %>
       <% end %>
