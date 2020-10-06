@@ -16,9 +16,13 @@
       <% else %>
         <%= form_with(url: '/send_request', local: true) do |f| %>
           <%= f.hidden_field :invitee_id, value: user.id %>
-          <%= f.submit 'Send Request' %>
+          <%= f.submit 'Invite Friend' %>
         <% end %>
       <% end %>
     <% end %>
+    <% if user == current_user %>
+      <span><strong>(Current User)</strong></span>
+    <% end %>
+
   </span>
 </li>
