@@ -10,7 +10,9 @@
       <% elsif current_user.friend_requests.include? user %>
       <span>Action Needed</span>
         <%= link_to 'Accept Friend' %> |
-        <%= link_to 'Decline Friend' %>
+        <%= link_to 'Decline Friend', decline_request_path, 
+                                      method: :delete, 
+                                      data: { confirm: 'Continue and decline friend?' } %>
       <% else %>
         <%= form_with(url: '/send_request', local: true) do |f| %>
           <%= f.hidden_field :invitee_id, value: user.id %>
