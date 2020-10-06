@@ -6,8 +6,8 @@ ruby '2.7.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4'
 # Use postgresql as the database for Active Record
-gem 'pg', '>= 0.18', '< 2.0'
 gem 'bootstrap-sass', '3.4.1'
+gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.12'
 # Use SCSS for stylesheets
@@ -19,7 +19,8 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'mini_racer', platforms: :ruby
 # Use omniauth-facebook gem allows Facebook login integration
 gem 'omniauth-facebook', '~> 7.0'
-# Hirb gem organizes the display for active record information into tables when using the rails console… eg. After opening rails console type Hirb.enable to activate it
+# Hirb gem organizes the display for active record information into tables when using the rails console; eg.
+# After opening rails console type Hirb.enable to activate it
 gem 'hirb', '~> 0.7.3'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -44,8 +45,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
 
 group :development, :test do
-  gem 'rspec-rails', '~> 4.0', '>= 4.0.1'
   gem 'database_cleaner', '~> 1.8', '>= 1.8.5'
+  gem 'rspec-rails', '~> 4.0', '>= 4.0.1'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end
@@ -60,7 +61,7 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'rubocop'
+  gem 'rubocop', '~> 0.92.0'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'table_print'
