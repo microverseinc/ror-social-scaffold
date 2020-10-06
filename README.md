@@ -1,83 +1,39 @@
-# Scaffold for social media app with Ruby on Rails
+# Social Media App
+ This is a scaffold for an online social media platform.
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+ Users can sign-in and sign-up, create posts, comments and like posts.
+
+## screenshots!
+ `COMING SOON`
 
 ## Built With
 
 - Ruby v2.7.0
-- Ruby on Rails v5.2.4
+- Ruby on Rails v5.2.4.3
 
 ## Live Demo
 
-TBA
+- Coming soon!
 
+## Contributions
 
-## Getting Started
-
-To get a local copy up and running follow these simple example steps.
-
-### Prerequisites
-
-Ruby: 2.6.3
-Rails: 5.2.3
-Postgres: >=9.5
-
-### Setup
-
-Instal gems with:
-
-```
-bundle install
-```
-
-Setup database with:
-
-```
-   rails db:create
-   rails db:migrate
-```
-
-### Github Actions
-
-To make sure the linters' checks using Github Actions work properly, you should follow the next steps:
-
-1. On your recently forked repo, enable the GitHub Actions in the Actions tab.
-2. Create the `feature/branch` and push.
-3. Start working on your milestone as usual.
-4. Open a PR from the `feature/branch` when your work is done.
-
-
-### Usage
-
-Start server with:
-
-```
-    rails server
-```
-
-Open `http://localhost:3000/` in your browser.
-
-### Run tests
-
-```
-    rpsec --format documentation
-```
-
-> Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
-
-### Deployment
-
-TBA
+- TBA
 
 ## Authors
 
-TBA
+👤 **Roy Ntaate**
 
-## 🤝 Contributing
+- Github: [@RNtaate](https://github.com/RNtaate)
+- Twitter: [@RNtaate](https://twitter.com/RNtaate)
+- Linkedin: [roy-ntaate](https://linkedin.com/in/roy-ntaate)
 
-Contributions, issues and feature requests are welcome!
+👤 **Ershadul Rayhan**
 
-Feel free to check the [issues page](issues/).
+- Github: [@ershadul1](https://github.com/ershadul1)
+- Twitter: [@ErshadulRayhan](https://twitter.com/ErshadulRayhan)
+- Linkedin: [ErshadulRayhan](https://www.linkedin.com/in/ershadulrayhan)
+- Email:  ershadul.rayhan@gmail.com
+
 
 ## Show your support
 
@@ -85,9 +41,4 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-TBA
-
-## 📝 License
-
-TBA
-
+- This project was inspired by the [Microverse](https:www.microverse.org) program using the following [github](https://github.com/microverseinc/ror-social-scaffold) repository
