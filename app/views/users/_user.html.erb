@@ -4,12 +4,16 @@
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
     <% unless user == current_user %>
       <% if current_user.friend? user %>
-        Is a friend
+        <%= link_to 'Remove Friend' %>
       <% elsif current_user.pending_friends.include? user %>
         <%= link_to 'Friend Request Sent' %>
+      <% elsif current_user.friend_requests.include? user %>
+      <span>Action Needed</span>
+        <%= link_to 'Accept Friend' %> |
+        <%= link_to 'Decline Friend' %>
       <% else %>
         <%= form_with(url: '/send_request', local: true) do |f| %>
-          <%= f.hidden_field :invitee_id, value: :invitee_id %>
+          <%= f.hidden_field :invitee_id, value: user.id %>
           <%= f.submit 'Send Request' %>
         <% end %>
       <% end %>

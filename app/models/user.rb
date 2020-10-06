@@ -9,8 +9,8 @@ class User < ApplicationRecord
   has_many :posts
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
-  has_many :friendships, foreign_key: :invitor_id, class_name: :Friendship
-  has_many :inverse_friendships, foreign_key: :invitee_id, class_name: :Friendship
+  has_many :friendships, foreign_key: :invitor_id, class_name: :Friendship, dependent: :destroy
+  has_many :inverse_friendships, foreign_key: :invitee_id, class_name: :Friendship, dependent: :destroy
   # rubocop: disable Lint/Void
   def friends
     friends_array = friendships.map { |friendship| friendship.invitor if friendship.status }
