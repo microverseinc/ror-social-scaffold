@@ -1,0 +1,40 @@
+<section class="users-section">
+    <div class="users-list">
+        
+        <% @friends.friend_requests.each do |user| %>  
+            
+            
+            <div>
+                    
+                <p>Name: <%= user.user.name %></p>
+                    <span class="profile-link">
+                        <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+                        <%= form_for current_user.friendships.build(friend_id: user.user_id, confirmed:true) do |f| %>
+                            <%= f.hidden_field :user_id %>
+                            <%= f.hidden_field :friend_id %>
+                            <%= f.hidden_field :confirmed %>
+                            <%= f.submit 'Accept Friendship' %>
+                        <% end %>  
+                    </span>    
+                    
+                    </div>
+            
+        <% end %>   
+        <% @friends.friend_list.each do |user| %>  
+            <div>                
+                <p>Name: <%= user.user.name %></p>
+                <span class="profile-link">
+                    <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %> 
+                    <p>Status:Friend</p>
+                    <%= link_to current_user.friends.find_by(user_id:user.user_id), method: :delete, data: { confirm: "Are you sure you want to delete this friendship request?" } do %>
+                        <button type="button" class="butto">
+                      
+                            Delete friend
+                        </button>
+                    <% end %>  
+                </span>
+            </div>                
+        <% end %>    
+        
+    </div>  
+</section>    

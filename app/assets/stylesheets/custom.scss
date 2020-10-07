@@ -12,7 +12,19 @@ $divider-color: #bdbdbd;
   box-sizing: border-box;
   outline: none;
 }
-
+.but {
+  width: 100%;
+  border: none;
+  border-radius: 4px;
+  background-color: $primary-color-dark;
+  color: $primary-color-light;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+.but:hover{
+  background-color: $primary-color;
+  color: #fff;
+}
 body {
   background: #fff;
   position: relative;
@@ -169,7 +181,7 @@ form {
 
   input[type="submit"] {
     padding: 8px;
-    width: 50%;
+    width: 100%;
     border: none;
     border-radius: 4px;
     background-color: $primary-color-dark;
@@ -177,6 +189,8 @@ form {
     text-transform: uppercase;
     font-weight: 900;
   }
+
+ 
 
   input[type="submit"]:hover {
     background-color: $primary-color;
