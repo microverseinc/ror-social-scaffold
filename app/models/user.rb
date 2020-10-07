@@ -27,13 +27,11 @@ class User < ApplicationRecord
     inverse_friendships.map { |friendship| friendship.invitor unless friendship.status }.compact
   end
 
-  # rubocop: disable Lint/ShadowingOuterLocalVariable
   def confirm_friend(invitor)
     friendship = inverse_friendships.where(invitor_id: invitor.id)
     friendship.update(status: true)
   end
 
-  # rubocop: enable Lint/ShadowingOuterLocalVariable
   def friend?(invitor)
     friends.include? invitor
   end

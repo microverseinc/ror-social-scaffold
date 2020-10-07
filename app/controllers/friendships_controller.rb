@@ -18,9 +18,7 @@ class FriendshipsController < ApplicationController
   def destroy
     @invitor = User.find(params[:invitor_id])
     @friendship = current_user.inverse_friendships.where(invitor_id: @invitor.id).first
-    if @friendship.destroy
-      redirect_to users_path, notice: 'Friend declined' 
-    end
+    redirect_to users_path, notice: 'Friend declined' if @friendship.destroy
   end
 
   def accept
@@ -30,7 +28,5 @@ class FriendshipsController < ApplicationController
     redirect_to users_path, notice: "You are friends with #{@invitor.name}"
   end
 
-  def remove
-
-  end
+  def remove; end
 end
