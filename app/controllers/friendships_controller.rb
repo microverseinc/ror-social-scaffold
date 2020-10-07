@@ -9,7 +9,6 @@ class FriendshipsController < ApplicationController
     return unless @friendship.confirmed == true
 
     friend = Friendship.where(user_id: @friendship.friend_id)
-
     friend.find_by(friend_id: @friendship.user_id).update(confirmed: true)
   end
 
