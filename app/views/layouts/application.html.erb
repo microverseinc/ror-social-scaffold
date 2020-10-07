@@ -22,23 +22,10 @@
         </div> 
        
       </div>
-      <% if current_user %>
-        <p><%= current_user.name %></p>
-        <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-      <% else %>
-        <%= link_to 'Sign in', user_session_path %>
-      <% end %>
+      <%= signouot_signin %>
     </nav>
-    <% if notice.present? %>
-      <div class="notice">
-        <p> <%= notice %> </p>
-      </div>
-    <% end %>
-    <% if alert.present? %>
-      <div class="alert">
-        <p> <%= alert %> </p>
-      </div>
-    <% end %>
+    <%= notice_show  %>
+    <%= alert_show %>
     <main class="main">
       <%= yield %>
     </main>
