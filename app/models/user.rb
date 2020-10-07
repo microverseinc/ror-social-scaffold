@@ -13,8 +13,8 @@ class User < ApplicationRecord
   has_many :inverse_friendships, foreign_key: :invitee_id, class_name: :Friendship, dependent: :destroy
   # rubocop: disable Lint/Void
   def friends
-    friends_array = friendships.map { |friendship| friendship.invitor if friendship.status }
-    friends_array + friendships.map { |friendship| friendship.invitee if friendship.status }
+    friends_array = friendships.map { |friendship| friendship.invitee if friendship.status }
+    friends_array + inverse_friendships.map { |friendship| friendship.invitor if friendship.status }
     friends_array.compact
   end
 
@@ -29,9 +29,8 @@ class User < ApplicationRecord
 
   # rubocop: disable Lint/ShadowingOuterLocalVariable
   def confirm_friend(invitor)
-    friendship = inverse_friendships.find { |friendship| friendship.invitor == invitor }
-    friendship.status = true
-    friendship.save
+    friendship = inverse_friendships.where(invitor_id: invitor.id)
+    friendship.update(status: true)
   end
 
   # rubocop: enable Lint/ShadowingOuterLocalVariable

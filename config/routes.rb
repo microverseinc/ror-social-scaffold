@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   post '/send_request', to: 'friendships#create'
   delete '/decline_request', to: 'friendships#destroy'
+  post '/accept_request', to: 'friendships#accept'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

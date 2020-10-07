@@ -4,7 +4,6 @@ class FriendshipsController < ApplicationController
   def new; end
 
   def create
-    puts params.inspect
     @user = User.find(params[:invitee_id])
     @friendship = current_user.friendships.new
     @friendship.invitee_id = @user.id
@@ -17,7 +16,21 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
-    @friendship = current_user.inverse_friendships.find(:id)
-    redirect_to users_path, notice: 'Request declined' if @friendship.destroy
+    @invitor = User.find(params[:invitor_id])
+    @friendship = current_user.inverse_friendships.where(invitor_id: @invitor.id).first
+    if @friendship.destroy
+      redirect_to users_path, notice: 'Friend declined' 
+    end
+  end
+
+  def accept
+    @invitor = User.find(params[:invitor_id])
+    current_user.confirm_friend(@invitor)
+    current_user.friends << @invitor
+    redirect_to users_path, notice: "You are friends with #{@invitor.name}"
+  end
+
+  def remove
+
   end
 end
