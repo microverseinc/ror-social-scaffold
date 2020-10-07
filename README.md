@@ -1,20 +1,21 @@
-# Scaffold for social media app with Ruby on Rails
+# Stay In Touch > Friendships V1 > Milestone 5
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+> In this branch we have created the friendship model, controller and table. Also created tests for user and friendship models.
 
 ## Built With
 
 - Ruby v2.7.0
 - Ruby on Rails v5.2.4
 
-## Live Demo
-
-TBA
-
 
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
+
+### Install
+In order to run, you need to install RUBY and Rails in your computer. For windows you can go to [Ruby installer](https://rubyinstaller.org/) and for MAC and LINUX you can go to [Ruby official site](https://www.ruby-lang.org/en/downloads/) for intructions on how to intall it.
+
+Then you can clone the project by typing ```https://github.com/jurgen1c/ror-social-scaffold/tree/fb-friendship-v1```
 
 ### Prerequisites
 
@@ -65,13 +66,18 @@ Open `http://localhost:3000/` in your browser.
 
 > Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
 
-### Deployment
-
-TBA
-
 ## Authors
 
-TBA
+👤 **Ramin Mammadzada**
+
+- Github: [@RaminMammadzada](https://github.com/RaminMammadzada)
+- Twitter: [@RaminMammadzada](https://twitter.com/RaminMammadzada)
+- Linkedin: [@RaminMammadzada](https://www.linkedin.com/in/raminmammadzada) 
+
+👤 **Jurgen Clausen Gutierrez**
+
+- Github: [@jurgen1c](https://github.com/jurgen1c)
+- LinkedIn: [jurgen-clausen](https://www.linkedin.com/in/jurgen-clausen-2740061a9/)
 
 ## 🤝 Contributing
 
@@ -85,9 +91,9 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-TBA
+Microverse
 
 ## 📝 License
 
-TBA
+This project is [MIT](lic.url) licensed.
 
