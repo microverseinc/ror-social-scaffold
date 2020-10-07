@@ -6,11 +6,11 @@
       <span><strong>(Current User)</strong></span>
     <% else %>
       <% if current_user.friend? user %>
-        <%= link_to 'Remove Friend' %>
+        <%= link_to 'Remove Friend(WIP)' %>
       <% elsif current_user.pending_friends.include? user %>
         <%= link_to 'Friend request sent' %>
       <% elsif current_user.friend_requests.include? user %>
-      <span>Action Needed</span>
+        <span>Action Needed</span>
         <%= form_with(url: '/accept_request', local: true, method: 'POST') do |f| %>
           <%= f.hidden_field :invitor_id, value: user.id %>
           <%= f.submit 'Accept Friend' %>

@@ -11,14 +11,15 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :friendships, foreign_key: :invitor_id, class_name: :Friendship, dependent: :destroy
   has_many :inverse_friendships, foreign_key: :invitee_id, class_name: :Friendship, dependent: :destroy
-  # rubocop: disable Lint/Void
   def friends
-    friends_array = friendships.map { |friendship| friendship.invitee if friendship.status }
-    friends_array + inverse_friendships.map { |friendship| friendship.invitor if friendship.status }
+    friends_array = friendships.map do |friendship|
+      friendship.invitee if friendship.status
+    end + inverse_friendships.map do |friendship|
+      friendship.invitor if friendship.status
+    end
     friends_array.compact
   end
 
-  # rubocop: enable Lint/Void
   def pending_friends
     friendships.map { |friendship| friendship.invitee unless friendship.status }.compact
   end
