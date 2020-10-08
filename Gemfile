@@ -49,15 +49,11 @@ gem 'devise'
 group :development, :test do
   gem 'database_cleaner', '~> 1.8', '>= 1.8.5'
   gem 'rspec-rails', '~> 4.0', '>= 4.0.1'
+  gem 'factory_bot_rails', '~> 6.1'
   # A Ruby gem to load environment variables from `.env` files.
   gem 'dotenv-rails', '~> 2.7', '>= 2.7.6'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-end
-
-group :test do
-  gem 'capybara', '~> 3.33'
-  gem 'selenium-webdriver', '~> 3.142', '>= 3.142.7'
 end
 
 group :development do
@@ -71,5 +67,10 @@ group :development do
   gem 'table_print'
 end
 
+group :test do
+  gem 'database_cleaner', '~> 1.8', '>= 1.8.5'
+  gem 'capybara', '~> 3.33'
+  gem 'selenium-webdriver', '~> 3.142', '>= 3.142.7'
+end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
