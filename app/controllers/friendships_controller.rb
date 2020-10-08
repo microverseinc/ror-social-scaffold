@@ -1,18 +1,17 @@
 class FriendshipsController < ApplicationController
-
+  
   def new
-    @friendship = Friendship.new
+    #@friendship = Friendship.new
   end
 
   def create
-    p "YEEEEEES:::>> #{params}"
     @friendship = Friendship.new(user_id: params[:user_id], friend_id: params[:friend_id])
-    # @friendship = current_user.friendships.build(friend_id: params[:friend_id])
+   
     if @friendship.save
-      render @friendship.user, notice: 'Friend request was sent!!'
+    render @friendship.user, notice: 'Friend request was sent!!'
     else
-      redirect_to user_path, notice: 'Unable to send friend request at this time.'
-    end
+    redirect_to user_path, notice: 'Unable to send friend request at this time.'
+    end 
   end
 
   def destroy
