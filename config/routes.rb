@@ -15,8 +15,8 @@ Rails.application.routes.draw do
   get '/unfriend', to:'friendships#destroy'
   post '/unfriend', to:'friendships#destroy'
 
-  get '/approve_friendship', to:'friendships#destroy'
-  post '/approve_friendship', to:'friendships#destroy'
+  get '/approve_friendship', to:'friendships#approve'
+  post '/approve_friendship', to:'friendships#approve'
   get '/decline_friendship', to:'friendships#destroy'
   post '/decline_friendship', to:'friendships#destroy'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
