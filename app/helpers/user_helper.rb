@@ -14,4 +14,12 @@ module UserHelper
       end
     end
   end
+
+  def profile_user(user)
+    if user == current_user
+
+    else
+      friend_or_delete(@user, current_user)
+    end
+  end
 end
