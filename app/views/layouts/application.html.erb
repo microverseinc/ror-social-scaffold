@@ -17,8 +17,10 @@
         <div class="menu-item">
           <%= menu_link_to 'All users', users_path %>
         </div>
+
       </div>
       <% if current_user %>
+        <h3 class="menu-item"><%= current_user.name.capitalize %> </h3>
         <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
       <% else %>
         <%= link_to 'Sign in', user_session_path %>

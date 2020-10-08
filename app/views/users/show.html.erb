@@ -1,6 +1,27 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
-  <%= add_friend(current_user, @user)%>
+  <% if @user != current_user %>
+    <%= display_add_friend(current_user, @user)%>
+  <% end %>
+
+  <br />
+  <p>Total number of friends: <%= @user.friendships.length %></p>
+
+  <p>List of approved friends</p>
+  <% @user.friends.each_with_index do |friend, index| friend %>
+    <p><%= index+1 %> - <%= friend.name %> </p>
+
+  <% end %>
+
+  <p>List of pending friends</p>
+  <% @user.friend_requests.each_with_index do |friend, index| friend %>
+    <p><%= index+1 %> - <%= friend.name %> </p>
+    <% if @user == current_user %>
+      <%= display_approval_decline(current_user, friend)%>
+    <% end %>
+  <% end %>
+
+
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">

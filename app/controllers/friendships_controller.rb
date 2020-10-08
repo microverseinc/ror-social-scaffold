@@ -4,7 +4,9 @@ class FriendshipsController < ApplicationController
   end
 
   def create
-    @friendship = Friendship.new(friendship_params)
+    p "YEEEEEES:::>> #{params}"
+    @friendship = Friendship.new(confirmed: params[:confirmed], user_id: params[:user_id], friend_id: params[:friend_id])
+    p "YEEEEEES3333:::>> #{@friendship}"
 
     if @friendship.save
       redirect_to user_path, notice: 'Friend request was sent!!'
@@ -22,7 +24,7 @@ class FriendshipsController < ApplicationController
   end
   private
 
-  def friendship_params
-    params.require(:friendship).permit(:confirmed, :user_id, :friend_id)
-  end
+  # def friendship_params
+  #   params.require(:friendship).permit(:confirmed, :user_id, :friend_id)
+  # end
 end
