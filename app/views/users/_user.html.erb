@@ -2,5 +2,29 @@
   Name: <%= user.name %>
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+    <% if user == current_user %>
+      <span><strong>(Current User)</strong></span>
+    <% else %>
+      <% if current_user.friend? user %>
+        <%= link_to 'Remove Friend(WIP)' %>
+      <% elsif current_user.pending_friends.include? user %>
+        <%= link_to 'Friend request sent' %>
+      <% elsif current_user.friend_requests.include? user %>
+        <span>Action Needed</span>
+        <%= form_with(url: '/accept_request', local: true, method: 'POST') do |f| %>
+          <%= f.hidden_field :invitor_id, value: user.id %>
+          <%= f.submit 'Accept Friend' %>
+        <% end %>
+        <%= form_with(url: '/decline_request', local: true, method: 'delete') do |f| %>
+          <%= f.hidden_field :invitor_id, value: user.id %>
+          <%= f.submit 'Decline Friend' %>
+        <% end %>
+      <% else %>
+        <%= form_with(url: '/send_request', local: true) do |f| %>
+          <%= f.hidden_field :invitee_id, value: user.id %>
+          <%= f.submit 'Invite Friend' %>
+        <% end %>
+      <% end %>
+    <% end %>
   </span>
 </li>
