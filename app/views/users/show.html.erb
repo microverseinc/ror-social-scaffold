@@ -8,16 +8,18 @@
   <br />
   <p>Total number of friends: <%= @user.friendships.length %></p>
 
-  <p>List of approved friends</p>
+  <h3>List of approved friends</h3>
   <% @user.friends.each_with_index do |friend, index| friend %>
-    <p><%= index+1 %> - <%= friend.name %> </p>
-    <% if @user == current_user %>
-      <%= display_add_friend(current_user, @user)%>
-    <% end %>
+    <p>
+      <%= index+1 %> - <%= friend.name %>
+      <% if @user == current_user %>
+        <%= display_add_friend(current_user, friend)%>
+      <% end %>
+    </p>
   <% end %>
 
   <h3>List of pending friends</h3>
-  <% @user.pending_friends.each do |p_friend| %>
+  <% @user.friend_requests.each do |p_friend| %>
     <%= p_friend.name %>
     <% if @user == current_user %>
       <%=link_to 'Approve',  approve_friendship_path(user_id: @user.id, friend_id: p_friend.id)%>
@@ -26,8 +28,9 @@
       
     <% end %>
   <% end %>
+
   <h3>List of friends requests sent</h3>
-  <% @user.friend_requests.each_with_index do |friend, index| friend %>
+  <% @user.pending_friends.each_with_index do |friend, index| friend %>
     <p><%= index+1 %> - <%= friend.name %> Friend Request sent</p>
     
   <% end %>
