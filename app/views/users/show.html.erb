@@ -11,7 +11,9 @@
   <p>List of approved friends</p>
   <% @user.friends.each_with_index do |friend, index| friend %>
     <p><%= index+1 %> - <%= friend.name %> </p>
-
+    <% if @user == current_user %>
+      <%= display_add_friend(current_user, @user)%>
+    <% end %>
   <% end %>
 
   <h3>List of pending friends</h3>

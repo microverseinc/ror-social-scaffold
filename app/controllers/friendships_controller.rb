@@ -28,6 +28,7 @@ class FriendshipsController < ApplicationController
     @friend = User.find(params[:friend_id])
 
     @friend.confirm_friend(@user)
+    redirect_to user_path(params[:user_id])
   end
 
   private
