@@ -2,8 +2,6 @@
   Name: <%= user.name %>
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-    <% if user != current_user %>
-      <%= display_add_friend(current_user, user)%>
-    <% end %>
+    <%= not_user_display(current_user, user)%>
   </span>
 </li>

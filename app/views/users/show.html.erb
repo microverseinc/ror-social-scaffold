@@ -1,8 +1,6 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
-  <% if @user != current_user %>
-    <%= display_add_friend(current_user, @user)%>
-  <% end %>
+  <%= not_user_display(current_user, @user)%>
   
 
   <br />
@@ -12,21 +10,15 @@
   <% @user.friends.each_with_index do |friend, index| friend %>
     <p>
       <%= index+1 %> - <%= friend.name %>
-      <% if @user == current_user %>
-        <%= display_add_friend(current_user, friend)%>
-      <% end %>
+      <%= is_user_display(current_user, friend)%>
     </p>
   <% end %>
 
   <h3>List of pending friends</h3>
   <% @user.friend_requests.each do |p_friend| %>
     <%= p_friend.name %>
-    <% if @user == current_user %>
-      <%=link_to 'Approve',  approve_friendship_path(user_id: @user.id, friend_id: p_friend.id)%>
-      
-      <%= link_to 'Decline', decline_friendship_path(user_id: @user.id, friend_id: p_friend.id)%>
-      
-    <% end %>
+    <%= show_approve(@user, p_friend)%>
+    <%= show_decline(@user, p_friend)%>
   <% end %>
 
   <h3>List of friends requests sent</h3>

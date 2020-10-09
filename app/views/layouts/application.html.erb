@@ -20,7 +20,7 @@
 
       </div>
       <% if current_user %>
-        <h3 class="menu-item"><%= current_user.name.capitalize %> </h3>
+        <%= link_to "#{current_user.name.capitalize}", user_path(current_user.id)%>
         <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
       <% else %>
         <%= link_to 'Sign in', user_session_path %>
