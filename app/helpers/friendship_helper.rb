@@ -1,5 +1,6 @@
+# rubocop:disable Metrics/PerceivedComplexity
 module FriendshipHelper
-  def not_user_display(current_user, n_user)
+  def nu_display(current_user, n_user)
     return unless n_user != current_user
 
     friendship = Friendship.find_by(user_id: n_user.id, friend_id: current_user.id)
@@ -44,3 +45,4 @@ module FriendshipHelper
     link_to 'Decline', friendship_path(id: friendship.id), method: :delete if user == current_user
   end
 end
+# rubocop:enable Metrics/PerceivedComplexity

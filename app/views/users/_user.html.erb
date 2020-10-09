@@ -2,6 +2,6 @@
   Name: <%= user.name %>
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-    <%= not_user_display(current_user, user)%>
+    <%= nu_display(current_user, user)%>
   </span>
 </li>
