@@ -7,3 +7,22 @@
     </ul>
   </article>
 </section>
+
+<%= link_to 'Add friend', "/friendship/#{@user.id}"%>
+
+<% @user.friend_requests.each do |r| %>
+  <ul>
+    <li>
+      <%= link_to r.name, user_path(r.id) %>
+    </li>
+  </ul>
+<% end %>
+
+<%= link_to 'Accept Friend Request', "/friendship/#{@user.id}", method: 'post' %>
+
+<h3>Friends:</h3>
+<% @user.friends.each do |f| %>
+<ul>
+  <li><%= f.name %> </li>
+</ul>
+<% end %>
