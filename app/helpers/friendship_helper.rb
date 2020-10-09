@@ -7,8 +7,13 @@ module FriendshipHelper
     elsif current_user.friend?(n_user)
       content_tag(:td, (link_to 'Unfriend', unfriend_path(user_id: current_user.id, friend_id: n_user.id)))
     else
-      content_tag(:td, (link_to 'Add Friend', addfriend_path(confirmed: false, user_id: current_user.id,
-                                                             friend_id: n_user.id)))
+      if n_user.friend_requests.include?(current_user)
+        content_tag(:td, 'Pending')
+      else
+        content_tag(:td, (link_to 'Add Friend', addfriend_path(confirmed: false, user_id: current_user.id,
+                                                                         friend_id: n_user.id)))
+      end
+
     end
   end
 
