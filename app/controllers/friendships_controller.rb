@@ -4,13 +4,19 @@ class FriendshipsController < ApplicationController
   end
 
   def create
-    @friendship = Friendship.new(user_id: params[:user_id], friend_id: params[:friend_id])
-
-    if @friendship.save
-      render @friendship.user, notice: 'Friend request was sent!!'
+    @current_friendship = Friendship.find_by(user_id: params[:user_id], friend_id: params[:friend_id])
+    if @current_friendship == nil
+      @friendship = Friendship.new(user_id: params[:user_id], friend_id: params[:friend_id])
+      if @friendship.save
+        render @friendship.user, notice: 'Friend request was sent!!'
+      else
+        redirect_to users_path, notice: 'Unable to send friend request at this time.'
+      end
     else
-      redirect_to user_path, notice: 'Unable to send friend request at this time.'
+      redirect_to users_path, notice: 'Friend request was sent!!'
     end
+
+
   end
 
   def destroy
