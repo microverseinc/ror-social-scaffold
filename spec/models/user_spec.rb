@@ -17,7 +17,7 @@ RSpec.describe User, type: :model do
     end
   end
 
-  context '' do
+  context 'Asociations' do
     it { should have_many(:posts) }
     it { should have_many(:comments) }
     it { should have_many(:likes) }

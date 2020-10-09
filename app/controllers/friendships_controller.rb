@@ -5,7 +5,7 @@ class FriendshipsController < ApplicationController
 
   def create
     @current_friendship = Friendship.find_by(user_id: params[:user_id], friend_id: params[:friend_id])
-    if @current_friendship == nil
+    if @current_friendship.nil?
       @friendship = Friendship.new(user_id: params[:user_id], friend_id: params[:friend_id])
       if @friendship.save
         render @friendship.user, notice: 'Friend request was sent!!'
@@ -15,8 +15,6 @@ class FriendshipsController < ApplicationController
     else
       redirect_to users_path, notice: 'Friend request was sent!!'
     end
-
-
   end
 
   def destroy

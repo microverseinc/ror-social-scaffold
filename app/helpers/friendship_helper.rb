@@ -6,14 +6,11 @@ module FriendshipHelper
       content_tag(:td, (link_to 'Unfriend', unfriend_path(user_id: current_user.id, friend_id: n_user.id)))
     elsif current_user.friend?(n_user)
       content_tag(:td, (link_to 'Unfriend', unfriend_path(user_id: current_user.id, friend_id: n_user.id)))
+    elsif n_user.friend_requests.include?(current_user) || n_user.pending_friends.include?(current_user)
+      content_tag(:td, 'Pending')
     else
-      if n_user.friend_requests.include?(current_user)
-        content_tag(:td, 'Pending')
-      else
-        content_tag(:td, (link_to 'Add Friend', addfriend_path(confirmed: false, user_id: current_user.id,
-                                                                         friend_id: n_user.id)))
-      end
-
+      content_tag(:td, (link_to 'Add Friend', addfriend_path(confirmed: false, user_id: current_user.id,
+                                                             friend_id: n_user.id)))
     end
   end
 
@@ -35,6 +32,6 @@ module FriendshipHelper
   end
 
   def show_decline(user, d_friend)
-    link_to 'Decline', decline_friendship_path(user_id: user.id, friend_id: d_friend.id) if user == current_user
+    link_to 'Decline', unfriend_path(user_id: user.id, friend_id: d_friend.id) if user == current_user
   end
 end

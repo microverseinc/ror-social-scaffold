@@ -1,27 +1,29 @@
-example_id                              | status | run_time        |
---------------------------------------- | ------ | --------------- |
-./spec/models/comment_spec.rb[1:1:1]    | passed | 0.00454 seconds |
-./spec/models/comment_spec.rb[1:1:2]    | passed | 0.00466 seconds |
-./spec/models/comment_spec.rb[1:1:3]    | passed | 0.05931 seconds |
-./spec/models/comment_spec.rb[1:1:4]    | passed | 0.00563 seconds |
-./spec/models/comment_spec.rb[1:2:1]    | passed | 0.00201 seconds |
-./spec/models/friendship_spec.rb[1:1:1] | passed | 0.03353 seconds |
-./spec/models/friendship_spec.rb[1:1:2] | passed | 0.00362 seconds |
-./spec/models/like_spec.rb[1:1:1]       | passed | 0.0089 seconds  |
-./spec/models/like_spec.rb[1:1:2]       | passed | 0.00863 seconds |
-./spec/models/like_spec.rb[1:1:3]       | passed | 0.00708 seconds |
-./spec/models/like_spec.rb[1:1:4]       | passed | 0.00687 seconds |
-./spec/models/like_spec.rb[1:2:1]       | passed | 0.00236 seconds |
-./spec/models/post_spec.rb[1:1:1]       | passed | 0.00866 seconds |
-./spec/models/post_spec.rb[1:1:2]       | passed | 0.00922 seconds |
-./spec/models/post_spec.rb[1:1:3]       | passed | 0.00695 seconds |
-./spec/models/post_spec.rb[1:1:4]       | passed | 0.00788 seconds |
-./spec/models/post_spec.rb[1:2:1]       | passed | 0.00318 seconds |
-./spec/models/user_spec.rb[1:1:1]       | passed | 0.01786 seconds |
-./spec/models/user_spec.rb[1:1:2]       | passed | 0.00654 seconds |
-./spec/models/user_spec.rb[1:1:3]       | passed | 0.00538 seconds |
-./spec/models/user_spec.rb[1:1:4]       | passed | 0.00452 seconds |
-./spec/models/user_spec.rb[1:2:1]       | passed | 0.00654 seconds |
-./spec/models/user_spec.rb[1:2:2]       | passed | 0.00474 seconds |
-./spec/models/user_spec.rb[1:2:3]       | passed | 0.005 seconds   |
-./spec/models/user_spec.rb[1:2:4]       | passed | 0.00464 seconds |
+example_id                                    | status | run_time        |
+--------------------------------------------- | ------ | --------------- |
+./spec/controllers/comments_spec.rb[1:1:1]    | failed | 0.00406 seconds |
+./spec/controllers/comments_spec.rb[1:1:2]    | failed | 0.00475 seconds |
+./spec/controllers/comments_spec.rb[1:2:1]    | failed | 0.00276 seconds |
+./spec/controllers/friendships_spec.rb[1:1:1] | failed | 0.01547 seconds |
+./spec/controllers/posts_spec.rb[1:1:1]       | failed | 0.00609 seconds |
+./spec/controllers/users_spec.rb[1:1:1]       | failed | 0.00594 seconds |
+./spec/controllers/users_spec.rb[1:1:2]       | failed | 0.00436 seconds |
+./spec/models/comment_spec.rb[1:1:1:1]        | passed | 0.00547 seconds |
+./spec/models/comment_spec.rb[1:1:1:2]        | passed | 0.00748 seconds |
+./spec/models/comment_spec.rb[1:1:2:1]        | passed | 0.01789 seconds |
+./spec/models/friendship_spec.rb[1:1:1]       | passed | 0.05841 seconds |
+./spec/models/friendship_spec.rb[1:1:2]       | passed | 0.00505 seconds |
+./spec/models/like_spec.rb[1:1:1]             | passed | 0.01409 seconds |
+./spec/models/like_spec.rb[1:1:2]             | passed | 0.00679 seconds |
+./spec/models/like_spec.rb[1:2:1]             | passed | 0.0276 seconds  |
+./spec/models/post_spec.rb[1:1:1]             | passed | 0.00507 seconds |
+./spec/models/post_spec.rb[1:1:2]             | passed | 0.00329 seconds |
+./spec/models/post_spec.rb[1:1:3]             | passed | 0.00721 seconds |
+./spec/models/post_spec.rb[1:2:1]             | passed | 0.01631 seconds |
+./spec/models/user_spec.rb[1:1:1]             | passed | 0.00947 seconds |
+./spec/models/user_spec.rb[1:1:2]             | passed | 0.01066 seconds |
+./spec/models/user_spec.rb[1:1:3]             | passed | 0.01096 seconds |
+./spec/models/user_spec.rb[1:1:4]             | passed | 0.01226 seconds |
+./spec/models/user_spec.rb[1:2:1]             | passed | 0.01282 seconds |
+./spec/models/user_spec.rb[1:2:2]             | passed | 0.00349 seconds |
+./spec/models/user_spec.rb[1:2:3]             | passed | 0.00489 seconds |
+./spec/models/user_spec.rb[1:2:4]             | passed | 0.00485 seconds |
