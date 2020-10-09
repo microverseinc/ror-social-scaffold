@@ -10,7 +10,7 @@
   <% @user.friends.each_with_index do |friend, index| friend %>
     <p>
       <%= index+1 %> - <%= friend.name %>
-      <%= is_user_display(current_user, friend)%>
+      <%= user_display?(current_user, friend)%>
     </p>
   <% end %>
 
