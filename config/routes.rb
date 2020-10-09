@@ -10,11 +10,6 @@ Rails.application.routes.draw do
     resources :likes, only: [:create, :destroy]
   end
   resources :friendships, only: [:create, :destroy, :approve] do
-    #post '/addfriend',  to:'friendships#create'
-    #get '/addfriend',  to:'friendships#create'
-    get '/unfriend', to:'friendships#destroy'
-    post '/unfriend', to:'friendships#destroy'
-
     get '/approve_friendship', to:'friendships#approve'
     post '/approve_friendship', to:'friendships#approve'
   end
