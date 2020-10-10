@@ -1,0 +1,33 @@
+@import 'abstracts';
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 48px;
+  background-color: $primary-color-dark;
+  color: $primary-color-light;
+
+  a {
+    color: $primary-color-light;
+    text-transform: uppercase;
+    font-weight: 900;
+  }
+
+  .active a {
+    color: #fff;
+  }
+
+  a:hover {
+    color: #fff;
+  }
+
+  .menu {
+    width: 80%;
+    justify-content: space-between;
+
+    .menu-item {
+      float: left;
+      margin: 0 15px;
+    }
+  }
+}
