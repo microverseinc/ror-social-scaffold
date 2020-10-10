@@ -2,10 +2,12 @@
   <ul class="users-list">
     <% @users.each do |user| %>
       <li class="list-group">
-        Name: <%= user.name %>
-        <span class="profile-link">
-        <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-        <%= friendship_stack(user) %>
+        <% unless user == current_user %>
+          Name: <%= user.name %>
+          <span class="profile-link">
+          <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+          <%= friendship_stack(user) %>
+        <% end %>
       </li>
     <% end %>    
   </ul>
