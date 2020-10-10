@@ -30,7 +30,7 @@ class FriendshipsController < ApplicationController
     @friendship = current_user.find_friendship(@invitor).first
     redirect_to users_path, notice: 'Friend declined' if @friendship.destroy
   end
-  
+
   def destroy
     @user = User.find(params[:user_id])
     @friendship = current_user.find_either_friendship(current_user, @user).first

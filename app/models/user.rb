@@ -28,8 +28,7 @@ class User < ApplicationRecord
   end
 
   def find_either_friendship(user1, user2)
-    friendship_array = friendships.where(["invitor_id = ? AND invitee_id = ?", "#{user1.id}", "#{user2.id}"]).to_a
-    inverse_array = inverse_friendships.where(["invitor_id = ? AND invitee_id = ?", "#{user1.id}", "#{user2.id}"]).to_a
+    friendship_array = friendships.where(['invitor_id = ? AND invitee_id = ?', user1.id.to_s, user2.id.to_s]).to_a
     (friendship_array + inverse_friendships).compact
   end
 
