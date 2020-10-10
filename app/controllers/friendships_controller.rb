@@ -15,12 +15,6 @@ class FriendshipsController < ApplicationController
     end
   end
 
-  def destroy
-    @invitor = User.find(params[:invitor_id])
-    @friendship = current_user.inverse_friendships.where(invitor_id: @invitor.id).first
-    redirect_to users_path, notice: 'Friend declined' if @friendship.destroy
-  end
-
   def accept
     @invitor = User.find(params[:invitor_id])
     @friendship = current_user.find_friendship(@invitor)
@@ -31,5 +25,19 @@ class FriendshipsController < ApplicationController
     end
   end
 
-  def remove; end
+  def decline
+    @invitor = User.find(params[:invitor_id])
+    @friendship = current_user.find_friendship(@invitor).first
+    redirect_to users_path, notice: 'Friend declined' if @friendship.destroy
+  end
+  
+  def destroy
+    @user = User.find(params[:user_id])
+    @friendship = current_user.find_either_friendship(current_user, @user).first
+    if @friendship.destroy
+      redirect_to users_path, notice: "Friendship with #{@user.name} cancelled"
+    else
+      redirect_to users_path, aler: 'Ops! something went wrong, try again'
+    end
+  end
 end
