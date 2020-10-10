@@ -23,9 +23,12 @@ class FriendshipsController < ApplicationController
 
   def accept
     @invitor = User.find(params[:invitor_id])
-    current_user.confirm_friend(@invitor)
-    current_user.friends << @invitor
-    redirect_to users_path, notice: "You are friends with #{@invitor.name}"
+    @friendship = current_user.find_friendship(@invitor)
+    if @friendship.update(status: true)
+      redirect_to users_path, notice: "You are friends with #{@invitor.name}"
+    else
+      redirect_to users_path, alert: 'Ops! something went wrong'
+    end
   end
 
   def remove; end
