@@ -25,7 +25,7 @@ class FriendshipsController < ApplicationController
     @invitor = User.find(params[:invitor_id])
     @friendship = current_user.find_friendship(@invitor)
     if @friendship.update(status: true)
-      redirect_to users_path, notice: "You are friends with #{@invitor.name}"
+      redirect_to users_path, notice: "You are now friends with #{@invitor.name}"
     else
       redirect_to users_path, alert: 'Ops! something went wrong'
     end
