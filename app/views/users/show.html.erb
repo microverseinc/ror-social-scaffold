@@ -8,21 +8,16 @@
   </article>
 </section>
 
-<%= link_to 'Add friend', "/friendship/#{@user.id}"%>
+<%= add_button(User.find(params[:id])) %>
 
-<% @user.friend_requests.each do |r| %>
-  <ul>
-    <li>
-      <%= link_to r.name, user_path(r.id) %>
-    </li>
-  </ul>
-<% end %>
+<h3> <%= friend_request_title %> </h3>
+<%= friend_request_list(current_user) %>
 
-<%= link_to 'Accept Friend Request', "/friendship/#{@user.id}", method: 'post' %>
+<%= accept_button(User.find(params[:id])) %>
 
 <h3>Friends:</h3>
 <% @user.friends.each do |f| %>
-<ul>
-  <li><%= f.name %> </li>
-</ul>
+  <ul>
+    <li><%= f.name %> </li>
+  </ul>
 <% end %>
