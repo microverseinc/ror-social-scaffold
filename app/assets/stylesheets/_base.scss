@@ -8,7 +8,7 @@
 }
 
 body {
-  background: #fff;
+  background-image: $background-main;
   position: relative;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
@@ -17,7 +17,7 @@ body {
 h1,
 h2,
 h3 {
-  font-weight: 700;
+  font-weight: 600;
 }
 
 ul {
@@ -34,4 +34,5 @@ a {
   flex-direction: column;
   align-items: center;
   padding: 16px;
+  background-image: $background-main;
 }

@@ -1,31 +1,54 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
-  <%= nu_display(current_user, @user)%>
+  <h3><%= nu_display(current_user, @user)%></h3>
   
 
   <br />
+  
+    <h3>List of approved friends</h3>
+  <div class="friend-list-cont">
+      <% @user.friends.each do |friend, index| friend %>
+        <div class="friend-list">
+          <div>
+            <%= user_image %>
+          </div>
+          <h3><%= link_to friend.name, user_path(friend.id) %></h3>
+          <p> 
+            <%= user_display?(@user, friend)%>
+          </p>
+        </div>
+      <% end %>
+  </div>
   <p>Total number of friends: <%= @user.friendships.length %></p>
 
-  <h3>List of approved friends</h3>
-  <% @user.friends.each_with_index do |friend, index| friend %>
-    <p>
-      <%= index+1 %> - <%= friend.name %>
-      <%= user_display?(@user, friend)%>
-    </p>
-  <% end %>
-
   <h3>List of pending friends</h3>
-  <% @user.friend_requests.each do |p_friend| %>
-    <%= p_friend.name %>
-    <%= show_approve(@user, p_friend)%>
-    <%= show_decline(@user, p_friend)%>
-  <% end %>
-
+  <div class="friend-list-cont">
+    <div class="friend-list">
+      <% @user.friend_requests.each do |p_friend| %>
+        <div>
+          <%= user_image %>
+        </div>
+        <h3><%= p_friend.name %></h3>
+        <p>
+          <%= show_approve(@user, p_friend)%>
+          <%= show_decline(@user, p_friend)%>
+        </p>
+      <% end %>
+    </div>
+  </div>
   <h3>List of friends requests sent</h3>
-  <% @user.pending_friends.each_with_index do |friend, index| friend %>
-    <p><%= index+1 %> - <%= friend.name %> Friend Request sent</p>
-    
-  <% end %>
+  <div class="friend-list-cont">
+    <div class="friend-list">
+      <% @user.pending_friends.each do |friend| %>
+        <div>
+          <%= user_image %>
+        </div>
+        <p><%= friend.name %> </p>
+        <p>Friend Request sent</p>
+        
+      <% end %>  
+    </div>
+  </div>
 
 
   <article class="timeline">

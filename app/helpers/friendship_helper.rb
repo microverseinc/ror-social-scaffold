@@ -13,7 +13,7 @@ module FriendshipHelper
     elsif n_user.friend_requests.include?(current_user) || n_user.pending_friends.include?(current_user)
       content_tag(:td, 'Pending')
     else
-      content_tag(:td, (link_to 'Add_Friend', friendships_path(confirmed: false, user_id: current_user.id,
+      content_tag(:td, (link_to 'Add Friend', friendships_path(confirmed: false, user_id: current_user.id,
                                                                friend_id: n_user.id), method: :post))
     end
   end
@@ -27,7 +27,7 @@ module FriendshipHelper
     if current_user == a_user && current_user.friend?(a_friend)
       content_tag(:td, (link_to 'Unfriend', friendship_path(id: friendship.id), method: :delete))
     elsif !current_user.friend?(a_friend)
-      content_tag(:td, (link_to 'Add_Friend', friendships_path(confirmed: false, user_id: current_user.id,
+      content_tag(:td, (link_to 'Add Friend', friendships_path(confirmed: false, user_id: current_user.id,
                                                                friend_id: a_user.id), method: :post))
     end
   end

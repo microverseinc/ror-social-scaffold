@@ -1,10 +1,22 @@
 @import 'abstracts';
 
 .users-section {
+  background-image: $background-main;
+  background-size: cover;
+  background-position: center;
   width: 100%;
   margin: 10px;
+  text-align: center;
+  
+  .users-list ul {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
   .users-list li {
+    width: 100%;
     margin-bottom: 16px;
     text-transform: capitalize;
     font-size: 1.2em;
@@ -18,11 +30,23 @@
 }
 
 .user-section {
+  background-image: url($background-main);
+  background-size: cover;
+  background-position: center;
   width: 100%;
   margin-left: 16px;
+  
 
   h2 {
+    text-align: center;
     text-transform: capitalize;
+  }
+  >h3 {
+    width: fit-content;
+    margin: 0 auto;
+    background: $bg-light-green;
+    padding: 0.5rem;
+    border-radius: 5px;
   }
 
   .timeline {
@@ -33,5 +57,42 @@
     }
 
     justify-content: start;
+  }
+}
+
+.friend-list-cont {
+  padding: 0.5rem;
+  margin: 1rem auto;
+  border-radius: 5px;
+  box-shadow: 2px 8px 6px gray;
+  width: 100%;
+  height: 20%;
+  background: $bg-light-green;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  ul {
+    margin: 0 auto;
+  }
+  li{
+    padding: 0.5rem;
+    text-align: center;
+  }
+}
+
+.friend-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: .5rem;
+  padding: 1rem;
+  border-radius: 5px;
+  width: fit-content;
+  height: fit-content;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-weight: 500;
+  background: white;
+  p{
+    text-align: center;
   }
 }

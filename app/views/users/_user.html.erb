@@ -1,7 +1,20 @@
 <li>
-  Name: <%= user.name %>
-  <span class="profile-link">
-    <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-    <%= nu_display(current_user, user)%>
-  </span>
+  <div class="friend-list">
+      Name: <%= user.name %>
+    <a class="btn btn-primary">
+      <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+    </a>
+    <a class="btn btn-primary">
+      <%= nu_display(current_user, user) %>
+    </a>
+  </div>
+  <div class="friend-list">
+    <h4> Posts</h4>
+    <% user.posts.each do |post|%>
+      <%=post.content%>
+    <%end%>
+  </div>
 </li>
+<div class="posts">
+  
+</div>
