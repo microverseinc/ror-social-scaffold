@@ -1,6 +1,6 @@
 # STAY IN TOUCH
 
-> This is a ruby on rails social media application.
+This is a ruby on rails social media application.
 
 ## Screenshot
 ![Screenshot](/app/assets/images/screenshot.png)
@@ -65,7 +65,10 @@ To run the rspec tests written, run either of the commands below in the terminal
 
 ```
     rpsec --format documentation
-``` or
+``` 
+
+or
+
 ```
     bundle exec rspec --format documentation
 ```
