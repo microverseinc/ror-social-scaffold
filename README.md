@@ -1,6 +1,6 @@
 # Stay In Touch
 
-This is a ruby on rails social media application. Registered users of this application can send friend requests amongst themselves as well as accepting and rejecting these requests. The application also has a like and comment feature incorporated in the posts feature where registered users can write, like and comment on posts.
+This is a ruby on rails social media application. Registered users of this application can send friend requests amongst themselves as well as accept and reject these requests. The application also has like and comment features incorporated in the posts feature where registered users can write, like and comment on posts.
 
 ## Screenshots
 
@@ -84,7 +84,7 @@ or
 
 ### Deployment
 
-The social network site built was deployed to heroku by following the giude [here](https://devcenter.heroku.com/articles/git)
+The social network site built was deployed to heroku by following the guide [here](https://devcenter.heroku.com/articles/git)
 
 ## ✒️ Authors
 
