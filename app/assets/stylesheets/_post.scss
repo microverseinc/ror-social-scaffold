@@ -1,15 +1,7 @@
 @import 'abstracts';
 
-.new_post{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 60%;
-
-  label {
-    display: none;
-  }
-
+.new_post,
+.new_comment {
   .form-control {
     width: 100%;
     border: 1px solid $divider-color;
@@ -25,6 +17,17 @@
     .form-control {
       border: 1px solid #f00;
     }
+  }
+}
+
+.new_post {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+
+  label {
+    display: none;
   }
 
   .btn-primary {
@@ -36,6 +39,7 @@
     margin-left: 70%;
   }
 }
+
 .new_comment {
   display: flex;
   flex-direction: column;
@@ -44,23 +48,6 @@
 
   label {
     display: none;
-  }
-
-  .form-control {
-    width: 100%;
-    border: 1px solid $divider-color;
-    height: 64px;
-    padding: 8px;
-    margin: 4px 0;
-    border-radius: 4px;
-  }
-
-  .field_with_errors {
-    width: 100%;
-
-    .form-control {
-      border: 1px solid #f00;
-    }
   }
 
   .btn-primary {
