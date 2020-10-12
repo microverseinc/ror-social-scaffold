@@ -5,8 +5,9 @@
         <% unless user == current_user %>
           Name: <%= user.name %>
           <span class="profile-link">
-          <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-          <%= friendship_stack(user) %>
+            <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+            <%= friendship_stack(user) %>
+          </span>
         <% end %>
       </li>
     <% end %>    

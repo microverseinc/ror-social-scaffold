@@ -5,6 +5,8 @@ $primary-color: #8bc34a;
 $primary-color-light: #dcedc8;
 $primary-color-text: #212121;
 $divider-color: #bdbdbd;
+$danger-color: #ff0000;
+$link-color: #006eff;
 
 * {
   margin: 0;
@@ -289,6 +291,19 @@ form {
     font-size: 0.8em;
     margin: 0 0 8px 0;
     color: $primary-color-dark;
+
+    .accept-link {
+      color: primary-color-text;
+      margin-right: 8px;
+    }
+
+    .decline-link {
+      color: $danger-color;
+    }
+
+    .invite-link {
+      color: $link-color;
+    }
   }
 }
 
