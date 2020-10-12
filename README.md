@@ -1,9 +1,18 @@
-# STAY IN TOUCH
+# Stay In Touch
 
-> This is a ruby on rails social media application.
+This is a ruby on rails social media application. Registered users of this application can send friend requests amongst themselves as well as accept and reject these requests. The application also has like and comment features incorporated in the posts feature where registered users can write, like and comment on posts.
 
-## Screenshot
+## Screenshots
+
+Below are screenshots of the application index page and the data architecture illustration.
+
+### Index Page Screenshot
+
 ![Screenshot](/app/assets/images/screenshot.png)
+
+### Entity Relationship Diagram(ERD)
+
+![ERD](/app/assets/images/social-site-ERD.png)
 
 ## Built With
 
@@ -12,7 +21,7 @@
 
 ## Live Demo
 
-TBA
+The social network site can be accessed on the [live demo link](https://quiet-hollows-17667.herokuapp.com/users/sign_in)
 
 
 ## Getting Started
@@ -61,20 +70,30 @@ Start server with:
 Open `http://localhost:3000/` in your browser.
 
 ### Run tests
+To run the rspec tests written in this repository, run either of the commands below in the terminal.
 
 ```
     rpsec --format documentation
-```
+``` 
 
-> Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
+or
+
+```
+    bundle exec rspec --format documentation
+```
 
 ### Deployment
 
-TBA
+The social network site built was deployed to heroku by following the guide [here](https://devcenter.heroku.com/articles/git)
 
-## Authors
+## ✒️ Authors
 
-TBA
+**Mworekwa Ezekiel**
+
+- Github: [@vanheaven-ui](https://github.com/vanheaven-ui)
+- Twitter: [@MworekwaE](https://twitter.com/MworekwaE)
+- Linkedin: [@linkedin](https://www.linkedin.com/in/vanheaven/)
+- Email: [ezekiel](mailto:vanheaven6@gmail.com)
 
 ## 🤝 Contributing
 
@@ -88,9 +107,7 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-TBA
+- [Microverse](https://microverse.pathwright.com/library/fast-track-curriculum/69047/path/step/49736080/) <br />
+- [Scaffold repository by Microverse](https://github.com/microverseinc/ror-social-scaffold)
 
-## 📝 License
-
-TBA
 
