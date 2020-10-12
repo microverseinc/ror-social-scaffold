@@ -12,7 +12,7 @@
 
 ## Live Demo
 
-TBA
+The social network site can be accessed on the [live demo link](https://quiet-hollows-17667.herokuapp.com/users/sign_in)
 
 
 ## Getting Started
@@ -61,20 +61,27 @@ Start server with:
 Open `http://localhost:3000/` in your browser.
 
 ### Run tests
+To run the rspec tests written, run either of the commands below in the terminal
 
 ```
     rpsec --format documentation
+``` or
 ```
-
-> Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
+    bundle exec rspec --format documentation
+```
 
 ### Deployment
 
-TBA
+The social network site built was deployed to heroku by following the giude [here](https://devcenter.heroku.com/articles/git)
 
-## Authors
+## ✒️ Authors
 
-TBA
+**Mworekwa Ezekiel**
+
+- Github: [@vanheaven-ui](https://github.com/vanheaven-ui)
+- Twitter: [@MworekwaE](https://twitter.com/MworekwaE)
+- Linkedin: [@linkedin](https://www.linkedin.com/in/vanheaven/)
+- Email: [ezekiel](mailto:vanheaven6@gmail.com)
 
 ## 🤝 Contributing
 
@@ -88,9 +95,7 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-TBA
+- [Microverse]()
+- [Scaffold repository by Microverse]()
 
-## 📝 License
-
-TBA
 
