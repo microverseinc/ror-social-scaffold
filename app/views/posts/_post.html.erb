@@ -8,6 +8,14 @@
       <%= like_or_dislike_btn(post) %>
     </div>
   </div>
+  <div class="stats py-2">
+      <span class="likes my-2"> 
+        <strong><small><%= pluralize(post.likes.count, 'like') %></small></strong>
+      </span>
+      <span clss="comments">
+        <strong><small><%= pluralize(post.comments.count, 'comment') %></small></strong>
+      </span>
+    </div>
   <p class="post-content">
     <%= post.content %>
   </p>

@@ -18,11 +18,17 @@
           <%= menu_link_to 'All users', users_path %>
         </div>
       </div>
-      <% if current_user %>
-        <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-      <% else %>
-        <%= link_to 'Sign in', user_session_path %>
-      <% end %>
+      <div class="navbar-right">
+        <% if current_user %>
+          <span class="text-secondary">
+            Signed in as:
+            <%= link_to current_user.name, user_path(current_user) %>
+          </span>
+          <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+        <% else %>
+          <%= link_to 'Sign in', user_session_path %>
+        <% end %>
+      </div> 
     </nav>
     <% if notice.present? %>
       <div class="notice">
