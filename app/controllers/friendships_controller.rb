@@ -1,3 +1,5 @@
+# rubocop: disable Style/GuardClause
+
 class FriendshipsController < ApplicationController
   def add_friend
     @user = User.find(params[:id])
@@ -20,3 +22,5 @@ class FriendshipsController < ApplicationController
     redirect_to user_path
   end
 end
+
+# rubocop: enable Style/GuardClause

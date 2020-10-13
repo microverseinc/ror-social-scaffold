@@ -1,3 +1,6 @@
+# rubocop: disable Style/GuardClause
+# rubocop: disable Layout/LineLength
+
 module UsersHelper
   def add_button(user)
     if Friendship.where(user_id: current_user.id, friend_id: user.id, confirmed: true).exists?
@@ -30,3 +33,6 @@ module UsersHelper
     'Friend Requests:' if current_user.id == @user.id
   end
 end
+
+# rubocop: enable Style/GuardClause
+# rubocop: enable Layout/LineLength
