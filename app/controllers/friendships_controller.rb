@@ -13,6 +13,7 @@ class FriendshipsController < ApplicationController
     @friendship = Friendship.find_by(user_id: params[:id], friend_id: current_user.id)
     @friendship.confirmed = true
     @friendship.save
+    # This is the line we added to accomplish the friendship v2
     current_user.friendships.create(friend_id: params[:id], confirmed: true)
   end
 
