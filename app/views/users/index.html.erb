@@ -1,5 +1,10 @@
 <section class="users-section">
   <ul class="users-list">
-    <%= render @users %>
+    <% @users.each do |user| %>
+    <div class="row align-items-center justify-content-between">
+      <span class="order-1 text-capitalize text-decoration-none"><%= link_to user.name, user, class: "text-info" %></span>
+      <span class="btn btn-outline-success text-right order-2" ><%= add_button(user) %></span>
+    </div>
+    <% end %>
   </ul>
 </section>

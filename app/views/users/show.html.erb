@@ -7,3 +7,17 @@
     </ul>
   </article>
 </section>
+
+<%= add_button(User.find(params[:id])) %>
+
+<h3> <%= friend_request_title %> </h3>
+<%= friend_request_list(current_user) %>
+
+<%= accept_button(User.find(params[:id])) %>
+
+<h3>Friends:</h3>
+<% @user.friends.each do |f| %>
+  <ul>
+    <li><%= link_to f.name.capitalize, f %> </li>
+  </ul>
+<% end %>

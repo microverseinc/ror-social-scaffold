@@ -7,6 +7,7 @@ ruby '2.7.0'
 gem 'rails', '~> 5.2.4'
 # Use postgresql as the database for Active Record
 gem 'sqlite3', '~> 1.4'
+# gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.12'
 # Use SCSS for stylesheets
@@ -42,6 +43,7 @@ gem 'devise'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'rspec-rails'
 end
 
 group :test do
