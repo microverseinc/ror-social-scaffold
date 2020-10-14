@@ -18,16 +18,16 @@
 
 
 
-#      default: &default
-#        adapter: postgresql
-#        encoding: unicode
-#        # For details on connection pooling, see Rails configuration guide
-#        # http://guides.rubyonrails.org/configuring.html#database-pooling
-#        pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-#      
-#      development:
-#        <<: *default
-#        database: ror_social_scaffold_development
+     default: &default
+       adapter: postgresql
+       encoding: unicode
+       # For details on connection pooling, see Rails configuration guide
+       # http://guides.rubyonrails.org/configuring.html#database-pooling
+       pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+     
+     development:
+       <<: *default
+       database: ror_social_scaffold_development
 
 
 
@@ -67,10 +67,10 @@
 
 
 
-#     test:
-#       <<: *default
-#       database: ror_social_scaffold_test
-#     
+    test:
+      <<: *default
+      database: ror_social_scaffold_test
+    
 
 
 
@@ -98,32 +98,32 @@
 
 
 
-#         production:
-#           <<: *default
-#           database: ror_social_scaffold_production
-#           username: ror_social_scaffold
-#           password: <%= ENV['ROR_SOCIAL_SCAFFOLD_DATABASE_PASSWORD'] %>
+        production:
+          <<: *default
+          database: ror_social_scaffold_production
+          username: ror_social_scaffold
+          password: <%= ENV['ROR_SOCIAL_SCAFFOLD_DATABASE_PASSWORD'] %>
 
 
 
 
 
-default: &default
-  adapter: sqlite3
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  timeout: 5000
+# default: &default
+#   adapter: sqlite3
+#   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+#   timeout: 5000
 
-development:
-  <<: *default
-  database: db/development.sqlite3
+# development:
+#   <<: *default
+#   database: db/development.sqlite3
 
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
-test:
-  <<: *default
-  database: db/test.sqlite3
+# # Warning: The database defined as "test" will be erased and
+# # re-generated from your development database when you run "rake".
+# # Do not set this db to the same as development or production.
+# test:
+#   <<: *default
+#   database: db/test.sqlite3
 
-production:
-  <<: *default
-  database: db/production.sqlite3
+# production:
+#   <<: *default
+#   database: db/production.sqlite3
