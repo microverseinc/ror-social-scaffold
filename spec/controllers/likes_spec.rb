@@ -8,11 +8,11 @@ RSpec.describe Like, type: :model do
   let!(:like1) { Like.create(post_id: nil, user_id: nil) }
   let!(:like2) { Like.create(post_id: post1.id, user_id: user1.id) }
 
-  it 'checks if a like is valid' do
+  it 'Checks for a user to exist to create a like.' do
     expect(like1).to be_invalid
   end
 
-  it 'checks if a like is valid' do
+  it 'Cheks if the users does exist, and allows the like' do
     expect(like2).to be_valid
   end
 end
