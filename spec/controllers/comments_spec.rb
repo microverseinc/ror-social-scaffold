@@ -7,11 +7,11 @@ RSpec.describe Comment, type: :model do
   let!(:user1) { User.create(email: 'heroku@heroku', name: 'heroku', gravatar_url: 'heroku', password: '123456') }
   let!(:post1) { Post.create(content: 'Test post', user_id: user1.id) }
 
-  it 'checks if a comment can be saved' do
+  it 'Comment creation fails with wrong parameters' do
     expect(comment1).to be_invalid
   end
 
-  it 'checks if a comment can be saved' do
+  it 'Comment creation succeeds with valid parameters' do
     expect(Comment.create(post_id: post1.id, user_id: user1.id, content: 'Test comment')).to be_valid
   end
 end
