@@ -9,7 +9,7 @@
 
 ## Live Demo
 
-TBA
+[Social Network](https://safe-forest-99720.herokuapp.com/users/sign_in)
 
 
 ## Getting Started
@@ -67,17 +67,21 @@ Open `http://localhost:3000/` in your browser.
 
 ### Deployment
 
-TBA
+Clone the repo, following the installation steps to deploy it locally or click our [Social Network](https://safe-forest-99720.herokuapp.com/users/sign_in) live link to take a peak.
 
 ## Authors
 
-TBA
 
-## 🤝 Contributing
+👤 **Samuel Almao Herrera**
 
-Contributions, issues and feature requests are welcome!
+- Github: [@SigmaSam](https://github.com/SigmaSam)
 
-Feel free to check the [issues page](issues/).
+👤 **Jhonatan Sarrazola**
+
+- Github: [@jssarrazolaa](https://github.com/jssarrazolaa)
+- Twitter: [@StevenAlvarez_](https://twitter.com/StevenAlvarez_)
+- Linkedin: [Jhonatan Sarrazola](https://www.linkedin.com/in/jhonatan-sarrazola-6a46a01a5/)
+
 
 ## Show your support
 
@@ -85,9 +89,10 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-TBA
+- The odin project
+- Microverse
 
 ## 📝 License
 
-TBA
+This project is [MIT](https://opensource.org/licenses/MIT) licensed.
 
