@@ -6,8 +6,8 @@ FactoryBot.define do
   end
 
   factory :user do
-    name { 'Example User' }
-    email { 'user@example.com' }
-    encrypted_password { 'foobar' }
+    sequence(:name) { |n| "test-#{n.to_s.rjust(3, '0')}" }
+    sequence(:email) { |n| "test-#{n.to_s.rjust(3, '0')}@sample.com" }
+    password { 'foobar' }
   end
 end
