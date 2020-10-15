@@ -10,11 +10,32 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
-  has_many :friend_sent, class_name: 'Friendship',
-                         foreign_key: 'sent_by_id', inverse_of: 'sent_by', dependent: :destroy
-  has_many :friend_request, class_name: 'Friendship',
-                            foreign_key: 'sent_to_id', inverse_of: 'sent_to', dependent: :destroy
-  has_many :friends, -> { merge(Friendship.friends) }, through: :friend_sent, source: :sent_to
-  has_many :pending_requests, -> { merge(Friendship.not_friends) }, through: :friend_sent, source: :sent_to
-  has_many :received_requests, -> { merge(Friendship.not_friends) }, through: :friend_request, source: :sent_by
+  has_many :friendships, dependent: :destroy
+  has_many :inverse_friendships, class_name: 'Friendship',
+                                  foreign_key: 'friend_id', dependent: :destroy
+
+  def pending_sent_requests
+    friendships.pending
+  end
+
+  def friend_requests
+    inverse_friendships.pending
+  end
+
+  def friends
+    Friendship.where("user_id = ? AND (confirmed = true) OR friend_id = ? AND (confirmed = true)", id, id)
+    # friendships.accepted.merge(inverse_friendships.accepted)
+  end
+
+  def friend?(user)
+    friends.include?(user)
+  end
+
+  private
+
+  def confirm_friend(user)
+    friendship = inverse_friendships.find{|friendship| friendship.user == user}
+    friendship.confirmed = true
+    friendship.save
+  end
 end
