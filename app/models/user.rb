@@ -13,11 +13,11 @@ class User < ApplicationRecord
   has_many :confirmed_friendships, -> { where(confirmed: true) }, class_name: 'Friendship'
   has_many :inverse_friendships, class_name: :Friendship, foreign_key: :friend_id
   has_many :friends, through: :confirmed_friendships
-  
+
   def pending_friends
     friendships.map { |friendship| friendship.friend unless friendship.confirmed }.compact
   end
-  
+
   def friend_requests
     inverse_friendships.map { |friendship| friendship.user unless friendship.confirmed }.compact
   end
