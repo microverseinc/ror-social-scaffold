@@ -1,4 +1,5 @@
-# rubocop:disable Metrics/ModuleLength
+# rubocop:disable Layout/TrailingWhitespace
+# rubocop:disable Layout/ArgumentAlignment
 module FriendshipsHelper
     def friendship_button(friend)
       if friend.friend_requests.any?(current_user)
@@ -14,5 +15,5 @@ module FriendshipsHelper
       end
     end
 end
-# rubocop:enable Metrics/ModuleLength
-  
+# rubocop:enable Layout/TrailingWhitespace
+# rubocop:enable Layout/ArgumentAlignment
