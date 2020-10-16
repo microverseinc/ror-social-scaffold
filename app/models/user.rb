@@ -1,3 +1,4 @@
+# rubocop:disable Layout/TrailingWhitespace
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -34,3 +35,4 @@ class User < ApplicationRecord
     friends.include?(user)
   end
 end
+# rubocop:enable Layout/TrailingWhitespace
