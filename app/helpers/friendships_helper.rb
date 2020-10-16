@@ -1,5 +1,6 @@
 # rubocop:disable Layout/TrailingWhitespace
 # rubocop:disable Layout/ArgumentAlignment
+# rubocop:disable Layout/TrailingEmptyLines
 module FriendshipsHelper
     def friendship_button(friend)
       if friend.friend_requests.any?(current_user)
@@ -17,3 +18,4 @@ module FriendshipsHelper
 end
 # rubocop:enable Layout/TrailingWhitespace
 # rubocop:enable Layout/ArgumentAlignment
+# rubocop:disable Layout/TrailingEmptyLines
