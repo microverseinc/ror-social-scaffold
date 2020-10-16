@@ -18,4 +18,4 @@ module FriendshipsHelper
 end
 # rubocop:enable Layout/TrailingWhitespace
 # rubocop:enable Layout/ArgumentAlignment
-# rubocop:disable Layout/TrailingEmptyLines
+# rubocop:enable Layout/TrailingEmptyLines
