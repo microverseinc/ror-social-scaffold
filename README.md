@@ -39,6 +39,7 @@ Populate the database with the following command
 rails db:seed
 ```
 Run Application test while on the project root with the following command
+## Please run tests separately as indicated below to avoid ambiguity
 ```
 rspec spec/features/authentication_spec.rb => to test authentication features
 
