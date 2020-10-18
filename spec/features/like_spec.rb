@@ -1,6 +1,6 @@
 require 'rails_helper'
 RSpec.describe 'Like', type: :feature do
-  xit 'User can like or dislike a comment or post' do
+  it 'User can like or dislike a comment or post' do
   User.create(name: 'Ibe Precious', email: 'i.email@example.com', password: 'secretpass', password_confirmation: 'secretpass')
   visit  visit new_user_session_path
   fill_in 'user_email', with: 'i.email@example.com'
