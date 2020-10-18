@@ -5,7 +5,7 @@ Shoulda::Matchers.configure do |config|
     with.test_framework :rspec
     with.library :rails
   end
- end
+end
 
 RSpec.describe Friendship, type: :model do
   before :each do

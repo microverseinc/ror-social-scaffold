@@ -1,16 +1,18 @@
 require 'rails_helper'
 RSpec.describe 'Testing Friendship', type: :feature do
   before(:each) do
-  User.create(name: 'Ibe Precious', email: 'i.email@example.com', password: 'secretpass', password_confirmation: 'secretpass')
-  User.create(name: 'Eze Promise', email: 'e.email@example.com', password: 'password', password_confirmation: 'password')
-  visit  visit new_user_session_path
-  fill_in 'user_email', with: 'e.email@example.com'
-  fill_in 'user_password', with: 'password'
-  find("input[type='submit']").click
+    User.create(name: 'Ibe Precious', email: 'i.email@example.com', password: 'secretpass',
+                password_confirmation: 'secretpass')
+    User.create(name: 'Eze Promise', email: 'e.email@example.com', password: 'password',
+                password_confirmation: 'password')
+    visit visit new_user_session_path
+    fill_in 'user_email', with: 'e.email@example.com'
+    fill_in 'user_password', with: 'password'
+    find("input[type='submit']").click
 
-  visit users_path
-  expect(page).to have_content('Ibe Precious')
-  expect(page).to have_content('Eze Promise') 
+    visit users_path
+    expect(page).to have_content('Ibe Precious')
+    expect(page).to have_content('Eze Promise')
   end
 
   it 'Should Add friend from any of the users listed' do
@@ -42,7 +44,7 @@ RSpec.describe 'Testing Friendship', type: :feature do
     visit users_path
     click_on 'Reject'
     expect(page).to have_content('Friend has been removed')
-    end
+  end
 
   it 'Can Unfriend an existing friend' do
     click_link('Add friend', match: :first)
@@ -54,12 +56,12 @@ RSpec.describe 'Testing Friendship', type: :feature do
     visit users_path
     click_on 'Accept'
     click_on 'Sign out'
-    visit  visit new_user_session_path
+    visit visit new_user_session_path
     fill_in 'user_email', with: 'e.email@example.com'
     fill_in 'user_password', with: 'password'
     find("input[type='submit']").click
     visit users_path
     click_on 'Unfriend'
     expect(page).to have_content('Friend has been removed')
-    end
+  end
 end

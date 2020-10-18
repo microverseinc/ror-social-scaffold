@@ -11,8 +11,8 @@ RSpec.describe 'User', type: :feature do
   end
 
   it 'It should sign in a user' do
-    User.create(name: 'Ibe Precious', email: 'i.email@example.com', password: 'secretpass', 
-                                      password_confirmation: 'secretpass')
+    User.create(name: 'Ibe Precious', email: 'i.email@example.com', password: 'secretpass',
+                password_confirmation: 'secretpass')
     visit visit new_user_session_path
     fill_in 'user_email', with: 'i.email@example.com'
     fill_in 'user_password', with: 'secretpass'
@@ -21,8 +21,8 @@ RSpec.describe 'User', type: :feature do
   end
 
   it 'It should not sign in a user without email or password' do
-    User.create(name: 'Ibe Precious', email: 'i.email@example.com', password: 'secretpass', 
-                                      password_confirmation: 'secretpass')
+    User.create(name: 'Ibe Precious', email: 'i.email@example.com', password: 'secretpass',
+                password_confirmation: 'secretpass')
     visit visit new_user_session_path
     fill_in 'user_email', with: 'i.email@example.com'
     fill_in 'user_password', with: ''
