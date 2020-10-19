@@ -22,9 +22,14 @@ class User < ApplicationRecord
     inverse_friendships.pending
   end
 
-  def friends
-    Friendship.where("user_id = ? AND (confirmed = true) OR friend_id = ? AND (confirmed = true)", id, id)
-    # friendships.accepted.merge(inverse_friendships.accepted)
+  # def friends
+  #   Friendship.where('(user_id = ? AND confirmed = true) OR (friend_id = ? AND confirmed = true)', id, id)
+  # end
+
+  def friends    
+    friends_array = friendships.map{|friendship| friendship.friend if friendship.confirmed} +
+    inverse_friendships.map{|friendship| friendship.user if friendship.confirmed}
+    friends_array.compact.sort_by(&:created_at).reverse
   end
 
   def friend?(user)
