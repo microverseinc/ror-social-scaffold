@@ -2,15 +2,20 @@ require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
   context "Validation test" do
-    it { should validate_presence_of(:content) }
-it "description" do
-  
-end
+    it 'cannot be empty' do
+      comm = Post.new(content: '').save
+      expect(comm).to eq(false)
+    end
 
-    # it "must have a user" do
-    #  comment = Comment.new(content:'Anything', post_id: 1, user_id: 1).save
-    #  expect(comment).to eq(true)
-    # end
-    
+    it 'maximum characters is 200' do
+      comment = 't'*200
+      comm0 = Post.new(content: comment).save
+      expect(comm0).to eq(false)
+    end
+
+    it "must have a user and a post" do
+        comm1 = Post.new(content:'must have a user and a post').save
+        expect(comm1).to eq(false)
+    end
   end
 end
