@@ -85,4 +85,54 @@ RSpec.describe User, type: :model do
       expect(@user.reload.email).to eq(mixed_case_email.downcase)
     end
   end
+
+  context 'when sends friend requests' do 
+    before do
+      @sunday = FactoryBot.create(:user)
+      @ahmed = FactoryBot.create(:user)
+      friendship = @sunday.friendships.build(friend_id: @ahmed.id)
+      friendship.save 
+      # @vincent = FactoryBot.create(:user)
+      # Friendship.create!(user_id: @vincent.id, friend_id: @sunday.id, confirmed: true)
+    end
+
+    it 'should have pending requests' do
+      expect(@sunday.pending_requests.count).to be > 0
+    end
+  end
+
+  context 'when receives friend requests' do 
+    before do
+      @sunday = FactoryBot.create(:user)
+      @ahmed = FactoryBot.create(:user)
+      friendship = @ahmed.friendships.build(friend_id: @sunday.id)
+      friendship.save 
+      # @vincent = FactoryBot.create(:user)
+      # Friendship.create!(user_id: @vincent.id, friend_id: @sunday.id, confirmed: true)
+    end
+
+    it 'should have received request' do
+      expect(@sunday.received_requests.count).to be > 0
+    end
+  end
+
+  context 'when accepts a friend request' do
+    before do
+      @sunday = FactoryBot.create(:user)
+      @ahmed = FactoryBot.create(:user)
+      friendship = @ahmed.friendships.build(friend_id: @sunday.id)
+      friendship.save
+      friendship.confirmed = true
+      friendship.save
+      # @sunday.accept_friend(@ahmed)
+    end
+
+    it 'Sunday should be Ahmed\'s friend' do
+      expect(@ahmed.friend?(@sunday)).to eq(true)
+    end
+
+    it 'Ahmed should be Sunday\'s friend' do
+      expect(@sunday.friend?(@ahmed)).to eq(true)
+    end
+  end
 end

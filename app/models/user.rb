@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 20 }
 
-  has_many :posts
+  has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
@@ -14,11 +14,11 @@ class User < ApplicationRecord
   has_many :inverse_friendships, class_name: 'Friendship',
                                   foreign_key: 'friend_id', dependent: :destroy
 
-  def pending_sent_requests
+  def pending_requests
     friendships.pending
   end
 
-  def friend_requests
+  def received_requests
     inverse_friendships.pending
   end
 
@@ -38,9 +38,18 @@ class User < ApplicationRecord
 
   private
 
-  def confirm_friend(user)
+  def accept_friend(user)
     friendship = inverse_friendships.find{|friendship| friendship.user == user}
-    friendship.confirmed = true
-    friendship.save
+    if friendship
+      friendship.confirmed = true
+      friendship.save
+    end
+  end
+
+  def reject_friend(user)
+    friendship = inverse_friendships.find{|friendship| friendship.user == user}
+    if friendship
+      friendship.delete
+    end
   end
 end
