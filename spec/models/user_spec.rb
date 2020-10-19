@@ -1,18 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  context 'validation test' do 
+  context 'validation test' do
     it 'must have a name' do
       user = User.new(email: 'testuser@gmail.com', password: 'password').save
       expect(user).to eq(false)
     end
 
     it 'the name length should be <= 20 characters' do
-      name = 't'*21
+      name = 't' * 21
       user0 = User.new(email: 'test@user0.com', name: name, password: 'password').save
       expect(user0).to eq(false)
     end
-
 
     it 'must have an email' do
       user1 = User.new(name: 'user1', password: 'password').save
@@ -30,7 +29,7 @@ RSpec.describe User, type: :model do
     end
   end
 
-  context "friendships test" do
+  context 'friendships test' do
     before(:each) do
       @user1 = User.create(name: 'User One', email: 'userone@user.com', password: 'password')
       @user2 = User.create(name: 'User Two', email: 'usertwo@user.com', password: 'password')

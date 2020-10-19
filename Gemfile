@@ -27,8 +27,8 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 # Install wdm Gem if the platform is Windows
-gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 gem 'nokogiri', '~> 1.10', '>= 1.10.10'
+gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
@@ -48,8 +48,8 @@ group :development, :test do
 end
 
 group :test do
+  gem 'capybara'
   gem 'rspec'
-  gem "capybara"
 end
 
 group :development do
