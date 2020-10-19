@@ -26,18 +26,12 @@
         <%= link_to 'Sign in', user_session_path %>
       <% end %>
     </nav>
-    <% if notice.present? %>
-      <div class="notice">
-        <p> <%= notice %> </p>
-      </div>
-    <% end %>
-    <% if alert.present? %>
-      <div class="alert-danger">
-        <p> <%= alert %> </p>
-      </div>
+    <% flash.each do |message_type, message| %>
+      <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
     <% end %>
     <main class="main">
       <%= yield %>
     </main>
   </body>
+  <%= debug(params) if Rails.env.development? %>
 </html>

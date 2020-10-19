@@ -7,7 +7,7 @@ ruby '2.7.0'
 gem 'bootstrap-sass', '3.4.1'
 gem 'carrierwave', '~> 2.1'
 gem 'mini_magick', '~> 4.10', '>= 4.10.1'
-gem 'rails', '~> 5.2.4'
+gem 'rails', '~> 6.0', '>= 6.0.3.4'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
@@ -25,7 +25,7 @@ gem 'omniauth-facebook', '~> 7.0'
 # After opening rails console type Hirb.enable to activate it
 gem 'hirb', '~> 0.7.3'
 # Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.2'
+gem 'coffee-rails', '~> 5.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

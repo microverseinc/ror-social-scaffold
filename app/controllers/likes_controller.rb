@@ -3,9 +3,11 @@ class LikesController < ApplicationController
     @like = current_user.likes.new(post_id: params[:post_id])
 
     if @like.save
-      redirect_to posts_path, notice: 'You liked a post.'
+      flash[:success] = 'You liked a post.'
+      redirect_to posts_path
     else
-      redirect_to posts_path, alert: 'You cannot like this post.'
+      flash[:warning] = 'You cannot like this post.'
+      redirect_to posts_path
     end
   end
 
@@ -13,9 +15,11 @@ class LikesController < ApplicationController
     like = Like.find_by(id: params[:id], user: current_user, post_id: params[:post_id])
     if like
       like.destroy
-      redirect_to posts_path, notice: 'You disliked a post.'
+      flash[:warning] = 'You disliked a post.'
+      redirect_to posts_path
     else
-      redirect_to posts_path, alert: 'You cannot dislike post that you did not like before.'
+      flash[:warning] = 'You cannot dislike post that you did not like before.'
+      redirect_to posts_path
     end
   end
 end
