@@ -14,7 +14,7 @@ This project entails building a social media application with ruby on rails usin
 - User can make a post.
 - User can make a comment
 
-## How to Test the Project
+## Project SetUp/Installation
 
 Get a local copy of the file. Clone with HTTPS using the command below.
 
@@ -79,9 +79,9 @@ rspec spec/models/user_spec.rb  => to test User validations
 
 👤 **Esteban Pinczinger**
  **Nnamdi Emelu**
-- Github: [@githubhandle](https://github.com/zubenna)
-- Twitter: [@twitterhandle](https://twitter.com/zubenna)
-- Linkedin: [linkedin](https://www.linkedin.com/in/nnamdi-emelu/)
+- Github: [@zubenna](https://github.com/zubenna)
+- Twitter: [@zubenna](https://twitter.com/zubenna)
+- Linkedin: [nnamdi-emelu](https://www.linkedin.com/in/nnamdi-emelu/)
 
 ##  Contributing
 
