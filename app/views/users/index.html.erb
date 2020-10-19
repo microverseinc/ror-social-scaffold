@@ -4,7 +4,13 @@
       <li>
         Name: <%= user.name %>
         <span class="profile-link">
-          <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+          <%= link_to 'See Profile', user_path(user), class: 'profile-link' %>
+          <% unless current_user == user %>  
+            <%= form_with(model: current_user.friendships.build, local: true) do |f| %>
+              <div><%= hidden_field_tag :friend_id, user.id %></div>
+              <%= f.submit 'Send a friend request' %>
+            <% end %>
+          <% end %>
         </span>
       </li>
     <% end %>
