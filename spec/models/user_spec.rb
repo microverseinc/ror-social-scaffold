@@ -64,17 +64,17 @@ RSpec.describe User, type: :model do
     end
   end
 
-  # context 'when email address is already taken' do
-  #   before do
-  #     user_with_same_email = @user.dup
-  #     user_with_same_email.email = @user.email
-  #     user_with_same_email.save
-  #   end
+  context 'when email address is already taken' do
+    before do
+      @user_with_same_email = FactoryBot.create(:user)
+      @user_with_same_email.email = @user.email
+      @user_with_same_email.save
+    end
 
-  #   it 'should not be valid' do
-  #     expect(@user).not_to be_valid
-  #   end
-  # end
+    it 'should not be valid' do
+      expect(@user_with_same_email).not_to be_valid
+    end
+  end
 
   context 'email address with mixed case' do
     let(:mixed_case_email) { 'Foo@ExAMPle.CoM' }
@@ -92,8 +92,6 @@ RSpec.describe User, type: :model do
       @ahmed = FactoryBot.create(:user)
       friendship = @sunday.friendships.build(friend_id: @ahmed.id)
       friendship.save 
-      # @vincent = FactoryBot.create(:user)
-      # Friendship.create!(user_id: @vincent.id, friend_id: @sunday.id, confirmed: true)
     end
 
     it 'should have pending requests' do
@@ -107,8 +105,6 @@ RSpec.describe User, type: :model do
       @ahmed = FactoryBot.create(:user)
       friendship = @ahmed.friendships.build(friend_id: @sunday.id)
       friendship.save 
-      # @vincent = FactoryBot.create(:user)
-      # Friendship.create!(user_id: @vincent.id, friend_id: @sunday.id, confirmed: true)
     end
 
     it 'should have received request' do

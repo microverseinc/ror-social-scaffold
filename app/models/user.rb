@@ -1,10 +1,13 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable
+          # :validatable
 
   validates :name, presence: true, length: { maximum: 20 }
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+  validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
+  before_save :downcase_email
 
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -51,5 +54,10 @@ class User < ApplicationRecord
     if friendship
       friendship.delete
     end
+  end
+
+  # Converts email to all lower-case.
+  def downcase_email
+    email.downcase!
   end
 end
