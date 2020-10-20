@@ -1,5 +1,5 @@
+<% provide(:title, @user.name) %>
 <section class="user-section">
-  <!-- <h2><%= "Name: #{@user.name}" %></h2> -->
   <h1>
     <%= gravatar_for @user %>
     <%= @user.name %>
@@ -9,5 +9,6 @@
     <ul class="posts">
       <%= render @posts %>
     </ul>
+    <%= will_paginate @posts %>
   </article>
 </section>

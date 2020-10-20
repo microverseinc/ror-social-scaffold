@@ -9,6 +9,11 @@ module ApplicationHelper
     end
   end
 
+  # Returns true if the user is logged in, false otherwise.
+  def logged_in?
+    !current_user.nil?
+  end
+
   def menu_link_to(link_text, link_path)
     class_name = current_page?(link_path) ? 'menu-item active' : 'menu-item'
 

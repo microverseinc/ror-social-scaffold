@@ -11,6 +11,12 @@
   </head>
   <body>
     <nav class="nav">
+      <% if logged_in? %>
+        <div class="nav-profile"> 
+          <%= gravatar_for current_user, size: 45 %>
+          <%= link_to current_user.name, user_path(current_user), id: 'logo'%>
+        </div>
+      <% end %>
       <%= link_to 'Stay in touch', root_path %>
       <div class="menu">
         <div class="menu-item">

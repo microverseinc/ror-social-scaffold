@@ -10,10 +10,11 @@
 <% end %>
 
 <article class="timeline">
-  <h3>
-    Recent posts
-  </h3>
-  <ul class="posts">
-    <%= render @timeline_posts %>
-  </ul>
+  <% if @timeline_posts.any? %>
+    <h3>Recent posts</h3>
+    <ul class="posts">
+      <%= render @timeline_posts %>
+    </ul>
+    <%= will_paginate @timeline_posts %>
+  <% end %>
 </article>

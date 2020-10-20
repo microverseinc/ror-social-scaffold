@@ -39,7 +39,9 @@ a {
 
 .nav {
   display: flex;
+  align-items: center;
   justify-content: space-between;
+  height: 50px;
   padding: 16px 48px;
   background-color: $primary-color-dark;
   color: $primary-color-light;
@@ -59,7 +61,7 @@ a {
   }
 
   .menu {
-    width: 80%;
+    width: 58%;
     justify-content: space-between;
 
     .menu-item {
@@ -67,8 +69,22 @@ a {
       margin: 0 15px;
     }
   }
+
+  .nav-profile {
+    // width: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
 }
 
+.gravatar {
+  border-radius: 50%;
+}
+
+#logo {
+  margin-left: 8px;
+}
 .main {
   display: flex;
   flex-direction: column;
