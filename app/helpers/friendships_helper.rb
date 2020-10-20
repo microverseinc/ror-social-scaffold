@@ -7,7 +7,7 @@ module FriendshipsHelper
                                                                      class: 'profile-link btn btn-secondary'
     else
       link_to 'Unfriend', unfriend_user_path(friend), method: :delete,
-                                                       class: 'profile-link btn btn-secondary'
+                                                      class: 'profile-link btn btn-secondary'
     end
   end
 end
