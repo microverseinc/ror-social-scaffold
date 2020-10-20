@@ -42,10 +42,24 @@ gem 'devise'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'rspec-rails'
+  gem 'spring'
+  gem 'spring-commands-rspec'
+  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'guard'
+  gem 'guard-rspec'
+  gem 'rails-controller-testing'
+  gem 'factory_bot_rails'
 end
 
 group :test do
-  gem 'rspec'
+  gem 'capybara'
+  gem 'faker'
+  gem 'launchy'
+  gem 'selenium-webdriver'
+  # Easy installation and use of web drivers to run system tests with browsers
+  gem 'shoulda-matchers'
+  gem 'webdrivers'
 end
 
 group :development do
@@ -56,7 +70,10 @@ group :development do
   gem 'rubocop'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'guard-livereload', '~> 2.5', require: false
+  gem 'web-console', '>= 3.3.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+gem 'hirb'
