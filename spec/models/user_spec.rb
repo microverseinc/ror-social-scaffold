@@ -131,4 +131,16 @@ RSpec.describe User, type: :model do
       expect(@sunday.friend?(@ahmed)).to eq(true)
     end
   end
+
+  context 'when deleted' do
+    before do
+      @sunday = FactoryBot.create(:user)
+      @ahmed = FactoryBot.create(:user)
+      Friendship.create!(user_id: @ahmed.id, friend_id: @sunday.id, confirmed: true)
+    end
+
+    it 'should destroy his friendships' do
+      expect { User.find(@sunday.id).destroy}.to change{ @ahmed.reload.friends.count }.by(-1)
+    end
+  end
 end
