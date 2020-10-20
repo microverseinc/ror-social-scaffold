@@ -16,7 +16,6 @@ RSpec.describe 'Testing Friendship', type: :feature do
   end
 
   it 'Should Add friend from any of the users listed' do
-    visit users_path
     click_link('Add friend', match: :first)
     expect(page).to have_content('You have sent a friendship request!')
     expect(page).to have_content('Pending Request')
@@ -45,7 +44,6 @@ RSpec.describe 'Testing Friendship', type: :feature do
     click_on 'Reject'
     expect(page).to have_content('Friend has been removed')
   end
-
   it 'Can Unfriend an existing friend' do
     click_link('Add friend', match: :first)
     click_on 'Sign out'

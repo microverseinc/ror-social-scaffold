@@ -2,7 +2,7 @@
 
 # Rails Social Media Website Project Overview
 
-This project entails building a social media application with ruby on rails using all the process of MVP. This project comprises the application of model, controller, view, routes, associations, partials and styling knowledge in building a rails app. A user need to create an account to be able to log into the application and test all features.
+This project entails building a social media application with ruby on rails using all the process of MVC. This project comprises the application of model, controller, view, routes, associations, partials and styling knowledge in building a rails app. A user need to create an account to be able to log into the application and test all features.
 
 ## Features 
 - User can sign up into the app.
@@ -77,8 +77,7 @@ rspec spec/models/user_spec.rb  => to test User validations
 - Twitter: [@its_UmairArshad](https://twitter.com/its_UmairArshad)
 - Linkedin: [umair-arshad-butt](https://www.linkedin.com/in/umair-arshad-butt/)
 
-👤 **Esteban Pinczinger**
- **Nnamdi Emelu**
+👤 **Nnamdi Emelu**
 - Github: [@zubenna](https://github.com/zubenna)
 - Twitter: [@zubenna](https://twitter.com/zubenna)
 - Linkedin: [nnamdi-emelu](https://www.linkedin.com/in/nnamdi-emelu/)
