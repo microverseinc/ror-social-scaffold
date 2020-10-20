@@ -1,5 +1,9 @@
 <section class="user-section">
-  <h2><%= "Name: #{@user.name}" %></h2>
+  <!-- <h2><%= "Name: #{@user.name}" %></h2> -->
+  <h1>
+    <%= gravatar_for @user %>
+    <%= @user.name %>
+  </h1>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
