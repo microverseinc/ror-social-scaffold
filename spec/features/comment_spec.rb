@@ -6,7 +6,7 @@ RSpec.describe 'Comment', type: :feature do
     visit visit new_user_session_path
     fill_in 'user_email', with: 'i.email@example.com'
     fill_in 'user_password', with: 'secretpass'
-    find("input[type='submit']").click 
+    find("input[type='submit']").click
   end
   it 'User can make and save comment' do
     fill_in 'post[content]', with: 'This is my post test'
@@ -29,7 +29,7 @@ RSpec.describe 'Comment', type: :feature do
     click_button 'Save'
 
     fill_in 'comment[content]', with: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                      Phasellus sapien turpis, fringilla non lectus id, mattis 
+                                      Phasellus sapien turpis, fringilla non lectus id, mattis
                                       scelerisque lacus. Nunc nec suscipit lectus, id dictum odio.
                                       Integer faucibus lorem eu congue rutrum. Ut sollicitudin, nulla quis
                                       placerat mattis, elit felis tincidunt nunc'
