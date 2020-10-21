@@ -1,10 +1,12 @@
 AllCops:
+  NewCops: disable
   Exclude:
     - "db/**/*"
     - "bin/*"
     - "config/**/*"
     - "Guardfile"
     - "Rakefile"
+    - "README.md"
     - "node_modules/**/*"
 
   DisplayCopNames: true
@@ -24,7 +26,7 @@ Metrics/AbcSize:
 Metrics/ClassLength:
   Max: 150
 Metrics/BlockLength:
-  ExcludedMethods: ["describe"]
+  ExcludedMethods: ['describe']
   Max: 30
 
 Style/Documentation:
@@ -47,6 +49,7 @@ Layout/ExtraSpacing:
 Layout/MultilineMethodCallIndentation:
   Enabled: true
   EnforcedStyle: indented
+
 Lint/RaiseException:
   Enabled: false
 Lint/StructNewOverride:

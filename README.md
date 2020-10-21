@@ -1,93 +1,98 @@
-# Scaffold for social media app with Ruby on Rails
+# README
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+# Rails Social Media Website Project Overview
 
-## Built With
+This project entails building a social media application with ruby on rails using all the process of MVC. This project comprises the application of model, controller, view, routes, associations, partials and styling knowledge in building a rails app. A user need to create an account to be able to log into the application and test all features.
 
-- Ruby v2.7.0
-- Ruby on Rails v5.2.4
+## Features 
+- User can sign up into the app.
+- User can log in after sign up. 
+- User can Add a friend.
+- User can Accept or reject friend request.
+- User can see list of pending friend request.
+- Logged in Users can see all users that have signed up in the app.
+- User can make a post.
+- User can make a comment
 
-## Live Demo
+## Project SetUp/Installation
 
-TBA
+Get a local copy of the file. Clone with HTTPS using the command below.
 
-
-## Getting Started
-
-To get a local copy up and running follow these simple example steps.
-
-### Prerequisites
-
-Ruby: 2.6.3
-Rails: 5.2.3
-Postgres: >=9.5
-
-### Setup
-
-Instal gems with:
-
+```
+git clone https://github.com/Zubenna/ror-social-scaffold 
+```
+Access project folders 
+```
+cd ror-social-scaffold
+```
+Install all the dependencies
 ```
 bundle install
 ```
 
-Setup database with:
-
+Create the database with the following command
 ```
-   rails db:create
-   rails db:migrate
+rails db:create
 ```
-
-### Github Actions
-
-To make sure the linters' checks using Github Actions work properly, you should follow the next steps:
-
-1. On your recently forked repo, enable the GitHub Actions in the Actions tab.
-2. Create the `feature/branch` and push.
-3. Start working on your milestone as usual.
-4. Open a PR from the `feature/branch` when your work is done.
-
-
-### Usage
-
-Start server with:
-
+Migrate the database with the following command
 ```
-    rails server
+rails db:migrate
 ```
-
-Open `http://localhost:3000/` in your browser.
-
-### Run tests
-
+Populate the database with the following command
 ```
-    rpsec --format documentation
+rails db:seed
+```
+Run Application test while on the project root with the following command
+## Please run tests separately as indicated below to avoid ambiguity
+```
+rspec spec/features/authentication_spec.rb => to test authentication features
+
+rspec spec/features/comment_spec.rb => to test comment features
+
+rspec spec/features/friendship_spec.rb => to test friendship features
+
+rspec spec/features/like_spec.rb => to test like features
+
+rspec spec/features/post_spec.rb => to test post features
+
+rspec spec/models/friendship_spec.rb  => to test friendship associations and validations
+
+rspec spec/models/user_spec.rb  => to test User validations
 ```
 
-> Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
+## Run the server
+- While in the project root, start rails server with the command rails server.
+- In your browser, type http://localhost:3000 to access the app.
+- You can now sign up or Log in,to test all features.
+- Example; Log in with email, b.email@example.com and password, secretpass.
 
-### Deployment
-
-TBA
+## Built With
+- Ruby, Ruby on Rails
+- RSpec, Capybara 
 
 ## Authors
+👤 **Umair Arshad**
 
-TBA
+- Github: [@umairarshadbutt](https://github.com/umairarshadbutt)
+- Twitter: [@its_UmairArshad](https://twitter.com/its_UmairArshad)
+- Linkedin: [umair-arshad-butt](https://www.linkedin.com/in/umair-arshad-butt/)
 
-## 🤝 Contributing
+👤 **Nnamdi Emelu**
+- Github: [@zubenna](https://github.com/zubenna)
+- Twitter: [@zubenna](https://twitter.com/zubenna)
+- Linkedin: [nnamdi-emelu](https://www.linkedin.com/in/nnamdi-emelu/)
+
+##  Contributing
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the [issues page](issues/).
+Feel free to check the [issues page](https://github.com/Zubenna/ror-social-scaffold/issues)
 
 ## Show your support
 
-Give a ⭐️ if you like this project!
+Give a star if you like this project!
 
 ## Acknowledgments
 
-TBA
-
-## 📝 License
-
-TBA
-
+- Project originally taken from The Odin Project
+- Project inspired by Microverse Program
