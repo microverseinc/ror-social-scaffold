@@ -23,7 +23,10 @@ default: &default
 
 development:
   <<: *default
+  
   database: ror_social_scaffold_development
+  username: postgres
+  password: 123123
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
