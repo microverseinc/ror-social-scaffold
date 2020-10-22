@@ -91,7 +91,7 @@ RSpec.describe User, type: :model do
       @sunday = FactoryBot.create(:user)
       @ahmed = FactoryBot.create(:user)
       friendship = @sunday.friendships.build(friend_id: @ahmed.id)
-      friendship.save 
+      friendship.save
     end
 
     it 'should have pending requests' do

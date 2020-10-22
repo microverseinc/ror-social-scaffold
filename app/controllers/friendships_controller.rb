@@ -1,16 +1,46 @@
 class FriendshipsController < ApplicationController
   def index
-    @users = User.all
-    @friends = current_user.friends
-    @pending_requests = current_user.pending_requests
-    @friend_requests = current_user.recieved_requests    
+    get_friends
   end
 
   def create
+    @friend = User.find_by(id: params[:friend_id])
+    unless @friend
+      flash[:danger] = 'Invalid friend request'
+    end
+    if current_user.friend?(@friend)
+      flash[:alert] = "You're already friends with this user"
+    elsif current_user.pending_friends.include?(@friend)
+      flash[:alert] = "Friend request previously sent to this user"
+    elsif current_user.send_request(@friend)
+      flash[:success] = "Friend request sent!"
+    else
+      flash[:danger] = 'Friend request not sent'
+    end
+    redirect_to @friend
+  end
+
+  def update
     
+    get_friends
+    render 'index'
   end
 
   def destroy
-    
+    friendship = Friendship.find_by(id: params[:id])
+    @friend = friendship.friend
+    if friendship and friendship.destroy
+      flash[:alert] = 'Friend deleted'
+    end
+    redirect_to @friend
   end
+
+  private
+
+  def get_friends
+    # @friends = current_user.friends
+    # @pending_requests = current_user.pending_requests.paginate(page: params[:page])
+    @friend_requests = current_user.friend_requests.paginate(page: params[:page])    
+  end
+
 end

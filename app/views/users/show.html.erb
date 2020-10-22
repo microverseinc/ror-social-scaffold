@@ -5,10 +5,28 @@
     <%= @user.name %>
   </h1>
   <article class="timeline">
-    <h3>Recent posts:</h3>
-    <ul class="posts">
-      <%= render @posts %>
-    </ul>
-    <%= will_paginate @posts %>
+    <% unless current_user == @user %>
+      <% if current_user.friend?(@user) %>
+        <div class="btn btn-primary btn-sm friends-button">
+          Friends
+        </div>
+      <% elsif current_user.pending_friends.include?(@user) %>
+        <%= form_with(model: current_user.friendships.find_by(friend_id: @user.id), html: { method: :delete }, local: true) do |f| %>
+          <%= f.submit "Cancel Request", class: "btn btn-secondary btn-sm friends-button" %>
+        <% end %>
+      <% else %>
+        <%= form_with(url: friendships_path(@user), local: true) do |f| %>
+          <div><%= hidden_field_tag :friend_id, @user.id %></div>
+          <%= f.submit "Add Friend", class: "btn btn-primary btn-sm friends-button" %>
+        <% end %>     
+      <% end %>
+    <% end %>
+    <% if current_user.friend?(@user) || current_user == @user %> 
+      <h3>Recent posts:</h3>
+      <ul class="posts">
+        <%= render @posts %>
+      </ul>
+      <%= will_paginate @posts %>
+    <% end %>
   </article>
 </section>

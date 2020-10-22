@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap");
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
 
 $primary-color-dark: #689f38;
 $primary-color: #8bc34a;
@@ -71,7 +72,6 @@ a {
   }
 
   .nav-profile {
-    // width: 15%;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -85,6 +85,7 @@ a {
 #logo {
   margin-left: 8px;
 }
+
 .main {
   display: flex;
   flex-direction: column;
@@ -256,8 +257,11 @@ form {
       margin: 0 4px;
     }
 
-    .post-date {
+    .timestamp {
       font-size: 0.6em;
+      color: $gray-light;
+      // display: block;
+      margin-left: 60px;
     }
   }
 
@@ -301,6 +305,13 @@ form {
     margin-bottom: 16px;
     text-transform: capitalize;
     font-size: 1.2em;
+    overflow: auto;
+    padding: 10px 0;
+    border-bottom: 1px solid $gray-lighter;
+
+    a {
+      color: #337ab7;
+    }
   }
 
   .profile-link {
@@ -363,5 +374,34 @@ form {
   .users-section,
   .user-section {
     width: 50%;
+  }
+}
+
+aside {
+  position: absolute;
+  right: 50px;
+  margin-bottom: 10px;
+}
+
+.stats {
+  overflow: auto;
+  margin-top: 0;
+  padding: 0;
+  a {
+    padding: 0 10px;
+    border-left: 1px solid $gray-lighter;
+    color: gray;
+    &:first-child {
+      padding-left: 0;
+      border: 0;
+    }
+    &:hover {
+      text-decoration: none;
+      color: blue;
+    }
+  }
+
+  strong {
+    display: block;
   }
 }

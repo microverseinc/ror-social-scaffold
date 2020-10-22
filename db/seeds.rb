@@ -25,7 +25,7 @@ users = User.order(:created_at).take(6)
   users.each { |user| user.posts.create!(content: content) }
 end
 
-# Create following relationships.
+# Create following friendships.
 # users = User.all
 # user = users.first
 # following = users[2..50]

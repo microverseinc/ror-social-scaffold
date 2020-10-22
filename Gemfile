@@ -43,7 +43,7 @@ gem 'will_paginate', '~> 3.3'
 gem 'bootstrap-will_paginate', '~> 1.0'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
-
+gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

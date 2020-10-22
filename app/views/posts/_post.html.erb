@@ -1,11 +1,11 @@
 <li class="post">
   <div>
     <div class='post-attribution' >
-    <%= gravatar_for post.user, size: 40 %>
+      <%= gravatar_for post.user, size: 40 %>
       <%= link_to post.user.name, user_path(post.user), id: 'logo', class: 'post-author' %>
     </div>
     <div class='post-liking'>
-      <span class='post-date'> <%= post.created_at.strftime("%Y/%m/%d") %> </span>
+      <span class='timestamp'> Posted <%= time_ago_in_words(post.created_at) %> ago. </span>
       <%= like_or_dislike_btn(post) %>
     </div>
   </div>
@@ -18,9 +18,9 @@
       <div class="post-comments">
         <p>
           <%= gravatar_for comment.user, size: 40 %>
-          <b><%= comment.user.name %>:</b> <%= comment.content %>
+          <b><%= link_to comment.user.name, user_path(comment.user) %>:</b> <%= comment.content %>
         </p>
-        <span> <%= comment.created_at.strftime("%Y/%m/%d") %> </span>
+        <span class='timestamp'><%= time_ago_in_words(comment.created_at) %></span>
       </div>
     <% end %>
 

@@ -16,17 +16,15 @@ class User < ApplicationRecord
   has_many :friendships, dependent: :destroy
   has_many :inverse_friendships, class_name: 'Friendship',
                                   foreign_key: 'friend_id', dependent: :destroy
+  has_many :pending_friends, through: :friendships, source: :friend
+  has_many :friend_requests, through: :inverse_friendships, source: :user                     
 
-  def pending_requests
-    friendships.pending
-  end
+  # def pending_friends
+  #   friendships.pending.map{|friendship| friendship.friend unless friendship.confirmed}.compact
+  # end
 
-  def received_requests
-    inverse_friendships.pending
-  end
-
-  # def friends
-  #   Friendship.where('(user_id = ? AND confirmed = true) OR (friend_id = ? AND confirmed = true)', id, id)
+  # def friend_requests
+  #   inverse_friendships.map{|friendship| friendship.user unless friendship.confirmed}.compact
   # end
 
   def friends    
@@ -39,7 +37,10 @@ class User < ApplicationRecord
     friends.include?(user)
   end
 
-  private
+  def send_request(friend)
+    friendship = friendships.build(friend_id: friend.id)
+    friendship.save
+  end
 
   def accept_friend(user)
     friendship = inverse_friendships.find{|friendship| friendship.user == user}
@@ -56,6 +57,7 @@ class User < ApplicationRecord
     end
   end
 
+  private
   # Converts email to all lower-case.
   def downcase_email
     email.downcase!

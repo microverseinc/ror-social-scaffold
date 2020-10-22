@@ -1,2 +1,21 @@
-<h1>Friendships#index</h1>
-<p>Find me in app/views/friendships/index.html.erb</p>
+<% provide(:title, 'Friend Requests') %>
+<h1>Friend Requests</h1>
+<section class="users-section">
+  <% if @friend_requests.any? %>
+    <ul class="users-list">
+      <% @friend_requests.each do |friend| %>
+        <li>
+          <%= gravatar_for friend, size: 50 %>
+          <%= link_to friend.name, friend %>
+          <%= form_with(model: current_user.inverse_friendships.find_by(user_id: friend.id), local: true) do |f| %>
+            <%= f.submit "Accept Friend", class: "btn btn-primary btn-sm friends-button" %>
+          <% end %>  
+          <%= form_with(model: friend.friendships.find_by(friend_id: current_user.id), html: { method: :delete }, local: true) do |f| %>
+            <%= f.submit "Delete Friend", class: "btn btn-secondary btn-sm friends-button" %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+    <%= will_paginate @friend_requests %>
+  <% end %>
+</section>
