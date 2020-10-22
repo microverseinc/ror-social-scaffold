@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
 
   root 'posts#index'
+  
+  resources :friendships
+
+  # resources :friendships do
+  #   match '/friendship-request', to: 'event_atendees#join_event', via: :post, on: :collection
+  # end
 
   devise_for :users
 

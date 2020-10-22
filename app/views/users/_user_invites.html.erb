@@ -1,0 +1,14 @@
+<% @users_invites.each do |user| %>
+<li>
+  Name: <%= user.name %>
+  
+  <span class="profile-link">
+    <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+    <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+    <%= button_to  "Accepet Request", friendships_path, 
+      params: { :friendship => { :friend_id=> user.id, :status => false}}, 
+    method: :post %>
+
+</li>
+
+<% end %>

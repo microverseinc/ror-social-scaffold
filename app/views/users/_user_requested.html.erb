@@ -1,0 +1,14 @@
+<% @users_requested.each do |user| %>
+<li>
+  Name: <%= user.name %>
+  
+  <span class="profile-link">
+    <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+    <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+    <h1>Awaiting Approval </h1>
+    <%# <%= button_to  "Awaiting approval", friendships_path, 
+      params: { :friendship => { :friend_id=> user.id, :status => false}}, 
+    method: :post %> %>
+  </span>
+</li>
+<% end %>
