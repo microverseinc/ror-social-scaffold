@@ -69,4 +69,17 @@ RSpec.configure do |config|
       with.library :rails
     end
   end
+
+  RSpec.configure do |conf|
+    conf.include FactoryBot::Syntax::Methods
+  end
+
+  RSpec.configure do |conf|
+    conf.include Devise::Test::ControllerHelpers, type: :controller
+    conf.include Devise::Test::ControllerHelpers, type: :view
+  end
+
+  RSpec.configure do |conf|
+    conf.include Warden::Test::Helpers
+  end  
 end
