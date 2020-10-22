@@ -11,6 +11,10 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :friendships
   has_many :inverse_friendships, class_name: :Friendship, foreign_key: :friend_id
+  has_many :confirmed_friendships, -> { where(confirmed: true) }, class_name: 'Friendship'
+  has_many :friends, through: :confirmed_friendships
+  has_many :confirmed_friendships, -> { where(confirmed: true) }, class_name: 'Friendship'
+  has_many :friends, through: :confirmed_friendships
 
   validates :name, presence: true, length: { maximum: 40 }
   validates :email, presence: true, uniqueness: true
@@ -28,16 +32,11 @@ class User < ApplicationRecord
   def confirm_friend(user)
     friendship = inverse_friendships.find { |friend| friend.user == user }
     friendship.confirmed = true
+    friendships.create(friend: user, confirmed: true)
     friendship.save
   end
 
   def friend?(user)
     friends.include?(user)
-  end
-
-  def friends
-    friends_array = friendships.map { |friendship| friendship.friend if friendship.confirmed }
-    friends_array += inverse_friendships.map { |friendship| friendship.user if friendship.confirmed }
-    friends_array.compact
   end
 end
