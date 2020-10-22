@@ -1,0 +1,17 @@
+<% provide(:title, 'Friend Requests') %>
+<h1>Friend Requests</h1>
+<section class="users-section">
+  <% if @friends.any? %>
+    <ul class="users-list">
+      <% @friends.each do |friend| %>
+        <li class="friend-response">
+          <div>
+            <%= gravatar_for friend, size: 50 %>
+            <%= link_to friend.name, friend %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+    <%= will_paginate @friend_requests %>
+  <% end %>
+</section>
