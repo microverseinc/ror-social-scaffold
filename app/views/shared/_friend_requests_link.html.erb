@@ -1,0 +1,9 @@
+<aside class="col-lg">
+  <section class="friend-notification">
+    <% if current_user.friend_requests.any? %>
+      <div class="stats">
+         <h4>See All <a href="<%= friendships_path(current_user) %>">Friend Requests</a></h4>
+      </div>
+    <% end %>
+  </section>
+</aside>

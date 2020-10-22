@@ -1,0 +1,12 @@
+<div class="friends-button-wrap">
+  <div>
+    <%= form_with(model: current_user.inverse_friendships.find_by(user_id: friend.id), local: true) do |f| %>
+      <%= f.submit "Confirm", class: "btn btn-primary btn-sm friend-button confirm" %>
+    <% end %>
+  </div>
+  <div>
+    <%= form_with(model: current_user.inverse_friendships.find_by(user_id: friend.id), html: { method: :delete }, local: true) do |f| %>
+      <%= f.submit "Delete", class: "btn btn-secondary btn-sm friend-button delete" %>
+    <% end %>
+  </div>
+</div>

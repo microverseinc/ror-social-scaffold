@@ -1,10 +1,11 @@
 <% provide(:title, @user.name) %>
+<%= render 'shared/friend_requests_link'%>
 <section class="user-section">
   <h1>
     <%= gravatar_for @user %>
     <%= @user.name %>
   </h1>
-  <article class="timeline">
+  <article class="timeline friend-response">
     <% unless current_user == @user %>
       <% if current_user.friend?(@user) %>
         <div class="btn btn-primary btn-sm friends-button">
@@ -14,6 +15,19 @@
         <%= form_with(model: current_user.friendships.find_by(friend_id: @user.id), html: { method: :delete }, local: true) do |f| %>
           <%= f.submit "Cancel Request", class: "btn btn-secondary btn-sm friends-button" %>
         <% end %>
+        <% elsif current_user.friend_requests.include?(@user) %>
+         <div class="friends-button-wrap">
+            <div>
+              <%= form_with(model: current_user.inverse_friendships.find_by(user_id: @user.id), local: true) do |f| %>
+                <%= f.submit "Confirm", class: "btn btn-primary btn-sm friend-button confirm" %>
+              <% end %>
+            </div>
+            <div>
+              <%= form_with(model: current_user.inverse_friendships.find_by(user_id: @user.id), html: { method: :delete }, local: true) do |f| %>
+                <%= f.submit "Delete", class: "btn btn-secondary btn-sm friend-button delete" %>
+              <% end %>
+            </div>
+          </div>
       <% else %>
         <%= form_with(url: friendships_path(@user), local: true) do |f| %>
           <div><%= hidden_field_tag :friend_id, @user.id %></div>

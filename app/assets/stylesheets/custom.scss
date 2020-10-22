@@ -405,3 +405,35 @@ aside {
     display: block;
   }
 }
+
+.friend-response {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .friends-button-wrap {
+    display: flex;
+    justify-content: space-between;
+
+    .friend-button {
+      width: 80px;
+      margin-right: 10px;
+      margin-left: 10px;
+      text-transform: none;
+    }
+
+    .confirm {
+      color: #fff;
+    }
+
+    .delete {
+      color: #050505;
+      background-color: #e4e6eb;
+
+      &:hover {
+        text-decoration: none;
+        background-color: #f08080;
+      }
+    }
+  }
+}

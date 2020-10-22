@@ -1,6 +1,7 @@
 class FriendshipsController < ApplicationController
   def index
     get_friends
+    store_location
   end
 
   def create
@@ -17,13 +18,15 @@ class FriendshipsController < ApplicationController
     else
       flash[:danger] = 'Friend request not sent'
     end
-    redirect_to @friend
+    redirect_back
   end
 
   def update
-    
-    get_friends
-    render 'index'
+    friendship = Friendship.find_by(id: params[:id])
+    if friendship and current_user.accept_friend(friendship.user)
+      flash[:alert] = "You are now friends with #{friendship.user.name}"
+    end
+    redirect_back
   end
 
   def destroy
@@ -32,14 +35,14 @@ class FriendshipsController < ApplicationController
     if friendship and friendship.destroy
       flash[:alert] = 'Friend deleted'
     end
-    redirect_to @friend
+    redirect_back
   end
 
   private
 
   def get_friends
-    # @friends = current_user.friends
-    # @pending_requests = current_user.pending_requests.paginate(page: params[:page])
+    @friends = current_user.friends.paginate(page: params[:page])
+    @pending_friends = current_user.pending_friends.paginate(page: params[:page])
     @friend_requests = current_user.friend_requests.paginate(page: params[:page])    
   end
 

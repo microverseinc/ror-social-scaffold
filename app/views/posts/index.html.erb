@@ -1,13 +1,4 @@
-<aside class="col-lg">
-  <section class="friend-notification">
-    <% if current_user.friend_requests.any? %>
-      <div class="stats">
-         <h4>See All <a href="<%= friendships_path(current_user) %>">Friend Requests</a></h4>
-      </div>
-    <% end %>
-  </section>
-</aside>
-
+<%= render 'shared/friend_requests_link'%>
 <%= form_for(@post) do |form| %>
   <%= form.label :content %>
   <%= form.text_field :content, id: :post_content, class: 'form-control', placeholder: 'Add New Post' %>

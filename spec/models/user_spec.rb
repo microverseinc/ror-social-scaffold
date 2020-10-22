@@ -90,12 +90,10 @@ RSpec.describe User, type: :model do
     before do
       @sunday = FactoryBot.create(:user)
       @ahmed = FactoryBot.create(:user)
-      friendship = @sunday.friendships.build(friend_id: @ahmed.id)
-      friendship.save
     end
 
     it 'should have pending requests' do
-      expect(@sunday.pending_requests.count).to be > 0
+      expect{ @sunday.send_request(@ahmed) }.to change{ @sunday.pending_friends.count }.by(1)
     end
   end
 
@@ -103,12 +101,10 @@ RSpec.describe User, type: :model do
     before do
       @sunday = FactoryBot.create(:user)
       @ahmed = FactoryBot.create(:user)
-      friendship = @ahmed.friendships.build(friend_id: @sunday.id)
-      friendship.save 
     end
 
     it 'should have received request' do
-      expect(@sunday.received_requests.count).to be > 0
+      expect { @ahmed.send_request(@sunday) }.to change{ @sunday.friend_requests.count }.by(1)
     end
   end
 
@@ -116,11 +112,8 @@ RSpec.describe User, type: :model do
     before do
       @sunday = FactoryBot.create(:user)
       @ahmed = FactoryBot.create(:user)
-      friendship = @ahmed.friendships.build(friend_id: @sunday.id)
-      friendship.save
-      friendship.confirmed = true
-      friendship.save
-      # @sunday.accept_friend(@ahmed)
+      @ahmed.send_request(@sunday)
+      @sunday.accept_friend(@ahmed)
     end
 
     it 'Sunday should be Ahmed\'s friend' do
@@ -129,6 +122,10 @@ RSpec.describe User, type: :model do
 
     it 'Ahmed should be Sunday\'s friend' do
       expect(@sunday.friend?(@ahmed)).to eq(true)
+    end
+
+    it 'should not have pending request from the same user' do
+      expect(@sunday.friend_requests.include?(@ahmed)).not_to eq(true)
     end
   end
 
