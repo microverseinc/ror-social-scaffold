@@ -1,5 +1,6 @@
 class FriendshipsController < ApplicationController
   def index
+    @friends_hash = {}
     get_friends
     store_location
   end
@@ -37,8 +38,19 @@ class FriendshipsController < ApplicationController
   private
 
   def get_friends
-    @friends = current_user.friends.paginate(page: params[:page])
-    @pending_friends = current_user.pending_friends.paginate(page: params[:page])
-    @friend_requests = current_user.friend_requests.paginate(page: params[:page])
+    case params[:friendship_type]
+    when 'friend'
+      @friends_hash[:friends_type] = 'friend'
+      @friends_hash[:title] = 'Friends'
+      @friends_hash[:friends] = current_user.friends.paginate(page: params[:page])
+    when 'pending_friend'
+      @friends_hash[:friends_type] = 'pending_friend'
+      @friends_hash[:title] = 'Pending Friends'
+      @friends_hash[:friends] = current_user.pending_friends.paginate(page: params[:page])
+    when 'friend_request'
+      @friends_hash[:friends_type] = 'friend_request'
+      @friends_hash[:title] = 'Friend Requests'
+      @friends_hash[:friends] = current_user.friend_requests.paginate(page: params[:page])
+    end   
   end
 end

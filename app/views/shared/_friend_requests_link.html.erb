@@ -1,9 +1,29 @@
-<aside class="col-lg">
+<!-- <aside class="col-lg">
   <section class="friend-notification">
     <% if current_user.friend_requests.any? %>
       <div class="stats">
-         <h4>See All <a href="<%= friendships_path(current_user) %>">Friend Requests</a></h4>
+         <h4>See All <a href="<%= friendships_url(friendship_type: 'friend_request') %>">Friend Requests</a></h4>
       </div>
     <% end %>
   </section>
+</aside> -->
+
+<aside class="col-lg">
+  <div class="friend-links">
+    <div>
+      <a href="<%= friendships_url(friendship_type: 'friend') %>">Friends 
+        <strong id="friends" class="stat"><%= current_user.friends.count %></strong>
+      </a>
+    </div>
+    <span class="divider"></span>
+    <div>
+      <a href="<%= friendships_url(friendship_type: 'friend_request') %>">Friend Requests
+        <strong id="friends" class="stat"><%= current_user.friend_requests.count %></strong>
+      </a>
+    </div>
+    <span class="divider"></span>
+    <div>
+      <a href="<%= friendships_url(friendship_type: 'pending_friend') %>">Pending Requests</a>
+    </div>
+  </div>
 </aside>

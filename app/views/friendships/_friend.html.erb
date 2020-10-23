@@ -1,0 +1,9 @@
+<% @friends_hash[:friends].each do |friend| %>
+  <li class="friend-response">
+    <div>
+      <%= gravatar_for friend, size: 50 %>
+      <%= link_to friend.name, friend %>
+    </div>
+    <div class="btn btn-primary btn-sm already-friends-button">Friends</div>    
+  </li>
+<% end %>

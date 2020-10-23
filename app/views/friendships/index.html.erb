@@ -1,29 +1,17 @@
-<% provide(:title, 'Friend Requests') %>
-<h1>Friend Requests</h1>
+<% provide(:title, @friends_hash[:title]) %>
+<%= render 'shared/friend_requests_link' %>
+<h1><%= @friends_hash[:title] %></h1>
 <section class="users-section">
-  <% if @friend_requests.any? %>
+  <% if @friends_hash[:friends] %>
     <ul class="users-list">
-      <% @friend_requests.each do |friend| %>
-        <li class="friend-response">
-          <div>
-            <%= gravatar_for friend, size: 50 %>
-            <%= link_to friend.name, friend %>
-          </div>
-          <div class="friends-button-wrap">
-            <div>
-              <%= form_with(model: current_user.inverse_friendships.find_by(user_id: friend.id), local: true) do |f| %>
-                <%= f.submit "Confirm", class: "btn btn-primary btn-sm friend-button confirm" %>
-              <% end %>
-            </div>
-            <div>
-              <%= form_with(model: current_user.inverse_friendships.find_by(user_id: friend.id), html: { method: :delete }, local: true) do |f| %>
-                <%= f.submit "Delete", class: "btn btn-secondary btn-sm friend-button delete" %>
-              <% end %>
-            </div>
-          </div>
-        </li>
+      <% if @friends_hash[:friends_type] == 'friend' %>
+        <%= render 'friend' %>
+      <% elsif @friends_hash[:friends_type] == 'friend_request' %>
+        <%= render 'friend_request' %>
+      <% elsif @friends_hash[:friends_type] == 'pending_friend' %>
+        <%= render 'pending_friend' %>
       <% end %>
     </ul>
-    <%= will_paginate @friend_requests %>
+    <%= will_paginate @friends_hash[:friends] %>
   <% end %>
 </section>

@@ -380,7 +380,12 @@ form {
 aside {
   position: absolute;
   right: 50px;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
+
+  .friend-links {
+    // display: flex;
+    // justify-content: space-between;
+  }
 }
 
 .stats {
@@ -416,7 +421,7 @@ aside {
     justify-content: space-between;
 
     .friend-button {
-      width: 80px;
+      width: 100px;
       margin-right: 10px;
       margin-left: 10px;
       text-transform: none;
@@ -436,4 +441,27 @@ aside {
       }
     }
   }
+}
+
+.friend-buttons {
+  display: flex;
+  justify-content: space-around;
+
+  div {
+    padding: 10px;
+  }
+
+  h4 {
+
+  }
+}
+
+.already-friends-button {
+  color: #050505;
+  border: #e4e6eb;;
+  background-color: #e4e6eb;
+}
+
+.stat {
+  font-weight: lighter;
 }

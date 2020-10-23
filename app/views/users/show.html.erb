@@ -1,5 +1,7 @@
 <% provide(:title, @user.name) %>
-<%= render 'shared/friend_requests_link'%>
+<% if @user == current_user %>
+  <%= render 'shared/friend_requests_link' %>
+<% end %>
 <section class="user-section">
   <h1>
     <%= gravatar_for @user %>
@@ -8,7 +10,7 @@
   <article class="timeline friend-response">
     <% unless current_user == @user %>
       <% if current_user.friend?(@user) %>
-        <div class="btn btn-primary btn-sm friends-button">
+        <div class="btn btn-primary btn-sm already-friends-button">
           Friends
         </div>
       <% elsif current_user.pending_friends.include?(@user) %>
