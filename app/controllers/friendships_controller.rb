@@ -1,7 +1,6 @@
 class FriendshipsController < ApplicationController
-  before_action :set_friendship, only: [:show, :edit, :update, :destroy]
+  before_action :set_friendship, only: %i[show edit update destroy]
   before_action :authenticate_user!
-  
 
   # GET /friendships
   # GET /friendships.json
@@ -12,8 +11,7 @@ class FriendshipsController < ApplicationController
 
   # GET /friendships/1
   # GET /friendships/1.json
-  def show
-  end
+  def show; end
 
   # GET /friendships/new
   def new
@@ -21,22 +19,19 @@ class FriendshipsController < ApplicationController
   end
 
   # GET /friendships/1/edit
-  def edit
-  end
- 
+  def edit; end
 
   # POST /friendships
   # POST /friendships.json
   def create
-    
     @friendship = current_user.friendships.build(friendship_params)
 
     respond_to do |format|
       if @friendship.save
-        format.html { redirect_to request.referrer, notice: "Friendship requested!"}
+        format.html { redirect_to request.referrer, notice: 'Friendship requested!' }
         format.json { render :show, status: :created, location: @friendship }
       else
-        format.html { redirect_to request.referrer, alert: "Error"}
+        format.html { redirect_to request.referrer, alert: 'Error'}
         format.json { render json: @friendship.errors, status: :unprocessable_entity }
       end
     end
@@ -59,15 +54,15 @@ class FriendshipsController < ApplicationController
   def decline_friendship
     @friendship = Friendship.decline_friendship(params[:friendship])
     respond_to do |format|
-        format.html { redirect_to request.referrer, notice: "Friendship request declined!"}
-        format.json { render :show, status: :created, location: @friendship }
-      end
+      format.html { redirect_to request.referrer, notice: 'Friendship request declined!'}
+      format.json { render :show, status: :created, location: @friendship }
+    end
   end
 
   def accept_friendship
     Friendship.accept_friendship(params[:friendship])
     respond_to do |format|
-      format.html { redirect_to request.referrer, notice: "Friendship accepted!"}
+      format.html { redirect_to request.referrer, notice: 'Friendship accepted!'}
       format.json { render :show, status: :created, location: @friendship }
     end
   end
@@ -75,19 +70,20 @@ class FriendshipsController < ApplicationController
   def undo_friendship
     Friendship.undo_friendship(params[:friendship])
     respond_to do |format|
-      format.html { redirect_to request.referrer, notice: "Friendship undone!"}
+      format.html { redirect_to request.referrer, notice: 'Friendship undone!'}
       format.json { render :show, status: :created, location: @friendship }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_friendship
-      @friendship = Friendship.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def friendship_params
-      params.require(:friendship).permit(:user_id, :friend_id, :status)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_friendship
+    @friendship = Friendship.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def friendship_params
+    params.require(:friendship).permit(:user_id, :friend_id, :status)
+  end
 end

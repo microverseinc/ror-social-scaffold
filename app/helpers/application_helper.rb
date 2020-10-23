@@ -18,6 +18,6 @@ module ApplicationHelper
 
   def friendship_status(user, current_user)
     status = Friendship.check_friendship_status(user, current_user)
-    return status
-  end  
+    status
+  end
 end
