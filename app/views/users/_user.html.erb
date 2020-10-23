@@ -1,12 +1,22 @@
 <li>
   Name: <%= user.name %>
+  <span class="profile-link">
+    <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+  </span>
   <span>
     <%= form_with(url: "/friendships", method: "post") do |f| %>
-      <span class="profile-link">
-        <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-      </span>
       <%= f.hidden_field :friend_id, value: user.id %>
-      <%= f.submit 'Invite to Friendship', class: 'profile_link' %>
+      <% if current_user.sent_invite?(user) %>
+        <span><%= button_tag 'Invite Sent', type: 'button', disbaled: true, class: 'btn btn-secondary' %></span>
+        <span><%= button_tag 'Cancel Invite', type: 'button', class: 'btn btn-secondary' %></span>
+      <% elsif current_user.incoming_invite?(user) %>
+        <span><%= button_tag 'Accept Friend', type: 'button', class: 'btn btn-secondary' %></span>
+        <span><%= button_tag 'Reject Friend', type: 'button', class: 'btn btn-secondary' %></span>
+      <% elsif current_user.friend?(user) %>
+        <span><%= button_tag 'You\'re Friends', type: 'button', disbaled: true, class: 'btn btn-secondary' %></span>
+      <% else %>
+        <span><%= f.submit 'Invite Friend' %></span>
+      <% end%>
     <% end %>
   </span>
 </li>

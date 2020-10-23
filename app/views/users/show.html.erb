@@ -1,5 +1,21 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
+  <span>
+    <%= form_with(url: "/friendships", method: "post") do |f| %>
+      <%= f.hidden_field :friend_id, value: @user.id %>
+      <% if current_user.sent_invite?(@user) %>
+        <span><%= button_tag 'Invite Sent', type: 'button', disbaled: true, class: 'btn btn-secondary' %></span>
+        <span><%= button_tag 'Cancel Invite', type: 'button', class: 'btn btn-secondary' %></span>
+      <% elsif current_user.incoming_invite?(@user) %>
+        <span><%= button_tag 'Accept Friend', type: 'button', class: 'btn btn-secondary' %></span>
+        <span><%= button_tag 'Reject Friend', type: 'button', class: 'btn btn-secondary' %></span>
+      <% elsif current_user.friend?(@user) %>
+        <span><%= button_tag 'You\'re Friends', type: 'button', disbaled: true, class: 'btn btn-secondary' %></span>
+      <% else %>
+        <span><%= f.submit 'Invite Friend' %></span>
+      <% end%>
+    <% end %>
+  </span>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
