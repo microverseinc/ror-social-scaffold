@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-
   before do
     @user = FactoryBot.create(:user)
   end
@@ -13,11 +12,11 @@ RSpec.describe User, type: :model do
     it 'should respond to name' do
       expect(@user).to respond_to(:name)
     end
-  
+
     it 'should respond to email' do
       expect(@user).to respond_to(:email)
     end
-    
+
     it 'should respond to password' do
       expect(@user).to respond_to(:password)
     end
@@ -86,25 +85,25 @@ RSpec.describe User, type: :model do
     end
   end
 
-  context 'when sends friend requests' do 
+  context 'when sends friend requests' do
     before do
       @sunday = FactoryBot.create(:user)
       @ahmed = FactoryBot.create(:user)
     end
 
     it 'should have pending requests' do
-      expect{ @sunday.send_request(@ahmed) }.to change{ @sunday.pending_friends.count }.by(1)
+      expect { @sunday.send_request(@ahmed) }.to change { @sunday.pending_friends.count }.by(1)
     end
   end
 
-  context 'when receives friend requests' do 
+  context 'when receives friend requests' do
     before do
       @sunday = FactoryBot.create(:user)
       @ahmed = FactoryBot.create(:user)
     end
 
     it 'should have received request' do
-      expect { @ahmed.send_request(@sunday) }.to change{ @sunday.friend_requests.count }.by(1)
+      expect { @ahmed.send_request(@sunday) }.to change { @sunday.friend_requests.count }.by(1)
     end
   end
 
@@ -137,7 +136,7 @@ RSpec.describe User, type: :model do
     end
 
     it 'should destroy his friendships' do
-      expect { User.find(@sunday.id).destroy}.to change{ @ahmed.reload.friends.count }.by(-1)
+      expect { User.find(@sunday.id).destroy}.to change { @ahmed.reload.friends.count }.by(-1)
     end
   end
 end

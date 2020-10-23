@@ -11,4 +11,4 @@ class UsersController < ApplicationController
     @posts = @user.posts.ordered_by_most_recent.paginate(page: params[:page])
     store_location
   end
-end         
+end

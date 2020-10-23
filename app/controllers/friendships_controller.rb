@@ -6,15 +6,13 @@ class FriendshipsController < ApplicationController
 
   def create
     @friend = User.find_by(id: params[:friend_id])
-    unless @friend
-      flash[:danger] = 'Invalid friend request'
-    end
+    flash[:danger] = 'Invalid friend request' unless @friend
     if current_user.friend?(@friend)
       flash[:alert] = "You're already friends with this user"
     elsif current_user.pending_friends.include?(@friend)
-      flash[:alert] = "Friend request previously sent to this user"
+      flash[:alert] = 'Friend request previously sent to this user'
     elsif current_user.send_request(@friend)
-      flash[:success] = "Friend request sent!"
+      flash[:success] = 'Friend request sent!'
     else
       flash[:danger] = 'Friend request not sent'
     end
@@ -32,9 +30,7 @@ class FriendshipsController < ApplicationController
   def destroy
     friendship = Friendship.find_by(id: params[:id])
     @friend = friendship.friend
-    if friendship and friendship.destroy
-      flash[:alert] = 'Friend deleted'
-    end
+    flash[:alert] = 'Friend deleted' if friendship&.destroy
     redirect_back
   end
 
@@ -43,7 +39,6 @@ class FriendshipsController < ApplicationController
   def get_friends
     @friends = current_user.friends.paginate(page: params[:page])
     @pending_friends = current_user.pending_friends.paginate(page: params[:page])
-    @friend_requests = current_user.friend_requests.paginate(page: params[:page])    
+    @friend_requests = current_user.friend_requests.paginate(page: params[:page])
   end
-
 end

@@ -2408,6 +2408,14 @@ css-tree@1.0.0-alpha.37:
     mdn-data "2.0.4"
     source-map "^0.6.1"
 
+css-tree@1.0.0-alpha.38:
+  version "1.0.0-alpha.38"
+  resolved "https://registry.yarnpkg.com/css-tree/-/css-tree-1.0.0-alpha.38.tgz#a75431f4162da84dbdb3c4804e79ad784aa7593c"
+  integrity sha512-pWuxS4kaECFopOc1NZff+dYdw+brc1Tt0UAuTiw56/Trtae4NdHtbDH24311UWfMmcpZe7jLy0e64ZeJg9t7bQ==
+  dependencies:
+    mdn-data "2.0.6"
+    source-map "^0.6.1"
+
 css-tree@1.0.0-alpha.39:
   version "1.0.0-alpha.39"
   resolved "https://registry.yarnpkg.com/css-tree/-/css-tree-1.0.0-alpha.39.tgz#2bff3ffe1bb3f776cf7eefd91ee5cba77a149eeb"
@@ -7580,6 +7588,13 @@ stylelint-config-standard@^20.0.0:
   integrity sha512-IB2iFdzOTA/zS4jSVav6z+wGtin08qfj+YyExHB3LF9lnouQht//YyB0KZq9gGz5HNPkddHOzcY8HsUey6ZUlA==
   dependencies:
     stylelint-config-recommended "^3.0.0"
+
+stylelint-csstree-validator@^1.8.0:
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/stylelint-csstree-validator/-/stylelint-csstree-validator-1.8.0.tgz#f8e0179ba115b82249344b16f737968dc21cd408"
+  integrity sha512-S9PAu3/HTkRstKOHgD6Bm6pgf2u/u0jwCOFEq4tmnnvlHchL2SGFgifPl4gTDOQwMxcV12WmXMgsn8NH+2ttRw==
+  dependencies:
+    css-tree "1.0.0-alpha.38"
 
 stylelint-scss@^3.17.2:
   version "3.18.0"

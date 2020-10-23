@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Friendship, type: :model do
-
   before do
     @sunday = FactoryBot.create(:user)
     @ahmed = FactoryBot.create(:user)
@@ -9,8 +8,7 @@ RSpec.describe Friendship, type: :model do
   end
 
   context 'when created' do
-    
-    it 'should be valid' do      
+    it 'should be valid' do
       expect(@friendship).to be_valid
     end
 
@@ -18,13 +16,13 @@ RSpec.describe Friendship, type: :model do
       expect(Friendship.count).to eq(1)
     end
 
-    it 'confirmed should be false' do      
+    it 'confirmed should be false' do
       expect(@friendship.reload.confirmed).to eq(false)
     end
 
     it 'confirmed should be true' do
       @friendship.confirmed = true
-      @friendship.save 
+      @friendship.save
       expect(@friendship.reload.confirmed).to eq(true)
     end
   end
