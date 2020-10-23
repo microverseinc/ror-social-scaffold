@@ -1,19 +1,28 @@
-<% return if !@sent_requests %>
-<h3><%= "#{@sent_requests.count} Pending Sent Requests" %></h3><br>
-<% @sent_requests.each do | request | %>
-<p>
-  <strong><%= request.name %></strong>
-  <span><%= button_tag 'Invite Sent', type: 'button', disbaled: true, class: 'btn btn-secondary' %></span>
-  <span><%= button_tag 'Reject Friend', type: 'button', class: 'btn btn-secondary' %></span>
-</p><br>
-<% end %>
-
-<% return if !@incoming_requests %>
-<h3><%= "#{@incoming_requests.count} Pending Incoming Requests" %></h3><br>
-<% @incoming_requests.each do | request | %>
-<p>
-  <strong><%= request.name %></strong>
-  <span><%= button_tag 'Invite Sent', type: 'button', disbaled: true, class: 'btn btn-secondary' %></span>
-  <span><%= button_tag 'Reject Friend', type: 'button', class: 'btn btn-secondary' %></span>
-</p><br>
-<% end %>
+<section class="users-section">
+  <ul class="users-list">  
+    <% return if !@sent_requests %>
+    <h2><%= "#{@sent_requests.count} Pending Sent Requests" %></h2>
+    <hr>
+    <br>
+    <% @sent_requests.each do | sent_request | %>
+    <li>
+      <strong><%= link_to sent_request.name, user_path(sent_request)  %></strong>
+      <span><%= button_tag 'Invite Sent', type: 'button', disbaled: true, class: 'btn btn-secondary' %></span>
+      <span><%= button_tag 'Reject Friend', type: 'button', class: 'btn btn-secondary' %></span>
+      <br>
+    </li>
+    <% end %>
+    <br>
+    <% return if !@incoming_requests %>
+    <h2><%= "#{@incoming_requests.count} Pending Incoming Requests" %></h2>
+    <hr>
+    <% @incoming_requests.each do | incoming_request | %>
+    <br>
+    <li>
+      <strong><%= link_to incoming_request.name, user_path(incoming_request) %></strong>
+      <span><%= button_tag 'Invite Sent', type: 'button', disbaled: true, class: 'btn btn-secondary' %></span>
+      <span><%= button_tag 'Reject Friend', type: 'button', class: 'btn btn-secondary' %></span>
+    </li>
+    <% end %>
+    </ul>
+</section>
