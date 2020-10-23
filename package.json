@@ -2,6 +2,7 @@
   "name": "ror_social_scaffold",
   "private": true,
   "dependencies": {
+    "@rails/ujs": "^6.0.3-4",
     "@rails/webpacker": "5.2.1",
     "bootstrap": "3.4.1",
     "jquery": "3.4.1"
