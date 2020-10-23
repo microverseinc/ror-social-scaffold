@@ -4,8 +4,7 @@
   
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-    <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-    <%= button_to  "Send Request", friendships_path, 
+    <%= button_to  "Invite to friendship", friendships_path, 
       params: { :friendship => { :friend_id=> user.id, :status => false}}, 
     method: :post %>
   </span>

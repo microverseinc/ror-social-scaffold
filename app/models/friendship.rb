@@ -34,6 +34,21 @@ class Friendship < ApplicationRecord
     end 
   end
 
+  def self.check_friendship_status(user, current_user)
+    if user.id == current_user.id
+      return "Self"
+    elsif current_user.friendships.where(friend_id: user.id, status: false).exists?
+      return "Invitation sent"
+    elsif user.friendships.where(friend_id: current_user.id, status: false).exists?  
+      return "Requested friendship"
+    elsif user.friendships.where(friend_id: current_user.id, status: true).exists?  ||  current_user.friendships.where(friend_id: user.id, status: true).exists?
+      return "Friends"
+    else
+      return "No relation" 
+  end
+  
+  end  
+
   belongs_to :user
   belongs_to :friend, class_name: 'User'
 

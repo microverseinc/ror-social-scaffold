@@ -13,7 +13,9 @@ class UsersController < ApplicationController
 
   def lists_of_users
     @users.each do |user|
-      if current_user.friendships.where(friend_id: user.id, status: false).exists?
+      if user.id == current_user.id
+        next
+      elsif current_user.friendships.where(friend_id: user.id, status: false).exists?
         @users_requested << user
       elsif user.friendships.where(friend_id: current_user.id, status: false).exists?  
         @users_invites << user

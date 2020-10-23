@@ -15,4 +15,9 @@ module ApplicationHelper
       link_to('Like!', post_likes_path(post_id: post.id), method: :post)
     end
   end
+
+  def friendship_status(user, current_user)
+    status = Friendship.check_friendship_status(user, current_user)
+    return status
+  end  
 end

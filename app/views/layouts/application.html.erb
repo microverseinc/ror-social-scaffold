@@ -11,12 +11,15 @@
     <nav class="nav">
       <%= link_to 'Stay in touch', root_path %>
       <div class="menu">
+      <%if current_user %>
         <div class="menu-item">
           <%= menu_link_to 'Timeline', posts_path %>
         </div>
         <div class="menu-item">
           <%= menu_link_to 'All users', users_path %>
         </div>
+        
+        <% end %>
       </div>
       <% if current_user %>
         <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>

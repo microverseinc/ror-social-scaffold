@@ -1,5 +1,15 @@
 <section class="user-section">
-  <h2><%= "Name: #{@user.name}" %></h2>
+  <h2><%= "Name: #{@user.name}" %> </h2>
+  <% if friendship_status(@user, current_user) == "No relation" %> 
+    <%= button_to "Invite to friendship", friendships_path,
+          params: { :friendship => { :friend_id => @user.id, :status => false } },
+          method: :post, data: { confirm: "Are you sure?" } %>
+  <% elsif friendship_status(@user, current_user) == "Invitation sent" %>  
+  Invitation sent!
+    <%= button_to "Undo Request", decline_friendship_friendships_path,
+          params: { :friendship => { :user_id => current_user.id, :friend_id => @user.id } },
+          method: :post, data: { confirm: "Are you sure?" } %>
+  <% end %>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
