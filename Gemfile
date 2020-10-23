@@ -12,6 +12,7 @@ gem 'rails', '~> 6.0', '>= 6.0.3.4'
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.12'
+gem 'sass-rails', '~> 6.0'
 gem 'webpacker', '~> 5.2', '>= 5.2.1'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'

@@ -29,7 +29,5 @@ module RorSocialScaffold
 
     # Don't generate system test files.
     config.generators.system_tests = nil
-
-    config.i18n.fallbacks = [I18n.default_locale]
   end
 end
