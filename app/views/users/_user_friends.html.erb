@@ -1,14 +1,17 @@
-<% @users_requested.each do |user| %>
+<% @users_friends.each do |user| %>
 <li>
   Name: <%= user.name %>
   
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-        
-    <%= button_to  "Undo Request", decline_friendship_friendships_path, 
-      params: {:friendship => {:user_id => current_user.id, :friend_id=> user.id} }, 
+    
+    
+    <%= button_to  "Undo friendship", undo_friendship_friendships_path, 
+      params: {:friendship => {:user_id => user.id, :friend_id=> current_user.id} }, 
     method: :post, data: { confirm: 'Are you sure?' } %>
   </span>
+
 </li>
+
 <% end %>

@@ -56,13 +56,27 @@ class FriendshipsController < ApplicationController
     end
   end
 
-  # DELETE /friendships/1
-  # DELETE /friendships/1.json
-  def destroy
-    @friendship.destroy
+  def decline_friendship
+    @friendship = Friendship.decline_friendship(params[:friendship])
     respond_to do |format|
-      format.html { redirect_to friendships_url, notice: 'Friendship was successfully destroyed.' }
-      format.json { head :no_content }
+        format.html { redirect_to request.referrer, notice: "Friendship request declined!"}
+        format.json { render :show, status: :created, location: @friendship }
+      end
+  end
+
+  def accept_friendship
+    Friendship.accept_friendship(params[:friendship])
+    respond_to do |format|
+      format.html { redirect_to request.referrer, notice: "Friendship accepted!"}
+      format.json { render :show, status: :created, location: @friendship }
+    end
+  end
+
+  def undo_friendship
+    Friendship.undo_friendship(params[:friendship])
+    respond_to do |format|
+      format.html { redirect_to request.referrer, notice: "Friendship undone!"}
+      format.json { render :show, status: :created, location: @friendship }
     end
   end
 

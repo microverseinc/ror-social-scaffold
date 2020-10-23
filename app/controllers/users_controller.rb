@@ -2,20 +2,28 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @users2 = User.includes(:friendships)
+    @users = User.includes(:friendships)
     @users_requested = []
     @users_unrequested = []
     @users_invites = []
-    @users2.each do |user|
-      if current_user.friendships.where(friend_id: user.id).exists?
+    @users_friends = []
+    lists_of_users()
+
+  end
+
+  def lists_of_users
+    @users.each do |user|
+      if current_user.friendships.where(friend_id: user.id, status: false).exists?
         @users_requested << user
-      elsif user.friendships.where(friend_id: current_user.id).exists?  
+      elsif user.friendships.where(friend_id: current_user.id, status: false).exists?  
         @users_invites << user
+      elsif user.friendships.where(friend_id: current_user.id, status: true).exists?  ||  current_user.friendships.where(friend_id: user.id, status: true).exists?
+        @users_friends << user
       else 
         @users_unrequested << user
       end
-    end  
-  end
+    end
+  end  
 
   def show
     @user = User.find(params[:id])

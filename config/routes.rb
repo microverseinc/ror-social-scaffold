@@ -2,7 +2,11 @@ Rails.application.routes.draw do
 
   root 'posts#index'
   
-  resources :friendships
+  resources :friendships do
+    match '/decline_friendship', to: 'friendships#decline_friendship', via: :post, on: :collection
+    match '/accept_friendship', to: 'friendships#accept_friendship', via: :post, on: :collection
+    match '/undo_friendship', to: 'friendships#undo_friendship', via: :post, on: :collection
+  end
 
   # resources :friendships do
   #   match '/friendship-request', to: 'event_atendees#join_event', via: :post, on: :collection
