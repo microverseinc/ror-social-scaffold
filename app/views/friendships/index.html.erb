@@ -1,0 +1,19 @@
+<% return if !@sent_requests %>
+<h3><%= "#{@sent_requests.count} Pending Sent Requests" %></h3><br>
+<% @sent_requests.each do | request | %>
+<p>
+  <strong><%= request.name %></strong>
+  <span><%= button_tag 'Invite Sent', type: 'button', disbaled: true, class: 'btn btn-secondary' %></span>
+  <span><%= button_tag 'Reject Friend', type: 'button', class: 'btn btn-secondary' %></span>
+</p><br>
+<% end %>
+
+<% return if !@incoming_requests %>
+<h3><%= "#{@incoming_requests.count} Pending Incoming Requests" %></h3><br>
+<% @incoming_requests.each do | request | %>
+<p>
+  <strong><%= request.name %></strong>
+  <span><%= button_tag 'Invite Sent', type: 'button', disbaled: true, class: 'btn btn-secondary' %></span>
+  <span><%= button_tag 'Reject Friend', type: 'button', class: 'btn btn-secondary' %></span>
+</p><br>
+<% end %>

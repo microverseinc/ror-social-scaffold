@@ -1,6 +1,11 @@
 class FriendshipsController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    @sent_requests = current_user.sent_requests
+    @incoming_requests = current_user.incoming_requests
+  end
+  
   def create
     # byebug
     @users = User.all

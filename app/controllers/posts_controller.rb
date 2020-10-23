@@ -4,8 +4,6 @@ class PostsController < ApplicationController
   def index
     @post = Post.new
     timeline_posts
-    @sent_requests = current_user.sent_requests
-    @incoming_requests = current_user.incoming_requests
   end
 
   def create
