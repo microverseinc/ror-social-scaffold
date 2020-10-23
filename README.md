@@ -12,7 +12,8 @@ This project entails building a social media application with ruby on rails usin
 - User can see list of pending friend request.
 - Logged in Users can see all users that have signed up in the app.
 - User can make a post.
-- User can make a comment
+- User can make a comment.
+- Mutual friendship with two rows implemented.
 
 ## Project SetUp/Installation
 
