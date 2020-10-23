@@ -4,6 +4,7 @@ class PostsController < ApplicationController
   def index
     @post = Post.new
     timeline_posts
+    
   end
 
   def create
@@ -20,7 +21,8 @@ class PostsController < ApplicationController
   private
 
   def timeline_posts
-    @timeline_posts ||= Post.all.ordered_by_most_recent.includes(:user)
+    friends_list = Friendship.list_of_friends_ids(current_user)
+    @timeline_posts ||= Post.all.ordered_by_most_recent.where(user_id: friends_list).includes(:user)
   end
 
   def post_params

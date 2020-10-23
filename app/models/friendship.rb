@@ -1,6 +1,8 @@
 class Friendship < ApplicationRecord
   validate :validate_friendship
-  after_destroy
+  
+  belongs_to :user
+  belongs_to :friend, class_name: 'User'
 
   def validate_friendship
     request_friendship_self
@@ -48,6 +50,18 @@ class Friendship < ApplicationRecord
     end
   end
 
-  belongs_to :user
-  belongs_to :friend, class_name: 'User'
+  def self.list_of_friends_ids(current_user)
+    friends_requested_ids = Friendship.where(friend_id: current_user.id, status: true)
+    friends_invited_ids = Friendship.where(user_id: current_user.id, status: true)
+    friends_list = []
+    friends_requested_ids.each { |n| friends_list << n.user_id }
+    friends_invited_ids.each { |n| friends_list << n.friend_id}
+    friends_list << current_user.id
+    return friends_list
+  end 
+
+
+
+
+  
 end
