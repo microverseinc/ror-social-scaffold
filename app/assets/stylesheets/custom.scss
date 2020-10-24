@@ -377,37 +377,30 @@ form {
   }
 }
 
-aside {
-  position: absolute;
-  right: 50px;
-  margin-bottom: 30px;
+#sidebar-wrapper {
+  left: 15px;
+  min-height: 100vh;
+  position: fixed;
 
-  .friend-links {
-    // display: flex;
-    // justify-content: space-between;
+  .sidebar-heading {
+    padding: 0.875rem 1.25rem 0.875rem  0;
+    font-size: 1.6rem;
   }
-}
 
-.stats {
-  overflow: auto;
-  margin-top: 0;
-  padding: 0;
-  a {
-    padding: 0 10px;
-    border-left: 1px solid $gray-lighter;
-    color: gray;
-    &:first-child {
-      padding-left: 0;
-      border: 0;
-    }
-    &:hover {
+  .list-group {
+    width: 15rem;
+
+    a {
+      padding: 6px 8px 6px 16px;
       text-decoration: none;
-      color: blue;
-    }
-  }
+      font-size: 1.4rem;
+      color: #2196f3;
+      display: block;
 
-  strong {
-    display: block;
+      &:hover {
+        color: #064579;
+      }
+    }
   }
 }
 

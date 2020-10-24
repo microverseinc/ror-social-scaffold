@@ -1,29 +1,14 @@
-<!-- <aside class="col-lg">
-  <section class="friend-notification">
-    <% if current_user.friend_requests.any? %>
-      <div class="stats">
-         <h4>See All <a href="<%= friendships_url(friendship_type: 'friend_request') %>">Friend Requests</a></h4>
-      </div>
-    <% end %>
-  </section>
-</aside> -->
-
-<aside class="col-lg">
-  <div class="friend-links">
-    <div>
-      <a href="<%= friendships_url(friendship_type: 'friend') %>">Friends 
-        <strong id="friends" class="stat"><%= current_user.friends.count %></strong>
-      </a>
-    </div>
-    <span class="divider"></span>
-    <div>
-      <a href="<%= friendships_url(friendship_type: 'friend_request') %>">Friend Requests
-        <strong id="friends" class="stat"><%= current_user.friend_requests.count %></strong>
-      </a>
-    </div>
-    <span class="divider"></span>
-    <div>
-      <a href="<%= friendships_url(friendship_type: 'pending_friend') %>">Pending Requests</a>
-    </div>
+<div class="bg-light border-right" id="sidebar-wrapper">
+  <div class="sidebar-heading">All Friends</div>
+  <div class="list-group list-group-flush">
+    <a class="list-group-item list-group-item-action bg-light" href="<%= friendships_url(friendship_type: 'friend') %>">
+      <strong id="friends" class="stat"><%= pluralize(current_user.friends.count, 'Friend') %></strong>
+    </a>
+    <a class="list-group-item list-group-item-action bg-light" href="<%= friendships_url(friendship_type: 'friend_request') %>">
+      <strong id="friends" class="stat"><%= pluralize(current_user.friend_requests.count, 'Friend Request') %></strong>      
+    </a>
+    <a class="list-group-item list-group-item-action bg-light" href="<%= friendships_url(friendship_type: 'pending_friend') %>">
+      <%= pluralize(current_user.friends.count, 'Sent Request') %>
+    </a>
   </div>
-</aside>
+</div>
