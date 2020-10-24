@@ -6,7 +6,8 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i.freeze
-  validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
+  validates :email, presence: true, length: { maximum: 255 },
+                    format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
   before_save :downcase_email
 
   has_many :posts, dependent: :destroy
@@ -21,7 +22,7 @@ class User < ApplicationRecord
 
   def friends
     friends_array = friendships.map { |friendship| friendship.friend if friendship.confirmed } +
-                    inverse_friendships.map { |friendship| friendship.user if friendship.confirmed}
+                    inverse_friendships.map { |friendship| friendship.user if friendship.confirmed }
     friends_array.compact.sort_by(&:created_at).reverse
   end
 
@@ -35,16 +36,16 @@ class User < ApplicationRecord
   end
 
   def accept_friend(user)
-    friendship = inverse_friendships.find { |friendship| friendship.user == user}
-    if friendship
-      friendship.confirmed = true
-      friendship.save
-    end
+    new_friend = inverse_friendships.find { |friendship| friendship.user == user }
+    return unless new_friend
+
+    new_friend.confirmed = true
+    new_friend.save
   end
 
   def reject_friend(user)
-    friendship = inverse_friendships.find { |friendship| friendship.user == user}
-    friendship&.delete
+    new_friend = inverse_friendships.find { |friendship| friendship.user == user }
+    new_friend.delete
   end
 
   private

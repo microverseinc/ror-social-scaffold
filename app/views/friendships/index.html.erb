@@ -1,6 +1,6 @@
 <% provide(:title, @friends_hash[:title]) %>
 <%= render 'shared/friend_requests_link' %>
-<h1><%= @friends_hash[:title] %></h1>
+<h1 class="friends-heading"><%= @friends_hash[:title] %></h1>
 <section class="users-section">
   <% if @friends_hash[:friends] %>
     <ul class="users-list">

@@ -128,6 +128,18 @@ RSpec.describe User, type: :model do
     end
   end
 
+  context 'when rejects a friend request' do
+    before do
+      @sunday = FactoryBot.create(:user)
+      @ahmed = FactoryBot.create(:user)
+      @ahmed.send_request(@sunday)
+    end
+
+    it 'should have friend requests decrease by 1' do
+      expect { @sunday.reject_friend(@ahmed) }.to change { @sunday.friend_requests.count }.by(-1)
+    end
+  end
+
   context 'when deleted' do
     before do
       @sunday = FactoryBot.create(:user)
@@ -136,7 +148,7 @@ RSpec.describe User, type: :model do
     end
 
     it 'should destroy his friendships' do
-      expect { User.find(@sunday.id).destroy}.to change { @ahmed.reload.friends.count }.by(-1)
+      expect { User.find(@sunday.id).destroy }.to change { @ahmed.reload.friends.count }.by(-1)
     end
   end
 end

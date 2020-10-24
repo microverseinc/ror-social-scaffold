@@ -4,11 +4,10 @@ class LikesController < ApplicationController
 
     if @like.save
       flash[:success] = 'You liked a post.'
-      redirect_to posts_path
     else
       flash[:warning] = 'You cannot like this post.'
-      redirect_to posts_path
     end
+    redirect_to posts_path
   end
 
   def destroy
@@ -16,10 +15,9 @@ class LikesController < ApplicationController
     if like
       like.destroy
       flash[:warning] = 'You disliked a post.'
-      redirect_to posts_path
     else
       flash[:warning] = 'You cannot dislike post that you did not like before.'
-      redirect_to posts_path
     end
+    redirect_to posts_path
   end
 end

@@ -36,7 +36,8 @@ gem 'jbuilder', '~> 2.5'
 # Faker, a port of Data::Faker from Perl, is used to easily generate fake data: names, addresses, phone numbers, etc.
 gem 'faker', '~> 2.14'
 # will_paginate provides a simple API for performing paginated queries with Active Record,
-# DataMapper and Sequel, and includes helpers for rendering pagination links in Rails, Sinatra, Hanami, and Merb web apps.
+# DataMapper and Sequel, and includes helpers for rendering pagination links in Rails,
+# Sinatra, Hanami, and Merb web apps.
 gem 'will_paginate', '~> 3.3'
 # Hooks into will_paginate to format the html to match Twitter Bootstrap styling
 gem 'bootstrap-will_paginate', '~> 1.0'

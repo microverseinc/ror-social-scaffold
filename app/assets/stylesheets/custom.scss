@@ -39,6 +39,8 @@ a {
 }
 
 .nav {
+  top: 0;
+  position: sticky;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -299,7 +301,7 @@ form {
 
 .users-section {
   width: 100%;
-  margin: 10px;
+  margin: 40px 10px  10px 10px;
 
   .users-list li {
     margin-bottom: 16px;
@@ -379,8 +381,10 @@ form {
 
 #sidebar-wrapper {
   left: 15px;
-  min-height: 100vh;
+  height: 70vh;
   position: fixed;
+  top: 50px;
+  background-color: #eee;
 
   .sidebar-heading {
     padding: 0.875rem 1.25rem 0.875rem  0;
@@ -436,25 +440,21 @@ form {
   }
 }
 
-.friend-buttons {
-  display: flex;
-  justify-content: space-around;
-
-  div {
-    padding: 10px;
-  }
-
-  h4 {
-
-  }
-}
-
 .already-friends-button {
   color: #050505;
-  border: #e4e6eb;;
+  border: #e4e6eb;
   background-color: #e4e6eb;
 }
 
-.stat {
-  font-weight: lighter;
-}
+// .friends-heading {
+//   top: 30px;
+//   position: fixed;
+//   width: 60vw;
+//   min-width: 20vw;
+//   height: 8vh;
+//   font-size: 2.5rem;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   background-color: #eee;
+// }
