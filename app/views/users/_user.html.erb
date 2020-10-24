@@ -1,22 +1,21 @@
 <li>
   Name: <%= user.name %>
-  <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-  </span>
-  <span>
-    <%= form_with(url: "/friendships", method: "post") do |f| %>
-      <%= f.hidden_field :friend_id, value: user.id %>
-      <% if current_user.sent_invite?(user) %>
-        <span><%= button_tag 'Invite Sent', type: 'button', disbaled: true, class: 'btn btn-secondary' %></span>
-        <span><%= button_tag 'Cancel Invite', type: 'button', class: 'btn btn-secondary' %></span>
-      <% elsif current_user.incoming_invite?(user) %>
-        <span><%= button_tag 'Accept Friend', type: 'button', class: 'btn btn-secondary' %></span>
-        <span><%= button_tag 'Reject Friend', type: 'button', class: 'btn btn-secondary' %></span>
-      <% elsif current_user.friend?(user) %>
-        <span><%= button_tag 'You\'re Friends', type: 'button', disbaled: true, class: 'btn btn-secondary' %></span>
-      <% else %>
-        <span><%= f.submit 'Invite Friend' %></span>
-      <% end%>
-    <% end %>
-  </span>
+    <% if current_user.sent_invite(user) %>
+      <%= button_to 'Invite Sent', type: 'button', disbaled: true, class: 'btn btn-secondary' %>
+      <%= button_to 'Cancel Invite', { action: 'destroy', controller: 'friendships', id: current_user.sent_invite(user).id },
+                                        method: :delete, type: 'button', class: 'btn btn-secondary' %>
+    <% elsif current_user.incoming_invite(user) %>
+      <%= button_to 'Accept Friend', { action: 'update', controller: 'friendships', id: current_user.incoming_invite(user).id },
+                                        method: :put, type: 'button', class: 'btn btn-secondary' %>
+        <%= button_to 'Reject Friend', { action: 'destroy', controller: 'friendships', id: current_user.incoming_invite(user).id },
+                                        method: :delete, type: 'button', class: 'btn btn-secondary' %>
+    <% elsif current_user.friend?(user) %>
+      <%= button_to 'You\'re Friends', type: 'button', disbaled: true, class: 'btn btn-secondary' %>
+      <%= button_to 'Remove Friend', { action: 'destroy', controller: 'friendships', id: current_user.friend?(user).id },
+                                        method: :delete, type: 'button', class: 'btn btn-secondary' %>
+    <% else %>
+      <%= button_to 'Invite Friend', { action: 'create', controller: 'friendships', friend_id: user.id },
+                                        method: :post, type: 'button', class: 'btn btn-secondary' %>
+    <% end%>
 </li><hr>

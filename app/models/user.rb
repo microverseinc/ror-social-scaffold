@@ -26,21 +26,16 @@ class User < ApplicationRecord
     inverse_friendships.map{ | friendship | friendship if !friendship.confirmed }.compact
   end
 
-  def confirm_friend(user)
-    friendship = inverse_friendships.find{ | friendship | friendship.user == user }
-    friendship.confirmed = true
-    friendship.save
-  end
-
   def friend?(user)
-    friends.include?(user)
+    friendships.find{ | friendship | friendship.friend == user if friendship.confirmed } ||
+    inverse_friendships.find{ | friendship | friendship.user == user if friendship.confirmed }
   end
 
-  def sent_invite?(user)
-    sent_requests.include?(user)
+  def sent_invite(user)
+    friendships.find{ | friendship | friendship.friend == user if !friendship.confirmed }
   end
 
-  def incoming_invite?(user)
-    incoming_requests.include?(user)
+  def incoming_invite(user)
+    inverse_friendships.find{ | friendship | friendship.user == user if !friendship.confirmed }
   end
 end

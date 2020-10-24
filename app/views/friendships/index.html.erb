@@ -21,10 +21,19 @@
       <br>
       <div>
         <strong><%= link_to incoming_request.user.name, user_path(incoming_request.user) %></strong>
-        <%= button_to 'Accept Friend', { action: 'update', controller: 'friendships', id: incoming_request.id },
+        <%= button_to 'Accept Friend', { action: 'update', id: incoming_request.id },
                                         method: :put, type: 'button', class: 'btn btn-secondary' %>
         <%= button_to 'Reject Friend', { action: 'destroy', id: incoming_request.id },
                                         method: :delete, type: 'button', class: 'btn btn-secondary' %>
+      </div>
+    <% end %>
+    <br>
+    <h2> <%= "You have #{current_user.friends.count} friends"%> </h2>
+    <hr>
+    <% @confirmed_friends.each do | friend | %>
+      <br>
+      <div>
+        <strong><%= link_to friend.name, user_path(friend) %></strong>
       </div>
     <% end %>
   </div>

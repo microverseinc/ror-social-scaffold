@@ -2,7 +2,7 @@ class FriendshipsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @incoming_friendship
+    @confirmed_friends = current_user.friends
     @sent_requests = current_user.sent_requests
     @incoming_requests = current_user.incoming_requests
   end
