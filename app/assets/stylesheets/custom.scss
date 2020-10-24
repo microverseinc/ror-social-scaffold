@@ -380,8 +380,8 @@ form {
 }
 
 #sidebar-wrapper {
-  left: 15px;
-  height: 70vh;
+  left: 0;
+  height: 100vh;
   position: fixed;
   top: 50px;
   background-color: #eee;
@@ -389,10 +389,11 @@ form {
   .sidebar-heading {
     padding: 0.875rem 1.25rem 0.875rem  0;
     font-size: 1.6rem;
+    text-align: center;
   }
 
   .list-group {
-    width: 15rem;
+    width: 20rem;
 
     a {
       padding: 6px 8px 6px 16px;

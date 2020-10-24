@@ -22,7 +22,8 @@ class PostsController < ApplicationController
   private
 
   def timeline_posts
-    @timeline_posts ||= Post.all.ordered_by_most_recent.includes(:user).paginate(page: params[:page])
+    friends_ids = current_user.friends.map(&:id)
+    @timeline_posts = Post.where("user_id IN (?) OR user_id = ? ", friends_ids, current_user.id).order(created_at: :desc).paginate(page: params[:page])
   end
 
   def post_params

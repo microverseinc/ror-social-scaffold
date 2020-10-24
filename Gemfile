@@ -55,6 +55,7 @@ gem 'devise'
 group :development, :test do
   gem 'factory_bot_rails', '~> 6.1'
   gem 'rspec-rails', '~> 4.0', '>= 4.0.1'
+  
   # A Ruby gem to load environment variables from `.env` files.
   gem 'dotenv-rails', '~> 2.7', '>= 2.7.6'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

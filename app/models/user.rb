@@ -19,7 +19,7 @@ class User < ApplicationRecord
                                  foreign_key: 'friend_id', dependent: :destroy
   has_many :pending_friends, -> { merge(Friendship.pending) }, through: :friendships, source: :friend
   has_many :friend_requests, -> { merge(Friendship.pending) }, through: :inverse_friendships, source: :user
-
+  
   def friends
     friends_array = friendships.map { |friendship| friendship.friend if friendship.confirmed } +
                     inverse_friendships.map { |friendship| friendship.user if friendship.confirmed }
