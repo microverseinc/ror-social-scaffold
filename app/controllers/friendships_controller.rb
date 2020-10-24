@@ -20,13 +20,19 @@ class FriendshipsController < ApplicationController
   end
 
   def update
-    byebug
+    # byebug
     @friendship = Friendship.find(params[:id])
     @friendship.confirmed = true
-    @friendship.save
+    
+    if @friendship.save
+      redirect_to friendships_path, notice: 'New friend added successfully!'
+    else
+      render index, flash.now[:error] = "Couldn't add friend :("
+    end
   end
 
   def destroy
-  
+    Friendship.find(params[:id]).destroy
+    redirect_to friendships_path, notice: "Friend request canceled/rejected/removed"
   end
 end

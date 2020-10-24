@@ -43,8 +43,4 @@ class User < ApplicationRecord
   def incoming_invite?(user)
     incoming_requests.include?(user)
   end
-
-  def incoming_friendship(user)
-    friendships.find{ | friendship | friendship.user == user }
-  end
 end
