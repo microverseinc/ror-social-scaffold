@@ -6,9 +6,9 @@
     <br>
     <% @sent_requests.each do | sent_request | %>
     <li>
-      <strong><%= link_to sent_request.name, user_path(sent_request)  %></strong>
+      <strong><%= link_to sent_request.friend.name, user_path(sent_request.friend)  %></strong>
       <span><%= button_tag 'Invite Sent', type: 'button', disbaled: true, class: 'btn btn-secondary' %></span>
-      <span><%= button_tag 'Reject Friend', type: 'button', class: 'btn btn-secondary' %></span>
+      <span><%= button_tag 'Cancel Invite', type: 'button', class: 'btn btn-secondary' %></span>
       <br>
     </li>
     <% end %>
@@ -19,8 +19,8 @@
     <% @incoming_requests.each do | incoming_request | %>
     <br>
     <li>
-      <strong><%= link_to incoming_request.name, user_path(incoming_request) %></strong>
-      <span><%= button_tag 'Invite Sent', type: 'button', disbaled: true, class: 'btn btn-secondary' %></span>
+      <strong><%= link_to incoming_request.user.name, user_path(incoming_request.user) %></strong>
+      <span><%= button_tag 'Accept Friend', type: 'button', class: 'btn btn-secondary' %></span>
       <span><%= button_tag 'Reject Friend', type: 'button', class: 'btn btn-secondary' %></span>
     </li>
     <% end %>

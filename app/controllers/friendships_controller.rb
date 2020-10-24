@@ -2,6 +2,7 @@ class FriendshipsController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @incoming_friendship
     @sent_requests = current_user.sent_requests
     @incoming_requests = current_user.incoming_requests
   end
@@ -16,5 +17,16 @@ class FriendshipsController < ApplicationController
     else
       redirect_to users_path, error: 'Request not sent. Something is wrong!'
     end
+  end
+
+  def update
+    byebug
+    @friendship = Friendship.find(params[:id])
+    @friendship.confirmed = true
+    @friendship.save
+  end
+
+  def destroy
+  
   end
 end

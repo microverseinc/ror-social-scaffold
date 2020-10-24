@@ -18,14 +18,12 @@ class User < ApplicationRecord
     friends_array.compact
   end
 
-  # Users who have yet to confirme friend requests
   def sent_requests
-    friendships.map{ | friendship | friendship.friend if !friendship.confirmed }.compact
+    friendships.map{ | friendship | friendship if !friendship.confirmed }.compact
   end
 
-  # Users who have requested to be friends
   def incoming_requests
-    inverse_friendships.map{ | friendship | friendship.user if !friendship.confirmed }.compact
+    inverse_friendships.map{ | friendship | friendship if !friendship.confirmed }.compact
   end
 
   def confirm_friend(user)
@@ -44,5 +42,9 @@ class User < ApplicationRecord
 
   def incoming_invite?(user)
     incoming_requests.include?(user)
+  end
+
+  def incoming_friendship(user)
+    friendships.find{ | friendship | friendship.user == user }
   end
 end
