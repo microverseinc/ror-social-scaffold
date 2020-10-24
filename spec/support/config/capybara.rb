@@ -2,7 +2,7 @@ require 'capybara/rspec'
 
 RSpec.configure do |config|
   config.use_transactional_fixtures = false
-  config.include RSpecHtmlMatchers
+  # config.include RSpecHtmlMatchers
 
   config.before(:suite) do
     if config.use_transactional_fixtures?
