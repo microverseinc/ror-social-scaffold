@@ -65,6 +65,10 @@ RSpec.feature "UsersLogins", type: :feature do
       it 'should display user info' do
         expect(page).to have_link(user.name, href: "/users/#{user.id}")
       end
+
+      it 'displays user timeline posts' do
+        expect(page).to have_css('input', id: "post_content")
+      end
     end
 
     context 'with valid information followed by logout' do
