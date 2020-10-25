@@ -66,7 +66,7 @@ RSpec.feature "UsersLogins", type: :feature do
         expect(page).to have_link(user.name, href: "/users/#{user.id}")
       end
 
-      it 'displays user timeline posts' do
+      it 'displays new post input field' do
         expect(page).to have_css('input', id: "post_content")
       end
     end
