@@ -1,24 +1,6 @@
 <li>
-  Name: <%= user.name %>
-    <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-    <% if current_user.sent_invite(user) %>
-      <%= button_to 'Invite Sent', type: 'button', disbaled: true, class: 'btn btn-secondary' %>
-      <%= button_to 'Cancel Invite', { action: 'destroy', controller: 'friendships', id: current_user.sent_invite(user).id },
-                                      method: :delete, data: { confirm: "Are you sure?" },
-                                      type: 'button', class: 'btn btn-secondary' %>
-    <% elsif current_user.incoming_invite(user) %>
-      <%= button_to 'Accept Friend', { action: 'update', controller: 'friendships', id: current_user.incoming_invite(user).id },
-                                      method: :put, type: 'button', class: 'btn btn-secondary' %>
-        <%= button_to 'Reject Friend', { action: 'destroy', controller: 'friendships', id: current_user.incoming_invite(user).id },
-                                        method: :delete, data: { confirm: "Are you sure?" },
-                                        type: 'button', class: 'btn btn-secondary' %>
-    <% elsif current_user.friend?(user) %>
-      <%= button_to 'You\'re Friends', type: 'button', disbaled: true, class: 'btn btn-secondary' %>
-      <%= button_to 'Remove Friend', { action: 'destroy', controller: 'friendships', id: current_user.friend?(user).id },
-                                      method: :delete, data: { confirm: "Are you sure?" },
-                                      type: 'button', class: 'btn btn-secondary' %>
-    <% else %>
-      <%= button_to 'Invite Friend', { action: 'create', controller: 'friendships', friend_id: user.id },
-                                      method: :post, type: 'button', class: 'btn btn-secondary' %>
-    <% end%>
-</li><hr>
+  <%= link_to user.name,  user_path(user) %>
+  <%= first_friendship_button(user) %>
+  <%= second_friendship_button(user) %>
+</li>
+<hr>

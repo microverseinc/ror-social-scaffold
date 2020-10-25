@@ -6,8 +6,8 @@
     <br>
     <% @sent_requests.each do | sent_request | %>
     <div>
-      <strong><%= link_to sent_request.friend.name, user_path(sent_request.friend)  %></strong>
-      <span><%= button_to 'Invite Sent', type: 'button', disbaled: true, class: 'btn btn-secondary' %></span>
+      <%= link_to sent_request.friend.name, user_path(sent_request.friend)  %>
+      <%= button_to 'Invite Sent', {}, type: 'hidden', disabled: true, class: 'btn btn-secondary' %>
       <%= button_to 'Cancel Invite', { action: 'destroy', id: sent_request.id },
                                       method: :delete, data: { confirm: "Are you sure?" },
                                       type: 'button', class: 'btn btn-secondary' %>
@@ -21,7 +21,7 @@
     <% @incoming_requests.each do | incoming_request | %>
       <br>
       <div>
-        <strong><%= link_to incoming_request.user.name, user_path(incoming_request.user) %></strong>
+        <%= link_to incoming_request.user.name, user_path(incoming_request.user) %>
         <%= button_to 'Accept Friend', { action: 'update', id: incoming_request.id },
                                         method: :put, type: 'button', class: 'btn btn-secondary' %>
         <%= button_to 'Reject Friend', { action: 'destroy', id: incoming_request.id },
