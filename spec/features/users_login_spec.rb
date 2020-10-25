@@ -19,6 +19,7 @@ RSpec.feature "UsersLogins", type: :feature do
   end
 
   describe "signin" do
+    let(:user) { FactoryBot.create(:user) }
     before { visit 'users/sign_in' }
 
     context "with invalid information" do
@@ -31,10 +32,17 @@ RSpec.feature "UsersLogins", type: :feature do
       it 'should display error message' do
         expect(page).to have_selector('div.alert.alert', text: 'Invalid Email or password.')
       end
+
+      it 'should not display user Avatar' do
+        expect(page).to_not have_css('img.gravatar')
+      end
+
+      it 'should not display user info' do
+        expect(page).to_not have_link(user.name, href: user_path(user))
+      end
     end
 
     context 'with valid information' do
-      let(:user) { FactoryBot.create(:user) }
       before do
         fill_in "Email",    with: user.email.upcase
         fill_in "Password", with: user.password
@@ -43,11 +51,23 @@ RSpec.feature "UsersLogins", type: :feature do
 
       it 'should display login success message' do
         expect(page).to have_selector('div.alert.alert-notice', text: 'Signed in successfully.')
-      end      
+      end 
+      
+      it 'shows user page with title' do
+        visit user_path(user)
+        expect(page).to have_title("#{user.name} | Ruby on Rails Social Scaffold")
+      end
+  
+      it 'should display user Avatar' do
+        expect(page).to have_css('img.gravatar')
+      end
+
+      it 'should display user info' do
+        expect(page).to have_link(user.name, href: "/users/#{user.id}")
+      end
     end
 
     context 'with valid information followed by logout' do
-      let(:user) { FactoryBot.create(:user) }
       before do
         fill_in "Email",    with: user.email.upcase
         fill_in "Password", with: user.password
@@ -63,7 +83,7 @@ RSpec.feature "UsersLogins", type: :feature do
       it 'page should have s sign in button' do
         click_link "Sign out"
         expect(page).to have_selector(:button, 'Log in')
-      endgit
+      end
     end   
   end
 end
