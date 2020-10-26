@@ -116,4 +116,19 @@ RSpec.describe User, type: :model do
       expect { User.find(@sunday.id).destroy }.to change { @ahmed.reload.friends.count }.by(-1)
     end
   end
+
+  describe "posts associations" do
+
+    before { @user.save } #= FactoryBot.create(:user) }
+    let!(:older_post) do
+      FactoryBot.create(:post, user: @user, created_at: 1.day.ago)
+    end
+    let!(:newer_post) do
+      FactoryBot.create(:post, user: @user, created_at: 1.hour.ago)
+    end
+
+    it "should have the right posts in the right order" do
+      expect(@user.posts).to eq([newer_post, older_post])
+    end
+  end
 end
