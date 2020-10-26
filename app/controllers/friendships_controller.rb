@@ -31,7 +31,7 @@ class FriendshipsController < ApplicationController
         format.html { redirect_to request.referrer, notice: 'Friendship requested!' }
         format.json { render :show, status: :created, location: @friendship }
       else
-        format.html { redirect_to request.referrer, alert: 'Error'}
+        format.html { redirect_to request.referrer, alert: 'Error' }
         format.json { render json: @friendship.errors, status: :unprocessable_entity }
       end
     end

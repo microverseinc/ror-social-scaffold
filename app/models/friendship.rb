@@ -1,6 +1,6 @@
 class Friendship < ApplicationRecord
   validate :validate_friendship
-  
+
   belongs_to :user
   belongs_to :friend, class_name: 'User'
 
@@ -57,11 +57,6 @@ class Friendship < ApplicationRecord
     friends_requested_ids.each { |n| friends_list << n.user_id }
     friends_invited_ids.each { |n| friends_list << n.friend_id}
     friends_list << current_user.id
-    return friends_list
-  end 
-
-
-
-
-  
+    friends_list
+  end
 end
