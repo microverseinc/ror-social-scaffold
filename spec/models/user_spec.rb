@@ -111,7 +111,7 @@ RSpec.describe User, type: :model do
       expect { @sunday.reject_friend(@ahmed) }.to change { @sunday.friend_requests.count }.by(-1)
     end
 
-    it 'should destroy user friendships when a user is deleted' do
+    it 'should destroy friendships associated with user when a user is deleted' do
       Friendship.create!(user_id: @ahmed.id, friend_id: @sunday.id, confirmed: true)
       expect { User.find(@sunday.id).destroy }.to change { @ahmed.reload.friends.count }.by(-1)
     end
@@ -129,6 +129,15 @@ RSpec.describe User, type: :model do
 
     it "should have the right posts in the right order" do
       expect(@user.posts).to eq([newer_post, older_post])
+    end
+
+    it "should destroy associated posts" do
+      posts = @user.posts.dup
+      @user.destroy
+      expect(posts).to be_empty
+      posts.each do |post|
+        expect(Post.find_by_id(post.id)).to be_nil
+      end
     end
   end
 end
