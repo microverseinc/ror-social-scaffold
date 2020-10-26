@@ -9,4 +9,8 @@ module FriendshipsHelper
   def store_location
     session[:forwarding_url] = request.original_url
   end
+
+  def format_stat(count, word)
+    pluralize(count, word).split(' ')
+  end
 end

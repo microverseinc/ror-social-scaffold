@@ -19,7 +19,7 @@ RSpec.feature "UsersLogins", type: :feature do
   end
 
   describe "signin" do
-    let(:user) { FactoryBot.create(:user) }
+    let(:user) { FactoryBot.build(:user) }
     before do
       user.save
       visit 'users/sign_in'
