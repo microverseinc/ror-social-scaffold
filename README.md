@@ -15,6 +15,9 @@ This project entails building a social media application with ruby on rails usin
 - User can make a comment.
 - Mutual friendship with two rows implemented.
 
+## Live Demo
+
+To see a preview of the actual project, check out the [Live Demo Link](https://gentle-earth-18966.herokuapp.com/users/sign_in)
 ## Project SetUp/Installation
 
 Get a local copy of the file. Clone with HTTPS using the command below.
