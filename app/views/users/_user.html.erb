@@ -1,6 +1,20 @@
 <li>
+<% unless user.id == current_user.id %>
   Name: <%= user.name %>
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+    <% if current_user.is_friend?(user) %>
+      <%= link_to "Remove Friend", remove_friend_path(user_id: user.id), method: :delete %>
+    <% else %>
+      <%= form_for current_user.friendships.build(friend: user) do |f| %>
+        <%= f.hidden_field :friend_id %>
+        <button class="btn btn-secondary">Add Friend</button>
+      <% end %>
+    <% end %>
   </span>
+<% end %>
 </li>
+
+
+
+

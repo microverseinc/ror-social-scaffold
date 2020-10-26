@@ -7,6 +7,18 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 20 }
 
   has_many :posts
+  has_many :friendships, dependent: :destroy
+  has_many :friends, through: :friendships
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+
+  def add_friend(another_user)
+    friends << another_user
+  end
+
+  def is_friend?(another_user)
+    # friendships.where(friend: another_user).exists?
+    friends.include?(another_user)
+  end
+
 end
