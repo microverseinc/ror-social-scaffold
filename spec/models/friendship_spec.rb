@@ -5,7 +5,7 @@ RSpec.describe Friendship, type: :model do
     subject { FactoryBot.build(:friendship) }
      it { should validate_presence_of(:user_id) }
      it { should validate_presence_of(:friend_id) }
-     it { should_not allow_value(nil).for(:confirmed) }
+     it { should validate_uniqueness_of(:friend_id).scoped_to(:user_id) }
   end
 
   describe 'associations' do
