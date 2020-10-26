@@ -69,11 +69,9 @@ Open `http://localhost:3000/` in your browser.
 
 TBA
 
-## Authors
+## ✒️ Authors
 
 TBA
-
-## ✒️ Authors
 
 👤 **Stanley Enow Lekunze**
 
