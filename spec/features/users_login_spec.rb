@@ -20,7 +20,10 @@ RSpec.feature "UsersLogins", type: :feature do
 
   describe "signin" do
     let(:user) { FactoryBot.create(:user) }
-    before { visit 'users/sign_in' }
+    before do
+      user.save
+      visit 'users/sign_in'
+    end
 
     context "with invalid information" do
       before { click_button "Log in" }
