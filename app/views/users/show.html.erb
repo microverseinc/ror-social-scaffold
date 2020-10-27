@@ -6,7 +6,7 @@
         <%= link_to "Reject Request", remove_friend_path(friend_id: @user.id), method: :delete %> 
     <% elsif current_user.sent_request.include?(@user) %>
             <p>You sent a request already</p>
-      <% elsif  current_user.is_friend?(@user) %>
+      <% elsif  current_user.friend?(@user) %>
             <p>You are friends</p>
         <% else %>
          <%= link_to "Add Friend", friendships_path(user_id: @user.id), method: :post %>

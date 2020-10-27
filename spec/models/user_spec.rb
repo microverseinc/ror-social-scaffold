@@ -29,7 +29,7 @@ RSpec.describe User, type: :model do
     end
 
     it 'can check if they are friends with' do
-      expect(@user1.is_friend?(@user2)).to be(false)
+      expect(@user1.friend?(@user2)).to be(false)
     end
   end
 end
