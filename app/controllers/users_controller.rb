@@ -11,9 +11,6 @@ class UsersController < ApplicationController
   end
 
   def lists_of_users
-    
-
-  
     @users.each do |user|
       if user.id == current_user.id
         next

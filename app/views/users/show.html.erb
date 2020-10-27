@@ -11,6 +11,8 @@
     <%= button_to "Undo Request", decline_friendship_friendships_path,
           params: { :friendship => { :user_id => current_user.id, :friend_id => @user.id } },
           method: :post, data: { confirm: "Are you sure?" } %>
+          <% elsif friendship_status(@user, current_user) == "Friends" %> 
+          You are friends!
   <% end %>
   <article class="timeline">
     <h3>Recent posts:</h3>

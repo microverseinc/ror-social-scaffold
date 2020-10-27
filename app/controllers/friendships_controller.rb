@@ -23,8 +23,7 @@ class FriendshipsController < ApplicationController
 
   # POST /friendships
   # POST /friendships.json
-  def create(user_id, friend_id)
-    
+  def create(_user_id, _friend_id)
     @friendship = current_user.friendships.build(friendship_params)
 
     respond_to do |format|
@@ -55,7 +54,7 @@ class FriendshipsController < ApplicationController
   def decline_friendship
     @friendship = Friendship.decline_friendship(params[:friendship])
     respond_to do |format|
-      format.html { redirect_to request.referrer, notice: 'Friendship request declined!'}
+      format.html { redirect_to request.referrer, notice: 'Friendship request declined!' }
       format.json { render :show, status: :created, location: @friendship }
     end
   end

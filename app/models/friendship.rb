@@ -14,7 +14,7 @@ class Friendship < ApplicationRecord
 
   def self.decline_friendship(friendship)
     friendship_id_1 = Friendship.where(user_id: friendship[:user_id], friend_id: friendship[:friend_id]).pluck(:id)
-    friendship_id_2 = Friendship.where(user_id: friendship[:friend_id] , friend_id: friendship[:user_id]).pluck(:id)
+    friendship_id_2 = Friendship.where(user_id: friendship[:friend_id], friend_id: friendship[:user_id]).pluck(:id)
     Friendship.destroy(friendship_id_1)
     Friendship.destroy(friendship_id_2)
   end
@@ -35,8 +35,8 @@ class Friendship < ApplicationRecord
     friend = User.find(friendship[:friend])
     user.friendships.create(friend: friend, status: false)
     friend.friendships.create(friend: user, status: nil)
-    puts 
-  end  
+    puts
+  end
 
   def self.check_friendship_status(user, current_user)
     if user.id == current_user.id
@@ -45,7 +45,7 @@ class Friendship < ApplicationRecord
       'Invitation sent'
     elsif user.friendships.where(friend_id: current_user.id, status: false).exists?
       'Requested friendship'
-    elsif user.friendships.where(friend_id: current_user.id, status: true).exists? 
+    elsif user.friendships.where(friend_id: current_user.id, status: true).exists?
       'Friends'
     else
       'No relation'
@@ -53,12 +53,10 @@ class Friendship < ApplicationRecord
   end
 
   def self.list_of_friends_ids(current_user)
-    friends_requested_ids = Friendship.where(friend_id: current_user.id, status: true)
-    friends_invited_ids = Friendship.where(user_id: current_user.id, status: true)
-    friends_list = []
-    friends_requested_ids.each { |n| friends_list << n.user_id }
-    friends_invited_ids.each { |n| friends_list << n.friend_id}
-    friends_list << current_user.id
-    friends_list
+    friends = current_user.friendships.where(status: true)
+    friends_ids = []
+    friends_ids << current_user.id
+    friends.each { |n| friends_ids << n.friend_id }
+    friends_ids
   end
 end
