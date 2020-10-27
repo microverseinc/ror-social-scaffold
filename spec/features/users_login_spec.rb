@@ -21,7 +21,7 @@ RSpec.feature 'UsersLogins', type: :feature do
     let(:user) { FactoryBot.build(:user) }
     before do
       user.save
-      visit 'users/sign_in'
+      visit '/users/sign_in'
     end
 
     context 'with invalid information' do
