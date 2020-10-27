@@ -6,9 +6,14 @@ class FriendshipsController < ApplicationController
     end
 
     def destroy
-        another_user = User.find(params[:id])
+        another_user = User.find_by(params[:id])
         current_user.friends.delete(another_user)
+        redirect_to users_path
     end
+
+    def update
+        Friendship.find(params[:id]).update(confirm: true)
+    end    
 
     private
 
