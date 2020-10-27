@@ -45,7 +45,7 @@ class Friendship < ApplicationRecord
       'Invitation sent'
     elsif user.friendships.where(friend_id: current_user.id, status: false).exists?
       'Requested friendship'
-    elsif user.friendships.where(friend_id: current_user.id, status: true).exists? || current_user.friendships.where(friend_id: user.id, status: true).exists?
+    elsif user.friendships.where(friend_id: current_user.id, status: true).exists? 
       'Friends'
     else
       'No relation'
