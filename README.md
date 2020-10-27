@@ -69,9 +69,19 @@ Open `http://localhost:3000/` in your browser.
 
 TBA
 
-## Authors
+## ✒️ Authors
 
 TBA
+
+👤 **Stanley Enow Lekunze**
+
+- Github: [@happiguru](https://github.com/happiguru)
+- LinkedIn:[LinkedIn](https://www.linkedin.com/in/lekunze-nley)
+
+👤 **Miguel Uzcátegui**
+
+- Github: [@Miguelus373](https://github.com/Miguelus373)
+- LinkedIn:[LinkedIn](https://www.linkedin.com/in/)
 
 ## 🤝 Contributing
 
