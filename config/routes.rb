@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :friendships
   delete 'remove_friend' => 'friendships#destroy'
+  put 'add_friend' => 'friendships#update'
   resources :users, only: [:index, :show]
   resources :posts, only: [:index, :create] do
     resources :comments, only: [:create]
