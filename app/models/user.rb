@@ -13,29 +13,29 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
 
   def friends
-    friends_array = friendships.map{ | friendship | friendship.friend if friendship.confirmed }
-    friends_array += inverse_friendships.map{ | friendship | friendship.user if friendship.confirmed }
+    friends_array = friendships.map { |friendship| friendship.friend if friendship.confirmed }
+    friends_array += inverse_friendships.map { |friendship| friendship.user if friendship.confirmed }
     friends_array.compact
   end
 
   def sent_requests
-    friendships.map{ | friendship | friendship if !friendship.confirmed }.compact
+    friendships.map { |friendship| friendship unless friendship.confirmed }.compact
   end
 
   def incoming_requests
-    inverse_friendships.map{ | friendship | friendship if !friendship.confirmed }.compact
+    inverse_friendships.map { |friendship| friendship unless friendship.confirmed }.compact
   end
 
   def friend?(user)
-    friendships.find{ | friendship | friendship.friend == user if friendship.confirmed } ||
-    inverse_friendships.find{ | friendship | friendship.user == user if friendship.confirmed }
+    friendships.find { |friendship| friendship.friend == user if friendship.confirmed } ||
+      inverse_friendships.find { |friendship| friendship.user == user if friendship.confirmed }
   end
 
   def sent_invite(user)
-    friendships.find{ | friendship | friendship.friend == user if !friendship.confirmed }
+    friendships.find { |friendship| friendship.friend == user unless friendship.confirmed }
   end
 
   def incoming_invite(user)
-    inverse_friendships.find{ | friendship | friendship.user == user if !friendship.confirmed }
+    inverse_friendships.find { |friendship| friendship.user == user unless friendship.confirmed }
   end
 end

@@ -11,12 +11,12 @@ feature 'user authenticaiton features', type: :feature do
       expect(page).to have_content("can't be blank")
     end
   end
-  
+
   scenario 'successful with valid params' do
     create_user
 
     expect(current_path).to eq('/')
-    expect(page).to have_content("Welcome! You have signed up successfully.")
+    expect(page).to have_content('Welcome! You have signed up successfully.')
   end
 
   feature 'signing in a user' do
@@ -28,7 +28,7 @@ feature 'user authenticaiton features', type: :feature do
       click_on 'Log in'
 
       expect(current_path).to eq('/users/sign_in')
-      expect(page).to have_content("Invalid Email or password.")
+      expect(page).to have_content('Invalid Email or password.')
     end
 
     scenario 'successful with valid params' do

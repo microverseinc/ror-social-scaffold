@@ -6,7 +6,7 @@ class FriendshipsController < ApplicationController
     @sent_requests = current_user.sent_requests
     @incoming_requests = current_user.incoming_requests
   end
-  
+
   def create
     # byebug
     @users = User.all
@@ -23,7 +23,7 @@ class FriendshipsController < ApplicationController
     # byebug
     @friendship = Friendship.find(params[:id])
     @friendship.confirmed = true
-    
+
     if @friendship.save
       redirect_to friendships_path, notice: 'New friend added successfully!'
     else
@@ -33,6 +33,6 @@ class FriendshipsController < ApplicationController
 
   def destroy
     Friendship.find(params[:id]).destroy
-    redirect_to friendships_path, notice: "Friend request canceled/rejected/removed"
+    redirect_to friendships_path, notice: 'Friend request canceled/rejected/removed'
   end
 end

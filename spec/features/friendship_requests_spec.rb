@@ -8,7 +8,7 @@ feature 'friendship requests features', type: :feature do
     visit '/users'
     click_on 'Invite Friend'
 
-    expect(page).to have_content("Friend request sent.")
+    expect(page).to have_content('Friend request sent.')
   end
 
   scenario "a 'Cancel Invite' button which deletes a friend request" do
@@ -23,7 +23,7 @@ feature 'friendship requests features', type: :feature do
     expect(current_path).to eq('/friendships')
     expect(page).to have_content('Friend request canceled/rejected/removed')
   end
-  
+
   scenario "a 'Reject Friend' button which rejects a friendship request" do
     create_user('Abdullah Numan', 'anewman15@hotmail.com', '123456')
     click_on 'Sign out'
@@ -70,7 +70,6 @@ feature 'friendship requests features', type: :feature do
     expect(current_path).to eq('/friendships')
     expect(page).to have_content('Friend request canceled/rejected/removed')
   end
-
 
   private
 
