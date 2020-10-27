@@ -14,29 +14,24 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :pending_request, -> { where confirm: false }, class_name: 'Friendship', foreign_key: 'friend_id'
 
-
   def add_friend(another_user)
-    self.friendships.create(friend_id: another_user)
+    friendships.create(friend_id: another_user)
   end
 
   def pending_request
-      results=[]
-      self.reverse_friendship.each do |request|
-        if request.confirm == false
-          results << request.user
-        end
-      end
-      results
+    results = []
+    reverse_friendship.each do |request|
+      results << request.user if request.confirm == false
+    end
+    results
   end
 
   def sent_request
-    results=[]
-      self.friendships.each do |request|
-        if request.confirm == false
-          results << request.friend
-        end
-      end
-      results
+    results = []
+    friendships.each do |request|
+      results << request.friend if request.confirm == false
+    end
+    results
   end
 
   def accept_request(user_id)
@@ -51,13 +46,12 @@ class User < ApplicationRecord
   end
 
   def friends
-    friend_list = self.friendships.map{|friendship| friendship.friend if friendship.confirm}
-    friend_list += self.reverse_friendship.map{|friendship| friendship.user if friendship.confirm}
+    friend_list = friendships.map { |friendship| friendship.friend if friendship.confirm }
+    friend_list += reverse_friendship.map { |friendship| friendship.user if friendship.confirm }
     friend_list.compact
   end
 
   def is_friend?(user)
     friends.include?(user)
   end
-
 end

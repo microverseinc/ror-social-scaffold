@@ -11,9 +11,6 @@ class ApplicationController < ActionController::Base
   end
 
   def require_login
-    unless current_user
-      redirect_to root_path flash: {error: "Nope. Not happening"}
-    end
+    redirect_to root_path flash: { error: 'Nope. Not happening' } unless current_user
   end
-  
 end
