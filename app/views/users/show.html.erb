@@ -1,6 +1,16 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
   <article class="timeline">
+  <% if current_user.pending_request.include?(@user) %>
+        <%= link_to "Accept Request", add_friend_path(friend_id: @user.id), method: :put %>
+        <%= link_to "Reject Request", remove_friend_path(friend_id: @user.id), method: :delete %> 
+    <% elsif current_user.sent_request.include?(@user) %>
+            <p>You sent a request already</p>
+      <% elsif  current_user.is_friend?(@user) %>
+            <p>You are friends</p>
+        <% else %>
+         <%= link_to "Add Friend", friendships_path(user_id: @user.id), method: :post %>
+    <% end %>
     <h3>Recent posts:</h3>
     <ul class="posts">
       <%= render @posts %>

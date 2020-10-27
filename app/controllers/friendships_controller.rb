@@ -13,7 +13,7 @@ class FriendshipsController < ApplicationController
     def update
         current_user.accept_request(params[:friend_id])
         redirect_to users_path
-    end    
+    end
 
     private
 
