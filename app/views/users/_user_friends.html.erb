@@ -7,7 +7,7 @@
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
   </span>
   <p>You are friends!</p>
-    <%= button_to  "Undo friendship", undo_friendship_friendships_path, 
+    <%= button_to  "Undo friendship", decline_friendship_friendships_path, 
       params: {:friendship => {:user_id => user.id, :friend_id=> current_user.id} }, 
     method: :post, data: { confirm: 'Are you sure?' } %>
   

@@ -13,28 +13,30 @@ class Friendship < ApplicationRecord
   end
 
   def self.decline_friendship(friendship)
-    friendship_id = Friendship.where(user_id: friendship[:user_id], friend_id: friendship[:friend_id]).pluck(:id)
-    Friendship.destroy(friendship_id)
+    friendship_id_1 = Friendship.where(user_id: friendship[:user_id], friend_id: friendship[:friend_id]).pluck(:id)
+    friendship_id_2 = Friendship.where(user_id: friendship[:friend_id] , friend_id: friendship[:user_id]).pluck(:id)
+    Friendship.destroy(friendship_id_1)
+    Friendship.destroy(friendship_id_2)
   end
 
   def self.accept_friendship(friendship)
-    friendship_id = Friendship.where(user_id: friendship[:user_id], friend_id: friendship[:friend_id]).pluck(:id)
-    f1 = Friendship.find_by(id: friendship_id)
+    friendship_id_1 = Friendship.where(user_id: friendship[:user_id], friend_id: friendship[:friend_id]).pluck(:id)
+    friendship_id_2 = Friendship.where(user_id: friendship[:friend_id], friend_id: friendship[:user_id]).pluck(:id)
+    f1 = Friendship.find_by(id: friendship_id_1)
     f1.status = true
     f1.save
+    f2 = Friendship.find_by(id: friendship_id_2)
+    f2.status = true
+    f2.save
   end
 
-  def self.undo_friendship(friendship)
-    friendship_id = Friendship.where(user_id: friendship[:user_id], friend_id: friendship[:friend_id], status: true).pluck(:id)
-    if !friendship_id.empty?
-      Friendship.destroy(friendship_id)
-      nil
-    else
-      friendship_id = Friendship.where(user_id: friendship[:friend_id], friend_id: friendship[:user_id], status: true).pluck(:id)
-      Friendship.destroy(friendship_id)
-      nil
-    end
-  end
+  def self.request_frinedship(friendship)
+    user = User.find(friendship[:user])
+    friend = User.find(friendship[:friend])
+    user.friendships.create(friend: friend, status: false)
+    friend.friendships.create(friend: user, status: nil)
+    puts 
+  end  
 
   def self.check_friendship_status(user, current_user)
     if user.id == current_user.id

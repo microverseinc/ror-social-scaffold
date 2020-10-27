@@ -23,7 +23,8 @@ class FriendshipsController < ApplicationController
 
   # POST /friendships
   # POST /friendships.json
-  def create
+  def create(user_id, friend_id)
+    
     @friendship = current_user.friendships.build(friendship_params)
 
     respond_to do |format|
@@ -71,6 +72,14 @@ class FriendshipsController < ApplicationController
     Friendship.undo_friendship(params[:friendship])
     respond_to do |format|
       format.html { redirect_to request.referrer, notice: 'Friendship undone!'}
+      format.json { render :show, status: :created, location: @friendship }
+    end
+  end
+
+  def request_friendship
+    Friendship.request_frinedship(params[:friendship])
+    respond_to do |format|
+      format.html { redirect_to request.referrer, notice: 'Friendship requested!'}
       format.json { render :show, status: :created, location: @friendship }
     end
   end

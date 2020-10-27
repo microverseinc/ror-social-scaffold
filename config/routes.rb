@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     match '/decline_friendship', to: 'friendships#decline_friendship', via: :post, on: :collection
     match '/accept_friendship', to: 'friendships#accept_friendship', via: :post, on: :collection
     match '/undo_friendship', to: 'friendships#undo_friendship', via: :post, on: :collection
+    match '/request_friendship', to: 'friendships#request_friendship', via: :post, on: :collection
   end
 
   # resources :friendships do
