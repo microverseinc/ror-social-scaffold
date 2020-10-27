@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/BlockLength
 require 'rails_helper'
 
 RSpec.feature 'FriendShipFlows', type: :feature do
@@ -5,7 +6,6 @@ RSpec.feature 'FriendShipFlows', type: :feature do
     @user = User.create!(name: 'Diego Lira', email: 'diego@lira.com', password: '123123')
     @friend = User.create!(name: 'Laura Lira', email: 'laura@saldanha.com', password: '123123')
   end
-
   scenario 'user 1 logs in and sends invitation than user 2 accepts it' do
     visit new_user_session_path
     fill_in 'email', with: 'diego@lira.com'
@@ -52,3 +52,4 @@ RSpec.feature 'FriendShipFlows', type: :feature do
     expect(page).to have_selector(:link_or_button, 'Invite to friendship')
   end
 end
+# rubocop:enable Metrics/BlockLength

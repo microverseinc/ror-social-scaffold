@@ -10,6 +10,7 @@ class UsersController < ApplicationController
     lists_of_users
   end
 
+  # rubocop:disable Style/GuardClause
   def lists_of_users
     @users.each do |user|
       if user.id == current_user.id
@@ -25,6 +26,7 @@ class UsersController < ApplicationController
       end
     end
   end
+  # rubocop:enable Style/GuardClause
 
   def show
     @user = User.find(params[:id])

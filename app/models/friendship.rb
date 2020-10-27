@@ -13,19 +13,19 @@ class Friendship < ApplicationRecord
   end
 
   def self.decline_friendship(friendship)
-    friendship_id_1 = Friendship.where(user_id: friendship[:user_id], friend_id: friendship[:friend_id]).pluck(:id)
-    friendship_id_2 = Friendship.where(user_id: friendship[:friend_id], friend_id: friendship[:user_id]).pluck(:id)
-    Friendship.destroy(friendship_id_1)
-    Friendship.destroy(friendship_id_2)
+    friendship_id1 = Friendship.where(user_id: friendship[:user_id], friend_id: friendship[:friend_id]).pluck(:id)
+    friendship_id2 = Friendship.where(user_id: friendship[:friend_id], friend_id: friendship[:user_id]).pluck(:id)
+    Friendship.destroy(friendship_id1)
+    Friendship.destroy(friendship_id2)
   end
 
   def self.accept_friendship(friendship)
-    friendship_id_1 = Friendship.where(user_id: friendship[:user_id], friend_id: friendship[:friend_id]).pluck(:id)
-    friendship_id_2 = Friendship.where(user_id: friendship[:friend_id], friend_id: friendship[:user_id]).pluck(:id)
-    f1 = Friendship.find_by(id: friendship_id_1)
+    friendship_id1 = Friendship.where(user_id: friendship[:user_id], friend_id: friendship[:friend_id]).pluck(:id)
+    friendship_id2 = Friendship.where(user_id: friendship[:friend_id], friend_id: friendship[:user_id]).pluck(:id)
+    f1 = Friendship.find_by(id: friendship_id1)
     f1.status = true
     f1.save
-    f2 = Friendship.find_by(id: friendship_id_2)
+    f2 = Friendship.find_by(id: friendship_id2)
     f2.status = true
     f2.save
   end

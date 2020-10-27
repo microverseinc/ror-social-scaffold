@@ -62,7 +62,7 @@ class FriendshipsController < ApplicationController
   def accept_friendship
     Friendship.accept_friendship(params[:friendship])
     respond_to do |format|
-      format.html { redirect_to request.referrer, notice: 'Friendship accepted!'}
+      format.html { redirect_to request.referrer, notice: 'Friendship accepted!' }
       format.json { render :show, status: :created, location: @friendship }
     end
   end
@@ -70,7 +70,7 @@ class FriendshipsController < ApplicationController
   def undo_friendship
     Friendship.undo_friendship(params[:friendship])
     respond_to do |format|
-      format.html { redirect_to request.referrer, notice: 'Friendship undone!'}
+      format.html { redirect_to request.referrer, notice: 'Friendship undone!' }
       format.json { render :show, status: :created, location: @friendship }
     end
   end
@@ -78,7 +78,7 @@ class FriendshipsController < ApplicationController
   def request_friendship
     Friendship.request_frinedship(params[:friendship])
     respond_to do |format|
-      format.html { redirect_to request.referrer, notice: 'Friendship requested!'}
+      format.html { redirect_to request.referrer, notice: 'Friendship requested!' }
       format.json { render :show, status: :created, location: @friendship }
     end
   end
