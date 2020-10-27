@@ -2,27 +2,41 @@ require 'rails_helper'
 
 RSpec.describe FriendshipsController, type: :controller do
   describe 'POST #create' do
-    context 'with valid parameters' do
-      it "redirects to friend's page" do
-        user = build(:user)
-        sign_in user
-        post :create, params: { user_id: user.id, friend_id: 2 , confirmed: false }
-        expect(response).to redirect_to(user_path(id: 2))
-        expect(response).to have_http_status(302)
-      end
+    it "creates a new friendship entry to database" do
+      user1 = create(:user)
+      user2 = create(:user)
+      sign_in user1
+
+      expect { post :create, params: { user_id: user1.id,
+        friend_id: user2.id , confirmed: false } }.to change { Friendship.count }.from(0).to(1)
+      expect(response).to redirect_to(user_path(id: user2))
+      expect(response).to have_http_status(302)
     end
   end
 
-  # describe 'PUT #update' do
-  #   context 'with valid parameters' do
-  #     it "redirects to friend's page" do
-  #       user = build(:user)
-  #       sign_in user
-  #       friendship = build(:friendship)
-  #       put :update, params: { id: friendship.id, confirmed: true }
-  #       expect(response).to redirect_to(new_user_session_path)
-  #       expect(response).to have_http_status(302)
-  #     end
-  #   end
-  # end
+  describe 'PUT #update' do
+    it "confirms a friendship" do
+      user1 = create(:user)
+      user2 = create(:user)
+      sign_in user1
+
+      friendship = create(:friendship)
+      put :update, params: { id: friendship.id, confirmed: true }
+      expect(response).to redirect_to(friendships_path)
+      expect(response).to have_http_status(302)
+    end
+  end
+
+  describe 'DELETE #destroy' do
+    it "removes a friendship entry from database" do
+      user1 = create(:user)
+      user2 = create(:user)
+      sign_in user1
+
+      friendship = create(:friendship)
+      expect { delete :destroy, params: { id: friendship.id } }.to change { Friendship.count }.from(1).to(0)
+      expect(response).to redirect_to(friendships_path)
+      expect(response).to have_http_status(302)
+    end
+  end  
 end
