@@ -28,7 +28,7 @@ RSpec.feature 'UsersIndices', type: :feature do
         expect(page).to have_selector('div>img.gravatar', count: 30)
       end
 
-      it 'should have profile name linl (30 per page)' do
+      it 'should have profile name link (30 per page)' do
         expect(page).to have_selector('li.friend-response>div>a', count: 30)
       end
 
