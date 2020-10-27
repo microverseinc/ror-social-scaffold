@@ -6,7 +6,6 @@ RSpec.describe User, type: :model do
   end
 
   describe 'validations' do
-
     context 'with valid attributes' do
       it 'should be valid' do
         expect(@user).to be_valid
@@ -14,11 +13,11 @@ RSpec.describe User, type: :model do
       it 'should respond to name' do
         expect(@user).to respond_to(:name)
       end
-  
+
       it 'should respond to email' do
         expect(@user).to respond_to(:email)
       end
-  
+
       it 'should respond to password' do
         expect(@user).to respond_to(:password)
       end
@@ -31,15 +30,14 @@ RSpec.describe User, type: :model do
         end
       end
     end
-  
-    context 'with invalid attributes' do
 
+    context 'with invalid attributes' do
       it 'should not be valid when name is blank' do
         @user.name = ' '
         expect(@user).not_to be_valid
       end
     end
-  
+
     it 'should not be valid when email is blank' do
       @user.email = ' '
       expect(@user).not_to be_valid
@@ -57,7 +55,7 @@ RSpec.describe User, type: :model do
         expect(@user).not_to be_valid
       end
     end
-  
+
     it 'should not be valid when email address is already taken' do
       @user_with_same_email = FactoryBot.create(:user)
       @user_with_same_email.email = @user.email
@@ -78,29 +76,29 @@ RSpec.describe User, type: :model do
       @sunday = FactoryBot.create(:user)
       @ahmed = FactoryBot.create(:user)
     end
-  
+
     it 'should have pending requests with friend requests sent' do
       expect { @sunday.send_request(@ahmed) }.to change { @sunday.pending_friends.count }.by(1)
     end
-  
+
     it 'should have received request with friend requests received' do
       expect { @ahmed.send_request(@sunday) }.to change { @sunday.friend_requests.count }.by(1)
     end
-  
+
     context 'when accepts a friend request' do
       before do
         @ahmed.send_request(@sunday)
         @sunday.accept_friend(@ahmed)
       end
-  
+
       it 'Sunday should be Ahmed\'s friend' do
         expect(@ahmed.friend?(@sunday)).to eq(true)
       end
-  
+
       it 'Ahmed should be Sunday\'s friend' do
         expect(@sunday.friend?(@ahmed)).to eq(true)
       end
-  
+
       it 'should not have pending request from the same user' do
         expect(@sunday.friend_requests.include?(@ahmed)).not_to eq(true)
       end
@@ -117,8 +115,7 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe "posts associations" do
-
+  describe 'posts associations' do
     before { @user.save } #= FactoryBot.create(:user) }
     let!(:older_post) do
       FactoryBot.create(:post, user: @user, created_at: 1.day.ago)
@@ -127,11 +124,11 @@ RSpec.describe User, type: :model do
       FactoryBot.create(:post, user: @user, created_at: 1.hour.ago)
     end
 
-    it "should have the right posts in the right order" do
+    it 'should have the right posts in the right order' do
       expect(@user.posts).to eq([newer_post, older_post])
     end
 
-    it "should destroy associated posts" do
+    it 'should destroy associated posts' do
       posts = @user.posts.dup
       @user.destroy
       expect(posts).to be_empty
