@@ -7,7 +7,7 @@ class LikesController < ApplicationController
     else
       flash[:warning] = 'You cannot like this post.'
     end
-    redirect_to posts_path
+    redirect_back
   end
 
   def destroy
@@ -18,6 +18,6 @@ class LikesController < ApplicationController
     else
       flash[:warning] = 'You cannot dislike post that you did not like before.'
     end
-    redirect_to posts_path
+    redirect_back
   end
 end

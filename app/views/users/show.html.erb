@@ -37,12 +37,10 @@
         <% end %>     
       <% end %>
     <% end %>
-    <% if current_user.friend?(@user) || current_user == @user %> 
       <h3>Recent posts:</h3>
       <ul class="posts">
         <%= render @posts %>
       </ul>
       <%= will_paginate @posts %>
-    <% end %>
   </article>
 </section>
