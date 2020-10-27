@@ -16,7 +16,7 @@ RSpec.feature 'UsersIndices', type: :feature do
         click_link 'All users'
       end
 
-      it 'should display all users' do
+      it 'should have a heading' do
         expect(page).to have_selector('h1', text: 'All users', count: 1)
       end
 
