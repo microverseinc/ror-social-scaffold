@@ -3,16 +3,7 @@
   Name: <%= user.name %>
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-    <% if current_user.pending_request.include?(user) %>
-        <%= link_to "Accept Request", add_friend_path(friend_id: user.id), method: :put %>
-        <%= link_to "Reject Request", remove_friend_path(friend_id: user.id), method: :delete %> 
-    <% elsif current_user.sent_request.include?(user) %>
-            <p>You sent a request already</p>
-      <% elsif  current_user.friend?(user) %>
-            <p>You are friends</p>
-        <% else %>
-         <%= link_to "Add Friend", friendships_path(user_id: user.id), method: :post %>
-    <% end %>
+    <%= accept_or_pending_btn(user) %>
   </span>
 <% end %>
 </li>
