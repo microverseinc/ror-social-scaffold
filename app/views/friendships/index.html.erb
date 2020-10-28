@@ -1,13 +1,12 @@
 <section class="users-section">
-  <div class="users-list">  
-    <% return if !@sent_requests %>
-    <h2><%= "#{@sent_requests.count} Pending Sent Requests" %></h2>
+  <div class="users-list">
+    <h2><%= pending_sent_requests %></h2>
     <hr>
     <br>
     <% @sent_requests.each do | sent_request | %>
     <div>
       <%= link_to sent_request.friend.name, user_path(sent_request.friend)  %>
-      <%= button_to 'Invite Sent', {}, type: 'hidden', disabled: true, class: 'btn btn-secondary' %>
+      <%= button_tag 'Invite Sent', type: 'hidden', disabled: true, class: 'btn btn-secondary' %>
       <%= button_to 'Cancel Invite', { action: 'destroy', id: sent_request.id },
                                       method: :delete, data: { confirm: "Are you sure?" },
                                       type: 'button', class: 'btn btn-secondary' %>
@@ -15,8 +14,7 @@
     </div>
     <% end %>
     <br>
-    <% return if !@incoming_requests %>
-    <h2><%= "#{@incoming_requests.count} Pending Incoming Requests" %></h2>
+    <h2><%= pending_incoming_requests %></h2>
     <hr>
     <% @incoming_requests.each do | incoming_request | %>
       <br>

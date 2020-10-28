@@ -1,19 +1,26 @@
 module FriendshipsHelper
+  def pending_sent_requests
+    return if !@sent_requests
+    "#{@sent_requests.count} Pending Sent Requests"
+  end
+
+  def pending_incoming_requests
+    return if !@incoming_requests
+    "#{@incoming_requests.count} Pending Incoming Requests"
+  end
+  
   def first_friendship_button(other_user)
     if current_user.sent_invite(other_user)
-      button_to 'Invite Sent', {}, type: 'hidden', disabled: true, class: 'btn btn-secondary'
+      button_tag 'Invite Sent', type: 'button', disabled: true, class: 'btn btn-secondary'
     elsif current_user.incoming_invite(other_user)
       button_to 'Accept Friend',
                 { action: 'update', controller: 'friendships',
                   id: current_user.incoming_invite(other_user).id },
                 method: :put, type: 'button', class: 'btn btn-secondary'
     elsif current_user.friend?(other_user)
-      button_to 'You\'re Friends', {},
-                type: 'hidden', disabled: true, class: 'btn btn-secondary'
+      button_tag 'You\'re Friends', type: 'hidden', disabled: true, class: 'btn btn-secondary'
     elsif current_user == other_user
-      button_to 'You',
-                { action: 'create', controller: 'friendships', friend_id: other_user.id },
-                method: :post, type: 'hidden', disabled: true, class: 'btn btn-secondary'
+      button_tag 'You', type: 'hidden', disabled: true, class: 'btn btn-secondary'
     else
       button_to 'Invite Friend',
                 { action: 'create', controller: 'friendships', friend_id: other_user .id },
