@@ -6,6 +6,13 @@
 > The full project description can be found [here](https://microverse.pathwright.com/library/fast-track-curriculum/69047/path/step/49736080/).
 
 
+##  What we implemented:
+
+* In this milestone, we have added some interactive and user-friendly friendship features which inlude Friends, Sent Requests and Friend Requests buttons, Friendship stats, Send request, Accept request, and Cancel requests buttons.
+
+* We have written couple of model tests and a comprehensive integration tests using RSpec/Capybara test suites to simulate the data models and browser behavior.
+
+
 * Ruby version  - 2.7.0
 
 * Rails version - 6.0.3.4
@@ -18,13 +25,11 @@
 
 * Database creation - After cloning the project, navigate to the project directory (```cd Social-Network```), then execute the following commands``` rails db:create ```, then ``` rails db:migrate ```to create and migrate database on the local machine.
 
-* How to run the test - Test should be run from CLI, by first starting the Rails Console``` rails console ``` from the project directory.
+* Start Rails sever by running the command ```rails sever``` or ```rails s``` in the root directory.
 
-##  What we implemented:
+* Open the web browser and type  'localhost:3000' in the address bar.
 
-* In this milestone, we have added some interactive and user-friendly friendship features which inlude Friends, Sent Requests and Friend Requests buttons, Friendship stats, Send request, Accept request, and Cancel requests buttons.
-
-* We have written couple of model tests and a comprehensive integration tests using RSpec/Capybara test suites to simulate the data models and browser behavior.
+* All the features are implemented in the user interface.
 
 
 ## Authors
