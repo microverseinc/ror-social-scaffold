@@ -1,0 +1,40 @@
+<section class="users-section">
+  <div class="users-list">
+    <h2><%= pending_sent_requests %></h2>
+    <hr>
+    <br>
+    <% @sent_requests.each do | sent_request | %>
+    <div>
+      <%= link_to sent_request.friend.name, user_path(sent_request.friend)  %>
+      <%= button_tag 'Invite Sent', type: 'hidden', disabled: true, class: 'btn btn-secondary' %>
+      <%= button_to 'Cancel Invite', { action: 'destroy', id: sent_request.id },
+                                      method: :delete, data: { confirm: "Are you sure?" },
+                                      type: 'button', class: 'btn btn-secondary' %>
+      <br>
+    </div>
+    <% end %>
+    <br>
+    <h2><%= pending_incoming_requests %></h2>
+    <hr>
+    <% @incoming_requests.each do | incoming_request | %>
+      <br>
+      <div>
+        <%= link_to incoming_request.user.name, user_path(incoming_request.user) %>
+        <%= button_to 'Accept Friend', { action: 'update', id: incoming_request.id },
+                                        method: :put, type: 'button', class: 'btn btn-secondary' %>
+        <%= button_to 'Reject Friend', { action: 'destroy', id: incoming_request.id },
+                                        method: :delete, data: { confirm: "Are you sure?" },
+                                        type: 'button', class: 'btn btn-secondary' %>
+      </div>
+    <% end %>
+    <br>
+    <h2> <%= "You have #{current_user.friends.count} friends"%> </h2>
+    <hr>
+    <% @confirmed_friends.each do | friend | %>
+      <br>
+      <div>
+        <strong><%= link_to friend.name, user_path(friend) %></strong>
+      </div>
+    <% end %>
+  </div>
+</section>
