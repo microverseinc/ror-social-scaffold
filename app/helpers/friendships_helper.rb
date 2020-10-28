@@ -1,7 +1,7 @@
 module FriendshipsHelper
   def pending_sent_requests
     return unless @sent_requests
-  
+
     "#{@sent_requests.count} Pending Sent Requests"
   end
 
