@@ -1,6 +1,6 @@
 class FriendshipsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def index
     @friends_hash = {}
     pull_friends

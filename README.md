@@ -1,7 +1,7 @@
 # Project: Social media website
-## Milestone 5: Friendships v1
+## Milestone 6: Friendships v2
 
-> This is a Social Media Website project milestone 5 (Friendships v1). In this milestone, we created Friendship data model and necessary associations and required class methods for user-fiendship relationship.
+> This is a Social Media Website project milestone 6 (Friendships v1). In this milestone, we created Friendship data model and necessary associations and required class methods for user fiendships.
 
 > The full project description can be found [here](https://microverse.pathwright.com/library/fast-track-curriculum/69047/path/step/49736080/).
 
@@ -10,6 +10,8 @@
 
 * Rails version - 6.0.3.4
 
+* Test Suite: RSpec/Capybara
+
 * System dependencies - required gems are bundled with Gemfile 
 
 * Configuration - from the project directory, run``` bundle install ```from command line (terminal) to install all the required gems.
@@ -17,6 +19,13 @@
 * Database creation - After cloning the project, navigate to the project directory (```cd Social-Network```), then execute the following commands``` rails db:create ```, then ``` rails db:migrate ```to create and migrate database on the local machine.
 
 * How to run the test - Test should be run from CLI, by first starting the Rails Console``` rails console ``` from the project directory.
+
+##  What we implemented:
+
+* In this milestone, we have added some interactive and user-friendly friendship features which inlude Friends, Sent Requests and Friend Requests buttons, Friendship stats, Send request, Accept request, and Cancel requests buttons.
+
+* We have written couple of model tests and a comprehensive integration tests using RSpec/Capybara test suites to simulate the data models and browser behavior.
+
 
 ## Authors
 
