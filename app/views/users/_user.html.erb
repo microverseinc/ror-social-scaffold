@@ -2,10 +2,13 @@
   Name: <%= user.name %>
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+    
     <% if current_user.friendships.find_by(friend_id: user.id).nil? && user.id != current_user.id %>
-    <%= link_to 'Add friend', friendship_path(user.id), class: 'profile-link' %>
+    <%= link_to 'Add friend', friendship_path(user.id), class: 'profile-link' %>    
+
     <% elsif  user.id != current_user.id %>
-    <%= link_to 'Requested', class: 'profile-link' %>
+    <%= link_to 'Undo request', friendship_path(user.id), method: 'delete', class: 'profile-link' %>
+    
     <% end %>
   </span>
 </li>

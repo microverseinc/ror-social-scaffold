@@ -1,5 +1,6 @@
 class FriendshipsController < ApplicationController
-  before_action :set_friendship, only: [:edit, :update, :destroy]
+  before_action :set_friendship, only: [:edit, :update]
+  helper_method :friends
 
   # GET /friendships
   # GET /friendships.json
@@ -11,7 +12,10 @@ class FriendshipsController < ApplicationController
   # GET /friendships/1.json
   def show
     @friendship = Friendship.create(user_id: current_user.id, friend_id: params[:id], confirmed: false)
-    redirect_to users_path
+
+    respond_to do |format|
+      format.html { redirect_to users_path, notice: 'Friend request sent successfully.' }
+    end    
   end
 
   # GET /friendships/new
@@ -54,10 +58,9 @@ class FriendshipsController < ApplicationController
   # DELETE /friendships/1
   # DELETE /friendships/1.json
   def destroy
-    @friendship.destroy
+    current_user.friendships.find_by(friend_id: params[:id]).destroy
     respond_to do |format|
-      format.html { redirect_to friendships_url, notice: 'Friendship was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { redirect_to users_path, notice: 'Friend request deleted.' }
     end
   end
 
