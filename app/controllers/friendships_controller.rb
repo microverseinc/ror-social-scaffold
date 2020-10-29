@@ -29,10 +29,8 @@ class FriendshipsController < ApplicationController
     respond_to do |format|
       if @friendship.save
         format.html { redirect_to @friendship, notice: 'Friendship was successfully created.' }
-        format.json { render :show, status: :created, location: @friendship }
       else
         format.html { render :new }
-        format.json { render json: @friendship.errors, status: :unprocessable_entity }
       end
     end
   end
