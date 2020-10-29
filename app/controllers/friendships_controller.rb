@@ -23,7 +23,7 @@ class FriendshipsController < ApplicationController
   end
 
   def update
-    friendship = current_user.inverse_friendships.find_by(user_id: params[:id])
+    friendship = current_user.inverse_friendships.find_by(id: params[:id])
     if friendship and current_user.accept_friend(friendship.user_id)
       flash[:alert] = "You are now friends with #{friendship.user.name}"
     end

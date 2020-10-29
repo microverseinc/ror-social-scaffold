@@ -14,7 +14,7 @@
           <% if current_user.friends.exclude?(user) && current_user.pending_friends.exclude?(user) && current_user.friend_requests.exclude?(user) %> 
             <%= form_with(model: Friendship.new(friend_id: user.id), local: true) do |f| %>
               <div><%= hidden_field_tag :friend_id, user.id %></div>
-              <%= f.submit "Add Friend", class: "btn btn-primary btn-sm friends-button" %>
+              <%= f.submit "Add Friend", class: "btn btn-primary btn-sm friends-button add-friend" %>
             <% end %>
           <% end %>       
         <% end %>

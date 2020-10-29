@@ -33,7 +33,7 @@ RSpec.feature 'UsersIndices', type: :feature do
       end
 
       it 'should have a button to add each friend' do
-        expect(page).to have_button('Add Friend', count: 29)
+        expect(page).to have_button('Add Friend', count: 30)
       end
 
       it 'should have a sidebar' do

@@ -22,7 +22,7 @@ class PostsController < ApplicationController
   private
 
   def timeline_posts
-    @timeline_posts ||= current_user.timeline_posts.paginate(page: params[:page]) 
+    @timeline_posts ||= current_user.timeline_posts.paginate(page: params[:page])
   end
 
   def post_params
