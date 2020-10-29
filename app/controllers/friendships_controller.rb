@@ -1,5 +1,5 @@
 class FriendshipsController < ApplicationController
-  before_action :set_friendship, only: [:show, :edit, :update, :destroy]
+  before_action :set_friendship, only: [:edit, :update, :destroy]
 
   # GET /friendships
   # GET /friendships.json
@@ -10,6 +10,8 @@ class FriendshipsController < ApplicationController
   # GET /friendships/1
   # GET /friendships/1.json
   def show
+    @friendship = Friendship.create(user_id: current_user.id, friend_id: params[:id], confirmed: false)
+    redirect_to users_path
   end
 
   # GET /friendships/new
