@@ -1,6 +1,9 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
   <article class="timeline">
+  <%= friend_or_friendship_requested(@user, current_user) %>
+
+  <%= friendship_status(@user, current_user) %>
     <h3>Recent posts:</h3>
     <ul class="posts">
       <%= render @posts %>

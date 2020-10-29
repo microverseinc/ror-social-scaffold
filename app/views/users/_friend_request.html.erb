@@ -1,0 +1,6 @@
+<% current_user.friend_requests.each do |request| %>
+  <span class="profile-link">
+     <%= link_to 'Accept',  friendship_path(request), method: :patch, class: 'profile-link' %>
+    <%= link_to 'Reject', friendship_path(request),  method: :delete, data: { confirm: 'Are you Sure?' }, class: 'profile-link' %>
+    </span>
+<% end %>
