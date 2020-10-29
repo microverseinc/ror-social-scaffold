@@ -2,12 +2,6 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 
-  # context 'Creating an Event' do
-  #   it 'creates an event' do
-  #     expect(event).to be_an Event
-  #   end
-  # end
-
   context 'Association test for User model' do
     it 'should have many friendships' do
       t = User.reflect_on_association(:friendships)
