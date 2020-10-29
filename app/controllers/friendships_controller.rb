@@ -14,7 +14,7 @@ class FriendshipsController < ApplicationController
       flash[:alert] = "You're already friends with this user"
     elsif current_user.pending_friends.include?(@friend)
       flash[:alert] = 'Friend request previously sent to this user'
-    elsif current_user.send_request(@friend)
+    elsif current_user.send_request(@friend.id)
       flash[:success] = 'Friend request sent!'
     else
       flash[:danger] = 'Friend request not sent'
@@ -23,8 +23,8 @@ class FriendshipsController < ApplicationController
   end
 
   def update
-    friendship = Friendship.find_by(id: params[:id])
-    if friendship and current_user.accept_friend(friendship.user)
+    friendship = current_user.inverse_friendships.find_by(user_id: params[:id])
+    if friendship and current_user.accept_friend(friendship.user_id)
       flash[:alert] = "You are now friends with #{friendship.user.name}"
     end
     redirect_back
@@ -32,7 +32,6 @@ class FriendshipsController < ApplicationController
 
   def destroy
     friendship = Friendship.find_by(id: params[:id])
-    @friend = friendship.friend
     flash[:alert] = 'Friend deleted' if friendship&.destroy
     redirect_back
   end

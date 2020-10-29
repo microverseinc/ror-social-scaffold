@@ -14,7 +14,7 @@
           Friends
         </div>
       <% elsif current_user.pending_friends.include?(@user) %>
-        <%= form_with(model: current_user.friendships.find_by(friend_id: @user.id), html: { method: :delete }, local: true) do |f| %>
+        <%= form_with(model: current_user.pending_friendships.find_by(friend_id: @user.id), html: { method: :delete }, local: true) do |f| %>
           <%= f.submit "Cancel Request", class: "btn btn-secondary btn-sm friends-button" %>
         <% end %>
         <% elsif current_user.friend_requests.include?(@user) %>

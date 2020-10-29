@@ -28,21 +28,21 @@ end
 # Friends send friend requests to user.
 users = User.all
 friend = users.first
-users[2..80].each { |user| user.send_request(friend) }
+users[2..80].each { |user| user.send_request(friend.id) }
 
 # User accepts friend requests
 user = User.find(1)
-user.friend_requests[2..40].each { |friend| user.accept_friend(friend) }
+user.friend_requests[2..40].each { |friend| user.accept_friend(friend.id) }
 
 # User sends friend requests to other friends
 users = User.all
 user = users.first
 friends = users[81..98]
-friends.each { |friend| user.send_request(friend) }
+friends.each { |friend| user.send_request(friend.id) }
 
 # Other users accept user's friend request
 users = User.all
 friend = users.first
 users = users[81..89]
-users.each { |user| user.accept_friend(friend) }
+users.each { |user| user.accept_friend(friend.id) }
 

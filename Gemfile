@@ -71,6 +71,8 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'table_print'
+  # help to kill N+1 queries and unused eager loading.
+  gem 'bullet', '~> 6.1'
 end
 
 group :test do

@@ -2,7 +2,7 @@
 <%= render 'shared/friend_requests_link' %>
 <h1>All users</h1>
 <section class="users-section">
-  <%= will_paginate %>
+  <%#= will_paginate %>
   <ul class="users-list">
     <% @users.each do |user| %>
       <li class="friend-response">
@@ -12,7 +12,7 @@
         </div>
         <% unless current_user == user %>
           <% if current_user.friends.exclude?(user) && current_user.pending_friends.exclude?(user) && current_user.friend_requests.exclude?(user) %> 
-            <%= form_with(model: current_user.friendships.build(friend_id: user.id), local: true) do |f| %>
+            <%= form_with(model: Friendship.new(friend_id: user.id), local: true) do |f| %>
               <div><%= hidden_field_tag :friend_id, user.id %></div>
               <%= f.submit "Add Friend", class: "btn btn-primary btn-sm friends-button" %>
             <% end %>

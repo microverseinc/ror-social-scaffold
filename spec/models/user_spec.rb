@@ -78,17 +78,17 @@ RSpec.describe User, type: :model do
     end
 
     it 'should have pending requests with friend requests sent' do
-      expect { @sunday.send_request(@ahmed) }.to change { @sunday.pending_friends.count }.by(1)
+      expect { @sunday.send_request(@ahmed.id) }.to change { @sunday.pending_friends.count }.by(1)
     end
 
     it 'should have received request with friend requests received' do
-      expect { @ahmed.send_request(@sunday) }.to change { @sunday.friend_requests.count }.by(1)
+      expect { @ahmed.send_request(@sunday.id) }.to change { @sunday.friend_requests.count }.by(1)
     end
 
     context 'when accepts a friend request' do
       before do
-        @ahmed.send_request(@sunday)
-        @sunday.accept_friend(@ahmed)
+        @ahmed.send_request(@sunday.id)
+        @sunday.accept_friend(@ahmed.id)
       end
 
       it 'Sunday should be Ahmed\'s friend' do
@@ -105,13 +105,8 @@ RSpec.describe User, type: :model do
     end
 
     it 'should have friend requests decrease by 1 when a friend request is declined' do
-      @ahmed.send_request(@sunday)
-      expect { @sunday.reject_friend(@ahmed) }.to change { @sunday.friend_requests.count }.by(-1)
-    end
-
-    it 'should destroy friendships associated with user when a user is deleted' do
-      Friendship.create!(user_id: @ahmed.id, friend_id: @sunday.id, confirmed: true)
-      expect { User.find(@sunday.id).destroy }.to change { @ahmed.reload.friends.count }.by(-1)
+      @ahmed.send_request(@sunday.id)
+      expect { @sunday.reject_friend(@ahmed.id) }.to change { @sunday.friend_requests.count }.by(-1)
     end
   end
 
