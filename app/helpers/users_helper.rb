@@ -9,7 +9,7 @@ module UsersHelper
 
     def friend_or_friendship_requested(user, current_user)
         unless current_user.friendship_requested?(user) || current_user.friend?(user) || user.friendship_requested?(current_user)
-            link_to "Add Friend", friendships_path(user_id: user.id), method: :post
+            link_to "Add Friend", friendships_path(user_id: user.id), method: :post, class: 'profile-link'
         end
     end
     def friendship_status(user, current_user)

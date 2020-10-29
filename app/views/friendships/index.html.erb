@@ -9,7 +9,7 @@
   <h2>Friend Requests</h2>
   <% current_user.friend_requests.each do |request| %>
   <li>
-    Name: <%= request.user.name %>
+    Name: <%= request.user.name  %>
     <span class="profile-link"> |
     <%= link_to "Accept", friendship_path(request), method: :patch, class: 'profile-link' %> |
     <%=  link_to "Reject", friendship_path(request), method: :delete, data: { confirm: 'Are you sure?' }, class: 'profile-link' %> 
