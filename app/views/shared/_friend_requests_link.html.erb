@@ -3,19 +3,19 @@
   <div class="list-group list-group-flush">
     <a class="list-group-item list-group-item-action bg-light" href="<%= friendships_url(friendship_type: 'friend') %>">
       <strong id="friends" class="stat">
-        <%= format_stat(current_user.friends.count, 'Friend')[0] %>
+        <%= current_user.friends.count %>
       </strong>
       <%= format_stat(current_user.friends.count, 'Friend')[1] %>
     </a>
     <a class="list-group-item list-group-item-action bg-light" href="<%= friendships_url(friendship_type: 'friend_request') %>">
       <strong id="friends" class="stat">
-        <%= format_stat(current_user.friend_requests.count, 'Request')[0] %>
+        <%= current_user.friend_requests.count %>
       </strong>
       Friend <%= format_stat(current_user.friend_requests.count, 'Request')[1] %>  
     </a>
     <a class="list-group-item list-group-item-action bg-light" href="<%= friendships_url(friendship_type: 'pending_friend') %>">
       <strong id="friends" class="stat">
-        <%= format_stat(current_user.pending_friends.count, 'Request')[0] %>
+        <%= current_user.pending_friends.count %>
       </strong>
       Sent <%= format_stat(current_user.pending_friends.count, 'Request')[1] %>
     </a>
