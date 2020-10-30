@@ -28,10 +28,6 @@ RSpec.feature 'UsersSignups', type: :feature do
     end
 
     context 'failiure' do
-      it 'should not change user count on the database' do
-        expect { click_button 'Sign up' }.to_not change { User.count }
-      end
-
       it 'should display failiure message' do
         click_button 'Sign up'
         expect(page).to have_text('errors prohibited this user from being saved:')

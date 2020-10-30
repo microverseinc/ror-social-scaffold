@@ -101,7 +101,7 @@ RSpec.feature 'UsersProfiles', type: :feature do
       click_button 'Log in'
     end
 
-    context 'when they are not fiends' do
+    describe 'when they are not fiends' do
       before { visit user_path(user1) }
 
       it 'shows Confirm and Delete friend buttons' do

@@ -66,7 +66,6 @@ RSpec.feature 'FriendshipsIndices', type: :feature do
     end
 
     describe 'pending friends' do
-
       let(:user) { FactoryBot.create(:user) }
 
       before do
