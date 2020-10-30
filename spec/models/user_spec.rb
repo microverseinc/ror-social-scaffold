@@ -111,7 +111,7 @@ RSpec.describe User, type: :model do
   end
 
   describe 'posts associations' do
-    before { @user.save } #= FactoryBot.create(:user) }
+    before { @user.save }
     let!(:older_post) do
       FactoryBot.create(:post, user: @user, created_at: 1.day.ago)
     end

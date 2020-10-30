@@ -53,16 +53,6 @@ class User < ApplicationRecord
     friendship.delete
   end
 
-  def like_post(post_id)
-    like = likes.new(post_id: post_id)
-    like.save
-  end
-
-  def dislike_post(like_id:, post_id:)
-    like = Like.find_by(id: like_id, user: self, post_id: post_id)
-    like.delete
-  end
-
   def timeline_posts
     friends_ids = friends.map(&:id)
     Post.includes(:user, comments: :user, likes: :user).where('user_id IN (?) OR user_id = ?', friends_ids, id)
