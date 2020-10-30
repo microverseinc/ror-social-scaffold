@@ -2,7 +2,7 @@ class FriendshipsController < ApplicationController
   # before_action :set_friendship, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   # GET /friendships
-  
+
   def new
     @friendship_created = current_user.friendships.build
   end
@@ -26,7 +26,7 @@ class FriendshipsController < ApplicationController
                                             user_id: @friendship.friend_id,
                                             confirmed: true)
     if @inverse_friendship.save && @friendship.save
-        redirect_to users_path, notice: "Friend request was accepted."
+      redirect_to users_path, notice: 'Friend request was accepted.'
     else
       redirect_to users_path, alert: "Couldn't accept friend request"
     end
@@ -35,20 +35,21 @@ class FriendshipsController < ApplicationController
   def destroy
     @friendship = Friendship.find(params[:id])
     if @friendship.destroy
-      redirect_to request.referrer, notice: "Friendship was rejected."
+      redirect_to request.referrer, notice: 'Friendship was rejected.'
     else
-      redirect_to request.referrer, alert: "Error rejecting friendship."
+      redirect_to request.referrer, alert: 'Error rejecting friendship.'
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    # def set_friendship
-    #   @friendship = Friendship.find(params[:id])
-    # end
 
-    # Only allow a list of trusted parameters through.
-    def friendship_params
-      params.require(:friendships).permit(:friend_id, :user_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  # def set_friendship
+  #   @friendship = Friendship.find(params[:id])
+  # end
+
+  # Only allow a list of trusted parameters through.
+  def friendship_params
+    params.require(:friendships).permit(:friend_id, :user_id)
+  end
 end

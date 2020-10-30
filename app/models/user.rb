@@ -32,7 +32,7 @@ class User < ApplicationRecord
     friends_array = friendships.map { |friendship| friendship.friend unless friendship.confirmed }
     friends_array.include?(user)
   end
-  
+
   def friendship(user)
     friendships.find { |friendship| friendship.friend_id == user.id }
   end

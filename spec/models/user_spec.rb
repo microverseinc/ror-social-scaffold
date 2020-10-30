@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-
   context 'Association test for User model' do
     it 'should have many friendships' do
       t = User.reflect_on_association(:friendships)

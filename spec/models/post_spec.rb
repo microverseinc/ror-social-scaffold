@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-
   context 'Association test for Posts model' do
     it 'should belong to User' do
       t = Post.reflect_on_association(:user)

@@ -17,19 +17,19 @@ module ApplicationHelper
   end
 
   def flash_notice
-    if flash[:notice]
-      raw("<div class='notification is-primary global-notification mb-0'>
+    return unless flash[:notice]
+
+    raw("<div class='notification is-primary global-notification mb-0'>
         <p class='notice'>#{notice}</p>
       </div>")
-    end
   end
 
   def flash_alert
-    if flash[:alert]
-      raw("<div class='notification is-danger global-notification mb-0'>
+    return unless flash[:alert]
+
+    raw("<div class='notification is-danger global-notification mb-0'>
         <p class='alert'>#{alert}</p>
     </div>")
-    end
   end
 
   def nav_bar
