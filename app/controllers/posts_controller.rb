@@ -2,8 +2,9 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    store_location
     @post = Post.new
-    timeline_posts
+    fetch_timeline_posts
   end
 
   def create
@@ -13,7 +14,7 @@ class PostsController < ApplicationController
       flash[:success] = 'Post was successfully created.'
       redirect_to posts_path
     else
-      timeline_posts
+      fetch_timeline_posts
       flash[:danger] = 'Post was not created.'
       render :index
     end
@@ -21,7 +22,7 @@ class PostsController < ApplicationController
 
   private
 
-  def timeline_posts
+  def fetch_timeline_posts
     @timeline_posts ||= current_user.timeline_posts.paginate(page: params[:page])
   end
 

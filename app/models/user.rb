@@ -55,7 +55,7 @@ class User < ApplicationRecord
 
   def timeline_posts
     friends_ids = friends.map(&:id)
-    Post.includes(:user).where('user_id IN (?) OR user_id = ?', friends_ids, id)
+    Post.includes(:user, comments: :user, likes: :user).where('user_id IN (?) OR user_id = ?', friends_ids, id)
   end
 
   private

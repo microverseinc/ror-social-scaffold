@@ -6,7 +6,7 @@
     </div>
     <div class='post-liking'>
       <span class='timestamp'> Posted <%= time_ago_in_words(post.created_at) %> ago. </span>
-      <% if current_user.friend?(post.user) || post.user ==current_user %> 
+      <% if current_user.friend?(post.user) || post.user == current_user %> 
         <%= like_or_dislike_btn(post) %>
       <% end %>
     </div>
