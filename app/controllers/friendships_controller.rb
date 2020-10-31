@@ -8,15 +8,19 @@ class FriendshipsController < ApplicationController
   end
 
   def create
-    # byebug
     @users = User.all
-    @friendship = current_user.friendships.build(friend_id: params[:friend_id], confirmed: false)
-
-    if @friendship.save
-      redirect_to user_path(id: params[:friend_id]), notice: 'Friend request sent.'
+    @reverse_friendship = Friendship.find_by(user_id: params[:friend_id], friend_id: current_user.id)
+    if @reverse_friendship
+      redirect_to friendships_path, alert: 'You already have an incoming request from this user.'
     else
-      redirect_to users_path, error: 'Request not sent. Something is wrong!'
+      @friendship = current_user.friendships.build(friend_id: params[:friend_id], confirmed: nil)
+      if @friendship.save
+        redirect_to user_path(id: params[:friend_id]), notice: 'Friend request sent.'
+      else
+        redirect_to users_path, alert: 'Request not sent. Something is wrong!'
+      end
     end
+
   end
 
   def update

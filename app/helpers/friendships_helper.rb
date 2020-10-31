@@ -25,7 +25,7 @@ module FriendshipsHelper
       button_tag 'You', type: 'hidden', disabled: true, class: 'btn btn-secondary'
     else
       button_to 'Invite Friend',
-                { action: 'create', controller: 'friendships', friend_id: other_user .id },
+                { action: 'create', controller: 'friendships', friend_id: other_user.id },
                 method: :post, type: 'button', class: 'btn btn-secondary'
     end
   end

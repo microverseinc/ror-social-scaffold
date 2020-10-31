@@ -7,10 +7,17 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 20 }
 
   has_many :friendships
+  has_many :sent_requests, -> { where confirmed: false }, through: :friendships, source: :friend
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
+  has_many :incoming_requests, -> { where confirmed: false }, through: :friendships, source: :friend
+
   has_many :posts
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+
+  def reverse_exists?
+    true if Friendship.find(user_id: friend_id, friend_id: user_id)
+  end
 
   def friends
     friends_array = friendships.map { |friendship| friendship.friend if friendship.confirmed }
