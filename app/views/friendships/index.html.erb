@@ -28,12 +28,12 @@
       </div>
     <% end %>
     <br>
-    <h2> <%= "You have #{current_user.friends.count} friends"%> </h2>
+    <h2> <%= "You have #{@confirmed_friendships.count} friends"%> </h2>
     <hr>
-    <% @confirmed_friends.each do | friend | %>
+    <% @confirmed_friendships.each do | friendship | %>
       <br>
       <div>
-        <strong><%= link_to friend.name, user_path(friend) %></strong>
+        <strong><%= link_to friendship.friend.name, user_path(friendship.friend) %></strong>
       </div>
     <% end %>
   </div>
