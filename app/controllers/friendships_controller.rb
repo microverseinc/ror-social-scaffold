@@ -13,7 +13,7 @@ class FriendshipsController < ApplicationController
     if @reverse_friendship
       redirect_to friendships_path, alert: 'You already have an incoming request from this user.'
     else
-      @friendship = current_user.friendships.build(friend_id: params[:friend_id], confirmed: false)
+      @friendship = current_user.sent_requests.build(friend_id: params[:friend_id], confirmed: false)
       if @friendship.save
         redirect_to user_path(id: params[:friend_id]), notice: 'Friend request sent.'
       else
@@ -36,7 +36,16 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
-    Friendship.find(params[:id]).destroy
-    redirect_to friendships_path, notice: 'Friend request canceled/rejected/removed'
+    @friendship = Friendship.find(params[:id])
+    if current_user.sent_invite?(@friendship.friend)
+      @friendship.destroy
+      redirect_to friendships_path, notice: 'Friendship request canceled.'
+    elsif current_user.incoming_invite?(@friendship.user)
+      @friendship.destroy
+      redirect_to friendships_path, notice: 'Friend request rejected.'
+    else
+      @friendship.destroy
+      redirect_to friendships_path, notice: 'Friend removed.'
+    end
   end
 end
