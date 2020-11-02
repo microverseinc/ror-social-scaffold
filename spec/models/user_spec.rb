@@ -11,8 +11,12 @@ RSpec.describe User, type: :model do
   end
 
   describe 'associations' do
-    it { should have_many(:friendships) }
-    it { should have_many(:inverse_friendships) }
+    it { should have_many(:sent_requests) }
+    it { should have_many(:sent_friends) }
+    it { should have_many(:incoming_requests) }
+    it { should have_many(:incoming_friends) }
+    it { should have_many(:confirmed_friendships) }
+    it { should have_many(:confirmed_friends) }
     it { should have_many(:posts) }
     it { should have_many(:comments) }
     it { should have_many(:likes) }
