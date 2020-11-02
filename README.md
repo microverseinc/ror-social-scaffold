@@ -1,6 +1,6 @@
-# Scaffold for social media app with Ruby on Rails
+# Haq, Inc.
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+A simple functional friendship site where users can request, add, reject and remove friends along with creating and liking and commenting on posts
 
 ## Built With
 
@@ -24,7 +24,7 @@ Postgres: >=9.5
 
 ### Setup
 
-Instal gems with:
+Install gems with:
 
 ```
 bundle install
@@ -37,16 +37,6 @@ Setup database with:
    rails db:migrate
 ```
 
-### Github Actions
-
-To make sure the linters' checks using Github Actions work properly, you should follow the next steps:
-
-1. On your recently forked repo, enable the GitHub Actions in the Actions tab.
-2. Create the `feature/branch` and push.
-3. Start working on your milestone as usual.
-4. Open a PR from the `feature/branch` when your work is done.
-
-
 ### Usage
 
 Start server with:
@@ -57,37 +47,35 @@ Start server with:
 
 Open `http://localhost:3000/` in your browser.
 
-### Run tests
+### Live Version
 
-```
-    rpsec --format documentation
-```
-
-> Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
-
-### Deployment
-
-TBA
+This site is running on [Heroku](https://vast-fortress-25901.herokuapp.com/)
 
 ## Authors
 
-TBA
+👤 **Abdullah Numan**
+
+- Github:   https://github.com/anewman15
+- Twitter:  https://twitter.com/aanuman15
+- Linkedin: https://www.linkedin.com/in/aanuman15/
+- Email:    anewman15@hotmail.com
 
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the [issues page](issues/).
+Feel free to check the [issues page](https://github.com/anewman15/ror-social-scaffold/issues/).
 
 ## Show your support
 
 Give a ⭐️ if you like this project!
 
+
 ## Acknowledgments
 
-TBA
+- https://www.microverse.org/
+- https://www.theodinproject.com/
+- https://guides.rubyonrails.org/
+- https://www.stackoverflow.com/
 
-## 📝 License
-
-TBA
 
