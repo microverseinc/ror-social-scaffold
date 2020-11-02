@@ -20,7 +20,6 @@ class FriendshipsController < ApplicationController
         redirect_to users_path, alert: 'Request not sent. Something is wrong!'
       end
     end
-
   end
 
   def update
@@ -37,14 +36,12 @@ class FriendshipsController < ApplicationController
 
   def destroy
     @friendship = Friendship.find(params[:id])
+    @friendship.destroy
     if current_user.sent_invite?(@friendship.friend)
-      @friendship.destroy
       redirect_to friendships_path, notice: 'Friendship request canceled.'
     elsif current_user.incoming_invite?(@friendship.user)
-      @friendship.destroy
       redirect_to friendships_path, notice: 'Friend request rejected.'
     else
-      @friendship.destroy
       redirect_to friendships_path, notice: 'Friend removed.'
     end
   end

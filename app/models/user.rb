@@ -18,14 +18,14 @@ class User < ApplicationRecord
   has_many :confirmed_friends, through: :confirmed_friendships, source: :friend
 
   def friendship_with?(other_user)
-    confirmed_friendships.find { | friendship | friendship if friendship.friend == other_user }
+    confirmed_friendships.find { |friendship| friendship if friendship.friend == other_user }
   end
 
   def sent_invite?(other_user)
-    sent_requests.find { | request | request if request.friend == other_user }
+    sent_requests.find { |request| request if request.friend == other_user }
   end
 
   def incoming_invite?(other_user)
-    incoming_requests.find { | request | request if request.user == other_user }
+    incoming_requests.find { |request| request if request.user == other_user }
   end
 end

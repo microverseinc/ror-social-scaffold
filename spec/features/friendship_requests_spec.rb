@@ -21,7 +21,7 @@ feature 'friendship requests features', type: :feature do
     click_on 'Cancel Invite'
 
     expect(current_path).to eq('/friendships')
-    expect(page).to have_content('Friend request canceled/rejected/removed')
+    expect(page).to have_content('Friendship request canceled.')
   end
 
   scenario "a 'Reject Friend' button which rejects a friendship request" do
@@ -36,7 +36,7 @@ feature 'friendship requests features', type: :feature do
     click_on 'Reject Friend'
 
     expect(current_path).to eq('/friendships')
-    expect(page).to have_content('Friend request canceled/rejected/removed')
+    expect(page).to have_content('Friend request rejected.')
   end
 
   scenario "an 'Accept Friend' button which confirms a friendship" do
@@ -68,7 +68,7 @@ feature 'friendship requests features', type: :feature do
     click_on 'Remove Friend'
 
     expect(current_path).to eq('/friendships')
-    expect(page).to have_content('Friend request canceled/rejected/removed')
+    expect(page).to have_content('Friend removed.')
   end
 
   private
