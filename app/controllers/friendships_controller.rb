@@ -13,5 +13,4 @@ class FriendshipsController < ApplicationController
       redirect_to friend
   end
 
-
 end
