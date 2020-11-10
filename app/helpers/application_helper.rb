@@ -1,9 +1,8 @@
 module ApplicationHelper
-  
   def logged_in?
     !current_user.nil?
   end
-  
+
   def menu_link_to(link_text, link_path)
     class_name = current_page?(link_path) ? 'menu-item active' : 'menu-item'
 
@@ -11,7 +10,6 @@ module ApplicationHelper
       link_to link_text, link_path
     end
   end
-
 
   def like_or_dislike_btn(post)
     like = Like.find_by(post: post, user: current_user)
