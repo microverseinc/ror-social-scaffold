@@ -1,7 +1,9 @@
 class FriendshippsController < ApplicationController
-    
+  include FriendshippsHelper
         def create
-          #@friendship = current_user.friendshipps.build(friend_id: params[:user_id])
+          return if friend_request_received?(User.find(params[:friend_id]))
+          return if friend_request_sent?(User.find(params[:friend_id]))
+         
           @friendship = current_user.friendshipps.build(friend_id: params[:friend_id])
           if @friendship.save
             flash[:notice] = 'Request sent'
