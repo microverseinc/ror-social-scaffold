@@ -13,6 +13,28 @@ class FriendshippsController < ApplicationController
           end
       
         end
+
+  def accept_friend
+    @friendship = Friendshipp.
+              find_by(user_id:params[:friend_id], friend_id: current_user.id, confirmed: nil)
+    return unless @friendship
+    @friendship.confirmed = true
+    if @friendship.save
+      flash[:notice] = 'Friend request accepted'
+      @friendship2 = current_user.pending_friends.build(friend_id: params[:user_id],confirmed: true)
+      redirect_to current_user_path
+    else
+      flash[:notice] = 'Friend request could not be accepted'
+    end
+  end
+  
+  def decline_friend
+    @friendship = Friendshipp.
+              find_by(user_id:params[:user_id], friend_id: current_user.id, confirmed: nil)
+    return unless @friendship
+    @friendship.destroy
+    flash[:notice] = 'Friend request declined'
+  end
       
       
 end

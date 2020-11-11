@@ -20,9 +20,11 @@ Logged in user:<%= current_user.name %>
 <section class="users-section">
   <h2>Friend Requests</h2>
   <ul class="users-list"> 
-    <% current_user.friend_requests.each do |pend| %>
+    <% current_user.friend_requests.each do |req| %>
       <li>
-      <%= pend.name %>
+      <%= req.name %>
+      <%= link_to 'Accept', accept_friend_friendshipps_path(req) %>
+      <%= link_to 'Reject', decline_friend_friendshipps_path(req) %>
       </li>
     <% end %>
   </ul>
