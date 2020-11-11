@@ -1,5 +1,29 @@
 <section class="users-section">
+Logged in user:<%= current_user.name %>
+<h2>Other Users</h2>
   <ul class="users-list">
     <%= render @user_list %>
+  </ul>
+</section>
+
+<section class="users-section">
+  <h2>Pending Friends</h2>
+  <ul class="users-list"> 
+    <% current_user.pending_friends.each do |pend| %>
+      <li>
+      <%= pend.name %>
+      </li>
+    <% end %>
+  </ul>
+</section>
+
+<section class="users-section">
+  <h2>Friend Requests</h2>
+  <ul class="users-list"> 
+    <% current_user.friend_requests.each do |pend| %>
+      <li>
+      <%= pend.name %>
+      </li>
+    <% end %>
   </ul>
 </section>
