@@ -3,6 +3,11 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    @user_list = []
+    @users.each do |user|
+      @user_list << user if user != current_user
+    end
+    @user_list
   end
 
   def show
