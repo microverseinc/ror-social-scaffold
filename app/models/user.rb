@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
-  has_many :friendships
+  has_many :friendshipps
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
 
   def friends
@@ -38,4 +38,5 @@ class User < ApplicationRecord
   def friend?(user)
     friends.include?(user)
   end
+  
 end
