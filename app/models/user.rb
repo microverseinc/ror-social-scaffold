@@ -38,5 +38,11 @@ class User < ApplicationRecord
   def friend?(user)
     friends.include?(user)
   end
+
+  def request_accepted(user)
+    friendship = friendshipps.where(friend: user)[0]
+    friendship.confirmed = true
+    friendship.save
+  end
   
 end
