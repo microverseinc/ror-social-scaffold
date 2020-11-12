@@ -13,25 +13,31 @@ class FriendshippsController < ApplicationController
       end
   end
 
+  # def accept
+  #   friend = User.find(params[:friend_id])
+  #   current_user.confirm_friend(friend)
+  #   friend.request_accepted(current_user)
+ 
+  #   redirect_to users_path, notice: 'friend request accepted.'
+  # end
+
   def accept
-    friend = User.find(params[:friend_id])
-    current_user.confirm_friend(friend)
-    friend.request_accepted(current_user)
-    redirect_to users_path, notice: 'friend request accepted.'
+    @friendship = Friendshipp.find_by(user_id: params[:friend_id], friend_id: current_user.id, confirmed: nil)
+    return unless @friendship
+    @friendship.confirmed = true
+    if @friendship.save
+      flash[:notice] = 'accepted'
+      @friendship2 = Friendshipp.create(user_id: current_user.id, friend_id: params[:friend_id], confirmed: true)
+      redirect_to users_path
+    else
+      flash[:notice] = 'failed'
+    end
   end
 
   def reject
     friendship = current_user.inverse_friendshipps.where(user_id: params[:friend_id])[0]
     friendship.destroy
     redirect_to users_path, notice: 'friend request rejected.'
-  end
-
-  def decline_friend
-    @friendship = Friendshipp.
-              find_by(user_id:params[:user_id], friend_id: current_user.id, confirmed: nil)
-    return unless @friendship
-    @friendship.destroy
-    flash[:notice] = 'Friend request declined'
   end
    
   private

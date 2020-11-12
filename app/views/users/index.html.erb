@@ -37,3 +37,7 @@ Logged in user:<%= current_user.name %>
     <% end %>
   </ul>
 </section>
+
+<% @friends.each do |f|%>
+  <%= f.name %>
+<% end %>
