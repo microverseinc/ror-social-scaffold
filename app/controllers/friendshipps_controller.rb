@@ -7,7 +7,7 @@ class FriendshippsController < ApplicationController
     @friendship = current_user.friendshipps.build(friend_id: params[:friend_id])
       if @friendship.save
         flash[:notice] = 'Request sent'
-        redirect_to root_path
+        redirect_to users_path
       else
         flash[:notice] = 'Unable to send request'
       end
@@ -18,6 +18,12 @@ class FriendshippsController < ApplicationController
     current_user.confirm_friend(friend)
     friend.request_accepted(current_user)
     redirect_to users_path, notice: 'friend request accepted.'
+  end
+
+  def reject
+    friendship = current_user.inverse_friendshipps.where(user_id: params[:friend_id])[0]
+    friendship.destroy
+    redirect_to users_path, notice: 'friend request rejected.'
   end
 
   def decline_friend

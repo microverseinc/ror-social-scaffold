@@ -3,7 +3,7 @@
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
     
-    <% unless friend_request_sent?(user) %>
+    <% if (!friend_request_sent?(user) && !friend_request_received?(user) )%>
     <%= link_to 'Send Request',  friendshipps_path(friend_id: user.id), method: :post %>
     <% end %>
   </span>

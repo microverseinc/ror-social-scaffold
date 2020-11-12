@@ -29,6 +29,7 @@ Logged in user:<%= current_user.name %>
         <li>
           <%= req.name %>
           <%= link_to 'Accept', accept_friend_path(friend_id: req.id), method: :put %>
+          <%= link_to 'Reject', decline_request_path(friend_id: req.id), method: :delete %>
         </li>
       <% end %>
     <% else %>
