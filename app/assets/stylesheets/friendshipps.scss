@@ -1,3 +1,25 @@
 // Place all the styles related to the Friendshipps controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.accept-btn {
+  background-color: blue;
+  color: #fff;
+  padding: 4px;
+  border-radius: 3px;
+}
+
+.send-btn {
+  background-color: rgb(66, 97, 66);
+  color: #fff !important;
+  padding: 4px !important;
+  border-radius: 3px !important;
+  font-size: 15px !important;
+}
+
+.reject-btn {
+  background-color: red;
+  color: #fff;
+  padding: 4px;
+  border-radius: 3px;
+}

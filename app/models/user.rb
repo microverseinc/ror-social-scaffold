@@ -44,5 +44,18 @@ class User < ApplicationRecord
     friendship.confirmed = true
     friendship.save
   end
-  
+
+  def friend_and_mine_posts
+    myFriends = current_user.friends
+    our_posts = []
+    myFriends.each do |f|
+      f.posts.each do |p|
+        our_posts << p
+      end
+    end
+    posts.each do |p|
+      our_posts << p
+    end
+    our_posts
+  end 
 end

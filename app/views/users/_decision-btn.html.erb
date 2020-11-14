@@ -2,8 +2,8 @@
 <% current_user.friend_requests.each do |req| %>
   <li>
     <%= req.name %>
-    <%= link_to 'Accept', accept_friend_path(friend_id: req.id), method: :put %>
-    <%= link_to 'Reject', decline_request_path(friend_id: req.id), method: :delete %>
+    <%= link_to 'Accept', accept_friend_path(friend_id: req.id), method: :put, class: 'accept-btn' %>
+    <%= link_to 'Reject', decline_request_path(friend_id: req.id), method: :delete, class: 'reject-btn' %>
   </li>
 <% end %>
 <% else %>

@@ -277,8 +277,11 @@ form {
 
 .users-section {
   width: 100%;
-  margin: 10px;
-
+  //margin: 10px;
+  h2 {
+    margin-bottom:10px
+  }
+  
   .users-list li {
     margin-bottom: 16px;
     text-transform: capitalize;
