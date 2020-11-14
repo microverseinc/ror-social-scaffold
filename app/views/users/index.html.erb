@@ -9,35 +9,20 @@ Logged in user:<%= current_user.name %>
 <section class="users-section">
   <h2>Pending Friends</h2>
   <ul class="users-list"> 
-    <% if !current_user.pending_friends.empty? %>
-      <% current_user.pending_friends.each do |pend| %>
-        <li>
-          <%= pend.name %>
-        </li>
-      <% end %>
-    <% else %>
-      <p>No pending Friends Yet</p>
-    <% end %>
+    <%= render 'pending' %>
   </ul>
 </section>
 
 <section class="users-section">
   <h2>Friend Requests</h2>
   <ul class="users-list"> 
-    <% if !current_user.friend_requests.empty? %>
-      <% current_user.friend_requests.each do |req| %>
-        <li>
-          <%= req.name %>
-          <%= link_to 'Accept', accept_friend_path(friend_id: req.id), method: :put %>
-          <%= link_to 'Reject', decline_request_path(friend_id: req.id), method: :delete %>
-        </li>
-      <% end %>
-    <% else %>
-      <p>No Friend Requests Yet</p>
-    <% end %>
+    <%= render 'decision-btn' %>
   </ul>
 </section>
 
-<% @friends.each do |f|%>
-  <%= f.name %>
-<% end %>
+<section class="users-section">
+<h2>My Friends</h2>
+<ul class="users-list"> 
+  <%= render 'friends' %>
+</ul>
+</section>

@@ -26,11 +26,11 @@ class FriendshippsController < ApplicationController
     return unless @friendship
     @friendship.confirmed = true
     if @friendship.save
-      flash[:notice] = 'accepted'
+      flash[:notice] = 'Friend accepted successfuly'
       @friendship2 = Friendshipp.create(user_id: current_user.id, friend_id: params[:friend_id], confirmed: true)
       redirect_to users_path
     else
-      flash[:notice] = 'failed'
+      flash[:notice] = "Couldn't accept friend request"
     end
   end
 

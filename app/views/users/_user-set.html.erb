@@ -1,0 +1,13 @@
+<% @user_list.each do |user| %>
+    <ul class="users-list">
+      <li>
+        Name: <%= user.name %>
+        <span class="profile-link">
+        <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+        <% if (!friend_request_sent?(user) && !friend_request_received?(user) && !current_user.friends.include?(user) && !user.friends.include?(current_user)) %>
+          <%= link_to 'Send Request',  friendshipps_path(friend_id: user.id), method: :post %>
+        <% end %>
+        </span>  
+      </li>
+    </ul>
+<% end %>

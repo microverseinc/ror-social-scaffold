@@ -1,0 +1,9 @@
+<% if !@friends.empty? %>
+<% @friends.each do |f| %>
+  <li>
+    <%= f.name %>
+  </li>
+<% end %>
+<% else %>
+<p>No Friend Yet</p>
+<% end %>

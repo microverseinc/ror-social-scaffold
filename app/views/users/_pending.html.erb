@@ -1,0 +1,9 @@
+<% if !current_user.pending_friends.empty? %>
+<% current_user.pending_friends.each do |pend| %>
+  <li>
+    <%= pend.name %>
+  </li>
+<% end %>
+<% else %>
+<p>No pending Friends Yet</p>
+<% end %>

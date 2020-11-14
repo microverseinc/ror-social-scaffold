@@ -1,8 +1,9 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
+  <h2>Other Users</h2>
+  <%= render 'user-set' %>
   <article class="timeline">
     <h3>Recent posts:</h3>
       <%= render @posts %>
   </article>
 </section>
-
