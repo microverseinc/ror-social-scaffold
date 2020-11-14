@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     @users = User.all
     @user_list = []
     @users.each do |user|
-      @user_list << user if user != current_user
+      @user_list << user if user != @user
     end
     @friends = current_user.friends
   end

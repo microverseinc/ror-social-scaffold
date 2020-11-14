@@ -45,8 +45,8 @@ class User < ApplicationRecord
     friendship.save
   end
 
-  def friend_and_mine_posts
-    myFriends = current_user.friends
+  def friend_and_mines_posts
+    myFriends = friends
     our_posts = []
     myFriends.each do |f|
       f.posts.each do |p|
