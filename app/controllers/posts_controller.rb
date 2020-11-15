@@ -3,7 +3,6 @@ class PostsController < ApplicationController
 
   def index
     @post = Post.new
-    timeline_posts
     @our_posts = current_user.friend_and_mines_posts
   end
 
@@ -13,7 +12,6 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to posts_path, notice: 'Post was successfully created.'
     else
-      timeline_posts
       render :index, alert: 'Post was not created.'
     end
   end

@@ -13,14 +13,6 @@ class FriendshippsController < ApplicationController
       end
   end
 
-  # def accept
-  #   friend = User.find(params[:friend_id])
-  #   current_user.confirm_friend(friend)
-  #   friend.request_accepted(current_user)
- 
-  #   redirect_to users_path, notice: 'friend request accepted.'
-  # end
-
   def accept
     @friendship = Friendshipp.find_by(user_id: params[:friend_id], friend_id: current_user.id, confirmed: nil)
     return unless @friendship

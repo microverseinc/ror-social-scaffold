@@ -58,4 +58,5 @@ class User < ApplicationRecord
     end
     our_posts
   end 
+  
 end
