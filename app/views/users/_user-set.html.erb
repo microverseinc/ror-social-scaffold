@@ -5,7 +5,7 @@
         <span class="profile-link">
         <%= link_to 'See Profile',  user_path(user), class: 'profile-link send-btn' %>
         <% if (!friend_request_sent?(user) && !friend_request_received?(user) && !current_user.friends.include?(user) && !user.friends.include?(current_user)) %>
-          <%= link_to 'Send Request', friendshipps_path(friend_id: user.id), method: :post, class:'accept-btn' %>
+          <%= link_to 'Invite to Friendship', friendshipps_path(friend_id: user.id), method: :post, class:'accept-btn' %>
         <% end %>
         </span>  
       </li>
