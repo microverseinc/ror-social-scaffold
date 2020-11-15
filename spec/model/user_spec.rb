@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-    let(:sender) { User.new(email: 'jj@gmail.com', name: 'joe', password: 'joirun3jdws') }
-    let(:receiver) { User.new(email: 'nelly@gmail.com', name: 'jane', password: 'joirusn3jdws') }
+    let(:sender) { User.new(email: 'abcussi@gmail.com', name: 'abcussi', password: 'password123') }
+    let(:receiver) { User.new(email: 'kela@gmail.com', name: 'kela', password: 'password456') }
   
     context 'Associations' do
       it { should have_many(:posts) }
