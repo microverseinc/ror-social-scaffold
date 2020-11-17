@@ -67,10 +67,7 @@ TBA
 
 ## Authors
 ```
-```
 Kamilu Adewale 
-
-```
 Github: github.com/AdewaleK
 Twitter: [@KamiluAdewale](https://twitter.com/KamiluAdewale) 
 Email: devkamilnaija@gmail.com
