@@ -66,11 +66,16 @@ Open `http://localhost:3000/` in your browser.
 TBA
 
 ## Authors
+```
+```
+Kamilu Adewale 
 
-### Kamilu Adewale 
-### [@KamiluAdewale](https://twitter.com/KamiluAdewale) 
-### devkamilnaija@gmail.com
+```
+Github: github.com/AdewaleK
+Twitter: [@KamiluAdewale](https://twitter.com/KamiluAdewale) 
+Email: devkamilnaija@gmail.com
 
+```
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!
