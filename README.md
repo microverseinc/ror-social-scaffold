@@ -7,10 +7,6 @@
 - Ruby v2.7.0
 - Ruby on Rails v5.2.4
 
-## Live Demo
-
-TBA
-
 
 ## Getting Started
 
@@ -71,7 +67,9 @@ TBA
 
 ## Authors
 
-TBA
+Kamilu Adewale 
+[@KamiluAdewale](https://twitter.com/KamiluAdewale) 
+devkamilnaija@gmail.com
 
 ## 🤝 Contributing
 
