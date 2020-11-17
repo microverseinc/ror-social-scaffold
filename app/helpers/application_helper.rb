@@ -16,7 +16,6 @@ module ApplicationHelper
     end
   end
 
-
   def finding_friendship_id(user)
     Friendshipp.find_by(user_id: current_user.id, friend_id: user.id) ||
       Friendshipp.find_by(user_id: user.id, friend_id: current_user.id)

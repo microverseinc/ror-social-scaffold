@@ -4,7 +4,6 @@ RSpec.describe Friendshipp, type: :model do
   let(:user1) { User.create(name: 'joper', email: 'jsjxxs@jsjsee.com', password: 'passworddd') }
   let(:user2) { User.create(name: 'jopexxr', email: 'jsjs@jsjsee.com', password: 'passwor2ddd') }
   let(:rec) { user1.friendships.build(friend_id: user2.id, confirmed: false) }
-
   context 'Associations' do
     it { should belong_to(:friend).class_name('User') }
     it { should belong_to(:user) }

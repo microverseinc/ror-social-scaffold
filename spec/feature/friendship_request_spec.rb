@@ -11,7 +11,6 @@ RSpec.describe Friendshipp, type: :feature do
   context 'sending a friend request' do
     it 'sends a friend request' do
       sender = User.create(name: 'Sharon', email: 'piexioeexa@hh.com', password: 'i8juejj41A')
-      receiver = User.create(name: 'John', email: 'pix33xa@hh.com', password: 'i2e8juejj41A')
       log_in(sender)
       visit users_path
     end

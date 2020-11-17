@@ -11,28 +11,29 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
 
   has_many :friendshipps
-  has_many :inverse_friendshipps, :class_name => "Friendshipp", :foreign_key => "friend_id"
+  has_many :inverse_friendshipps, class_name: 'Friendshipp', foreign_key: 'friend_id'
 
   def friends
-    friends_array = friendshipps.map{|friendship| friendship.friend if friendship.confirmed}
-    friends_array + inverse_friendshipps.map{|friendship| friendship.user if friendship.confirmed}
-    friends_array.compact
+    friends_array = friendshipps.map { |friendship| friendship.friend if friendship.confirmed }
+    friends_array2 = inverse_friendshipps.map { |friendship| friendship.user if friendship.confirmed }
+    friends_array3 = friends_array.concat friends_array2
+    friends_array3.uniq.compact
   end
 
   # Users who have yet to confirme friend requests
   def pending_friends
-    friendshipps.map{|friendship| friendship.friend if !friendship.confirmed}.compact
+    friendshipps.map { |friendship| friendship.friend unless friendship.confirmed }.compact
   end
 
   # Users who have requested to be friends
   def friend_requests
-    inverse_friendshipps.map{|friendship| friendship.user if !friendship.confirmed}.compact
+    inverse_friendshipps.map { |friendship| friendship.user unless friendship.confirmed }.compact
   end
 
   def confirm_friend(user)
-    friendship = inverse_friendshipps.find{|friendship| friendship.user == user}
-    friendship.confirmed = true
-    friendship.save
+    friendshipp = inverse_friendshipps.find { |friendship| friendship.user == user }
+    friendshipp.confirmed = true
+    friendshipp.save
   end
 
   def friend?(user)
@@ -46,9 +47,9 @@ class User < ApplicationRecord
   end
 
   def friend_and_mines_posts
-    myFriends = friends
+    my_friends = friends
     our_posts = []
-    myFriends.each do |f|
+    my_friends.each do |f|
       f.posts.each do |p|
         our_posts << p
       end
@@ -57,6 +58,5 @@ class User < ApplicationRecord
       our_posts << p
     end
     our_posts
-  end 
-  
+  end
 end
