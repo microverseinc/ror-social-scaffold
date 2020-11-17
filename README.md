@@ -67,9 +67,9 @@ TBA
 
 ## Authors
 
-# Kamilu Adewale 
-# [@KamiluAdewale](https://twitter.com/KamiluAdewale) 
-# devkamilnaija@gmail.com
+### Kamilu Adewale 
+### [@KamiluAdewale](https://twitter.com/KamiluAdewale) 
+### devkamilnaija@gmail.com
 
 ## 🤝 Contributing
 
