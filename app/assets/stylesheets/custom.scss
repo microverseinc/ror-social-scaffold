@@ -155,10 +155,6 @@ form {
       padding: 8px;
       background-color: $primary-color-light;
     }
-
-    input[type="checkbox"] {
-      width: fit-content;
-    }
   }
 
   .actions {
@@ -194,6 +190,39 @@ form {
   text-align: center;
   margin-bottom: 16px;
   text-transform: capitalize;
+}
+
+.users-section {
+  width: 100%;
+  //margin: 10px;
+  h2 {
+    margin-bottom: 10px;
+  }
+
+  h2 span {
+    color: red;
+  }
+
+  .users-list li {
+    margin-bottom: 16px;
+    text-transform: capitalize;
+    font-size: 1.2em;
+  }
+
+  .profile-link {
+    font-size: 0.8em;
+    margin: 0 0 8px 0;
+    color: $primary-color-dark;
+  }
+}
+
+.user-section {
+  width: 100%;
+  margin-left: 16px;
+
+  h2 {
+    text-transform: capitalize;
+  }
 }
 
 .timeline {
@@ -272,49 +301,6 @@ form {
         font-size: 0.6em;
       }
     }
-  }
-}
-
-.users-section {
-  width: 100%;
-  //margin: 10px;
-  h2 {
-    margin-bottom:10px
-  }
-
-  h2 span {
-    color: red
-  }
-  
-  .users-list li {
-    margin-bottom: 16px;
-    text-transform: capitalize;
-    font-size: 1.2em;
-  }
-
-  .profile-link {
-    font-size: 0.8em;
-    margin: 0 0 8px 0;
-    color: $primary-color-dark;
-  }
-}
-
-.user-section {
-  width: 100%;
-  margin-left: 16px;
-
-  h2 {
-    text-transform: capitalize;
-  }
-
-  .timeline {
-    width: 100%;
-
-    h3 {
-      width: 100%;
-    }
-
-    justify-content: start;
   }
 }
 
