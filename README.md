@@ -9,7 +9,7 @@
 
 ## Live Demo
 
-TBA
+
 
 
 ## Getting Started
@@ -67,11 +67,23 @@ Open `http://localhost:3000/` in your browser.
 
 ### Deployment
 
-TBA
+
 
 ## Authors
+👤  **Juan Jacobo Hincapie Montes**
 
-TBA
+- Gmail: [jacobo12.montes@gmail.com](jacobo12.montes@gmail.com)
+- Github: [@jacobo12.mont](https://github.com/jacobo12montes)
+- Twitter: [@jacobo12.mont](https://twitter.com/HincapieMontes)
+- Linkedin: [@jacobo12.mont](https://www.linkedin.com/in/juan-jacobo-hincapie-montes/)
+
+👤 **Adesoji Adewumi**
+
+- Github: [@AdesojiCodeMaster](https://github.com/AdesojiCodeMaster)
+- Linkedin: [@adesoji-adewumi](https://www.linkedin.com/in/adesoji-adewumi)
+- Twitter: [@codemas22665735](https://twitter.com/codemas22665735)
+
+
 
 ## 🤝 Contributing
 
