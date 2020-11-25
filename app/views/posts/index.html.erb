@@ -1,3 +1,9 @@
+
+<div id="left">
+left
+</div>
+
+<div id="middle">
 <%= form_for(@post) do |form| %>
   <%= form.label :content %>
   <%= form.text_field :content, id: :post_content, class: 'form-control', placeholder: 'Add New Post' %>
@@ -13,3 +19,9 @@
     <%= render @timeline_posts %>
   </ul>
 </article>
+</div>
+
+<div id="right">
+right
+</div>
+
