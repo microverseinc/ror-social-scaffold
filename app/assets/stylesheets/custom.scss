@@ -69,9 +69,15 @@ a {
 
 .main {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   padding: 16px;
+}
+
+#sign-in {
+  width: 40%;
+  height: auto;
+  margin: auto; 
 }
 
 .notice,
@@ -154,6 +160,12 @@ form {
       border-radius: 4px;
       padding: 8px;
       background-color: $primary-color-light;
+    }
+
+    input[type=hidden],
+    input[type=checkbox] {
+      width: 45px;
+      display: inline;
     }
   }
 
@@ -317,7 +329,7 @@ form {
     color: #f00;
   }
 }
-
+/*
 @media only screen and (min-width: 480px) {
   form {
     width: 60%;
@@ -333,7 +345,7 @@ form {
 
 @media (min-width: 780px) {
   form {
-    width: 40%;
+    width: 100%;
   }
 
   .new_post,
@@ -342,4 +354,10 @@ form {
   .user-section {
     width: 50%;
   }
+
 }
+*/
+@media (max-width: 480px) {
+
+}
+
