@@ -14,7 +14,7 @@ $divider-color: #bdbdbd;
 }
 
 body {
-  background: #fff;
+  background: #f0f2f5;
   position: relative;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
@@ -136,11 +136,11 @@ a {
 }
 
 .timeline {
-  width: 100%;
-  margin: 16px 0;
+  width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: auto;
 
   h3 {
     margin: 8px 0;
@@ -148,13 +148,19 @@ a {
 
   .posts {
     width: 100%;
+    border-top: solid 1px #ddd;
   }
 
   .post {
+    background-color: #fff;
     width: 100%;
-    margin: 16px 0;
+    margin: 30px auto;
     display: flex;
     flex-direction: column;
+    border: solid 1px #ddd;
+    border-radius: 5px;
+    padding: 4px;
+    box-shadow: 0 1px 3px #ddd;
   }
 
   .post-attribution {
@@ -184,7 +190,7 @@ a {
 
   .post-content {
     font-size: 1.1em;
-    padding: 4px 0;
+    padding: 4px;
   }
 
   .post-comments-section {
@@ -215,8 +221,7 @@ a {
 }
 
 .users-section {
-  width: 100%;
-  margin: 10px;
+  width: 100%; 
 
   .users-list li {
     margin-bottom: 16px;
@@ -232,8 +237,7 @@ a {
 }
 
 .user-section {
-  width: 100%;
-  margin-left: 16px;
+  width: 100%; 
 
   h2 {
     text-transform: capitalize;
@@ -284,8 +288,8 @@ a {
     padding: 16px;
 
     form {
-      width: 100%;
-      margin: 8px 0;
+      width: 90%;
+      margin: auto;
     
       .field {
         width: 100%;
@@ -363,7 +367,7 @@ a {
   .timeline,
   .users-section,
   .user-section {
-    width: 50%;
+    width: 100%;
   }
 
   .main {
@@ -376,17 +380,17 @@ a {
 
       #left,
       #right {
-        width: 25%;
-        background-color: bisque;
+        width: 30%;
+        padding: 1px 20px;
       }
     
       #middle {
-        width: 50%;
+        width: 40%;
       }
 
       form {
-        width: 80%;
-        margin: 8px 0;
+        width: 100%;
+        margin: auto;
       
         .field {
           width: 100%;
@@ -426,6 +430,7 @@ a {
           color: $primary-color-light;
           text-transform: uppercase;
           font-weight: 900;
+          margin: auto;
         }
       
         input[type="submit"]:hover {

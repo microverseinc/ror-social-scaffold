@@ -1,9 +1,14 @@
-<section class="user-section">
-  <h2><%= "Name: #{@user.name}" %></h2>
+<section id="left">left</section>
+
+<section id="middle" class="user-section">
   <article class="timeline">
-    <h3>Recent posts:</h3>
+    <h3><%= "Recent posts by  #{@user.name}"%></h3>
     <ul class="posts">
       <%= render @posts %>
     </ul>
   </article>
+</section>
+
+<section id="right"> 
+All users
 </section>
