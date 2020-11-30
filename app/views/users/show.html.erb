@@ -1,5 +1,10 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
+  <%= form_with model: @friendship, url: '/friendships' do |f| %>
+  <%= f.number_field :friend_id, value: @user.id, hidden: true%><br>
+  <%= f.text_field :confirmed, value: true, hidden: true %><br>
+  <%= f.submit 'Add friend'%>
+<% end %>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
