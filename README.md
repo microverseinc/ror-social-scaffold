@@ -1,10 +1,11 @@
-# Scaffold for social media app with Ruby on Rails
+# Social media
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+> I added an Entity Relationship Diagram (ERD) in this milestone.
+![image](docs/ERD.jpeg)
 
 ## Built With
 
-- Ruby v2.7.0
+- Ruby v2.7.2
 - Ruby on Rails v5.2.4
 
 ## Live Demo
@@ -63,15 +64,17 @@ Open `http://localhost:3000/` in your browser.
     rpsec --format documentation
 ```
 
-> Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
-
+> Tests will be added in other milestones. No tests for initial features.
 ### Deployment
 
 TBA
 
 ## Authors
+👤 **Ahmad Chata**
 
-TBA
+- Github: [Ahmad Chata](https://github.com/ahmadchata)
+- Twitter: [@ahmadchata](https://twitter.com/ahmadchata)
+- Linkedin: [Ahmad Chata](https://www.linkedin.com/in/ahmadchata/)
 
 ## 🤝 Contributing
 
