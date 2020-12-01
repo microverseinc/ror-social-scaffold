@@ -1,9 +1,6 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
-<<<<<<< HEAD
-  <button></button>
-=======
->>>>>>> 2aae3c597586feca647bd7ff0e290f057fa0bdf3
+  <%= render 'follow_form' if user_signed_in? %>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
@@ -11,7 +8,3 @@
     </ul>
   </article>
 </section>
-
-<% friend_requests.each do |f|%>
-  <%= f.name%>
-<% end %>
