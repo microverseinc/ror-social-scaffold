@@ -1,0 +1,11 @@
+<% unless @friendships.nil? %>
+  <% @friendships.compact.each do |friend| %>
+    <div class="card w-25 mx-auto mb-4">
+      <h5 class="card-header">Added you <%= friend.created_at %></h5>
+      <div class="card-body">
+        <h5 class="card-title"><%= friend.name %></h5>
+        <%= link_to 'Confirm', user_path(friend.id), method: 'post', class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

@@ -1,6 +1,7 @@
 class FriendshipsController < ApplicationController
-  def new
-    @users = User.all
+
+  def index
+    @friendships = current_user.pending_friends
   end
 
   def create
@@ -14,9 +15,9 @@ class FriendshipsController < ApplicationController
   end
 
 
-private
+  private
 
   def friendship_params
-    params.permit(:friend_id, :confirmed)
+    params.permit(:friend_id)
   end
 end

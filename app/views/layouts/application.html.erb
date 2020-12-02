@@ -20,6 +20,8 @@
       </div>
       <% if current_user %>
         <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+        <%= "Signed In as #{current_user.name} "%>
+        <%= link_to 'See friend requests', friendships_path %>
       <% else %>
         <%= link_to 'Sign in', user_session_path %>
       <% end %>
