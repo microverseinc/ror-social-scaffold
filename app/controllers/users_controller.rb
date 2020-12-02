@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    @friendships = Friendship.all { where friend.id == current_user.id }
   end
 
   def confirm_friend
