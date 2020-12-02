@@ -2,6 +2,16 @@
   Name: <%= user.name %>
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-    <%= button_to 'Add friend', user_friendships_path(current_user.id), params: { friend_id: "#{user.id}"} %>
+    <% if  current_user.pending_friends.include?(user) %>
+          <%= link_to 'Confirm', user_path(user.id), method: 'post', class: "btn btn-primary" %>
+          <% elsif current_user.friend_requests.include?(user)%>   
+         <%= button_to 'Pending Request', user_friendships_path(current_user.id), params: { friend_id: "#{user.id}"} %>
+        <% elsif current_user == user%>
+         <p></p>
+        <% elsif !current_user.friend?(user)%>
+           <%= button_to 'Add friend', user_friendships_path(current_user.id), params: { friend_id: "#{user.id}"} %>
+        
+           
+    <% end%>
   </span>
 </li>

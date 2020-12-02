@@ -1,9 +1,0 @@
-<h1>Create Frienship</h1>
-<%= form_with model: @friendship, url: '/friendships' do |f| %>
-  <%= f.number_field :user_id, value: current_user.id%><br>
-  <%= f.number_field :friend_id %><br>
-  <%= f.text_field :confirmed, value: true %><br>
-  <%= f.submit 'Add friend'%>
-<% end %>
-
-<%= params.inspect %>

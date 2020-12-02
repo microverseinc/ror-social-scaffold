@@ -32,4 +32,8 @@ class User < ApplicationRecord
   def friend?(user)
     friends.include?(user)
   end
+
+  def friend_requests
+    friendships.map{ |friendship| friendship.friend if !friendship.confirmed}.compact
+  end
 end
