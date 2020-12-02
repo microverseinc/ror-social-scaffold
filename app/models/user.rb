@@ -20,17 +20,17 @@ class User < ApplicationRecord
   end
 
   def pending_friends
-    pending_array = inverse_friendships.map { |friendship| friendship.user unless friendship.confirmed }
+    inverse_friendships.map { |friendship| friendship.user unless friendship.confirmed }
   end
 
   def confirm_friend(user)
-    friendship = inverse_friendships.find{|friendship| friendship.user == user}
+    friendship = inverse_friendships.find { |frdship| frdship.user == user }
     friendship.confirmed = true
     friendship.save
   end
 
   def decline_friend(user)
-    friendship = inverse_friendships.find{|friendship| friendship.user == user}
+    friendship = inverse_friendships.find { |frdship| frdship.user == user }
     friendship.destroy
     flash[:notice] = 'You declined the request!'
   end
@@ -40,6 +40,6 @@ class User < ApplicationRecord
   end
 
   def friend_requests
-    friendships.map{ |friendship| friendship.friend if !friendship.confirmed}.compact
+    friendships.map { |friendship| friendship.friend unless friendship.confirmed }.compact
   end
 end

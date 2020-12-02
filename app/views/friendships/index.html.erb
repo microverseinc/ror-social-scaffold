@@ -5,7 +5,7 @@
       <div class="card-body">
         <h5 class="card-title"><%= friend.name %></h5>
         <%= link_to 'Confirm', user_path(friend.id), method: 'post', class: "btn btn-primary" %>
-        <%= link_to 'Decline', user_friendship_path(current_user.id, friendship.id), method: :delete, class: 'btn btn-danger' %>
+        <%= link_to 'Decline', user_friendship_path(current_user.id, friendship_method.id), method: :delete, class: 'btn btn-danger' %>
       </div>
     </div>
   <% end %>
