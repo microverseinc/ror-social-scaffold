@@ -1,17 +1,6 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
-  <% if  current_user.pending_friends.include?(@user) %>
-      <%= link_to 'Confirm', user_path(@user.id), method: 'post', class: "btn btn-primary" %>
-          <%= link_to 'Decline', user_friendship_path(current_user.id, friendship_method.id), method: :delete, class: 'btn btn-danger' %>
-    <% elsif current_user.friend_requests.include?(@user)%>
-      <div class='list-group'>
-        <%= button_to 'Pending Request', user_friendships_path(current_user.id), params: { friend_id: "#{@user.id}"}, class: 'list-group-item disabled', 'aria-disabled' => 'true' %>
-      </div>
-    <% elsif current_user == @user%>
-      <p></p>
-    <% elsif !current_user.friend?(@user)%>
-      <%= button_to 'Add friend', user_friendships_path(current_user.id), params: { friend_id: "#{@user.id}"} %>           
-    <% end%>
+  <% friendship_button(@user) %>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">

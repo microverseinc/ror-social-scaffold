@@ -1,7 +1,7 @@
 class FriendshipsController < ApplicationController
   before_action :authenticate_user!
   def index
-    @friendships = Friendship.all { where friend.id == current_user.id }
+    @friendships = Friendship.where(friend_id: current_user.id)
     @pending_friends = current_user.pending_friends
   end
 
@@ -16,7 +16,6 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
-    # current_user.pending_friends.delete(Friendship.find(params[:id]))
     Friendship.find(params[:id]).destroy
     flash[:notice] = 'You declined the request!'
     redirect_to root_path

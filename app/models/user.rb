@@ -20,7 +20,7 @@ class User < ApplicationRecord
   end
 
   def pending_friends
-    inverse_friendships.map { |friendship| friendship.user unless friendship.confirmed }
+    inverse_friendships.map { |friendship| friendship.user unless friendship.confirmed }.compact
   end
 
   def confirm_friend(user)
