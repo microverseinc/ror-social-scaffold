@@ -1,6 +1,12 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
-  <%= render 'follow_form' if user_signed_in? %>
+  <%if user_signed_in?%>
+    <% if current_user.pending_friends.include?(@user)%>
+      <%= render 'accept_form' %>
+    <%else %>
+      <%= render 'follow_form' %>
+    <% end %>
+  <% end%>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
