@@ -1,8 +1,12 @@
-<section class="users-section">
-  <ul class="users-list">
-    <% @users.each do |user| %>
-    <li><%= user.name %></p>
+<%@users.each do |user|%>
+  <% all_friends.each do |friend| %>
+    <% unless user == current_user%>
+      <% unless user == friend %>
+        <%= user.name %>
+      <% end %>
     <% end %>
-    
-  </ul>
-</section>
+
+  <% end %>
+
+<% end %>
+
