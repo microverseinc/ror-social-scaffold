@@ -17,11 +17,17 @@
         <div class="menu-item">
           <%= menu_link_to 'All users', users_path %>
         </div>
+        <div class='menu-item'>
+          <% if current_user %>
+            <%= link_to 'See friend requests', user_friendships_path(current_user.id) %>
+          <% end %>
+        </div>
       </div>
       <% if current_user %>
-        <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-        <%= "Signed In as #{current_user.name} "%>
-        <%= link_to 'See friend requests', user_friendships_path(current_user.id) %>
+        <div>
+          <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'mr-3' %>
+          <%= "Signed In as #{current_user.name} "%>
+        </div>
       <% else %>
         <%= link_to 'Sign in', user_session_path %>
       <% end %>
