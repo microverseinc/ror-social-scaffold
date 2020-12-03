@@ -41,4 +41,9 @@ class User < ApplicationRecord
   def friend?(user)
     friends.include?(user)
   end
+
+  # # Users can send request
+  # def send_request(other_user)
+  #   pending_friends << other_user
+  # end
 end
