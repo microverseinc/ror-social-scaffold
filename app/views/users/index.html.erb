@@ -1,12 +1,9 @@
-<%@users.each do |user|%>
-  <% all_friends.each do |friend| %>
-    <% unless user == current_user%>
-      <% unless user == friend %>
-        <%= user.name %>
-      <% end %>
-    <% end %>
-
-  <% end %>
-
+<% @users.each do |user| %>
+  <ul>
+  <%= user.name %>
+  </ul>
 <% end %>
+
+
+
 
