@@ -1,0 +1,13 @@
+<% unless user == current_user %>
+<% unless all_friends.include?(user) %>
+  <%= form_with(url: friendships_path, local: true) do |form| %>
+    <div class="forms mb-4">
+      <%= form.hidden_field :friend_id, class: 'form-control', value: user.id %>
+      <div class="actions">
+        <%= form.submit 'Invite', class: 'btn btn-primary mt-2' %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+<% end %>
