@@ -1,4 +1,11 @@
-<section id="left">left</section>
+<section id="left">
+<div class="dp-image">
+
+</div>
+<p> <%= current_user.name%> </p>
+<p> <%= current_user.email%> </p>
+<p> <%= current_user.created_at%> </p>
+</section>
 
 <section id="middle" class="user-section">
   <article class="timeline">
@@ -10,5 +17,22 @@
 </section>
 
 <section id="right"> 
-All users
+<article>
+<h2><%= "#{@user.name}'s friends "%></h2>
+<ul>
+<li> 
+<span class="rounded"> AU </span>
+<h4>Gabriel Hilarion </h4>
+<span class="send-friend-request">Request friendship </span>
+ </li>
+</ul>
+</article>
+
+<article>
+<h2><%= "Friendship request"%></h2>
+</article>
+
+<article>
+<h2><%= "People you may know "%></h2>
+</article>
 </section>
