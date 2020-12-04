@@ -50,10 +50,10 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
 
-  gem 'shoulda-callback-matcher', '~> 1.1.1'
-  gem 'shoulda-matcher', '~> 4.0'
+  gem 'shoulda-callback-matchers', '~> 1.1.1'
+  gem 'shoulda-matchers', '~> 4.0'
 
-  gem 'webdriver'
+  gem 'webdrivers'
 end
 
 group :development do
