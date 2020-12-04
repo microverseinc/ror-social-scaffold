@@ -3,14 +3,15 @@ class FriendshipsController < ApplicationController
 
   def create
     friend = User.find(params[:friend_id])
-    @friendship = Friendship.new(user_id:current_user,friend_id:friend)
-    @friendship.save
+    friendship = Friendship.create(user_id: current_user.id, friend_id: friend.id)
     flash[:success] = 'Friendrequest sent'
-    redirect_to user_path(current_user)
+    redirect_to user_path(friend)
   end
 
   def update
-    
+    user = User.find(params[:user_id])
+    current_user.confirm_friend(user)
+    redirect_to user_path(user)
   end
 
   def destroy
