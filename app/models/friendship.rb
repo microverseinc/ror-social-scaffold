@@ -4,7 +4,7 @@ class Friendship < ApplicationRecord
 
   # validates_presence_of :user_id
   # validates_presence_of :friend_id
-  validates_presence_of :confirmed
+  # validates_presence_of :confirmed
 
   def accepted
     update(confirmed: true)
