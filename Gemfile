@@ -46,6 +46,14 @@ end
 
 group :test do
   gem 'rspec'
+  gem 'rspec-rails'
+  gem 'capybara', '>= 2.15'
+  gem 'selenium-webdriver'
+
+  gem 'shoulda-callback-matcher', '~> 1.1.1'
+  gem 'shoulda-matcher', '~> 4.0'
+
+  gem 'webdriver'
 end
 
 group :development do
