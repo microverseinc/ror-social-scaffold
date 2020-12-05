@@ -17,9 +17,13 @@ class User < ApplicationRecord
   has_many :pending_requests, through: :pending_friendships, source: :friend
 
   def friends
-    friends_array = friendships.map{|friendship| friendship.friend if friendship.status}
-    friends_array + inverse_friendships.map{|friendship| friendship.user if friendship.status}
+    friends_array = friendships.map{|f| f.friend if f.status}
+    friends_array += inverse_friendships.map{|f| f.user if f.status}
     friends_array.compact
+  end
+
+  def pending_friends
+    friendships.map { |f| f.friend unless f.status }
   end
 
   def confirm_friend(user)
