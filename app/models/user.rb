@@ -16,24 +16,58 @@ class User < ApplicationRecord
   has_many :pending_friendships, -> { where confirmed: nil }, class_name: 'Friendship', foreign_key: 'user_id'
   has_many :pending_requests, through: :pending_friendships, source: :friend
 
+
   def friends
-    friends_array = friendships.map{|f| f.friend if f.status}
-    friends_array += inverse_friendships.map{|f| f.user if f.status}
+    friends_array = friendships.map { |friendship| friendship.friend if friendship.confirmed }
+    friends_array += inverse_friendships.map { |friendship| friendship.user if friendship.confirmed }
     friends_array.compact
   end
 
+  # Users who have yet to confirm friend request
   def pending_friends
-    friendships.map { |f| f.friend unless f.status }
+    friendships.map { |friendship| friendship.friend unless friendship.confirmed }.compact
+  end
+
+  # Users who have requested to be friends
+  def friend_requests
+    inverse_friendships.map { |friendship| friendship.user unless friendship.confirmed }.compact
+  end
+
+  def request_friend(user)
+    return false if relation_exist?(user)
+
+    friendship = friendships.build
+    friendship.friend_id = user.id
+    friendship.confirmed = false
+    friendship.save
   end
 
   def confirm_friend(user)
-    friendship = inverse_friendships.find{|friendship| friendship.user == user}
+    friendship = inverse_friendships.find { |friend| friend.user == user }
+    friendship2 = friendships.build
+    friendship2.user_id = id
+    friendship2.friend_id = user.id
+    friendship2.confirmed = true
     friendship.confirmed = true
     friendship.save
+    friendship2.save
+  end
+
+  def reject_friend(user)
+    friendship = inverse_friendships.find { |friend| friend.user == user }
+    friendship.destroy
   end
 
   def friend?(user)
     friends.include?(user)
+  end
+
+  def friendship(user)
+    friendships.find { |friendship| friendship.friend_id == user.id }
+  end
+
+  def relation_exist?(user)
+    friends.include?(user) || pending_friends.include?(user) || friend_requests.include?(user) || user == self
   end
 
 end
