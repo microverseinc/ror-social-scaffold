@@ -38,6 +38,7 @@ class User < ApplicationRecord
 
     friendship = friendships.build
     friendship.friend_id = user.id
+    friendship.user_id = current_user.id
     friendship.confirmed = false
     friendship.save
   end
