@@ -87,4 +87,4 @@ TBA
 
 ## 📝 License
 
-TBA
+TBA.
