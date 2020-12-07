@@ -4,7 +4,7 @@ class FriendshipsController < ApplicationController
   def create
     friend = User.find(params[:friend_id])
     friendship = Friendship.create(user_id: current_user.id, friend_id: friend.id)
-    flash[:success] = 'Friendrequest sent'
+    flash[:success] = 'Friend request sent!'
     redirect_to user_path(friend)
   end
 
@@ -15,6 +15,10 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
+    friendship = Friendship.find(params[:id])
+    friendship.destroy
+    flash[:danger] = 'Canceled Friend request!'
+    redirect_to user_path(friendship.friend_id)
   end
 
   private
