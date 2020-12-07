@@ -2,8 +2,8 @@
   <div id="follow_form">
     <% if current_user.friend?(@user) %>
       <%= render 'unfollow' %>
-    <% elsif current_user.pending_friends.include?(@user) %>
-      <%= render 'accept_request' %>
+    <% elsif @user.pending_friends.include?(current_user) %>
+      <%= render 'friendships/accept_request' %>
     <% else %>
       <%= render 'follow' %>
     <% end %>
