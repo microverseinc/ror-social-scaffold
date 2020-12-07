@@ -1,3 +1,4 @@
+
 # PostgreSQL. Versions 9.1 and up are supported.
 #
 # Install the pg driver:
@@ -15,24 +16,32 @@
 # gem 'pg'
 #
 default: &default
+  # adapter: postgresql
+  # encoding: unicode
+  # # For details on connection pooling, see Rails configuration guide
+  # # http://guides.rubyonrails.org/configuring.html#database-pooling
+  # pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   adapter: postgresql
-  encoding: unicode
-  # For details on connection pooling, see Rails configuration guide
-  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  username: postgres
+  password: lidu1234
+  host: localhost
+  port: 5432
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+
 
 development:
   <<: *default
-  database: ror_social_scaffold_development
+  database: ror_social_scaffold_test
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
-  username: ror_social_scaffold
+  #username: ror_social_scaffold
 
   # The password associated with the postgres role (username).
-  password: lidu1234
+  #password:
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
