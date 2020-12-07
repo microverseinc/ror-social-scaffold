@@ -1,0 +1,16 @@
+
+
+<% @recieved.each do |recieved| %>
+  <tr>
+  <td> <%= recieved.name[0] %></td>
+    <td>
+   <%= recieved.name %>
+  <span class="profile-link">
+    <%= link_to 'See Profile',  user_path(recieved), class: 'accept-link' %>
+  </span>
+  <span class="profile-link">
+    <%= link_to 'ACCEPT',  accept_friend_path(recieved),   class: 'accept-link' %>
+  </span>
+    </td>
+</tr>
+<% end %>

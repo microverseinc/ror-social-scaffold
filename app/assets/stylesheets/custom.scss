@@ -67,6 +67,19 @@ a {
   }
 }
 
+.accept-link {
+  padding: 5px;
+  background-color: lightseagreen;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.reject-link {
+  padding: 5px;
+  background-color: rgb(233, 15, 80);
+  display: block;
+}
+
 .notice,
 .alert {
   margin-bottom: 8px;
@@ -264,22 +277,7 @@ a {
     color: #f00;
   }
 }
-/*
-@media only screen and (min-width: 480px) {
-  form {
-    width: 60%;
-  }
 
-  .new_post,
-  .timeline,
-  .users-section,
-  .user-section {
-    width: 70%;
-  }
-}
-
-
-*/
 @media (max-width: 700px) {
   .main {
     display: flex;

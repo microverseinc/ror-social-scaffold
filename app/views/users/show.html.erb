@@ -22,18 +22,26 @@
 <h2> Friends</h2>
 <ul>
 <li> 
-<%= render @friendships %>
- </li>
-</ul>
-</article>
-
-<article>
-<h2> People you may know</h2>
-<ul>
-<li> 
-<%= render @users %>
+<%= render @friends %>
  </li>
 </ul>
 </article>
  
+
+<article>
+<h2> <%= pluralize(@recieved.length, 'friend request') %> recieved</h2>
+<table>
+<%= render 'recieved'%>
+
+</table>
+</article>
+ 
+<article>
+<h2> <%= pluralize(@sent.length, 'friend request') %> sent</h2>
+<ul>
+<%= render @sent %>
+
+</ul>
+</article>
+
 </section>

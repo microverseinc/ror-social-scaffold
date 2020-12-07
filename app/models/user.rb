@@ -13,24 +13,22 @@ class User < ApplicationRecord
   has_many :friendships
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
 
-  has_many :pending_friendships, -> { where confirmed: nil }, class_name: 'Friendship', foreign_key: 'user_id'
+  has_many :pending_friendships, -> { where status: nil }, class_name: 'Friendship', foreign_key: 'user_id'
   has_many :pending_requests, through: :pending_friendships, source: :friend
 
 
   def friends
-    friends_array = friendships.map { |friendship| friendship.friend if friendship.confirmed }
-    friends_array += inverse_friendships.map { |friendship| friendship.user if friendship.confirmed }
+    friends_array = friendships.map { |f| f.friend if f.status } 
     friends_array.compact
   end
 
   # Users who have yet to confirm friend request
-  def pending_friends
-    friendships.map { |friendship| friendship.friend unless friendship.confirmed }.compact
+  def sent_requests
+    friendships.map { |f| f.friend unless f.status }.compact
   end
 
-  # Users who have requested to be friends
-  def friend_requests
-    inverse_friendships.map { |friendship| friendship.user unless friendship.confirmed }.compact
+  def recieved_requests
+    inverse_friendships.map { |f| f.user unless f.status }.compact
   end
 
   def request_friend(user)
@@ -39,7 +37,7 @@ class User < ApplicationRecord
     friendship = friendships.build
     friendship.friend_id = user.id
     friendship.user_id = current_user.id
-    friendship.confirmed = false
+    friendship.status = false
     friendship.save
   end
 
@@ -48,8 +46,8 @@ class User < ApplicationRecord
     friendship2 = friendships.build
     friendship2.user_id = id
     friendship2.friend_id = user.id
-    friendship2.confirmed = true
-    friendship.confirmed = true
+    friendship2.status = true
+    friendship.status = true
     friendship.save
     friendship2.save
   end
@@ -62,9 +60,9 @@ class User < ApplicationRecord
   def friend?(user)
     friends.include?(user)
   end
-
-  def friendship(user)
-    friendships.find { |friendship| friendship.friend_id == user.id }
+  
+  def friendship(x)
+    friendships.find { |friendship| friendship.friend_id == x.id }
   end
 
   def relation_exist?(user)

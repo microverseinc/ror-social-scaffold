@@ -1,6 +1,7 @@
-<li>
-  Name: <%= user.name %>
-  <span class="profile-link">
+<li class="users-list">
+  <div class="rounded"> </div>
+  <div>  <%= user.name %> </div>
+  <div class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-  </span>
+  </div>
 </li>
