@@ -9,9 +9,9 @@ class FriendshipsController < ApplicationController
   end
 
   def update
-    user = User.find(params[:user_id])
-    current_user.confirm_friend(user)
-    redirect_to user_path(user)
+    friendship = Friendship.find(params[:id])
+    friendship.update!(confirmed: true)
+    redirect_to user_path(friendship.user_id)
   end
 
   def destroy
