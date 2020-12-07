@@ -67,6 +67,10 @@ a {
   }
 }
 
+#middle h1{
+  border-bottom: none;
+}
+
 .accept-link {
   padding: 5px;
   background-color: lightseagreen;
@@ -78,6 +82,40 @@ a {
   padding: 5px;
   background-color: rgb(233, 15, 80);
   display: block;
+}
+
+.users-list {
+  padding-top: 6px;
+  border-top: solid 1px #ccc;
+  height: 60px;
+  box-sizing: border-box;
+}
+
+.flex-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.users_name {
+  background-color: lightslategray;
+}
+
+.rounded{ 
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #ccc;
+}
+
+.users_name {
+  flex-grow: 1;
+}
+
+.profile-link {
+  flex-grow: 3;
+  background-color: lime;
 }
 
 .notice,

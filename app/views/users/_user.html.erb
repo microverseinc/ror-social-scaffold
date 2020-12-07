@@ -1,7 +1,9 @@
 <li class="users-list">
-  <div class="rounded"> </div>
-  <div>  <%= user.name %> </div>
-  <div class="profile-link">
-    <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+  <div class="flex-wrap">
+    <div class="rounded"> </div>
+    <div class="users_name">  <%= user.name %> </div>
+    <div class="profile-link">
+      <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+    </div>
   </div>
 </li>
