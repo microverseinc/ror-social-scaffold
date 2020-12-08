@@ -17,5 +17,4 @@ class FriendshipsController < ApplicationController
     @friendship.destroy
     redirect_to users_path, notice: 'Friendship has been deleted'
   end
-
 end
