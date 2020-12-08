@@ -20,7 +20,7 @@ class User < ApplicationRecord
           end
 
     friends_array.compact
-  en
+  end
 
   # Users who have yet to confirme friend requests
   def pending_friends
