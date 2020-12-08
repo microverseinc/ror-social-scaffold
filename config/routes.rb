@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :likes, only: [:create, :destroy]
   end
 
-  resources :friendships , only: [:create]
-
+  resources :friendships , only: [:create, :update, :destroy]
+  get 'requests', :to => 'friendships#requests_index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
