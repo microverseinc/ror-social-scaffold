@@ -17,13 +17,13 @@ class User < ApplicationRecord
 	end
 	
 	def friend_requests
-		inverse_friendships.map { |frienship| friendship.user unless friendship.confirmed }.compact
+		inverse_friendships.map { |friendship| friendship.user unless friendship.confirmed }.compact
 	end
 
 	def confirm_friend(user)
 		friendship = inverse_friendships.find { |friend| friend.user == user }
 		friendship.confirmed = true
-		friendship.create(friend: user, confirmed: true)
+		friendship.create(receiver: user, confirmed: true)
 		friendship.save
 	end
 
