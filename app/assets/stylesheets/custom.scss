@@ -351,3 +351,11 @@ form {
 form input[type="submit"] {
   width: fit-content;
 }
+
+.container {
+  display:flex
+}
+
+form .actions {
+  margin:0;
+}

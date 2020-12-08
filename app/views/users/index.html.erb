@@ -3,15 +3,16 @@
     <% @users.each do |user| %>
       <% unless user == current_user %>
         <li>
-          Name: <%= user.name %>
           <span class="profile-link">
-            <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-            <%= render 'friendships/friend_request_form', user: user %>
-            <% requestor.each do |r| %>
-            <% if user == r %>
-            <%= render 'friendships/accept_request_form', user: user, submit_text: 'Accept' %>
-             <% end %>
-            <% end %>
+            <div class = 'container'>
+              <h1><%= link_to user.name,  user_path(user), class: 'profile-link' %></h1>
+              <%= render 'friendships/friend_request_form', user: user %>
+              <% requestor.each do |r| %>
+                <% if user == r %>
+                  <%= render 'friendships/accept_request_form', user: user, submit_text: 'Accept' %>
+                <% end %>
+              <% end %>
+            </div>
           </span>
         </li>
       <% end %>
