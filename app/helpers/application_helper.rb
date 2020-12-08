@@ -26,4 +26,8 @@ module ApplicationHelper
     all_friends.include?(user)
   end
 
+  def requestor
+    current_user.friendships_received.map{|friendship| friendship.user if !friendship.confirmed}.compact
+  end
+
 end

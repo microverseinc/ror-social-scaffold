@@ -1,7 +1,9 @@
 module FriendshipsHelper
-  
-  def pending_requests
-    current_user.friendships_received.map{|friendship| friendship.user if !friendship.confirmed}.compact
+
+  def confirm_a_request(user)
+    friendship = current_user.friendships_received.find{|friendship| friendship.user == user}
+    friendship.confirmed = true
+    friendship.save
   end
   
 end

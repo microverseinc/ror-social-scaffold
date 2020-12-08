@@ -7,6 +7,11 @@
           <span class="profile-link">
             <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
             <%= render 'friendships/friend_request_form', user: user %>
+            <% requestor.each do |r| %>
+            <% if user == r %>
+            <%= render 'friendships/accept_request_form', user: user, submit_text: 'Accept' %>
+             <% end %>
+            <% end %>
           </span>
         </li>
       <% end %>

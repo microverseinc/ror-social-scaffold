@@ -1,6 +1,8 @@
 class FriendshipsController < ApplicationController
+  include ApplicationHelper
   include FriendshipsHelper
   before_action :authenticate_user!
+  
   def new
 
   end
@@ -11,11 +13,16 @@ class FriendshipsController < ApplicationController
   end
 
   def update
-    
+    user = User.find(params[:user_id])
+    confirm_a_request(user)
+  end
+
+  def destroy
+
   end
 
   def requests_index
-    @requests = pending_requests
+    @requests = requestor
   end
 
 end
