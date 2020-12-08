@@ -6,7 +6,7 @@ describe 'association' do
     should belong_to(:user)
   end
   it 'A registered user can be a friend to another user ' do
-    should belong_to(:friend).class_name(:user)
+    should belong_to(:friend).class_name(:User)
   end
 end 
 end

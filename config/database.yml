@@ -1,4 +1,3 @@
-
 # PostgreSQL. Versions 9.1 and up are supported.
 #
 # Install the pg driver:
@@ -23,12 +22,11 @@ default: &default
   # pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   adapter: postgresql
   username: postgres
-  password: lidu1234
+  password: 1997
   host: localhost
   port: 5432
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
-
 
 development:
   <<: *default
