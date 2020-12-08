@@ -1,19 +1,20 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+describe 'Associations' do
+it {should have_many(:posts)}
 
-  before :each do
-    @user = User.create(username: 'simon')
-    @event1 = @user.posts.create(text: 'post 1')
-    @event2 = @user.posts.create(text: 'post 2')
+it 'User should have many friends' do
+should have_many(:friendships)
+end
+it 'User can have many posts' do
+should have_many(:posts)
+end
+it 'User can have many comments' do
+  should have_many(:comments)
   end
-
-  it 'can be created' do
-    expect(User.first).to eq(@user)
-  end
-
-  it 'username should be present' do
-    assert @user.valid?
-  end
-
+it 'User can have many likes' do
+    should have_many(:likes)
+    end
+end
 end
