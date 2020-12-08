@@ -13,21 +13,21 @@ class User < ApplicationRecord
   has_many :inverse_friendships, class_name: :Friendship, foreign_key: :receiver_id
 
   def pending_friends
-		friendships.map { |friendship| friendship.friend unless friendship.confirmed }.compact	
-	end
-	
-	def friend_requests
-		inverse_friendships.map { |friendship| friendship.user unless friendship.confirmed }.compact
-	end
+    friendships.map { |friendship| friendship.friend unless friendship.confirmed }.compact
+  end
 
-	def confirm_friend(user)
-		friendship = inverse_friendships.find { |friend| friend.user == user }
-		friendship.confirmed = true
-		friendship.create(receiver: user, confirmed: true)
-		friendship.save
-	end
+  def friend_requests
+    inverse_friendships.map { |friendship| friendship.user unless friendship.confirmed }.compact
+  end
 
-	def friend?(user)
-		friend.include?(user)
-	end
+  def confirm_friend(user)
+    friendship = inverse_friendships.find { |friend| friend.user == user }
+    friendship.confirmed = true
+    friendship.create(receiver: user, confirmed: true)
+    friendship.save
+  end
+
+  def friend?(user)
+    friend.include?(user)
+  end
 end
