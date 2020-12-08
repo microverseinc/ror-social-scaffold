@@ -11,4 +11,23 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :friendships, foreign_key: :sender_id
   has_many :inverse_friendships, class_name: :Friendship, foreign_key: :receiver_id
+
+  def pending_friends
+		friendships.map { |friendship| friendship.friend unless friendship.confirmed }.compact	
+	end
+	
+	def friend_requests
+		inverse_friendships.map { |frienship| friendship.user unless friendship.confirmed }.compact
+	end
+
+	def confirm_friend(user)
+		friendship = inverse_friendships.find { |friend| friend.user == user }
+		friendship.confirmed = true
+		friendship.create(friend: user, confirmed: true)
+		friendship.save
+	end
+
+	def friend?(user)
+		friend.include?(user)
+	end
 end
