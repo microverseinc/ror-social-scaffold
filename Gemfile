@@ -58,8 +58,8 @@ group :test do
 end
 
 group :test do
+  gem 'capybara', '>= 2.15'
   gem 'rspec-rails'
-    gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
 end
 

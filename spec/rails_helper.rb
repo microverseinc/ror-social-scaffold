@@ -91,7 +91,6 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
-  
 end
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
