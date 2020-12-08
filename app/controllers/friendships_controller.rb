@@ -1,5 +1,6 @@
 class FriendshipsController < ApplicationController
-
+  include FriendshipsHelper
+  before_action :authenticate_user!
   def new
 
   end
@@ -14,7 +15,7 @@ class FriendshipsController < ApplicationController
   end
 
   def requests_index
-    @requests = current_user.received_friends
+    @requests = pending_requests
   end
 
 end

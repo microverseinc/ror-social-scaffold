@@ -25,4 +25,5 @@ module ApplicationHelper
   def is_friend?(user)
     all_friends.include?(user)
   end
+
 end
