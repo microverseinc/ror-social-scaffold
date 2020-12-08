@@ -1,4 +1,4 @@
 class Friendship < ApplicationRecord
-  belongs_to :sender
-  belongs_to :receiver
+  belongs_to :sender, class_name: :Friendship
+  belongs_to :receiver, class_name: :Friendship
 end
