@@ -4,3 +4,13 @@
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
   </span>
 </li>
+
+<% @users.each do |user| %>
+  <li>
+    <%= confirm_friendship_button(user) %>  
+    Name: <%= user.name %>
+    <span class="profile-link">
+      <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+    </span>
+  </li>
+<% end %>
