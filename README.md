@@ -2,22 +2,17 @@
 
 > This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
 
+In this project contains a social media app with ruby on rails using the MVC process.
+In this specific branch I create the friendship model that connects between users.
+
 ![screenshot](./assets/images/send-friend-request.png)
 ![screenshot](./assets/images/users-unfriend.png)
 
 ## Built With
 
 - Ruby v2.7.0
-- Ruby on Rails v5.2.4
+- Ruby on Rails v5.2.4.1
 
-## Live Demo
-
-TBA
-
-
-## Getting Started
-
-To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
@@ -25,20 +20,37 @@ Ruby: 2.6.3
 Rails: 5.2.3
 Postgres: >=9.5
 
-### Setup
+## Setup
 
-Instal gems with:
+### Installation
 
-```
-bundle install
-```
+Get a local copy on the project
 
-Setup database with:
+`git clone https://github.com/alejandrotoledoweb/ror-social-scaffold.git`
 
-```
-   rails db:create
-   rails db:migrate
-```
+cd on the folder created
+run the following commands to install the depedencies
+`bundle install`
+then create and migrate the tables for the databases
+`rails db:create`
+`rails db:migrate`
+`rails db:seed`
+
+### Usage
+
+run this command to start the server
+`rails server`
+and then go to this address http://localhost:3000 to have access.
+
+then you can sign up with your info and create posts, comments, like other posts, send friend request to other people.
+
+### Test models
+
+Run these command to test the models and associations
+
+`rspec spec/models/friendship_spec.rb`
+`rspec spec/models/user_spec.rb`
+
 
 ### Github Actions
 
@@ -50,22 +62,6 @@ To make sure the linters' checks using Github Actions work properly, you should 
 4. Open a PR from the `feature/branch` when your work is done.
 
 
-### Usage
-
-Start server with:
-
-```
-    rails server
-```
-
-Open `http://localhost:3000/` in your browser.
-
-### Run tests
-
-```
-    rpsec --format documentation
-```
-
 > Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
 
 ### Deployment
@@ -74,7 +70,11 @@ TBA
 
 ## Authors
 
-TBA
+👤 **Alejandro Toledo**
+
+- GitHub: [@alejandrotoledoweb](https://github.com/alejandrotoledoweb)
+- Twitter: [@alejot](https://twitter.com/alejot) 
+- LinkedIn: [Alejandro Toledo](https://www.linkedin.com/in/alejandro-toledo-3b444b109/) 
 
 ## 🤝 Contributing
 
@@ -88,7 +88,10 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-TBA
+
+- Project originally taken from The Odin Project
+- Project inspired by Microverse Program
+
 
 ## 📝 License
 
