@@ -1,0 +1,116 @@
+
+An error occurred while loading ./spec/features/authentication_spec.rb.
+Failure/Error: __send__(method, file)
+
+LoadError:
+  cannot load such file -- /home/alextoledo/Documents/Microverse/main_curriculum/rails/ror-social-scaffold/spec/features/authentication_spec.rb
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/lib/rspec/core/configuration.rb:2076:in `load'
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/lib/rspec/core/configuration.rb:2076:in `load_file_handling_errors'
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/lib/rspec/core/configuration.rb:1583:in `block in load_spec_files'
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/lib/rspec/core/configuration.rb:1581:in `each'
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/lib/rspec/core/configuration.rb:1581:in `load_spec_files'
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/lib/rspec/core/runner.rb:102:in `setup'
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/lib/rspec/core/runner.rb:86:in `run'
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/lib/rspec/core/runner.rb:71:in `run'
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/lib/rspec/core/runner.rb:45:in `invoke'
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/exe/rspec:4:in `<top (required)>'
+# /home/alextoledo/.rbenv/versions/2.7.0/bin/rspec:23:in `load'
+# /home/alextoledo/.rbenv/versions/2.7.0/bin/rspec:23:in `<main>'
+# 
+#   Showing full backtrace because every line was filtered out.
+#   See docs for RSpec::Configuration#backtrace_exclusion_patterns and
+#   RSpec::Configuration#backtrace_inclusion_patterns for more information.
+
+An error occurred while loading ./=.
+Failure/Error: __send__(method, file)
+
+LoadError:
+  cannot load such file -- /home/alextoledo/Documents/Microverse/main_curriculum/rails/ror-social-scaffold/=
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/lib/rspec/core/configuration.rb:2076:in `load'
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/lib/rspec/core/configuration.rb:2076:in `load_file_handling_errors'
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/lib/rspec/core/configuration.rb:1583:in `block in load_spec_files'
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/lib/rspec/core/configuration.rb:1581:in `each'
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/lib/rspec/core/configuration.rb:1581:in `load_spec_files'
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/lib/rspec/core/runner.rb:102:in `setup'
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/lib/rspec/core/runner.rb:86:in `run'
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/lib/rspec/core/runner.rb:71:in `run'
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/lib/rspec/core/runner.rb:45:in `invoke'
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/exe/rspec:4:in `<top (required)>'
+# /home/alextoledo/.rbenv/versions/2.7.0/bin/rspec:23:in `load'
+# /home/alextoledo/.rbenv/versions/2.7.0/bin/rspec:23:in `<main>'
+# 
+#   Showing full backtrace because every line was filtered out.
+#   See docs for RSpec::Configuration#backtrace_exclusion_patterns and
+#   RSpec::Configuration#backtrace_inclusion_patterns for more information.
+
+An error occurred while loading ./test.
+Failure/Error: __send__(method, file)
+
+LoadError:
+  cannot load such file -- /home/alextoledo/Documents/Microverse/main_curriculum/rails/ror-social-scaffold/test
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/lib/rspec/core/configuration.rb:2076:in `load'
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/lib/rspec/core/configuration.rb:2076:in `load_file_handling_errors'
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/lib/rspec/core/configuration.rb:1583:in `block in load_spec_files'
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/lib/rspec/core/configuration.rb:1581:in `each'
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/lib/rspec/core/configuration.rb:1581:in `load_spec_files'
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/lib/rspec/core/runner.rb:102:in `setup'
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/lib/rspec/core/runner.rb:86:in `run'
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/lib/rspec/core/runner.rb:71:in `run'
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/lib/rspec/core/runner.rb:45:in `invoke'
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/exe/rspec:4:in `<top (required)>'
+# /home/alextoledo/.rbenv/versions/2.7.0/bin/rspec:23:in `load'
+# /home/alextoledo/.rbenv/versions/2.7.0/bin/rspec:23:in `<main>'
+# 
+#   Showing full backtrace because every line was filtered out.
+#   See docs for RSpec::Configuration#backtrace_exclusion_patterns and
+#   RSpec::Configuration#backtrace_inclusion_patterns for more information.
+
+An error occurred while loading ./authentication.
+Failure/Error: __send__(method, file)
+
+LoadError:
+  cannot load such file -- /home/alextoledo/Documents/Microverse/main_curriculum/rails/ror-social-scaffold/authentication
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/lib/rspec/core/configuration.rb:2076:in `load'
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/lib/rspec/core/configuration.rb:2076:in `load_file_handling_errors'
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/lib/rspec/core/configuration.rb:1583:in `block in load_spec_files'
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/lib/rspec/core/configuration.rb:1581:in `each'
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/lib/rspec/core/configuration.rb:1581:in `load_spec_files'
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/lib/rspec/core/runner.rb:102:in `setup'
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/lib/rspec/core/runner.rb:86:in `run'
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/lib/rspec/core/runner.rb:71:in `run'
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/lib/rspec/core/runner.rb:45:in `invoke'
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/exe/rspec:4:in `<top (required)>'
+# /home/alextoledo/.rbenv/versions/2.7.0/bin/rspec:23:in `load'
+# /home/alextoledo/.rbenv/versions/2.7.0/bin/rspec:23:in `<main>'
+# 
+#   Showing full backtrace because every line was filtered out.
+#   See docs for RSpec::Configuration#backtrace_exclusion_patterns and
+#   RSpec::Configuration#backtrace_inclusion_patterns for more information.
+
+An error occurred while loading ./features.
+Failure/Error: __send__(method, file)
+
+LoadError:
+  cannot load such file -- /home/alextoledo/Documents/Microverse/main_curriculum/rails/ror-social-scaffold/features
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/lib/rspec/core/configuration.rb:2076:in `load'
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/lib/rspec/core/configuration.rb:2076:in `load_file_handling_errors'
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/lib/rspec/core/configuration.rb:1583:in `block in load_spec_files'
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/lib/rspec/core/configuration.rb:1581:in `each'
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/lib/rspec/core/configuration.rb:1581:in `load_spec_files'
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/lib/rspec/core/runner.rb:102:in `setup'
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/lib/rspec/core/runner.rb:86:in `run'
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/lib/rspec/core/runner.rb:71:in `run'
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/lib/rspec/core/runner.rb:45:in `invoke'
+# /home/alextoledo/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/rspec-core-3.9.1/exe/rspec:4:in `<top (required)>'
+# /home/alextoledo/.rbenv/versions/2.7.0/bin/rspec:23:in `load'
+# /home/alextoledo/.rbenv/versions/2.7.0/bin/rspec:23:in `<main>'
+# 
+#   Showing full backtrace because every line was filtered out.
+#   See docs for RSpec::Configuration#backtrace_exclusion_patterns and
+#   RSpec::Configuration#backtrace_inclusion_patterns for more information.
+No examples found.
+
+
+Finished in 0.00004 seconds (files took 0.23504 seconds to load)
+0 examples, 0 failures, 5 errors occurred outside of examples
+
