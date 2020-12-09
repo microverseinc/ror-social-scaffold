@@ -1,0 +1,4 @@
+<%= form_with model: @friendship, url: friendships_path  do |form| %>
+<%= form.hidden_field :user_id %>
+<%= form.submit "Add Friend"%>
+<% end %>

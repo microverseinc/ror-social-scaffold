@@ -3,6 +3,6 @@
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
     <br>
-    <%= link_to 'Add Friend',  user_path(user), class: 'profile-link' %>
+     <%= render "friendships/addfriend" %>
   </span>
 </li>
