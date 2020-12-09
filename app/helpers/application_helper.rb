@@ -17,17 +17,16 @@ module ApplicationHelper
   end
 
   def all_friends
-    requested_friends = current_user.friendships.map{|friendship| friendship.friend if friendship.confirmed}
-    received_friends = current_user.friendships_received.map{|friendship| friendship.user if friendship.confirmed}
+    requested_friends = current_user.friendships.map { |friendship| friendship.friend if friendship.confirmed }
+    received_friends = current_user.friendships_received.map { |friendship| friendship.user if friendship.confirmed }
     requested_friends.compact + received_friends.compact
   end
 
-  def is_friend?(user)
+  def friend?(user)
     all_friends.include?(user)
   end
 
   def requestor
-    current_user.friendships_received.map{|friendship| friendship.user if !friendship.confirmed}.compact
+    current_user.friendships_received.map { |friendship| friendship.user unless friendship.confirmed }.compact
   end
-
 end

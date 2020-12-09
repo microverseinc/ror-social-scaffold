@@ -1,6 +1,6 @@
-require "rails_helper"
+require 'rails_helper'
 
-RSpec.describe Friendship, :type => :model do
+RSpec.describe Friendship, type: :model do
   it 'Create a new data container' do
     friendship = Friendship.new(user_id: 1, friend_id: 2)
     expect(friendship).to be_a_new(Friendship)

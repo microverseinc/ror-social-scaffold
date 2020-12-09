@@ -1,13 +1,13 @@
-require "rails_helper"
+require 'rails_helper'
 
-RSpec.describe Friendship, :type => :model do
+RSpec.describe Friendship, type: :model do
   it 'Create a new data container' do
     user = User.new(name: 'abc', email: 'a@a.com')
     expect(user).to be_a_new(User)
   end
 
   it 'User is valid if a name attribute is present' do
-    user = User.new(name: 'abc', email:'a@a.com', password:'123456')
+    user = User.new(name: 'abc', email: 'a@a.com', password: '123456')
     expect(user).to be_valid
   end
 
