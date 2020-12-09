@@ -9,7 +9,7 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
-
+# rubocop:disable Metrics/BlockLength
 ActiveRecord::Schema.define(version: 20_201_209_165_913) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
@@ -66,3 +66,4 @@ ActiveRecord::Schema.define(version: 20_201_209_165_913) do
   add_foreign_key 'friendships', 'users'
   add_foreign_key 'friendships', 'users', column: 'friend_id'
 end
+# rubocop:enable Metrics/BlockLength
