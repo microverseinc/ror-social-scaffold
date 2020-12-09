@@ -22,8 +22,4 @@ class FriendshipsController < ApplicationController
     friendship.destroy
   end
 
-  def requests_index
-    @requests = requestor
-  end
-
 end
