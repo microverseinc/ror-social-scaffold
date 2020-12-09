@@ -19,29 +19,14 @@
 <section id="right"> 
 
 <article>
-<h2> Friends</h2>
+<h2> All Users</h2>
+<span> <%= pluralize(@recieved.length, 'friend request') %> recieved, </span>
+<span><%= pluralize(@sent.length, 'friend request') %> sent</span>
 <ul>
 <li> 
-<%= render @friends %>
+<%= render @all_users %>
  </li>
 </ul>
 </article>
  
-
-<article>
-<h2> <%= pluralize(@recieved.length, 'friend request') %> recieved</h2>
-<table>
-<%= render 'recieved'%>
-
-</table>
-</article>
- 
-<article>
-<h2> <%= pluralize(@sent.length, 'friend request') %> sent</h2>
-<ul>
-<%= render @sent %>
-
-</ul>
-</article>
-
 </section>

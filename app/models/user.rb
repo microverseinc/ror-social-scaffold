@@ -62,11 +62,11 @@ class User < ApplicationRecord
   end
   
   def friendship(x)
-    friendships.find { |friendship| friendship.friend_id == x.id }
+    friendships.find { |f| f.friend_id == x.id }
   end
 
   def relation_exist?(user)
-    friends.include?(user) || pending_friends.include?(user) || friend_requests.include?(user) || user == self
+    friends.include?(user) || pending_requests.include?(user) || user == self
   end
 
 end

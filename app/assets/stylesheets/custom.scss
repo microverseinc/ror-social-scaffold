@@ -71,17 +71,33 @@ a {
   border-bottom: none;
 }
 
+.invite-link {
+  background-color: #f8d49d;
+  padding: 1px 5px;
+  color: #666;
+}
+
+.sent-request {
+  background-color: #bedcfa;
+  color: #666;
+  border: none;
+  padding: 1px 5px;
+  font-size: 1em;
+}
+
 .accept-link {
-  padding: 5px;
-  background-color: lightseagreen;
+  background-color: #5aa469;
+  padding: 1px 5px;
   display: inline-block;
-  border-radius: 4px;
+  color: #f9f9f9;
+  margin-left: 6px;
 }
 
 .reject-link {
-  padding: 5px;
+  padding: 1px 5px;
   background-color: rgb(233, 15, 80);
-  display: block;
+  display: inline-block;
+  color: #f9f9f9;
 }
 
 .users-list {
@@ -98,8 +114,18 @@ a {
   justify-content: space-between;
 }
 
-.users_name {
-  background-color: lightslategray;
+.users_name { 
+  text-transform: capitalize;
+  padding-left: 5px;
+
+  a {
+    color: #fff;
+    background-color: #5AA469;
+    font-size: 0.7em;
+    display: inline-block;
+    padding: 1px 3px;
+    border-radius: 3px;
+  }
 }
 
 .rounded{ 
@@ -115,7 +141,8 @@ a {
 
 .profile-link {
   flex-grow: 3;
-  background-color: lime;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .notice,
@@ -283,7 +310,6 @@ a {
   .profile-link {
     font-size: 0.8em;
     margin: 0 0 8px 0;
-    color: $primary-color-dark;
   }
 }
 
