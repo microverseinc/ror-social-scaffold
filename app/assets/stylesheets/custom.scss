@@ -164,7 +164,7 @@ form {
   .actions {
     display: flex;
     justify-content: center;
-    margin: 8px 0;
+    margin: 0;
   }
 
   input[type="submit"] {
@@ -280,9 +280,9 @@ form {
   margin: 10px;
 
   .users-list li {
-    margin-bottom: 16px;
     text-transform: capitalize;
     font-size: 1.2em;
+    margin: 0;
   }
 
   .profile-link {
@@ -348,18 +348,6 @@ form {
   }
 }
 
-form input[type="submit"] {
-  width: fit-content;
-}
-
 .container {
-  display:flex
-}
-
-form .actions {
-  margin:0;
-}
-
-.users-section .users-list li {
-  margin: 0;
+  display: flex;
 }
