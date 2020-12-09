@@ -3,7 +3,7 @@
     <%= form.hidden_field :user_id, value: user.id %>
     <%= form.hidden_field :friend_id, value: current_user.id %>
     <div class="">
-      <%= form.submit submit_text, class: 'btn btn-warning btn-block' %>
+      <%= form.submit submit_text, class: 'btn btn-warning btn-block', data: { disable_with: "Rejected" } %>
     </div>
   </div>
 <% end %>

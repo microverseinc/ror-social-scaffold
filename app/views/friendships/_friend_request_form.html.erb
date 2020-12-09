@@ -4,7 +4,7 @@
     <div class="forms mb-4">
       <%= form.hidden_field :friend_id, class: 'form-control', value: user.id %>
       <div class="actions">
-        <%= form.submit 'Invite', class: 'btn btn-primary mt-2' %>
+        <%= form.submit 'Invite', class: 'btn btn-primary mt-2', data: { disable_with: "Sent" }%>
       </div>
     </div>
   <% end %>
