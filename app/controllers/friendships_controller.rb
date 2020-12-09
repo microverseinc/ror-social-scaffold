@@ -18,7 +18,8 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
-
+    friendship = Friendship.find_by(user_id:params[:user_id], friend_id:params[:friend_id])
+    friendship.destroy
   end
 
   def requests_index

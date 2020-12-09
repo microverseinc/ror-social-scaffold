@@ -10,6 +10,7 @@
               <% requestor.each do |r| %>
                 <% if user == r %>
                   <%= render 'friendships/accept_request_form', user: user, submit_text: 'Accept' %>
+                  <%= render 'friendships/reject_request_form', user: user, submit_text: 'Cancel' %>
                 <% end %>
               <% end %>
             </div>
