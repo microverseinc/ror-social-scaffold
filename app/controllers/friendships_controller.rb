@@ -1,11 +1,8 @@
 class FriendshipsController < ApplicationController
   include ApplicationHelper
   include FriendshipsHelper
-  before_action :authenticate_user!
-  
-  def new
-
-  end
+  before_action :authenticate_user!  
+  def new; end
 
   def create
     friend_id = params[:friend_id]
@@ -18,7 +15,7 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
-    friendship = Friendship.find_by(user_id:params[:user_id], friend_id:params[:friend_id])
+    friendship = Friendship.find_by(user_id: params[:user_id], friend_id: params[:friend_id])
     friendship.destroy
   end
 
