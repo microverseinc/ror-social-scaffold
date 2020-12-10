@@ -25,4 +25,11 @@ RSpec.describe User, type: :model do
                         password_confirmation: 'secretpass')
     expect(user2.valid?).to eql(true)
   end
+
+  describe 'associations' do
+    subject { User.create(name: 'alex', email: 'alex@gmail.com', password: '123456') }
+    it { should validate_presence_of(:name) }
+    it { should validate_presence_of(:email) }
+    it { should validate_presence_of(:password) }
+  end
 end
