@@ -17,6 +17,13 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: false
   scope :all_except_current_user, ->(user) { where.not(id: user) }
 
+  
+  def friends
+    friends_array = friendships.map { |friendship| friendship.friend if friendship.confirmed }
+    friends_array += inverse_friendships.map { |friendship| friendship.user if friendship.confirmed }
+    friends_array.compact
+  end
+
   def pending_friends
     friendships.map { |friendship| friendship.friend unless friendship.confirmed }.compact
   end
@@ -35,9 +42,4 @@ class User < ApplicationRecord
     friends.include?(user)
   end
 
-  def friends
-    friends_array = friendships.map { |friendship| friendship.friend if friendship.confirmed }
-    friends_array += inverse_friendships.map { |friendship| friendship.user if friendship.confirmed }
-    friends_array.compact
-  end
 end
