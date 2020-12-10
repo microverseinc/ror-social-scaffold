@@ -45,6 +45,6 @@ class User < ApplicationRecord
     friends.include?(user)
   end
   def requester?(user)
-    id == Friendship.find_friendships(self ,user).first.requester_id
+   # id == Friendship.find_friendships(self ,user).first.requester_id
   end
 end

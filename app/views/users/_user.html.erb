@@ -5,16 +5,16 @@
     <br>
     <% unless user == current_user %>
      <% if current_user.friend?(user) %>
-     <%= render "friendships/addfriend", user: user, action_text: 'unfriend'%>
+     <%= render "friendships/addfriend", user: user, action_text: 'unfriend', method: 'delete'%>
     <% elsif current_user.pending_friends.include?(user) %>
-     <%= render "friendships/addfriend", user: user, action_text: 'delete'%>
+     <%= render "friendships/addfriend", user: user, action_text: 'delete' ,method: 'delete'%>
      <% if current_user.requester?(user)%>
-      <%= render "friendships/addfriend", user: user, action_text: 'delete'%>
+      <%= render "friendships/addfriend", user: user, action_text: 'delete', method: 'post'%>
       <% else%>
-      <%= render "friendships/addfriend", user: user, action_text: 'delete'%>
+      <%= render "friendships/addfriend", user: user, action_text: 'delete', method: 'delete'%>
       <% end %>
       <% else %>
-    <%= render "friendships/addfriend", user: user, action_text: 'Add friend'%>
+    <%= render "friendships/addfriend", user: user, action_text: 'Add friend',method: 'post'%>
      <% end %>
      <% end %>
   </span>

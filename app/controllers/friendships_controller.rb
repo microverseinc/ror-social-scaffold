@@ -4,10 +4,10 @@ class FriendshipsController < ApplicationController
     end
     def create
         @user=User.find(params[:user_id])
-        @friendship= current_user.friendship.new
-        @friendship.friend_id= @user.id
-        @friendship.requester_id =current_user.id
-        @friendship.save
+        @friendships= current_user.friendships.new
+        @friendships.friend_id= @user.id
+        @friendships.requester_id =current_user.id
+        @friendships.save
 
     end
     def destroy
