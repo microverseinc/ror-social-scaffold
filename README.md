@@ -5,8 +5,8 @@
 In this project contains a social media app with ruby on rails using the MVC process.
 In this specific branch I create the friendship model that connects between users.
 
-![screenshot](./assets/images/send-friend-request.png)
-![screenshot](./assets/images/users-unfriend.png)
+![screenshot](./app/assets/images/send-friend-request.png)
+![screenshot](./app/assets/images/users-unfriend.png)
 
 ## Built With
 
