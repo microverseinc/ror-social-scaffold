@@ -11,8 +11,15 @@ class FriendshipsController < ApplicationController
 
     end
     def destroy
-
+        @user=User.find(params[:user_id])
+        @user.each(&:destroy)
+    
     end
     def update
+        @user=User.find(params[:user_id])
+        current_user.confirm_friend(@user) 
+        
+          
+
     end
 end

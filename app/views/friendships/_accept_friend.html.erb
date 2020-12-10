@@ -1,0 +1,6 @@
+<%= form_with model: @friendship, url: friendship_path(user), method: 'put' do |form| %>
+<%= form.hidden_field :user_id, value: user.id %>
+ 
+<%= form.submit 'Accept'%>
+
+<% end %>
