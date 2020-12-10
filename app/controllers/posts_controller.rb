@@ -21,7 +21,7 @@ class PostsController < ApplicationController
   private
 
   def timeline_posts
-    friends_id = all_friends.map{|f| f.id}
+    friends_id = all_friends.map(&:id)
     all_ids = friends_id + [current_user.id]
     @timeline_posts ||= Post.all.ordered_by_most_recent.includes(:user).where(user_id: all_ids)
   end
