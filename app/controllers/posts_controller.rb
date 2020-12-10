@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  include ApplicationHelper
   before_action :authenticate_user!
 
   def index
@@ -20,7 +21,9 @@ class PostsController < ApplicationController
   private
 
   def timeline_posts
-    @timeline_posts ||= Post.all.ordered_by_most_recent.includes(:user)
+    friends_id = all_friends.map{|f| f.id}
+    all_ids = friends_id + [current_user.id]
+    @timeline_posts ||= Post.all.ordered_by_most_recent.includes(:user).where(user_id: all_ids)
   end
 
   def post_params
