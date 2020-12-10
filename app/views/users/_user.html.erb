@@ -3,6 +3,19 @@
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
     <br>
-     <%= render "friendships/addfriend" %>
+    <% unless user == current_user %>
+     <% if current_user.friend?(user) %>
+     <%= render "friendships/addfriend", user: user, action_text: 'unfriend'%>
+    <% elsif current_user.pending_friends.include?(user) %>
+     <%= render "friendships/addfriend", user: user, action_text: 'delete'%>
+     <% if current_user.requester?(user)%>
+      <%= render "friendships/addfriend", user: user, action_text: 'delete'%>
+      <% else%>
+      <%= render "friendships/addfriend", user: user, action_text: 'delete'%>
+      <% end %>
+      <% else %>
+    <%= render "friendships/addfriend", user: user, action_text: 'Add friend'%>
+     <% end %>
+     <% end %>
   </span>
 </li>

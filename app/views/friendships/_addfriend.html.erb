@@ -1,4 +1,6 @@
-<%= form_with model: @friendship, url: friendships_path  do |form| %>
-<%= form.hidden_field :user_id %>
-<%= form.submit "Add Friend"%>
+<%= form_with model: @friendship, url: friendships_path, method: "post" do |form| %>
+<%= form.hidden_field :user_id, value: user.id %>
+ 
+<%= form.submit action_text%>
+
 <% end %>
