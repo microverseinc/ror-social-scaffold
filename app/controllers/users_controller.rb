@@ -7,6 +7,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.ordered_by_most_recent
+    @posts = current_user.friends_posts.includes(:user)
   end
 end
