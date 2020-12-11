@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_03_104008) do
+ActiveRecord::Schema.define(version: 2020_12_11_131928) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2020_12_03_104008) do
     t.boolean "confirmed"
     t.integer "user_id", null: false
     t.integer "friend_id", null: false
+    t.integer "requestor_id"
     t.index ["friend_id"], name: "index_friendships_on_friend_id"
     t.index ["user_id"], name: "index_friendships_on_user_id"
   end
@@ -63,3 +64,4 @@ ActiveRecord::Schema.define(version: 2020_12_03_104008) do
   end
 
 end
+Book.where(category: "Programming").or(Book.where(category: "Ruby"))
