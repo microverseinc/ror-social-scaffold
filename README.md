@@ -69,9 +69,19 @@ Open `http://localhost:3000/` in your browser.
 
 TBA
 
-## Authors
+## Author
 
-TBA
+👤 **Okoli Chijioke**
+- Github: [@Ceejayski](https://github.com/ceejayski)
+- Twitter: [@Ceejaski1](https://twitter.com/Ceejayski1)
+- Linkedin: [Okoli Chijioke](https://www.linkedin.com/in/okoli-ceejay/)
+
+👤 **Eric Enaburekhan**
+
+- Github: [@enaburekhan](https://github.com/enaburekhan)
+- Twitter: [@enaburekhaneric](https://twitter.com/enaburekhaneric)
+- Linkedin: [@ericenaburekhan](https://www.linkedin.com/in/eric-enaburekhan-801a28100/)
+
 
 ## 🤝 Contributing
 
