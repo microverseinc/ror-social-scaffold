@@ -1,0 +1,7 @@
+<%= form_with model: @friendship, url: friendship_path(user), method: 'delete' , local: true do |form| %>
+<%= form.hidden_field :requester_id, value: current_user.id %>
+<%= form.hidden_field :friend_id, value: user.id %>
+ 
+<%= form.submit action_text %>
+
+<% end %>

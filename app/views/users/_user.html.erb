@@ -4,17 +4,17 @@
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
     <br>
     <% unless user == current_user %>
-     <% if current_user.friend?(user) %>
-     <%= render "friendships/addfriend", user: user, action_text: 'unfriend', method: 'delete'%>
-    <% elsif current_user.pending_friends.include?(user) %>
-   <% if current_user.requester?(user)%>
-      <%= render "friendships/addfriend", user: user, action_text: 'delete', method: 'post'%>
-      <% else%>
-      <%= render "friendships/accept_friend", user: user, method: 'post'%>
-      <% end %>
-    <% else %>
-    <%= render "friendships/addfriend", user: user, action_text: 'Add friend',method: 'post'%>
-     <% end %>
+      <% if current_user.friend?(user) %>
+    <%= render 'friendships/reject', user: user, action_text: 'Unfriend', method: 'delete' %>
+  <% elsif current_user.pending_friends.include?(user) %>
+    
+    <%= render 'friendships/reject', user: user, action_text: 'Cancel friend request', method: 'delete' %>
+  <% elsif current_user.friend_requests.include?(user) %>
+    
+    <%= render 'friendships/accept_friend', user: user, action_text: 'Accept friend' %>
+  <% else %>
+    <%= render 'friendships/addfriend', user: user, action_text: 'Add friend', method: 'post' %>
+  <% end %>
      <% end %>
   </span>
 </li>
