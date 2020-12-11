@@ -11,7 +11,6 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :friendships
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
- 
 
   def friends
     friends_array = friendships.map do |friendship|
@@ -33,12 +32,11 @@ class User < ApplicationRecord
     inverse_friendships.map { |friendship| friendship.user unless friendship.confirmed }.compact
   end
 
-
-
   def friend?(user)
     friends.include?(user)
   end
+
   def requester?(user)
-   id == Friendship.inverse_friendships(self ,user).first.requester_id
+    id == Friendship.inverse_friendships(self, user).first.requester_id
   end
 end

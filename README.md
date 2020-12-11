@@ -1,7 +1,7 @@
 # Scaffold for social media app with Ruby on Rails
 
 > This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
-
+<img src="screenshot.png" alt="screenshot">
 ## Built With
 
 - Ruby v2.7.0
@@ -66,6 +66,20 @@ Open `http://localhost:3000/` in your browser.
 ### Deployment
 
 TBA
+
+## Author Details::
+
+👤 **Lidya Ghebreigziabher**
+
+- Github: [@Lidya-github ](https://github.com/Lidya1234)
+- Twitter: [@Lidya-twitter](https://twitter.com/Lidya42676629)
+- Linkedin: [Lidya-linkedin-link](https://www.linkedin.com/in/lidya-ghebreigziabher-4a94391aa/)
+
+
+👤 **Rick Oburu**
+
+- Github:[@Rickcoyl](https://github.com/RICKCOYL)
+- Twitter:[@RickCoyl](https://twitter.com/Rickcoyl)
 
 ## Authors
 
