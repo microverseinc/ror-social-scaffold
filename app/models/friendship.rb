@@ -1,3 +1,4 @@
+# rubocop: disable Layout/LineLength
 class Friendship < ApplicationRecord
   belongs_to :user
   belongs_to :friend, class_name: 'User'
@@ -17,3 +18,4 @@ class Friendship < ApplicationRecord
     true
   end
 end
+# rubocop: enable Layout/LineLength
