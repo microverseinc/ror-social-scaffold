@@ -11,15 +11,14 @@ class FriendshipsController < ApplicationController
   end
 
   def update
-    user = User.find(params[:user_id])
-    confirm_a_request(user)
+    
   end
 
   def destroy
-    user_id = params[:user_id]
-    friend_id =  params[:friend_id]
-    requestor_id = current_user.id
-    friendship = Friendship.where(user_id == requestor_id).or(Friendship.where(friend_id == requestor_id))
-    friendship.destroy_all
+    user = User.find(params[:user_id])
+    friend =  User.find(params[:friend_id])
+    Friendship.find_by_user_id_and_friend_id(user, friend).destroy
+    Friendship.find_by_user_id_and_friend_id(friend, user).destroy
+    redirect_to users_path
   end
 end
