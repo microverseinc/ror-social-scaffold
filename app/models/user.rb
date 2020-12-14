@@ -11,14 +11,13 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
 
   has_many :friendships
-  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
+  has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
 
   has_many :pending_friendships, -> { where status: nil }, class_name: 'Friendship', foreign_key: 'user_id'
   has_many :pending_requests, through: :pending_friendships, source: :friend
 
-
   def friends
-    friends_array = friendships.map { |f| f.friend if f.status } 
+    friends_array = friendships.map { |f| f.friend if f.status }
     friends_array.compact
   end
 
@@ -60,13 +59,12 @@ class User < ApplicationRecord
   def friend?(user)
     friends.include?(user)
   end
-  
-  def friendship(x)
-    friendships.find { |f| f.friend_id == x.id }
+
+  def friendship(friend)
+    friendships.find { |f| f.friend_id == friend.id }
   end
 
   def relation_exist?(user)
     friends.include?(user) || pending_requests.include?(user) || user == self
   end
-
 end
