@@ -11,7 +11,8 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :friendships, dependent: :destroy
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id', dependent: :destroy
-  has_many :friends, through: :friendships, dependent: :destroy
+  #has_many :friends, -> { where(confirmed: 'true') } , through: :friendships, dependent: :destroy
+  has_many :friends,-> { where(friendships: {confirmed: 'true'}) },through: :friendships, dependent: :destroy 
   has_many :friends_posts, through: :friends, source: :posts, dependent: :destroy
 
   def friends
