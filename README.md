@@ -26,9 +26,9 @@ This project is a social app named STAY IN TOUCH, where user can send friend req
 
 **Step 1**<br>
 Clone the repo in your local folder where you want to run it<br>
-`git@github.com:SajjadAhmad14/Private-events.git`.<br>
+`git@github.com:SajjadAhmad14/ror-social-scaffold.git`.<br>
 **Step 2**<br>
-Run 'cd Private-events'<br>
+Run 'cd ror-social-scaffold'<br>
 **Step 3**<br>
 Run 'bundle install'<br>
 **Step 4**<br>
