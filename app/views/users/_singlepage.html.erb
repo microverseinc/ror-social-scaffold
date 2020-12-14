@@ -1,0 +1,14 @@
+<% unless @user == current_user %>
+      <% if current_user.friend?(@user) %>
+    <%= render 'friendships/reject', user: @user, action_text: 'Unfriend', method: 'delete' %>
+  <% elsif current_user.pending_friends.include?(@user) %>
+    
+    <%= render 'friendships/reject', user: @user, action_text: 'Cancel request', method: 'delete' %>
+  <% elsif current_user.friend_requests.include?(@user) %>
+    
+    <%= render 'friendships/accept_friend', user: @user, action_text: 'Accept friend', method: 'put' %>
+     <%= render 'friendships/reject', user: @user, action_text: 'Reject', method: 'delete' %>
+  <% else %>
+    <%= render 'friendships/addfriend', user: @user, action_text: 'Add friend', method: 'post' %>
+  <% end %>
+     <% end %>
