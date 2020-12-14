@@ -265,7 +265,7 @@ DEPENDENCIES
   puma (~> 3.12)
   rails (~> 5.2.4)
   rspec
-  rspec-rails
+  rspec-rails (~> 4.0.1)
   rubocop
   rubocop-rails
   sass-rails (~> 5.0)
