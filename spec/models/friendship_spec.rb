@@ -2,8 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Friendship, type: :model do
   it 'Create a new data container' do
-    friendship = Friendship.new(user_id: 1, friend_id: 2)
-    expect(friendship).to be_a_new(Friendship)
+    @friendship = Friendship.new(user_id: 1, friend_id: 2)
+    @friendship = Friendship.new(user_id: 2, friend_id: 1)
+    expect(@friendship).to be_a_new(Friendship)
   end
 
   it 'Friendship belongs to a user' do
