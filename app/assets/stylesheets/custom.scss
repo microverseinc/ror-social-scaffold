@@ -35,6 +35,21 @@ a {
   color: $primary-color-text;
 }
 
+.users_name {
+  text-transform: capitalize;
+  padding-left: 5px;
+  flex-grow: 1;
+
+  a {
+    color: #fff;
+    background-color: #5aa469;
+    font-size: 0.7em;
+    display: inline-block;
+    padding: 1px 3px;
+    border-radius: 3px;
+  }
+}
+
 .nav {
   display: flex;
   justify-content: space-between;
@@ -67,7 +82,7 @@ a {
   }
 }
 
-#middle h1{
+#middle h1 {
   border-bottom: none;
 }
 
@@ -114,29 +129,11 @@ a {
   justify-content: space-between;
 }
 
-.users_name { 
-  text-transform: capitalize;
-  padding-left: 5px;
-
-  a {
-    color: #fff;
-    background-color: #5AA469;
-    font-size: 0.7em;
-    display: inline-block;
-    padding: 1px 3px;
-    border-radius: 3px;
-  }
-}
-
-.rounded{ 
+.rounded {
   width: 50px;
   height: 50px;
   border-radius: 50%;
   background-color: #ccc;
-}
-
-.users_name {
-  flex-grow: 1;
 }
 
 .profile-link {
@@ -299,7 +296,7 @@ a {
 }
 
 .users-section {
-  width: 100%; 
+  width: 100%;
 
   .users-list li {
     margin-bottom: 16px;
@@ -314,7 +311,7 @@ a {
 }
 
 .user-section {
-  width: 100%; 
+  width: 100%;
 
   h2 {
     text-transform: capitalize;
@@ -352,15 +349,15 @@ a {
     form {
       width: 90%;
       margin: auto;
-    
+
       .field {
         width: 100%;
         padding: 8px 0;
-    
+
         label {
           margin-bottom: 8px;
         }
-    
+
         input {
           width: 100%;
           border: 1px solid $divider-color;
@@ -368,20 +365,20 @@ a {
           padding: 8px;
           background-color: $primary-color-light;
         }
-    
+
         input[type=hidden],
         input[type=checkbox] {
           width: 45px;
           display: inline;
         }
       }
-    
+
       .actions {
         display: flex;
         justify-content: center;
         margin: 8px 0;
       }
-    
+
       input[type="submit"] {
         padding: 8px;
         width: 50%;
@@ -392,35 +389,29 @@ a {
         text-transform: uppercase;
         font-weight: 900;
       }
-    
+
       input[type="submit"]:hover {
         background-color: $primary-color;
         color: #fff;
       }
-    
+
       .actions.reset {
         input[type="submit"] {
           width: 100%;
         }
       }
     }
-  
-    #sign-in {
-      width: 40%;
-      height: auto;
-      margin: auto; 
-      background-color: beige;
-    }
+
     #sign-in {
       width: 100%;
       height: auto;
-      margin: auto; 
+      margin: auto;
       background-color: beige;
     }
   }
 }
 
-@media (min-width: 680px) {   
+@media (min-width: 680px) {
   form {
     width: 100%;
   }
@@ -433,93 +424,91 @@ a {
   }
 
   .main {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      padding: 16px;
-      justify-content: space-between;
-      align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+    padding: 16px;
+    justify-content: space-between;
+    align-items: flex-start;
 
-      #left,
-      #right {
-        width: 30%;
-        padding: 1px 20px;
-      }
+    #left,
+    #right {
+      width: 30%;
+      padding: 1px 20px;
+    }
 
-      .dp-image{
-        width: 250px;
-        height: 250px;
-        border-radius: 50%;
-        background-color: #ccc;
-      }
-    
-      #middle {
-        width: 40%;
-      }
+    .dp-image {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      background-color: #ccc;
+    }
 
-      form {
+    #middle {
+      width: 40%;
+    }
+
+    form {
+      width: 100%;
+      margin: auto;
+
+      .field {
         width: 100%;
-        margin: auto;
-      
-        .field {
+        padding: 8px 0;
+
+        label {
+          margin-bottom: 8px;
+        }
+
+        input {
           width: 100%;
-          padding: 8px 0;
-      
-          label {
-            margin-bottom: 8px;
-          }
-      
-          input {
-            width: 100%;
-            border: 1px solid $divider-color;
-            border-radius: 4px;
-            padding: 8px;
-            background-color: $primary-color-light;
-          }
-      
-          input[type=hidden],
-          input[type=checkbox] {
-            width: 45px;
-            display: inline;
-          }
-        }
-      
-        .actions {
-          display: flex;
-          justify-content: center;
-          margin: 8px 0;
-        }
-      
-        input[type="submit"] {
-          padding: 8px;
-          width: 50%;
-          border: none;
+          border: 1px solid $divider-color;
           border-radius: 4px;
-          background-color: $primary-color-dark;
-          color: $primary-color-light;
-          text-transform: uppercase;
-          font-weight: 900;
-          margin: auto;
+          padding: 8px;
+          background-color: $primary-color-light;
         }
-      
-        input[type="submit"]:hover {
-          background-color: $primary-color;
-          color: #fff;
-        }
-      
-        .actions.reset {
-          input[type="submit"] {
-            width: 100%;
-          }
+
+        input[type=hidden],
+        input[type=checkbox] {
+          width: 45px;
+          display: inline;
         }
       }
-    
+
+      .actions {
+        display: flex;
+        justify-content: center;
+        margin: 8px 0;
+      }
+
+      input[type="submit"] {
+        padding: 8px;
+        width: 50%;
+        border: none;
+        border-radius: 4px;
+        background-color: $primary-color-dark;
+        color: $primary-color-light;
+        text-transform: uppercase;
+        font-weight: 900;
+        margin: auto;
+      }
+
+      input[type="submit"]:hover {
+        background-color: $primary-color;
+        color: #fff;
+      }
+
+      .actions.reset {
+        input[type="submit"] {
+          width: 100%;
+        }
+      }
+    }
+
     #sign-in {
       width: 40%;
       height: auto;
-      margin: auto; 
+      margin: auto;
       background-color: beige;
     }
   }
 }
-
