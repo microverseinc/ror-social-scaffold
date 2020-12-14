@@ -13,6 +13,6 @@ Rails.application.routes.draw do
   resources :friendships, only: [:create, :update]
    post 'friend' => 'friendships#create'
    delete 'friend' => 'friendships#destroy'
-   resources :friendships
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

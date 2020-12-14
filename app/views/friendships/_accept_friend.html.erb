@@ -1,8 +1,6 @@
-<%= form_with model: @friendship, url: friendship_path(user), local: true do |form| %>
+<%= form_with model: @friendship, url: friendship_path(user), method: method, local: true do |form| %>
 <%= form.hidden_field :requester_id, value: user.id %>
  
-<%= form.submit 'Accept', name: 'accept', method: 'put'%>
-<br>
-<br>
-<%= form.submit 'Reject', name: 'accept', method: 'delete'%>
+<%= form.submit action_text %>
+
 <% end %>

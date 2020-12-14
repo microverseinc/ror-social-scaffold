@@ -15,22 +15,22 @@ class FriendshipsController < ApplicationController
     redirect_to users_path, notice: 'Friend Request sent!'
   end
 
-  def destroy
-    friendship = Friendship.find_by(requester_id: params[:requester_id], friend_id: params[:friend_id])
-    friendship.destroy
-    redirect_to users_path, notice: 'Friend request cancelled'
-  end
-
   def update
-    if params[:accept]
     @friendship = Friendship.find_by(requester_id: params[:requester_id])
     @friendship.confirmed = true
     @friendship.save
 
 
     redirect_to users_path, notice: 'Friend request was successfully confirmed.'
-    else
-      destroy
-    end
   end
+
+
+  def destroy
+    @user = User.find(params[:user_id])
+    @friendships = Friendship.inverse_friendships(current_user, @user)
+    @friendships.each(&:destroy)
+
+    redirect_to request.referrer, notice: "Friendship with `#{@user.name}` cancelled"
+  end
+
 end
