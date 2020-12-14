@@ -27,8 +27,6 @@ module ApplicationHelper
   def shared_posts(user)
     friendship = inverse_friendships.find { |inverse_friendship| inverse_friendship.user == user }
 
-    if friendship.confirmed == true 
-      timeline_posts
-    end
+    timeline_posts if friendship.confirmed == true
   end
 end
