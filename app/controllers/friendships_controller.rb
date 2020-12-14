@@ -20,10 +20,8 @@ class FriendshipsController < ApplicationController
     @friendship.confirmed = true
     @friendship.save
 
-
     redirect_to users_path, notice: 'Friend request was successfully confirmed.'
   end
-
 
   def destroy
     @user = User.find(params[:user_id])
@@ -32,5 +30,4 @@ class FriendshipsController < ApplicationController
 
     redirect_to request.referrer, notice: "Friendship with `#{@user.name}` cancelled"
   end
-
 end
