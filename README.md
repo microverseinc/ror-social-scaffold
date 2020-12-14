@@ -1,6 +1,6 @@
-# PROJECT: Private-Events
+# PROJECT: STAY IN TOUCH
 
-This project is an event management app named EVENTISE, where user can create events, attend events  and can see all the events of others happening in Future.
+This project is a social app named STAY IN TOUCH, where user can send friend requests, accept requests, write posts and see his friend's posts.
 
 - User can sign up, sign in and sign out (Thanks to Devise).
 - User can see all friends.
