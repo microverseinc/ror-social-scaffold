@@ -1,6 +1,4 @@
 class FriendshipsController < ApplicationController
-  include ApplicationHelper
-  include FriendshipsHelper
   before_action :authenticate_user!
   def new; end
 
@@ -11,7 +9,15 @@ class FriendshipsController < ApplicationController
   end
 
   def update
-    
+    user = User.find(params[:user_id])
+    friend =  User.find(current_user.id)
+    @friendship = Friendship.find_by_user_id_and_friend_id(user, friend)
+    @friendship.confirmed = true
+    @friendship.save
+    @friendship = Friendship.find_by_user_id_and_friend_id(friend, user)
+    @friendship.confirmed = true
+    @friendship.save
+    redirect_to users_path
   end
 
   def destroy
