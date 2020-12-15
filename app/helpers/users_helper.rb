@@ -1,6 +1,3 @@
-RSpec.configure do |config|
-  config.include Devise::Test::ControllerHelpers, type: :controller
-end
 module UsersHelper
   def confirm_button(friend)
     return unless current_user.friend_requests

@@ -1,5 +1,5 @@
 require 'rails_helper'
-RSpec.describe 'Post', type: :feature do
+RSpec.feature 'Post', type: :feature do
   before(:each) do
     User.create(name: 'Alex', email: 'alex@gmail.com', password: '123456',
                 password_confirmation: '123456')
