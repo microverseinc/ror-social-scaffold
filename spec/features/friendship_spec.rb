@@ -16,7 +16,6 @@ RSpec.describe 'Testing Friendship', type: :feature do
   it 'Should send the friend request to the user listed' do
     click_link('Add friend', match: :first)
     expect(page).to have_content('You have sent a friendship request!')
-    expect(page).to have_content('Pending Request')
     click_on 'Sign out'
   end
 end
