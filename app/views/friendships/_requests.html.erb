@@ -1,0 +1,24 @@
+<div class="section-2">
+  <h2>You have <%= pluralize(current_user.friend_requests.count, 'Friend requests')%> </h2>
+  <% current_user.friend_requests.each do |user|%>
+    <div class="mt">
+      <div class="mt-2">
+        <%= link_to user_path(user) do%>
+          <h2 class="mt-2"><%= user.name%></h2>
+        <%end%>
+
+      </div>
+      <div class="m-2">
+        <%= link_to 'See Profile',
+          user_path(user),
+          class: 'p-link m-2' %>
+        <%= link_to 'Accept',
+            friendship_path(search_friendship(user.id, current_user.id)),
+             method: :put, class: 'button-green' %>
+        <%= link_to 'Remove',
+            friendship_path(user.id),
+             method: :delete, class: 'button-red' %>
+      </div>
+    </div>
+<%end%>
+</div>

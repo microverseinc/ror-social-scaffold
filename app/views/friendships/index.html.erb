@@ -1,0 +1,16 @@
+<div class="section-2">
+  <h2>You have <%= pluralize(current_user.friends.count, 'friend')%> </h2>
+  <% current_user.friends.each do |user|%>
+    <div>
+      <div class="mt">
+        <%= link_to user_path(user)do%>
+          <h2><%= user.name%></h2>
+        <%end%>
+        <div class="mt">
+          <%= link_to 'See Profile',  user_path(user), class:"p-link"%>
+          <%= render_friendship_btn user%>
+        </div>
+      </div>
+    </div>
+  <%end%>
+</div>
