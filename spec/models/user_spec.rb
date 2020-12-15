@@ -1,5 +1,4 @@
 require 'rails_helper'
-
 RSpec.describe User, type: :model do
   context 'Association Test' do
     it 'has many posts' do
@@ -19,8 +18,19 @@ RSpec.describe User, type: :model do
     end
 
     it 'has many to reverse friendships' do
-      expect(User.reflect_on_association(:inverse_friendships).macro).to be :has_many
+      expect(User.reflect_on_association(:reverse_friendships).macro).to be :has_many
+    end
+
+    it 'has many friends' do
+      expect(User.reflect_on_association(:friends).macro).to be :has_many
+    end
+
+    it 'has many unresolved request' do
+      expect(User.reflect_on_association(:unresolved_request).macro).to be :has_many
+    end
+
+    it 'has many friend request' do
+      expect(User.reflect_on_association(:friend_requests).macro).to be :has_many
     end
   end
 end
-

@@ -5,5 +5,5 @@ class Friendship < ApplicationRecord
   def accept_request
     Friendship.create(friend_id: user_id, user_id: friend_id, confirmed: true)
     update(confirmed: true)
-  end       
+  end
 end
