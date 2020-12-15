@@ -156,9 +156,9 @@ form {
       background-color: $primary-color-light;
     }
 
-    //   input[type="checkbox"] {
-    //     width: fit-content;
-    //   }
+      input[type="checkbox"] {
+        width: 5%;
+      }
   }
 
   .actions {
@@ -346,4 +346,10 @@ form {
   .user-section {
     width: 50%;
   }
+}
+
+.flex {
+  width: 12%;
+  display: flex;
+  justify-content: space-between;
 }

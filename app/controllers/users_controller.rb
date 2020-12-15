@@ -10,7 +10,4 @@ class UsersController < ApplicationController
     @posts = @user.posts.ordered_by_most_recent
   end
 
-  # def my_friends
-  #   @friendships = current_user.friends
-  # end
 end

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'friendships/new'
+  # get 'friendships/new'
   root 'posts#index'
 
   devise_for :users
@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   end
   resources :friendships
 
-  get 'my_friends', to: 'users#my_friends'
+  
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

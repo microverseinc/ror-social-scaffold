@@ -2,9 +2,7 @@
   Name: <%= user.name %>
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+    <%= render_friendship_btn user%> 
   </span>
   
-</li>
-<li>
-    <%= link_to 'My Friends',  my_friends_path, class: 'profile-link' %>
 </li>
