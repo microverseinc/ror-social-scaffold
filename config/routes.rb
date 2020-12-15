@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'friendships/new'
   root 'posts#index'
 
   devise_for :users
@@ -9,6 +10,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
     resources :likes, only: [:create, :destroy]
   end
+  resources :friendships
 
   get 'my_friends', to: 'users#my_friends'
 
