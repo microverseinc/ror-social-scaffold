@@ -57,12 +57,13 @@ a {
   }
 
   .menu {
-    width: 80%;
+    width: 85%;
     justify-content: space-between;
 
     .menu-item {
       float: left;
       margin: 0 15px;
+      text-align: center;
     }
   }
 }
