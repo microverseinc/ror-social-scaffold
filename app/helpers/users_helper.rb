@@ -17,7 +17,7 @@ module UsersHelper
           method: :delete,
           class: class_profile
         )
-      render html: "<br>/You are now friends/ #{unfriend}".html_safe
+      render html: "<br>You are now friends! #{unfriend}".html_safe
     elsif current_user.received_friends.include?(user)
       reject_friendship =
         link_to(

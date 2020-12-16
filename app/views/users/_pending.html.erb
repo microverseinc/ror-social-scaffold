@@ -1,41 +1,40 @@
 <section class='user-pending-section'>
-<h3><%= "Name: #{@user.name}" %></h3>
+  <h3><%= "Name: #{@user.name}" %></h3>
 
-<div class='iteraction-section'>
-  <span class='iteraction-span'>
-    <%= friendship_interaction(@user) %>
-  </span>
-</div>
+  <div class='iteraction-section'>
+    <span class='iteraction-span'>
+      <%= friendship_interaction(@user) %>
+    </span>
+  </div>
 
-<div class='friends-section'>
-  <h4 class='friends-h4'>List of your friends</h4>
-  <% @user.friends.each do |confirmed| %>
-    <ul>
-      <li>
-        <%= confirmed.name %>
-        <%= friendship_interaction(confirmed) %>
-      </li>
-    </ul>
-  <% end %>
-</div>
-
-
-<div class='pending-section'>
-  <% if current_user == @user %>
-  <h4 class='pending-h4'>List of pendings request friendships</h4>
-  <% if current_user.received_friends.empty? %>
-    <span>You don't have any friendship request</span>
-  <% else %>
-    <% @user.received_friends.each do |pendings| %>
+  <div class='friends-section'>
+    <h4 class='friends-h4'>List of your friends</h4>
+    <% @user.friends.each do |confirmed| %>
       <ul>
         <li>
-          <%= pendings.name %>
-          <%= friendship_interaction(pendings) %>
+          <%= confirmed.name %>
+          <%= friendship_interaction(confirmed) %>
         </li>
       </ul>
     <% end %>
-  <% end %>
-</div>
+  </div>
 
 
+  <div class='pending-section'>
+    <% if current_user == @user %>
+    <h4 class='pending-h4'>List of pendings request friendships</h4>
+      <% if current_user.received_friends.empty? %>
+        <span>You don't have any friendship request</span>
+      <% else %>
+        <% @user.received_friends.each do |pendings| %>
+          <ul>
+            <li>
+              <%= pendings.name %>
+              <%= friendship_interaction(pendings) %>
+            </li>
+          </ul>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
 </section>
