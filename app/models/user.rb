@@ -12,7 +12,8 @@ class User < ApplicationRecord
   has_many :friendships
 
   has_many :inverse_friendships, class_name: :Friendship, foreign_key: :friend_id
-  has_many :confirmed_friendships, -> { where(confirmed: true) }, class_name: 'Friendship'
+
+  has_many :confirmed_friendships, -> { where confirmed: true }, class_name: 'Friendship'
   has_many :friends, through: :confirmed_friendships
 
   has_many :pending_friendships, -> { where confirmed: false }, class_name: 'Friendship', foreign_key: 'user_id'
@@ -26,6 +27,10 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: false
   scope :all_except_current_user, ->(user) { where.not(id: user) }
 
+  scope :pending_friends, -> { where(friendships.confirmed = false) }
+  scope :friends_requests, -> { where(friendship.create) }
+
+
   def friends
     friends_array = friendships.map { |friendship| friendship.friend if friendship.confirmed }
     friends_array += inverse_friendships.map { |friendship| friendship.user if friendship.confirmed }
@@ -33,10 +38,12 @@ class User < ApplicationRecord
   end
 
   def pending_friends
+    # friendships.friends.pending_request
     friendships.map { |friendship| friendship.friend unless friendship.confirmed }.compact
   end
 
   def friend_requests
+    # inverse_friendships.user.friends_requests
     inverse_friendships.map { |friendship| friendship.user unless friendship.confirmed }.compact
   end
 
@@ -53,6 +60,5 @@ class User < ApplicationRecord
 
   def friends_and_own_posts
     Post.where(user: (self.friends << self))
-    # This will produce SQL query with IN. Something like: select * from posts where user_id IN (1,45,874,43);
   end
 end
