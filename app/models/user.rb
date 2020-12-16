@@ -18,24 +18,24 @@ class User < ApplicationRecord
   # or confirmed inverse friendship
   def friends
     # user is the follower so we take all of his leaders
-    friends_array = followers.map{|follow| follow.leader if follow.status == true}
+    friends_array = followers.map { |follow| follow.leader if follow.status == true }
     # user is the leader so we take all of his followers
-    friends_array.concat leaders.map{|follow| follow.follower if follow.status == true}
+    friends_array.concat leaders.map { |follow| follow.follower if follow.status == true }
     friends_array.compact
   end
 
   # Users who have yet to confirm friend requests
   def pending_friends
-    followers.map{|follow| follow.leader if !follow.status}.compact
-  end 
+    followers.map { |follow| follow.leader unless follow.status }.compact
+  end
 
   # Users who have requested to be friends
   def friend_requests
-    leaders.map{|follow| follow.follower if !follow.status}.compact
+    leaders.map { |follow| follow.follower unless follow.status }.compact
   end
 
   def confirm_friend(user)
-    follow = leaders.find{|follow| follow.follower == user}
+    follow = leaders.find { |follow| follow.follower == user }
     follow.status = true
     follow.save
   end

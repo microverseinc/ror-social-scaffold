@@ -1,9 +1,7 @@
 class FollowsController < ApplicationController
-
   # see all invitations and friends
-  def index
+  def index; end
 
-  end
   # send friend request
   def create
     @follow = current_user.followers.new(follower_id: current_user.id, leader_id: params[:user_id])
@@ -25,7 +23,7 @@ class FollowsController < ApplicationController
 
   def destroy
     @user = User.find(params[:user_id])
-    @follow = current_user.leaders.where("follower_id = ?", @user.id).first
+    @follow = current_user.leaders.where('follower_id = ?', @user.id).first
     @follow.destroy
     flash.notice = 'Request rejected!'
     redirect_back(fallback_location: root_path)
