@@ -1,0 +1,48 @@
+<section class="users-section">
+  <h2>Friends</h2>
+  <ul class="users-list">
+    <% current_user.friends.each do |friend| %>
+    <li>
+      Name: <%= friend.name %>
+      <span class="profile-link">
+        <%= link_to 'See Profile',  user_path(friend), class: 'profile-link' %>
+      </span>
+    </li>
+    <% end %>
+  </ul>
+</section>
+
+<section class="users-section">
+  <h2>Pending Invitations(from other users) </h2>
+  <ul class="users-list">
+    <% current_user.friend_requests.each do |friend| %>
+    <li>
+      Name: <%= friend.name %>
+      <span class="profile-link">
+        <%= link_to 'See Profile',  user_path(friend), class: 'profile-link' %>
+      </span>
+      |
+      <span class="profile-link">
+        <%= link_to 'Confirm',  confirm_path(user_id: friend.id), class: 'invite-link' %>
+      </span>
+      <span class="profile-link">
+        <%= link_to 'Reject',  reject_path(user_id: friend.id), class: 'reject-link' %>
+      </span>
+    </li>
+    <% end %>
+  </ul>
+</section>
+
+<section class="users-section">
+  <h2>Friend requests(from me) </h2>
+  <ul class="users-list">
+    <% current_user.pending_friends.each do |friend| %>
+    <li>
+      Name: <%= friend.name %>
+      <span class="profile-link">
+        <%= link_to 'See Profile',  user_path(friend), class: 'profile-link' %>
+      </span>
+    </li>
+    <% end %>
+  </ul>
+</section>
