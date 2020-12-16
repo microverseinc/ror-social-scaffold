@@ -13,5 +13,10 @@ RSpec.describe User, type: :model do
     it { should have_many(:comments).dependent(:destroy) }
 
     it { should have_many(:likes).dependent(:destroy) }
+
+    it { should have_many(:friendships).with_foreign_key('requesting_user_id') }
+
+    it { should have_many(:friendship_requests).with_foreign_key('receiving_user_id').class_name('Friendship') }
+
   end
 end
