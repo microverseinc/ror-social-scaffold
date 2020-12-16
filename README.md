@@ -1,10 +1,10 @@
 # Scaffold for social media app with Ruby on Rails
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+> Social Media toy app based on the ror-social-scaffold designed for Microverse students, with added functionality to simulate a Facebook-like website.
 
 ## Built With
 
-- Ruby v2.7.0
+- Ruby v2.7.2
 - Ruby on Rails v5.2.4
 
 ## Live Demo
@@ -26,16 +26,15 @@ Postgres: >=9.5
 
 Instal gems with:
 
-```
-bundle install
-```
+`bundle install`
 
 Setup database with:
 
-```
-   rails db:create
-   rails db:migrate
-```
+`rails db:create`
+`rails db:migrate`
+
+Note: if you're working with a fresh installation remember to install Postgres locally and it's dependencies, also create a Super User that can access all databases.
+
 
 ### Github Actions
 
@@ -71,7 +70,11 @@ TBA
 
 ## Authors
 
-TBA
+👤 **Gabriel Suárez**
+
+- Github: @ginnandjuice(https://github.com/ginnandjuice)
+- Twitter: [@fatbaxxter](https://twitter.com/fatbaxxter)
+- Linkedin: [Gabriel Suárez](https://www.linkedin.com/in/gabriel-ginn-suarez/)
 
 ## 🤝 Contributing
 
