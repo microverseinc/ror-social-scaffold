@@ -2,12 +2,22 @@ class Friendship < ApplicationRecord
   belongs_to :user
   belongs_to :friend, class_name: :User
   validates :friend, uniqueness: { scope: :user }
-  validates_presence_of :user_id, :friend_id
+  validate :prevent_self_association
 
-  def confirm_friend
-    self.update_attributes(confirmed: true)
-    Friendship.create!(friend_id: self.user_id,
-                    user_id: self.friend_id,
-                    confirmed: true)
+  after_create :reciprocate_friendship
+
+  scope :requested, -> { where(status: 'requested') }
+  scope :received, -> { where(status: 'received') }
+  scope :confirmed, -> { where(status: 'confirmed') }
+
+  private
+
+  def reciprocate_friendship
+    new_friendship = Friendship.new({ user: friend, friend: user, status: 'received' })
+    new_friendship.save unless Friendship.where({ user: friend, friend: user }).exists?
+  end
+
+  def prevent_self_association
+    errors.add(:base, 'User and friend can not be the same') if friend == user
   end
 end
