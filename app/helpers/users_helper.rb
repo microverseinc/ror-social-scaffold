@@ -10,11 +10,14 @@ module UsersHelper
     friendship = find_friendship(user)
 
     if current_user.friends.include?(user)
-      render html: link_to(
-        'Unfriend',
-        "/friendships/destroy_both/#{friendship.id}",
-        method: :delete, class: class_profile
-      )
+      unfriend =
+        link_to(
+          'Unfriend',
+          "/friendships/destroy_both/#{friendship.id}",
+          method: :delete,
+          class: class_profile
+        )
+      render html: "<br>/You are now friends/ #{unfriend}".html_safe
     elsif current_user.received_friends.include?(user)
       reject_friendship =
         link_to(
