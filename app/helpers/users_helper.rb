@@ -1,24 +1,55 @@
 module UsersHelper
-  def confirm_button(friend)
-    return unless current_user.friend_requests
+  # rubocop:disable Metrics/MethodLength
+  def friendship_interaction(user)
+    return nil if user == current_user
 
-    (link_to 'Accept', add_friend_user_path(friend), method: :put, class: 'accept btn btn-secondary profile-link') <<
-      (link_to 'Reject', unfriend_user_path(friend), method: :delete, class: 'reject btn btn-secondary profile-link')
-  end
+    new_friendship_path =
+      friendships_path({ user_id: current_user.id, friend_id: user.id })
 
-  def confirm_friendship_button(user)
-    if current_user.friend_requests.any?(user)
-      confirm_button(user)
+    class_profile = 'profile-link'
+    friendship = find_friendship(user)
+
+    if current_user.friends.include?(user)
+      render html: link_to(
+        'Unfriend',
+        "/friendships/destroy_both/#{friendship.id}",
+        method: :delete, class: class_profile
+      )
+    elsif current_user.received_friends.include?(user)
+      reject_friendship =
+        link_to(
+          'Reject Friendship',
+          "/friendships/destroy_both/#{friendship.id}",
+          method: :delete,
+          class: class_profile
+        )
+
+      accept_friendship =
+        link_to(
+          'Accept Friendship',
+          "/friendships/accept_both/#{friendship.id}",
+          method: :patch, class: class_profile
+        )
+
+      render html: "#{accept_friendship} | #{reject_friendship} ".html_safe
+    elsif current_user.requested_friends.include?(user)
+      render html: link_to(
+        'Drop invitation',
+        "/friendships/destroy_both/#{friendship.id}",
+        method: :delete,
+        class: class_profile
+      )
     else
-      friendship_button(user)
+      render html: link_to(
+        'Invite friend',
+        new_friendship_path,
+        method: :post, class: class_profile
+      )
     end
   end
+  # rubocop:enable Metrics/MethodLength
 
-  def friendship_button_show(friend)
-    if current_user != @user && current_user.friend_requests.none?(@user)
-      friendship_button(friend)
-    elsif current_user.friend_requests.any?(@user)
-      confirm_button(friend)
-    end
+  def find_friendship(user)
+    Friendship.find_by_user_id_and_friend_id(current_user.id, user.id)
   end
 end

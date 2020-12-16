@@ -1,24 +1,56 @@
 class FriendshipsController < ApplicationController
+  before_action :set_friendship, only: %i[destroy update]
+  before_action :set_friendship_both, only: %i[destroy_both accept_both]
+
   def index
     @friends = current_user.friendships.all
   end
 
   def create
-    @friendship = current_user.friendships.build(friend_id: params[:id], confirmed: false)
-    if @friendship.save
-      redirect_to users_path, notice: 'You have sent a friendship request!'
-    else
-      redirect_to users_path, alert: 'Friendship request Sent already!'
-    end
+    @friendship = Friendship.create(friendship_params)
+    # byebug
+    @friendship.save
+    redirect_to request.referrer
   end
 
   def destroy
-    @friendship = Friendship.find_by(params[:user_id], friend_id: params[:id])
-    if @friendship
-      @friendship.destroy
-      redirect_to users_path, notice: 'Friend has been removed'
-    else
-      redirect_to root_path, alert: 'You are not allowed to do this'
-    end
+    @friendship.destroy
+    redirect_to request.referrer
+  end
+
+  def update
+    @friendship.update(friendship_params)
+    redirect_to request.referrer
+  end
+
+  def accept_both
+    # byebug
+    @friendships_pair.update_all(status: 'confirmed')
+    redirect_to request.referrer
+  end
+
+  def destroy_both
+    @friendships_pair.destroy_all
+    redirect_to request.referrer
+  end
+
+  private
+
+  def friendship_params
+    params.permit(:user_id, :friend_id, :status)
+  end
+
+  def set_friendship
+    @friendship = Friendship.find(params[:id])
+  end
+
+  def set_friendship_both
+    @friendship = Friendship.find(params[:id])
+    @user_id = @friendship.user_id
+    @friend_id = @friendship.friend_id
+    @friendships_pair = Friendship.where(
+      "(user_id = #{@user_id} AND friend_id = #{@friend_id})
+      OR (user_id = #{@friend_id} AND friend_id = #{@user_id})"
+    )
   end
 end
