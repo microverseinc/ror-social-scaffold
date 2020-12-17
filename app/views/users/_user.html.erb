@@ -2,12 +2,6 @@
   Name: <%= user.name %>
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-    <% if user.friend?(user) %>
-      <%= link_to 'Unfriends', friendships_path, method: :delete %>
-    <% else %>
-      <%= link_to 'Add Friend',
-            friendships_path(friendship: { user_id: current_user, friend_id: user.id, confirmed: false }),
-            method: :post, class: 'btn btn-primary' %>
-    <% end %>
+      <%=  add_friend(user) %>
   </span>
 </li>
