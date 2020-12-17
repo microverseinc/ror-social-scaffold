@@ -1,25 +1,38 @@
 class FriendshipsController < ApplicationController
-    def create
-        @friendship = Friendship.new(params[:friendship])
-        if @friendship.save
-          flash[:success] = "Friend request sent"
-          redirect_to root_path
-        else
-          flash[:error] = "Something went wrong"
-          render 'new'
-        end
-    end
+    before_action :find_friendship, only: %i[destroy update]
 
-    def destroy
-        @friendship = Friendship.find(params[:id])
-        if @friendship.destroy
-            flash[:success] = 'Object was successfully deleted.'
-            redirect_to friendships_url
-        else
-            flash[:error] = 'Something went wrong'
-            redirect_to friendships_url
-        end
+    def index; end
+  
+    def create
+      @friendship = Friendship.create(friendship_params)
+      if @friendship.save
+        flash.now[:success] = 'Friendship successfully created'
+        redirect_to users_path
+      else
+        flash[:error] = 'Something went wrong'
+        render 'new'
+      end
     end
-    
-    
+  
+    def update
+      friend = User.find(@friendship.user_id)
+      @friendship.update_attributes(confirmed: true)
+      current_user.confirm_friend(friend)
+      redirect_to friendships_path
+    end
+  
+    def destroy
+      @friendship.destroy
+      redirect_to friendships_path
+    end
+  
+    private
+  
+    def find_friendship
+      @friendship = Friendship.find(params[:id])
+    end
+  
+    def friendship_params
+      params.require(:friendship).permit(:user_id, :friend_id, :status)
+    end
 end
