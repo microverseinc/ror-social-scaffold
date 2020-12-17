@@ -5,5 +5,25 @@
     <ul class="posts">
       <%= render @posts %>
     </ul>
+    <ul class="posts">
+    <h3>Friends</h3>
+    <% current_user.friends.each do |user| %>
+      <%= link_to user.name, user_path(user.id)  %>
+        <% if current_user.id == @user.id %>
+      <%= link_to 'Unfriend', reject_path(user_id: user.id, friend_id: current_user.id), class: 'btn btn-danger', method: :delete %>
+          <% end %>
+    <% end %>
+    </ul>
+    <ul class="posts">
+    <% if current_user.id == @user.id %>
+      <ul class="posts">
+      <h3>Friends Requests</h3>
+      <% current_user.friend_requests.each do |person| %>
+        <%= link_to person.name, user_path(person.id)  %>
+        <%= link_to 'Accept', accept_path(user_id: person.id, friend_id: current_user.id), class: 'btn btn-success', method: :post %>
+        <%= link_to 'Reject', reject_path(user_id: person.id, friend_id: current_user.id), class: 'btn btn-danger', method: :delete %>
+      <% end %>
+      </ul>
+    <% end %>
   </article>
 </section>
