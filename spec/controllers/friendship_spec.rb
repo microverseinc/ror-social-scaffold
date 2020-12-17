@@ -25,7 +25,7 @@ RSpec.describe 'Friendship', type: :feature do
     fill_in 'user_email', with: 'dada@gmail.com'
     fill_in 'user_password', with: 'password123'
     click_button 'Log in'
-    expect(page).not_to have_content('Signed in successfully') 
+    expect(page).not_to have_content('Signed in successfully')
   end
 
   scenario 'remove friend' do
@@ -45,6 +45,4 @@ RSpec.describe 'Friendship', type: :feature do
     click_link('Add Friend', match: :first)
     expect(page).to have_content 'Delete Request'
   end
-
-  
 end
