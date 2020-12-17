@@ -7,8 +7,8 @@ example_id                              | status | run_time        |
 ./spec/features/like_spec.rb[1:1]       | passed | 0.24897 seconds |
 ./spec/features/post_spec.rb[1:1]       | passed | 0.05857 seconds |
 ./spec/features/post_spec.rb[1:2]       | passed | 0.1616 seconds  |
-./spec/models/friendship_spec.rb[1:1:1] | passed | 0.0094 seconds  |
-./spec/models/friendship_spec.rb[1:1:2] | passed | 0.04497 seconds |
+./spec/models/friendship_spec.rb[1:1:1] | passed | 0.04352 seconds |
+./spec/models/friendship_spec.rb[1:1:2] | passed | 0.00888 seconds |
 ./spec/models/post_spec.rb[1:1]         | passed | 0.00531 seconds |
 ./spec/models/post_spec.rb[1:2]         | passed | 0.05323 seconds |
 ./spec/models/post_spec.rb[1:3]         | passed | 0.0053 seconds  |
