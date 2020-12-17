@@ -1,14 +1,16 @@
 <div class='user-profile-div'>
-<%= @users.each do |user| %>
+
   <ul>
-    <li>  
-      Name: <%= user.name %>
-      <span class="user-resquest">
-        <%= friendship_interaction(user) %>
-      </span>
-    </li>
+    <% @users.each do |user| %>
+      <li>  
+        Name: <%= user.name %>
+        <span class="user-resquest">
+          <%= friendship_interaction(user) %>
+        </span>
+      </li>
+    <% end %>
   </ul>
-<% end %>
+
 </div>
 
 
