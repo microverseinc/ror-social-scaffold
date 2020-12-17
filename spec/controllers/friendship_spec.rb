@@ -20,6 +20,14 @@ RSpec.describe 'Friendship', type: :feature do
     expect(page).to have_content 'See Profile'
   end
 
+  scenario 'negative login case' do
+    visit new_user_session_path
+    fill_in 'user_email', with: 'dada@gmail.com'
+    fill_in 'user_password', with: 'password123'
+    click_button 'Log in'
+    expect(page).not_to have_content('Signed in successfully') 
+  end
+
   scenario 'remove friend' do
     visit new_user_session_path
     fill_in 'user_email', with: user.email
@@ -37,4 +45,6 @@ RSpec.describe 'Friendship', type: :feature do
     click_link('Add Friend', match: :first)
     expect(page).to have_content 'Delete Request'
   end
+
+  
 end
