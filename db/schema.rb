@@ -9,8 +9,8 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
-# rubocop:disable Metrics/BlockLength
-ActiveRecord::Schema.define(version: 20_201_216_151_921) do
+
+ActiveRecord::Schema.define(version: 20_201_217_202_710) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20_201_216_151_921) do
     t.bigint 'friend_id'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
-    t.string 'status', default: 'requested'
+    t.boolean 'confirmed'
     t.index ['friend_id'], name: 'index_friendships_on_friend_id'
     t.index ['user_id'], name: 'index_friendships_on_user_id'
   end
@@ -66,4 +66,3 @@ ActiveRecord::Schema.define(version: 20_201_216_151_921) do
   add_foreign_key 'friendships', 'users'
   add_foreign_key 'friendships', 'users', column: 'friend_id'
 end
-# rubocop:enable Metrics/BlockLength
