@@ -36,26 +36,15 @@ RSpec.describe User, type: :model do
     it { should have_many(:posts) }
     it { should have_many(:comments) }
     it { should have_many(:likes) }
-    it { should have_many(:friendships) }
-    it { should have_many(:inverse_friendships) }
+    it { should have_many(:requested_friendships) }
+    it { should have_many(:received_friendships) }
+    it { should have_many(:confirmed_friendships) }
   end
 
   describe '#friends' do
     friends_array = nil
     it 'show something if there is a friendships' do
       expect(friends_array).to be_nil
-    end
-  end
-
-  let(:user1) { User.create(name: 'Joha', email: 'joha@gmail.com.com', password: '123456') }
-  let(:user2) { User.create(name: 'Alex', email: 'alex@yahoo.com', password: 'password') }
-  let(:post1) { Post.create(content: 'New post for test', user_id: user1.id) }
-
-  describe '#pending_friends' do
-    friendship = nil
-    it 'show all the friendships' do
-      Friendship.create(user_id: user1.id, friend_id: user2.id, confirmed: true)
-      expect(friendship).to be_nil
     end
   end
 end

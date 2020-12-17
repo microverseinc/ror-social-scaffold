@@ -8,7 +8,6 @@ class FriendshipsController < ApplicationController
 
   def create
     @friendship = Friendship.create(friendship_params)
-    # byebug
     @friendship.save
     redirect_to request.referrer
   end
