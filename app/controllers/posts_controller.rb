@@ -2,8 +2,8 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @post = Post.new
     timeline_posts
+    @post = Post.new
   end
 
   def create

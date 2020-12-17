@@ -57,12 +57,13 @@ a {
   }
 
   .menu {
-    width: 80%;
+    width: 85%;
     justify-content: space-between;
 
     .menu-item {
       float: left;
       margin: 0 15px;
+      text-align: center;
     }
   }
 }
@@ -352,4 +353,18 @@ form {
   width: 12%;
   display: flex;
   justify-content: space-between;
+}
+
+.button-green {
+  font-size: 0.9em;
+  color: white;
+  background-color: #42b86d;
+  padding: 5px 10px;
+}
+
+.button-red {
+  font-size: 0.9em;
+  color: white;
+  background-color: #f99;
+  padding: 5px 10px;
 }
