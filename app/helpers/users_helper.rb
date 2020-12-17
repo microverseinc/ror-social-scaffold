@@ -55,5 +55,4 @@ module UsersHelper
   def find_friendship(user)
     Friendship.find_by_user_id_and_friend_id(current_user.id, user.id)
   end
-
 end
