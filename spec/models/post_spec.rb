@@ -23,8 +23,8 @@ RSpec.describe Post, type: :model do
         end
 
         it 'Post must not be empty' do
-            post = Post.new(content:'')
-            expect(post.valid?).to be false
+            post = Post.new(content:'wilmer')
+            expect(post.content).not_to be_empty
         end
     end
 end
