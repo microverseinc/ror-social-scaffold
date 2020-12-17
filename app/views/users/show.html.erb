@@ -1,5 +1,6 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
+  <div class="green-button"><%= invitation_action_links(@user)%></div>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">

@@ -1,0 +1,19 @@
+
+<h1>Friendships</h1>
+<br>
+<h3>Friends requests</h3>
+
+<% @friend_requests.each do |friend| %>
+  <h5 class = "users-list"><%= friend.name %> wants to be your friend:
+    <%= invitation_action_links(friend) %></h5>
+<% end  %>
+<br>
+<h3>Pending friends</h3>
+<% @pending_friends.each do |friend| %>
+  <h5>You already invited <%= friend.name %></h5>
+<% end %>
+<br>
+<h3>Friends</h3>
+<% @friendships.each do |friend| %>
+  <h5><%= friend.name %> is your friend</h5>
+<% end %>

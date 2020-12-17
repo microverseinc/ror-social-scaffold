@@ -13,9 +13,9 @@ class User < ApplicationRecord
   has_many :friendship_requests, foreign_key: 'receiving_user_id', class_name: 'Friendship'
 
   def friends
-    friends_array = friendships.map{|friendship| friendship.receiving_user if friendship.request_status}
-    friends_array + friendship_requests.map{|friendship| friendship.requesting_user if friendship.request_status}
-    friends_array.compact
+    friend_request_array = friendships.map{|friendship| friendship.receiving_user if friendship.request_status}
+    received_friend_request_array = friendship_requests.map{|friendship| friendship.requesting_user if friendship.request_status}
+    (friend_request_array + received_friend_request_array).compact
   end
 
   def pending_friends
@@ -30,6 +30,11 @@ class User < ApplicationRecord
     friendship = friendship_requests.find{|friendship| friendship.requesting_user == user}
     friendship.request_status = true
     friendship.save
+  end
+
+  def reject_friend(user)
+    friendship = friendship_requests.find{|friendship| friendship.requesting_user == user}
+    friendship.destroy
   end
 
   def friend?(user)
