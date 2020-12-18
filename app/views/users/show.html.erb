@@ -1,9 +1,37 @@
 <section class="user-section">
-  <h2><%= "Name: #{@user.name}" %></h2>
+  <div>
+    <h2><%= "Name: #{@user.name}" %></h2>
+    <% if !@user.friends.include?(current_user) && @user != current_user  && !pending_friends.include?(current_user) %>
+      <%= button_to 'send invitation' %>
+    <% end %>
+  </div>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
       <%= render @posts %>
     </ul>
+  </article>
+
+  <section class='bg-light d-flex'>
+    <article class='col-6'>
+      <h2>Friends List</h2>
+      <ol>
+
+        <% @user.friends and @user.friends.each do |friend| %>
+          <li><%= friend.name %></li>
+        <% end %>
+        <%= "<b>No friends yet</b>".html_safe if @user.friends.empty? %>
+      </ol>
+    </article>
+
+    <article class='col-6'>
+      <h2>Pending Requests</h2>
+      <ol>
+        <% @user.friend_requests and @user.friend_requests.each do |req| %>
+          <li><%= req.name %></li>
+        <% end %>
+        <%= "<b>No friend requests</b>".html_safe if @user.friend_requests.empty? %>
+      </ol>
+    </article>
   </article>
 </section>

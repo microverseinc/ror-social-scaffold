@@ -3,7 +3,9 @@
     <span class='black-font'>
       Name: 
     </span>
-    <%= link_to user.name, user_path(user), class: '' %>
-    <%= button_to 'send invitation' %>
+    <%= link_to user.name, user_path(user), class: 'mr-3 text-primary' %>
+    <% if user != current_user %>
+      <%= button_to 'send invitation' %>
+    <% end %>
   </div>
 </li>

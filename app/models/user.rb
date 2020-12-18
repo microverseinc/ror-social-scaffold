@@ -20,11 +20,11 @@ class User < ApplicationRecord
     friends_array.compact
   end
 
-  def pending_friends
+  def pending_friends # inqna uxarkel
     friendships.map{|friendship| friendship.friend if !friendship.confirmed}.compact
   end
 
-  def friend_requests
+  def friend_requests # iran en uxarkel
     inverse_friendships.map{|friendship| friendship.user if !friendship.confirmed}.compact
   end
 end
