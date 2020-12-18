@@ -16,14 +16,21 @@
     </ul>
     <ul class="posts">
     <% if current_user.id == @user.id %>
-      <ul class="posts">
+      <li class="posts">
       <h3>Friends Requests</h3>
       <% current_user.friend_requests.each do |person| %>
         <%= link_to person.name, user_path(person.id)  %>
         <%= link_to 'Accept', accept_path(user_id: person.id, friend_id: current_user.id), class: 'btn btn-success', method: :post %>
         <%= link_to 'Reject', reject_path(user_id: person.id, friend_id: current_user.id), class: 'btn btn-danger', method: :delete %>
       <% end %>
-      </ul>
+      </li>
+      <li class="posts">
+      <h3>Pending invitations</h3>
+      <% current_user.pending_friends.each do |person| %>
+        <%= link_to person.name, user_path(person.id)  %>
+      <% end %>
+      </li>
     <% end %>
+    </ul>
   </article>
 </section>
