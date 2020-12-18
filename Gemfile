@@ -47,6 +47,8 @@ group :development, :test do
   gem 'capybara'
   gem 'rspec-rails', '~> 4.0.1'
   gem 'webdrivers', '~> 3.2'
+  gem 'factory_bot_rails'
+  gem 'faker'
 end
 
 group :test do
