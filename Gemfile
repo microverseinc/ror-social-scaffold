@@ -46,13 +46,12 @@ group :development, :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'rspec-rails'
-
 end
 
 group :test do
+  gem 'chromedriver-helper', require: false
   gem 'rspec'
-  gem 'selenium-webdriver',require: false
-  gem 'chromedriver-helper',require: false
+  gem 'selenium-webdriver', require: false
   gem 'webdrivers'
 end
 
