@@ -96,9 +96,9 @@ GEM
     msgpack (1.3.3)
     msgpack (1.3.3-x64-mingw32)
     nio4r (2.5.2)
-    nokogiri (1.10.9)
+    nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
-    nokogiri (1.10.9-x64-mingw32)
+    nokogiri (1.10.10-x64-mingw32)
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
     parallel (1.19.1)
@@ -188,6 +188,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    sqlite3 (1.4.2)
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
@@ -224,6 +225,7 @@ DEPENDENCIES
   devise
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
+  nokogiri (~> 1.10, >= 1.10.10)
   pg (>= 0.18, < 2.0)
   puma (~> 3.12)
   rails (~> 5.2.4)
@@ -232,6 +234,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   spring
   spring-watcher-listen (~> 2.0.0)
+  sqlite3 (~> 1.4, >= 1.4.2)
   turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)
@@ -239,7 +242,7 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 RUBY VERSION
-   ruby 2.7.0p0
+   ruby 2.7.2p137
 
 BUNDLED WITH
-   2.1.2
+   2.1.4
