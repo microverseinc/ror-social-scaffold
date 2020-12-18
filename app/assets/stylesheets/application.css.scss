@@ -1,3 +1,4 @@
+@import "bootstrap/scss/bootstrap";
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap");
 
 $primary-color-dark: #689f38;
@@ -37,9 +38,9 @@ a {
 
 .nav {
   display: flex;
-  justify-content: space-between;
   padding: 16px 48px;
   background-color: $primary-color-dark;
+  justify-content: space-between;
   color: $primary-color-light;
 
   a {
@@ -57,8 +58,9 @@ a {
   }
 
   .menu {
-    width: 80%;
-    justify-content: space-between;
+    width: 60%;
+    display: flex;
+    align-items: center;
 
     .menu-item {
       float: left;
@@ -286,9 +288,13 @@ form {
   }
 
   .profile-link {
-    font-size: 0.8em;
-    margin: 0 0 8px 0;
     color: $primary-color-dark;
+    display: flex;
+    align-items: center;
+
+    .black-font{
+      color: black;
+    }
   }
 }
 

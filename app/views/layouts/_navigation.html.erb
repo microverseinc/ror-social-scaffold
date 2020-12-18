@@ -1,0 +1,21 @@
+<nav class="nav">
+  <div class="menu">
+    <div class="menu-item">
+      <%= link_to 'Stay in touch', root_path %>
+    </div>
+    <div class="menu-item">
+      <%= menu_link_to 'Timeline', posts_path %>
+    </div>
+    <div class="menu-item">
+      <%= menu_link_to 'All users', users_path %>
+    </div>
+  </div>
+  <div class='d-flex align-items-center'>
+    <% if current_user %>
+      <p class='mr-3 mb-0'>Logged in as [<%= current_user.name %>]</p>
+      <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+    <% else %>
+      <%= link_to 'Sign in', user_session_path %>
+    <% end %>
+  </div>
+</nav>
