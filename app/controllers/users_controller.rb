@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 
   def accept
     user = User.find(params[:data])
-    friendship = @user.inverse_friendships.find { |friendship| friendship.user == user }
+    friendship = @user.inverse_friendships.find { |fship| fship.user == user }
     friendship.confirmed = true
     friendship.save
     redirect_to request.referrer, notice: 'Friend request confirmed'
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 
   def decline
     user = User.find(params[:data])
-    friendship = @user.inverse_friendships.find { |friendship| friendship.user == user }
+    friendship = @user.inverse_friendships.find { |fship| fship.user == user }
     friendship.destroy
     redirect_to request.referrer, notice: 'Friend request rejected'
   end
