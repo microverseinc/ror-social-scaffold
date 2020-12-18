@@ -4,7 +4,7 @@
     <% if !@user.friends.include?(current_user) && @user != current_user  && !@user.pending? %>
       <%= button_to 'send invitation', create_friendship_user_path, :method => :get %>
     <% end %>
-    <%= "<b>Pending request</b>".html_safe if @user.inverse_friendships.find{|f| f.user_id == current_user.id} %>
+    <%= "<b>Pending request</b>".html_safe if @user.inverse_friendships.find{|f| f.user_id == current_user.id and !f.confirmed} %>
     <%= "<b>Already friend</b>".html_safe if @user.friends.include?(current_user) %>
   </div>
   <article class="timeline">
@@ -13,8 +13,5 @@
       <%= render @posts %>
     </ul>
   </article>
-  
-  <% if @user == current_user %>
-    <%= render 'friends_table' %>
-  <% end %>
+  <%= render 'friends_table' %>
 </section>
