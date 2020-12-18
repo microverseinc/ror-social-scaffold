@@ -1,9 +1,11 @@
 <section class="user-section">
   <div>
     <h2><%= "Name: #{@user.name}" %></h2>
-    <% if !@user.friends.include?(current_user) && @user != current_user  && !pending_friends.include?(current_user) %>
-      <%= button_to 'send invitation' %>
+    <% if !@user.friends.include?(current_user) && @user != current_user  && !@user.pending? %>
+      <%= button_to 'send invitation', create_friendship_user_path, :method => :get %>
     <% end %>
+    <%= "<b>Pending request</b>".html_safe if @user.inverse_friendships.find{|f| f.user_id == current_user.id} %>
+    <%= "<b>Already friend</b>".html_safe if @user.friends.include?(current_user) %>
   </div>
   <article class="timeline">
     <h3>Recent posts:</h3>
@@ -11,27 +13,8 @@
       <%= render @posts %>
     </ul>
   </article>
-
-  <section class='bg-light d-flex'>
-    <article class='col-6'>
-      <h2>Friends List</h2>
-      <ol>
-
-        <% @user.friends and @user.friends.each do |friend| %>
-          <li><%= friend.name %></li>
-        <% end %>
-        <%= "<b>No friends yet</b>".html_safe if @user.friends.empty? %>
-      </ol>
-    </article>
-
-    <article class='col-6'>
-      <h2>Pending Requests</h2>
-      <ol>
-        <% @user.friend_requests and @user.friend_requests.each do |req| %>
-          <li><%= req.name %></li>
-        <% end %>
-        <%= "<b>No friend requests</b>".html_safe if @user.friend_requests.empty? %>
-      </ol>
-    </article>
-  </article>
+  
+  <% if @user == current_user %>
+    <%= render 'friends_table' %>
+  <% end %>
 </section>

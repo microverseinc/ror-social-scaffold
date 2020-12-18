@@ -16,7 +16,7 @@ class User < ApplicationRecord
 
   def friends
     friends_array = friendships.map{|friendship| friendship.friend if friendship.confirmed}
-    friends_array + inverse_friendships.map{|friendship| friendship.user if friendship.confirmed}
+    friends_array += inverse_friendships.map{|friendship| friendship.user if friendship.confirmed}
     friends_array.compact
   end
 
@@ -26,5 +26,9 @@ class User < ApplicationRecord
 
   def friend_requests # iran en uxarkel
     inverse_friendships.map{|friendship| friendship.user if !friendship.confirmed}.compact
+  end
+
+  def pending?
+    !pending_friends.empty? || !friend_requests.empty?
   end
 end
