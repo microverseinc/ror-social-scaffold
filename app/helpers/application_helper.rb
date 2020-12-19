@@ -15,4 +15,13 @@ module ApplicationHelper
       link_to('Like!', post_likes_path(post_id: post.id), method: :post)
     end
   end
+
+  def signin_or_signout
+    if signed_in?
+      "<p class='mr-3 mb-0'>Logged in as [#{current_user.name}]</p>
+      #{link_to 'Sign out', destroy_user_session_path, method: :delete}".html_safe
+    else
+      link_to('Sign in', user_session_path)
+    end
+  end
 end
