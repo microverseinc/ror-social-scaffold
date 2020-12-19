@@ -24,4 +24,27 @@ module ApplicationHelper
       link_to('Sign in', user_session_path)
     end
   end
+
+  def show_friends_names(user)
+    result = '<b>No friends yet</b>'
+    if !user.friends.empty?
+      result = ''
+      user.friends.each do |friend|
+        result += "<div class='mb-2'><li>#{friend.name}</li></div>"
+      end
+    end
+    result.html_safe
+  end
 end
+
+def show_attendees(attendees)
+  result = '<p>No attendees yet</p>'
+  unless attendees.count.zero?
+    result = ''
+    attendees.each do |attendee|
+      result += "<div style='background-color: beige' class='rounded p-1 mb-1'>#{attendee.name}</div>"
+    end
+  end
+  result.html_safe
+end
+

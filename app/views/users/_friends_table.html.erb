@@ -2,12 +2,7 @@
     <article class='col-6'>
       <h2>Friends List</h2>
       <ol>
-        <% @user.friends and @user.friends.each do |friend| %>
-        <div class='mb-2'>
-          <li><%= friend.name %></li>
-        </div>
-        <% end %>
-        <%= "<b>No friends yet</b>".html_safe if @user.friends.empty? %>
+        <%= show_friends_names(@user) %>
       </ol>
     </article>
 
