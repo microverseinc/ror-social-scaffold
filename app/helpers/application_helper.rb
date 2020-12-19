@@ -52,4 +52,12 @@ module ApplicationHelper
     end
     result.html_safe
   end
+
+  def show_send_invitation_button(user)
+    result = ''
+    if !user.friends.include?(current_user) && user != current_user && !user.pending?(current_user)
+      result += (button_to 'send invitation', create_friendship_user_path(user.id), method: :get).to_s
+    end
+    result.html_safe
+  end
 end

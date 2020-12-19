@@ -4,9 +4,6 @@
       Name: 
     </span>
     <%= link_to user.name, user_path(user), class: 'mr-3 text-primary' %>
-
-     <% if !user.friends.include?(current_user) && user != current_user && !user.pending?(current_user)%>
-      <%= button_to 'send invitation', create_friendship_user_path(user.id), :method => :get %>
-    <% end %>
+    <%= show_send_invitation_button(user) %>
   </div>
 </li>
