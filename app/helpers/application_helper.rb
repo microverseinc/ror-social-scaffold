@@ -27,7 +27,7 @@ module ApplicationHelper
 
   def show_friends_names(user)
     result = '<b>No friends yet</b>'
-    if !user.friends.empty?
+    unless user.friends.empty?
       result = ''
       user.friends.each do |friend|
         result += "<div class='mb-2'><li>#{friend.name}</li></div>"
@@ -35,16 +35,21 @@ module ApplicationHelper
     end
     result.html_safe
   end
-end
 
-def show_attendees(attendees)
-  result = '<p>No attendees yet</p>'
-  unless attendees.count.zero?
-    result = ''
-    attendees.each do |attendee|
-      result += "<div style='background-color: beige' class='rounded p-1 mb-1'>#{attendee.name}</div>"
+  def show_pending_requests(user)
+    result = '<b>No friend requests</b>'
+
+    unless user.friend_requests.empty?
+      result = ''
+      user.friend_requests.each do |req|
+        result += "<div class='d-flex align-items-center mb-2'><li>#{req.name}</li>"
+        if user == current_user
+          result += (button_to 'Accept', accept_user_path, method: :get, params: { data: req.id }, class: 'p-1 ml-2').to_s
+          result += (button_to 'Decline', decline_user_path, method: :get, params: { data: req.id }, class: 'p-1 ml-2 bg-danger').to_s
+        end
+        result += '</div>'
+      end
     end
+    result.html_safe
   end
-  result.html_safe
 end
-

@@ -9,18 +9,7 @@
     <article class='col-6'>
       <h2>Pending Requests</h2>
       <ol>
-        <% @user.friend_requests and @user.friend_requests.each do |req| %>
-        <div class='d-flex align-items-center mb-2'>
-          <li><%= req.name %></li>
-          <% if @user == current_user %>
-          
-            <%= button_to 'Accept', accept_user_path, :method => :get, params: { data: req.id },class:'p-1 ml-2' %>
-            <%= button_to 'Decline', decline_user_path, :method => :get, params: { data: req.id },class:'p-1 ml-2 bg-danger' %>
-          <% end %>
-          
-        </div>
-        <% end %>
-        <%= "<b>No friend requests</b>".html_safe if @user.friend_requests.empty? %>
+        <%= show_pending_requests(@user) %>
       </ol>
     </article>
 
