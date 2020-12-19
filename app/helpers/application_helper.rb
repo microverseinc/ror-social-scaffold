@@ -61,3 +61,11 @@ module ApplicationHelper
     result.html_safe
   end
 end
+
+# <% if !@user.friends.include?(current_user) && @user != current_user  && !@user.pending?(current_user) %>
+#   <%= button_to 'send invitation', create_friendship_user_path, :method => :get %>
+# <% end %>
+
+# <% if !user.friends.include?(current_user) && user != current_user && !user.pending?(current_user)%>
+#   <%= button_to 'send invitation', create_friendship_user_path(user.id), :method => :get %>
+# <% end %>
