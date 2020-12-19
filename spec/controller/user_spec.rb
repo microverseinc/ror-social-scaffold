@@ -7,7 +7,7 @@ RSpec.describe 'User controller', type: :model do
   describe 'GET index' do
     it 'populates users' do
       users = User.all
-      expect(users).to eq([user1,user2])
+      expect(users).to eq([user1, user2])
     end
 
     it 'should show user with id 1' do
