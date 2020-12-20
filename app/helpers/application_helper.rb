@@ -38,7 +38,6 @@ module ApplicationHelper
 
   def show_pending_requests(user)
     result = '<b>No friend requests</b>'
-
     unless user.friend_requests.empty?
       result = ''
       user.friend_requests.each do |req|
@@ -61,7 +60,6 @@ module ApplicationHelper
         result += (button_to 'Decline', decline_user_path(req.id), method: :get, class: 'p-1 ml-2 bg-danger').to_s
       end
     end
-
     result.html_safe
   end
 
@@ -74,9 +72,7 @@ module ApplicationHelper
   def show_messages
     result = ''
     result += "<div class='notice'><p> #{notice} </p></div>" if notice.present?
-
     result += "<div class='notice'><p> #{alert} </p></div>" if alert.present?
-
     result.html_safe
   end
 end
