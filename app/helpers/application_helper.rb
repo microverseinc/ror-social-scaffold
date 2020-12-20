@@ -44,7 +44,7 @@ module ApplicationHelper
       user.friend_requests.each do |req|
         result += "<div class='d-flex align-items-center mb-2'><li>#{req.name}</li>"
         if user == current_user
-          result += (button_to 'Accept', accept_user_path, method: :get, params: { data: req.id }, class: 'p-1 ml-2').to_s
+          result += (button_to 'Accept', accept_user_path(req.id), method: :get,  class: 'p-1 ml-2').to_s
           result += (button_to 'Decline', decline_user_path, method: :get, params: { data: req.id }, class: 'p-1 ml-2 bg-danger').to_s
         end
         result += '</div>'
@@ -53,9 +53,30 @@ module ApplicationHelper
     result.html_safe
   end
 
+  def show_accept_decline_buttons(user)
+    result = ''
+    current_user.friend_requests.each do |req|
+      if req == user
+        result += (button_to 'Accept', accept_user_path(req.id), method: :get, class: 'p-1 ml-2').to_s
+        result += (button_to 'Decline', decline_user_path(req.id), method: :get, class: 'p-1 ml-2 bg-danger').to_s
+      end
+    end
+
+    result.html_safe
+  end
+
   def show_send_invitation_button(user)
     result = ''
     result += (button_to 'send invitation', create_friendship_user_path(user.id), method: :get).to_s if !user.friends.include?(current_user) && user != current_user && !user.pending?(current_user)
+    result.html_safe
+  end
+
+  def show_messages
+    result = ''
+    result += "<div class='notice'><p> #{notice} </p></div>" if notice.present?
+
+    result += "<div class='notice'><p> #{alert} </p></div>" if alert.present?
+
     result.html_safe
   end
 end
