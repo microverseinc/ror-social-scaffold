@@ -44,7 +44,7 @@ module ApplicationHelper
       user.friend_requests.each do |req|
         result += "<div class='d-flex align-items-center mb-2'><li>#{req.name}</li>"
         if user == current_user
-          result += (button_to 'Accept', accept_user_path(req.id), method: :get,  class: 'p-1 ml-2').to_s
+          result += (button_to 'Accept', accept_user_path(req.id), method: :get, class: 'p-1 ml-2').to_s
           result += (button_to 'Decline', decline_user_path, method: :get, params: { data: req.id }, class: 'p-1 ml-2 bg-danger').to_s
         end
         result += '</div>'
