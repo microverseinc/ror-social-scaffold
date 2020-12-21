@@ -1,9 +1,11 @@
 #!/usr/bin/env ruby
+# rubocop:disable Style/ExpandPathArguments
 begin
   load File.expand_path('../spring', __FILE__)
 rescue LoadError => e
   raise unless e.message.include?('spring')
 end
+# rubocop:enable Style/ExpandPathArguments
 APP_PATH = File.expand_path('../config/application', __dir__)
 require_relative '../config/boot'
 require 'rails/commands'

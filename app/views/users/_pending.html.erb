@@ -1,0 +1,35 @@
+<section class='user-pending-section'>
+  <h3><%= "Name: #{@user.name}" %></h3>
+
+  <div class='iteraction-section'>
+    <span class='iteraction-span'>
+      <%= friendship_interaction(@user) %>
+    </span>
+  </div>
+
+  <div class='friends-section'>
+    <h4 class='friends-h4'>List of your friends</h4> <br>
+    <% @user.friends.each do |confirmed| %>
+      <ul>
+        <li>
+          <%= confirmed.name.capitalize %>
+          <%= friendship_interaction(confirmed) %>
+        </li>
+      </ul>
+    <% end %>
+  </div>
+  <br>
+
+
+  <div class='pending-section'>
+  <h4>List of pendings requests:</h4><br>
+    <% @user.received_friends.each do |pendings| %>
+      <ul>
+        <li>
+          <%= pendings.name.capitalize %> <br>
+          <%= friendship_interaction(pendings) %>
+        </li>
+      </ul>
+    <% end %>
+  </div>
+</section>

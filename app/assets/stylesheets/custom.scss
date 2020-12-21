@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap");
 
-$primary-color-dark: #689f38;
-$primary-color: #8bc34a;
-$primary-color-light: #dcedc8;
+$primary-color-dark: #2734df;
+$primary-color: #010200;
+$primary-color-light: #cdf6fb;
 $primary-color-text: #212121;
 $divider-color: #bdbdbd;
 
@@ -157,7 +157,7 @@ form {
     }
 
     input[type="checkbox"] {
-      width: fit-content;
+      width: 100%;
     }
   }
 
@@ -280,9 +280,10 @@ form {
   margin: 10px;
 
   .users-list li {
-    margin-bottom: 16px;
+    margin-bottom: 14px;
     text-transform: capitalize;
     font-size: 1.2em;
+    padding-top: 1rem;
   }
 
   .profile-link {
