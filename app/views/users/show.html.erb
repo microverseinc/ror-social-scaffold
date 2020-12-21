@@ -1,5 +1,6 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
+  <%=  add_friend(@user) %>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
@@ -11,7 +12,7 @@
       <%= link_to user.name, user_path(user.id)  %>
         <% if current_user.id == @user.id %>
       <%= link_to 'Unfriend', reject_path(user_id: user.id, friend_id: current_user.id), class: 'btn btn-danger', method: :delete %>
-          <% end %>
+        <% end %>
     <% end %>
     </ul>
     <ul class="posts">
