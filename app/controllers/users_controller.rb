@@ -16,10 +16,8 @@ class UsersController < ApplicationController
   end
 
   def accept
-    user = User.find(params[:id])
-    friendship = current_user.inverse_friendships.find { |fship| fship.user == user }
-    friendship.confirmed = true
-    friendship.save
+    friendship = current_user.inverse_friendships.find { |fship| fship.user == @user }
+    friendship.confirm_friend
     redirect_to request.referrer, notice: 'Friend request confirmed'
   end
 
