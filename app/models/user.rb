@@ -23,7 +23,7 @@ class User < ApplicationRecord
   has_many :friend_requests, through: :inverted_friendships, source: :user
 
   def friends_and_own_posts
-    Post.where(user: (self.friends << self))
+    Post.where(user: (friends << self))
   end
 
   def friends
