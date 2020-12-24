@@ -22,5 +22,4 @@ RSpec.describe 'Post', type: :model do
   it 'check correct association between likes and post' do
     expect(likes).to eq(:has_many)
   end
-
 end

@@ -7,7 +7,6 @@ RSpec.describe 'Like', type: :model do
   let(:user) { Like.reflect_on_association(:user).macro }
   let(:post) { Like.reflect_on_association(:post).macro }
 
-
   it 'should be valid' do
     expect(like).to be_valid
   end
@@ -19,5 +18,4 @@ RSpec.describe 'Like', type: :model do
   it 'check correct association between post and likes' do
     expect(post).to eq(:belongs_to)
   end
-
 end
