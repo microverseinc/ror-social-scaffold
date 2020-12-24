@@ -26,6 +26,15 @@ class User < ApplicationRecord
     Post.where(user: (friends << self))
   end
 
+  def confirm_friend(user)
+    friendship = inverted_friendships.find { |frship| frship.user_id == user.id }
+    friendship.confirmed = true
+    friendship.save
+    Friendship.create!(friend_id: friendship.user_id,
+                       user_id: id,
+                       confirmed: true)
+  end
+
   def pending_friends
     friendships.map { |friendship| friendship.friend unless friendship.confirmed }.compact
   end
