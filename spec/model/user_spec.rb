@@ -14,6 +14,10 @@ RSpec.describe User, type: :model do
     expect(@user).to be_valid
   end
 
+  it 'user name should not be empty' do
+    expect(inv_user).to_not be_valid
+  end
+
   it 'checks correct association' do
     expect(posts).to eq(:has_many)
   end
