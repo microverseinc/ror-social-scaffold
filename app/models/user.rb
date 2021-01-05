@@ -34,4 +34,8 @@ class User < ApplicationRecord
   def not_friend?(user)
     pending_friends.include?(user)
   end
+
+  def friends_and_own_posts
+    Post.where(user: (self.friends << self)).ordered_by_most_recent
+  end
 end
