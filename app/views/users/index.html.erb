@@ -1,5 +1,16 @@
 <section class="users-section">
   <ul class="users-list">
-    <%= render @users %>
+    
+   <% @other_users.each do |user| %>
+<li>
+  Name: <%= user.name %>
+  <span class="profile-link">
+    <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+
+    <%=friend_or_friendship_requested(user, current_user) %>     
+  </span>  
+    <% end %>
+    </li>
+
   </ul>
 </section>
