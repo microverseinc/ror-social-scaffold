@@ -1,6 +1,12 @@
-<li>
-  Name: <%= user.name %>
-  <span class="profile-link">
-    <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-  </span>
-</li>
+
+<% @users.each do |user| %>
+  <li>
+    Name: <%= user.name %>
+    <span class="profile-link">
+      <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+    </span>
+    <% if !current_user.friend?(user) %>
+      <%= link_to 'Add friend', request_friendship_user_path(user), method: :post, class: 'profile-link btn btn-secondary' %>
+    <% end %>
+  </li>
+<% end %>
