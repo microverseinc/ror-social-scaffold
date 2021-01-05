@@ -24,7 +24,7 @@ class FriendshipsController < ApplicationController
 
   def accept
     @friendship = Friendship.find_by(friend_id: params[:friend_id], user_id: params[:user_id])
-    inverse_friendship = Friendship.create(friend_id: params[:user_id], user_id: params[:friend_id], status: true)
+    Friendship.create(friend_id: params[:user_id], user_id: params[:friend_id], status: true)
     @friendship.update status: true
     redirect_to users_path, notice: 'Friendship accepted successfully'
   end
