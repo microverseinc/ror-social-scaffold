@@ -14,9 +14,12 @@ class FriendshipsController < ApplicationController
       end
     end
   
-    def destroy
+    def unfriend
+      @friendship = Friendship.find_by(friend_id: params[:friend_id], user_id: params[:user_id])
       @friendship.destroy
-      redirect_to friendships_path
+      @friendship = Friendship.find_by(friend_id: params[:user_id], user_id: params[:friend_id]) 
+      @friendship.destroy
+      redirect_to users_path, notice: 'Succesfully unfriended'
     end
 
     def accept
@@ -36,7 +39,7 @@ class FriendshipsController < ApplicationController
     private
   
     def find_friendship
-      @friendship = Friendship.find(params[:id])
+      @friendship = Friendship.find(params[:user_id])
     end
   
     def friendship_params
