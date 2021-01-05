@@ -14,14 +14,7 @@ class User < ApplicationRecord
 
   def friends
     friends_array = friendships.map { |friendship| friendship.friend if friendship.status }
-    friends_array + inverse_friendships.map { |friendship| friendship.user if friendship.status }
     friends_array.compact
-  end
-
-  def confirm_friend(user)
-    friendship = inverse_friendships.find { |friendship| friendship.user == user }
-    friendship.confirmed = true
-    friendship.save
   end
 
   # Users who have yet to confirme friend requests
