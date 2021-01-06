@@ -1,4 +1,4 @@
-require 'rails_helper.rb'
+require 'rails_helper'
 require 'spec_helper'
 
 describe 'the signin process', type: :feature do
