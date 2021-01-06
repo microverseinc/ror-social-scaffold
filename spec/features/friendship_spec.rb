@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Friendship features', type: :request do
   before :each do
-    user1 = User.create(name: 'dhoni', email: 'dhoni@dhoni.com', password: '123123')
+    user1 = User.create(name: 'Tadeu', email: 'tadeu@tadeu.com', password: '123123')
     user2 = User.create(name: 'Maria', email: 'maria@maria.com', password: '123123')
   end
 
@@ -21,7 +21,7 @@ RSpec.describe 'Friendship features', type: :request do
     expect(page).to have_content('You need to sign in or sign up before continuing.')
 
     visit new_user_session_path
-    fill_in 'user_email', with: 'dhoni@dhoni.com'
+    fill_in 'user_email', with: 'tadeu@tadeu.com'
     fill_in 'user_password', with: '123123'
     click_button 'Log in'
     expect(page).to have_content('Signed in successfully.')
@@ -46,7 +46,7 @@ RSpec.describe 'Friendship features', type: :request do
     expect(page).to have_content('You need to sign in or sign up before continuing.')
 
     visit new_user_session_path
-    fill_in 'user_email', with: 'dhoni@dhoni.com'
+    fill_in 'user_email', with: 'tadeu@tadeu.com'
     fill_in 'user_password', with: '123123'
     click_button 'Log in'
     expect(page).to have_content('Signed in successfully.')

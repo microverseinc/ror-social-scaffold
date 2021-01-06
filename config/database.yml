@@ -20,9 +20,6 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  host: localhost
-  username: ror_social_scaffold
-  password: 8801
 
 development:
   <<: *default
@@ -86,4 +83,3 @@ production:
   database: ror_social_scaffold_production
   username: ror_social_scaffold
   password: <%= ENV['ROR_SOCIAL_SCAFFOLD_DATABASE_PASSWORD'] %>
- 

@@ -8,8 +8,8 @@ RSpec.describe 'User features', type: :request do
 
   scenario 'logs in' do
     visit new_user_registration_path
-    fill_in 'user_name', with: 'dhoni'
-    fill_in 'user_email', with: 'dhoni@dhoni.com'
+    fill_in 'user_name', with: 'tadeu'
+    fill_in 'user_email', with: 'tadeu@tadeu.com'
     fill_in 'user_password', with: '123123'
     fill_in 'user_password_confirmation', with: '123123'
     click_button 'Sign up'
@@ -19,7 +19,7 @@ RSpec.describe 'User features', type: :request do
     click_link 'Sign out'
 
     visit new_user_session_path
-    fill_in 'user_email', with: 'dhoni@dhoni.com'
+    fill_in 'user_email', with: 'tadeu@tadeu.com'
     fill_in 'user_password', with: '123123'
     click_button 'Log in'
     expect(page).to have_content('Signed in successfully.')
