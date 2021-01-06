@@ -18,7 +18,8 @@ module UsersHelper
       raw("<a> &nbsp &nbsp Accept Friend Request:</a>
           <span class='profile-link'>
             #{link_to 'Accept', friendship_path(request), method: :patch, class: 'profile-link'} |
-            #{link_to 'Reject', friendship_path(request), method: :delete, data: { confirm: 'Are you sure?' }, class: 'profile-link'}
+            #{link_to 'Reject', friendship_path(request), method: :delete, data: { confirm: 'Are you sure?' },
+                                                          class: 'profile-link'}
           </span>")
     elsif current_user.friendship_requested?(user)
       raw("Wait for #{user.name} to accept your friend request!")
