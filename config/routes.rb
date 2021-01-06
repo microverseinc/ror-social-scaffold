@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show] do
     resources :frienship, only: [:index]
     member do
-      put 'add_friend', to: 'users#add_friend'
+      put 'accept_friend', to: 'users#accept_friend'
       post 'request_friendship', to: 'friendships#create'
       delete 'unfriend', to: 'friendships#destroy'
     end
