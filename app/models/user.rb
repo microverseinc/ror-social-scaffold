@@ -9,8 +9,15 @@ class User < ApplicationRecord
   has_many :posts
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+
   has_many :friendships, foreign_key: 'requesting_user_id'
+
   has_many :friendship_requests, foreign_key: 'receiving_user_id', class_name: 'Friendship'
+  has_many :pending_friends, through: :friendship_requests, source: :receiving_user
+
+  has_many :inverse_friendship_requests, foreign_key: 'requesting_user_id', class_name: 'Friendship'
+  has_many :friend_requests, through: :inverse_friendship_requests, source: :requesting_user
+
 
   def friends
     friend_request_array = friendships.map{|friendship| friendship.receiving_user if friendship.request_status}

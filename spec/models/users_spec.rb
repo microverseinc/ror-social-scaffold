@@ -17,6 +17,13 @@ RSpec.describe User, type: :model do
     it { should have_many(:friendships).with_foreign_key('requesting_user_id') }
 
     it { should have_many(:friendship_requests).with_foreign_key('receiving_user_id').class_name('Friendship') }
+
+    it { should have_many(:pending_friends).through(:friendship_requests).source(:receiving_user) }
+
+    it { should have_many(:inverse_friendship_requests).with_foreign_key('requesting_user_id').class_name('Friendship') }
+
+    it { should have_many(:friend_requests).through(:inverse_friendship_requests).source(:requesting_user) }
+
   end
 
   describe '#Friendships' do
