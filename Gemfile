@@ -6,7 +6,6 @@ group :test do
   gem 'database_cleaner-active_record'
 end
 group :development, :test do
-  gem 'capybara'
   gem 'database_cleaner'
   gem 'faker'
   gem 'rspec-rails', '~> 3.5'
@@ -59,11 +58,6 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end
 
-group :test do
-  gem 'capybara'
-  gem 'rspec-rails'
-  gem 'shoulda-matchers', '~> 4.4', '>= 4.4.1'
-end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
