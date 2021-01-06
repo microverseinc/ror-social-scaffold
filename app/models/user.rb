@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_many :friendships
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
 
+  scope :all_except, ->(user) { where.not(id: user)}
+
   def friends
     friends_array = friendships.map{|friendship| friendship.friend if friendship.status}
     friends_array + inverse_friendships.map{|friendship| friendship.user if friendship.status}
