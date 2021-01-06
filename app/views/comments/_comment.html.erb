@@ -1,6 +1,6 @@
 <div class="post-comments">
   <p>
-    <b><%#= @post.comments %>:</b> <%= comment.content %>
+    <b><%= comment.user.name %>:</b> <%= comment.content %>
   </p>
-  <span> <%#= post.created_at.strftime("%Y/%m/%d") %> </span>
+  <span> <%= comment.created_at.strftime("%Y/%m/%d") %> </span>
 </div>

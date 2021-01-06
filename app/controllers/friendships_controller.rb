@@ -1,45 +1,49 @@
 class FriendshipsController < ApplicationController
   before_action :authenticate_user!
-  def new
-    @friendship_created = current_user.friendships.build
+  def index
+    @friendships = current_user.inverted_friendships
   end
 
   def create
-    @friendship_created = current_user.friendships.build
-    @friendship_created.friend_id = params[:user_id]
+    @friendship = Friendship.new(friendship_params)
 
-    if @friendship_created.save
-      redirect_to users_path, notice: 'Friend Added'
+    if @friendship.save
+      redirect_to users_path, notice: 'Friendship request sent!'
     else
-      redirect_to users_path, notice: @friendship_created.errors.full_messages
+      flash[:notice] = 'Something went wrong!'
+      render :users
     end
   end
 
   def update
     @friendship = Friendship.find(params[:id])
+    @friendship2 = inverse_params(@friendship)
+
     @friendship.confirmed = true
-    @inverse_friendship = Friendship.create(friend_id: @friendship.user_id,
-                                            user_id: @friendship.friend_id,
-                                            confirmed: true)
-    if @inverse_friendship.save && @friendship.save
-      redirect_to users_path, notice: 'Friend request was accepted.'
+
+    if @friendship.save && @friendship2.save
+      redirect_to friendships_path, notice: 'Friendship request accepted!'
     else
-      redirect_to users_path, alert: "Couldn't accept friend request."
+      flash[:notice] = 'Something went wrong, please try again!'
+      render 'friendships#index'
     end
   end
 
   def destroy
     @friendship = Friendship.find(params[:id])
-    if @friendship.destroy
-      redirect_to request.referrer, notice: 'Friendship was rejected.'
-    else
-      redirect_to request.referrer, alert: 'Error rejecting friendship.'
-    end
+    @friendship.destroy
+
+    redirect_to friendships_path, notice: 'Request rejected!'
   end
 
   private
 
   def friendship_params
-    params.require(:friendships).permit(:friend_id, :user_id)
+    params.require(:friendship).permit(:user_id, :friend_id, :confirmed)
+  end
+
+  def inverse_params(first)
+    second = Friendship.new(user_id: first.friend_id, friend_id: first.user_id, confirmed: true)
+    second
   end
 end

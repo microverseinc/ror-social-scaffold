@@ -13,7 +13,3 @@
  *= require_tree .
  *= require_self
  */
-
-.logged {
-  font-size: 10px;
-}

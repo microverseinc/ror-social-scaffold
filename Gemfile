@@ -9,6 +9,7 @@ group :development, :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'faker'
+  gem 'parser', '~> 2.7.0.0'
   gem 'rspec-rails', '~> 3.5'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers'
@@ -16,7 +17,7 @@ group :development, :test do
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.1'
+gem 'rails', '~> 6.0.3'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
