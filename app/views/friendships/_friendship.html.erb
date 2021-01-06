@@ -1,0 +1,7 @@
+<div class="border p-3 mb-3 rounded">
+  <%= friendship.user.name %>
+  <small>
+    <%= link_to 'Accept friend', friendship_path(friendship), method: 'put', class: 'btn-success p-1 rounded no-link' %>
+    <%= link_to 'Reject request', friendship_path(friendship), method: 'delete', class: 'btn-danger p-1 rounded no-link' %>
+  </small>
+</div>

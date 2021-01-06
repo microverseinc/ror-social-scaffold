@@ -1,22 +1,6 @@
-<section class="users-section">
- <h2>Friends</h2>
-  <ul class="users-list">
-     
-      <li><% all_friends.each do |name| %>
-     
-       <p class="ml-4"><%= name %></p> 
-        <% end %>
-         </ul>
-
-      <h2>Friend Requests</h2>
-
-    <% current_user.friend_requests.each do |request| %>
-      <li>
-        Name: <%= request.user.name %>
-        <span class="profile-link"> |
-          <%= link_to 'Accept',  friendship_path(request), method: :patch, class: 'profile-link' %> |
-          <%= link_to 'Reject', friendship_path(request), method: :delete, data: { confirm: 'Are you sure?' } , class: 'profile-link' %>
-        </span>
-      </li>
-    <% end %>
-</section>
+<div class="d-flex justify-content-center container">
+  <div class="w-50 border p-3 rounded">
+    <h3 class="mb-3">Friendship requests</h3>
+    <%= render @friendships %>
+  </div>
+</div>

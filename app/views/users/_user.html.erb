@@ -1,0 +1,9 @@
+<li>
+  Name: <%= user.name %>
+  <span class="profile-link">
+    <small>
+      <%= link_to 'See Profile',  user_path(user), class: 'p-1 rounded btn-primary no-link' %>
+    </small>
+    <%= new_friendship(user) %>
+  </span>
+</li>
