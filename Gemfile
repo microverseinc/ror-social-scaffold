@@ -1,10 +1,22 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.6'
+ruby '2.7.0'
+group :test do
+  gem 'database_cleaner-active_record'
+end
+group :development, :test do
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'faker'
+  gem 'rspec-rails', '~> 3.5'
+  gem 'selenium-webdriver'
+  gem 'shoulda-matchers'
+  gem 'webdrivers'
+end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.4'
+gem 'rails', '~> 6.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
@@ -21,6 +33,7 @@ gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+gem 'awesome_print'
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
@@ -39,17 +52,13 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'devise'
 
-gem 'hirb', '~> 0.7.3'
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end
 
 group :test do
-  gem 'capybara'
-  gem 'rspec-rails'
-  gem 'shoulda-matchers', '~> 4.4', '>= 4.4.1'
+  gem 'rspec'
 end
 
 group :development do

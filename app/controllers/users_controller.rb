@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    @other_users = User.where.not(id: current_user.id) if current_user
   end
 
   def show

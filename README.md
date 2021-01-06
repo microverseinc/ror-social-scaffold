@@ -1,70 +1,60 @@
-<h3 align="center">Private Events - RoR</h3>
+![](https://img.shields.io/badge/Microverse-blueviolet)
 
-<div align="center">
+# Social Media App
 
-[![Status](https://img.shields.io/badge/status-active-success.svg)](https://github.com/umairarshadbutt/Private-Events)
-[![Github Issues](https://img.shields.io/badge/GitHub-Issues-orange)](https://github.com/umairarshadbutt/Private-Events/issues)
-[![GitHub2 Pull Requests](https://img.shields.io/badge/GitHub-Pull%20Requests-blue)](https://github.com/umairarshadbutt/Private-Events/pulls)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
-</div>
-<p align="center">The goal of this project is to understand and implementation of ActiveRecord’s associations </p>
+![App Preview](./social_media.gif)
 
+> This project consists of applying our knowledge of Ruby on Rails to a real social media app. The challenge here was to develop ways of adding friends, accepting/rejecting friend requests and being able to like and comment posts created by the users
 
 ## Built With
 
-- Ruby on Rails
+- Ruby v2.7.0
+- Ruby on Rails v5.2.4
 
 
-## Getting Started
+## Live Demo
 
-To get a local copy up and running follow these simple example steps.
-
-### Prerequisites
-
-- Text Editor (VSCode is suggested.)
-- Install [Ruby](https://ruby-doc.org/downloads/)
-- Install [Rails](https://guides.rubyonrails.org/getting_started.html)
-- Install [git](https://git-scm.com/downloads)
-
-### Setup
-
-- Open Terminal
-- Change directory to folder to download repository
-- Use `cd <file-path>`
-- Run `https://github.com/karthykarthick/ror-social-scaffold/tree/friendships-v1`
-- cd to the project `cd ror-social-scaffold`
-- Install gems `bundle install`
-- Install Yarn `yarn install --check-files` 
-- Run `rails server`
-- Run for test `rspec`
-
-## Authors
-
-👤 **Karthick Moorthy**
-
-- Github: (https://github.com/karthykarthick)
-- Linkedin: (https://www.linkedin.com/in/karthick-harimoorthy/)
+[Live Demo](https://fakebookalexkelyn.herokuapp.com/)
 
 
-👤 **Rocio Martinez**
+### Usage
 
-- Github: [@Rocio01](https://github.com/Rocio01)
-- Twitter: [@rugiada8801](https://twitter.com/rugiada8801)
-- Linkedin: [zulma-rocio-martinez](https://www.linkedin.com/in/zulma-rocio-martinez)
+Once you open the link on your browser, you are asked to login in order to be able to see your posts and your friends' posts.
+
+By clicking the "Sign Up" button you are able to create your account after you fill in the necessary fields.
+
+You now can create a post and share whatever you want with your friends! If you do not have friends for now, add them. Networking is everything!
+
+Do not want to be friends with 'RealJustinBieber3'? You can reject the friend request at will. 
+
+Moreover, you are able to see all the users and all your friends on the 'All Users' and 'Friendship' pages respectively!
+
+
+### Getting Started (For Developers)
+```
+Open Terminal
+run git clone git@github.com:abouhid/Social_media_app.git
+run cd Social_media_app
+run bundle install
+run rake db:migrate
+run rails s
+```
+Open `http://localhost:3000/` in your browser.
+
+### Run tests
+To run the tests:
+- Run `rspec --format documentation`
+
+### Deployment
+
+This project has been deployed on Heroku using the `Heroku CLI` and a continuous deployment pipeline has been setup between Heroku and GitHub.
+## Instructions
+Once inside the application, you have to create an account since you are a new user so as to be able to enjoy all that the web app has to offer. Once you've created the application, you can use the navigation links to navigate anywhere within the page.
 
 
 ## 🤝 Contributing
 
-Contributions, issues and feature requests are welcome! Start by:
-
-- Forking the project
-- Cloning the project to your local machine
-- `cd` into the project directory
-- Run `git checkout -b your-branch-name`
-- Make your contributions
-- Push your branch up to your forked repository
-- Open a Pull Request with a detailed description to the development branch of the original project for a review
-
+Contributions, issues and feature requests are welcome!
 
 ## Show your support
 
@@ -72,11 +62,8 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-- Project originally taken from The Odin Project
-- Project inspired by Microverse Program
-- [The Odin Project](https://www.theodinproject.com/courses/ruby-on-rails/lessons/associations)
+- Microverse
+- GitHub
+- TheOdinProject
+- Ruby on Rails
 
-
-## 📝 License
-
-This project is [MIT](LICENSE) licensed.
