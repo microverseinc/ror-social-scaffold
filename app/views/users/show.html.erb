@@ -1,5 +1,14 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
+    <% if current_user.friend_requests.include?(@user) %>
+      <p><%= @user.name %> wants to be your friend</p>
+      <%= link_to 'Accept', accept_friend_user_path(@user), method: :put, class: 'profile-link btn btn-secondary' %>
+      <%= link_to 'Reject', unfriend_user_path(@user), method: :delete, class: 'profile-link btn btn-secondary' %>
+    <% elsif current_user.pending_friends.include?(@user) %>
+      <p>You have sended a friend request</p>
+    <% elsif !current_user.friend?(@user) %>
+      <%= link_to 'Add friend', request_friendship_user_path(@user), method: :post, class: 'profile-link btn btn-secondary' %>
+    <% end %>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
