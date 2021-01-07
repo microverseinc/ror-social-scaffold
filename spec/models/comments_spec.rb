@@ -10,7 +10,7 @@ RSpec.describe Comment do
   end
 
   describe 'associations', type: :model do
-    it {is_expected.to belong_to(:user)}
-    it {is_expected.to belong_to(:post)}
+    it { is_expected.to belong_to(:user) }
+    it { is_expected.to belong_to(:post) }
   end
 end
