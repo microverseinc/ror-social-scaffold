@@ -71,7 +71,17 @@ TBA
 
 ## Authors
 
-TBA
+👤 **Divyesh Patel**
+
+- GitHub: [@Div685](https://github.com/Div685)
+- Twitter: [@div_685](https://twitter.com/div_685)
+- LinkedIn: [Divyesh Patel](https://www.linkedin.com/in/divyesh-daxa-patel)
+
+👤 **Shonibare Adewunmi**
+
+- GitHub: [@Adewunmi97](https://github.com/Adewunmi97)
+- Twitter: [@ShonibareC](https://twitter.com/ShonibareC)
+- LinkedIn: [Adewunmi Shonibare](https://www.linkedin.com/in/adewunmi-shonibare-a2a7b0200/)
 
 ## 🤝 Contributing
 
@@ -85,9 +95,5 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-TBA
-
-## 📝 License
-
-TBA
-
+- [Ruby-doc](https://ruby-doc.org/core-2.6.5)
+- [Rails-doc](https://guides.rubyonrails.org/)
