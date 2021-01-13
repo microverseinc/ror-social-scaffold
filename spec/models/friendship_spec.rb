@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Friendship, type: :model do
   fixtures :users
-  subject { described_class.new(user: users(:one), friend: users(:two)) }
+  subject do
+    described_class.new(user: users(:one), friend: users(:two), status: described_class::STATUSES.sample)
+  end
 
   describe 'validations' do
     it 'does not validate without user_id' do
@@ -12,6 +14,11 @@ RSpec.describe Friendship, type: :model do
 
     it 'does not validate without friend_id' do
       subject.friend_id = nil
+      expect(subject.valid?).to be(false)
+    end
+
+    it 'does not validate without status' do
+      subject.status = nil
       expect(subject.valid?).to be(false)
     end
 
