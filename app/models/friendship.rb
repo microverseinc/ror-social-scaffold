@@ -7,4 +7,16 @@ class Friendship < ApplicationRecord
 
   validates_presence_of :user_id, :friend_id, :status
   validates_inclusion_of :status, in: STATUSES
+
+  def confirmed?
+    status == 'confirmed'
+  end
+
+  def pending?
+    status == 'pending'
+  end
+
+  def rejected?
+    status == 'rejected'
+  end
 end
