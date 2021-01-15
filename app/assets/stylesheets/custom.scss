@@ -4,6 +4,9 @@ $primary-color-dark: #689f38;
 $primary-color: #8bc34a;
 $primary-color-light: #dcedc8;
 $primary-color-text: #212121;
+$info-color: #42b3f5;
+$danger-color: red;
+$warning-color: #ff8a47;
 $divider-color: #bdbdbd;
 
 * {
@@ -33,6 +36,11 @@ ul {
 a {
   text-decoration: none;
   color: $primary-color-text;
+}
+
+button,
+input[type='submit'] {
+  cursor: pointer;
 }
 
 .nav {
@@ -346,4 +354,53 @@ form {
   .users-section {
     width: 50%;
   }
+}
+
+.btn {
+  border: none;
+  padding: 0.25rem 0.5rem;
+  border-radius: 3px;
+}
+
+.inline-form {
+  display: inline-flex;
+  margin: 0 0 0 1rem;
+}
+
+.btn-primary {
+  background-color: $primary-color;
+  color: #eee;
+}
+
+.btn-danger {
+  background-color: $danger-color !important;
+  color: #eee;
+}
+
+.btn-warning {
+  background-color: $warning-color !important;
+  color: #eee;
+}
+
+.d-inline {
+  display: inline;
+}
+
+.badge {
+  margin: 0 0 0 1rem;
+  display: inline !important;
+  font-size: 15px;
+  font-weight: lighter;
+  border-radius: 3px;
+  padding: 0.25rem 0.5rem;
+}
+
+.badge-primary {
+  background-color: lighten($primary-color, 35%);
+  color: $primary-color;
+}
+
+.badge-info {
+  background-color: lighten($info-color, 35%);
+  color: $info-color;
 }
