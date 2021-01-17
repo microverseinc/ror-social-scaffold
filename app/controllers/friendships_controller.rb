@@ -4,7 +4,7 @@ class FriendshipsController < ApplicationController
   end
 
   def create
-     @current_friend = User.find(params[:friendship][:friend_id])
+    #  @current_friend = User.find(params[:friendship][:friend_id])
     @friendship = current_user.friendships.build(params_friendship)
     if @friendship.save
       flash[:notice] = 'Friendship was saved correctly.'
@@ -15,20 +15,16 @@ class FriendshipsController < ApplicationController
   end
 
   def update
-    user = User.find(params[:user_id])
-    if current_user.friend_requests.include?(user)
-      current_user.confirm_friend(user)
-      flash[:notice] = 'Friendship was confirmed correctly.'
-      redirect_back(fallback_location: user_path)
-    else
-      flash[:notice] = 'Friendship was not modified.'
-      render :update
-    end
+    user = Friendship.find(params[:id])
+    user.confirmed=true
+    user.save
+    flash[:notice] = 'Friendship was confirmed correctly.'
+    redirect_to users_path
   end
 
   def destroy
     @friendship = Friendship.find(params[:id])
-    @friendship.delete
+    @friendship.destroy
 
     redirect_to users_path
   end

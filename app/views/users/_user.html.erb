@@ -3,22 +3,24 @@
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
     
-    <% if !current_user.friend?(user) && user!=current_user && check_status(user)==false %>
+    <% if !current_user.friend?(user) && user!=current_user && check_status(user)==false && !user.friends.include?(current_user) %>
       <%=  form_for current_user.friendships.build(friend: user) do |f|%>
       <%= f.hidden_field :user_id%>
       <%= f.hidden_field :friend_id%>
       <button class="button">Add friend</button>
         <% end %>
-      <% elsif check_status(user)==true && user!=current_user && c=current_user.friendships.find_by(friend_id: user.id) %>
-      <%= form_for(current_user.friendships.find_by(friend_id: user.id),
+      <% elsif check_status(user)==true && user!=current_user && user_1=current_user.friendships.find_by(friend_id: user.id) %>
+      <%= form_for(user_1,
          html: { method: :delete }) do |f| %>
         <%= f.submit "cancel", class: "btn" %>
         <% end %>
-        <% elsif current_user.pending_friends.include?(user)==false && current_user!=user %>
-        <%= link_to 'update' %>
+        <% elsif current_user.friend_requests.include?(user) && 
+        user != current_user &&
+         !current_user.friends.include?(user) && check_status(user)==true &&
+          !user.friends.include?(current_user) %>
+        <%= link_to 'accept', friendship_path(current_user,@friend),method: :patch %>
       <% end %>
   
     
   </span>
 </li>
-
