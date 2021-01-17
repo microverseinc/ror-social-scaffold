@@ -7,7 +7,7 @@
       <%=  form_for current_user.friendships.build(friend: user) do |f|%>
       <%= f.hidden_field :user_id%>
       <%= f.hidden_field :friend_id%>
-      <button class="button">Add friend</button>
+     <%= f.submit " Add friend"%>
         <% end %>
       <% elsif check_status(user)==true && user!=current_user && user_1=current_user.friendships.find_by(friend_id: user.id) %>
       <%= form_for(user_1,
@@ -18,7 +18,13 @@
         user != current_user &&
          !current_user.friends.include?(user) && check_status(user)==true &&
           !user.friends.include?(current_user) %>
-        <%= link_to 'accept', friendship_path(current_user,@friend),method: :patch %>
+          <% current_user.friend_requests.each do |request| %>
+          <% if request.id == user.id %>
+          <%= link_to "Accept Friend Request",  friendship_path(id: request.id), method: "put" %><br>
+          <%= link_to "Decline Friend Request", friendship_path(id: request.id), method: :delete %>
+          <% end %>
+          <% end %>
+        
       <% end %>
   
     
