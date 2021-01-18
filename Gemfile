@@ -44,6 +44,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'selenium-webdriver'
   gem 'webdrivers', '~> 4.0'
+  gem 'byebug'
 end
 
 group :test do

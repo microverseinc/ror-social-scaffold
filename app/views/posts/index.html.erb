@@ -17,3 +17,10 @@
     <%= render @timeline_posts %>
   </ul>
 </article>
+
+<aside>
+    <h3> Pending Friends </h3>
+    <% current_user.pending_friends.each do |e| %>
+      <%= e.name %>
+    <%end%>
+</aside>
