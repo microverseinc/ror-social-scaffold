@@ -4,7 +4,6 @@ class FriendshipsController < ApplicationController
   end
 
   def create
-    #  @current_friend = User.find(params[:friendship][:friend_id])
     @friendship = current_user.friendships.build(params_friendship)
     if @friendship.save
       flash[:notice] = 'Friendship was saved correctly.'

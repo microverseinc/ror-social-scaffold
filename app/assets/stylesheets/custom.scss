@@ -290,6 +290,18 @@ form {
     margin: 0 0 8px 0;
     color: $primary-color-dark;
   }
+  .cancel {
+    color: red;
+    background-color: rgb(255, 0, 128);
+    padding: 5px 5px;
+    border-radius: 10px;
+  }
+  .Accept {
+   color: #689f38;
+    background-color: #8bc34a;
+    padding: 5px 5px;
+    border-radius: 10px;
+  }
 }
 
 .user-section {
