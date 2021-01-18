@@ -339,23 +339,27 @@ form {
 .btn-secondary,
 [type="submit"] {
   @extend .btn;
+
   background-color: $primary-color-dark;
   color: #eee;
 }
 
 .btn-danger {
   @extend .btn;
+
   background-color: $danger-color !important;
   color: #eee;
 }
 
 .btn-blue {
   @extend .btn;
+
   background-color: dodgerblue !important;
 }
 
 .btn-warning {
   @extend .btn;
+
   background-color: $warning-color !important;
   color: #eee;
 }
