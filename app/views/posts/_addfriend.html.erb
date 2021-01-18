@@ -1,0 +1,5 @@
+<%=  form_for current_user.friendships.build(friend: user) do |f|%>
+<%= f.hidden_field :user_id%>
+<%= f.hidden_field :friend_id%>
+<%= f.submit " Add friend"%>
+  <% end %> 

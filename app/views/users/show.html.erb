@@ -1,5 +1,26 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
+  <%if @user!=current_user %>
+    <% if add_friend(@user) %>
+      <%=  form_for current_user.friendships.build(friend: @user) do |f|%>
+      <%= f.hidden_field :user_id%>
+      <%= f.hidden_field :friend_id%>
+     <%= f.submit " Add friend"%>
+        <% end %> 
+      <% end %>
+  <% end %>
+  
+  <% if current_user.pending_friends.any? %>
+  <%= current_user.pending_friends.each do |pending| %>
+    <p><%=pending.name%></p>
+  <% end %>
+  
+    <p>you have pending requests</p>
+    <% else %>
+    <p>no pending requests</p>
+  <% end %>
+  
+  
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
