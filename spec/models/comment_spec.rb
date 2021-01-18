@@ -15,6 +15,8 @@ RSpec.describe Comment, type: :model do
       expect(subject.valid?).to be(false)
     end
 
+    it { should validate_length_of(:content).is_at_most(200) }
+
     it 'should validate with valid data' do
       expect(subject.valid?).to be(true)
     end
