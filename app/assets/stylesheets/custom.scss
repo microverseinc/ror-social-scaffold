@@ -336,7 +336,8 @@ form {
 }
 
 .btn-primary,
-.btn-secondary {
+.btn-secondary,
+[type="submit"] {
   @extend .btn;
   background-color: $primary-color-dark;
   color: #eee;
@@ -418,6 +419,13 @@ form {
 .user-link {
   &:hover {
     text-decoration: underline;
-    color: dodgerblue;
+    color: $primary-color-dark;
   }
+}
+
+.add-to-see {
+  color: #ccc;
+  font-size: 2rem;
+  font-weight: lighter;
+  margin-top: 5rem;
 }

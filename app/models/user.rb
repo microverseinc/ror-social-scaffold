@@ -21,6 +21,8 @@ class User < ApplicationRecord
     friends.include?(user)
   end
 
+  private
+
   def outgoing_friend_requests
     friendships.map { |f| f if f.pending? }.compact
   end
