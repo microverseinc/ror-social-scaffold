@@ -1,5 +1,11 @@
 <section class="users-section">
   <ul class="users-list">
-    <%= render @users %>
+    <% for user in @users %>
+    <li class="list-item">
+      <%= link_to user.name, user_path(user), class: 'user-link' %>
+
+      <%= friendship_controls(user) %>
+     </li>
+    <% end %>
   </ul>
 </section>
