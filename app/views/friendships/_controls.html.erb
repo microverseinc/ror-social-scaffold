@@ -1,0 +1,22 @@
+<% if friendship.nil? %>
+  <%= button_to('Add friend', user_friendships_path(current_user),
+            params: { 'friendship[friend_id]': friend.id }, class: 'btn-primary ml-auto',
+            form_class: 'inline-form ml-auto') %>
+
+<% elsif friendship.pending? and friendship.user == current_user %>
+  <%= button_to('Cancel Request', user_friendship_path(current_user, friendship),
+                method: :delete, class: "btn-warning ml-auto", form_class: 'inline-form ml-auto',
+                data: { confirm: "Cancel friend? request?" }
+  ) %>
+<% elsif friendship.pending? and friendship.user != current_user %>
+  <div class="d-flex">
+    <%= button_to('Reject', user_friendship_path(current_user, friendship),
+                  method: :delete, class: "btn-warning ml-auto", form_class: 'inline-form ml-auto') %>
+    <%= button_to('Accept', user_friendship_path(current_user, friendship),
+                  method: :put, class: 'btn-blue ml-auto', form_class: 'inline-form') %>
+  </div>
+<% elsif friendship.confirmed? %>
+  <%= button_to('Delete Friend', user_friendship_path(current_user, friendship),
+                method: :delete, class: "btn-danger ml-auto", form_class: 'inline-form ml-auto',
+                data: { confirm: "Delete friend?" }) %>
+<% end %>

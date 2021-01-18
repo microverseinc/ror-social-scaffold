@@ -13,7 +13,13 @@ class FriendshipsController < ApplicationController
     redirect_back(fallback_location: user_path(@friend))
   end
 
-  def update; end
+  def update
+    friendship = Friendship.find(params[:id])
+    friendship.update(status: 'confirmed')
+
+    redirect_back(fallback_location: user_path(friendship.user),
+                  notice: "You're now friends with #{friendship.user.name}")
+  end
 
   def destroy
     friendship = Friendship.find(params[:id])
@@ -27,9 +33,5 @@ class FriendshipsController < ApplicationController
 
   def friendship_params
     params.require(:friendship).permit(:friend_id)
-  end
-
-  def existing_friendship?
-    # current_user.friendships.include?()
   end
 end

@@ -133,19 +133,9 @@ input[type='submit'] {
       border: 1px solid #f00;
     }
   }
-
-  .btn-primary {
-    width: 100%;
-  }
-
-  .btn-secondary {
-    width: 30%;
-    margin-left: 70%;
-  }
 }
 
 form {
-  width: 80%;
   margin: 8px 0;
 
   .field {
@@ -173,22 +163,6 @@ form {
     display: flex;
     justify-content: center;
     margin: 8px 0;
-  }
-
-  input[type="submit"] {
-    padding: 8px;
-    width: 50%;
-    border: none;
-    border-radius: 4px;
-    background-color: $primary-color-dark;
-    color: $primary-color-light;
-    text-transform: uppercase;
-    font-weight: 900;
-  }
-
-  input[type="submit"]:hover {
-    background-color: $primary-color;
-    color: #fff;
   }
 
   .actions.reset {
@@ -331,10 +305,6 @@ form {
 }
 
 @media only screen and (min-width: 480px) {
-  form {
-    width: 60%;
-  }
-
   .new_post,
   .timeline,
   .user-section,
@@ -344,10 +314,6 @@ form {
 }
 
 @media (min-width: 780px) {
-  form {
-    width: 40%;
-  }
-
   .new_post,
   .timeline,
   .user-section,
@@ -358,32 +324,39 @@ form {
 
 .btn {
   border: none;
-  padding: 0.25rem 0.5rem;
+  padding: 0.5rem 1rem;
   border-radius: 3px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #eee;
+
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
-.inline-form {
-  display: inline-flex;
-  margin: 0 0 0 1rem;
-}
-
-.btn-primary {
-  background-color: $primary-color;
+.btn-primary,
+.btn-secondary {
+  @extend .btn;
+  background-color: $primary-color-dark;
   color: #eee;
 }
 
 .btn-danger {
+  @extend .btn;
   background-color: $danger-color !important;
   color: #eee;
 }
 
-.btn-warning {
-  background-color: $warning-color !important;
-  color: #eee;
+.btn-blue {
+  @extend .btn;
+  background-color: dodgerblue !important;
 }
 
-.d-inline {
-  display: inline;
+.btn-warning {
+  @extend .btn;
+  background-color: $warning-color !important;
+  color: #eee;
 }
 
 .badge {
@@ -403,4 +376,48 @@ form {
 .badge-info {
   background-color: lighten($info-color, 35%);
   color: $info-color;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding: 0.5rem;
+  margin-bottom: 0 !important;
+}
+
+.list-item:nth-child(even) {
+  background-color: #eee;
+}
+
+.inline-form {
+  display: inline-flex;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.d-inline-flex {
+  display: inline-flex;
+}
+
+.d-inline {
+  display: inline;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.user-link {
+  &:hover {
+    text-decoration: underline;
+    color: dodgerblue;
+  }
 }

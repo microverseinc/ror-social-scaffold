@@ -1,7 +1,7 @@
 <section class="user-section">
-  <div>
-    <h2 class="d-inline"><%= "Name: #{@user.name}" %></h2>
-    <%= friendship_action(@user) %>
+  <div class="d-flex align-items-center">
+    <h2 class="d-inline-flex"><%= "Name: #{@user.name}" %></h2>
+    <%= friendship_controls(@user) %>
   </div>
 
   <article class="timeline">
