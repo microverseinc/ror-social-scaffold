@@ -35,7 +35,7 @@ end
   like.save
 end
 
-50.times do
+200.times do
   friendship = Friendship.new(user: User.all.sample, friend: User.all.sample)
   friendship.status = Friendship::STATUSES.sample
   friendship.save if friendship.valid?
