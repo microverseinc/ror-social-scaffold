@@ -10,14 +10,9 @@
       <% end %>
   <% end %>
   
-  <% if current_user.pending_friends.any? %>
-  <%= current_user.pending_friends.each do |pending| %>
-    <p><%=pending.name%></p>
-  <% end %>
-  
-    <p>you have pending requests</p>
-    <% else %>
-    <p>no pending requests</p>
+  <% if !current_user.pending_friends.blank? && current_user==@user %>
+   <div>you have <%= current_user.pending_friends.count %> 
+   pending friend request </div>
   <% end %>
   
   

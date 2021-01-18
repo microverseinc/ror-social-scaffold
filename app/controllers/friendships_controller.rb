@@ -1,3 +1,6 @@
+# rubocop:disable Style/GuardClause
+
+# rubocop:disable Style/IdenticalConditionalBranches
 class FriendshipsController < ApplicationController
   def new
     @friendship = Friendship.new
@@ -17,8 +20,8 @@ class FriendshipsController < ApplicationController
     @friendship = Friendship.where(friend_id: [current_user, params[:id]], user_id: [current_user, params[:id]]).first
     @friendship.update(confirmed: true)
     if @friendship.save
-    flash[:notice] = 'You are now friends.'
-    redirect_to users_path
+      flash[:notice] = 'You are now friends.'
+      redirect_to users_path
     end
   end
 
@@ -28,7 +31,7 @@ class FriendshipsController < ApplicationController
       @friendship.destroy
     else
       @friendship = Friendship.where(friend_id: [current_user, params[:id]], user_id: [current_user, params[:id]]).first
-    @friendship.destroy
+      @friendship.destroy
     end
 
     redirect_to users_path
@@ -37,6 +40,9 @@ class FriendshipsController < ApplicationController
   private
 
   def params_friendship
-    params.require(:friendship).permit(:friend_id,:user_id)
+    params.require(:friendship).permit(:friend_id, :user_id)
   end
 end
+# rubocop:enable Style/GuardClause
+
+# rubocop:enable Style/IdenticalConditionalBranches
