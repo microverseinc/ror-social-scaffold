@@ -17,13 +17,13 @@ class FriendshipsController < ApplicationController
     @friendship = Friendship.where(friend_id: [current_user, params[:id]], user_id: [current_user, params[:id]]).first
     @friendship.update(confirmed: true)
     if @friendship.save
-    flash[:notice] = 'Friendship was confirmed correctly.'
+    flash[:notice] = 'You are now friends.'
     redirect_to users_path
     end
   end
 
   def destroy
-    @friendship = Friendship.find(params[:id])
+    @friendship = Friendship.where(friend_id: [current_user, params[:id]], user_id: [current_user, params[:id]]).first
     @friendship.destroy
 
     redirect_to users_path

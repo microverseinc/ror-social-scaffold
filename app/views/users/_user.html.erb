@@ -3,21 +3,17 @@
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
     
-    <% if !current_user.friend?(user) && user!=current_user && check_status(user)==false && !user.friends.include?(current_user) %>
+    <% if add_friend(user) %>
       <%=  form_for current_user.friendships.build(friend: user) do |f|%>
       <%= f.hidden_field :user_id%>
       <%= f.hidden_field :friend_id%>
      <%= f.submit " Add friend"%>
-        <% end %>
-      <% elsif check_status(user)==true && user!=current_user && user_1=current_user.friendships.find_by(friend_id: user.id) %>
-      <%= form_for(user_1,
-         html: { method: :delete }) do |f| %>
-        <%= f.submit "cancel", class: "btn" %>
-        <% end %>
-        <% elsif current_user.friend_requests.include?(user) && 
-        user != current_user &&
-         !current_user.friends.include?(user) && check_status(user)==true &&
-          !user.friends.include?(current_user) %>
+        <% end %> 
+      <% end %>
+        
+      <%=  cancel_friend(user) %>
+
+        <% if  accept_or_decline(user)%>
           <% current_user.friend_requests.each do |request| %>
           <% if request.id == user.id %>
           <button class="Accept"><%= link_to "Accept Friend Request",  friendship_path(id: request.id), method: "put" %></button>
