@@ -16,7 +16,7 @@
         <% if  accept_or_decline(user)%>
           <% current_user.friend_requests.each do |request| %>
           <% if request.id == user.id %>
-          <p>pending friend request</p>
+          <p>pending friend requests</p>
           <button class="Accept"><%= link_to "Accept Friend Request",  friendship_path(id: request.id), method: "put" %></button>
           <button class="cancel"><%= link_to "Decline Friend Request", friendship_path(id: request.id), method: :delete %></button>
           <% end %>
