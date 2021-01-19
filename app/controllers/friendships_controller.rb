@@ -17,9 +17,11 @@ class FriendshipsController < ApplicationController
   end
 
   def update
-    @friendship = Friendship.where(friend_id: [current_user, params[:id]], user_id: [current_user, params[:id]]).first
-    @friendship.update(confirmed: true)
-    if @friendship.save
+    # friendship = Friendship.where(friend_id: [current_user, params[:id]], user_id: [current_user, params[:id]]).first
+    user = User.find(params[:id])
+    if current_user.friend_requests.include?(user)
+      current_user.confirm_friend(user)
+    # if @friendship.save
       flash[:notice] = 'You are now friends.'
       redirect_to users_path
     end
