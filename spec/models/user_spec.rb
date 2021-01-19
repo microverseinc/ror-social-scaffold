@@ -7,4 +7,5 @@ RSpec.describe User, type: :model do
       expect(user).to eql(false)
     end
   end
+  
 end

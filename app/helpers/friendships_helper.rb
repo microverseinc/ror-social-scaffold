@@ -1,7 +1,4 @@
-# rubocop:disable Layout/LineLength
 
-# rubocop:disable Style/GuardClause
-# rubocop:disable Lint/AssignmentInCondition
 module FriendshipsHelper
   def check_status(user)
     if !current_user.pending_friends.include?(user) && !user.pending_friends.include?(current_user)
@@ -37,7 +34,3 @@ module FriendshipsHelper
     true
   end
 end
-# rubocop:enable Layout/LineLength
-
-# rubocop:enable Style/GuardClause
-# rubocop:enable Lint/AssignmentInCondition
