@@ -20,14 +20,4 @@ class User < ApplicationRecord
   def friend?(user)
     friends.include?(user)
   end
-
-  private
-
-  def outgoing_friend_requests
-    friendships.map { |f| f if f.pending? }.compact
-  end
-
-  def incoming_friend_requests
-    inverse_friendships.map { |f| f if f.pending? }.compact
-  end
 end
