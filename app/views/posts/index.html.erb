@@ -1,5 +1,5 @@
 <aside>
-    <h3> Pending Friends </h3>
+    <h3> Friendship Requets </h3>
     <% current_user.friend_requests.each do |e| %>
       <%= link_to e.name, user_path(e)%>
     <%end%>
