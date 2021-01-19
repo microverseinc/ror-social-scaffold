@@ -2,5 +2,5 @@
   <p>
     <b><%= comment.user.name %>:</b> <%= comment.content %>
   </p>
-  <span> <%= comment.created_at.strftime("%Y/%m/%d") %> </span>
+  <span> <%= comment_creation_time(comment) %> </span>
 </div>
