@@ -36,4 +36,10 @@ module FriendshipsHelper
               end 
     end
   end
+  def number_of_request(user)
+    if !current_user.friend_requests.blank? && current_user==user
+     content_tag( :div, "you have #{current_user.friend_requests.count} request pending", :class=>'')
+      
+    end 
+  end
 end

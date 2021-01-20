@@ -12,8 +12,6 @@
       <% end %>
         
       <%=  cancel_friend(user) %>
-
-      
           <% current_user.friend_requests.each do |request| %>
                  <%= accept_or_decline(user,request.id, user.id)%>
       <% end %>

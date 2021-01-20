@@ -9,11 +9,7 @@
         <% end %> 
       <% end %>
   <% end %>
-  
-  <% if !current_user.pending_friends.blank? && current_user==@user %>
-   <div>you have <%= current_user.pending_friends.count %> 
-   pending friend requests </div>
-  <% end %>
+    <%= number_of_request(@user)%> 
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
