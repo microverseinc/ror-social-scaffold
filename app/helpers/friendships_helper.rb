@@ -31,8 +31,8 @@ module FriendshipsHelper
                         !current_user.friends.include?(user) && check_status(user) == true &&
                         !user.friends.include?(current_user)
               if requester == accepter 
-             concat button_to "Accept Friend Request",  friendship_path(id: requester),class: 'Accept', method: "put" 
-             button_to  "Decline Friend Request", friendship_path(id: accepter),class: 'cancel', method: :delete 
+             concat button_to "Accept Friend Request",  friendship_path(id: requester),class: 'Accept', method: :put 
+             button_to "Decline Friend Request", friendship_path(id: accepter),class: 'cancel', method: :delete 
               end 
     end
   end
