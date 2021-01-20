@@ -26,7 +26,7 @@ class FriendshipsController < ApplicationController
 
   def destroy
     if Friendship.exists?(params[:id])
-     !@friendship=Friendship.find(params[:id])
+     @friendship=Friendship.find(params[:id])
       @friendship.destroy
     else
       @friendship = Friendship.where(friend_id: [current_user, params[:id]], user_id: [current_user, params[:id]]).first

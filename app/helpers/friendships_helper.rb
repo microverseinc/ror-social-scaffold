@@ -25,12 +25,15 @@ module FriendshipsHelper
     end
   end
 
-  def accept_or_decline(user)
-    return false unless current_user.friend_requests.include?(user) &&
+  def accept_or_decline(user,requester,accepter)
+    if current_user.friend_requests.include?(user) &&
                         user != current_user &&
                         !current_user.friends.include?(user) && check_status(user) == true &&
                         !user.friends.include?(current_user)
-
-    true
+              if requester == accepter 
+             concat button_to "Accept Friend Request",  friendship_path(id: requester),class: 'Accept', method: "put" 
+             button_to  "Decline Friend Request", friendship_path(id: accepter),class: 'cancel', method: :delete 
+              end 
+    end
   end
 end
