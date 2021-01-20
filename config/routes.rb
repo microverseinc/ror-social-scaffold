@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'posts#index'
 
   devise_for :users
-  resources :friendships, only: [:index, :create, :destroy, :update,:new]
+  resources :friendships, only: [:index, :create, :destroy, :update]
   resources :users, only: [:index, :show]
   resources :posts, only: [:index, :create] do
     resources :comments, only: [:create]
