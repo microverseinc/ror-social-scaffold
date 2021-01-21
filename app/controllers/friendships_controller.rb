@@ -3,9 +3,12 @@ class FriendshipsController < ApplicationController
 
   def create
     friend = User.find(params[:friend_id])
-    friendship = Friendship.create(user_id: current_user.id, friend_id: friend.id)
-    flash[:success] = 'Friend request sent!'
-    redirect_to user_path(friend)
+    @friendship = Friendship.create(user_id: current_user.id, friend_id: friend.id)
+    if @friendship.save
+      redirect_to users_path, notice: 'Friend request sent.'
+    else
+      redirect_to root_path, alert: @friendship.errors.full_messages.join('. ').to_s
+    end
   end
 
   def update
@@ -20,11 +23,4 @@ class FriendshipsController < ApplicationController
     flash[:danger] = 'Canceled Friend request!'
     redirect_to user_path(friendship.friend_id)
   end
-
-  private
-
-  def friendship_params
-    params.require(:friendships).permit(:user_id, :friend_id)
-  end
-
 end

@@ -6,17 +6,15 @@ module UsersHelper
   end
 
   def friendship_form(user)
-    unless user == current_user
-      if current_user.friend?(user)
-        render 'unfriend',user: user  
-      elsif current_user.pending_friends.include?(user) 
-        render 'friendships/cancel_request',user: user 
-      elsif current_user.friend_requests.include?(user)
-        render 'friendships/accept_cancel_request',user: user 
-      else
-      render 'friendships/invite',user: user 
-      end 
-    end 
+    if current_user.friend?(user)
+      content_tag(:span, ' Friend', class: 'profile-link')
+    elsif current_user.pending_friends.include?(user)
+      render 'friendships/cancel_request', user: user
+    elsif current_user.friend_requests.include?(user)
+      render 'friendships/accept_cancel_request', user: user
+    elsif user.id == current_user.id
+    else
+      render 'friendships/invite', user: user
+    end
   end
-
 end
