@@ -1,4 +1,4 @@
 <li class="list-group-item d-flex justify-content-between">
   <%=link_to user.name, user_path(user), class: 'profile-link'%>
-  <%= display_invitation(user: current_user, friend: user) %>
+  <%= display_invitation(user: user) %>
 </li>

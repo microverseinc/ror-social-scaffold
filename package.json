@@ -1,7 +1,11 @@
 {
   "name": "ror_social_scaffold",
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "bootstrap": "4.3.1",
+    "jquery": "^3.5.1",
+    "popper.js": "^1.16.1"
+  },
   "devDependencies": {
     "stylelint": "^13.3.3",
     "stylelint-config-standard": "^20.0.0",
