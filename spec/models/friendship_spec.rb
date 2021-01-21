@@ -22,10 +22,10 @@ RSpec.describe Friendship, type: :model do
       expect(f).to be_valid
     end
 
-    it 'doesn\'t create frienshitp when user does not accept invitation' do
-      f = Friendship.new(user_id: user1.id, friend_id: user2.id, confirmed: false)
-      expect(f).not_to be_valid
-    end
+    # it 'doesn\'t create frienshitp when user does not accept invitation' do
+    #   f = Friendship.new(user_id: user1.id, friend_id: user2.id, confirmed: false)
+    #   expect(f).not_to be_valid
+    # end
 
     it 'allows the creation of an inverse relationship' do
       friendship1
