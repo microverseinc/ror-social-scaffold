@@ -1,3 +1,0 @@
-<%= form_with(model: Friendship.find_by(user_id: @user.id, friend_id: current_user.id), local: true) do |f| %>
-  <%= f.submit "Accept request", class: "btn btn-primary" %>
-<% end %>

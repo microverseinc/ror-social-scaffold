@@ -5,16 +5,16 @@ module UsersHelper
     image_tag(gravatar_url, alt: user.name, class: 'gravatar')
   end
 
-  def follow_form
-    unless @user == current_user
-      if current_user.friend?(@user)
-        render 'unfollow' 
-      elsif @user.pending_friends.include?(current_user) 
-        render 'friendships/accept_request'
-      elsif current_user.pending_friends.include?(@user)
-        render 'friendships/cancel_request'
+  def friendship_form(user)
+    unless user == current_user
+      if current_user.friend?(user)
+        render 'unfriend',user: user  
+      elsif current_user.pending_friends.include?(user) 
+        render 'friendships/cancel_request',user: user 
+      elsif current_user.friend_requests.include?(user)
+        render 'friendships/accept_cancel_request',user: user 
       else
-      render 'follow'
+      render 'friendships/invite',user: user 
       end 
     end 
   end
