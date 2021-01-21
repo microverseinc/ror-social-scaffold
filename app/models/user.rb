@@ -16,20 +16,18 @@ class User < ApplicationRecord
 
 
   def friends 
-    accepted_requests = sent_friend_requests.map { |request| request.friend if request.status = :accepted }
-    requests_accepted = recieved_friend_requests.map { |request| request.user if request.status = :accepted }
+    accepted_requests = sent_friend_requests.map { |request| request.friend if request.status == "accepted" }
+    requests_accepted = recieved_friend_requests.map { |request| request.user if request.status == "accepted"}
 
     accepted_requests + requests_accepted
   end
 
   def pending_friend_requests
-    recieved_friend_requests.where('status: ?', :pending )
+    recieved_friend_requests.where('status = ?', 0 )
   end
+  
 
-  def accept_request(user)
-    request = recieved_friend_requests.where(user_id: user.id)
-    request.update(status: :accepted)
+  def check_request_existence(friend)
+    friends.include?(friend) or sent_friend_requests.where(friend_id: friend.id).exists? or recieved_friend_requests.where(user_id: friend.id).exists?
   end
-
-
 end

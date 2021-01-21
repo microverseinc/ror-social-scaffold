@@ -1,6 +1,4 @@
-<li>
-  Name: <%= user.name %>
-  <span class="profile-link">
-    <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-  </span>
+<li class="list-group-item d-flex justify-content-between">
+  <%=link_to user.name, user_path(user), class: 'profile-link'%>
+  <%= display_invitation(user: current_user, friend: user) %>
 </li>
