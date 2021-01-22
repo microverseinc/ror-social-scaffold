@@ -1,4 +1,7 @@
 <li class="list-group-item d-flex justify-content-between">
   <%=link_to user.name, user_path(user), class: 'profile-link'%>
   <%= display_invitation(user: user) %>
+  <%= display_accept_reject(user: user)&.first %>
+  <%= display_accept_reject(user: user)&.second %>
+
 </li>

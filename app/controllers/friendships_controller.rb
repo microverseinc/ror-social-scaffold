@@ -19,4 +19,14 @@ class FriendshipsController < ApplicationController
     end
     redirect_to users_path
   end
+
+  def destroy
+    @request = Friendship.find(params[:id])
+    if @request.destroy
+      flash[:notice] = 'Request Rejected'
+    else
+      flash[:alert] = 'Something Went Wrong!'
+    end
+    redirect_to users_path
+  end
 end
