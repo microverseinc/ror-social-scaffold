@@ -1,0 +1,10 @@
+<h3>Pending Requests</h3>
+<ul>
+  <%@pending_requests.each do |request| %>
+    <li> 
+      <%= request.user.name %>
+      <%= link_to 'Accept Friend Request', friendship_path(request.id), method: :patch %>
+   </li>
+   <%end%>
+</ul>
+

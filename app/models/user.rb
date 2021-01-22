@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 20 }
 
-  scope :accepted_requests, -> {sent_friend_requests.where("status = ?", :accepted)}
+  scope :accepted_requests, -> { sent_friend_requests.where('status = ?', :accepted) }
 
   has_many :posts
   has_many :comments, dependent: :destroy
@@ -14,20 +14,20 @@ class User < ApplicationRecord
   has_many :sent_friend_requests, class_name: 'Friendship', foreign_key: :user_id
   has_many :recieved_friend_requests, class_name: 'Friendship', foreign_key: :friend_id
 
-
-  def friends 
-    accepted_requests = sent_friend_requests.map { |request| request.friend if request.status == "accepted" }
-    requests_accepted = recieved_friend_requests.map { |request| request.user if request.status == "accepted"}
+  def friends
+    accepted_requests = sent_friend_requests.map { |request| request.friend if request.status == 'accepted' }
+    requests_accepted = recieved_friend_requests.map { |request| request.user if request.status == 'accepted' }
 
     accepted_requests + requests_accepted
   end
 
   def pending_friend_requests
-    recieved_friend_requests.where('status = ?', 0 )
+    recieved_friend_requests.where('status = ?', 0)
   end
-  
 
   def check_request_existence(friend)
-    friends.include?(friend) or sent_friend_requests.where(friend_id: friend.id).exists? or recieved_friend_requests.where(user_id: friend.id).exists?
+    friends.include?(friend) or
+      sent_friend_requests.where(friend_id: friend.id).exists? or
+      recieved_friend_requests.where(user_id: friend.id).exists?
   end
 end

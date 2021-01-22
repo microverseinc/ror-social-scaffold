@@ -1,9 +1,8 @@
 module UsersHelper
   def display_invitation(user: nil)
+    return if user == current_user
 
-    if current_user.friends.include?(user)
-      return "You are friends"
-    end
+    return 'You are friends' if current_user.friends.include?(user)
 
     unless current_user.check_request_existence(user)
       return link_to 'Send Friend Request', friendships_path(id: user.id), method: :post
@@ -15,9 +14,10 @@ module UsersHelper
     end
 
     sent_friend_requests = current_user.sent_friend_requests.where(friend_id: user.id).first
-    if sent_friend_requests
-      return "Request already sent"
-    end
+    'Request already sent' if sent_friend_requests
+  end
 
+  def display_pending_requests(user)
+    render 'users/pending', locals: { user: user } if user == current_user
   end
 end
