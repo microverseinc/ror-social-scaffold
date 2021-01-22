@@ -157,7 +157,7 @@ form {
     }
 
     input[type="checkbox"] {
-      width: fit-content;
+      width: fit-content(20em);
     }
   }
 
@@ -321,8 +321,6 @@ form {
     color: #f00;
   }
 }
-
-
 
 @media only screen and (min-width: 480px) {
   form {
