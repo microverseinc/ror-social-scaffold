@@ -2,8 +2,6 @@
   Name: <%= user.name %>
   <span class="profile-link">
     <%= link_to 'See Profile', user_path(user), class: 'profile-link' %>
-  </span>
-  <span>
-  <%= link_to 'Send a Request' %>
+    <%= invite_links(user) %>
   </span>
 </li>

@@ -24,7 +24,7 @@ class User < ApplicationRecord
   end
 
   # Users who have requested to be friends
-  def friend_requests
+  def friend_request
     inverse_friendships.map{|friendship| friendship.user if !friendship.status}.compact
   end
 
@@ -32,6 +32,11 @@ class User < ApplicationRecord
     friendship = inverse_friendships.find{|friendship| friendship.user == user}
     friendship.status = true
     friendship.save
+  end
+
+  def reject_request(user)
+    friendship = inverse_friendships.find { |friendship| friendship.user == user }
+    friendship.destroy
   end
 
   def friend?(user)
