@@ -1,5 +1,8 @@
 <section class="user-section">
+  <div class = "friend_request">
   <h2><%= "Name: #{@user.name}" %></h2>
+  <%= link_to 'Friend Request', users_path, class: "request" %>
+  </div>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
