@@ -2,7 +2,4 @@
   <%= f.submit "Accept request", class: "btn btn-primary" %>
 <% end %>
 
-<%= form_with(model: Friendship.find_by(user_id: current_user.id, friend_id: user.id),
-            html: { method: :delete },local: true) do |f| %>
-    <%= f.submit "Cancel request", class: "btn btn-primary" %>
-<% end %>
+<%=link_to "Ignore", friendship_path(user), method: :delete%>

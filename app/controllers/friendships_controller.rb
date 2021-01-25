@@ -18,7 +18,7 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
-    friendship = Friendship.find(params[:id])
+    friendship = Friendship.find_by(friend_id: current_user.id)
     friendship.destroy
     flash[:danger] = 'Canceled Friend request!'
     redirect_to user_path(friendship.friend_id)

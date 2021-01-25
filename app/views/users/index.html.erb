@@ -6,7 +6,7 @@
           <span class="profile-link">
             <%= link_to 'See Profile', user_path(user), class: 'profile-link' %>
           </span>
-        <%= friendship_form(user)%>
+          <%= friendship_form(user) if user_signed_in? %>
       </li>
     <% end %>
   </ul>
