@@ -4,13 +4,16 @@
 
 ## Built With
 
-- Ruby v2.7.0
-- Ruby on Rails v5.2.4
+- Ruby v2.7.2
+- Ruby on Rails 6.1.1
 
 ## Live Demo
 
 TBA
 
+## ERD screenshot Image
+
+<img src="./app/assets/images/ERD.png">
 
 ## Getting Started
 
@@ -26,16 +29,12 @@ Postgres: >=9.5
 
 Instal gems with:
 
-```
-bundle install
-```
+- bundle install
 
 Setup database with:
 
-```
-   rails db:create
-   rails db:migrate
-```
+- rails db:create
+- rails db:migrate
 
 ### Github Actions
 
@@ -46,22 +45,16 @@ To make sure the linters' checks using Github Actions work properly, you should 
 3. Start working on your milestone as usual.
 4. Open a PR from the `feature/branch` when your work is done.
 
-
 ### Usage
 
 Start server with:
 
-```
-    rails server
-```
-
+- rails server
 Open `http://localhost:3000/` in your browser.
 
 ### Run tests
 
-```
-    rpsec --format documentation
-```
+- rpsec --format documentation
 
 > Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
 
@@ -90,4 +83,3 @@ TBA
 ## 📝 License
 
 TBA
-
