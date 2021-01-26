@@ -27,7 +27,7 @@ class User < ApplicationRecord
   def already_friend?(user)
     if unaccepted_request.include?(user)
       true
-    elsif friend_requests(user)
+    elsif friend_requests.include?(user)
       true
     else
       false

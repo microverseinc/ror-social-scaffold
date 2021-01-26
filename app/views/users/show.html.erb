@@ -1,22 +1,12 @@
 <section class="user-section">
   <div class = "friend_request">
-  <h2>
-    <%= "Name: #{@user.name}" %>
-    <small><%= "#{@user.email}" %></small>
-  </h2>
-  <%= invite_links(@user) %>
+  <h2><%= "Name: #{@user.name}" %></h2>
+  <%= render_friendship(@user) %>
   </div>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
       <%= render @posts %>
-    </ul>
-  </article>
-  <article class="users-section">
-    <h3>All friends:</h3>
-    <br />
-    <ul class="users-list">
-      <%= render @friends %>
     </ul>
   </article>
 </section>
