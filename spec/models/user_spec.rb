@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'shoulda/matchers'
 
 RSpec.describe User, type: :model do
   context 'validations' do
@@ -43,7 +44,7 @@ RSpec.describe User, type: :model do
       x = User.reflect_on_association(:posts)
       expect(x.macro).to eq(:has_many)
     end
-
+   
     it 'has many comments' do
       x = User.reflect_on_association(:comments)
       expect(x.macro).to eq(:has_many)
@@ -59,7 +60,7 @@ RSpec.describe User, type: :model do
       expect(x.macro).to eq(:has_many)
     end
 
-    it 'has many comments' do
+    it 'has many inverse_friendships' do
       x = User.reflect_on_association(:inverse_friendships)
       expect(x.macro).to eq(:has_many)
     end
