@@ -1,25 +1,25 @@
 module UserHelper
-  def render_friendship(user)
-    return if current_user == user
-    delete_param = { id: user.id }
-
-    if !current_user.friend?(user) && !current_user.already_friend?(user)
-    link_to "Send Friend Request", friendships_path(user_id: current_user, friend_id: user.id, confirmed: false),
-    method: :post
-    
-    elsif !current_user.already_friend?(user)
-      link_to "Remove Friend", friendship_path(delete_param),
-      method: :delete
-    
-    elsif current_user.already_friend?(user)
-      link = capture do 
-        link_to 'Delete Request', friendships_path(delete_param),
-        method: :delete
+  def pending_friends_list
+    if @pending_friends.empty?
+      notice: 'No pending friends'
+    else
+      content_tag :ul, class : "user-lists" do
+        @pending_friends.each do |f|
+          link = link_to(friend.name.to_s, user_path(friend), class: 'profile-link')
+          content = content_tag(:span, link)
+          concat content_tag(:li, content)
+        end
       end
-      link << capture {link_to 'Request pending', friendships_path(current_user)}
   end
-  end
- 
 end
-
-def render_request(user); end
+  def invited_links(user)
+    if current_user.friend_requests.include?(user)
+      concat link_to 'Accept', confirm_request_path(user), class: 'profile-link accept'
+      concat ' '
+      concat link_to 'Reject', reject_request_path(user), class: 'profile-link reject'
+    elsif !current_user.pending_friends.include?(user) && current_user != user && !current_user.friend?(user)
+      concat link_to 'Invite to friendship', request_friendship_path(user), class: 'profile-link invite'
+  end
+ end
+end
+ 

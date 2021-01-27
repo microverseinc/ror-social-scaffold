@@ -7,30 +7,39 @@ class User < ApplicationRecord
   has_many :posts
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
-  has_many :friendships, dependent: :destroy
-  has_many :inverse_friendships, :class_name => "Friendship", 
-  :foreign_key => "friend_id"
 
-  has_many :friendships_confirmation, -> { where confirmed: true }, class_name: 'Friendship'
-  has_many :friends, through: :friendships_confirmation
+  has_many :friendships
+  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
 
-  has_many :friendships_unaccepted, -> { where confirmed: false }, class_name: 'Friendship', foreign_key: 'user_id'
-  has_many :unaccepted_request, through: :friendships_unaccepted, source: :friend
+def friends
+  friends_array = friendships.map{|friendship| friendship.friend if friendship.confirmed}
+  friends_array + inverse_friendships.map{|friendship| friendship.user if friendship.confirmed}
+  friends_array.compact
+end
 
-  has_many :reverse_friendships, -> { where confirmed: false }, class_name: 'Friendship', foreign_key: 'friend_id'
-  has_many :friend_requests, through: :reverse_friendships, source: :user
+# Users who have yet to confirme friend requests
+def pending_friends
+  friendships.map{|friendship| friendship.friend if !friendship.confirmed}.compact
+end
 
-  def friend?(user)
-    friends.include?(user)
-  end
+# Users who have requested to be friends
+def friend_requests
+  inverse_friendships.map{|friendship| friendship.user if !friendship.confirmed}.compact
+end
 
-  def already_friend?(user)
-    if unaccepted_request.include?(user)
-      true
-    elsif friend_requests.include?(user)
-      true
-    else
-      false
-    end
-  end
+def confirm_friend(user)
+  friendship = inverse_friendships.find{|friendship| friendship.user == user}
+  friendship.confirmed = true
+  friendship.save
+  Friendship.create!(user_id: id, friend_id: user.id, confirmed: true)
+end
+
+def reject_friendship(user)
+  friendship = inverse_friendships.find { |f| f.user == user }
+  friendship.destroy
+end
+
+def friend?(user)
+  friends.include?(user)
+end
 end
