@@ -13,7 +13,7 @@ TBA
 
 ## ERD screenshot Image
 
-<img src="./app/assets/images/ERD.png">
+<img src="./docs/ERD1.png">
 
 ## Getting Started
 
