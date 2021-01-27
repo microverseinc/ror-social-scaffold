@@ -10,11 +10,12 @@ RSpec.describe 'Registration', type: :system do
 
   context 'user sign up' do
     it 'registers a new user into the users table' do
-      visit('/users/sign_up')
-      fill_in('user[name]', with: 'guiguito')
-      fill_in('user[email]', with: 'guiguito@example.com')
-      fill_in('user[password]', with: 'password')
-      fill_in('user[password_confirmation]', with: 'password')
+      visit root_path
+      click_link 'Sign up'
+      fill_in('user[name]', with: 'example_user')
+      fill_in('user[email]', with: 'user@example.com')
+      fill_in('user[password]', with: '123456')
+      fill_in('user[password_confirmation]', with: '123456')
       sleep(2)
       click_button('Sign up')
       sleep(3)
