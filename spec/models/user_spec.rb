@@ -64,4 +64,57 @@ RSpec.describe User, type: :model do
       expect(x.macro).to eq(:has_many)
     end
   end
+
+  context 'user methods' do
+    let(:user) do
+      User.create(name: 'Magz',
+                  email: 'magz@example.com',
+                  password: '123456',
+                  password_confirmation: '123456')
+    end
+  
+    let(:user1) do
+      User.create(name: 'Jocy',
+                  email: 'jocy@example.com',
+                  password: '123456',
+                  password_confirmation: '123456')
+    end
+  
+    let(:user2) do
+      User.create(name: 'Jocy1',
+                  email: 'jocy1@example.com',
+                  password: '123456',
+                  password_confirmation: '123456')
+    end
+
+    it 'returns an array of users who are already friends' do
+      user
+      user1
+      Friendship.create(user_id: user.id, friend_id: user1.id, confirmed: true)
+      expect(user.friends).to  include(user1)
+    end
+
+    it 'returns an array of users who are to be accepted or rejected' do
+      user
+      user1
+      Friendship.create(user_id: user.id, friend_id: user1.id)
+      expect(user.pending_friends.include?(user1)).to  eq(true)
+    end
+
+    it 'returns an array of users who have requested to be friends' do
+      user1
+      user2
+      Friendship.create(user_id: user1.id, friend_id: user2.id)
+      f =  Friendship.find_by(friend_id:user2.id)
+      expect(user2.friend_requests).to  include(user1)
+    end
+
+    it 'checks if user is a friend' do 
+      user
+      user1
+      Friendship.create(user_id: user.id, friend_id: user1.id, confirmed: true)
+      expect(user.friend?(user1)).to eql(true)
+    end
+  end
+
 end
