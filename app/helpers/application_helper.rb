@@ -19,11 +19,11 @@ module ApplicationHelper
       link_to('Like!', post_likes_path(post_id: post.id), method: :post)
     end
   end
-  
+
   def user_is_logged_in
     if logged_in?
-        link_to (gravatar_for current_user), user_path(current_user)
-        link_to current_user.name, user_path(current_user), id: 'logo'
+      link_to (gravatar_for current_user), user_path(current_user)
+      link_to current_user.name, user_path(current_user), id: 'logo'
     end
   end
 
@@ -34,5 +34,4 @@ module ApplicationHelper
       link_to 'Sign in', user_session_path
     end
   end
-
 end

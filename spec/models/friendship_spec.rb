@@ -24,7 +24,7 @@ RSpec.describe Friendship, type: :model do
 
     it 'doesn\'t create frienshitp when user does not accept invitation' do
       Friendship.create(user_id: user1.id, friend_id: user2.id)
-      f =  Friendship.find_by(friend_id:user2.id)
+      f = Friendship.find_by(friend_id: user2.id)
       f.destroy
       expect(user1.friendships.include?(user2)).to eql(false)
     end
