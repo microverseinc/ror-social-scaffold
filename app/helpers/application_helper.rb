@@ -20,18 +20,18 @@ module ApplicationHelper
     end
   end
 
-  def user_is_logged_in
-    if logged_in?
-      link_to (gravatar_for current_user), user_path(current_user)
-      link_to current_user.name, user_path(current_user), id: 'logo'
-    end
-  end
+  # def user_is_logged_in
+  #   unless !logged_in?
+  #     link_to (gravatar_for current_user), user_path(current_user)
+  #     link_to current_user.name, user_path(current_user), id: 'logo'
+  #   end
+  # end
 
-  def is_current_user
-    if current_user
-      link_to 'Sign out', destroy_user_session_path, method: :delete
-    else
-      link_to 'Sign in', user_session_path
-    end
-  end
+  # def is_current_user
+  #   if current_user?
+  #     link_to 'Sign out', destroy_user_session_path, method: :delete
+  #   else
+  #     link_to 'Sign in', user_session_path
+  #   end
+  # end
 end
