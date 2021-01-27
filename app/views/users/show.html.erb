@@ -1,7 +1,7 @@
 <section class="user-section">
   <div class = "friend_request">
   <h2><%= "Name: #{@user.name}" %></h2>
-  <%= render_friendship(@user) %>
+  <%= invite_links(@user) %>
   </div>
   <article class="timeline">
     <h3>Recent posts:</h3>
