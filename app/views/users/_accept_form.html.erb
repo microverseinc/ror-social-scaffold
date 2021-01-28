@@ -1,0 +1,3 @@
+<%= form_with(model: current_user.inverse_friendships.find_by(user_id: @user.id), local: true) do |f| %>
+    <%= f.submit "Accept", class: "btn btn-primary btn-sm friend-button confirm" %>
+<% end %>

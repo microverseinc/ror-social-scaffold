@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def logged_in?
+    !current_user.nil?
+  end
+
   def menu_link_to(link_text, link_path)
     class_name = current_page?(link_path) ? 'menu-item active' : 'menu-item'
 
@@ -14,5 +18,17 @@ module ApplicationHelper
     else
       link_to('Like!', post_likes_path(post_id: post.id), method: :post)
     end
+  end
+
+  def user_is_current
+    if current_user
+      link_to 'Sign out', destroy_user_session_path, method: :delete
+    else
+      link_to 'Sign in', user_session_path
+    end
+  end
+
+  def user_log_in
+    render 'layouts/profile' if logged_in?
   end
 end
