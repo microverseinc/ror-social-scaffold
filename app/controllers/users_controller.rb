@@ -29,10 +29,7 @@ class UsersController < ApplicationController
     redirect_to root_path, notice: 'request rejected'
   end
 
-
   def pending_friends
     @pending_friends = current_user.pending_friends
   end
 end
-
-
