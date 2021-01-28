@@ -11,12 +11,7 @@
   </head>
   <body>
     <nav class="nav">
-    <% if logged_in? %>	      
-      <div class="nav-profile"> 	      
-        <%= link_to (gravatar_for current_user), user_path(current_user) %>	
-        <%= link_to current_user.name, user_path(current_user), id: 'logo'%>	
-      </div>	
-    <% end %>
+      <%= user_log_in%>
       <%= link_to 'Stay in touch', root_path %>
       <div class="menu">
         <div class="menu-item">
@@ -26,11 +21,7 @@
           <%= menu_link_to 'All users', users_path %>
         </div>
       </div>
-        <% if current_user %>
-          <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>	
-        <% else %>	
-          <%= link_to 'Sign in', user_session_path %>	
-        <% end %>
+      <%= is_current_user%>
     </nav>
     <% flash.each do |message_type, message| %>
       <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>

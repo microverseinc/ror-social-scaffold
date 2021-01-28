@@ -1,0 +1,4 @@
+<div class="nav-profile"> 	      
+    <%= link_to (gravatar_for current_user), user_path(current_user) %>	
+    <%= link_to current_user.name, user_path(current_user), id: 'logo'%>	
+</div>
