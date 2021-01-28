@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
 
   has_many :friendships
+  has_many :friends, through: :friendships
+  has_many :posts_from_friends, through: :friends, source: :posts
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
 
   def friends
@@ -39,5 +41,13 @@ class User < ApplicationRecord
 
   def friend?(user)
     friends.include?(user)
+  end
+
+  def timeline_posts
+    posts.ordered_by_most_recent
+  end
+
+  def friends_posts
+    posts_from_friends.ordered_by_most_recent
   end
 end
