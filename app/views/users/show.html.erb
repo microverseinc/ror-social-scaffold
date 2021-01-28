@@ -1,15 +1,12 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
+  <% if @user != current_user %>
+  <p><span style="background-color:green; color:white; padding:5px; border-radius:6px"><%= friendship(@user)%></span></p>
+  <% end %>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
       <%= render @posts %>
-    </ul>
-    <ul>
-      <% if @user != current_user  %>
-       <button onclick="create_friend(current_user, @user.id)">Add as friend</button>
-      <% end %>
-       
     </ul>
   </article>
 </section>
