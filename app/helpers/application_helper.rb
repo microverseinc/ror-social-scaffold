@@ -20,7 +20,7 @@ module ApplicationHelper
     end
   end
 
-  def is_current_user
+  def user_is_current
     if current_user
       link_to 'Sign out', destroy_user_session_path, method: :delete
     else

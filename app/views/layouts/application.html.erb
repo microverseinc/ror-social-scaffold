@@ -21,7 +21,7 @@
           <%= menu_link_to 'All users', users_path %>
         </div>
       </div>
-      <%= is_current_user%>
+      <%= user_is_current %>
     </nav>
     <% flash.each do |message_type, message| %>
       <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
