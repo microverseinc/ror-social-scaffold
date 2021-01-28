@@ -157,7 +157,7 @@ form {
     }
 
     input[type="checkbox"] {
-      width: fit-content;
+      width: auto;
     }
   }
 
@@ -302,9 +302,9 @@ form {
     align-items: center;
   }
 
-    .request {
-      color: #689f38;
-    }
+  .request {
+    color: #689f38;
+  }
 
   h2 {
     text-transform: capitalize;

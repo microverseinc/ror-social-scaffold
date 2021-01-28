@@ -13169,3 +13169,615 @@ Processing by UsersController#show as HTML
 Completed 200 OK in 114ms (Views: 78.9ms | ActiveRecord: 9.8ms)
 
 
+Started DELETE "/users/sign_out" for ::1 at 2021-01-28 15:38:52 +0200
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/lydia/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"fPYskwtaVOq9il9iPTRvIXP+zQLqmro0b32fxflhBTUzTmpTEpztc0I6X75ag5v/NvBUc6GRwzk9LDH23rX9Kg=="}
+  [1m[36mUser Load (12.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ /home/lydia/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /home/lydia/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /home/lydia/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 134ms (ActiveRecord: 69.1ms)
+
+
+Started GET "/" for ::1 at 2021-01-28 15:38:52 +0200
+Processing by PostsController#index as HTML
+Completed 401 Unauthorized in 6ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2021-01-28 15:38:52 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (31.9ms)
+Completed 200 OK in 1552ms (Views: 1549.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2021-01-28 15:39:08 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5hjctsGQKfemfrJ2lL3CROm85c5HoUij3DfbxdFyroyGaC/Th0CPSzN8DTSLxJhqLuW/nJRcxFqqLikaHTGFeA==", "user"=>{"email"=>"Dave@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (30.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "dave@gmail.com"], ["LIMIT", 1]]
+  ↳ /home/lydia/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 313ms (ActiveRecord: 30.7ms)
+
+
+Started GET "/" for ::1 at 2021-01-28 15:39:08 +0200
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ /home/lydia/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (24.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  ↳ app/views/posts/index.html.erb:13
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN ($1, $2)[0m  [["id", 14], ["id", 11]]
+  ↳ app/views/posts/index.html.erb:13
+  [1m[36mLike Load (2.1ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = $1 AND "likes"."user_id" = $2 LIMIT $3[0m  [["post_id", 11], ["user_id", 12], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:11
+  [1m[36mComment Load (27.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 11]]
+  ↳ app/views/posts/_post.html.erb:16
+  Rendered collection of comments/_comment.html.erb [0 times] (0.0ms)
+  [1m[36mLike Load (0.7ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = $1 AND "likes"."user_id" = $2 LIMIT $3[0m  [["post_id", 10], ["user_id", 12], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:11
+  [1m[36mComment Load (3.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_post.html.erb:16
+  Rendered collection of comments/_comment.html.erb [0 times] (0.0ms)
+  Rendered collection of posts/_post.html.erb [2 times] (152.2ms)
+  Rendered posts/index.html.erb within layouts/application (237.6ms)
+Completed 200 OK in 363ms (Views: 234.0ms | ActiveRecord: 73.0ms)
+
+
+Started GET "/users" for ::1 at 2021-01-28 15:39:13 +0200
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (3.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ /home/lydia/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:3
+  [1m[36mFriendship Load (62.9ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" WHERE "friendships"."friend_id" = $1[0m  [["friend_id", 12]]
+  ↳ app/models/user.rb:25
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/models/user.rb:25
+  [1m[36mFriendship Load (0.9ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" WHERE "friendships"."user_id" = $1[0m  [["user_id", 12]]
+  ↳ app/models/user.rb:20
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15
+  Rendered collection of users/_user.html.erb [4 times] (119.9ms)
+  Rendered users/index.html.erb within layouts/application (132.6ms)
+Completed 200 OK in 193ms (Views: 103.5ms | ActiveRecord: 74.9ms)
+
+
+Started GET "/confirm_request/14" for ::1 at 2021-01-28 15:39:17 +0200
+Processing by UsersController#confirm_request as HTML
+  Parameters: {"id"=>"14"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ /home/lydia/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:21
+  [1m[36mFriendship Load (2.1ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" WHERE "friendships"."friend_id" = $1[0m  [["friend_id", 12]]
+  ↳ app/models/user.rb:29
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/models/user.rb:29
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/models/user.rb:29
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/models/user.rb:29
+  [1m[35m (3.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:31
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/models/user.rb:31
+  [1m[36mFriendship Update (22.0ms)[0m  [1m[33mUPDATE "friendships" SET "confirmed" = $1, "updated_at" = $2 WHERE "friendships"."id" = $3[0m  [["confirmed", true], ["updated_at", "2021-01-28 13:39:17.562403"], ["id", 11]]
+  ↳ app/models/user.rb:31
+  [1m[35m (19.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:31
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:32
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/models/user.rb:32
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/models/user.rb:32
+  [1m[36mFriendship Create (11.9ms)[0m  [1m[32mINSERT INTO "friendships" ("user_id", "friend_id", "created_at", "updated_at", "confirmed") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 12], ["friend_id", 14], ["created_at", "2021-01-28 13:39:17.616863"], ["updated_at", "2021-01-28 13:39:17.616863"], ["confirmed", true]]
+  ↳ app/models/user.rb:32
+  [1m[35m (16.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:32
+Redirected to http://localhost:3000/users/14
+Completed 302 Found in 125ms (ActiveRecord: 88.4ms)
+
+
+Started GET "/users/14" for ::1 at 2021-01-28 15:39:17 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"14"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ /home/lydia/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[36mFriendship Load (0.6ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" WHERE "friendships"."user_id" = $1[0m  [["user_id", 14]]
+  ↳ app/models/user.rb:15
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mFriendship Load (0.6ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" WHERE "friendships"."friend_id" = $1[0m  [["friend_id", 12]]
+  ↳ app/models/user.rb:25
+  [1m[36mFriendship Load (0.7ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" WHERE "friendships"."user_id" = $1[0m  [["user_id", 12]]
+  ↳ app/models/user.rb:20
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15
+  [1m[36mPost Load (16.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" DESC[0m  [["user_id", 14]]
+  ↳ app/views/users/show.html.erb:9
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = $1 AND "likes"."user_id" = $2 LIMIT $3[0m  [["post_id", 11], ["user_id", 12], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:11
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 11]]
+  ↳ app/views/posts/_post.html.erb:16
+  Rendered collection of comments/_comment.html.erb [0 times] (0.0ms)
+  Rendered collection of posts/_post.html.erb [1 times] (12.7ms)
+  Rendered collection of users/_user.html.erb [2 times] (1.4ms)
+  Rendered users/show.html.erb within layouts/application (54.7ms)
+Completed 200 OK in 138ms (Views: 79.9ms | ActiveRecord: 26.3ms)
+
+
+Started GET "/users/11" for ::1 at 2021-01-28 15:39:23 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mUser Load (3.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ /home/lydia/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[36mFriendship Load (0.6ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" WHERE "friendships"."user_id" = $1[0m  [["user_id", 11]]
+  ↳ app/models/user.rb:15
+  [1m[36mUser Load (4.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mFriendship Load (2.7ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" WHERE "friendships"."friend_id" = $1[0m  [["friend_id", 12]]
+  ↳ app/models/user.rb:25
+  [1m[36mFriendship Load (0.6ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" WHERE "friendships"."user_id" = $1[0m  [["user_id", 12]]
+  ↳ app/models/user.rb:20
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" DESC[0m  [["user_id", 11]]
+  ↳ app/views/users/show.html.erb:9
+  [1m[36mLike Load (0.7ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = $1 AND "likes"."user_id" = $2 LIMIT $3[0m  [["post_id", 10], ["user_id", 12], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:11
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_post.html.erb:16
+  Rendered collection of comments/_comment.html.erb [0 times] (0.0ms)
+  Rendered collection of posts/_post.html.erb [1 times] (11.3ms)
+  Rendered collection of users/_user.html.erb [3 times] (5.3ms)
+  Rendered users/show.html.erb within layouts/application (40.0ms)
+Completed 200 OK in 132ms (Views: 91.3ms | ActiveRecord: 15.3ms)
+
+
+Started GET "/users" for ::1 at 2021-01-28 15:39:30 +0200
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ /home/lydia/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:3
+  [1m[36mFriendship Load (3.1ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" WHERE "friendships"."friend_id" = $1[0m  [["friend_id", 12]]
+  ↳ app/models/user.rb:25
+  [1m[36mFriendship Load (3.2ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" WHERE "friendships"."user_id" = $1[0m  [["user_id", 12]]
+  ↳ app/models/user.rb:20
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15
+  Rendered collection of users/_user.html.erb [4 times] (28.4ms)
+  Rendered users/index.html.erb within layouts/application (35.1ms)
+Completed 200 OK in 124ms (Views: 101.8ms | ActiveRecord: 14.0ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2021-01-28 15:39:35 +0200
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"XadlDxNAo225NpCjzOQi8YOzs7y5/U7rsD1v4eyKPcaqutAanYEoWZoV4GB4cFfX33u0YWkEF7KQtIC21993Uw=="}
+  [1m[36mUser Load (4.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ /home/lydia/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /home/lydia/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /home/lydia/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 17ms (ActiveRecord: 6.4ms)
+
+
+Started GET "/" for ::1 at 2021-01-28 15:39:35 +0200
+Processing by PostsController#index as HTML
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2021-01-28 15:39:35 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.8ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (16.0ms)
+Completed 200 OK in 115ms (Views: 112.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2021-01-28 15:39:52 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"t9zpG97MCi1jHxlKruRyHSFiQF4YZArtw2+h6zeajDHDPv1cKJ/2GbnV7tAvbm5w20mB7uzT2xx8Dgq/icmVKQ==", "user"=>{"email"=>"serge@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "serge@gmail.com"], ["LIMIT", 1]]
+  ↳ /home/lydia/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 207ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/" for ::1 at 2021-01-28 15:39:52 +0200
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ /home/lydia/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  ↳ app/views/posts/index.html.erb:13
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN ($1, $2)[0m  [["id", 14], ["id", 11]]
+  ↳ app/views/posts/index.html.erb:13
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = $1 AND "likes"."user_id" = $2 LIMIT $3[0m  [["post_id", 11], ["user_id", 11], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:11
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 11]]
+  ↳ app/views/posts/_post.html.erb:16
+  Rendered collection of comments/_comment.html.erb [0 times] (0.0ms)
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = $1 AND "likes"."user_id" = $2 LIMIT $3[0m  [["post_id", 10], ["user_id", 11], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:11
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_post.html.erb:16
+  Rendered collection of comments/_comment.html.erb [0 times] (0.1ms)
+  Rendered collection of posts/_post.html.erb [2 times] (32.0ms)
+  Rendered posts/index.html.erb within layouts/application (48.6ms)
+Completed 200 OK in 133ms (Views: 122.4ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/users" for ::1 at 2021-01-28 15:39:58 +0200
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (6.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ /home/lydia/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (4.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:3
+  [1m[36mFriendship Load (1.5ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" WHERE "friendships"."friend_id" = $1[0m  [["friend_id", 11]]
+  ↳ app/models/user.rb:25
+  [1m[36mFriendship Load (1.4ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" WHERE "friendships"."user_id" = $1[0m  [["user_id", 11]]
+  ↳ app/models/user.rb:20
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15
+  Rendered collection of users/_user.html.erb [4 times] (31.7ms)
+  Rendered users/index.html.erb within layouts/application (42.9ms)
+Completed 200 OK in 140ms (Views: 115.9ms | ActiveRecord: 18.5ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2021-01-28 15:40:02 +0200
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"nIbv4xhiS0J/Pnnk7IgLcJ60ET5jYGzE3lq/A9AHXRQXeO41djhZFh4/rnI/ih4qkUzoJh6RbF4DjTgnczSVwQ=="}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ /home/lydia/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ /home/lydia/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /home/lydia/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 19ms (ActiveRecord: 2.0ms)
+
+
+Started GET "/" for ::1 at 2021-01-28 15:40:02 +0200
+Processing by PostsController#index as HTML
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2021-01-28 15:40:02 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.7ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 98ms (Views: 94.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2021-01-28 15:40:12 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"AcffrYst4HGnB7K3RjoqfH0s+3wneLpbfhpaxGaKLpjNnsnVM5UbZel9mJZ3F7CzKrdmCyFP3n3c/yFMW/XW8Q==", "user"=>{"email"=>"paradis@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "paradis@gmail.com"], ["LIMIT", 1]]
+  ↳ /home/lydia/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 208ms (ActiveRecord: 1.7ms)
+
+
+Started GET "/" for ::1 at 2021-01-28 15:40:12 +0200
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ /home/lydia/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  ↳ app/views/posts/index.html.erb:13
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN ($1, $2)[0m  [["id", 14], ["id", 11]]
+  ↳ app/views/posts/index.html.erb:13
+  [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = $1 AND "likes"."user_id" = $2 LIMIT $3[0m  [["post_id", 11], ["user_id", 14], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:11
+  [1m[36mComment Load (2.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 11]]
+  ↳ app/views/posts/_post.html.erb:16
+  Rendered collection of comments/_comment.html.erb [0 times] (0.0ms)
+  [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = $1 AND "likes"."user_id" = $2 LIMIT $3[0m  [["post_id", 10], ["user_id", 14], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:11
+  [1m[36mComment Load (1.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_post.html.erb:16
+  Rendered collection of comments/_comment.html.erb [0 times] (0.0ms)
+  Rendered collection of posts/_post.html.erb [2 times] (33.5ms)
+  Rendered posts/index.html.erb within layouts/application (50.0ms)
+Completed 200 OK in 139ms (Views: 125.9ms | ActiveRecord: 6.9ms)
+
+
+Started GET "/users" for ::1 at 2021-01-28 15:40:16 +0200
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ /home/lydia/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:3
+  [1m[36mFriendship Load (2.0ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" WHERE "friendships"."friend_id" = $1[0m  [["friend_id", 14]]
+  ↳ app/models/user.rb:25
+  [1m[36mFriendship Load (0.5ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" WHERE "friendships"."user_id" = $1[0m  [["user_id", 14]]
+  ↳ app/models/user.rb:20
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15
+  Rendered collection of users/_user.html.erb [4 times] (19.0ms)
+  Rendered users/index.html.erb within layouts/application (23.4ms)
+Completed 200 OK in 97ms (Views: 86.5ms | ActiveRecord: 6.2ms)
+
+
+Started GET "/request_friendship/13" for ::1 at 2021-01-28 15:40:23 +0200
+Processing by UsersController#request_friendship as HTML
+  Parameters: {"id"=>"13"}
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ /home/lydia/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:15
+  [1m[35m (2.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:16
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  [1m[36mFriendship Create (2.9ms)[0m  [1m[32mINSERT INTO "friendships" ("user_id", "friend_id", "created_at", "updated_at", "confirmed") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 14], ["friend_id", 13], ["created_at", "2021-01-28 13:40:23.228910"], ["updated_at", "2021-01-28 13:40:23.228910"], ["confirmed", false]]
+  ↳ app/controllers/users_controller.rb:16
+  [1m[35m (37.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:16
+Redirected to http://localhost:3000/
+Completed 302 Found in 73ms (ActiveRecord: 48.7ms)
+
+
+Started GET "/" for ::1 at 2021-01-28 15:40:23 +0200
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ /home/lydia/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  ↳ app/views/posts/index.html.erb:13
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN ($1, $2)[0m  [["id", 14], ["id", 11]]
+  ↳ app/views/posts/index.html.erb:13
+  [1m[36mLike Load (1.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = $1 AND "likes"."user_id" = $2 LIMIT $3[0m  [["post_id", 11], ["user_id", 14], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:11
+  [1m[36mComment Load (2.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 11]]
+  ↳ app/views/posts/_post.html.erb:16
+  Rendered collection of comments/_comment.html.erb [0 times] (0.0ms)
+  [1m[36mLike Load (2.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = $1 AND "likes"."user_id" = $2 LIMIT $3[0m  [["post_id", 10], ["user_id", 14], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:11
+  [1m[36mComment Load (4.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_post.html.erb:16
+  Rendered collection of comments/_comment.html.erb [0 times] (0.0ms)
+  Rendered collection of posts/_post.html.erb [2 times] (29.3ms)
+  Rendered posts/index.html.erb within layouts/application (44.1ms)
+Completed 200 OK in 114ms (Views: 92.3ms | ActiveRecord: 12.3ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2021-01-28 15:40:25 +0200
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"Z7KJ8q018zYN+kX2Tow7yxM3obyB/I/hMuxnwtbX3otW5xc2VaDtQTnRhT6ZvEzW7mQeiYaGN1Pwtu0HGlm2XA=="}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ /home/lydia/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ /home/lydia/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /home/lydia/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 12ms (ActiveRecord: 4.1ms)
+
+
+Started GET "/" for ::1 at 2021-01-28 15:40:25 +0200
+Processing by PostsController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2021-01-28 15:40:25 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (11.6ms)
+Completed 200 OK in 69ms (Views: 67.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2021-01-28 15:40:36 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XVLVVehlBnLH07R4Kpnm1yiVtNpIr5Bvdh9stNh7EN+RzL/r8qRnF4ycEVgxSRm87vqJ1W7u6sanm81wj7lRYw==", "user"=>{"email"=>"Delydia84@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "delydia84@gmail.com"], ["LIMIT", 1]]
+  ↳ /home/lydia/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 207ms (ActiveRecord: 2.8ms)
+
+
+Started GET "/" for ::1 at 2021-01-28 15:40:37 +0200
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ /home/lydia/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  ↳ app/views/posts/index.html.erb:13
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN ($1, $2)[0m  [["id", 14], ["id", 11]]
+  ↳ app/views/posts/index.html.erb:13
+  [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = $1 AND "likes"."user_id" = $2 LIMIT $3[0m  [["post_id", 11], ["user_id", 13], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:11
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 11]]
+  ↳ app/views/posts/_post.html.erb:16
+  Rendered collection of comments/_comment.html.erb [0 times] (0.0ms)
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = $1 AND "likes"."user_id" = $2 LIMIT $3[0m  [["post_id", 10], ["user_id", 13], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:11
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_post.html.erb:16
+  Rendered collection of comments/_comment.html.erb [0 times] (0.0ms)
+  Rendered collection of posts/_post.html.erb [2 times] (19.7ms)
+  Rendered posts/index.html.erb within layouts/application (33.4ms)
+Completed 200 OK in 88ms (Views: 76.9ms | ActiveRecord: 6.5ms)
+
+
+Started GET "/users" for ::1 at 2021-01-28 15:40:38 +0200
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ /home/lydia/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:3
+  [1m[36mFriendship Load (4.7ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" WHERE "friendships"."friend_id" = $1[0m  [["friend_id", 13]]
+  ↳ app/models/user.rb:25
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/models/user.rb:25
+  [1m[36mFriendship Load (2.4ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" WHERE "friendships"."user_id" = $1[0m  [["user_id", 13]]
+  ↳ app/models/user.rb:20
+  [1m[36mUser Load (4.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15
+  Rendered collection of users/_user.html.erb [4 times] (29.4ms)
+  Rendered users/index.html.erb within layouts/application (38.7ms)
+Completed 200 OK in 102ms (Views: 83.1ms | ActiveRecord: 13.6ms)
+
+
+Started GET "/reject_request/14" for ::1 at 2021-01-28 15:40:42 +0200
+Processing by UsersController#reject_request as HTML
+  Parameters: {"id"=>"14"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ /home/lydia/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:27
+  [1m[36mFriendship Load (0.7ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" WHERE "friendships"."friend_id" = $1[0m  [["friend_id", 13]]
+  ↳ app/models/user.rb:36
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/models/user.rb:36
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/models/user.rb:36
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/models/user.rb:36
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:37
+  [1m[36mFriendship Destroy (1.6ms)[0m  [1m[31mDELETE FROM "friendships" WHERE "friendships"."id" = $1[0m  [["id", 15]]
+  ↳ app/models/user.rb:37
+  [1m[35m (9.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:37
+Redirected to http://localhost:3000/
+Completed 302 Found in 43ms (ActiveRecord: 20.8ms)
+
+
+Started GET "/" for ::1 at 2021-01-28 15:40:42 +0200
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ /home/lydia/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (1.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  ↳ app/views/posts/index.html.erb:13
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN ($1, $2)[0m  [["id", 14], ["id", 11]]
+  ↳ app/views/posts/index.html.erb:13
+  [1m[36mLike Load (4.8ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = $1 AND "likes"."user_id" = $2 LIMIT $3[0m  [["post_id", 11], ["user_id", 13], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:11
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 11]]
+  ↳ app/views/posts/_post.html.erb:16
+  Rendered collection of comments/_comment.html.erb [0 times] (0.0ms)
+  [1m[36mLike Load (1.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."post_id" = $1 AND "likes"."user_id" = $2 LIMIT $3[0m  [["post_id", 10], ["user_id", 13], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:11
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 10]]
+  ↳ app/views/posts/_post.html.erb:16
+  Rendered collection of comments/_comment.html.erb [0 times] (0.0ms)
+  Rendered collection of posts/_post.html.erb [2 times] (27.3ms)
+  Rendered posts/index.html.erb within layouts/application (41.2ms)
+Completed 200 OK in 105ms (Views: 89.7ms | ActiveRecord: 11.3ms)
+
+
+Started GET "/users" for ::1 at 2021-01-28 15:40:45 +0200
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ /home/lydia/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:3
+  [1m[36mFriendship Load (0.5ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" WHERE "friendships"."friend_id" = $1[0m  [["friend_id", 13]]
+  ↳ app/models/user.rb:25
+  [1m[36mFriendship Load (0.5ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships" WHERE "friendships"."user_id" = $1[0m  [["user_id", 13]]
+  ↳ app/models/user.rb:20
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15
+  Rendered collection of users/_user.html.erb [4 times] (17.9ms)
+  Rendered users/index.html.erb within layouts/application (24.6ms)
+Completed 200 OK in 110ms (Views: 99.5ms | ActiveRecord: 3.8ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2021-01-28 15:40:51 +0200
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"Iir0iL0ljY06ywmagtGO+PbOJcD5OaVo+YEy2v7zqIZOoJavDy8tiVz0oTQANJyU99JVWtyb9NZ08QHw8t1aHA=="}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ /home/lydia/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ /home/lydia/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /home/lydia/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 11ms (ActiveRecord: 2.1ms)
+
+
+Started GET "/" for ::1 at 2021-01-28 15:40:51 +0200
+Processing by PostsController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2021-01-28 15:40:51 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (4.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (9.6ms)
+Completed 200 OK in 78ms (Views: 75.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-01-28 15:41:09 +0200
+Processing by PostsController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2021-01-28 15:41:09 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.2ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (12.3ms)
+Completed 200 OK in 96ms (Views: 91.9ms | ActiveRecord: 0.0ms)
+
+
