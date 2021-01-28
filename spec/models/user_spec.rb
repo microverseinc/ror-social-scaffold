@@ -16,7 +16,8 @@ RSpec.describe User, type: :model do
     end
 
     it 'should be valid if provided all attributes' do
-      User.new(name: 'joxy', email: 'joxy@gmail.com', password: 'joxy12')
+      user = User.new(name: 'joxy', email: 'joxy@gmail.com', password: 'joxy12')
+      expect(user).to be_valid
     end
 
     it 'should not be valid if email exist' do
