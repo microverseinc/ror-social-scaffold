@@ -157,7 +157,7 @@ form {
     }
 
     input[type="checkbox"] {
-      width: fit-content;
+      width: auto;
     }
   }
 
@@ -295,6 +295,16 @@ form {
 .user-section {
   width: 100%;
   margin-left: 16px;
+
+  .friend_request {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .request {
+    color: #689f38;
+  }
 
   h2 {
     text-transform: capitalize;
