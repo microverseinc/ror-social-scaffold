@@ -15,4 +15,8 @@ module ApplicationHelper
       link_to('Like!', post_likes_path(post_id: post.id), method: :post)
     end
   end
+
+  def pending_friends_link
+    content_tag(:div, (menu_link_to 'Pending friends', pending_friends_path), class: 'menu-item') if user_signed_in?
+  end
 end

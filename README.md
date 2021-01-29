@@ -60,7 +60,7 @@ Open `http://localhost:3000/` in your browser.
 ### Run tests
 
 ```
-    rpsec --format documentation
+    rspec --format documentation
 ```
 
 ### Deployment
@@ -68,6 +68,12 @@ Open `http://localhost:3000/` in your browser.
 TBA
 
 ## Authors
+
+👤 **Delice Lydia**
+  - GitHub: [@githubhandle](https://github.com/DeliceLydia)
+  - Twitter: [@twitterhandle](https://twitter.com/lameck721)
+  - LinkedIn: [LinkedIn](https://twitter.com/IngabireLydia3)
+
 
 TBA
 
@@ -83,7 +89,11 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
+Credits go to the following for providing initial code as a starting point [**Microverse inc**](https://github.com/microverseinc/ror-social-scaffold)
+
 
 ## 📝 License
+
+This project is [MIT](./LICENSE.txt) licensed.
 
 
