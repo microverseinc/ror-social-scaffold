@@ -89,7 +89,8 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-Credits go to the following for providing initial code as a starting point [**Microverse inc**](https://github.com/microverseinc/ror-social-scaffold)
+Credits go to the [**Microverse inc**](https://github.com/microverseinc/ror-social-scaffold) for providing initial code as a starting point of our project.
+
 
 
 
