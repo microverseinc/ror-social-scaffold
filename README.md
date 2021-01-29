@@ -92,8 +92,4 @@ Give a ⭐️ if you like this project!
 Credits go to the following for providing initial code as a starting point [**Microverse inc**](https://github.com/microverseinc/ror-social-scaffold)
 
 
-## 📝 License
-
-This project is [MIT](./LICENSE.txt) licensed.
-
 
