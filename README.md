@@ -1,6 +1,6 @@
 # Scaffold for social media app with Ruby on Rails
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+In this project, I have implemented a social media app That allows users to create an account, creates a post, comment on a post, like a post, send and receive friend requests
 
 ## Built With
 
@@ -24,7 +24,7 @@ Postgres: >=9.5
 
 ### Setup
 
-Instal gems with:
+Install gems with:
 
 ```
 bundle install
@@ -63,8 +63,6 @@ Open `http://localhost:3000/` in your browser.
     rpsec --format documentation
 ```
 
-> Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
-
 ### Deployment
 
 TBA
@@ -85,9 +83,7 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-TBA
 
 ## 📝 License
 
-TBA
 
