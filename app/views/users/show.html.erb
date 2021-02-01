@@ -1,8 +1,7 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
   <% if @user != current_user %>
-  <p><span style="background-color:green; color:white; padding:5px; border-radius:6px"><%= friendship(@user)%></span></p>
-  <% end %>
+  <%= friendship(user) if user != current_user %>
   
   <article class="timeline">
     <h3>Recent posts:</h3>
