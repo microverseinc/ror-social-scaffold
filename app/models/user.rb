@@ -37,6 +37,9 @@ class User < ApplicationRecord
     friendship = friendship_requests.find{|friendship| friendship.requesting_user == user}
     friendship.request_status = true
     friendship.save
+    current_user = friendship.receiving_user
+    other_friendship = current_user.friendships.build(receiving_user: user, request_status: true)
+    other_friendship.save
   end
 
   def reject_friend(user)
