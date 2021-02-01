@@ -20,10 +20,11 @@ RSpec.describe User, type: :model do
 
     it { should have_many(:pending_friends).through(:friendship_requests).source(:receiving_user) }
 
+    # rubocop:disable Layout/LineLength
     it { should have_many(:inverse_friendship_requests).with_foreign_key('requesting_user_id').class_name('Friendship') }
+    # rubocop:enable Layout/LineLength
 
     it { should have_many(:friend_requests).through(:inverse_friendship_requests).source(:requesting_user) }
-
   end
 
   describe '#Friendships' do
@@ -78,6 +79,5 @@ RSpec.describe User, type: :model do
       receiver.reject_friend(sender)
       expect(sender.friend?(receiver)).to be(false)
     end
-
   end
 end

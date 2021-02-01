@@ -1,7 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Friend Requests ", type: :feature do
-
+RSpec.describe 'Friend Requests ', type: :feature do
   before do
     @user = create(:user)
     @user2 = create(:user)

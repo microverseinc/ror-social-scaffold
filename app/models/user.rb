@@ -18,33 +18,34 @@ class User < ApplicationRecord
   has_many :inverse_friendship_requests, foreign_key: 'requesting_user_id', class_name: 'Friendship'
   has_many :friend_requests, through: :inverse_friendship_requests, source: :requesting_user
 
-
   def friends
-    friend_request_array = friendships.map{|friendship| friendship.receiving_user if friendship.request_status}
-    received_friend_request_array = friendship_requests.map{|friendship| friendship.requesting_user if friendship.request_status}
+    friend_request_array = friendships.map { |friendship| friendship.receiving_user if friendship.request_status }
+    received_friend_request_array = friendship_requests.map do |friendship|
+      friendship.requesting_user if friendship.request_status
+    end
     (friend_request_array + received_friend_request_array).compact
   end
 
   def pending_friends
-    friendships.map{|friendship| friendship.receiving_user unless friendship.request_status}.compact
+    friendships.map { |friendship| friendship.receiving_user unless friendship.request_status }.compact
   end
 
   def friend_requests
-    friendship_requests.map{|friendship| friendship.requesting_user unless friendship.request_status}.compact
+    friendship_requests.map { |friendship| friendship.requesting_user unless friendship.request_status }.compact
   end
 
   def confirm_friend(user)
-    friendship = friendship_requests.find{|friendship| friendship.requesting_user == user}
-    friendship.request_status = true
-    friendship.save
-    current_user = friendship.receiving_user
+    friendships = friendship_requests.find { |friendship| friendship.requesting_user == user }
+    friendships.request_status = true
+    friendships.save
+    current_user = friendships.receiving_user
     other_friendship = current_user.friendships.build(receiving_user: user, request_status: true)
     other_friendship.save
   end
 
   def reject_friend(user)
-    friendship = friendship_requests.find{|friendship| friendship.requesting_user == user}
-    friendship.destroy
+    friendships = friendship_requests.find { |friendship| friendship.requesting_user == user }
+    friendships.destroy
   end
 
   def friend?(user)
