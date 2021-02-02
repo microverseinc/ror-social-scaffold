@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Create new posts ", type: :feature do
+RSpec.describe 'Create new posts ', type: :feature do
   before do
     user = create(:user)
     visit new_user_session_path

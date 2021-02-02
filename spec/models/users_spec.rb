@@ -71,6 +71,5 @@ RSpec.describe User, type: :model do
       receiver.reject_friend(sender)
       expect(sender.friend?(receiver)).to be(false)
     end
-
   end
 end

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Sing in & out ", type: :feature do
+RSpec.describe 'Sing in & out ', type: :feature do
   before do
     user = create(:user)
     visit new_user_session_path
@@ -17,5 +17,4 @@ RSpec.describe "Sing in & out ", type: :feature do
     click_link('Sign out')
     expect(page).to have_content 'Sign in'
   end
-
 end

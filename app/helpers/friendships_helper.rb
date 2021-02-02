@@ -1,5 +1,4 @@
 module FriendshipsHelper
-
   def invitation_action_links(user)
     if current_user == user
       content_tag(:span, 'Your profile', class: 'profile-link')
@@ -12,7 +11,7 @@ module FriendshipsHelper
     elsif current_user.pending_friends.include?(user)
       content_tag(:span, 'You already sent an invitation', class: 'profile-link')
     else
-      (link_to 'Send friendship invitation', friendships_path(receiving_user_id: user.id), method: :post, class: 'profile-link')
+      (link_to 'Send invitation', friendships_path(receiving_user_id: user.id), method: :post, class: 'profile-link')
     end
   end
 end
