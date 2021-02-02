@@ -61,15 +61,13 @@ To get this project set up on your local machine, follow these simple steps:
   - LinkedIn: [LinkedIn](https://twitter.com/IngabireLydia3)
 
 
-TBA
-
 ## Show your support
 
 Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-Credits go to the [**Microverse inc**](https://github.com/microverseinc/ror-social-scaffold) for providing initial code as a starting point of our project.
+Credits goes to the [**Microverse inc**](https://github.com/microverseinc/ror-social-scaffold) for providing initial code as a starting point of our project.
 
 
 
