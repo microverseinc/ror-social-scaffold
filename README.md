@@ -1,10 +1,11 @@
-# Scaffold for social media app with Ruby on Rails
+# Stay in touch Application
+
+![screenshot](./ror.png)
 
 ## About the Project
 
 In this project, I have implemented a social media app That allows users to create an account, creates a post, comment on a post, like a post, send and receive friend requests
 
-![screenshot](./ror.png)
 
 The app has the following features:
 
