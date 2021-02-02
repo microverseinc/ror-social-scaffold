@@ -156,9 +156,11 @@ form {
       background-color: $primary-color-light;
     }
 
+    /* stylelint-disable */
     input[type="checkbox"] {
       width: fit-content;
     }
+    /* stylelint-enable */
   }
 
   .actions {
