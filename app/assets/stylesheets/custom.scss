@@ -157,7 +157,7 @@ form {
     }
 
     input[type="checkbox"] {
-      width: fit-content;
+      width: auto;
     }
   }
 
@@ -289,12 +289,40 @@ form {
     font-size: 0.8em;
     margin: 0 0 8px 0;
     color: $primary-color-dark;
+
+    .link {
+      color: #fff;
+      padding: 7px 15px;
+      border-radius: 5px;
+    }
+
+    .invite {
+      background-color: #8bc34a;
+    }
+
+    .accept {
+      background-color: #778a62;
+    }
+
+    .reject {
+      background-color: #f00;
+    }
   }
 }
 
 .user-section {
   width: 100%;
   margin-left: 16px;
+
+  .friend_request {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .request {
+    color: #689f38;
+  }
 
   h2 {
     text-transform: capitalize;
