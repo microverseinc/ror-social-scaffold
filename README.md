@@ -26,7 +26,7 @@ The app has the following features:
 
 ## Live Demo
 
-TBA
+[Heroku-link](https://stay-in-touch-project.herokuapp.com/users/sign_in)
 
 ## Getting Started
 
@@ -51,10 +51,6 @@ To get this project set up on your local machine, follow these simple steps:
 ```
     rspec --format documentation
 ```
-
-### Deployment
-
-TBA
 
 ## Authors
 
