@@ -1,61 +1,50 @@
 # Scaffold for social media app with Ruby on Rails
 
+## About the Project
+
 In this project, I have implemented a social media app That allows users to create an account, creates a post, comment on a post, like a post, send and receive friend requests
+
+![screenshot](./ror.png)
+
+The app has the following features:
+
+- User can create account/Log in
+- A user who is a guest will only visit Signup and Sign in page
+- Logged-in user can see a list of the users on the app
+- Logged-in user can view profiles of all users and their posts
+- Logged-in user can create posts (text only) and get likes / dislikes, and also like posts from friends
+- Logged-in user has a timeline where he/she can see ONLY posts from friends
+- Logged-in user can add comments to posts
+- Logged-in user can send a friendship invitation and also receive invitations from other friends
+- Logged-in user can decide to Accept/Reject friendship invitations
 
 ## Built With
 
 - Ruby v2.7.0
 - Ruby on Rails v5.2.4
+- Rspec
 
 ## Live Demo
 
 TBA
 
-
 ## Getting Started
-
-To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-Ruby: 2.6.3
-Rails: 5.2.3
-Postgres: >=9.5
+To get this project up and running locally, you must already have ruby and necessary gems installed on your computer
 
-### Setup
+To get this project set up on your local machine, follow these simple steps:
 
-Install gems with:
-
-```
-bundle install
-```
-
-Setup database with:
-
-```
-   rails db:create
-   rails db:migrate
-```
-
-### Github Actions
-
-To make sure the linters' checks using Github Actions work properly, you should follow the next steps:
-
-1. On your recently forked repo, enable the GitHub Actions in the Actions tab.
-2. Create the `feature/branch` and push.
-3. Start working on your milestone as usual.
-4. Open a PR from the `feature/branch` when your work is done.
-
-
-### Usage
-
-Start server with:
-
-```
-    rails server
-```
-
-Open `http://localhost:3000/` in your browser.
+1. Open terminal
+2. Clone the repository 
+``` git@github.com:DeliceLydia/ror-social-scaffold.git ```
+3. Cd in the project ``` ror-social-scaffold ```
+4. Run ``` bundle install ```
+5. Create database by running ``` rails db:create ```
+6. Run database migration by running ``` rails db:migrate ```
+7. Start your server ``` rails server ```
+8. Run the app ``` http://localhost:3000/ ```
 
 ### Run tests
 
@@ -76,12 +65,6 @@ TBA
 
 
 TBA
-
-## 🤝 Contributing
-
-Contributions, issues and feature requests are welcome!
-
-Feel free to check the [issues page](issues/).
 
 ## Show your support
 
