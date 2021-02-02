@@ -19,7 +19,7 @@ module UserHelper
       concat ' '
       concat link_to 'Reject', reject_request_path(user), class: 'profile-link reject link'
     elsif !current_user.pending_friends.include?(user) && current_user != user && !current_user.friend?(user)
-      link_to 'Request Friendship', request_friendship_path(user), class: 'profile-link invite link'
+      concat link_to 'Request Friendship', request_friendship_path(user), class: 'profile-link invite link'
     end
   end
 end
