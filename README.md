@@ -1,16 +1,15 @@
 # Scaffold for social media app with Ruby on Rails
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+> This is a Microverse copy of the social media app which we forked and added an Entity Relation Diagram for the database association and mapping. To see the image of the ERD, open the docs folder in the project directory of the ROR-SOCIAL-SCAFFOLD branch.
 
 ## Built With
 
-- Ruby v2.7.0
-- Ruby on Rails v5.2.4
+- Ruby
+- Ruby on Rails
 
 ## Live Demo
 
-TBA
-
+Not yet
 
 ## Getting Started
 
@@ -37,16 +36,6 @@ Setup database with:
    rails db:migrate
 ```
 
-### Github Actions
-
-To make sure the linters' checks using Github Actions work properly, you should follow the next steps:
-
-1. On your recently forked repo, enable the GitHub Actions in the Actions tab.
-2. Create the `feature/branch` and push.
-3. Start working on your milestone as usual.
-4. Open a PR from the `feature/branch` when your work is done.
-
-
 ### Usage
 
 Start server with:
@@ -57,37 +46,25 @@ Start server with:
 
 Open `http://localhost:3000/` in your browser.
 
-### Run tests
+## Contributors
 
-```
-    rpsec --format documentation
-```
+## Elisha Kyakopo
 
-> Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
+- Linkedin: [Elisha Kyakopo](https://www.linkedin.com/in/elisha-kyakopo/)
+  
+- Github: [@elisha2kyakpo1](https://github.com/elisha2kyakpo1)
+- Twitter: [@elisha1k](https://twitter.com/Elisha1k)
 
-### Deployment
+## Henok Mekonnen Mossissa
 
-TBA
+- Linkedin: [Henok Makonen](https://www.linkedin.com/in/henok-mekonnen-2a251613/)
+- Github: [@henatan99](https://github.com/henatan99)
+- Twitter: [@henatan99](https://twitter.com/henatan99)
 
-## Authors
+## Contributions
 
-TBA
+Contributions, issues and requests are welcome
 
-## 🤝 Contributing
+## Show support
 
-Contributions, issues and feature requests are welcome!
-
-Feel free to check the [issues page](issues/).
-
-## Show your support
-
-Give a ⭐️ if you like this project!
-
-## Acknowledgments
-
-TBA
-
-## 📝 License
-
-TBA
-
+Give a star if you like the project
