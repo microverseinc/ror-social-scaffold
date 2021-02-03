@@ -2,7 +2,7 @@
 
 module UsersHelper
     def friendship(user)
-      not_current_user(user)
+      not_current_user(user) if current_user != user
     end
   
     def friend_list(user)

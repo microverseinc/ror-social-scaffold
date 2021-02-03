@@ -3,7 +3,5 @@
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
   </span>
-  <% if user != current_user %>
   <%= friendship(user)%>
-  <% end %>
 </li>
