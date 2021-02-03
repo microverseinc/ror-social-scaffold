@@ -1,93 +1,40 @@
-# Scaffold for social media app with Ruby on Rails
+![](https://img.shields.io/badge/Microverse-blueviolet)
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+# ROR-Social-Scaffold
+
+> This project is a Social-Media-App. In which a user if not SignedIn, can SignIn or SignUp. If User is SignedIn he can create posts and can comment and like/dislike other's posts. He can also send friendship request to other users, and that user can accept or decline the request. A SignedIn user will have Timline page where he can see all the posts posted by him and his friends.
 
 ## Built With
 
-- Ruby v2.7.0
-- Ruby on Rails v5.2.4
+- Ruby
+- Rails
+- Active Record
+- Bootstrap
+- Html
+- SCSS
+- Javascript
+- Rspec
+- Capybara
 
-## Live Demo
+## How to run
 
-TBA
-
+1. Open Terminal.
+2. Write git clone https://github.com/hamayun-cpu/ror-social-scaffold.git
+3. Go to the root directory.
+4. Write yarn install
+5. Write bundle install
+6. Write rails db:create
+7. Write rails db:migrate
+8. Write rails server
 
 ## Getting Started
 
-To get a local copy up and running follow these simple example steps.
-
-### Prerequisites
-
-Ruby: 2.6.3
-Rails: 5.2.3
-Postgres: >=9.5
-
-### Setup
-
-Instal gems with:
-
-```
-bundle install
-```
-
-Setup database with:
-
-```
-   rails db:create
-   rails db:migrate
-```
-
-### Github Actions
-
-To make sure the linters' checks using Github Actions work properly, you should follow the next steps:
-
-1. On your recently forked repo, enable the GitHub Actions in the Actions tab.
-2. Create the `feature/branch` and push.
-3. Start working on your milestone as usual.
-4. Open a PR from the `feature/branch` when your work is done.
-
-
-### Usage
-
-Start server with:
-
-```
-    rails server
-```
-
-Open `http://localhost:3000/` in your browser.
-
-### Run tests
-
-```
-    rpsec --format documentation
-```
-
-> Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
-
-### Deployment
-
-TBA
+The project is public.
 
 ## Authors
 
-TBA
+👤 **Imran Yousaf** 
 
-## 🤝 Contributing
-
-Contributions, issues and feature requests are welcome!
-
-Feel free to check the [issues page](issues/).
-
-## Show your support
-
-Give a ⭐️ if you like this project!
-
-## Acknowledgments
-
-TBA
-
-## 📝 License
-
-TBA
-
+- Github: [@imran5644](https://github.com/imran5644)
+- Twitter: [@imran56444](https://twitter.com/imran56444)
+- Linkedin: [Imran Yousaf](https://www.linkedin.com/in/imran-yousaf5644/)
