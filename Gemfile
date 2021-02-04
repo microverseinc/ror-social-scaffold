@@ -58,8 +58,3 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
-
-<<<<<<< HEAD
-gem 'rubocop', '~>0.81.0'
-=======
->>>>>>> c90c3fc2dc50fd34c3a60dd6cbd74cf23a0cf8ad
