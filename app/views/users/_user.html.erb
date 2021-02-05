@@ -1,9 +1,13 @@
-<li>
-  Name: <%= user.name %>
-  <span class="profile-link">
-    <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-  </span>
-  <span class="friend-request">
-    <%= link_to 'Fried Request',  user_path(user), class: 'profile-link' %>
-  </span>
-</li>
+
+<ul>
+<% @users.each do |user| %>
+    <% if current_user.friend_requests.pluck(:friend_id).include? user.id %>
+      <li><%= link_to user.name, user_path(user) %> 
+          | Pending Request</li> 
+    <% else %>
+      <li><%= link_to user.name, user_path(user) %> |
+      <%= link_to "Add Friend", friendships_path(friend_id: user.id), method: :post %>
+      </li>   
+    <% end %>
+<% end %>
+</ul>

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :friendships do 
     member do 
       get 'send_request'
-      get 'pending_frinds'      
+      get 'pending_friends'      
     end 
   end 
   resources :posts, only: [:index, :create] do

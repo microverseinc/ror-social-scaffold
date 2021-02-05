@@ -10,18 +10,8 @@ class FriendshipsController < ApplicationController
 
   # accepting friend request
   def create
-    @user = User.find(current_user)
-    friend = User.find(params[:id])
-    @friend_request = current_user.friend_requests.new(friend_id: friend)
-
-    return unless @friend_request.save
-
-    redirect_to user_path(current_user)
-  end
-
-  def send_request
     @friendship = set_friendship
-    if @friendship.friend_requests.include?(friend_id)
+    if @friendship.friendships.include?(friend_id)
       redirect_to @friendship, alert: 'Request was already sent'
     else
       @friendship.friend_requests << friend
@@ -54,11 +44,11 @@ class FriendshipsController < ApplicationController
   private
 
   def set_friendship
-    @friendship = Friendship.find(params[:id])
+    @friendship = Friendship.find(params[:friend_id], params[:id])
   end
 
   def set_friend_request
-    @friend_request = Friend.find_by_user_id_and_friend_id(params[:friend_id], params[:id])
+    @friend_request = Friendship.find_by_user_id_and_friend_id(params[:friend_id], params[:id])
   end
 
   # def friendship_params
