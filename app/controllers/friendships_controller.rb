@@ -1,4 +1,9 @@
 class FriendshipsController < ApplicationController
+  def index
+    @incoming = current_user.incoming_friend_requests
+    @outgoing = current_user.friend_requests
+  end
+
   def new
     @friendship = Friendship.new
   end
