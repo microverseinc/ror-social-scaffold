@@ -1,53 +1,30 @@
 class FriendshipsController < ApplicationController
-    def new
-        @friendship = Friendship.new
+    # before_action :set_friendship
+
+    # def new
+    #     @friendship = Friendship.new
+    # end 
+    
+    def create(user_id)
+      # @friendship = Friendship.new(friendship_params)
+      @friendship = current_user.friendships.build(friend_id: user_id)
+      
+      if @friendship.save
+        redirect_to root_path,
+                    notice: 'Friend request sent succussfully!'
+      else
+        render 'users/index'
+      end
     end
 
-    def create
-        @friendship = current_user.friendships.build(event_params)    
-    end
-
-    def send_request
-        # @friendship = Friendship.find(params[:id])
-        if @friendship.friend_requests.include?(friend_id)
-          redirect_to @friendship, alert: 'Request was already sent'
-        else
-          @friendship.friend_requests << friend
-          friend.pending_friends << current_user
-          redirect_to @friendship, notice: 'Friend request sent successfuly!'
-        end
-    end
-
-    def confirm_request
-        # @friendship = Friendship.find(params[:id])        
-          @friendship.confirm_friends << friend
-          redirect_to @friendship, notice: 'Friend request sent successfuly!'
-        end
-    end   
-
-    def destroy
-        friend_requester = User.find(params[:friend_id])
-        friend_request = friend_requester.friendships.find(params[:id])
-        friendship = current_user.friendships.find_by_friend_id(friend_requester.id)
-        if friendship.nil?
-          friend_request.destroy
-          flash[:notice] = "Removed friend request."
-        else
-          friendship.destroy
-          friend_request.destroy
-          flash[:notice] = "Removed friendship."
-        end
-        redirect_to current_user
+    def update
+      
     end 
-
+  
     private
 
-    def set_friendship
-        @friendship = Friendship.find(params[:id])
-    end
-
-    def event_params
-        params.require(:friendship).permit(:user_id, :friend_id, :confirmed)      
+    def friendship_params
+        params.require(:friendship).permit(:user_id, :friend_id)      
     end
 
 end 

@@ -13,13 +13,11 @@ class User < ApplicationRecord
   has_many :friendships
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
   has_many :friends, through: :friendships, foreign_key: 'friend_id'
-  has_many :friend_requests, through: :friendships, foreign_key: 'friend_id', source: 'friend'
-  has_many :pending_friends, through: :friendships, foreign_key: 'friend_id', source: 'user' 
   
   def friends
     friends_array = friendships.map{ |friendship| friendship.friend if friendship.confirmed }
-    friends_array + inverse_friendships.map{ |friendship| friendship.user if friendship.confirmed }
-    friends_array.compact
+    inverse_friends_array = inverse_friendships.map{ |friendship| friendship.user if friendship.confirmed }
+    (friends_array + inverse_friends_array).compact
   end
 
   def pending_friends
@@ -33,12 +31,16 @@ class User < ApplicationRecord
 
   def confirm_friend(user)
     friendship = inverse_friendships.find{|friendship| friendship.user == user}
-    friendship.confirmed = true
-    friendship.save
+    friendship.confirmed = true    
+    friendship.save    
   end
 
   def friend?(user)
     friends.include?(user)
   end
+
+  def create_friendship(user_id)
+    friendship = friendships.build(friend_id: user_id)
+  end 
 
 end

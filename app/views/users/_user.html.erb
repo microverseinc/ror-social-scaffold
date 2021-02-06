@@ -4,6 +4,6 @@
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
   </span>
   <span class="friend-request">
-    <%= link_to 'Fried Request',  user_path(user), class: 'profile-link' %>
+    <%= link_to 'Fried Request', create_friendship_user_path(user), class: 'friend-request-link' %>
   </span>
 </li>
