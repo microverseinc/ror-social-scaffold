@@ -9,14 +9,16 @@
   <h2> <%= link_to 'Send Friend Request',  create_friendship_user_path(@user) %> </h2>
 </section>
 
-<h2> <%= current_user.name + ' ' + 'Friends' %>
-<section class = "friends-section"
-<ul class = "friends-list">
-<% @friends.each do |friend| %>
-  <li> <%= friend.name %> <li>
-<% end %>
-</ul>
-</section>
+<div class = "content">
+  <h2> <%= current_user.name + ' ' + 'Friends' %>
+  <section class = "friends-section"
+  <ul class = "friends-list">
+  <% @friends.each do |friend| %>
+    <li> <%= friend.name %> <li>
+  <% end %>
+  </ul>
+  </section>
+</div>
 
 <h2> <%= current_user.name + ' ' + 'Pending Friends' %>
 <section class = "friends-section"
