@@ -8,7 +8,7 @@
   <% if current_user.friend?(user) %>
     You are friends | <%= link_to 'Delete', delete_friends_user_path(user) %>
   <% elsif current_user.friend_requests.include?(user) %>
-    Incoming Request | <%= link_to 'Accept', confirm_friends_user_path(user) %> | <%= link_to 'Ignore' %>
+    Incoming Request | <%= link_to 'Accept', confirm_friends_user_path(user) %> | <%= link_to 'Ignore', delete_friends_user_path(user)%>
   <% elsif current_user.pending_friends.include?(user) %>
     Pending request    
   <% else %>

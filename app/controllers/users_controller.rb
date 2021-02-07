@@ -37,4 +37,5 @@ class UsersController < ApplicationController
     current_user.confirm_friend(@user)
     redirect_to root_path, notice: 'You successfully accepts friend!'
   end
+
 end
