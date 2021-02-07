@@ -38,8 +38,13 @@ class User < ApplicationRecord
     friends.include?(user)
   end
 
-  def create_friendship(user_id)
-    friendship = friendships.build(friend_id: user_id)
-  end 
-
+  def create_friendship(user_id, user_friendid)    
+    friendship = friendships.build(friend_id: user_id, userid_friendid: user_friendid)
+    friendship.save if friendship.valid?
+  end
+  
+  def delete_friend(user_friendid)
+    friendship = friendships.find_by_userid_friendid(user_friendid)
+    friendship.delete if friendship
+  end
 end

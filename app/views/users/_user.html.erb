@@ -1,9 +1,19 @@
 <li>
-  Name: <%= user.name %>
+  <% unless user == current_user %>
+  Name: <%= user.name %> |
+  <span class="profile-link"> 
+    <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %> |
+  </span> 
   <span class="profile-link">
-    <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-  </span>
-  <span class="friend-request">
-    <%= link_to 'Fried Request', create_friendship_user_path(user), class: 'friend-request-link' %>
-  </span>
+  <% if current_user.friend?(user) %>
+    You are friends | <%= link_to 'Delete', delete_friend_user_path(user) %>
+  <% elsif current_user.friend_requests.include?(user) %>
+    Incoming Request | <%= link_to 'Accept' %> | <%= link_to 'Ignore' %>
+  <% elsif current_user.pending_friends.include?(user) %>
+    Pending request    
+  <% else %>
+    <%= link_to 'Friend Request', create_friendship_user_path(user), class: 'profile-link' %>
+  <% end %>
+  </span>  
+  <% end %>
 </li>
