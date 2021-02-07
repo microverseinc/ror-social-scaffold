@@ -1,39 +1,22 @@
 <section class="user-section">
-  <h2><%= "Name: #{@user.name}" %></h2>
+  <h2><%= "Name: #{@user.name}" %> | 
+  <small> 
+    <% if current_user.friend?(@user) %>
+      You are friends | <%= link_to 'Delete', delete_friends_user_path(@user) %>
+    <% elsif current_user.friend_requests.include?(@user) %>
+      Incoming Request | <%= link_to 'Accept', confirm_friends_user_path(@user) %> | <%= link_to 'Ignore' %>
+    <% elsif current_user.pending_friends.include?(@user) %>
+      Pending request    
+    <% else %>
+      <%= link_to 'Friend Request', create_friendship_user_path(@user), class: 'profile-link' %>
+    <% end %>
+  </small>
+  </h2>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
       <%= render @posts %>
     </ul>
-  </article>
-  <h2> <%= link_to 'Send Friend Request',  create_friendship_user_path(@user) %> </h2>
+  </article>  
 </section>
 
-<div class = "content">
-  <h2> <%= current_user.name + ' ' + 'Friends' %>
-  <section class = "friends-section"
-  <ul class = "friends-list">
-  <% @friends.each do |friend| %>
-    <li> <%= friend.name %> <li>
-  <% end %>
-  </ul>
-  </section>
-</div>
-
-<h2> <%= current_user.name + ' ' + 'Pending Friends' %>
-<section class = "friends-section"
-<ul class = "friends-list">
-<% @pending_friends.each do |friend| %>
-  <li> <%= friend.name %> </li>
-<% end %>
-</ul>
-</section>
-
-<h2> <%= current_user.name + ' ' + 'Friend Requests' %>
-<section class = "friends-section"
-<ul class = "friends-list">
-<% @friend_requests.each do |friend| %>
-  <li> <%= friend.name %> </li>
-<% end %>
-</ul>
-</section>

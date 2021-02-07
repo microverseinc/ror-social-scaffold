@@ -48,6 +48,6 @@ class User < ApplicationRecord
     if !friendship 
       friendship = inverse_friendships.find_by_userid_friendid(user_friendid)
     end 
-    friendship.delete 
+    friendship.destroy 
   end
 end
