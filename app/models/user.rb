@@ -45,6 +45,9 @@ class User < ApplicationRecord
   
   def delete_friend(user_friendid)
     friendship = friendships.find_by_userid_friendid(user_friendid)
-    friendship.delete if friendship
+    if !friendship 
+      friendship = inverse_friendships.find_by_userid_friendid(user_friendid)
+    end 
+    friendship.delete 
   end
 end

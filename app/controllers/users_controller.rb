@@ -24,11 +24,17 @@ class UsersController < ApplicationController
     end 
   end
 
-  def delete_friend
+  def delete_friends
     @user = User.find(params[:id])
     user_friendid = current_user.id < @user.id ? current_user.id.to_s + "-" + @user.id.to_s : @user.id.to_s + "-" + current_user.id.to_s
     # current_user.delete_friend(user_friendid)
-    friendship = current_user.friendships.find_by_userid_friendid(user_friendid)
-    friendship.delete    
+    current_user.delete_friend(user_friendid) 
+    redirect_to root_path, notice: 'You successfully deleted friend!'   
+  end
+
+  def confirm_friends
+    @user = User.find(params[:id])
+    current_user.confirm_friend(@user)
+    redirect_to root_path, notice: 'You successfully accepts friend!'
   end
 end

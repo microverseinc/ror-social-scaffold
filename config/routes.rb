@@ -7,10 +7,12 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show] do 
     member do 
       get 'create_friendship'
+      get 'delete_friends'
+      get 'confirm_friends'
     end 
   end 
     
-  resources :friendships, only: [:create]
+  resources :friendships, only: [:create, :destroy]
   resources :posts, only: [:index, :create] do
     resources :comments, only: [:create]
     resources :likes, only: [:create, :destroy]    
