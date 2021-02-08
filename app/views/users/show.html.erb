@@ -1,9 +1,25 @@
 <section class="user-section">
-  <h2><%= "Name: #{@user.name}" %></h2>
+  <h2><%= "Name: #{@user.name}" %> | 
+  <small> 
+    <% if current_user.friend?(@user) %>
+      You are friends | <%= link_to 'Delete', delete_friends_user_path(@user), class: 'delete' %>
+    <% elsif current_user.friend_requests.include?(@user) %>
+      Incoming Request | <%= link_to 'Accept', confirm_friends_user_path(@user), class: 'request' %> | <%= link_to 'Ignore', class: 'request' %>
+    <% elsif current_user.pending_friends.include?(@user) %>
+      Pending request |
+      <%= link_to 'Cancel', delete_friends_user_path(@user), class: 'delete' %>    
+    <% else %>
+      <% if !current_user %>
+        <%= link_to 'Add Friend', create_friendship_user_path(@user), class: 'request' %> 
+      <% end %>
+    <% end %>
+  </small>
+  </h2>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
       <%= render @posts %>
     </ul>
-  </article>
+  </article>  
 </section>
+

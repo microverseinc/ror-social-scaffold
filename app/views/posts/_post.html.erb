@@ -1,11 +1,16 @@
 <li class="post">
+<% if post.user == current_user || current_user.friend?(post.user) %>
   <div>
     <div class='post-attribution' >
+    
+    <% if !post.user.nil? %>
       <%= link_to post.user.name, user_path(post.user), class: 'post-author' %>
+    <% end %>
     </div>
     <div class='post-liking'>
       <span class='post-date'> <%= post.created_at.strftime("%Y/%m/%d") %> </span>
       <%= like_or_dislike_btn(post) %>
+      <%= post.likes.count %> 
     </div>
   </div>
   <p class="post-content">
@@ -20,4 +25,5 @@
       <%= form.submit 'Comment', class: 'btn btn-secondary' %>
     <% end %>
   </div>
+<% end %>
 </li>
