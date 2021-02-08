@@ -2,13 +2,14 @@
   <h2><%= "Name: #{@user.name}" %> | 
   <small> 
     <% if current_user.friend?(@user) %>
-      You are friends | <%= link_to 'Delete', delete_friends_user_path(@user) %>
+      You are friends | <%= link_to 'Delete', delete_friends_user_path(@user), class: 'delete' %>
     <% elsif current_user.friend_requests.include?(@user) %>
-      Incoming Request | <%= link_to 'Accept', confirm_friends_user_path(@user) %> | <%= link_to 'Ignore' %>
+      Incoming Request | <%= link_to 'Accept', confirm_friends_user_path(@user), class: 'request' %> | <%= link_to 'Ignore', class: 'request' %>
     <% elsif current_user.pending_friends.include?(@user) %>
-      Pending request    
+      Pending request |
+      <%= link_to 'Cancel', delete_friends_user_path(@user), class: 'delete' %>    
     <% else %>
-      <%= link_to 'Friend Request', create_friendship_user_path(@user), class: 'profile-link' %>
+      <%= link_to 'Add Friend', create_friendship_user_path(@user), class: 'request' %>
     <% end %>
   </small>
   </h2>
