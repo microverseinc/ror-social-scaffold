@@ -13,41 +13,39 @@ class User < ApplicationRecord
   has_many :friendships
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
   has_many :friends, through: :friendships, foreign_key: 'friend_id'
-  
+
   def friends
-    friends_array = friendships.map{ |friendship| friendship.friend if friendship.confirmed }
-    inverse_friends_array = inverse_friendships.map{ |friendship| friendship.user if friendship.confirmed }
+    friends_array = friendships.map { |friendship| friendship.friend if friendship.confirmed }
+    inverse_friends_array = inverse_friendships.map { |friendship| friendship.user if friendship.confirmed }
     (friends_array + inverse_friends_array).compact
   end
 
   def pending_friends
-    friendships.map { |friendship| friendship.friend if !friendship.confirmed }.compact
+    friendships.map { |friendship| friendship.friend unless friendship.confirmed }.compact
   end
 
   def friend_requests
-    inverse_friendships.map { |friendship| friendship.user if !friendship.confirmed }.compact
+    inverse_friendships.map { |friendship| friendship.user unless friendship.confirmed }.compact
   end
 
   def confirm_friend(user)
-    friendship = inverse_friendships.find{|friendship| friendship.user == user}
-    friendship.confirmed = true    
-    friendship.save    
+    inverse_friendships.find { |friendship| friendship.user == user }
+    friendsship.confirmed = true
+    friendship.save
   end
 
   def friend?(user)
     friends.include?(user)
   end
 
-  def create_friendship(user_id, user_friendid)    
+  def create_friendship(user_id, user_friendid)
     friendship = friendships.build(friend_id: user_id, userid_friendid: user_friendid)
     friendship.save if friendship.valid?
   end
-  
+
   def delete_friend(user_friendid)
     friendship = friendships.find_by_userid_friendid(user_friendid)
-    if !friendship 
-      friendship = inverse_friendships.find_by_userid_friendid(user_friendid)
-    end 
-    friendship.destroy 
+    friendship ||= inverse_friendships.find_by_userid_friendid(user_friendid)
+    friendship.destroy
   end
 end
