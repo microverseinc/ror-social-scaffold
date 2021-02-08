@@ -9,7 +9,9 @@
       Pending request |
       <%= link_to 'Cancel', delete_friends_user_path(@user), class: 'delete' %>    
     <% else %>
-      <%= link_to 'Add Friend', create_friendship_user_path(@user), class: 'request' %>
+      <% if !current_user %>
+        <%= link_to 'Add Friend', create_friendship_user_path(@user), class: 'request' %> 
+      <% end %>
     <% end %>
   </small>
   </h2>

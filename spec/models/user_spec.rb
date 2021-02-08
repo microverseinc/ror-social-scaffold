@@ -35,6 +35,4 @@ describe User, type: :model do
     it { should have_many(:posts).class_name('Post') }
     it { should have_many(:friends).class_name('Friendship') }
   end
-
-
 end
