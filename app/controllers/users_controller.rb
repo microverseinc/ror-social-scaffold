@@ -11,25 +11,35 @@ class UsersController < ApplicationController
     @friend_requests = @user.friend_requests
     @pending_friends = @user.pending_friends
     @friends = @user.friends
-  end  
+  end
 
   def create_friendship
     @user = User.find(params[:id])
-    user_friendid = current_user.id < @user.id ? current_user.id.to_s + "-" + @user.id.to_s : @user.id.to_s + "-" + current_user.id.to_s
+
+    user_friendid = current_user.id.to_s + '-' + @user.id.to_s
+    if current_user.id < @user.id
+    else
+      user_friendid = @user.id.to_s + '-' + current_user.id.to_s
+    end
     friendship = current_user.create_friendship(@user.id, user_friendid)
+
     if friendship
       redirect_to root_path, notice: 'You successfully sent friend request!'
-    else 
+    else
       redirect_to root_path, notice: 'Invalid Request!'
-    end 
+    end
   end
 
   def delete_friends
     @user = User.find(params[:id])
-    user_friendid = current_user.id < @user.id ? current_user.id.to_s + "-" + @user.id.to_s : @user.id.to_s + "-" + current_user.id.to_s
-    # current_user.delete_friend(user_friendid)
-    current_user.delete_friend(user_friendid) 
-    redirect_to root_path, notice: 'You successfully deleted friend!'   
+
+    user_friendid = current_user.id.to_s + '-' + @user.id.to_s
+    if current_user.id < @user.id
+    else
+      user_friendid = @user.id.to_s + '-' + current_user.id.to_s
+    end
+    current_user.delete_friend(user_friendid)
+    redirect_to root_path, notice: 'You successfully deleted friend!'
   end
 
   def confirm_friends
@@ -37,5 +47,4 @@ class UsersController < ApplicationController
     current_user.confirm_friend(@user)
     redirect_to root_path, notice: 'You successfully accepts friend!'
   end
-
 end
