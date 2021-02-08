@@ -89,6 +89,23 @@ a {
   background-color: #d4f6c6;
 }
 
+.delete {
+  background-color: #f00;
+}
+
+.request,
+.profile {
+  background-color: #1e40af !important;
+}
+
+.request,
+.delete,
+.profile {
+  padding: 5px 8px;
+  color: #fff;
+  border-radius: 3px;
+}
+
 .alert {
   background-color: #f6cfc6;
 }
