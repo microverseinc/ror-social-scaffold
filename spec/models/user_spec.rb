@@ -33,9 +33,4 @@ describe User, type: :model do
       expect(user.valid_password?('password123')).to be_truthy
     end
   end
-
-  context 'associations' do
-    # it { should have_many(:posts).class_name('Post') }
-    # it { should have_many(:friends).class_name('Friendship') }
-  end
 end

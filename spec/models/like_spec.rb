@@ -15,9 +15,4 @@ RSpec.describe Like do
         expect(subject).to be_valid
       end
     end  
-    
-    # it { is_expected.to belong_to(:user) }
-    # it { is_expected.to belong_to(:post) }
-    
-
-  end
+end

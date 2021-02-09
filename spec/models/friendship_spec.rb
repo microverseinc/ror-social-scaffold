@@ -26,8 +26,21 @@ describe Friendship, type: :model do
         expect(friendship2).to_not be_valid
     end
 
-    # context 'associations' do
-    #     it { is_expected.to belong_to(:user) }
-    #     it { is_expected.to belong_to(:friend) }
-    # end
+    context 'associations' do
+        it 'takes the user attribute as user' do
+            friendship = Friendship.new
+            friendship.user = user1
+            friendship.friend = user2
+            friendship.userid_friendid = '1-2'
+            expect(user1.id).to eql(friendship.user_id)
+        end 
+
+        it 'takes the friend attribute as friend' do
+            friendship = Friendship.new
+            friendship.user = user1
+            friendship.friend = user2
+            friendship.userid_friendid = '1-2'
+            expect(user2.id).to eql(friendship.friend_id)
+        end 
+    end
 end

@@ -27,9 +27,7 @@ RSpec.describe Comment do
       end
     end
   
-    describe 'Associations', type: :model do
-      # it { is_expected.to belong_to(:user) }
-      # it { is_expected.to belong_to(:post) }
+    describe 'Associations', type: :model do      
 
       it 'returns the post which the comment belongs to' do
         expect(subject.post).to eql(post)
@@ -37,8 +35,6 @@ RSpec.describe Comment do
       it 'returns the user which the comment belongs to' do
         expect(subject.post.user).to eql(user)
       end
-    end
-
-  
+    end  
   end
   
