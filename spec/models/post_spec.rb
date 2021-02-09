@@ -1,9 +1,7 @@
-require './rails_helper'
-
 RSpec.describe Post do
   let(:user) { User.create(name: 'elisha', email: 'elisha@gmail.com', encrypted_password: 'elishapassword') }
 
-  context 'An post is created by a user' do
+  context 'A post is created by a user' do
     it 'returns false when post does not have user_id' do
       post = Post.new
 
@@ -33,5 +31,4 @@ RSpec.describe Post do
       expect(post.valid?).to be true
     end
   end
-  
 end

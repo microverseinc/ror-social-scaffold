@@ -16,11 +16,11 @@ class UsersController < ApplicationController
   def create_friendship
     @user = User.find(params[:id])
 
-    user_friendid = current_user.id.to_s + '-' + @user.id.to_s
-    if current_user.id < @user.id
-    else
-      user_friendid = @user.id.to_s + '-' + current_user.id.to_s
-    end
+    user_friendid = if current_user.id < @user.id
+                      "#{current_user.id}-#{@user.id}"
+                    else
+                      "#{@user.id}-#{current_user.id}"
+                    end
     friendship = current_user.create_friendship(@user.id, user_friendid)
 
     if friendship
@@ -33,11 +33,11 @@ class UsersController < ApplicationController
   def delete_friends
     @user = User.find(params[:id])
 
-    user_friendid = current_user.id.to_s + '-' + @user.id.to_s
-    if current_user.id < @user.id
-    else
-      user_friendid = @user.id.to_s + '-' + current_user.id.to_s
-    end
+    user_friendid = if current_user.id < @user.id
+                      "#{current_user.id}-#{@user.id}"
+                    else
+                      "#{@user.id}-#{current_user.id}"
+                    end
     current_user.delete_friend(user_friendid)
     redirect_to root_path, notice: 'You successfully deleted friend!'
   end
