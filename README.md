@@ -9,7 +9,7 @@
 
 ## Live Demo
 
-Not yet
+https://github.com/henatan99/ror-social-scaffold 
 
 ## Getting Started
 
