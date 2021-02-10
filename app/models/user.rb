@@ -42,4 +42,8 @@ class User < ApplicationRecord
   def friend_request_sent?(user)
     Friendship.where(requester: self, addressee: user).exists?
   end
+
+  def friend_request_pending?(user)
+    Friendship.where(requester: self, addressee: user, status: :pending).exists?
+  end
 end
