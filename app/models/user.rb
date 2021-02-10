@@ -34,4 +34,8 @@ class User < ApplicationRecord
     friends += passive_friendships.map { |f| f.requester if f.accepted? }
     friends.compact
   end
+
+  def friend?(user)
+    friend_lists.include?(user)
+  end
 end
