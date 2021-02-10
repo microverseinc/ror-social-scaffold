@@ -9,4 +9,23 @@ class User < ApplicationRecord
   has_many :posts
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+
+  has_many :active_friendships, class_name: 'Friendship', foreign_key: :requester_id, dependent: :destroy
+  has_many :requests, through: :active_friendships, source: :addressee
+
+  has_many :passive_friendships, class_name: 'Friendship', foreign_key: :addressee_id, dependent: :destroy
+  has_many :addressees, through: :passive_friendships, source: :requester
+
+  def send_friend_request_to(user)
+    active_friendships.create(addressee_id: user.id)
+  end
+
+  def accept_friend_request_of(user)
+    friend_request = passive_friendships.find_by(requester_id: user.id)
+    friend_request.accepted!
+  end
+
+  def delete_friend_request_of(user)
+    passive_friendships.find_by(requester_id: user.id).destroy
+  end
 end
