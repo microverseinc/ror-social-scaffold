@@ -2,14 +2,6 @@
   Name: <%= user.name %>
   <span class="profile-link">
     <%= link_to 'See Profile', user_path(user), class: 'profile-link' %>
-    <% unless current_user == user %>
-      <% if current_user.friend_request_pending?(user) %>
-        <button type="button">Cancel request</button>
-      <% elsif current_user.friend?(user) %>
-        <button type="button">Remove friend</button>
-      <% else %>
-        <button type="button">Invite to friendship</button>
-      <% end %>
-    <% end %>
+    <%= render "user_actionable", user: user %>
   </span>
 </li>

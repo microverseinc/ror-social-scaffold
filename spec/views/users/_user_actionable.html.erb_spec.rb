@@ -1,20 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe 'users/user' do
-  it 'displays all the users' do
-    user = create(:user)
-    current_user = create(:user)
-
-    render partial: 'users/user', locals: { user: user, current_user: current_user }
-
-    expect(rendered).to have_text(user.name)
-  end
-
+RSpec.describe 'users/user_actionable' do
   it 'displays the invite button if user has not sent friend request' do
     user = create(:user)
     current_user = create(:user)
 
-    render partial: 'users/user', locals: { user: user, current_user: current_user }
+    render partial: 'users/user_actionable', locals: { user: user, current_user: current_user }
 
     expect(rendered).to have_button('Invite', count: 1)
     expect(rendered).not_to have_button('Cancel', count: 1)
@@ -25,7 +16,7 @@ RSpec.describe 'users/user' do
     current_user = create(:user)
     current_user.send_friend_request_to(user)
 
-    render partial: 'users/user', locals: { user: user, current_user: current_user }
+    render partial: 'users/user_actionable', locals: { user: user, current_user: current_user }
 
     expect(rendered).to have_button('Cancel', count: 1)
     expect(rendered).not_to have_button('Invite', count: 1)
@@ -37,7 +28,7 @@ RSpec.describe 'users/user' do
     current_user.send_friend_request_to(user)
     user.accept_friend_request_of(current_user)
 
-    render partial: 'users/user', locals: { user: user, current_user: current_user }
+    render partial: 'users/user_actionable', locals: { user: user, current_user: current_user }
 
     expect(rendered).not_to have_button('Cancel', count: 1)
     expect(rendered).not_to have_button('Invite', count: 1)
