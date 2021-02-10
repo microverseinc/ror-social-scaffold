@@ -21,5 +21,4 @@ RSpec.describe Friendship, type: :model do
     new_friendship = user.sent_requests.build(user: user, friend: friend)
     expect(new_friendship.valid?).to be true
   end
-
 end
