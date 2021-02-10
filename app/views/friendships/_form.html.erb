@@ -1,0 +1,32 @@
+<%= form_with(model: friendship, local: true) do |form| %>
+  <% if friendship.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(friendship.errors.count, "error") %> prohibited this friendship from being saved:</h2>
+
+      <ul>
+      <% friendship.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :sender_id_id %>
+    <%= form.text_field :sender_id_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :receiver_id_id %>
+    <%= form.text_field :receiver_id_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.check_box :status %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
