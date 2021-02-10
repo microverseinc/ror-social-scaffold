@@ -11,4 +11,17 @@ RSpec.describe 'Friendships', type: :request do
       expect(another_user.addressees.count).to eq(1)
     end
   end
+
+  describe '#destroy' do
+    it 'should delete the friend request' do
+      user = create(:user)
+      another_user = create(:user)
+      user.send_friend_request_to(another_user)
+      another_user.accept_friend_request_of(user)
+      sign_in(user)
+      delete user_friendships_path(another_user)
+
+      expect(user.requests.count).to be_zero
+    end
+  end
 end

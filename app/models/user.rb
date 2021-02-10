@@ -26,7 +26,11 @@ class User < ApplicationRecord
   end
 
   def delete_friend_request_of(user)
-    passive_friendships.find_by(requester_id: user.id).destroy
+    #passive_friendships.find_by(requester_id: user.id).destroy
+    friendship = Friendship.find_by(requester: user, addressee: self) ||
+                 Friendship.find_by(addressee: user, requester: self)
+
+    friendship.destroy
   end
 
   def friend_lists
