@@ -2,7 +2,8 @@
   "name": "ror_social_scaffold",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "5.2.1"
+    "@rails/webpacker": "5.2.1",
+    "webpack": "^4.0.0"
   },
   "devDependencies": {
     "stylelint": "^13.3.3",
