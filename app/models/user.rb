@@ -47,7 +47,15 @@ class User < ApplicationRecord
     Friendship.where(requester: self, addressee: user).exists?
   end
 
-  def friend_request_pending?(user)
+  def friend_request_pending_from?(user)
+    Friendship.where(requester: user, addressee: self, status: :pending).exists?
+  end
+
+  def friend_request_pending_to?(user)
     Friendship.where(requester: self, addressee: user, status: :pending).exists?
+  end
+
+  def no_relation?(user)
+    !friend?(user) && !friend_request_pending_from?(user) && !friend_request_pending_to?(user)
   end
 end

@@ -1,9 +1,16 @@
-<% unless current_user == user %>
-  <% if current_user.friend_request_pending?(user) %>
-    <button type="button">Cancel request</button>
-  <% elsif current_user.friend?(user) %>
-    <button type="button">Remove friend</button>
-  <% else %>
-    <button type="button">Invite to friendship</button>
-  <% end %>
+<% if current_user.friend_request_pending_from?(user) %>
+  <button type="button">Accept request</button>
+  <button type="button">Reject request</button>
+<% end %>
+
+<% if current_user.friend_request_pending_to?(user) %>
+  <button type="button">Cancel request</button>
+<% end %>
+
+<% if current_user.friend?(user) %>
+  <button type="button">Remove friend</button>
+<% end %>
+
+<% if current_user.no_relation?(user) && current_user != user %>
+  <button type="button">Invite to friendship</button>
 <% end %>
