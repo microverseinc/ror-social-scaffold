@@ -18,13 +18,23 @@ RSpec.describe User, type: :model do
   end
 
   describe '#send_friend_request_to' do
-    it 'sends the request to the other user as pending status' do
-      user = create(:user)
-      another_user = create(:user)
-      user.send_friend_request_to(another_user)
+    context 'when it is the first request' do
+      it 'sends the request to the other user as pending status' do
+        user = create(:user)
+        another_user = create(:user)
+        user.send_friend_request_to(another_user)
 
-      expect(user.requests.map(&:id)).to match_array([another_user.id])
-      expect(user.active_friendships.first.status).to eq('pending')
+        expect(user.requests.map(&:id)).to match_array([another_user.id])
+        expect(user.active_friendships.first.status).to eq('pending')
+      end
+
+      it 'raises an error if the user tries to send multiple requests' do
+        user = create(:user)
+        another_user = create(:user)
+        user.send_friend_request_to(another_user)
+
+        expect { user.send_friend_request_to(another_user) }.to raise_error(ActiveRecord::RecordNotUnique)
+      end
     end
   end
 
@@ -63,6 +73,27 @@ RSpec.describe User, type: :model do
 
       expect(another_user.addressees.map(&:id)).to match_array([])
       expect(user.requests.map(&:id)).to match_array([])
+    end
+  end
+
+  describe '#friend_lists' do
+    it 'lists all the friends of the user' do
+      user = create(:user)
+      another_user = create(:user)
+
+      user.send_friend_request_to(another_user)
+      another_user.accept_friend_request_of(user)
+
+      expect(user.friend_lists.map(&:id)).to match_array([another_user.id])
+      expect(another_user.friend_lists.map(&:id)).to match_array([user.id])
+    end
+
+    it 'does not list the friends that have pending status' do
+      user = create(:user)
+      another_user = create(:user)
+      another_user.send_friend_request_to(user)
+
+      expect(user.friend_lists.count).to be_zero
     end
   end
 end

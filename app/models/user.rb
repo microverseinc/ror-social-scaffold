@@ -28,4 +28,10 @@ class User < ApplicationRecord
   def delete_friend_request_of(user)
     passive_friendships.find_by(requester_id: user.id).destroy
   end
+
+  def friend_lists
+    friends = active_friendships.map { |f| f.addressee if f.accepted? }
+    friends += passive_friendships.map { |f| f.requester if f.accepted? }
+    friends.compact
+  end
 end
