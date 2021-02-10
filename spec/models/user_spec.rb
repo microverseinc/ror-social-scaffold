@@ -117,4 +117,22 @@ RSpec.describe User, type: :model do
       expect(user.friend?(another_user)).to be_falsy
     end
   end
+
+  describe '#friend_request_sent?' do
+    it 'returns true if the request has been sent' do
+      user = create(:user)
+      another_user = create(:user)
+
+      user.send_friend_request_to(another_user)
+
+      expect(user.friend_request_sent?(another_user)).to be_truthy
+    end
+
+    it 'returns false if the request has not been sent' do
+      user = create(:user)
+      another_user = create(:user)
+
+      expect(user.friend_request_sent?(another_user)).to be_falsy
+    end
+  end
 end

@@ -38,4 +38,8 @@ class User < ApplicationRecord
   def friend?(user)
     friend_lists.include?(user)
   end
+
+  def friend_request_sent?(user)
+    Friendship.where(requester: self, addressee: user).exists?
+  end
 end
