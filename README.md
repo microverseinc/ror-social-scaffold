@@ -9,7 +9,7 @@
 
 ## Live Demo
 
-https://github.com/henatan99/ror-social-scaffold 
+https://thawing-meadow-10215.herokuapp.com/users/sign_in
 
 ## Getting Started
 
