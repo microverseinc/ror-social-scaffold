@@ -12,6 +12,18 @@ RSpec.describe 'Friendships', type: :request do
     end
   end
 
+  describe '#update' do
+    it 'should accept the friend request' do
+      user = create(:user)
+      another_user = create(:user)
+      another_user.send_friend_request_to(user)
+      sign_in(user)
+      patch user_friendships_path(another_user), params: nil
+
+      expect(user.friend?(another_user)).to be_truthy
+    end
+  end
+
   describe '#destroy' do
     it 'should delete the friend request' do
       user = create(:user)
