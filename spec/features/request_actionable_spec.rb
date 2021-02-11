@@ -9,5 +9,7 @@ RSpec.describe 'RequestActionables', type: :feature do
 
     visit users_path
     click_button 'Accept'
+
+    expect(page).to have_text('Accepted friend request')
   end
 end
