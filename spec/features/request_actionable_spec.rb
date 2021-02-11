@@ -35,4 +35,16 @@ RSpec.describe 'RequestActionables', type: :feature do
 
     expect(page).to have_text('Rejected friend request')
   end
+
+  it 'should be able to cancel the friend request' do
+    user = create(:user)
+    another_user = create(:user)
+    another_user.send_friend_request_to(user)
+    feature_sign_in(another_user)
+
+    visit users_path
+    click_button 'Cancel'
+
+    expect(page).to have_text('Rejected friend request')
+  end
 end

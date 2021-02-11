@@ -8,7 +8,9 @@
 <% end %>
 
 <% if current_user.friend_request_pending_to?(user) %>
-  <button type="button">Cancel request</button>
+  <%= form_with url: user_friendships_path(user), method: :delete do |form| %>
+    <%= form.submit 'Cancel request' %>
+  <% end %>
 <% end %>
 
 <% if current_user.friend?(user) %>
