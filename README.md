@@ -4,6 +4,19 @@
 > such as facebook.com. Users can send request to one another and view the posts written by the user or from the user's
 > friend list.
 
+## Features
+
+- Allow users to send a friend request to other users
+- Multiple request states, such as,
+  - Invite to friendship
+  - Accept friendship
+  - Reject friendship
+  - Cancel friend request sent
+  - Remove friend from the list
+- Show posts written by the user and by the user's friends
+- Followed TDD
+- End to end testing
+
 ## Built With
 
 - Ruby v2.7.2
