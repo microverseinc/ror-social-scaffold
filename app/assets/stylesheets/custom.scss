@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap');
 
 $primary-color-dark: #689f38;
 $primary-color: #8bc34a;
@@ -16,7 +16,7 @@ $divider-color: #bdbdbd;
 body {
   background: #fff;
   position: relative;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 400;
 }
 
@@ -155,10 +155,6 @@ form {
       padding: 8px;
       background-color: $primary-color-light;
     }
-
-    input[type="checkbox"] {
-      width: fit-content;
-    }
   }
 
   .actions {
@@ -167,9 +163,8 @@ form {
     margin: 8px 0;
   }
 
-  input[type="submit"] {
+  input[type='submit'] {
     padding: 8px;
-    width: 50%;
     border: none;
     border-radius: 4px;
     background-color: $primary-color-dark;
@@ -178,13 +173,13 @@ form {
     font-weight: 900;
   }
 
-  input[type="submit"]:hover {
+  input[type='submit']:hover {
     background-color: $primary-color;
     color: #fff;
   }
 
   .actions.reset {
-    input[type="submit"] {
+    input[type='submit'] {
       width: 100%;
     }
   }

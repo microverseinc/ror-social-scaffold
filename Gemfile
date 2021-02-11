@@ -17,10 +17,16 @@ gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'capybara', '~> 3.34'
+  gem 'factory_bot_rails', '~> 6.1'
   gem 'rspec-rails'
+  gem 'shoulda-matchers', '~> 4.4', '>= 4.4.1'
 end
 
 group :development do
+  gem 'better_errors', '~> 2.8', '>= 2.8.3'
+  gem 'binding_of_caller', '~> 1.0'
+  gem 'guard-rspec', '~> 4.7', '>= 4.7.3'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'rubocop'
   gem 'spring'

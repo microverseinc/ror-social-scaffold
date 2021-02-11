@@ -1,5 +1,16 @@
 <section class="user-section">
-  <h2><%= "Name: #{@user.name}" %></h2>
+  <h2><%= "Name: #{@user.name}" %><%= render "user_actionable", user: @user %></h2>
+  <% if current_user == @user %>
+    <article style="margin-top: 20px;">
+      <h3>Pending invitations:</h3>
+      <% @user.pending_friend_lists.each do |user| %>
+        <div style="display: flex; margin-top: 12px;">
+          <p><%= user.name %></p>
+          <%= render "user_actionable", user: user %>
+        </div>
+      <% end %>
+    </article>
+  <% end %>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
