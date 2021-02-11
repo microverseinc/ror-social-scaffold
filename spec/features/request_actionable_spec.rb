@@ -47,4 +47,17 @@ RSpec.describe 'RequestActionables', type: :feature do
 
     expect(page).to have_text('Rejected friend request')
   end
+
+  it 'should be able to remove the friend request' do
+    user = create(:user)
+    another_user = create(:user)
+    another_user.send_friend_request_to(user)
+    user.accept_friend_request_of(another_user)
+    feature_sign_in(user)
+
+    visit users_path
+    click_button 'Remove'
+
+    expect(page).to have_text('Rejected friend request')
+  end
 end

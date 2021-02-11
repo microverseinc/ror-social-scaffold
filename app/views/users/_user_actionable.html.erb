@@ -14,7 +14,9 @@
 <% end %>
 
 <% if current_user.friend?(user) %>
-  <button type="button">Remove friend</button>
+  <%= form_with url: user_friendships_path(user), method: :delete do |form| %>
+    <%= form.submit 'Remove friend' %>
+  <% end %>
 <% end %>
 
 <% if current_user.no_relation?(user) && current_user != user %>
