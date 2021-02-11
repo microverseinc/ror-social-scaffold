@@ -2,7 +2,9 @@
   <%= form_with url: user_friendships_path(user) do |form| %>
     <%= form.submit 'Accept request' %>
   <% end %>
-  <button type="button">Reject request</button>
+  <%= form_with url: user_friendships_path(user), method: :delete do |form| %>
+    <%= form.submit 'Reject request' %>
+  <% end %>
 <% end %>
 
 <% if current_user.friend_request_pending_to?(user) %>

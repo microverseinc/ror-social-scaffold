@@ -11,5 +11,7 @@ class FriendshipsController < ApplicationController
   def destroy
     @user = User.find(params[:user_id])
     current_user.delete_friend_request_of(@user)
+
+    redirect_back fallback_location: root_path, notice: 'Rejected friend request'
   end
 end
