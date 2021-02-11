@@ -39,6 +39,11 @@ class User < ApplicationRecord
     friends.compact
   end
 
+  def pending_friend_lists
+    friends = passive_friendships.map { |f| f.requester if f.pending? }
+    friends.compact
+  end
+
   def friend?(user)
     friend_lists.include?(user)
   end
