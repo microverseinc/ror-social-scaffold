@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'PostLists', type: :feature do
   it 'lists all the posts' do
     user = create(:user)
-    article = create(:post)
+    article = create(:post, user: user)
     feature_sign_in(user)
     visit posts_path
 
