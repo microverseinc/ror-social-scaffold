@@ -1,5 +1,7 @@
 <% if current_user.friend_request_pending_from?(user) %>
-  <button type="button">Accept request</button>
+  <%= form_with url: user_friendships_path(user), method: :patch do |form| %>
+    <%= form.submit 'Accept request' %>
+  <% end %>
   <%= form_with url: user_friendships_path(user), method: :delete do |form| %>
     <%= form.submit 'Reject request' %>
   <% end %>

@@ -12,6 +12,18 @@ RSpec.describe 'RequestActionables', type: :feature do
     expect(page).to have_text('Invited to friend request')
   end
 
+  it 'should accept the friend request' do
+    user = create(:user)
+    another_user = create(:user)
+    another_user.send_friend_request_to(user)
+    feature_sign_in(user)
+
+    visit users_path
+    click_button 'Accept'
+
+    expect(page).to have_text('Accepted friend request')
+  end
+
   it 'should be able to reject the friend request' do
     user = create(:user)
     another_user = create(:user)
