@@ -1,20 +1,25 @@
-# Scaffold for social media app with Ruby on Rails
+![](https://img.shields.io/badge/Microverse-blueviolet)
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+# Stay in touch
+
+> A basic social media page where you can write post, like post, send friend invitations and comment posts
+
+## ERD Diagram
+
+![screenshot](./docs/ERDdiagram.png)
 
 ## Built With
 
 - Ruby v2.7.0
 - Ruby on Rails v5.2.4
 
-## Live Demo
-
-TBA
-
-
 ## Getting Started
 
-To get a local copy up and running follow these simple example steps.
+To get a local copy up and running follow these simple example steps:
+- Fork this project
+- Open your terminal
+- Clone this project `git clone git@github.com:helman101/stay-in-touch.git`
+- Go to the project folder `cd stay-in-touch`
 
 ### Prerequisites
 
@@ -60,18 +65,16 @@ Open `http://localhost:3000/` in your browser.
 ### Run tests
 
 ```
-    rpsec --format documentation
+    rpsec
 ```
-
-> Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
-
-### Deployment
-
-TBA
 
 ## Authors
 
-TBA
+👤 **Andres Ortegon**
+
+- Github: [@helman101](https://github.com/helman101)
+- Twitter: [@Helman1011](https://twitter.com/Helman1011)
+- Linkedin: [Linkedin](https://www.linkedin.com/in/helman101/)
 
 ## 🤝 Contributing
 
@@ -85,7 +88,8 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-TBA
+- TBA
+- Microverse
 
 ## 📝 License
 
