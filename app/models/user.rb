@@ -43,6 +43,13 @@ class User < ApplicationRecord
     friends.compact
   end
 
+  def mutual_friends_with(user)
+    return unless friend?(user)
+
+    mutual_friends = friend_lists + user.friend_lists
+    mutual_friends.reject { |friend| friend.id == id || friend.id == user.id }
+  end
+
   def friend?(user)
     friend_lists.include?(user)
   end
