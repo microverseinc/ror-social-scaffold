@@ -44,10 +44,12 @@ class User < ApplicationRecord
   end
 
   def mutual_friends_with(user)
-    return unless friend?(user)
+    return [] unless friend?(user)
 
     mutual_friends = friend_lists + user.friend_lists
-    mutual_friends.reject { |friend| friend.id == id || friend.id == user.id }
+    mutual_friends.reject do |friend|
+      friend.id == id || friend.id == user.id || !friend?(friend) || !user.friend?(friend)
+    end.uniq
   end
 
   def friend?(user)
