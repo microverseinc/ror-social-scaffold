@@ -10,6 +10,13 @@
         </div>
       <% end %>
     </article>
+  <% else %>
+    <article style="margin-top: 20px;">
+      <h3>Mutual friends:</h3>
+      <% current_user.mutual_friends_with(@user).each do |user| %>
+        <%= user.name %>
+      <% end %>
+    </article>
   <% end %>
   <article class="timeline">
     <h3>Recent posts:</h3>
