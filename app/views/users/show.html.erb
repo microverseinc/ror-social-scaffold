@@ -3,19 +3,12 @@
   <% if current_user == @user %>
     <article style="margin-top: 20px;">
       <h3>Pending invitations:</h3>
-      <% @user.pending_friend_lists.each do |user| %>
-        <div style="display: flex; margin-top: 12px;">
-          <p><%= user.name %></p>
-          <%= render "user_actionable", user: user %>
-        </div>
-      <% end %>
+      <%= render @pending_invitations %>
     </article>
   <% else %>
     <article style="margin-top: 20px;">
       <h3>Mutual friends:</h3>
-      <% current_user.mutual_friends_with(@user).each do |user| %>
-        <%= user.name %>
-      <% end %>
+      <%= render @mutual_friends %>
     </article>
   <% end %>
   <article class="timeline">
