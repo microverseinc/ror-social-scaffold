@@ -14,8 +14,17 @@
   - Cancel friend request sent
   - Remove friend from the list
 - Show posts written by the user and by the user's friends
+- List all mutual friends of a user
 - Followed TDD
 - End to end testing
+
+## Concept of mutual friendship
+
+A mutual friend is an individual who has established a friendship with two
+people. When those two people meet, they learn that they share the same friend;
+that friend they have in common is their mutual friend. If the two people become
+friends, a circle of friendship develops between the mutual friend and the other
+individuals - from [oel](https://oureverydaylife.com/mutual-friend-mean-10031289.html#:~:text=A%20mutual%20friend%20is%20an,common%20is%20their%20mutual%20friend.&text=Mutual%20friendships%20are%20commonplace%20in,other%20by%20a%20mutual%20friend.)
 
 ## Built With
 
