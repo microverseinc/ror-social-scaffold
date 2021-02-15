@@ -1,16 +1,18 @@
-# Scaffold for social media app with Ruby on Rails
+# Stay in touch
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+> This is a basic social media website that allows users to create posts, like and comment on posts and send friend requests to other users.
+
+## ERD Diagram
+![socialmediaERD](https://user-images.githubusercontent.com/61744527/107931263-10ed6f80-6f8d-11eb-99c7-824619926712.PNG)
 
 ## Built With
 
-- Ruby v2.7.0
-- Ruby on Rails v5.2.4
+- Ruby v3.0.0
+- Ruby on Rails v6.1.1
 
 ## Live Demo
 
 TBA
-
 
 ## Getting Started
 
@@ -18,8 +20,8 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-Ruby: 2.6.3
-Rails: 5.2.3
+Ruby: 3.0.0 
+Rails: 6.1.1
 Postgres: >=9.5
 
 ### Setup
@@ -69,9 +71,13 @@ Open `http://localhost:3000/` in your browser.
 
 TBA
 
-## Authors
+## Author
 
-TBA
+👤 **Hillary Okello**
+
+- GitHub: [@HillaryOkello](https://github.com/HillaryOkello)
+- Twitter: [@Kellyhillary4](https://twitter.com/Kellyhillary4)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/hillary-okello/)
 
 ## 🤝 Contributing
 
@@ -85,7 +91,7 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-TBA
+Microverse
 
 ## 📝 License
 
