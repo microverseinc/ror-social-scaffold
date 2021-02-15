@@ -3,7 +3,7 @@
 > This is a basic social media website that allows users to create posts, like and comment on posts and send friend requests to other users.
 
 ## ERD Diagram
-![socialmediaERD](https://user-images.githubusercontent.com/61744527/107931263-10ed6f80-6f8d-11eb-99c7-824619926712.PNG)
+![socialmediaERD2](https://user-images.githubusercontent.com/61744527/107941911-85c7a600-6f9b-11eb-84f8-4d846b194853.PNG)
 
 ## Built With
 
