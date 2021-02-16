@@ -7,6 +7,26 @@ module ApplicationHelper
     end
   end
 
+  def user_name
+    return current_user.name if user_signed_in?
+  end
+
+  def in_or_out
+    if current_user
+      link_to 'Sign out', destroy_user_session_path, method: :delete
+    else
+      link_to 'Sign in', user_session_path
+    end
+  end
+
+  def notice_or_alert
+    if flash[:notice]
+      render partial: 'shared/notice', notice: flash[:notice]
+    elsif flash[:alert]
+      render partial: 'shared/alert', alert: flash[:alert]
+    end
+  end
+
   def like_or_dislike_btn(post)
     like = Like.find_by(post: post, user: current_user)
     if like
