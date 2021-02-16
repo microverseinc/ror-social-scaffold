@@ -3,4 +3,9 @@
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
   </span>
+  <span>
+    <%= make_request(current_user.id, user.id) %>
+    <%= accept_request(current_user.id, user.id) %>
+    <%= cancel_request(current_user.id, user.id) %>
+  </span>
 </li>
