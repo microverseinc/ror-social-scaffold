@@ -26,17 +26,16 @@ class FriendshipsController < ApplicationController
 
   # POST /friendships or /friendships.json
   def create
-    
     @sender = User.find(params[:user])
     @reciever = User.find(params[:friend])
-  
-    @friend_request = @sender.friendships.build(user: @sender, friend:@reciever, confirmed:'Unconfirmed')
-    
-      if @friend_request.save
-        redirect_to users_path, notice: 'Friend request sent successfully' 
-      else
-        redirect_to users_path, notice: 'A pending friend request exist' 
-      end
+
+    @friend_request = @sender.friendships.build(user: @sender, friend: @reciever, confirmed: 'Unconfirmed')
+
+    if @friend_request.save
+      redirect_to users_path, notice: 'Friend request sent successfully'
+    else
+      redirect_to users_path, notice: 'A pending friend request exist'
+    end
     # end
   end
 
