@@ -18,21 +18,29 @@ module FriendshipsHelper
     current_user.requestors.exists?(requestor)
   end
 
+  def different_user(current, user)
+    render partial: 'friend', locals: { friend: user } unless current == user
+  end
+
   def make_request(current, user)
-    if current != user
-      if friendship_exist?(current, user)
-        'Waiting for friend'
-      elsif status?(current, user)
-        'You are friends'
-      elsif !friendship_exist?(current, user)
-        link_to 'Friend request', friendships_path(requestor_id: current, requested_id: user), method: :create
-      end
+    if friendship_exist?(current, user)
+      'Waiting for friend'
+    elsif status?(current, user)
+      'You are friends'
+    elsif !friendship_exist?(current, user)
+      link_to 'Friend request',
+              friendships_path(requestor_id: current, requested_id: user),
+              method: :create,
+              class: 'btn btn-danger'
     end
   end
 
   def accept_request(current, user)
     if requestor?(user) && !status?(current, user)
-      link_to 'Accept request', friendship_path(id: friendship(user, current).id, requested_id: user), method: :patch
+      link_to 'Accept request',
+              friendship_path(id: friendship(user, current).id, requested_id: user),
+              method: :patch,
+              class: 'friend'
     end
   end
 

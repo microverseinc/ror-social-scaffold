@@ -5,6 +5,9 @@ $primary-color: #8bc34a;
 $primary-color-light: #dcedc8;
 $primary-color-text: #212121;
 $divider-color: #bdbdbd;
+$danger-color: rgb(230, 49, 49);
+
+
 
 * {
   margin: 0;
@@ -346,4 +349,15 @@ form {
   .user-section {
     width: 50%;
   }
+}
+
+.btn-danger {
+  background-color: $danger-color;
+}
+
+.friend {
+  color: white;
+  padding: 2px;
+  border-radius: 5px;
+  background-color: #689f38;
 }
