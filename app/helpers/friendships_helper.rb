@@ -1,3 +1,4 @@
+# rubocop:disable Style/GuardClause
 module FriendshipsHelper
   def friendship_exist?(user, friend)
     Friendship.where(requestor_id: user, requested_id: friend, status: false).first
@@ -55,3 +56,4 @@ module FriendshipsHelper
     end
   end
 end
+# rubocop:enable Style/GuardClause
