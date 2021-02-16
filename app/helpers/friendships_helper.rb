@@ -23,15 +23,17 @@ module FriendshipsHelper
   end
 
   def make_request(current, user)
-    if friendship_exist?(current, user)
-      'Waiting for friend'
-    elsif status?(current, user)
-      'You are friends'
-    elsif !friendship_exist?(current, user)
-      link_to 'Friend request',
-              friendships_path(requestor_id: current, requested_id: user),
-              method: :create,
-              class: 'btn btn-danger'
+    if current != user
+      if friendship_exist?(current, user)
+        'Waiting for response'
+      elsif status?(current, user)
+        'You are friends'
+      elsif !friendship_exist?(current, user) && !friendship_exist?(user, current)
+        link_to 'Friend request',
+                friendships_path(requestor_id: current, requested_id: user),
+                method: :create,
+                class: 'friend'
+      end
     end
   end
 
@@ -46,7 +48,10 @@ module FriendshipsHelper
 
   def cancel_request(current, user)
     if requestor?(user) && !status?(current, user)
-      link_to 'Reject request', friendship_path(id: friendship(user, current).id), method: :delete
+      link_to 'Reject request', 
+              friendship_path(id: friendship(user, current).id), 
+              method: :delete,
+              class: 'btn-danger'
     end
   end
 end

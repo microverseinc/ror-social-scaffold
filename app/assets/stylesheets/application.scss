@@ -353,6 +353,9 @@ form {
 
 .btn-danger {
   background-color: $danger-color;
+  color: white;
+  padding: 2px;
+  border-radius: 5px;
 }
 
 .friend {
@@ -360,4 +363,9 @@ form {
   padding: 2px;
   border-radius: 5px;
   background-color: #689f38;
+}
+
+.waiting {
+  color: rgb(100, 154, 255);
+  padding: 2px;
 }
