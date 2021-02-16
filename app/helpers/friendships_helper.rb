@@ -48,8 +48,8 @@ module FriendshipsHelper
 
   def cancel_request(current, user)
     if requestor?(user) && !status?(current, user)
-      link_to 'Reject request', 
-              friendship_path(id: friendship(user, current).id), 
+      link_to 'Reject request',
+              friendship_path(id: friendship(user, current).id),
               method: :delete,
               class: 'btn-danger'
     end

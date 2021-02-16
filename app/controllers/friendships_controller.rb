@@ -25,7 +25,11 @@ class FriendshipsController < ApplicationController
     friendship = Friendship.find(params[:id])
     if friendship
       friendship.destroy
-      redirect_to users_path, notice: current_user.id == params[:requested_id]? 'You reject this friendship' : 'You cancel the friend request'
+      redirect_to users_path, notice: if current_user.id == params[:requested_id]
+                                        'You reject this friendship'
+                                      else
+                                        'You cancel the friend request'
+                                      end
     else
       redirect_to users_path, alert: 'You cannot reject this user'
     end
