@@ -1,6 +1,38 @@
 <li>
+  <% if user.id == current_user.id%>
+  Name: <%= user.name %>
+  <%# puts user, '******'%>
+  <span class="profile-link">
+    <%= link_to 'See My Profile',  user_path(user), class: 'profile-link' %>
+  </span>
+  <span>&nbsp</span>
+  <span>&nbsp</span>
+  <span class="profile-link">
+  <% else%>
   Name: <%= user.name %>
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
   </span>
+  <span>&nbsp</span>
+  <span>&nbsp</span>
+  <span class="profile-link">
+  <% if request_sent(user) %>
+    <span class= 'profile-link'>
+      You already sent a request
+    </span>
+  <% elsif request_received(user) %>
+    <%= link_to 'Accept friend request',  friendships_path(user: @current_user, friend: user), :method => :post, 
+    class: 'profile-link' %>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <%= link_to 'Reject friend request',  friendships_path(user: @current_user, friend: user), :method => :post, 
+    class: 'profile-link' %>
+  <% else %>
+    <%= link_to 'Invite friend',  friendships_path(user: @current_user, friend: user), :method => :post, 
+    class: 'profile-link' %>
+
+  <% end %>
+  <% end %>
+  </span> 
 </li>
+

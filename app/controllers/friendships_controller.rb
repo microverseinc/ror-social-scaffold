@@ -17,19 +17,27 @@ class FriendshipsController < ApplicationController
   # GET /friendships/1/edit
   def edit; end
 
+  # def self.friends(user_id, friend_id)
+  #   @user_id = user_id
+  #   @friend_id = friend_id
+  #   @friends = Friendship.they_are_friends(user_id: @user_id, friend_id: @friend_id).first
+  #   # friends.confirmed
+  # end
+
   # POST /friendships or /friendships.json
   def create
-    @friendship = Friendship.new(friendship_params)
-
-    respond_to do |format|
-      if @friendship.save
-        format.html { redirect_to @friendship, notice: 'Friendship was successfully created.' }
-        format.json { render :show, status: :created, location: @friendship }
+    
+    @sender = User.find(params[:user])
+    @reciever = User.find(params[:friend])
+  
+    @friend_request = @sender.friendships.build(user: @sender, friend:@reciever, confirmed:'Unconfirmed')
+    
+      if @friend_request.save
+        redirect_to users_path, notice: 'Friend request sent successfully' 
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @friendship.errors, status: :unprocessable_entity }
+        redirect_to users_path, notice: 'A pending friend request exist' 
       end
-    end
+    # end
   end
 
   # PATCH/PUT /friendships/1 or /friendships/1.json
@@ -63,6 +71,6 @@ class FriendshipsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def friendship_params
-    params.require(:friendship).permit(:sender_id_id, :receiver_id_id, :status)
+    params.require(:friendship).permit(:user, :friend, :confirmed)
   end
 end

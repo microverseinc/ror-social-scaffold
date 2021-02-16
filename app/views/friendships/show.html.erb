@@ -2,17 +2,17 @@
 
 <p>
   <strong>Sender:</strong>
-  <%= @friendship.sender_id %>
+  <%= @friendship.user_id %>
 </p>
 
 <p>
   <strong>Receiver:</strong>
-  <%= @friendship.receiver_id %>
+  <%= @friendship.friend_id %>
 </p>
 
 <p>
   <strong>Status:</strong>
-  <%= @friendship.status %>
+  <%= @friendship.confirmed %>
 </p>
 
 <%= link_to 'Edit', edit_friendship_path(@friendship) %> |
