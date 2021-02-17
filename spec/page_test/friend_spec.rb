@@ -2,14 +2,11 @@ require 'rails_helper'
 
 RSpec.describe 'Hello world', type: :system do
   before(:all) do
-    User.create(name: 'test2', password: 'testing2', email: 'new_email@email.com')
-    User.create(name: 'test', password: 'testing', email: 'email@email.com')
-    Post.create(user_id: 1, content: 'rat')
-    Post.create(user_id: 2, content: 'snake')
+    user1 = User.create(name: 'test2', password: 'testing2', email: 'new_email@email.com')
+    user2 = User.create(name: 'test', password: 'testing', email: 'email@email.com')
+    Post.create(user_id: user1.id, content: 'rat')
+    Post.create(user_id: user2.id, content: 'snake')
   end
-
-  let(:user) { User.find(2) }
-  let(:friend_user) { User.find(1) }
 
   describe 'When friendship does not exists' do
     context 'All users page' do
@@ -47,7 +44,7 @@ RSpec.describe 'Hello world', type: :system do
 
   describe 'When one user send you a friend request' do
     before(:all) do
-      Friendship.create(requestor_id: 1, requested_id: 2, status: false)
+      Friendship.create(requestor_id: User.first.id, requested_id: User.last.id, status: false)
     end
 
     context 'all users page' do
@@ -96,8 +93,8 @@ RSpec.describe 'Hello world', type: :system do
 
   describe 'When friendship exists' do
     before(:all) do
-      Friendship.create(requestor_id: 1, requested_id: 2, status: true)
-      Friendship.create(requestor_id: 2, requested_id: 1, status: true)
+      Friendship.first.update(status: true)
+      Friendship.create(requestor_id: User.last.id, requested_id: User.first.id, status: true)
     end
 
     context 'All users page' do
