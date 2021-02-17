@@ -23,11 +23,18 @@ class FriendshipsController < ApplicationController
   #   @friends = Friendship.they_are_friends(user_id: @user_id, friend_id: @friend_id).first
   #   # friends.confirmed
   # end
+  def check_reverse_pair(user, friend)
+    Friendship.where(user_id: user, friend_id: friend)
+  end
 
   # POST /friendships or /friendships.json
   def create
     @sender = User.find(params[:user])
     @reciever = User.find(params[:friend])
+
+    reverse_pair = check_reverse_pair(@reciever, @sender)
+
+    redirect_to users_path, notice: 'Friendship Exists' if reverse_pair.empty?
 
     @friend_request = @sender.friendships.build(user: @sender, friend: @reciever, confirmed: 'Unconfirmed')
 
