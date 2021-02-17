@@ -37,7 +37,16 @@ RSpec.describe 'Hello world', type: :system do
         fill_in 'Password', with: 'testing'
         click_on 'Log in'
         click_on 'Timeline'
-        expect(page).to have_no_content('Lorem')
+        expect(page).to have_no_content('rat')
+      end
+
+      it 'i can see my own posts' do
+        visit new_user_session_path
+        fill_in 'Email', with: 'email@email.com'
+        fill_in 'Password', with: 'testing'
+        click_on 'Log in'
+        click_on 'Timeline'
+        expect(page).to have_content('snake')
       end
     end
   end
@@ -88,6 +97,15 @@ RSpec.describe 'Hello world', type: :system do
         click_on 'Timeline'
         expect(page).to have_no_content('rat')
       end
+
+      it 'i can see my own posts' do
+        visit new_user_session_path
+        fill_in 'Email', with: 'email@email.com'
+        fill_in 'Password', with: 'testing'
+        click_on 'Log in'
+        click_on 'Timeline'
+        expect(page).to have_content('snake')
+      end
     end
   end
 
@@ -109,13 +127,22 @@ RSpec.describe 'Hello world', type: :system do
     end
 
     context 'Timeline' do
-      it 'i can see post from friend users' do
+      it 'i can see post from friends' do
         visit new_user_session_path
         fill_in 'Email', with: 'email@email.com'
         fill_in 'Password', with: 'testing'
         click_on 'Log in'
         click_on 'Timeline'
         expect(page).to have_content('rat')
+      end
+
+      it 'i can see my own posts' do
+        visit new_user_session_path
+        fill_in 'Email', with: 'email@email.com'
+        fill_in 'Password', with: 'testing'
+        click_on 'Log in'
+        click_on 'Timeline'
+        expect(page).to have_content('snake')
       end
     end
   end
