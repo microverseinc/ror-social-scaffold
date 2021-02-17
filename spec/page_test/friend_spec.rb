@@ -45,7 +45,7 @@ RSpec.describe 'Hello world', type: :system do
     end
   end
 
-  describe 'When someone send you a friend request' do
+  describe 'When one user send you a friend request' do
     before(:all) do
       Friendship.create(requestor_id: 1, requested_id: 2, status: false)
     end
