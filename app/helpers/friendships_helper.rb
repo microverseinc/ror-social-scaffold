@@ -30,7 +30,7 @@ module FriendshipsHelper
       elsif status?(current, user)
         'You are friends'
       elsif !friendship_exist?(current, user) && !friendship_exist?(user, current)
-        link_to 'Friend request',
+        link_to 'Request Friendship',
                 friendships_path(requestor_id: current, requested_id: user),
                 method: :create,
                 class: 'friend'
