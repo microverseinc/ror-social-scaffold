@@ -4,7 +4,7 @@
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
-      <%= render @posts %>
+      <%= are_friends?(current_user.id, @user.id, @posts) %>
     </ul>
   </article>
 </section>
