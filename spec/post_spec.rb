@@ -1,3 +1,4 @@
+# rubocop:disable Layout/LineLength
 require 'rails_helper'
 
 describe Post, type: :model do
@@ -6,7 +7,9 @@ describe Post, type: :model do
 
   context 'validations' do
     it { should validate_presence_of(:content) }
-    it { should validate_length_of(:content).is_at_most(1000).with_long_message('1000 characters in post is the maximum allowed.') }
+    it {
+      should validate_length_of(:content).is_at_most(1000).with_long_message('1000 characters in post is the maximum allowed.')
+    }
   end
 
   context 'associations' do
@@ -15,3 +18,4 @@ describe Post, type: :model do
     it { should have_many(:likes) }
   end
 end
+# rubocop:enable Layout/LineLength
