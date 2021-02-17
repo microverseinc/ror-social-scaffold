@@ -144,6 +144,17 @@ RSpec.describe 'Hello world', type: :system do
         click_on 'Timeline'
         expect(page).to have_content('snake')
       end
+
+      it 'i can see my own post that i just create' do
+        visit new_user_session_path
+        fill_in 'Email', with: 'email@email.com'
+        fill_in 'Password', with: 'testing'
+        click_on 'Log in'
+        click_on 'Timeline'
+        fill_in 'post_content', with: 'hawk'
+        click_on 'Save'
+        expect(page).to have_content('hawk')
+      end
     end
   end
 end
