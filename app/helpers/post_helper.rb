@@ -8,7 +8,8 @@ module PostHelper
   def friend_post(posts)
     approved = []
     posts.each do |post|
-      if friendship_exist?(post.user.id, current_user.id) && status?(post.user.id, current_user.id) || post.user.id == current_user.id
+      if friendship_exist?(post.user.id,
+                           current_user.id) && status?(post.user.id, current_user.id) || post.user.id == current_user.id
         approved << post
       end
     end

@@ -8,10 +8,6 @@ RSpec.describe 'Hello world', type: :system do
     Post.create(user_id: user2.id, content: 'snake')
   end
 
-  after(:each) do
-    sleep 2
-  end
-
   # WHEN FRIENDSHIP DO NOT EXIST
 
   describe 'When friendship does not exists' do
