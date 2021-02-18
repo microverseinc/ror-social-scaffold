@@ -8,6 +8,10 @@ RSpec.describe 'Hello world', type: :system do
     Post.create(user_id: user2.id, content: 'snake')
   end
 
+  after(:each) do
+    sleep 2
+  end
+
   describe 'When friendship does not exists' do
     context 'All users page' do
       it 'i can see the send request button' do
@@ -17,6 +21,8 @@ RSpec.describe 'Hello world', type: :system do
         click_on 'Log in'
         click_on 'All users'
         expect(page).to have_link('Request Friendship')
+        expect(page).to have_no_link('Accept request')
+        expect(page).to have_no_link('Reject request')
       end
 
       it 'i can send a friend request' do
@@ -27,6 +33,8 @@ RSpec.describe 'Hello world', type: :system do
         click_on 'All users'
         click_on 'Request Friendship'
         expect(page).to have_content('Waiting For Response')
+        expect(page).to have_no_link('Accept request')
+        expect(page).to have_no_link('Reject request')
       end
     end
 
@@ -49,6 +57,33 @@ RSpec.describe 'Hello world', type: :system do
         expect(page).to have_content('snake')
       end
     end
+
+    context 'users profile' do
+      it 'i can see the send request button' do
+        visit new_user_session_path
+        fill_in 'Email', with: 'email@email.com'
+        fill_in 'Password', with: 'testing'
+        click_on 'Log in'
+        click_on 'All users'
+        first('.profile-link').click_link('See Profile')
+        expect(page).to have_link('Request Friendship')
+        expect(page).to have_no_link('Accept request')
+        expect(page).to have_no_link('Reject request')
+      end
+
+      it 'i can send a friend request' do
+        visit new_user_session_path
+        fill_in 'Email', with: 'email@email.com'
+        fill_in 'Password', with: 'testing'
+        click_on 'Log in'
+        click_on 'All users'
+        click_on 'Request Friendship'
+        first('.profile-link').click_link('See Profile')
+        expect(page).to have_content('Waiting for response')
+        expect(page).to have_no_link('Accept request')
+        expect(page).to have_no_link('Reject request')
+      end
+    end
   end
 
   describe 'When one user send you a friend request' do
@@ -65,6 +100,7 @@ RSpec.describe 'Hello world', type: :system do
         click_on 'All users'
         expect(page).to have_link('Accept request')
         expect(page).to have_link('Reject request')
+        expect(page).to have_no_content('Waiting For Response')
       end
 
       it 'i accept friend request' do
@@ -85,6 +121,7 @@ RSpec.describe 'Hello world', type: :system do
         click_on 'All users'
         click_on 'Reject request'
         expect(page).to have_link('Request Friendship')
+        expect(page).to have_no_content('You Are Friends')
       end
     end
 

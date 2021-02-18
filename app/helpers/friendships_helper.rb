@@ -20,8 +20,8 @@ module FriendshipsHelper
     poss_one || poss_two ? true : false
   end
 
-  def requestor?
-    Friendship.exists?(requestor_id: current_user.id)
+  def requestor?(current, user)
+    Friendship.exists?(requestor_id: current, requested_id: user)
   end
 
   def different_user(current, user)
@@ -30,7 +30,7 @@ module FriendshipsHelper
 
   def make_request(current, user)
     if current != user
-      if !status?(current, user) && requestor?
+      if !status?(current, user) && requestor?(current, user)
         'Waiting for response'
       elsif status?(current, user) && friendship_exist?(current, user)
         'You are friends'
@@ -44,7 +44,7 @@ module FriendshipsHelper
   end
 
   def accept_request(current, user)
-    if !requestor? && friendship_exist?(current, user)
+    if !requestor?(current, user) && !status?(current, user) && friendship_exist?(current, user)
       link_to 'Accept request',
               friendship_path(id: friendship(user, current).id, requested_id: user),
               method: :patch,
@@ -53,7 +53,7 @@ module FriendshipsHelper
   end
 
   def cancel_request(current, user)
-    if !requestor? && friendship_exist?(current, user)
+    if !requestor?(current, user) && !status?(current, user) && friendship_exist?(current, user)
       link_to 'Reject request',
               friendship_path(id: friendship(user, current).id),
               method: :delete,
