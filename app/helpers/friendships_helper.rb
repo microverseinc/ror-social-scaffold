@@ -30,7 +30,7 @@ module FriendshipsHelper
 
   def make_request(current, user)
     if current != user
-      if !status?(current, user) && requestor?(current, user)
+      if waiting?(current, user)
         'Waiting for response'
       elsif status?(current, user) && friendship_exist?(current, user)
         'You are friends'
@@ -59,6 +59,12 @@ module FriendshipsHelper
               method: :delete,
               class: 'btn-danger'
     end
+  end
+
+  private
+
+  def waiting?(current, user)
+    !status?(current, user) && requestor?(current, user)
   end
 end
 # rubocop:enable Style/GuardClause
