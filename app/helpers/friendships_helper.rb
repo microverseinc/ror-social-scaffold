@@ -1,22 +1,27 @@
 # rubocop:disable Style/GuardClause
 module FriendshipsHelper
   def friendship_exist?(user, friend)
-    Friendship.where(requestor_id: user, requested_id: friend, status: false).first
+    poss_one = Friendship.exists?(requestor_id: user, requested_id: friend)
+    poss_two = Friendship.exists?(requestor_id: friend, requested_id: user)
+    poss_one || poss_two ? true : false
   end
 
   def friendship(user, friend)
-    Friendship.where(requestor_id: user, requested_id: friend).first
+    if Friendship.exists?(requestor_id: user, requested_id: friend)
+      Friendship.where(requestor_id: user, requested_id: friend).first
+    else
+      Friendship.where(requestor_id: friend, requested_id: user).first
+    end
   end
 
   def status?(user, friend)
-    friendship = Friendship.where(requestor_id: user, requested_id: friend).first
-    return false if friendship.nil?
-
-    friendship.status
+    poss_one = Friendship.exists?(requestor_id: user, requested_id: friend, status: true)
+    poss_two = Friendship.exists?(requestor_id: friend, requested_id: user, status: true)
+    poss_one || poss_two ? true : false
   end
 
-  def requestor?(requestor)
-    current_user.requestors.exists?(requestor)
+  def requestor?
+    Friendship.exists?(requestor_id: current_user.id)
   end
 
   def different_user(current, user)
@@ -25,11 +30,11 @@ module FriendshipsHelper
 
   def make_request(current, user)
     if current != user
-      if friendship_exist?(current, user)
+      if !status?(current, user) && requestor?
         'Waiting for response'
-      elsif status?(current, user)
+      elsif status?(current, user) && friendship_exist?(current, user)
         'You are friends'
-      elsif !friendship_exist?(current, user) && !friendship_exist?(user, current)
+      elsif !friendship_exist?(current, user)
         link_to 'Request Friendship',
                 friendships_path(requestor_id: current, requested_id: user),
                 method: :create,
@@ -39,7 +44,7 @@ module FriendshipsHelper
   end
 
   def accept_request(current, user)
-    if requestor?(user) && !status?(current, user)
+    if !requestor? && friendship_exist?(current, user)
       link_to 'Accept request',
               friendship_path(id: friendship(user, current).id, requested_id: user),
               method: :patch,
@@ -48,7 +53,7 @@ module FriendshipsHelper
   end
 
   def cancel_request(current, user)
-    if requestor?(user) && !status?(current, user)
+    if !requestor? && friendship_exist?(current, user)
       link_to 'Reject request',
               friendship_path(id: friendship(user, current).id),
               method: :delete,

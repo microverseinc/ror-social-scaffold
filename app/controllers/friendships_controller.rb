@@ -11,10 +11,9 @@ class FriendshipsController < ApplicationController
   end
 
   def update
-    new_friendship = Friendship.new(requestor_id: current_user.id, requested_id: params[:requested_id], status: true)
     friendship = Friendship.find(params[:id])
     friendship.status = true
-    if new_friendship.save && friendship.save
+    if friendship.save
       redirect_to users_path, notice: 'Now you\'re friends'
     else
       redirect_to users_path, alert: 'This user is already your friend'
