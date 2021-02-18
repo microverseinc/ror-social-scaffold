@@ -1,0 +1,16 @@
+<nav class="nav">
+  <div class="menu">
+    <div class="menu-item">
+      <%= link_to 'Stay in touch', root_path %>
+    </div>
+    <div class="menu-item">
+      <%= menu_link_to 'Timeline', posts_path %>
+    </div>
+    <div class="menu-item">
+      <%= menu_link_to 'All users', users_path %>
+    </div>
+  </div>
+  <div class='d-flex align-items-center'>
+    <%= signin_or_signout %>
+  </div>
+</nav>
