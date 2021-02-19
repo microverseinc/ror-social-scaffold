@@ -1,6 +1,6 @@
 # Scaffold for social media app with Ruby on Rails
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+> Here I build a social media app using Ruby on Rails. I've implemented just basic features for now. The point is to help me get familiar with Rails. I thoroughly enjoyed working on this project, however, so I'll probably come back to add more features when I get the time.
 
 ## Built With
 
@@ -64,6 +64,13 @@ Open `http://localhost:3000/` in your browser.
 ```
 
 > Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
+
+
+## ERD
+
+> I created an entity relationship diagram to help me visualize the database.
+
+![database_model](./docs)
 
 ### Deployment
 
