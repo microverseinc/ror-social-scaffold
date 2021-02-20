@@ -3,7 +3,7 @@
       <h2>Incoming Friend Request</h2>
       <ul>
         <% @received_friendships.each do |friendship| %>
-          <li><%= friendship.received_friendship.name  %> </li>
+          <li><%= friendship.sent_friendship.name  %> </li>
         <% end %>
       </ul>
     </div>
