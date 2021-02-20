@@ -7,21 +7,7 @@
     </ul>
   </article>
 </section>
-<section class="user-section">
-  <div>
-    <h2>Incoming Friend Request</h2>
-    <ul>
-      <% @receieved_friendships.each do |item| %>
-        <li><%= item.name %></li>
-      <% end %>
-    </ul>
-  </div>
-  <div>
-    <h2>Sent Friend Request</h2>
-    <ul>
-      <% @sent_friendships.each do |item| %>
-        <li><%= item.name %></li>
-      <% end %>
-    </ul>
-  </div>
-</section>
+  
+  <% if @user.id == current_user.id %>
+    <%= render 'users/friendships' %>
+  <% end %>

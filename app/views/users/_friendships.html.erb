@@ -1,0 +1,37 @@
+ <div class = 'section'>
+    <div class ='friends'>
+      <h2>Incoming Friend Request</h2>
+      <ul>
+        <% @received_friendships.each do |friendship| %>
+          <li><%= friendship.received_friendship.name  %> </li>
+        <% end %>
+      </ul>
+    </div>
+   <!--  <div class ='friends'>
+      <h2> My friend List</h2>
+      <div>
+        <h2> confirmed Received Request </h2>
+        <ul>
+          <% @friendships.select{|friendship| friendship if friendship.status }.each do |friendship| %>
+            <li><%= friendship.received_friendship.name  %></li>
+          <% end %>
+        </ul>
+      </div>
+      <div>
+        <h2> Confirmed Sent Requests </h2>
+        <ul>
+          <% @friendships.select{|friendship| friendship if friendship.status }.each do |friendship| %>
+            <li><% friendship.sent_friendship.name %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div> -->
+    <div class ='friends'>
+      <h2>Sent Friend Request</h2>
+      <ul>
+        <% @sent_friendships.each do |friendship| %>
+          <li><%= friendship.received_friendship.name %></li>
+        <% end %>
+      </ul>
+    </div> 
+  </div>
