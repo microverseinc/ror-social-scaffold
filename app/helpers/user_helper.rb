@@ -1,5 +1,3 @@
 module UserHelper
-  def is_friend?
-  
-  end
+  def friend?; end
 end

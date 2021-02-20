@@ -1,16 +1,9 @@
 class FriendshipsController < ApplicationController
-  def index
+  def index; end
 
-  end
-  
-  def new
-  end
+  def new; end
 
-  def create
+  def create; end
 
-  end
-
-  def destroy
-    
-  end
+  def destroy; end
 end
