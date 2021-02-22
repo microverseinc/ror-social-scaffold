@@ -9,7 +9,7 @@
 
 ## Live Demo
 
-TBA
+TBA to be added
 
 
 ## Getting Started
@@ -71,7 +71,17 @@ TBA
 
 ## Authors
 
-TBA
+😎 **Helcio André**
+
+- GitHub: [@helciodev](https://github.com/helciodev)
+- Twitter: [@helcio_bruno](https://twitter.com/helcio_bruno)
+- Linkedin: [Helcio Andre](https://www.linkedin.com/in/helcio-andre/)
+
+👤 **Wandji Bertrand**
+
+- GitHub: [@wandji20](https://github.com/wandji20)
+- LinkedIn: [Wandji Bertrand](https://www.linkedin.com/in/wandji-bertrand/)
+
 
 ## 🤝 Contributing
 
@@ -88,6 +98,3 @@ Give a ⭐️ if you like this project!
 TBA
 
 ## 📝 License
-
-TBA
-

@@ -156,194 +156,190 @@ form {
       background-color: $primary-color-light;
     }
 
-    input[type="checkbox"] {
-      width: fit-content;
-    }
-  }
-
-  .actions {
-    display: flex;
-    justify-content: center;
-    margin: 8px 0;
-  }
-
-  input[type="submit"] {
-    padding: 8px;
-    width: 50%;
-    border: none;
-    border-radius: 4px;
-    background-color: $primary-color-dark;
-    color: $primary-color-light;
-    text-transform: uppercase;
-    font-weight: 900;
-  }
-
-  input[type="submit"]:hover {
-    background-color: $primary-color;
-    color: #fff;
-  }
-
-  .actions.reset {
-    input[type="submit"] {
-      width: 100%;
-    }
-  }
-}
-
-.title {
-  text-align: center;
-  margin-bottom: 16px;
-  text-transform: capitalize;
-}
-
-.timeline {
-  width: 100%;
-  margin: 16px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  h3 {
-    margin: 8px 0;
-  }
-
-  .posts {
-    width: 100%;
-  }
-
-  .post {
-    width: 100%;
-    margin: 16px 0;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .post-attribution {
-    float: left;
-
-    .post-author {
-      margin: 0 0 8px 0;
-      color: $primary-color-dark;
-      text-transform: capitalize;
-    }
-  }
-
-  .post-liking {
-    float: right;
-
-    a {
-      color: $primary-color-dark;
-      font-weight: bold;
-      font-size: 0.9em;
-      margin: 0 4px;
-    }
-
-    .post-date {
-      font-size: 0.6em;
-    }
-  }
-
-  .post-content {
-    font-size: 1.1em;
-    padding: 4px 0;
-  }
-
-  .post-comments-section {
-    margin: 5px;
-    width: 90%;
-    margin-left: 10%;
-
-    .post-comments {
-      position: relative;
+    .actions {
       display: flex;
-      border-bottom: 1px solid $divider-color;
-      border-radius: 3px;
-      margin-bottom: 2px;
-      padding: 10px;
+      justify-content: center;
+      margin: 8px 0;
+    }
 
-      p {
-        font-size: 0.8em;
-        width: 90%;
-      }
+    input[type="submit"] {
+      padding: 8px;
+      width: 50%;
+      border: none;
+      border-radius: 4px;
+      background-color: $primary-color-dark;
+      color: $primary-color-light;
+      text-transform: uppercase;
+      font-weight: 900;
+    }
 
-      span {
-        position: absolute;
-        right: 3px;
-        font-size: 0.6em;
+    input[type="submit"]:hover {
+      background-color: $primary-color;
+      color: #fff;
+    }
+
+    .actions.reset {
+      input[type="submit"] {
+        width: 100%;
       }
     }
   }
-}
 
-.users-section {
-  width: 100%;
-  margin: 10px;
-
-  .users-list li {
+  .title {
+    text-align: center;
     margin-bottom: 16px;
-    text-transform: capitalize;
-    font-size: 1.2em;
-  }
-
-  .profile-link {
-    font-size: 0.8em;
-    margin: 0 0 8px 0;
-    color: $primary-color-dark;
-  }
-}
-
-.user-section {
-  width: 100%;
-  margin-left: 16px;
-
-  h2 {
     text-transform: capitalize;
   }
 
   .timeline {
     width: 100%;
+    margin: 16px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     h3 {
+      margin: 8px 0;
+    }
+
+    .posts {
       width: 100%;
     }
 
-    justify-content: start;
-  }
-}
+    .post {
+      width: 100%;
+      margin: 16px 0;
+      display: flex;
+      flex-direction: column;
+    }
 
-#error_explanation {
-  h2 {
-    color: $primary-color-text;
-    font-size: 1em;
+    .post-attribution {
+      float: left;
+
+      .post-author {
+        margin: 0 0 8px 0;
+        color: $primary-color-dark;
+        text-transform: capitalize;
+      }
+    }
+
+    .post-liking {
+      float: right;
+
+      a {
+        color: $primary-color-dark;
+        font-weight: bold;
+        font-size: 0.9em;
+        margin: 0 4px;
+      }
+
+      .post-date {
+        font-size: 0.6em;
+      }
+    }
+
+    .post-content {
+      font-size: 1.1em;
+      padding: 4px 0;
+    }
+
+    .post-comments-section {
+      margin: 5px;
+      width: 90%;
+      margin-left: 10%;
+
+      .post-comments {
+        position: relative;
+        display: flex;
+        border-bottom: 1px solid $divider-color;
+        border-radius: 3px;
+        margin-bottom: 2px;
+        padding: 10px;
+
+        p {
+          font-size: 0.8em;
+          width: 90%;
+        }
+
+        span {
+          position: absolute;
+          right: 3px;
+          font-size: 0.6em;
+        }
+      }
+    }
   }
 
-  ul {
-    color: #f00;
-  }
-}
+  .users-section {
+    width: 100%;
+    margin: 10px;
 
-@media only screen and (min-width: 480px) {
-  form {
-    width: 60%;
+    .users-list li {
+      margin-bottom: 16px;
+      text-transform: capitalize;
+      font-size: 1.2em;
+    }
+
+    .profile-link {
+      font-size: 0.8em;
+      margin: 0 0 8px 0;
+      color: $primary-color-dark;
+    }
   }
 
-  .new_post,
-  .timeline,
-  .users-section,
   .user-section {
-    width: 70%;
-  }
-}
+    width: 100%;
+    margin-left: 16px;
 
-@media (min-width: 780px) {
-  form {
-    width: 40%;
+    h2 {
+      text-transform: capitalize;
+    }
+
+    .timeline {
+      width: 100%;
+
+      h3 {
+        width: 100%;
+      }
+
+      justify-content: start;
+    }
   }
 
-  .new_post,
-  .timeline,
-  .users-section,
-  .user-section {
-    width: 50%;
+  #error_explanation {
+    h2 {
+      color: $primary-color-text;
+      font-size: 1em;
+    }
+
+    ul {
+      color: #f00;
+    }
+  }
+
+  @media only screen and (min-width: 480px) {
+    form {
+      width: 60%;
+    }
+
+    .new_post,
+    .timeline,
+    .users-section,
+    .user-section {
+      width: 70%;
+    }
+  }
+
+  @media (min-width: 780px) {
+    form {
+      width: 40%;
+    }
+
+    .new_post,
+    .timeline,
+    .users-section,
+    .user-section {
+      width: 50%;
+    }
   }
 }
