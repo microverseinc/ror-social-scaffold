@@ -7,9 +7,11 @@
             <span>
               <%= friendship.sent_friendship.name  %>
             </span>
-            <span>
-              <button><%= link_to 'Confirm Request', friendship_path(friendship_id: friendship), method: :put  %></button>
+            <% if friendship.friend? %>
+              <span>
+                <button><%= link_to 'Confirm Request', friendship_path(friendship_id: friendship), method: :put  %></button>
             </span>
+            <% end %>
           </p>
         <% end %>
       </div>
