@@ -37,9 +37,9 @@ a {
 
 .nav {
   display: flex;
-  justify-content: space-between;
   padding: 16px 48px;
   background-color: $primary-color-dark;
+  justify-content: space-between;
   color: $primary-color-light;
 
   a {
@@ -57,8 +57,9 @@ a {
   }
 
   .menu {
-    width: 80%;
-    justify-content: space-between;
+    width: 60%;
+    display: flex;
+    align-items: center;
 
     .menu-item {
       float: left;
@@ -138,7 +139,6 @@ a {
 
 form {
   width: 80%;
-  margin: 8px 0;
 
   .field {
     width: 100%;
@@ -286,9 +286,13 @@ form {
   }
 
   .profile-link {
-    font-size: 0.8em;
-    margin: 0 0 8px 0;
     color: $primary-color-dark;
+    display: flex;
+    align-items: center;
+
+    .black-font {
+      color: black;
+    }
   }
 }
 
@@ -336,10 +340,6 @@ form {
 }
 
 @media (min-width: 780px) {
-  form {
-    width: 40%;
-  }
-
   .new_post,
   .timeline,
   .users-section,

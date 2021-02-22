@@ -1,0 +1,16 @@
+ <section class='bg-light d-flex'>
+    <article class='col-6'>
+      <h2>Friends List</h2>
+      <ol>
+        <%= show_friends_names(@user) %>
+      </ol>
+    </article>
+
+    <article class='col-6'>
+      <h2>Pending Requests</h2>
+      <ol>
+        <%= show_pending_requests(@user) %>
+      </ol>
+    </article>
+
+  </section>

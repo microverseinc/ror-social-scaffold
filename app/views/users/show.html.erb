@@ -1,9 +1,15 @@
 <section class="user-section">
-  <h2><%= "Name: #{@user.name}" %></h2>
+  <div>
+    <h2><%= "Name: #{@user.name}" %></h2>
+    <%= show_send_invitation_button(@user) %>
+    <%= "<b>Pending request</b>".html_safe if @user.inverse_friendships.find{|f| f.user_id == current_user.id and !f.confirmed} %>
+    <%= "<b>Already friend</b>".html_safe if @user.friends.include?(current_user) %>
+  </div>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
       <%= render @posts %>
     </ul>
   </article>
+  <%= render 'friends_table' %>
 </section>
