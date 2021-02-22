@@ -71,7 +71,16 @@ TBA
 
 ## Authors
 
-TBA
+😎  **Enekwechi Chinonso Gerald**
+
+- GitHub: [@Oxford-G](https://github.com/Oxford-G)
+- Twitter: [@OXFORD2](https://twitter.com/OXFOXD2)
+- Linkedin: [Enekwechi Chinonso G](https://www.linkedin.com/in/chinonso-enekwechi)
+
+👤 **Ray King**
+
+- GitHub [rayKing12](GitHub.com/rayking12)
+- Linkedin: [Ray King](https://www.linkedin.com/in/king-ray-514b89133/)
 
 ## 🤝 Contributing
 
@@ -89,5 +98,4 @@ TBA
 
 ## 📝 License
 
-TBA
-
+This project is [MIT](./LICENSE) licensed.
