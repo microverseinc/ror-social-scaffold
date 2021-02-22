@@ -9,4 +9,6 @@ class User < ApplicationRecord
   has_many :posts
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :friendships, class_name: 'friendship', foreign_key: 'friendship_id'
+  has-many :inverse_friendships, class_name: 'friends', foreign_key: 'friendship_id'
 end
