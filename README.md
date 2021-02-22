@@ -98,6 +98,3 @@ Give a ⭐️ if you like this project!
 TBA
 
 ## 📝 License
-
-TBA
-
