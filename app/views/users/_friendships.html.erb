@@ -1,6 +1,6 @@
  <div class = 'section'>
     <div class ='friends'>
-      <h2>Incoming Friend Request</h2>
+      <h2>Sent Friend Request</h2>
       <div>
         <% @friendships.each do |friendship| %>
           <p>
@@ -19,7 +19,7 @@
     <div class ='friends'>
       <h2> My Friends List</h2>
       <div>
-        <h2> confirmed Received Request </h2>
+        <h2> Confirmed Sent Request </h2>
         <ul>
           <% @friendships.confirmed.each do |friendship| %>
             <% if friendship.status %>
@@ -29,7 +29,7 @@
         </ul>
       </div>
       <div>
-        <h2> Confirmed Sent Requests </h2>
+        <h2> Confirmed Received Requests </h2>
         <ul>
           <% @inverse_friendships.confirmed.each do |inverse_friendship| %>
             <li><%= inverse_friendship.user.name %></li>
@@ -38,7 +38,7 @@
       </div>
     </div>
     <div class ='friends'>
-      <h2>Sent Friend Request</h2>
+      <h2>Received Friend Request</h2>
       <ul>
         <% @inverse_friendships.each do |inverse_friendship| %>
           <li><%= inverse_friendship.user.name %></li>
