@@ -15,7 +15,7 @@ class FriendshipsController < ApplicationController
                     alert: 'Friend request Not sent'
       end
 
-    elsif @friendship.count == 1 && @friendship.confirmed
+    elsif @friendship.count == 1 && @friendship.last.status
       redirect_to root_path,
                   alert: 'Already Friends'
     elsif @friendship.count == 1
