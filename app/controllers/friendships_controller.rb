@@ -2,9 +2,8 @@ class FriendshipsController < ApplicationController
   def new; end
 
   def create
-    @friendship = Friendship.where('user_id = ? AND friend_id = ?',
-                                   current_user.id, params[:friend_id]).or(Friendship.where('user_id = ? AND friend_id = ?',
-                                     params[:friend_id], current_user.id))
+    @friendship = Friendship.where('user_id = ? AND friend_id = ?', current_user.id, params[:friend_id]).or
+    Friendship.where('user_id = ? AND friend_id = ?', params[:friend_id], current_user.id)
     if @friendship.count.zero?
       @new_friendship = current_user.friendships.build(friend_id: params[:friend_id])
       if @new_friendship.save
@@ -15,15 +14,10 @@ class FriendshipsController < ApplicationController
                     alert: 'Friend request Not sent'
       end
 
-    elsif @friendship.count == 1 && @friendship.last.status
-      redirect_to root_path,
-                  alert: 'Already Friends'
     elsif @friendship.count == 1
       redirect_to root_path,
                   notice: 'Friend Request is pending'
-    else
-      redirect_to root_path,
-                  alert: 'Didnt recognise request'
+
     end
   end
 
