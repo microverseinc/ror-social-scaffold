@@ -15,3 +15,29 @@
     </ul>
   </article>
 </section>
+
+<% if current_user.id == @user.id%>
+  <div class="col">
+    <div class="row justify-content-space-between">
+      <div class="col">
+        <h2>Pending Friendships</h2>
+        <div>
+          <ul>
+            <% @pending_friendships.each do |friendship| %>
+              <li><%= friendship.user.name %></li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="col">
+        <h2>Sent Friendships</h2>
+        <div>
+          <ul>
+            <% @sent_friendships.each do |friendship| %>
+              <li><%= friendship.friend.name %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
