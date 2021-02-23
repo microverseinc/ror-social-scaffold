@@ -2,10 +2,10 @@ class FriendshipsController < ApplicationController
   def new; end
 
   def create
-    @friendship = Friendship.where('sent_friendship_id = ? AND received_friendship_id = ?',
-                                   current_user.id, params[:received_friendship_id])
+    @friendship = Friendship.where('user_id = ? AND friend_id = ?',
+                                   current_user.id, params[:friend_id])
     if @friendship.count.zero?
-      @new_friendship = current_user.friendships.build(received_friendship_id: params[:received_friendship_id])
+      @new_friendship = current_user.friendships.build(friend_id: params[:friend_id])
       if @new_friendship.save
         redirect_to root_path,
                     notice: 'Friend request sent'
