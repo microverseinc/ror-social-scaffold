@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @posts = @user.posts.ordered_by_most_recent
 
-    @friends = current_user.friends
-    @inverse_friendships = current_user.inverse_friends
+    @friendships = current_user.friendships
+    @inverse_friendships = current_user.inverse_friendships
   end
 end

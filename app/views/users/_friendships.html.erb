@@ -2,14 +2,14 @@
     <div class ='friends'>
       <h2>Incoming Friend Request</h2>
       <div>
-        <% @friends.each do |friend| %>
+        <% @friendships.each do |friendship| %>
           <p>
             <span>
-              <%= friend.name  %>
+              <%= friendship.friend.name  %>
             </span>
-            <!-- <% if friend %>
+            <!-- <% if friendship.status %>
               <span>
-                <button><%= link_to 'Confirm Request', friendship_path(friendship_id: friendship), method: :put  %></button>
+                <button><%= link_to 'Confirm Request', friendship_path(friend_id: friend), method: :put  %></button>
               </span>
             <% end %> -->
           </p>
@@ -17,20 +17,22 @@
       </div>
     </div>
     <div class ='friends'>
-      <h2> My friend List</h2>
+      <h2> My Friends List</h2>
       <div>
         <h2> confirmed Received Request </h2>
         <ul>
-          <% @friends.confirmed.each do |inverse_friend| %>
-            <li><%= friend.name  %></li>
+          <% @friendships.confirmed.each do |friendship| %>
+            <% if friendship.status %>
+              <li><%= friendship.friend.name %></li>
+            <% end %>
           <% end %>
         </ul>
       </div>
       <div>
         <h2> Confirmed Sent Requests </h2>
         <ul>
-          <% @inverse_friends.each do |friendship| %>
-            <li><%= inverse_friend.name %></li>
+          <% @inverse_friendships.confirmed.each do |inverse_friendship| %>
+            <li><%= inverse_friendship.user.name %></li>
           <% end %>
         </ul>
       </div>
@@ -38,8 +40,8 @@
     <div class ='friends'>
       <h2>Sent Friend Request</h2>
       <ul>
-        <% @inverse_friends.each do |inverse_friend| %>
-          <li><%= inverse_friend.name %></li>
+        <% @inverse_friendships.each do |inverse_friendship| %>
+          <li><%= inverse_friendship.user.name %></li>
         <% end %>
       </ul>
     </div> 
