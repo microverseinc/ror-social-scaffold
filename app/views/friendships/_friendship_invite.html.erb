@@ -1,0 +1,3 @@
+<% if current_user.id != @user.id %>
+    <%= link_to 'Invite to friendship', friendships_path(friend_id: @user),method: :post, class: 'btn btn-info' %>
+<% end %>
