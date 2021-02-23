@@ -3,7 +3,8 @@ class FriendshipsController < ApplicationController
 
   def create
     @friendship = Friendship.where('user_id = ? AND friend_id = ?',
-                                   current_user.id, params[:friend_id])
+                                   current_user.id, params[:friend_id]).or(Friendship.where('user_id = ? AND friend_id = ?',
+                                     params[:friend_id], current_user.id))
     if @friendship.count.zero?
       @new_friendship = current_user.friendships.build(friend_id: params[:friend_id])
       if @new_friendship.save
@@ -28,7 +29,11 @@ class FriendshipsController < ApplicationController
 
   def show; end
 
-  def destroy; end
+  def destroy
+    @friendship = Friendship.find(params[:friendship_id])
+    @friendship.destroy
+    redirect_to users_path
+  end
 
   def update
     @friendship = Friendship.find(params[:friendship_id])

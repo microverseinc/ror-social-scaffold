@@ -20,29 +20,42 @@
       <h2> My Friends List</h2>
       <div>
         <h2> Confirmed Sent Request </h2>
-        <ul>
+        <div>
           <% @friendships.confirmed.each do |friendship| %>
             <% if friendship.status %>
-              <li><%= friendship.friend.name %></li>
+              <div><%= friendship.friend.name %></div>
             <% end %>
           <% end %>
-        </ul>
+        </div>
       </div>
       <div>
         <h2> Confirmed Received Requests </h2>
-        <ul>
+        <div>
           <% @inverse_friendships.confirmed.each do |inverse_friendship| %>
-            <li><%= inverse_friendship.user.name %></li>
+            <div><%= inverse_friendship.user.name %></div>
           <% end %>
-        </ul>
+        </div>
       </div>
     </div>
     <div class ='friends'>
       <h2>Received Friend Request</h2>
-      <ul>
+      <div>
         <% @inverse_friendships.each do |inverse_friendship| %>
-          <li><%= inverse_friendship.user.name %></li>
+          <div>
+            <h3>            
+              <%= inverse_friendship.user.name %>  
+            </h3>
+            <p>
+              <span>
+                <%= link_to 'Accept Friendship', friendship_path(friendship_id: inverse_friendship), method: :put, class: 'profile-link' %>
+              </span>
+            
+              <span class="profile-link">
+                <%= link_to 'Reject Request',  friendship_path(friendship_id: inverse_friendship), method: :delete, class: 'profile-link' %>
+              </span>
+            </p>
+          </div>
         <% end %>
-      </ul>
+      </div>
     </div> 
   </div>
