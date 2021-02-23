@@ -18,7 +18,10 @@
           <%= menu_link_to 'All users', users_path %>
         </div>
         <div class="menu-item">
-          <%= menu_link_to current_user.name , current_user %>
+        
+        <% if current_user %>
+           <%= menu_link_to current_user.name , current_user %>
+        <% end %>
         </div>
       </div>
       <% if current_user %>

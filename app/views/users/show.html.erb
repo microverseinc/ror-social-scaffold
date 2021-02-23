@@ -1,5 +1,13 @@
 <section class="user-section">
+<div class="w-100 justify-content-space-between">
   <h2><%= "Name: #{@user.name}" %></h2>
+  <div>
+  <% if current_user.id != @user.id %>
+     <%= link_to 'Invite to friendship', friendships_path(friend_id: @user),method: :post, class: 'btn btn-info' %>
+  <% end %>
+   
+  </div>
+</div>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
