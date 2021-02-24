@@ -1,11 +1,12 @@
 <% if current_user.id == @user.id%>
-  <div class="col">
+  
+  <div class='container'>
     <div class="row justify-content-space-between">
-      <div class="col">
+      <div class="col-md-4">
         <h2>Pending Friendships</h2>
         <div>
           <div>
-            <% @pending_friendships.each do |friendship| %>
+            <% @pending_friendships.unconfirmed.each do |friendship| %>
               <p class="lead"> From <%= friendship.user.name %></p>
               <p> 
                 <span>
@@ -18,7 +19,25 @@
             <% end %>
           </div>
         </div>
-        <div class="col">
+      </div>
+
+      <div class="col-md-4">
+        <h2>Friends</h2>
+        <div>
+          <ul>
+            <% @pending_friendships.confirmed.each do |friendship| %>
+              <li><%= friendship.user.name %></li>
+            <% end %>
+          </ul>
+          <ul>
+            <% @sent_friendships.confirmed.each do |friendship| %>
+              <li><%= friendship.friend.name %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-4">
         <h2>Sent Friendships</h2>
         <div>
           <ul>

@@ -36,7 +36,7 @@ class FriendshipsController < ApplicationController
     end
   end
 
-  def def destroy
+  def destroy
     @friendship = Friendship.find_by_id(params[:friendship_id])
     if @friendship.destroy
       flash[:success] = 'Friend rejected!'
