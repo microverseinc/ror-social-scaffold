@@ -46,8 +46,8 @@ class User < ApplicationRecord
     mutual_friends = friends + user.friends
 
     mutual_friends.reject do |friend|
-      friend.id == user.id || !friend?(friend) || !user.friend?(friend)
-    end
+      friend.id == id || friend.id == user.id || !friend?(friend) || !user.friend?(friend)
+    end.uniq
   end
 
   def friend?(user)

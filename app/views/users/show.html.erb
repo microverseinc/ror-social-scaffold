@@ -1,13 +1,17 @@
 <section class="user-section">
-  <h2><%= "Name: #{@user.name}" %>, <%= render 'action_user', user: @user %></h2>
-
-  <article class="timeline">
-    <h3>Mutual friends:</h3>
-    <ul class="posts">
+  <h2><%= "Name: #{@user.name}" %>
+  <%= render "action_user", user: @user %></h2>
+  <% if current_user == @user %>
+    <article style="margin-top: 20px;">
+      <h3>Pending invitations:</h3>
+      <%= render @pending_friends %>
+    </article>
+  <% else %>
+    <article style="margin-top: 20px;">
+      <h3>Mutual friends:</h3>
       <%= render @mutual_friends %>
-    </ul>
-  </article>
-
+    </article>
+  <% end %>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
