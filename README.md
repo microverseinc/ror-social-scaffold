@@ -1,6 +1,6 @@
-# Scaffold for social media app with Ruby on Rails
+# Social media app with Ruby on Rails
+This is an app built with the fundamentals of any CRUD application, the user can only see posts if he/she is logged in, the user can create posts, can send, accept or reject friend request,
 
-> This repo includes initial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
 
 ## Built With
 
@@ -37,14 +37,11 @@ Setup database with:
    rails db:migrate
 ```
 
-### Github Actions
+### Features for this project
 
-To make sure the linters' checks using Github Actions work properly, you should follow the next steps:
-
-1. On your recently forked repo, enable the GitHub Actions in the Actions tab.
-2. Create the `feature/branch` and push.
-3. Start working on your milestone as usual.
-4. Open a PR from the `feature/branch` when your work is done.
+1. A navbar for easy navigation.
+2. A list of posts ordered by most recent.
+3. Friendship functionality between users.
 
 
 ### Usage
@@ -62,8 +59,7 @@ Open `http://localhost:3000/` in your browser.
 ```
     rpsec --format documentation
 ```
-
-> Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
+TBA
 
 ### Deployment
 
@@ -71,7 +67,17 @@ TBA
 
 ## Authors
 
-TBA
+😎 **Helcio André**
+
+- GitHub: [@helciodev](https://github.com/helciodev)
+- Twitter: [@helcio_bruno](https://twitter.com/helcio_bruno)
+- Linkedin: [Helcio Andre](https://www.linkedin.com/in/helcio-andre/)
+
+👤 **Wandji Bertrand**
+
+- GitHub: [@wandji20](https://github.com/wandji20)
+- LinkedIn: [Wandji Bertrand](https://www.linkedin.com/in/wandji-bertrand/)
+
 
 ## 🤝 Contributing
 
