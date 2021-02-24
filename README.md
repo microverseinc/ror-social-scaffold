@@ -12,7 +12,7 @@ A user can send, accept or reject friend request.
 
 ## Live Demo
 
-TBA
+TBA to be added
 
 ## Getting Started
 
@@ -103,5 +103,5 @@ Give a ⭐️ if you like this project!
 TBA
 
 ## 📝 License
-
 TBA
+
