@@ -1,20 +1,22 @@
 # Social media app with Ruby on Rails
-This is an app built with the fundamentals of any CRUD application, the user can only see posts if he/she is logged in, the user can create posts, can send, accept or reject friend request,
 
+This is an app built with the fundamentals of any CRUD application.
+A user can only see and can create posts if logged in.
+A user can send, accept or reject friend request.
 
 ## Built With
 
-- Ruby v2.7.0
+- Ruby v2.7.2
 - Ruby on Rails v5.2.4
+- Bootstrap gem
 
 ## Live Demo
 
 TBA
 
-
 ## Getting Started
 
-To get a local copy up and running follow these simple example steps.
+To get a local copy up and running, follow these steps.
 
 ### Prerequisites
 
@@ -23,6 +25,14 @@ Rails: 5.2.3 >=
 Postgres: >=9.5
 
 ### Setup
+
+Initialize Repository
+
+```
+Navigate to the directory where you want this project to live and then clone it `git clone git@github.com:helciodev/ror-social-scaffold.git`.
+
+Navigate to the `ror-social-scaffold` directory
+```
 
 Instal gems with:
 
@@ -43,7 +53,6 @@ Setup database with:
 2. A list of posts ordered by most recent.
 3. Friendship functionality between users.
 
-
 ### Usage
 
 Start server with:
@@ -59,6 +68,7 @@ Open `http://localhost:3000/` in your browser.
 ```
     rpsec --format documentation
 ```
+
 TBA
 
 ### Deployment
@@ -78,12 +88,11 @@ TBA
 - GitHub: [@wandji20](https://github.com/wandji20)
 - LinkedIn: [Wandji Bertrand](https://www.linkedin.com/in/wandji-bertrand/)
 
-
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the [issues page](issues/).
+TBA.
 
 ## Show your support
 
@@ -96,4 +105,3 @@ TBA
 ## 📝 License
 
 TBA
-

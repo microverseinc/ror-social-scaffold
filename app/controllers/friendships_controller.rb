@@ -1,7 +1,5 @@
 class FriendshipsController < ApplicationController
-  def new
-
-  end
+  def new; end
 
   def create
     @friendship = current_user.friendships.find_by_friend_id(params[:friend_id])
@@ -10,42 +8,39 @@ class FriendshipsController < ApplicationController
       @friendship = current_user.friendships.build(friend_id: params[:friend_id])
       if @friendship.save
         redirect_to users_path,
-        notice: 'Sent Friend Request'
+                    notice: 'Sent Friend Request'
       else
         redirect_to users_path,
-        alert: 'Friend Request Not Sent'
+                    alert: 'Friend Request Not Sent'
       end
 
     else
-        redirect_to users_path,
-        alert: 'Friendship is Pending'
+      redirect_to users_path,
+                  alert: 'Friendship is Pending'
     end
-
   end
-
 
   def update
     @friendship = Friendship.find_by_id(params[:friendship_id])
     if !@friendship.nil?
-      @friendship.update({:status => true})
+      @friendship.update({ status: true })
       redirect_to current_user,
-      notice: "You added #{@friendship.user.name} as your friend"
+                  notice: "You added #{@friendship.user.name} as your friend"
     else
       redirect_to current_user,
-      alert: 'Something went wrong'
+                  alert: 'Something went wrong'
     end
   end
 
   def destroy
     @friendship = Friendship.find_by_id(params[:friendship_id])
     if @friendship.destroy
-      flash[:success] = 'Friend rejected!'
-      redirect_to current_user
+      redirect_to root_path,
+                  flash[:success] = 'Friend rejected!'
+
     else
-      flash[:error] = 'Something went wrong'
-      redirect_to current_user
+      redirect_to root_path,
+                  flash[:error] = 'Something went wrong'
     end
   end
-  
 end
-

@@ -15,7 +15,7 @@ class User < ApplicationRecord
   has_many :friends, class_name: 'User', through: 'friendships'
 
   # friend
-  has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id' 
+  has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
   has_many :inverse_friends, source: 'user', through: 'inverse_friendships'
 
   # def all_friends
@@ -23,6 +23,4 @@ class User < ApplicationRecord
   #   friends_array + inverse_friendships.map{|friendship| friendship.user if friendship.status}
   #   friends_array.compact
   # end
-
-  
 end
