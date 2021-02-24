@@ -35,5 +35,17 @@ class FriendshipsController < ApplicationController
       alert: 'Something went wrong'
     end
   end
+
+  def def destroy
+    @friendship = Friendship.find_by_id(params[:friendship_id])
+    if @friendship.destroy
+      flash[:success] = 'Friend rejected!'
+      redirect_to current_user
+    else
+      flash[:error] = 'Something went wrong'
+      redirect_to current_user
+    end
+  end
+  
 end
 

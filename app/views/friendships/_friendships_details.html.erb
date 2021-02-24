@@ -12,7 +12,7 @@
                 <%= link_to 'Accept', friendship_path(friendship_id: friendship), class:'btn btn-success text-white', method: :put %>
                 </span>
                 <span>
-                <%= link_to 'Reject', friendship_path(friendship.id), method: :destroy, class:'btn btn-danger text-white' %>
+                <%= link_to 'Reject', friendship_path(friendship_id: friendship), method: :delete, class:'btn btn-danger text-white' %>
                 </span>
               </p>
             <% end %>
