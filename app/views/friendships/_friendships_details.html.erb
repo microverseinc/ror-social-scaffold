@@ -25,13 +25,8 @@
         <h2>Friends</h2>
         <div>
           <ul>
-            <% @pending_friendships.confirmed.each do |friendship| %>
-              <li><%= friendship.user.name %></li>
-            <% end %>
-          </ul>
-          <ul>
-            <% @sent_friendships.confirmed.each do |friendship| %>
-              <li><%= friendship.friend.name %></li>
+            <% all_friends.each do |friend| %>
+              <li><%= friend.name %></li>
             <% end %>
           </ul>
         </div>
