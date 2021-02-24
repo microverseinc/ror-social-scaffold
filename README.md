@@ -63,13 +63,15 @@ Open `http://localhost:3000/` in your browser.
 
 > Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
 
-### Deployment
 
-TBA
+👤 Taiwo Adetona
 
-## Authors
+- Github: [@taiwo2](https://github.com/taiwo2)
 
-TBA
+- LinkedIn: [Taiwo Adetona](https://www.linkedin.com/in/taiwo-waliyullahi-adetona-988898180/)
+
+- Twitter: [@TaiwoAdetona4](https://twitter.com/TaiwoAdetona4/)
+
 
 ## 🤝 Contributing
 
