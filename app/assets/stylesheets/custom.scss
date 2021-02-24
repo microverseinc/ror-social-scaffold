@@ -155,34 +155,36 @@ form {
       padding: 8px;
       background-color: $primary-color-light;
     }
+
     input[type="checkbox"] {
       width: auto;
-    .actions {
-      display: flex;
-      justify-content: center;
-      margin: 8px 0;
 
-    }
+      .actions {
+        display: flex;
+        justify-content: center;
+        margin: 8px 0;
+      }
 
-    input[type="submit"] {
-      padding: 8px;
-      width: 50%;
-      border: none;
-      border-radius: 4px;
-      background-color: $primary-color-dark;
-      color: $primary-color-light;
-      text-transform: uppercase;
-      font-weight: 900;
-    }
-
-    input[type="submit"]:hover {
-      background-color: $primary-color;
-      color: #fff;
-    }
-
-    .actions.reset {
       input[type="submit"] {
-        width: 100%;
+        padding: 8px;
+        width: 50%;
+        border: none;
+        border-radius: 4px;
+        background-color: $primary-color-dark;
+        color: $primary-color-light;
+        text-transform: uppercase;
+        font-weight: 900;
+      }
+
+      input[type="submit"]:hover {
+        background-color: $primary-color;
+        color: #fff;
+      }
+
+      .actions.reset {
+        input[type="submit"] {
+          width: 100%;
+        }
       }
     }
   }

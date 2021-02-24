@@ -2,7 +2,7 @@
 
 This is an app built with the fundamentals of any CRUD application.
 A user can only see and can create posts if logged in.
-A user can send, accept or reject friend request.
+A user can send, accept or reject friend requests.
 
 ## Built With
 
@@ -103,5 +103,5 @@ Give a ⭐️ if you like this project!
 TBA
 
 ## 📝 License
-TBA
 
+TBA
