@@ -21,8 +21,10 @@
         
         <% if current_user %>
            <%= menu_link_to current_user.name , current_user %>
+           <%= link_to friend_request , current_user, class:'btn btn-primary'  %>
         <% end %>
         </div>
+
       </div>
       <% if current_user %>
         <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
