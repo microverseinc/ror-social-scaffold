@@ -14,7 +14,6 @@ module ApplicationHelper
     else
       link_to('Like!', post_likes_path(post_id: post.id), method: :post)
     end
-
   end
 
   def friend_request
@@ -28,5 +27,4 @@ module ApplicationHelper
       'friend request'
     end
   end
-
 end

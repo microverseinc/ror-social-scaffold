@@ -9,6 +9,6 @@ module UserHelper
   def friend?(user)
     # check if user id is included on current user friendship list
     @current_user_list = current_user.friendships.where('friend_id = ?', user.id).count
-    @current_user_list.zero? ? false  : true
+    @current_user_list.zero? ? false : true
   end
 end
