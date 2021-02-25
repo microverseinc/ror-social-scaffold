@@ -1,7 +1,12 @@
 <li>
-  Name: <%= user.name %>
+  Name: <%= user.id %>
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'btn btn-success' %>
-    <%= link_to 'Invite to friendship', friendships_path(friend_id: user),method: :post, class: 'btn btn-info' %>
+    
+    <% if friendship_list(user) == 0 %>
+       <%= link_to 'Invite to friendship', friendships_path(friend_id: user),method: :post, class: 'btn btn-info' %>
+    <% end %>
+    
+   
   </span>
 </li>

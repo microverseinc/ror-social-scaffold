@@ -5,4 +5,9 @@ module UserHelper
 
     (@inverse_friends + @friends).compact
   end
+
+  def friendship_list(user)
+    # check if user id is included on current user friendship list
+    @current_user_list = current_user.friendships.where('friend_id = ?', user.id).count
+  end
 end
