@@ -36,11 +36,11 @@ class FriendshipsController < ApplicationController
     @friendship = Friendship.find_by_id(params[:friendship_id])
     if @friendship.destroy
       redirect_to root_path,
-                  flash[:success] = 'Friend rejected!'
+                  notice: 'Friend rejected!'
 
     else
       redirect_to root_path,
-                  flash[:error] = 'Something went wrong'
+                  alert: 'Something went wrong'
     end
   end
 end
