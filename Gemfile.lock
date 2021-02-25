@@ -113,7 +113,6 @@ GEM
     pg (1.2.2)
     pg (1.2.2-x64-mingw32)
     popper_js (1.16.0)
-
     puma (3.12.6)
     rack (2.2.3)
     rack-test (1.1.0)
@@ -242,7 +241,7 @@ DEPENDENCIES
   devise
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
-  pg (~> 1.2, >= 1.2.3)
+  pg (~> 1.2)
   puma (~> 3.12)
   rails (>= 5.2.4)
   rspec
