@@ -6,6 +6,11 @@
     <div class='post-liking'>
       <span class='post-date'> <%= post.created_at.strftime("%Y/%m/%d") %> </span>
       <%= like_or_dislike_btn(post) %>
+      
+      <% if post.likes.count > 0 %>
+        <span><%= post.likes.count%></span>
+      <% end %>
+      
     </div>
   </div>
   <p class="post-content">

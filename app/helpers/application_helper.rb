@@ -14,13 +14,11 @@ module ApplicationHelper
     else
       link_to('Like!', post_likes_path(post_id: post.id), method: :post)
     end
+
   end
 
   def friend_request
-    # we want to be able to return number of friend requests for the current user
-    # we need to count the inverse friendships
-    # we will return pluralize if bigger than one or singular if not
-
+ 
     @user_friend_request = current_user.inverse_friendships.unconfirmed.count
 
     if @user_friend_request > 1
