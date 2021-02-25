@@ -18,7 +18,6 @@ module ApplicationHelper
   end
 
   def friend_request
- 
     @user_friend_request = current_user.inverse_friendships.unconfirmed.count
 
     if @user_friend_request > 1
@@ -29,4 +28,5 @@ module ApplicationHelper
       'friend request'
     end
   end
+
 end
