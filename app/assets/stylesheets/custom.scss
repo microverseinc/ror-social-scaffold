@@ -72,6 +72,8 @@ a {
   flex-direction: column;
   align-items: center;
   padding: 16px;
+  width:720px;
+  margin: 0 auto;
 }
 
 .notice,
@@ -127,11 +129,11 @@ a {
   }
 
   .btn-primary {
-    width: 100%;
+    width: 25%;
   }
 
   .btn-secondary {
-    width: 30%;
+    width: 25%;
     margin-left: 70%;
   }
 }
