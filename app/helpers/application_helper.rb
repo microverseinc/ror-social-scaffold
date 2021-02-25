@@ -23,10 +23,10 @@ module ApplicationHelper
 
     if @user_friend_request > 1
       "friend requests #{@user_friend_request}"
-    elsif  @user_friend_request == 1
+    elsif @user_friend_request == 1
       "friend request #{@user_friend_request}"
     else
-      "friend request"
+      'friend request'
     end
   end
 end

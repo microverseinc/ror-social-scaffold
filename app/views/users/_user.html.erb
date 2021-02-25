@@ -2,13 +2,8 @@
   Name: <%= user.name %>
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'btn btn-success' %>
-    
-    <!-- <% if friendship_list(user) == 0 %>
-       <%= link_to 'Invite to friendship', friendships_path(friend_id: user),method: :post, class: 'btn btn-info' %>
-    <% end %> -->
-
-    
-    <% unless is_friend?(user) %>
+      
+    <% unless friend?(user) %>
       <%= link_to 'Invite to friendship', friendships_path(friend_id: user),method: :post, class: 'btn btn-info' %>
     <% end %>
     
