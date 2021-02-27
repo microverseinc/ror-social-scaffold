@@ -1,22 +1,18 @@
 <li>
   <% unless user == current_user %>
-  <h4>
+  <h4 class="d-flex flex-column border-solid">
       <%= user.name %>
-    <span class="profile-link"> 
-      <%= link_to 'See Profile',  user_path(user), class: 'profile' %> 
+    <span class="profile-link mt-2"> 
+      <%= link_to 'See Profile',  user_path(user), class: 'btn-primary btn' %> 
     </span> 
     <span class="profile-link">
-    <% if current_user.friend?(user) %>
-      You are friends  <%= link_to 'Delete', delete_friends_user_path(user), class: 'delete' %>
-    <% elsif current_user.friend_requests.include?(user) %>
-      Incoming Request <%= link_to 'Accept', confirm_friends_user_path(user), class: 'request' %>  <%= link_to 'Ignore', delete_friends_user_path(user), class: 'request'%>
-    <% elsif current_user.pending_friends.include?(user) %>
-      Pending request 
-      <%= link_to 'Cancel', delete_friends_user_path(user), class: 'delete' %>   
-    <% else %>
-      <%= link_to 'Add friend', create_friendship_user_path(user), class: 'request' %>
-    <% end %>
-    </span>  
+    <%= friend_requests(user) %>
+    </span>
+    <div>
+    <%= confirm_friends(user) %>
+    <%= pending_friends(user)%>
+    </div>
+    <%= cancel_friend(user)%>
     <% end %>
   </h4>
 </li>
