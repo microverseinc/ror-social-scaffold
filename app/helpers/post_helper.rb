@@ -4,5 +4,4 @@ module PostHelper
 
     content_tag :p, "Post could not be saved. #{post.errors.full_messages.join('. ')}", class: 'errors'
   end
-
 end
