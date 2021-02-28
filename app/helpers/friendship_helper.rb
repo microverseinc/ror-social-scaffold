@@ -8,7 +8,7 @@ module FriendshipHelper
 
     def cancel_friend(user)
     return unless current_user.friend?(user)
-     link_to 'Delete', delete_friends_user_path(user), class: 'delete' 
+     link_to 'Delete', delete_friends_user_path(user), class: 'btn btn-danger w-25' 
     end
 
     def confirm_friends(user)
