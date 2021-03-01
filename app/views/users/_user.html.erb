@@ -1,13 +1,10 @@
-<li>
-  Name: <%= user.name %>
-  <span class="profile-link">
-    <%= link_to 'See Profile',  user_path(user), class: 'btn btn-success' %>
-      
-    <% if friend(user).count.zero? %>
-      <%= link_to 'Invite to friendship', friendships_path(friend_id: user),method: :post, class: 'btn btn-info' %>
-    <% end %>
-    
-    
-   
-  </span>
+<li class="mb-3 w-100">
+    <span class="profile-link">
+      <%= link_to "#{user.name}",  user_path(user), class: 'btn btn-success w-50' %>
+    </span>
+      <span class="profile-link">
+      <% if friend(user).count.zero? %>
+        <%= link_to 'Invite to friendship', friendships_path(friend_id: user),method: :post, class: 'btn btn-info w-25' %>
+      <% end %>
+      </span>
 </li>
