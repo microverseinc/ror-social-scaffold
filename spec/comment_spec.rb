@@ -1,6 +1,6 @@
-require_relative '../rails_helper'
+require_relative 'rails_helper'
 
-RSpec.describe Comment do
+RSpec.describe Comment, type: :model do
   context 'validations' do
     it { should validate_presence_of(:content) }
     it {
@@ -10,7 +10,7 @@ RSpec.describe Comment do
     }
   end
 
-  context 'assosciations' do
+  context 'associations' do
     it { should belong_to(:user).class_name('User') }
     it { should belong_to(:post).class_name('Post') }
   end

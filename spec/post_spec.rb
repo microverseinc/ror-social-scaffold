@@ -1,6 +1,6 @@
-require_relative '../rails_helper'
+require 'rails_helper'
 
-RSpec.describe Post do
+RSpec.describe Post, type: :model do
   context 'validations' do
     it { should validate_presence_of(:content) }
     let(:user) do
