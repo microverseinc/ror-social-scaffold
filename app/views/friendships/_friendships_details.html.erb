@@ -3,12 +3,12 @@
   <div class='container'>
     <div class="row justify-content-space-between">
       <div class="col-md-4">
-        <h2>Pending Friendships</h2>
+        <h2 class="text-center">Pending Friendships</h2>
         <div>
           <div>
             <% @pending_friendships.unconfirmed.each do |friendship| %>
-              <p class="lead"> From <%= friendship.user.name %></p>
-              <p> 
+              <p class="lead"><%= link_to "#{friendship.user.name}", user_path(friendship.user), class:'btn btn-primary w-100' %></p>
+              <p class="d-flex justify-content-center"> 
                 <span>
                 <%= link_to 'Accept', friendship_path(friendship_id: friendship), class:'btn btn-success text-white', method: :put %>
                 </span>
@@ -22,22 +22,22 @@
       </div>
 
       <div class="col-md-4">
-        <h2>Friends</h2>
+        <h2 class="text-center">Friends list</h2>
         <div>
           <ul>
             <% all_friends.each do |friend| %>
-              <li><%= friend.name %></li>
+              <li><%= link_to "#{friend.name}", user_path(friend), class:'btn btn-success w-100 mt-4' %></li>
             <% end %>
           </ul>
         </div>
       </div>
 
       <div class="col-md-4">
-        <h2>Sent Friendships</h2>
+        <h2 class="text-center">Sent Friendships</h2>
         <div>
           <ul>
             <% @sent_friendships.each do |friendship| %>
-              <li><%= friendship.friend.name %></li>
+             <li><%= link_to "#{friendship.friend.name}", user_path(friendship.friend), class:'btn btn-warning w-100' %></li>
             <% end %>
           </ul>
         </div>
