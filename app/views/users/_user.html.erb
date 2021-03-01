@@ -3,7 +3,7 @@
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'btn btn-success' %>
       
-    <% if !friend?(user) %>
+    <% if friend(user).count.zero? %>
       <%= link_to 'Invite to friendship', friendships_path(friend_id: user),method: :post, class: 'btn btn-info' %>
     <% end %>
     

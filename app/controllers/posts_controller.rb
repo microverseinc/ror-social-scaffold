@@ -20,7 +20,7 @@ class PostsController < ApplicationController
   private
 
   def timeline_posts
-    @timeline_posts ||= Post.all.ordered_by_most_recent.includes(current_user, current_user.inverse_friendships.confirmed)
+    @timeline_posts ||= Post.all.ordered_by_most_recent
   end
 
   def post_params
