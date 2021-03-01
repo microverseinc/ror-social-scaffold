@@ -71,6 +71,8 @@ TBA
 
 ## Authors
 
+# Uchenna Anya
+
 TBA
 
 ## 🤝 Contributing
