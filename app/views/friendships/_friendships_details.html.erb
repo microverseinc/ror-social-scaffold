@@ -1,9 +1,8 @@
 <div class='container'>
-  <div class="row justify-content-space-between">
+  <div class="row">
     <div class="col-md-4">
       <h2>Pending Friendships</h2>
       <div>
-        <div>
           <% @pending_friendships.unconfirmed.each do |friendship| %>
             <p class="lead"> From <%= friendship.user.name %></p>
             <p> 
@@ -15,7 +14,6 @@
               </span>
             </p>
           <% end %>
-        </div>
       </div>
     </div>
 
@@ -23,13 +21,13 @@
         <h2 class="text-center">Friends list</h2>
         <div>
           <ul>
-            <% all_friends.each do |friend| %>
+            <% current_user.all_friends.each do |friend| %>
               <li><%= link_to "#{friend.name}", user_path(friend), class:'btn btn-success w-100 mt-4' %></li>
             <% end %>
           </ul>
         </div>
       </div>
-    </div>
+    
 
       <div class="col-md-4">
         <h2 class="text-center">Sent Friendships</h2>
@@ -41,6 +39,5 @@
           </ul>
         </div>
       </div>
-    </div>
   </div>
 </div>

@@ -13,4 +13,15 @@ class User < ApplicationRecord
 
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
   has_many :inverse_friends, source: 'user', through: 'inverse_friendships'
+
+   def all_friends
+    @inverse_friends = self.inverse_friendships.confirmed.map(&:user)
+    @friends = self.friendships.confirmed.map(&:friend)
+
+    (@inverse_friends + @friends).compact
+  end
+
+  def say_hi
+    puts 'hi'
+  end
 end

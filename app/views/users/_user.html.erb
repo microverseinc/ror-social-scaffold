@@ -3,8 +3,6 @@
       <%= link_to "#{user.name}",  user_path(user), class: 'btn btn-success w-50' %>
     </span>
       <span class="profile-link">
-      <% if friend(user).count.zero? %>
-        <%= link_to 'Invite to friendship', friendships_path(friend_id: user),method: :post, class: 'btn btn-info w-25' %>
-      <% end %>
+      <%= friend(user)  %>
       </span>
 </li>
