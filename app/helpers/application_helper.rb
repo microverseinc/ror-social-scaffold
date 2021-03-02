@@ -27,4 +27,28 @@ module ApplicationHelper
       'friend request'
     end
   end
+
+  def all_notice
+    if notice.present?
+      'layouts/notice'
+    else
+      'layouts/empty'
+    end
+  end
+
+  def all_alert
+    if alert.present?
+      'layouts/alert'
+    else
+      'layouts/empty'
+    end
+  end
+
+  def user_details
+    if current_user
+      'layouts/user_details'
+    else
+      'layouts/empty'
+    end
+  end
 end

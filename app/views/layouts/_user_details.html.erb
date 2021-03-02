@@ -1,0 +1,6 @@
+<div >
+  <%= menu_link_to current_user.name , current_user %>
+  <%= link_to friend_request , current_user, class:'btn btn-primary'  %>
+  <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+
+</div>

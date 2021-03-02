@@ -15,4 +15,12 @@ module UserHelper
     friendship = friend(user)
     friendship.confirmed.count.positive? ? friendship.first : nil
   end
+
+  def friend_post(post)
+    if post.user == current_user || confirmed_friend(post.user)
+      'posts/post'
+    else
+      'layouts/empty'
+    end
+  end
 end

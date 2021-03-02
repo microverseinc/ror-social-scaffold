@@ -17,31 +17,13 @@
         <div class="menu-item">
           <%= menu_link_to 'All users', users_path %>
         </div>
-        <div class="menu-item">
-        
-        <% if current_user %>
-           <%= menu_link_to current_user.name , current_user %>
-           <%= link_to friend_request , current_user, class:'btn btn-primary'  %>
-        <% end %>
-        </div>
-
+         <%= render user_details %>
       </div>
-      <% if current_user %>
-        <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-      <% else %>
-        <%= link_to 'Sign in', user_session_path %>
-      <% end %>
+     
     </nav>
-    <% if notice.present? %>
-      <div class="notice">
-        <p> <%= notice %> </p>
-      </div>
-    <% end %>
-    <% if alert.present? %>
-      <div class="alert">
-        <p> <%= alert %> </p>
-      </div>
-    <% end %>
+    <%= render all_notice %>
+    <%= render all_alert %>
+  
     <main class="main">
       <%= yield %>
     </main>

@@ -2,13 +2,7 @@ require 'rails_helper'
 
 describe User, type: :model do
   fixtures :users
-  # it 'is valid with all attributes' do
-  #   expect(User.new(name: 'wandji', email: 'wandji@email', password: '111111')).to be_valid
-  # end
-  # it 'is not valid with name longer than 20 characters' do
-  #   expect(User.new(name: 'wandjirrrrrrrrrrttttttt', email: 'wandji@email', password: '111111')).to_not be_valid
-  # end
-  # let(:user) { User.new(name: 'wandjir', email: 'wandji@email', password: '111111')}
+
   it 'returns true for a valid user' do
     user1 = users(:user1)
     expect(user1.valid?).to be true

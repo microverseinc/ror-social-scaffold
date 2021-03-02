@@ -2,14 +2,14 @@
 <div class="w-100 justify-content-space-between">
   <h2><%= "Name: #{@user.name}" %></h2>
   <div>
-    <%= render 'friendships/friendship_invite' %> 
+    <%= render invite_to_friendship(@user) %> 
   </div>
 </div>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
       <%= render @posts %>
-    </ul>
+    </ul> -->
   </article>
 </section>
-<%= render 'friendships/friendships_details' %>
+<%= render all_friendship_details(@user) %>
