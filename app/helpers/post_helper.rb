@@ -6,6 +6,6 @@ module PostHelper
   end
 
   def post_counts(post)
-    post.likes.count if post.likes.count.positif?
+    post.likes.count if post.likes.count.positive?
   end
 end
