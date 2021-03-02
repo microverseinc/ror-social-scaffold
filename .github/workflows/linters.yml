@@ -1,36 +1,38 @@
-name: Linters
+name:                   Linters
 
-on: pull_request
+on:                     pull_request
 
 env:
-  FORCE_COLOR: 1
+  FORCE_COLOR:          1
 
 jobs:
   rubocop:
-    name: Rubocop
-    runs-on: ubuntu-18.04
+    name:               Rubocop
+    runs-on:            ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-ruby@v1
+      - uses:           actions/checkout@v2
+      - uses:           actions/setup-ruby@v1
         with:
-          ruby-version: 2.6.x
-      - name: Setup Rubocop
-        run: |
-          gem install --no-document rubocop:'~>0.81.0' # https://docs.rubocop.org/en/stable/installation/
-          [ -f .rubocop.yml ] || wget https://raw.githubusercontent.com/microverseinc/linters-config/master/ror/.rubocop.yml
-      - name: Rubocop Report
-        run: rubocop --color
+          ruby-version: ">=2.7.x"
+      - name:           Setup Rubocop
+        run:            |
+          bundle update --bundler
+          bundle add rubocop || bundle install
+          [ -f .rubocop.yml ] || wget https://raw.githubusercontent.com/microverseinc/linters-config/master/ruby/.rubocop.yml
+          bundle exec rubocop -A Gemfile # Fix the Gemfile to avoid sparse errors
+      - name:           Rubocop Report
+        run:            bundle exec rubocop --color
   stylelint:
-    name: Stylelint
-    runs-on: ubuntu-18.04
+    name:               StyleLint
+    runs-on:            ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses:           actions/checkout@v2
+      - uses:           actions/setup-node@v1
         with:
-          node-version: "12.x"
-      - name: Setup Stylelint
-        run: |
-          npm install --save-dev stylelint@13.3.x stylelint-scss@3.17.x stylelint-config-standard@20.0.x stylelint-csstree-validator
+          node-version: ">=14.x"
+      - name:           Setup Stylelint
+        run:            |
+          npm install --save-dev stylelint stylelint-scss stylelint-config-standard stylelint-csstree-validator
           [ -f .stylelintrc.json ] || wget https://raw.githubusercontent.com/microverseinc/linters-config/master/ror/.stylelintrc.json
-      - name: Stylelint Report
-        run: npx stylelint "**/*.{css,scss}"
+      - name:           Stylelint Report
+        run:            npx stylelint "**/*.{css,scss}"

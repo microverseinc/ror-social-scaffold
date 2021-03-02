@@ -6,54 +6,56 @@ AllCops:
     - "Guardfile"
     - "Rakefile"
     - "node_modules/**/*"
+  DisplayCopNames:                     true
+  NewCops:                             enable
 
-  DisplayCopNames: true
-
-Layout/LineLength:
-  Max: 120
 Metrics/MethodLength:
   Include:
     - "app/controllers/*"
     - "app/models/*"
-  Max: 20
+  Max:                                 20
 Metrics/AbcSize:
   Include:
     - "app/controllers/*"
     - "app/models/*"
-  Max: 50
+  Max:                                 50
 Metrics/ClassLength:
-  Max: 150
+  Max:                                 150
 Metrics/BlockLength:
-  ExcludedMethods: ["describe"]
-  Max: 30
+  IgnoredMethods:                      ['describe']
+  Max:                                 30
 
 Style/Documentation:
-  Enabled: false
+  Enabled:                             false
 Style/ClassAndModuleChildren:
-  Enabled: false
+  Enabled:                             false
 Style/EachForSimpleLoop:
-  Enabled: false
+  Enabled:                             false
 Style/AndOr:
-  Enabled: false
+  Enabled:                             false
 Style/DefWithParentheses:
-  Enabled: false
+  Enabled:                             false
 Style/FrozenStringLiteralComment:
-  EnforcedStyle: never
-
-Layout/HashAlignment:
-  EnforcedColonStyle: key
-Layout/ExtraSpacing:
-  AllowForAlignment: false
-Layout/MultilineMethodCallIndentation:
-  Enabled: true
-  EnforcedStyle: indented
-Lint/RaiseException:
-  Enabled: false
-Lint/StructNewOverride:
-  Enabled: false
+  EnforcedStyle:                       never
 Style/HashEachMethods:
-  Enabled: false
+  Enabled:                             false
 Style/HashTransformKeys:
-  Enabled: false
+  Enabled:                             false
 Style/HashTransformValues:
-  Enabled: false
+  Enabled:                             false
+
+  
+Layout/LineLength:
+  Max:                                 120
+Layout/HashAlignment:
+  EnforcedColonStyle:                  key
+Layout/ExtraSpacing:
+  AllowForAlignment:                   false
+Layout/MultilineMethodCallIndentation:
+  Enabled:                             true
+  EnforcedStyle:                       indented
+
+Lint/RaiseException:
+  Enabled:                             false
+Lint/StructNewOverride:
+  Enabled:                             false

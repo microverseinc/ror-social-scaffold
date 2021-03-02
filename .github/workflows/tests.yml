@@ -1,0 +1,24 @@
+name:                   Tests
+
+on:                     pull_request
+
+env:
+  FORCE_COLOR:          1
+
+jobs:
+  rspec:
+    name:               RSpec
+    runs-on:            ubuntu-latest
+    steps:
+      - uses:           actions/checkout@v2
+      - uses:           actions/setup-ruby@v1
+        with:
+          ruby-version: ">=2.7.x"
+      - name:           Setup RSpec
+        run:            |
+          bundle update --bundler
+          bundle add rspec-rails || bundle install
+          bundle exec rails webpacker:install
+          bundle exec rails webpacker:compile
+      - name:           RSpec Report
+        run:            bundle exec rspec --force-color --format documentation
