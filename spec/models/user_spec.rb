@@ -17,5 +17,4 @@ describe User, type: :model do
     user = User.new(name: 'wand', email: 'wandji@email.com')
     expect(user.valid?).to be false
   end
-
 end
