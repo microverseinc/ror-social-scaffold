@@ -1,8 +1,8 @@
 <li class="mb-3 w-100">
+  <span class="profile-link">
+    <%= link_to "#{user.name}",  user_path(user), class: 'btn btn-success w-50' %>
+  </span>
     <span class="profile-link">
-      <%= link_to "#{user.name}",  user_path(user), class: 'btn btn-success w-50' %>
-    </span>
-      <span class="profile-link">
-      <%= friend(user)  %>
-      </span>
+    <%= invite_friendship(user)  %>
+  </span>
 </li>
