@@ -19,25 +19,27 @@
       </div>
     </div>
 
-    <div class="col-md-4">
-      <h2>Friends</h2>
-      <div>
-        <ul>
-          <% all_friends.each do |friend| %>
-            <li><%= friend.name %></li>
-          <% end %>
-        </ul>
+      <div class="col-md-4">
+        <h2 class="text-center">Friends list</h2>
+        <div>
+          <ul>
+            <% all_friends.each do |friend| %>
+              <li><%= link_to "#{friend.name}", user_path(friend), class:'btn btn-success w-100 mt-4' %></li>
+            <% end %>
+          </ul>
+        </div>
       </div>
     </div>
 
-    <div class="col-md-4">
-      <h2>Sent Friendships</h2>
-      <div>
-        <ul>
-          <% @sent_friendships.each do |friendship| %>
-            <li><%= friendship.friend.name %></li>
-          <% end %>
-        </ul>
+      <div class="col-md-4">
+        <h2 class="text-center">Sent Friendships</h2>
+        <div>
+          <ul>
+            <% @sent_friendships.each do |friendship| %>
+             <li><%= link_to "#{friendship.friend.name}", user_path(friendship.friend), class:'btn btn-warning w-100' %></li>
+            <% end %>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
