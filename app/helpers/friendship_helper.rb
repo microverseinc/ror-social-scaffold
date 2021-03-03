@@ -30,6 +30,6 @@ module FriendshipHelper
   def create_friend(user)
     return if current_user.friend_requests.include?(user)
 
-    link_to 'Request Friendship', create_friendship_user_path(user), class: 'request'
+    link_to 'Request Friendship', create_friendship_user_path(user), class: 'btn btn-success'
   end
 end

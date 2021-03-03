@@ -48,4 +48,7 @@ class User < ApplicationRecord
     friendship ||= inverse_friendships.find_by_userid_friendid(user_friendid)
     friendship.destroy
   end
+  def user_and_friends_posts
+    Post.where(user: friends.to_a << self).ordered_by_most_recent.take(10)
+  end
 end
