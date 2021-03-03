@@ -28,3 +28,6 @@
 
 # Ignore the sqlite3 databases
 db/*.sqlite3
+
+# Ignore vendor directory
+/vendor
