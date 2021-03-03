@@ -7,7 +7,7 @@ describe FriendshipsController do
     sign_in(users(:user2))
   end
 
-  describe 'POST #create' do
+  describe 'Friendship #create' do
     it 'It does not duplicate a request' do
       expect(response).to have_http_status(:ok)
       post :create, params: { friend_id: 1 }
