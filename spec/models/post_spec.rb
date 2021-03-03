@@ -1,11 +1,8 @@
 require 'rails_helper'
 
-
 describe Post, type: :model do
-
   fixtures :users, :posts
   context 'Post is saved' do
-    
     it 'validate content presence' do
       post = posts(:post1)
       post.user = users(:user1)
@@ -19,7 +16,6 @@ describe Post, type: :model do
     end
   end
   context 'Post is not saved' do
-
     it 'validate content presence' do
       post = posts(:post3)
       post.user = users(:user1)
@@ -34,7 +30,6 @@ describe Post, type: :model do
   end
 
   context ' scope' do
-
     it 'orders by most recent' do
       post = Post.new(content: 'Rspec is cool')
       post.user = users(:user1)
