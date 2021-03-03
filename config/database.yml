@@ -17,6 +17,9 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  username: postgres
+  password: ray
+  url: postgresql://localhost:5432/postgres 
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -32,7 +35,7 @@ development:
   #username: ror_social_scaffold
 
   # The password associated with the postgres role (username).
-  #password:
+  #password: 'ray'
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -41,7 +44,7 @@ development:
 
   # The TCP port the server listens on. Defaults to 5432.
   # If your server runs on a different port number, change accordingly.
-  #port: 5432
+  port: 5433
 
   # Schema search path. The server defaults to $user,public
   #schema_search_path: myapp,sharedapp,public
@@ -82,4 +85,4 @@ production:
   <<: *default
   database: ror_social_scaffold_production
   username: ror_social_scaffold
-  password: <%= ENV['ROR_SOCIAL_SCAFFOLD_DATABASE_PASSWORD'] %>
+  password: <%= ENV['ROR_SOCIAL_FRIEND_DATABASE_PASSWORD'] %>
