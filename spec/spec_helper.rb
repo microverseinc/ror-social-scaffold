@@ -19,10 +19,10 @@ RSpec.configure do |config|
   # assertions if you prefer.
   config.expect_with :rspec do |expectations|
     config.fixture_path = "#{::Rails.root}/spec/fixtures"
- config.use_transactional_fixtures = true
- config.infer_base_class_for_anonymous_controllers = false
- config.order = "random" 
- config.include Capybara::DSL
+    config.use_transactional_fixtures = true
+    config.infer_base_class_for_anonymous_controllers = false
+    config.order = 'random'
+    config.include Capybara::DSL
     # This option will default to `true` in RSpec 4. It makes the `description`
     # and `failure_message` of custom matchers include text for helper methods
     # defined using `chain`, e.g.:
