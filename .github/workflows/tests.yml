@@ -18,7 +18,5 @@ jobs:
         run:            |
           bundle update --bundler
           bundle add rspec-rails || bundle install
-          bundle exec rails webpacker:install
-          bundle exec rails webpacker:compile
       - name:           RSpec Report
         run:            bundle exec rspec --force-color --format documentation
