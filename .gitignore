@@ -31,3 +31,6 @@ db/*.sqlite3
 
 # Ignore vendor directory
 /vendor
+
+# Ignore RSpec examples
+/spec/examples.txt
