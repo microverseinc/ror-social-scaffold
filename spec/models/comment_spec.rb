@@ -70,7 +70,6 @@ RSpec.describe Comment, type: :model do
     end
   end
   context 'Association' do
-   
     it { should belong_to(:user) }
     it { should belong_to(:post) }
   end

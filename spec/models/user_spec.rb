@@ -8,7 +8,6 @@ describe User, type: :model do
     expect(user1.valid?).to be true
   end
 
-  
   it 'returns false for an name is more than 20 characters' do
     user3 = users(:user3)
     expect(user3.valid?).to be false
