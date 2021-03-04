@@ -11,7 +11,16 @@ RSpec.describe Friendship, type: :model do
   context 'association' do
     subject { FactoryBot.build(:friendship) }
     it { should belong_to(:user) }
-
     it { should belong_to(:friend) }
+  end
+
+  context 'friendship creation' do
+    let(:sender) { FactoryBot.build(:user) }
+    let(:receiver) { FactoryBot.build(:user) }
+
+    it 'can send a frienship' do
+      invitation = sender.invitations.build
+      expect(invitation.user).to eq(sender)
+    end
   end
 end
