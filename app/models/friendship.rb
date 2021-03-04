@@ -6,6 +6,11 @@ class Friendship < ApplicationRecord
   belongs_to :user
   belongs_to :friend, class_name: 'User'
 
+  def accept
+    self.status = 1
+    save!
+  end
+
   private
 
   def default_status
