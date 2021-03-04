@@ -8,7 +8,7 @@ RSpec.describe Friendship, type: :model do
 
   
   describe 'associations for friendship' do
-    it { should belong_to(:user)   }
+    it { should belong_to(:user) }
   end
     
 

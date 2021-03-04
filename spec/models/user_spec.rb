@@ -8,6 +8,7 @@ describe User, type: :model do
     expect(user1.valid?).to be true
   end
 
+  
   it 'returns false for an name is more than 20 characters' do
     user3 = users(:user3)
     expect(user3.valid?).to be false
@@ -16,5 +17,10 @@ describe User, type: :model do
   it 'invalid if email already exit' do
     user = User.new(name: 'wand', email: 'wandji@email.com')
     expect(user.valid?).to be false
+  end
+
+  describe 'columns for user' do
+    it { should have_db_column(:email) }
+    it { should have_db_column(:name) }
   end
 end

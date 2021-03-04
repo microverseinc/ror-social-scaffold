@@ -27,7 +27,17 @@ describe Post, type: :model do
       post.user = users(:user1)
       expect(post.valid?).to eq false
     end
+
   end
+
+  describe 'associations for post' do
+    it { should belong_to(:user) }
+  end
+
+  describe "columns for post" do
+    it { should have_db_column(:content) }
+  end
+  
 
   context ' scope' do
     it 'orders by most recent' do
