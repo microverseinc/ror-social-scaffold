@@ -11,9 +11,7 @@ describe 'CommentsController' do
     it 'creates a comment' do
       expect(response).to have_http_status(:ok)
     end
-
-    it 'does not create a comment' do
-      expect(response).to have_http_status(:ok)
-    end
   end
+
+
 end
