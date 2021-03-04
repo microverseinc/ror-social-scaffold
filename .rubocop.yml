@@ -6,6 +6,7 @@ AllCops:
     - "Guardfile"
     - "Rakefile"
     - "node_modules/**/*"
+    - "vendor/**/*"
   DisplayCopNames:                     true
   NewCops:                             enable
 
