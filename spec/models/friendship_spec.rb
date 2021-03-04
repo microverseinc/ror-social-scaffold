@@ -18,9 +18,11 @@ RSpec.describe Friendship, type: :model do
     let(:sender) { FactoryBot.create(:user) }
     let(:receiver) { FactoryBot.create(:user) }
 
-    it 'can send a frienship' do
+    it 'can request a frienship' do
       invitation = sender.invitations.build
       expect(invitation.user).to eq(sender)
+      invitation.friend = receiver
+      expect(invitation.valid?).to be_truthy
     end
   end
 end
