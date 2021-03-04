@@ -49,4 +49,19 @@ RSpec.describe Friendship, type: :model do
       expect(recieved_invitation.rejected?).to be_truthy
     end
   end
+
+  context 'users friendships' do
+    let(:sender) { FactoryBot.create(:user) }
+    let(:receiver) { FactoryBot.create(:user) }
+    let(:not_friend) { FactoryBot.create(:user) }
+
+    it 'lists all of users friends' do
+      invitation = sender.invitations.build
+      invitation.friend = receiver
+      invitation.accept
+      reciever_friends = Friendship.all_friends_of(receiver)
+      sender_friends = Friendship.all_friends_of(sender)
+      expect(reciever_friends.first).to eq(sender_friends.first)
+    end
+  end
 end
