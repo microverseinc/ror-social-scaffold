@@ -15,8 +15,8 @@ RSpec.describe Friendship, type: :model do
   end
 
   context 'friendship creation' do
-    let(:sender) { FactoryBot.build(:user) }
-    let(:receiver) { FactoryBot.build(:user) }
+    let(:sender) { FactoryBot.create(:user) }
+    let(:receiver) { FactoryBot.create(:user) }
 
     it 'can send a frienship' do
       invitation = sender.invitations.build

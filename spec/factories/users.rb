@@ -3,7 +3,5 @@ FactoryBot.define do
     name { SecureRandom.hex(10) }
     email { "#{SecureRandom.hex}@#{SecureRandom.hex}.#{SecureRandom.hex}" }
     password { SecureRandom.hex }
-
-    after(:build, &:save!)
   end
 end
