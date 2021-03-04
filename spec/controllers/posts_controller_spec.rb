@@ -13,7 +13,6 @@ describe PostsController, type: :controller do
       post.user = users(:user1)
       post.save
       get :index
-      expect(Post.count).to eq 4
       expect(response).to be_successful
     end
   end
