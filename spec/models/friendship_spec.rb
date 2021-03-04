@@ -68,10 +68,16 @@ RSpec.describe Friendship, type: :model do
       invitation = sender.invitations.build
       invitation.friend = receiver
       invitation.accept
-      receiver_friends = Friendship.are_friends?(sender, receiver)
-      expect(receiver_friends).to be_truthy
-      sender_friends = Friendship.are_friends?(receiver, sender)
-      expect(sender_friends).to be_truthy
+      expect(receiver.friends_with?(sender)).to be_truthy
+      expect(sender.friends_with?(receiver)).to be_truthy
+    end
+
+    it 'checks if user is not friend with other users' do
+      invitation = sender.invitations.build
+      invitation.friend = receiver
+      invitation.accept
+      expect(sender.friends_with?(not_friend)).to be_falsy
+      expect(receiver.friends_with?(not_friend)).to be_falsy
     end
   end
 end
