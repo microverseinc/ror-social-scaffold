@@ -1,33 +1,19 @@
 {
   "RSpec": {
     "coverage": {
-      "/mnt/c/Users/PC/Desktop/Microverse/ror-social-scaffold/spec/controllers/friendships_controller_spec.rb": {
+      "/mnt/c/Users/PC/Desktop/Microverse/ror-social-scaffold/spec/controllers/Users_controller_spec.rb": {
         "lines": [
           1,
           null,
           1,
           1,
+          1,
           null,
-          1,
-          2,
-          null,
-          null,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
           1,
           1,
           null,
           null,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
+          null,
           1,
           null,
           null,
@@ -831,6 +817,78 @@
           null
         ]
       },
+      "/mnt/c/Users/PC/Desktop/Microverse/ror-social-scaffold/app/controllers/users_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null
+        ]
+      },
+      "/mnt/c/Users/PC/Desktop/Microverse/ror-social-scaffold/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null
+        ]
+      },
+      "/mnt/c/Users/PC/Desktop/Microverse/ror-social-scaffold/spec/controllers/friendships_controller_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          2,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
       "/mnt/c/Users/PC/Desktop/Microverse/ror-social-scaffold/app/controllers/friendships_controller.rb": {
         "lines": [
           1,
@@ -877,22 +935,6 @@
           0,
           null,
           null,
-          null,
-          null
-        ]
-      },
-      "/mnt/c/Users/PC/Desktop/Microverse/ror-social-scaffold/app/controllers/application_controller.rb": {
-        "lines": [
-          1,
-          1,
-          null,
-          1,
-          null,
-          1,
-          null,
-          1,
-          0,
-          0,
           null,
           null
         ]
@@ -1218,6 +1260,6 @@
         ]
       }
     },
-    "timestamp": 1614850547
+    "timestamp": 1614856137
   }
 }

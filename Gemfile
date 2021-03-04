@@ -38,6 +38,9 @@ gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+# assign gem
+gem 'rails-controller-testing'
+
 gem 'devise'
 # bootstrap gem
 gem 'bootstrap', '~> 5.0.0.beta1'
