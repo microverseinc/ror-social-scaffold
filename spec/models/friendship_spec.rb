@@ -14,7 +14,7 @@ RSpec.describe Friendship, type: :model do
     it { should belong_to(:friend) }
   end
 
-  context 'friendship creation' do
+  context 'friendship' do
     let(:sender) { FactoryBot.create(:user) }
     let(:receiver) { FactoryBot.create(:user) }
 
@@ -23,6 +23,17 @@ RSpec.describe Friendship, type: :model do
       expect(invitation.user).to eq(sender)
       invitation.friend = receiver
       expect(invitation.valid?).to be_truthy
+    end
+
+    it 'can accept a frienship' do
+      invitation = sender.invitations.build
+      invitation.friend = receiver
+      invitation.save!
+      recieved_invitation = receiver.friendships.last
+      recieved_invitation.accept
+      expect(recieved_invitation.user).to eq(sender)
+      expect(recieved_invitation.friend).to eq(receiver)
+      expect(recieved_invitation.status).to eq(1)
     end
   end
 end
