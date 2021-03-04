@@ -63,5 +63,15 @@ RSpec.describe Friendship, type: :model do
       sender_friends = Friendship.all_friends_of(sender)
       expect(reciever_friends.first).to eq(sender_friends.first)
     end
+
+    it 'checks if user is friend with other users' do
+      invitation = sender.invitations.build
+      invitation.friend = receiver
+      invitation.accept
+      receiver_friends = Friendship.are_friends?(sender, receiver)
+      expect(receiver_friends).to be_truthy
+      sender_friends = Friendship.are_friends?(receiver, sender)
+      expect(sender_friends).to be_truthy
+    end
   end
 end
