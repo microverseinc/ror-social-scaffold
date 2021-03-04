@@ -11,6 +11,19 @@ class Friendship < ApplicationRecord
     save!
   end
 
+  def accepted?
+    status == 1
+  end
+
+  def reject
+    self.status = -1
+    save!
+  end
+
+  def rejected?
+    status == -1
+  end
+
   private
 
   def default_status
