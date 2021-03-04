@@ -6,6 +6,12 @@ RSpec.describe Friendship, type: :model do
     expect(unconfirmed_friendship_one.status).to be false
   end
 
+  
+  describe 'associations for friendship' do
+    it { should belong_to(:user)   }
+  end
+    
+
   unconfirmed_friendship_two = Friendship.new(user_id: 43, friend_id: 50)
   unconfirmed_friendship_two.update({ status: true })
   it 'status is true' do
