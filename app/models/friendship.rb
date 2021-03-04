@@ -11,15 +11,7 @@ class Friendship < ApplicationRecord
   belongs_to :friend, class_name: 'User'
 
   scope :all_friends_of, ->(u) { where('(user_id=? OR friend_id=?) AND status=?', u.id, u.id, Friendship::ACCEPT) }
-  scope :check_friends, ->(u, r) { where('(user_id=? OR friend_id=?) AND status=?', u.id, r.id, Friendship::ACCEPT) }
-
-  def self.are_friends?(user1, user2)
-    if Friendship.check_friends(user1, user2).empty?
-      !Friendship.check_friends(user2, user1).empty?
-    else
-      true
-    end
-  end
+  scope :check_friends, ->(r) { where('user_id=? OR friend_id=?', r.id, r.id) }
 
   def accept
     self.status = Friendship::ACCEPT
