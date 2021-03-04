@@ -69,5 +69,10 @@ RSpec.describe Comment, type: :model do
       expect(comment.valid?).to eq(true)
     end
   end
+  context 'Association' do
+   
+    it { should belong_to(:user) }
+    it { should belong_to(:post) }
+  end
 end
 # rubocop:enable Metrics/BlockLength:
