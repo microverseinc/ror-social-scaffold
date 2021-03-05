@@ -28,4 +28,5 @@ RSpec.describe 'User', type: :model do
         expect(user.macro).to eql(:has_many)
       end
     end
+    
   end
