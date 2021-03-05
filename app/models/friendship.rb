@@ -11,7 +11,8 @@ class Friendship < ApplicationRecord
   belongs_to :friend, class_name: 'User'
 
   scope :all_friends_of, ->(u) { where('(user_id=? OR friend_id=?) AND status=?', u.id, u.id, Friendship::ACCEPT) }
-  scope :check_friends, ->(r) { where('user_id=? OR friend_id=?', r.id, r.id) }
+  scope :user_involve, ->(r) { where('user_id=? OR friend_id=?', r.id, r.id) }
+  scope :all_pending_invitation, ->(u) { where('(user_id=? OR friend_id=?) AND status=?', u.id, u.id, Friendship::PENDING) }
 
   def accept
     self.status = Friendship::ACCEPT
