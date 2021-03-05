@@ -1,5 +1,26 @@
-example_id                         | status | run_time      |
----------------------------------- | ------ | ------------- |
-./spec/feature/auth_spec.rb[1:1:1] | passed | 1.54 seconds  |
-./spec/feature/auth_spec.rb[1:2:1] | passed | 19.22 seconds |
-./spec/feature/auth_spec.rb[1:3:1] | passed | 9.14 seconds  |
+example_id                         | status | run_time        |
+---------------------------------- | ------ | --------------- |
+./spec/comment_spec.rb[1:1:1]      | passed | 0.07863 seconds |
+./spec/comment_spec.rb[1:1:2]      | passed | 0.04143 seconds |
+./spec/comment_spec.rb[1:2:1]      | passed | 0.07553 seconds |
+./spec/comment_spec.rb[1:2:2]      | passed | 0.06663 seconds |
+./spec/feature/auth_spec.rb[1:1:1] | passed | 49.3 seconds    |
+./spec/feature/auth_spec.rb[1:2:1] | passed | 5.45 seconds    |
+./spec/feature/auth_spec.rb[1:3:1] | passed | 5.52 seconds    |
+./spec/feature/post_spec.rb[1:1:1] | passed | 6.93 seconds    |
+./spec/friendship_spec.rb[1:1:1]   | passed | 0.04759 seconds |
+./spec/friendship_spec.rb[1:1:2]   | passed | 0.17758 seconds |
+./spec/like_spec.rb[1:1:1]         | passed | 0.16071 seconds |
+./spec/like_spec.rb[1:2:1]         | passed | 0.10702 seconds |
+./spec/like_spec.rb[1:2:2]         | passed | 0.07613 seconds |
+./spec/post_spec.rb[1:1:1]         | passed | 0.09519 seconds |
+./spec/post_spec.rb[1:1:2]         | passed | 0.05888 seconds |
+./spec/post_spec.rb[1:2:1]         | passed | 0.05452 seconds |
+./spec/post_spec.rb[1:2:2]         | passed | 0.03146 seconds |
+./spec/post_spec.rb[1:2:3]         | passed | 0.02113 seconds |
+./spec/user_spec.rb[1:1:1]         | passed | 0.05804 seconds |
+./spec/user_spec.rb[1:2:1]         | passed | 0.01072 seconds |
+./spec/user_spec.rb[1:2:2]         | passed | 0.02172 seconds |
+./spec/user_spec.rb[1:2:3]         | passed | 0.01564 seconds |
+./spec/user_spec.rb[1:2:4]         | passed | 0.02333 seconds |
+./spec/user_spec.rb[1:2:5]         | passed | 0.02082 seconds |
