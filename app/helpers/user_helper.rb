@@ -10,11 +10,8 @@ module UserHelper
   end
 
   def invite_friendship(user)
-    if friend(user).count.zero?
-      link_to('Invite to friendship', friendships_path(friend_id: user),
-              method: :post, class: 'btn btn-info w-25')
-    elsif friend(user).first.status == false
-      link_to('Request Pending', user_path(user), class: 'btn btn-info w-25')
-    end
+    link = link_to('Invite to friendship', friendships_path(friend_id: user),
+                   method: :post, class: 'btn btn-info w-25')
+    link if friend(user).count.zero?
   end
 end
