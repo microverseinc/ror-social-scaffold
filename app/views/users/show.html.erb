@@ -3,6 +3,8 @@
   <span class="invite-link primary">
     <%= invitation_link(@user)%>
   </span>
+  <h2>All recieved and pending invitations</h2>
+  <%= render @all_my_pending unless @all_my_pending.nil? %>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">

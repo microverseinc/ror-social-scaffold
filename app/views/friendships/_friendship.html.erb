@@ -1,0 +1,5 @@
+<li>
+  From: <%= friendship.user.name %>
+  <%= button_to 'Accept', invitation_accept_path(sender: friendship.user) %>
+  <%= button_to 'Reject', invitation_reject_path(sender: friendship.user) %>
+</li>

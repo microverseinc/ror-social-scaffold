@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   root 'posts#index'
   post '/invitation', to: 'users#invite'
+  post '/invitation/accept', to: 'users#accept'
+  post '/invitation/reject', to: 'users#reject'
   devise_for :users
 
   resources :users, only: [:index, :show]
