@@ -11,6 +11,8 @@ class UsersController < ApplicationController
   end
 
   def invite
-    p params
+    receiver = User.find(params[:receiver])
+    invitation = current_user.invitations.build(friend: receiver)
+    invitation.save!
   end
 end
