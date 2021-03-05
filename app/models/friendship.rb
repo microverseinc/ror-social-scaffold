@@ -6,13 +6,13 @@ class Friendship < ApplicationRecord
   after_initialize :default_status
 
   validates :status, :user_id, :friend_id, presence: true
+  validates_uniqueness_of :user_id, scope: [:friend_id]
 
   belongs_to :user
   belongs_to :friend, class_name: 'User'
 
-  scope :all_friends_of, ->(u) { where('(user_id=? OR friend_id=?) AND status=?', u.id, u.id, Friendship::ACCEPT) }
-  scope :user_involve, ->(r) { where('user_id=? OR friend_id=?', r.id, r.id) }
-  scope :all_pending_invitation, ->(u) { where('(user_id=? OR friend_id=?) AND status=?', u.id, u.id, Friendship::PENDING) }
+  scope :all_of_status, ->(u, s) { where('(user_id=? OR friend_id=?) AND status=?', u.id, u.id, s) }
+  scope :where_involved, ->(r) { where('user_id=? OR friend_id=?', r.id, r.id) }
 
   def accept
     self.status = Friendship::ACCEPT
