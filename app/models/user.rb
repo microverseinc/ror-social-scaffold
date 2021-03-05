@@ -15,8 +15,16 @@ class User < ApplicationRecord
   has_many :friends, through: 'friendships'
 
   def friends_with?(user)
-    if Friendship.all_friends_of(user).check_friends(self).empty?
-      !Friendship.all_friends_of(self).check_friends(user).empty?
+    if Friendship.all_friends_of(user).user_involve(self).empty?
+      !Friendship.all_friends_of(self).user_involve(user).empty?
+    else
+      true
+    end
+  end
+
+  def pending_invitation?(user)
+    if Friendship.all_pending_invitation(user).user_involve(self).empty?
+      !Friendship.all_pending_invitation(self).user_involve(user).empty?
     else
       true
     end
