@@ -3,7 +3,7 @@
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
   </span>
-  <span class="invite-link">
-    <%= button_to "Invite to friendship", invitation_path(receiver: user), class: 'btn btn-primary'%>
+  <span class="invite-link primary">
+    <%= invitation_link(user)%>
   </span>
 </li>
