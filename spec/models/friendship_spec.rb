@@ -59,8 +59,8 @@ RSpec.describe Friendship, type: :model do
       invitation = sender.invitations.build
       invitation.friend = receiver
       invitation.accept
-      reciever_friends = Friendship.all_friends_of(receiver)
-      sender_friends = Friendship.all_friends_of(sender)
+      reciever_friends = Friendship.all_of_status(receiver, Friendship::ACCEPT)
+      sender_friends = Friendship.all_of_status(sender, Friendship::ACCEPT)
       expect(reciever_friends.first).to eq(sender_friends.first)
     end
 
