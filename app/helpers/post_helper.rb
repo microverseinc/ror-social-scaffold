@@ -4,4 +4,8 @@ module PostHelper
 
     tag.p("Post could not be saved. #{post.errors.full_messages.join('. ')}", class: 'errors')
   end
+
+  def related_to_me?(login_user, friend)
+    login_user.friends_with?(friend) or friend == login_user
+  end
 end
