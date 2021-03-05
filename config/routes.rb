@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   root 'posts#index'
-
+  post '/invitation', to: 'users#invite'
   devise_for :users
 
   resources :users, only: [:index, :show]
