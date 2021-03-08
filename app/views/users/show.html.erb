@@ -1,10 +1,10 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
   <small> 
-    <%= friend_requests(@user) %>
+    <%= can_request(@user.id) %>
   </small>
-  <%= confirm_friends(@user) %>
-    <%= pending_friends(@user)%>
+  <%= accept_request(@user.id) %>
+    <%= cancel_request(@user.id)%>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
