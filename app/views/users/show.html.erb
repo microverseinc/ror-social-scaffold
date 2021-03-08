@@ -1,7 +1,7 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
   <small> 
-    <%= can_request(@user.id) %>
+    <%= make_request(@user.id) %>
   </small>
   <%= accept_request(@user.id) %>
     <%= cancel_request(@user.id)%>
