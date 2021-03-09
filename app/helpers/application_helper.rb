@@ -7,6 +7,14 @@ module ApplicationHelper
     end
   end
 
+  def sign_in_or_sign_out
+    if current_user
+      link_to('Sign out', destroy_user_session_path, method: :delete)
+    else
+      link_to('Sign in', user_session_path)
+    end
+  end
+
   def like_or_dislike_btn(post)
     like = Like.find_by(post: post, user: current_user)
     if like

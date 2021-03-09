@@ -5,7 +5,7 @@ RSpec.describe Friendship, type: :model do
   let(:friend_user) { User.create(name: 'test2', password: 'testing2', email: 'friend_email@email.com') }
 
   context 'assosciations' do
-    it { should belong_to(:user).class_name('User') }
-    it { should belong_to(:friend).class_name('User') }
+    it { should belong_to(:requestor).class_name('User') }
+    it { should belong_to(:requested).class_name('User') }
   end
 end
