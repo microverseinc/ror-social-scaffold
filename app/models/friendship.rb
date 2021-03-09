@@ -1,8 +1,11 @@
 class Friendship < ApplicationRecord
-  belongs_to :user
-  belongs_to :friend, foreign_key: :friend_id, class_name: 'User'
+  belongs_to :requestor, class_name: 'User'
+  belongs_to :requested, class_name: 'User'
 
-  validates :user_id, presence: true
-  validates :friend_id, presence: true
-  validates :userid_friendid, presence: true, uniqueness: true
+  def confirm_friend
+    update_attributes(status: true)
+    Friendship.create!(requested_id: requestor_id,
+                       requestor_id: requested_id,
+                       status: true)
+  end
 end

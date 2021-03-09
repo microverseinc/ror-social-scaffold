@@ -6,13 +6,11 @@
       <%= link_to 'See Profile',  user_path(user), class: 'btn-primary btn' %> 
     </span> 
     <span class="profile-link">
-    <%= friend_requests(user) %>
+    <%= make_request(user.id) %>
     </span>
     <div>
-    <%= confirm_friends(user) %>
-    <%= pending_friends(user)%>
-    </div>
-    <%= cancel_friend(user)%>
+    <%= accept_request(user.id) %>
+    <%= cancel_request(user.id) %>
     <% end %>
   </h4>
 </li>

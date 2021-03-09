@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  helper_method :are_friends?
 
   def index
     @users = User.all
@@ -46,5 +47,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     current_user.confirm_friend(@user)
     redirect_to root_path, notice: 'You successfully accepts friend!'
+  end
+
+  def are_friends?(user, friend, posts)
+    return 'Only friends can see posts' unless current_user.friends.exists?(friend) || user == friend
+
+    render posts
   end
 end

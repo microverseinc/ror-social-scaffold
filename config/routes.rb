@@ -5,14 +5,8 @@ Rails.application.routes.draw do
   devise_for :users
 
 
-resources :users, only: [:index, :show] do 
-    member do 
-      get 'create_friendship'
-      get 'delete_friends'
-      get 'confirm_friends'
-    end 
-  end 
-  resources :friendships, only: [:create, :destroy]
+resources :users, only: [:index, :show] 
+  resources :friendships, only: [:create, :destroy, :update]
   resources :posts, only: [:index, :create] do
     resources :comments, only: [:create]
     resources :likes, only: [:create, :destroy]
