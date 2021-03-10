@@ -23,7 +23,14 @@ default: &default
 
 development:
   <<: *default
+  development:
+  adapter: postgresql
+  encoding: unicode
   database: ror_social_scaffold_development
+  pool: 5
+  username: postgres
+  password: admin
+  host: localhost
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
