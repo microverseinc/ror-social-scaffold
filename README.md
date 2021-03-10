@@ -2,7 +2,7 @@
 
 # Stay-in-Touch
 
-> This project puts your knowledge of Advanced Topics of Ruby on Rails, among other rail skills to the tests. The aim of the project is to build a Social Media App called "Stay in Touch" that allows users create account, see the timeline, send, recieve or reject friend requests, create posts and comments, like & dislike and be able profiles theirs and those of other users while logged-in.
+> This project puts your knowledge of Advanced Topics of Ruby on Rails, among other rail skills to the tests. The aim of the project is to build a Social Media Web-App called "Stay in Touch" that allows users create account, see the timeline, send, recieve or reject friend requests, create posts and comments, like & dislike and be able profiles theirs and those of other users while logged-in.
 
 ## Built With
 
