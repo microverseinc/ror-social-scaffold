@@ -1,0 +1,2 @@
+<%= button_to 'Accept friendrequest', edit_friendrequest_path(Friendrequest.all.find_by(user_id: user.id, friend_id: current_user.id)), method: :get %>
+<%= button_to 'Reject friendrequest', edit_friendrequest_path(Friendrequest.all.find_by(user_id: user.id, friend_id: current_user.id)), :method => :delete %>
