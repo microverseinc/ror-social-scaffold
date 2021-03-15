@@ -6,12 +6,12 @@ class FriendrequestsController < ApplicationController
   def new; end
 
   def create
-    User.find(params[:user_id]).send_friend_request(User.find(params[:friend_id]))
+    User.find(params[:user_id]).send_request(User.find(params[:friend_id]))
     redirect_to users_path
   end
 
   def edit
-    Friendrequest.find(params[:id]).update(confirmed: true)
+    Friendrequest.find(params[:id]).update(status: true)
     redirect_to users_path
   end
 

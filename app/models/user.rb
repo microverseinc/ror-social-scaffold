@@ -14,14 +14,14 @@ class User < ApplicationRecord
 
   # rubocop:disable Layout/LineLength
   def send_request(user)
-    friendrequests.create(friend_id: user.id) unless Friendrequest.all.find_by(user_id: id, friend_id: user.id) || Friend.all.find_by(user_id: user.id, friend_id: id)
+    friendrequests.create(friend_id: user.id) unless Friendrequest.all.find_by(user_id: id, friend_id: user.id) || Friendrequest.all.find_by(user_id: user.id, friend_id: id)
   end
   # rubocop:enable Layout/LineLength
 
   def friends
     friends = []
     Friendrequest.all.each do |request|
-      if request.confirmed == true
+      if request.status == true
         if request.user_id == id
           friends << User.find(request.friend_id)
         elsif requests.friend_id == id
@@ -35,7 +35,7 @@ class User < ApplicationRecord
   def pending_friends
     pending_friend = []
     Friendrequest.all.each do |pending|
-      next unless pending.confirmed == false
+      next unless pending.status == false
 
       pending_friend << pending if pending.friend_id == id
     end
