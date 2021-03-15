@@ -1,13 +1,13 @@
 <section class="users-section">
   <ul class="users-list">
-    <% @users %>
+    <% @users.each do |user| %>
       <% next if user.id == current_user.id %>
       <li>
         Name: <%= user.name %>
         <span class="profile-link">
           <%= link_to 'See Profile', user_path(user), class: 'profile-link' %>
         </span>
-        <%= links_to_friendrequests(user) %>
+        <%= links_to_friendrequest(user) %>
       </li>
     <% end %>
   </ul>
