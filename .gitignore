@@ -31,3 +31,4 @@
 config/database.yml
 Gemfile
 Gemfile.lock
+db/development.sqlite3
