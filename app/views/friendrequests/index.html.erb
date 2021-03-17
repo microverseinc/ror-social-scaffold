@@ -1,3 +1,4 @@
-<% @friends.each do |friend| %> <%= link_to friend.name, user_path(friend) %>
-<br />
+<% @friends.each do |friend| %> 
+    <%= link_to friend.name, user_path(friend) %>
+    <br />
 <% end %>
