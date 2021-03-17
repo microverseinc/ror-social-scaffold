@@ -7,10 +7,10 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 20 }
 
   has_many :posts
-  has_many :friendrequests
+  has_many :friendrequests, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
-  has_many :inverse_friendrequests, class_name: 'Friendrequest', foreign_key: 'friend_id'
+  has_many :inverse_friendrequests, class_name: 'Friendrequest', foreign_key: 'friend_id', dependent: :destroy
 
   # rubocop:disable Layout/LineLength
   def send_request(user)
@@ -24,7 +24,7 @@ class User < ApplicationRecord
       if request.status == true
         if request.user_id == id
           friends << User.find(request.friend_id)
-        elsif requests.friend_id == id
+        elsif request.friend_id == id
           friends << User.find(request.user_id)
         end
       end
@@ -52,7 +52,7 @@ class User < ApplicationRecord
     requests
   end
 
-  def confirm_friend(_user)
+  def confirm_friend(user)
     friendrequest = Friendrequest.find_by(user_id, friend_id: id, status: false)
     friendrequest.update(status: true)
   end
