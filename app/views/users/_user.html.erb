@@ -4,5 +4,5 @@
 
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
   </span>
-  <%= button_to 'Add friend', '/users/2/friendships', class: 'btn btn-danger' %>
+  <%= button_to 'Add friend', user_friendships_path(user) , class: 'btn btn-danger' %>
 </li>
