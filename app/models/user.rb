@@ -53,7 +53,7 @@ class User < ApplicationRecord
   end
 
   def confirm_friend(user)
-    friendrequest = Friendrequest.find_by(user_id, friend_id: id, status: false)
+    friendrequest = Friendrequest.find_by(user_id: user.id, friend_id: id, status: false)
     friendrequest.update(status: true)
   end
 
