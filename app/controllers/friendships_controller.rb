@@ -4,8 +4,7 @@ class FriendshipsController < ApplicationController
   def create
     current_user.friend_requests
     flash[:notice] = "Friend request has been sent #{user.name}."
-    redirect_to user_path(current_user.id)
-    
+    redirect_to users_path
   end
 
   private
