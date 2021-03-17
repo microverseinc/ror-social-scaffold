@@ -21,6 +21,7 @@
       </div>
       <% if current_user %>
         <%= link_to current_user.name, user_path(current_user) %>
+        <%#= gravatar_image_tag(current_user.email, :gravatar => { :size => 20 }, alt: current_user.name) %>        
         <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
       <% else %>
         <%= link_to 'Sign in', user_session_path %>
