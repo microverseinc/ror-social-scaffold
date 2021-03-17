@@ -13,7 +13,7 @@ gem 'puma', '~> 3.12'
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-# See https://github.com/rails/execjs#readme for more supported runtimes
+# See https://github.com/railshttps://stackoverflow.com/questions/36831028/trying-to-implement-friends-with-rails-getting-a-no-route-matches-get-error-w/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
 # Use CoffeeScript for .coffee assets and views
