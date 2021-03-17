@@ -13,7 +13,7 @@ gem 'puma', '~> 3.12'
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-# See https://github.com/rails/execjs#readme for more supported runtimes
+# See https://github.com/railshttps://stackoverflow.com/questions/36831028/trying-to-implement-friends-with-rails-getting-a-no-route-matches-get-error-w/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
 # Use CoffeeScript for .coffee assets and views
@@ -36,7 +36,7 @@ gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
-
+gem 'gravatar_image_tag', '~> 1.2'
 gem 'devise'
 
 group :development, :test do
