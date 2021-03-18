@@ -1,9 +1,11 @@
 <li>
   Name: <%= user.name %>
   <span class="profile-link">
-
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
   </span>
-  <%= button_to 'Invite to friendship', user_friendships_path(user), remote: true, data: {disable_with: "Pending..."}  %>
-
+  <% if current_user.friend_requests %>
+    <%= button_to 'Invite to friendship', user_friendships_path(user) %>
+  <% elsif current_user.pending_friends %>
+    <%= button_to 'Pending', user_friendships_path(user) %>
+  <% end %>
 </li>
