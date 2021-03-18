@@ -3,7 +3,7 @@
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
   </span>
-  <%= button_to 'Invite to friendship', user_friendships_path(user)  %>
+  <%= button_to 'Invite to friendship', user_friendships_path(user), class: 'btn btn-primary' %>
   <%# if user %> <%# elsif user.friendship.status == false %> <%#= button_to 'Pending friendship', disable: true   %> <%# else %> <%#= button_to 'Pending friendship', disable: true   %> <%# end %> </li>
 <%# user.pending_friends.each do |i|%>
 <%#= i.name %>
