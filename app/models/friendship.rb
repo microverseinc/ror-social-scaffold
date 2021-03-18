@@ -2,7 +2,7 @@ class Friendship < ApplicationRecord
   belongs_to :user
   belongs_to :friend, class_name: 'User'
 
-  def request(user, friend)
+  def self.request(user, friend)
     unless user == friend or Friendship.exists?(user, friend) 
       transaction do
         create(user: 'user', friend: 'friend', status: 'pending')
