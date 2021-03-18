@@ -1,20 +1,22 @@
 class FriendshipsController < ApplicationController
- 
-
   def create
-    Friendship.request(@user1, @friend)
+    # User.friend_requests
+    @friendship = current_user.friendships.new(friend_id: params[:user_id])
     flash[:notice] = "Friend request has been sent to #{user.name}."
+ 
     redirect_to users_path(@friend)
   end
- 
+
+  def accept
+    if @friendship.save
+      flash[:notice] = "#{user.name} accept your request."
+    end
+    redirect_to users_path(@friend)
+  end
 
   private
 
   def user
-    @user1 = current_user
     @friend = User.find(params[:user_id])
   end
-
-  
-
 end
