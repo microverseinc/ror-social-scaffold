@@ -6,7 +6,7 @@
   <thead>
     <tr>
       <th>User</th>
-      <th>Receiver</th>
+      <th>Friendship</th>
       <th>Status</th>
       <th colspan="3"></th>
     </tr>
@@ -15,8 +15,8 @@
   <tbody>
     <% @friendships.each do |friendship| %>
       <tr>
-        <td><%= friendship.user %></td>
-        <td><%= friendship.receiver %></td>
+        <td><%= friendship.user_id %></td>
+        <td><%= friendship.friendship_id %></td>
         <td><%= friendship.status %></td>
         <td><%= link_to 'Show', friendship %></td>
         <td><%= link_to 'Edit', edit_friendship_path(friendship) %></td>

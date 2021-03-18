@@ -311,6 +311,14 @@ form {
   }
 }
 
+table, tr{
+  text-align: left;
+}
+
+#h1 {
+  text-align: left;
+}
+
 #error_explanation {
   h2 {
     color: $primary-color-text;

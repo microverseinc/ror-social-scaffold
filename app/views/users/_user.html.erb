@@ -1,11 +1,42 @@
 <li>
+  <% if user.id == current_user.id %>
+  Name: <%= user.name %>
+  
+  <span class="profile-link">
+    <%= link_to 'See My Profile',  user_path(user), class: 'profile-link' %>
+  </span>
+  <span>&nbsp</span>
+  <span>&nbsp</span>
+  <span class="profile-link">
+  <% else%>
   Name: <%= user.name %>
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-    <%= link_to 'pending Friendship',  friendships_path(receiver_id: user.id), method: :post, class: 'profile-link' %>
-    <% if(current_user != user) %>
-    
-      <%= link_to 'Send Friendship',  friendships_path(receiver_id: user.id), method: :post, class: 'profile-link' %>
-    <% end %>
   </span>
+  <span>&nbsp</span>
+  <span>&nbsp</span>
+  <span class="profile-link">
+  
+  <% if request_sent(user) %>
+    <span class= 'profile-link'>
+      You already sent a request
+    </span>
+  <% elsif check_friendship_status(current_user.id, user.id) == 'accept'%>
+  <span class= 'profile-link'>
+      You are friends
+  </span>
+  <% elsif request_received(user) %>
+    <%= link_to 'Accept friend request',  update_request_path(user: @current_user, friend: @user, status: 'accept'), 
+    class: 'profile-link' %>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <%= link_to 'Reject friend request',  update_request_path(user: @current_user, friend: @user, status: 'reject'), 
+    class: 'profile-link' %>
+  <% else %>
+    <%= link_to 'Invite friend',  friendships_path(user: @current_user, friend: user), :method => :post, 
+    class: 'profile-link' %>
+
+  <% end %>
+  <% end %>
+  </span> 
 </li>

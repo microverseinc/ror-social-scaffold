@@ -23,17 +23,36 @@ class FriendshipsController < ApplicationController
 
   # POST /friendships
   # POST /friendships.json
-  def create
-    @friendship = Friendship.new(friendship_params)
+  def check_reverse_pair(user, friend)
+    Friendship.where(user_id: user, friend_id: friend)
+  end
 
-    respond_to do |format|
-      if @friendship.save
-        format.html { redirect_to @friendship, notice: 'Friendship was successfully created.' }
-        format.json { render :show, status: :created, location: @friendship }
+  def accept_or_reject_friend_request
+    friend_status = Friendship.where(user_id: params[:user], friend_id: params[:friend])
+    friend_status.update(confirmed: params[:status])
+    if params[:status] == 'accept'
+      redirect_back(fallback_location: users_path, notice: 'Friend request Accepted')
+    else
+      redirect_back(fallback_location: users_path, notice: 'Friend request Rejected')
+    end
+  end
+
+  # POST /friendships or /friendships.json
+  def create
+    @sender = User.find(params[:user])
+    @reciever = User.find(params[:friend])
+
+    reverse_pair = check_reverse_pair(@reciever, @sender)
+    if reverse_pair.empty?
+      @friend_request = @sender.friendships.build(user: @sender, friend: @reciever, confirmed: 'Unconfirmed')
+
+      if @friend_request.save
+        redirect_to users_path, notice: 'Friend request sent successfully'
       else
-        format.html { render :new }
-        format.json { render json: @friendship.errors, status: :unprocessable_entity }
+        redirect_to users_path, notice: 'A pending friend request exist'
       end
+    else
+      redirect_to users_path, notice: 'Friendship Exists'
     end
   end
 
@@ -69,6 +88,6 @@ class FriendshipsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def friendship_params
-      params.require(:friendship).permit(:user_id, :receiver_id, :status)
+      params.require(:friendship).permit(:user_id, :friendship_id, :status)
     end
 end
