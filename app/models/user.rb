@@ -22,7 +22,9 @@ class User < ApplicationRecord
   end
 
   def friend_requests
-    inverse_friendrequests.map { |friendrequest| friendrequest.user if !friendrequest.status || friendrequest.nil? }.compact
+    inverse_friendrequests.map do |friendrequest|
+      friendrequest.user if !friendrequest.status || friendrequest.nil?
+    end.compact
   end
 
   def confirm_friend(user)
