@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2021_03_16_134256) do
   create_table "friendships", force: :cascade do |t|
     t.integer "user_id"
     t.integer "friend_id"
-    t.boolean "status"
+    t.boolean "status", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["friend_id"], name: "index_friendships_on_friend_id"
