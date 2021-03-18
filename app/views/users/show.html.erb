@@ -1,11 +1,20 @@
 <section class="user-section">
 
-  <h2><%= "Name: #{@user.name}" %>  </h2> 
+  <h2><%= "Name: #{@user.name}" %> </h2>
 
   <% if @user != current_user %>
-  
-    <%= button_to 'Invite to friendship', user_friendships_path(@user) %>
-    </span>
+
+  <%= button_to 'Invite to friendship', user_friendships_path(@user) %>
+  </span>
+  <% else %>
+  <h4>My friends : </h4>
+  <% @user.friends.each do |f| %>
+  <%= f.name %>
+  <% end %>
+  <h4>Pending friends : </h4>
+  <% @user.pending_friends.each do |f| %>
+  <%= f.name %>
+  <% end %>
   <% end %>
 
   <article class="timeline">
