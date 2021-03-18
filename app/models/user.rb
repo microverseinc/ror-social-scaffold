@@ -22,18 +22,12 @@ class User < ApplicationRecord
 
   # Users who have yet to confirme friend requests
   def pending_friends
-    friendships.map do |friendship|
-      friendship.friend unless
-      friendship.status
-    end.compact
+    friendships.map { |friendship| friendship.friend unless friendship.status }.compact
   end
 
   # Users who have requested to be friends
   def friend_requests
-    inverse_friendships.map do |friendship|
-      friendship.user unless
-      friendship.status
-    end.compact
+    inverse_friendships.map { |friendship| friendship.user unless friendship.status }.compact
   end
 
   def confirm_friend(user)
