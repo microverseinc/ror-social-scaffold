@@ -6,9 +6,7 @@ class FriendshipsController < ApplicationController
   end
 
   def accept
-    if @friendship.save
-      flash[:notice] = "#{user.name} accepted your frienship request."
-    end
+    flash[:notice] = "#{user.name} accepted your frienship request." if @friendship.save
     redirect_to users_path(@friend)
   end
 
