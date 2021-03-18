@@ -4,6 +4,11 @@
 
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
   </span>
-  <%= button_to 'Invite to friendship', user_friendships_path(user), remote: true, data: {disable_with: "Pending..."}  %>
-
+  <% if user %>
+  <%= button_to 'Invite to friendship', user_friendships_path(user)  %>
+  <% elsif user.friendship.status == false %>
+  <%= button_to 'Pending friendship', disable: true   %>
+  <% else %>
+  <%#= button_to 'Pending friendship', disable: true   %>
+  <% end %>
 </li>
