@@ -5,11 +5,6 @@
     </div>
     <div class='post-liking'>
       <span class='post-date'> <%= post.created_at.strftime("%Y/%m/%d") %> </span>
-      <p class="likes_number">
-        <h5>
-            <%= pluralize(post.likes.size,'Like') unless post.likes.size.zero?%>
-        </h5>
-      </p>
       <%= like_or_dislike_btn(post) %>
     </div>
   </div>

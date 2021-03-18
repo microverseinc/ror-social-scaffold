@@ -1,13 +1,20 @@
 module UsersHelper
-  def links_to_friendrequest(user)
-    if current_user.friends.include? user
-      render 'users/your_friend'
-    elsif !current_user.pending_friends.select { |m| m.user == user }.empty?
-      render 'users/accept_or_reject', user: user
-    elsif !current_user.friend_requests.select { |m| m.friend_id == user.id }.empty?
-      render 'users/sent_request'
+  def invite_or_pending_btn(obj)
+    return unless current_user.id != obj.id
+
+    return if current_user.friend?(obj)
+
+    out = ''
+    if current_user.pending_friends.include?(obj)
+      out << link_to('pending invite', '#')
+    elsif current_user.friend_requests.include?(obj)
+      out << link_to('Accept', invite_path(user_id: obj.id), method: :put)
+      out << ' | '
+      out << link_to('Reject', reject_path(user_id: obj.id), method: :delete)
     else
-      render 'users/add_friend_button', user: user
+      out << link_to('Invite', invite_path(user_id: obj.id), method: :post)
     end
+
+    out.html_safe
   end
 end
