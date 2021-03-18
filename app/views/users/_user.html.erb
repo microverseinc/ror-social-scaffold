@@ -4,5 +4,6 @@
 
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
   </span>
-  <%= button_to 'Invite to friendship', user_friendships_path(user), disable_with: 'Pending...', class: 'btn btn-danger' %>
+  <%= button_to 'Invite to friendship', user_friendships_path(user), remote: true, data: {disable_with: "Pending..."}  %>
+
 </li>
