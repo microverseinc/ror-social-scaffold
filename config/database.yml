@@ -14,16 +14,19 @@
 # Configure Using Gemfile
 # gem 'pg'
 #
-default: &default
-  adapter: postgresql
-  encoding: unicode
-  # For details on connection pooling, see Rails configuration guide
-  # http://guides.rubyonrails.org/configuring.html#database-pooling
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+# For details on connection pooling, see Rails configuration guide
+# http://guides.rubyonrails.org/configuring.html#database-pooling
 
 development:
-  <<: *default
-  database: ror_social_scaffold_development
+  adapter: postgresql
+  host: localhost
+  encoding: unicode
+  database: stay-in-touch_development
+  pool: 5
+  username: postgres1
+  password: postgres1
+  timeout: 5000
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -56,9 +59,14 @@ development:
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  <<: *default
-  database: ror_social_scaffold_test
-
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  database: stay-in-touch_test
+  pool: 5
+  username: postgres1
+  password: postgres1
+  timeout: 5000
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
 # ever seen by anyone, they now have access to your database.
@@ -78,8 +86,8 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-production:
-  <<: *default
-  database: ror_social_scaffold_production
-  username: ror_social_scaffold
-  password: <%= ENV['ROR_SOCIAL_SCAFFOLD_DATABASE_PASSWORD'] %>
+# production:
+#   <<: *default
+#   database: stay_in_touch_production
+#   username: postgres
+#   password: <%= ENV['STAY_IN_TOUCH_DATABASE_PASSWORD'] %>

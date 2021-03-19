@@ -1,7 +1,11 @@
 <%= form_for(@post) do |form| %>
   <%= form.label :content %>
   <%= form.text_field :content, id: :post_content, class: 'form-control', placeholder: 'Add New Post' %>
-  <%= display_errors(@post) %>
+  <% if @post.errors.full_messages.any? %>
+    <p class="errors">
+      <%= "Post could not be saved. #{@post.errors.full_messages.join('. ')}" %>
+    </p>
+  <% end %>
   <%= form.submit 'Save', class: 'btn btn-primary' %>
 <% end %>
 

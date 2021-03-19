@@ -1,5 +1,15 @@
 <section class="users-section">
   <ul class="users-list">
-    <%= render @users %>
+    <% @users.each do |user| %>
+    <li>
+        <%= user.name %>
+        <span class="profile-link">
+          <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+        </span>
+        <span class="profile-link">
+          <%= invite_or_pending_btn(user) %>
+        </span>
+      </li>
+    <% end %>
   </ul>
 </section>
