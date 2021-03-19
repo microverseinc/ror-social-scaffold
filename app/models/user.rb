@@ -11,31 +11,30 @@ class User < ApplicationRecord
   has_many :comments
   has_many :likes, dependent: :destroy
   has_many :inverse_friendrequests, class_name: 'Friendrequest', foreign_key: 'friend_id'
-  def friends
-    friends_array = friendrequests.map { |friendrequest| friendrequest.friend if friendrequest.status } +
-                    inverse_friendrequests.map { |friendrequest| friendrequest.user if friendrequest.status }
-    friends_array.compact
-  end
 
-  def pending_friends
-    friendrequests.map { |friendrequest| friendrequest.friend if !friendrequest.status || friendrequest.nil? }.compact
-  end
+  has_many :confirmed_friendrequests, -> { where status: true }, class_name: 'Friendrequest'
+  has_many :friends, through: :confirmed_friendrequests
 
-  def friend_requests
-    inverse_friendrequests.map do |friendrequest|
-      friendrequest.user if !friendrequest.status || friendrequest.nil?
-    end.compact
-  end
+  has_many :pending_friendrequests, -> { where status: false }, class_name: 'Friendrequest', foreign_key: 'user_id'
+  has_many :pending_friends, through: :pending_friendrequests, source: :friend
+
+  has_many :inverted_friendrequests, -> { where status: false }, class_name: 'Friendrequest'
+  has_many :friend_requests, through: :inverted_friendrequests, source: :user
 
   def confirm_friend(user)
-    friendrequest = inverse_friendrequests.find { |f| f.user == user }
-    friendrequest.status = true
-    friendrequest.save
+    friend = Friendrequest.find_by(user_id: user_id, friend_id: id)
+    friend.status = true
+    friend.save
+    Friendrequest.create!(friend_id: user.id, user_id: id, status: true)
   end
 
   def reject_request(user)
     friendrequest = inverse_friendrequests.find { |f| f.user == user }
     friendrequest.destroy
+  end
+
+  def friends_and_own_posts
+    Post.where(user_id: friends_ids)
   end
 
   def friend?(user)

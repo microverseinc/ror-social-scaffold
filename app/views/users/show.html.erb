@@ -9,7 +9,7 @@
   <article class="timeline">
     <h3>Sent Invitations:</h3>
     <ul class="posts">
-      <% @pending.each do |invitation|%>
+      <% @user.pending_friends.each do |invitation|%>
           <li><%= invitation.name %></li>
       <% end %>
     </ul>
@@ -17,8 +17,16 @@
   <article class="timeline">
     <h3>Incoming Invitations:</h3>
     <ul class="posts">
-      <% @incoming.each do |invitation|%>
+      <% @user.friend_requests.each do |invitation|%>
           <li><%= invitation.name %> <%= invite_or_pending_btn(invitation) %></li>
+      <% end %>
+    </ul>
+  </article>
+  <article class="timeline">
+    <h3>Mutual Friends:</h3>
+    <ul class="posts">
+      <% @mutual_friends.each do |mutual|%>
+          <li><%= mutual.name %></li>
       <% end %>
     </ul>
   </article>
