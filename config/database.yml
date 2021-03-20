@@ -24,7 +24,8 @@ default: &default
 development:
   <<: *default
   database: ror_social_scaffold_development
-
+  username: heber
+  password: 123456
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
@@ -58,7 +59,8 @@ development:
 test:
   <<: *default
   database: ror_social_scaffold_test
-
+  username: heber
+  password: 123456
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
 # ever seen by anyone, they now have access to your database.
