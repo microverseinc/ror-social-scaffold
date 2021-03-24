@@ -16,12 +16,8 @@
   <span>&nbsp</span>
   <span>&nbsp</span>
   <span class="profile-link">
-  <%= puts "!!!!!!!!!!!!" %>
-  <% test = request_received(user) %>
-  <%= puts test %>
   <% if request_sent(user) %>
     <span class= 'profile-link'>
-
       You already sent a request
     </span>
   <% elsif check_friendship_status(current_user.id, user.id) == 'accept'%>
@@ -29,7 +25,7 @@
       You are friends
   </span>
   <% elsif request_received(user) %>
-    <%= link_to 'Accept friend request',  update_request_path(user: @current_user, friend: @user, status: 'accept'), 
+    <%= link_to 'Accept friend request',  update_request_path(user: current_user.id, friend: @user, status: 'accept'),
     class: 'profile-link' %>
     <span>&nbsp</span>
     <span>&nbsp</span>
