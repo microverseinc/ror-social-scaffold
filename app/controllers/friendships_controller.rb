@@ -19,6 +19,7 @@ class FriendshipsController < ApplicationController
 
   # GET /friendships/1/edit
   def edit
+    
   end
 
   # POST /friendships
@@ -39,12 +40,12 @@ class FriendshipsController < ApplicationController
 
   # POST /friendships or /friendships.json
   def create
-    @sender = User.find(params[:user])
+    @sender = current_user
     @reciever = User.find(params[:friend])
 
     reverse_pair = check_reverse_pair(@reciever, @sender)
     if reverse_pair.empty?
-      @friend_request = @sender.friendships.build(user: @sender, friend: @reciever, confirmed: 'Unconfirmed')
+      @friend_request = @sender.friendships.build(user: @sender, friend: @reciever, status: 'Unconfirmed')
 
       if @friend_request.save
         redirect_to users_path, notice: 'Friend request sent successfully'

@@ -16,9 +16,12 @@
   <span>&nbsp</span>
   <span>&nbsp</span>
   <span class="profile-link">
-  
+  <%= puts "!!!!!!!!!!!!" %>
+  <% test = request_received(user) %>
+  <%= puts test %>
   <% if request_sent(user) %>
     <span class= 'profile-link'>
+
       You already sent a request
     </span>
   <% elsif check_friendship_status(current_user.id, user.id) == 'accept'%>

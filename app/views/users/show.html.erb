@@ -1,5 +1,24 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
+  <p><% if request_sent(@user) %>
+    <span>
+      You already sent a request
+    </span>
+  <% elsif request_received(@user) %>
+  <%= link_to 'Accept friend request',  update_request_path(user: @current_user, friend: @user, status: 'accept'), :method => :post,
+    class: 'profile-link' %>
+    <span>&nbsp</span>
+    <span>&nbsp</span>
+    <%= link_to 'Reject friend request',  update_request_path(user: @current_user, friend: @user, status: 'reject'), 
+    class: 'profile-link' %>
+  <% else %>
+    <%= link_to 'Invite friend',  friendships_path(user: @current_user, friend: @user), :method => :post, 
+    class: 'profile-link' %>
+    <span>
+      
+    </span>
+
+  <% end %></p>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">

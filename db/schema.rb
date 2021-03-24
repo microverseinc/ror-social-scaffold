@@ -27,11 +27,11 @@ ActiveRecord::Schema.define(version: 2021_03_17_091435) do
 
   create_table "friendships", force: :cascade do |t|
     t.string "user_id"
-    t.string "friendship_id"
+    t.string "friend_id"
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["friendship_id"], name: "index_friendships_on_friendship_id"
+    t.index ["friend_id"], name: "index_friendships_on_friend_id"
     t.index ["user_id"], name: "index_friendships_on_user_id"
   end
 

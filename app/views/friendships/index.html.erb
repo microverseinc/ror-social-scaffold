@@ -16,10 +16,10 @@
     <% @friendships.each do |friendship| %>
       <tr>
         <td><%= friendship.user_id %></td>
-        <td><%= friendship.friendship_id %></td>
+        <td><%= friendship.friend_id %></td>
         <td><%= friendship.status %></td>
         <td><%= link_to 'Show', friendship %></td>
-        <td><%= link_to 'Edit', edit_friendship_path(friendship) %></td>
+        <td><%= link_to 'Accept', edit_friendship_path(friendship) %></td>
         <td><%= link_to 'Destroy', friendship, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

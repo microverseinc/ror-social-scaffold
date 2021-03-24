@@ -14,7 +14,7 @@ module UsersHelper
   end
 
   def check_friendship_status(user, friend)
-    user = Friendship.where(user_id: user, friendship_id: friend)
+    user = Friendship.where(user_id: user, friend_id: friend)
     status = user.pluck(:status)
     status[0]
   end
