@@ -1,5 +1,5 @@
 class FriendshipsController < ApplicationController
-  before_action :set_friendship, only: [:show, :edit, :update, :destroy]
+  before_action :set_friendship, only: %i[show edit update destroy]
 
   # GET /friendships
   # GET /friendships.json
@@ -9,8 +9,7 @@ class FriendshipsController < ApplicationController
 
   # GET /friendships/1
   # GET /friendships/1.json
-  def show
-  end
+  def show; end
 
   # GET /friendships/new
   def new
@@ -18,9 +17,7 @@ class FriendshipsController < ApplicationController
   end
 
   # GET /friendships/1/edit
-  def edit
-    
-  end
+  def edit; end
 
   # POST /friendships
   # POST /friendships.json
@@ -82,13 +79,14 @@ class FriendshipsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_friendship
-      @friendship = Friendship.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def friendship_params
-      params.require(:friendship).permit(:user_id, :friendship_id, :status)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_friendship
+    @friendship = Friendship.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def friendship_params
+    params.require(:friendship).permit(:user_id, :friendship_id, :status)
+  end
 end
