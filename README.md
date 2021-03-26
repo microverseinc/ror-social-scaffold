@@ -14,7 +14,17 @@ TBA
 
 ## Getting Started
 
-To get a local copy up and running follow these simple example steps.
+In order to start working on this project, you need to:
+
+
+
+Fork repository with initial code (as described here).
+
+Create a new development branch in your repository.
+
+Set the development branch as the default branch.
+
+Remember to always open Pull Rquests with your development branch as base (gif below shows how to do it - with linters-config repo as an example).
 
 ### Prerequisites
 
@@ -70,6 +80,11 @@ Open `http://localhost:3000/` in your browser.
 TBA
 
 ## Authors
+**Oluwadare Juwon**
+
+- GitHub: [@wintan1418](https://github.com/wintan1418)
+- Twitter: [@juwonoluwadare](https://twitter.com/oluwadarejuwon)
+- LinkedIn: [Oluwadare Juwon](https://www.linkedin.com/in/oluwadare-juwon-048a391a8/)
 
 TBA
 
