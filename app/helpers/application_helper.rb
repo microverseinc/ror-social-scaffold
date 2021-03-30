@@ -7,6 +7,10 @@ module ApplicationHelper
     current_user.friendships.any?{|friendship| friendship.friend = user  }
   end
 
+  def sended_to_us?(user)
+    current_user.inverse_friendships.any{|friendship| friendship.user = user}
+  end
+
   def menu_link_to(link_text, link_path)
     class_name = current_page?(link_path) ? 'menu-item active' : 'menu-item'
 

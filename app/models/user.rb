@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :friendships
-  has_many :inverse_frienships, class_name: 'Friendship', foreign_key: 'friend_id'
+  has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
 
   def friends
     friends_array1 = friendships.map { |friendship| friendship.friend if friendship.status }
@@ -22,7 +22,7 @@ class User < ApplicationRecord
     friendships.map { |friendship| friendship.friend unless friendship.status }.compact
   end
 
-  def received_requests
+  def friend_requests
     inverse_friendships.map { |friendship| friendship.user unless friendship.status }.compact
   end
 

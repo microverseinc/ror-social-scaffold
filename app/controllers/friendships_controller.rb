@@ -4,13 +4,15 @@ class FriendshipsController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     return if already_sended?(@user)
+    return if sended_to_us?(@user)
+    return if current_user = @user
 
     @friendship = current_user.friendships.build(friend_id: params[:user_id])
     if @friendship.save
       redirect_to root_path
       flash[:notice] = 'Friend request sended'
     else
-      flash[:notice] = 'Friend request sended'
+      flash[:notice] = 'somthing happened'
     end
   end
 
@@ -20,6 +22,11 @@ class FriendshipsController < ApplicationController
     @user = User.find(params[:user_id])
     @friendship = current_user.inverse_friendships.find { |friendship| friendship.user == user }
     @friendship.status = true
- 
+    if @friendship.save
+      redirect_to root_path
+      flash[:notice] = 'Friend request accepted'
+    else
+      flash[:notice] = 'somthing happened'
+    end
   end
 end
