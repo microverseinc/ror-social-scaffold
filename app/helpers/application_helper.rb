@@ -1,4 +1,12 @@
 module ApplicationHelper
+  def friend?(user)
+
+  end
+
+  def already_sended?(user)
+    current_user.friendships.any?{|friendship| friendship.friend = user  }
+  end
+
   def menu_link_to(link_text, link_path)
     class_name = current_page?(link_path) ? 'menu-item active' : 'menu-item'
 
