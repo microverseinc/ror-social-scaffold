@@ -17,4 +17,18 @@ class User < ApplicationRecord
     friends_array2 = inverse_friendships.map{|friendship| friendship.user if friendship.status}
     [friends_array1, friends_array2].flatten
   end
+
+  def pending_requests
+    friendships.map{|friendship| friendship.friend if !friendship.status}.compact
+  end
+
+  def received_requests
+    inverse_friendships.map{|friendship| friendship.user if !friendship.status}.compact
+  end
+
+  def confirm_friend(user)
+    friendship = inverse_friendships.find{|friendship| friendship.user == user}
+    friendship.status = true
+    friendship.save
+  end
 end
