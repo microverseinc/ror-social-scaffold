@@ -4,8 +4,8 @@
 
 ## Built With
 
-- Ruby v2.7.0
-- Ruby on Rails v5.2.4
+- Ruby v3.0.0
+- Ruby on Rails v6.1.3
 
 ## Live Demo
 
@@ -14,7 +14,7 @@ TBA
 
 ## Getting Started
 
-To get a local copy up and running follow these simple example steps.
+To get a local copy up and going follow these simple example steps.
 
 ### Prerequisites
 
