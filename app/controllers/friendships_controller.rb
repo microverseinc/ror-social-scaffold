@@ -5,6 +5,7 @@ class FriendshipsController < ApplicationController
     @user = User.find(params[:user_id])
     return if already_sended?(@user)
     return if sended_to_us?(@user)
+
     # return if current_user = @user
 
     @friendship = current_user.friendships.build(friend_id: params[:user_id])

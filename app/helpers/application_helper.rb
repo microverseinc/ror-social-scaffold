@@ -1,14 +1,12 @@
 module ApplicationHelper
-  def friend?(user)
-
-  end
+  def friend?(user); end
 
   def already_sended?(user)
-    current_user.friendships.any?{|friendship| friendship.friend = user  }
+    current_user.friendships.any? { |friendship| friendship.friend = user }
   end
 
-  def sended_to_us?(user)
-    current_user.inverse_friendships.any?{|friendship| friendship.user = current_user}
+  def sended_to_us?(_user)
+    current_user.inverse_friendships.any? { |friendship| friendship.user = current_user }
   end
 
   def menu_link_to(link_text, link_path)

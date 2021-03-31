@@ -6,12 +6,11 @@
 
 
 <br/><br/>
-<% if @friends.nil? %>
-  <h2> friends</h2>
-  <% @friends.each do |friend|%>
-    <%= friend.name %><br/>
-  <% end%>
-<% end %>
+
+<h2> friends</h2>
+<% @friends.each do |friend|%>
+  <%= friend.name %><br/>
+<% end%>
 
 
 <br/><br/>
@@ -20,7 +19,7 @@
 <% @friend_requests.each do |friend|%>
   <%= friend.name %><br/>
   <%= link_to 'confirm', confirm_user_path(friend) %>
-  <%= link_to 'destory', deny_user_path(friend) %>
+  # <%= link_to 'destory', deny_user_path(friend) %>
 <% end%>
 
 
