@@ -24,4 +24,12 @@ class UsersController < ApplicationController
       flash[:notice] = 'somthing happened'
     end
   end
+
+  def deny
+    @user = User.find(params[:id])
+    @friendship = current_user.inverse_friendships.find { |friendship| friendship.user == @user }
+    @friendship.destroy
+    redirect_to root_path
+    flash[:notice] = 'You have denied the friendship request'
+  end
 end
