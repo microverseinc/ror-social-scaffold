@@ -12,4 +12,16 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @posts = @user.posts.ordered_by_most_recent
   end
+
+  def confirm
+    @user = User.find(params[:id])
+    @friendship = current_user.inverse_friendships.find { |friendship| friendship.user == @user }
+    @friendship.status = true
+    if @friendship.save
+      redirect_to root_path
+      flash[:notice] = 'Friend request accepted'
+    else
+      flash[:notice] = 'somthing happened'
+    end
+  end
 end

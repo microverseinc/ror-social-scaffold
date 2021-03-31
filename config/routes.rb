@@ -5,11 +5,11 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :users, only: [:index, :show] do
-    resources :friendships, only: [:create, :destroy] do
-      member do
-        get 'confirm'
-      end
+    resources :friendships, only: [:create, :destroy] 
+    member do
+      get 'confirm'
     end
+    
   end
   resources :posts, only: [:index, :create] do
     resources :comments, only: [:create]

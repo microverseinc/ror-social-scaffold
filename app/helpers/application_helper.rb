@@ -8,7 +8,7 @@ module ApplicationHelper
   end
 
   def sended_to_us?(user)
-    current_user.inverse_friendships.any{|friendship| friendship.user = user}
+    current_user.inverse_friendships.any?{|friendship| friendship.user = current_user}
   end
 
   def menu_link_to(link_text, link_path)
