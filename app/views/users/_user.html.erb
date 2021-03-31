@@ -1,3 +1,4 @@
+<% if user != current_user %>
 <li>
   Name: <%= user.name %>
   <span class="profile-link">
@@ -5,3 +6,4 @@
     <%= btn_send(user) %>
   </span>
 </li>
+<% end %>
