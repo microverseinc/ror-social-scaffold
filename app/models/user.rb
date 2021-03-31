@@ -20,4 +20,24 @@ class User < ActiveRecord::Base
     friends_array + inverse_friendies.map{|friendie| friendie.user if friendie.confirmed}
     friends_array.compact
   end
+
+  # Users who have yet to confirme friend requests
+  def pending_friends
+    friendies.map{|friendie| friendie.friend if !friendie.confirmed}.compact
+  end
+ # Users who have requested to be friends
+ def friend_requests
+  inverse_friendies.map{|friendie| friendie.user if !friendie.confirmed}.compact
+end
+
+def confirm_friend(user)
+  friendie = inverse_friendies.find{|friendie| friendie.user == user}
+  friendie.confirmed = true
+  friendie.save
+end
+
+def friend?(user)
+  friends.include?(user)
+end
+
 end
