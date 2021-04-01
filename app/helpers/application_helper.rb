@@ -40,10 +40,10 @@ module ApplicationHelper
   end
 
   def btn_mutual(user)
-    count = 0
+    mutuals = []
     user.friends.map do |friend|
-      count += 1 if current_user.friends.any? == friend
+      current_user.friends.map {|friendd| friendd == friend ? mutuals.push(friend.name) : mutuals}
     end
-    count
+    mutuals
   end
 end
