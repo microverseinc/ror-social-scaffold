@@ -32,4 +32,8 @@ class UsersController < ApplicationController
     redirect_to root_path
     flash[:notice] = 'You have denied the friendship request'
   end
+
+  def friend?(user)
+    friends.include?(user)
+  end
 end

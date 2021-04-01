@@ -36,7 +36,7 @@ module ApplicationHelper
     return unless current_user.friendships.none? { |friendship| friendship.friend == user }
     return unless current_user.friends.none? { |friend| friend == user }
 
-    (link_to 'Send request', user_friendships_path(user), method: :post)
+    (button_to 'Send request', user_friendships_path(user), method: :post)
   end
 
   def btn_mutual(user)
