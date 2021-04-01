@@ -40,10 +40,12 @@ module ApplicationHelper
   end
 
   def btn_mutual(user)
-    mutuals = []
-    user.friends.map do |friend|
-      current_user.friends.map {|friendd| friendd == friend ? mutuals.push(friend.name) : mutuals}
-    end
-    mutuals
+    return if user.friends.include?(nil)
+
+      mutuals = []
+      user.friends.map do |friend|
+        current_user.friends.map {|friendd| friendd == friend ? mutuals.push(friend.name) : mutuals}
+      end
+      mutuals
   end
 end
