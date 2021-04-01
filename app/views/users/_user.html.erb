@@ -1,6 +1,9 @@
+<% if user != current_user %>
 <li>
   Name: <%= user.name %>
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+    <%= btn_send(user) %>
   </span>
 </li>
+<% end %>
