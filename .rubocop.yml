@@ -60,5 +60,4 @@ Style/HashTransformValues:
   Enabled: false
 Style/Lint/UselessAssignment:
   Enabled: false 
-  Style/Lint/Void:
-  Enabled: false  
+   
