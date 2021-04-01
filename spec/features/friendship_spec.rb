@@ -7,7 +7,7 @@ RSpec.describe 'the signin process', type: :system do
 
   it 'send friend request' do
     user1 = User.create(name: 'ari5', email: 'testuser1@email.com', password: '123456')
-    user2 = User.create(name: 'ari6', email: 'testuser2@email.com', password: '123456')
+    User.create(name: 'ari6', email: 'testuser2@email.com', password: '123456')
     visit root_path
     click_link_or_button 'Sign in'
     fill_in 'user[email]', with: user1.email
@@ -19,7 +19,7 @@ RSpec.describe 'the signin process', type: :system do
   end
   it 'can not see button when already sent' do
     user1 = User.create(name: 'ari5', email: 'testuser1@email.com', password: '123456')
-    user2 = User.create(name: 'ari6', email: 'testuser2@email.com', password: '123456')
+    User.create(name: 'ari6', email: 'testuser2@email.com', password: '123456')
     visit root_path
     click_link_or_button 'Sign in'
     fill_in 'user[email]', with: user1.email
@@ -71,5 +71,4 @@ RSpec.describe 'the signin process', type: :system do
     click_link 'Deny'
     expect(page).to have_text('You have denied the friendship request')
   end
-
 end
