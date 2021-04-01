@@ -35,6 +35,8 @@ module ApplicationHelper
   def btn_send(user)
     return unless current_user.friendships.none? { |friendship| friendship.friend == user }
     return unless current_user.friends.none? { |friend| friend == user }
+    return if current_user.inverse_friendships.any? { |friendship| friendship.friend == current_user }
+
 
     (button_to 'Send request', user_friendships_path(user), method: :post)
   end

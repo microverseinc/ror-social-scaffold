@@ -10,7 +10,7 @@
 
 
   <h2> friends</h2>
-  <% @friends.each do |friend|%>
+  <% @friends.uniq.each do |friend|%>
     <%= friend.name %><br/>
   <% end%>
 
