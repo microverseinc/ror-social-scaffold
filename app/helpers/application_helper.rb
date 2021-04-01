@@ -34,6 +34,7 @@ module ApplicationHelper
 
   def btn_send(user)
     return unless current_user.friendships.none? { |friendship| friendship.friend == user }
+    return unless current_user.friends.none? { |friend| friend == user }
 
     (link_to 'Send request', user_friendships_path(user), method: :post)
   end
@@ -41,9 +42,7 @@ module ApplicationHelper
   def btn_mutual(user)
     count = 0
     user.friends.map do |friend|
-      if current_user.friends.any? == friend
-        count += 1
-      end
+      count += 1 if current_user.friends.any? == friend
     end
     count
   end
