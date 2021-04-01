@@ -42,7 +42,7 @@ module ApplicationHelper
   def btn_mutual(user)
     mutuals = []
     user.friends.map do |friend|
-      current_user.friends.map {|friendd| friendd == friend ? mutuals.push(friend.name) : mutuals}
+      current_user.friends.map { |friendd| friendd == friend ? mutuals.push(friend.name) : mutuals }
     end
     mutuals
   end
