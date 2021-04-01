@@ -34,7 +34,19 @@ module ApplicationHelper
 
   def btn_send(user)
     return unless current_user.friendships.none? { |friendship| friendship.friend == user }
+    return unless current_user.friends.none? { |friend| friend == user }
+    return if current_user.inverse_friendships.any? { |friendship| friendship.friend == current_user }
 
-    (link_to 'Send request', user_friendships_path(user), method: :post)
+    (button_to 'Send request', user_friendships_path(user), method: :post)
+  end
+
+  def btn_mutual(user)
+    return if user.friends.include?(nil)
+
+    mutuals = []
+    user.friends.map do |friend|
+      current_user.friends.map { |friendd| friendd == friend ? mutuals.push(friend.name) : mutuals }
+    end
+    mutuals
   end
 end

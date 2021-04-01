@@ -31,4 +31,8 @@ class User < ApplicationRecord
     friendship.status = true
     friendship.save
   end
+
+  def friend?(user)
+    friends.include?(user)
+  end
 end

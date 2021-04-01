@@ -18,6 +18,7 @@ class UsersController < ApplicationController
     @friendship = current_user.inverse_friendships.find { |friendship| friendship.user == @user }
     @friendship.status = true
     if @friendship.save
+      Friendship.create(user_id: current_user.id, friend_id: @user.id, status: true)
       redirect_to root_path
       flash[:notice] = 'Friend request accepted'
     else
@@ -31,5 +32,9 @@ class UsersController < ApplicationController
     @friendship.destroy
     redirect_to root_path
     flash[:notice] = 'You have denied the friendship request'
+  end
+
+  def friend?(user)
+    friends.include?(user)
   end
 end

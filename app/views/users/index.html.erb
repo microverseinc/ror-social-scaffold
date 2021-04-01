@@ -10,7 +10,7 @@
 
 
   <h2> friends</h2>
-  <% @friends.each do |friend|%>
+  <% @friends.uniq.each do |friend|%>
     <%= friend.name %><br/>
   <% end%>
 
@@ -20,8 +20,8 @@
 <h2> recieved requests</h2>
 <% @friend_requests.each do |friend|%>
   <%= friend.name %><br/>
-  <%= link_to 'confirm', confirm_user_path(friend) %>
-  # <%= link_to 'destory', deny_user_path(friend) %>
+  <%= link_to 'Confirm', confirm_user_path(friend) %>
+  <%= link_to 'Deny', deny_user_path(friend) %>
 <% end%>
 
 
