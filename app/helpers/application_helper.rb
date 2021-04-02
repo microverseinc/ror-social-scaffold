@@ -34,8 +34,8 @@ module ApplicationHelper
 
   def btn_send(user)
     return if current_user.pending_requests.include?(user)
-    return unless current_user.friends.none? { |friend| friend == user }
-    return if current_user.inverse_friendships.any? { |friendship| friendship.friend == current_user }
+    return if current_user.friends.include?(user)
+    return if current_user.friend_requests.include?(user)
 
     (button_to 'Send request', user_friendships_path(user), method: :post)
   end
@@ -47,6 +47,6 @@ module ApplicationHelper
     user.friends.map do |friend|
       current_user.friends.map { |friendd| friendd == friend ? mutuals.push(friend.name) : mutuals }
     end
-    mutuals
+    mutuals.uniq
   end
 end
