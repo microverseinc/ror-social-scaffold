@@ -2,7 +2,7 @@ module ApplicationHelper
   def friend?(user); end
 
   def already_sended?(user)
-    return unless current_user.friendships.any? { |friendship| friendship.friend == user }
+    return unless current_user.pending_friendships.any? { |friendship| friendship.friend_id == user }
 
     redirect_to root_path
     flash[:notice] = 'you already sent a request to this person'
@@ -33,7 +33,7 @@ module ApplicationHelper
   end
 
   def btn_send(user)
-    return unless current_user.friendships.none? { |friendship| friendship.friend == user }
+    return if current_user.pending_requests.include?(user)
     return unless current_user.friends.none? { |friend| friend == user }
     return if current_user.inverse_friendships.any? { |friendship| friendship.friend == current_user }
 

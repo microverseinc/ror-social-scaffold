@@ -8,7 +8,7 @@ class FriendshipsController < ApplicationController
 
     return if current_user == @user
 
-    @friendship = current_user.friendships.build(friend_id: params[:user_id], status: false)
+    @friendship = current_user.pending_friendships.build(friend_id: params[:user_id], status: false)
     if @friendship.save
       redirect_to root_path
       flash[:notice] = 'Friend request sended'
