@@ -26,8 +26,8 @@ ActiveRecord::Schema.define(version: 2021_04_02_202048) do
   end
 
   create_table "friendships", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "friend_id"
+    t.bigint "user_id" 
+    t.bigint "friend_id"  
     t.boolean "confirmed"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
