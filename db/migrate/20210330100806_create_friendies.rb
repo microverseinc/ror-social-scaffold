@@ -1,12 +1,10 @@
-class CreateFriendies < ActiveRecord::Migration[5.2]
+class Createfriendships < ActiveRecord::Migration[5.2]
   def change
-    create_table :friendies do |t|
-      t.references :user, index: true, foreign_key: true
-      t.references :friend, index: true
-      t.boolean :confirmed
+    create_table :follows do |t|
+      t.integer :follower_id
+      t.integer :leader_id
+      t.boolean :status
 
-      t.timestamps null: false
-    end
-    add_foreign_key :friendies, :users, column: :friend_id
+      t.timestamps
   end
 end
