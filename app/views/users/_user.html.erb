@@ -1,10 +1,1 @@
-<% if user != current_user %>
-<li>
-  Name: <%= user.name %>
-  <span class="profile-link">
-    <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-    <%= btn_send(user) %>
-    <%= btn_mutual(user) %>
-  </span>
-</li>
-<% end %>
+<%= all_users(user) %>
