@@ -71,7 +71,11 @@ TBA
 
 ## Authors
 
-TBA
+👤 Yusif Badmus
+
+- GitHub: [@ybadmus](https://github.com/ybadmus) 
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/ybadmus/)
+- Twitter: [@yusif_badmus](https://twitter.com/yusif_badmus)
 
 ## 🤝 Contributing
 
