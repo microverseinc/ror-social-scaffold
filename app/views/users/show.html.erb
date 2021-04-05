@@ -1,16 +1,24 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
 
+  <% friended = false %>
   <% @friendships.each do |fr|%>
-  <%if current_user.id = fr.user.id && @user.id = fr.friend.id %>
+    
+    <%if ((current_user.id = fr.user_id) && (@user.id = fr.friend_id)) || ((current_user.id = fr.friend_id) && (@user.id = fr.user_id)) %>
+      friended = true
+      break
+    <% end %>
+  <% end %>
+
+<% if friended == false %>
   <%= form_with model:@friendship do |form| %>
     <%= form.hidden_field :user_id, value: current_user.id %>
     <%= form.hidden_field :friend_id, value: @user.id %>
     <%= form.hidden_field :confirmed, value: false %>
-  <%= form.submit "Send friend request" %>
+    <%= form.submit "Send friend request" %>
   <% end %>
-  <% end %>
-
+<% end %>  
+    
 
   <article class="timeline">
     <h3>Recent posts:</h3>
