@@ -2,5 +2,7 @@
   Name: <%= user.name %>
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-  </span>
+  </span> <% unless current_user.friend?(user) %> | <button>
+    <%= link_to 'Invite to friendship',  friendships_path(id: user.id), method: 'post' %>
+  </button> <% end %>
 </li>
