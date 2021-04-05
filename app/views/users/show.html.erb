@@ -1,8 +1,8 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
 
-  <% @friendships.each do ||%>
-  <%if current_user.id && @user.id  %>
+  <% @friendships.each do |fr|%>
+  <%if current_user.id = fr.user.id && @user.id = fr.friend.id %>
   <%= form_with model:@friendship do |form| %>
     <%= form.hidden_field :user_id, value: current_user.id %>
     <%= form.hidden_field :friend_id, value: @user.id %>
