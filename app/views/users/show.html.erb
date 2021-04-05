@@ -2,7 +2,7 @@
   <h2><%= "Name: #{@user.name}" %></h2>
   <% unless current_user.friend?(@user) %>
     <button>
-      <%= link_to 'Invite to friendship',  user_path(@user) %>
+      <%= link_to 'Invite to friendship',  friendships_path(id: @user.id), method: 'post' %>
     </button>
   <% end %>
   <article class="timeline">
