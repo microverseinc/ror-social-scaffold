@@ -1,0 +1,7 @@
+<section class="users-section">
+  <ul class="users-list">
+    <% @friendships.each do |friendship| %>
+      <%= render partial: "friendship", locals: { friendship: friendship } %>
+    <% end %>
+  </ul>
+</section>

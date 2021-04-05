@@ -1,0 +1,10 @@
+<li>
+  Name: <%= friendship.name %>
+  <span class="profile-link">
+    <%= link_to 'See Profile',  user_path(friendship), class: 'profile-link' %>
+  </span> 
+  <% unless current_user.friend?(friendship) %> 
+  | <button><%= link_to 'Accept',  friendships_path(id: friendship.id), method: 'post' %> </button> 
+  | <button> <%= link_to 'Decline',  friendships_path(id: friendship.id), method: 'post' %>
+</button> <% end %>
+</li>
