@@ -5,6 +5,6 @@
   </span> 
   <% unless current_user.friend?(friendship) %> 
   | <button><%= link_to 'Accept',  friendship_path(id: friendship.id), method: 'patch' %> </button> 
-  | <button> <%= link_to 'Decline',  friendship_path(id: friendship.id), method: 'delete' %>
-</button> <% end %>
+  | <button> <%= link_to 'Decline',  friendship_path(id: friendship.id), method: 'delete' %> </button> 
+  <% end %>
 </li>

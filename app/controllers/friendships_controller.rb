@@ -13,7 +13,7 @@ class FriendshipsController < ApplicationController
   end
 
   def update
-    friendship = Friendship.find(params[:id].to_i)
+    friendship = Friendship.find_by(user_id: params[:id].to_i, friend_id: current_user.id.to_i)
     if friendship.update(confirmed: true)
       redirect_to request.referrer, alert: 'Friendship request successfully accepted.'
     else
@@ -22,5 +22,12 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy 
+    friendship = Friendship.find_by(user_id: params[:id].to_i, friend_id: current_user.id.to_i)
+    if friendship.destroy
+      current_user.friend_requests.delete(friendship)
+      redirect_to request.referrer, alert: 'Friendship request declined.'
+    else
+      redirect_to request.referrer, alert: 'Friendship request could NOT be declined'
+    end
   end
 end
