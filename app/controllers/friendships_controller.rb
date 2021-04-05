@@ -1,11 +1,11 @@
 class FriendshipsController < ApplicationController
 
     def create
-        @friendship = Friendship.create(friend_id: params[:friend_id], user_id: current_user.id, confirmed: false)
+        @friendship = Friendship.create!(friend_id: params[:friend_id], user_id: current_user.id, confirmed: false)
 
         redirect_to "/users/#{params[:friend_id]}" if @friendship.save
     end
-      
+
     private    
     # Only allow a list of trusted parameters through.
     def friendships_params
@@ -30,7 +30,7 @@ end
 #         render 'new'
 #       end
 #     end
- 
+
 #     def update
 #       @friendship = Friendship.find(params[:id])
 #       @friendship.update_attribute(:confirmed, true)
