@@ -11,4 +11,16 @@ class FriendshipsController < ApplicationController
       redirect_to request.referrer, alert: 'Friendship request NOT sent.'
     end
   end
+
+  def update
+    friendship = Friendship.find(params[:id].to_i)
+    if friendship.update(confirmed: true)
+      redirect_to request.referrer, alert: 'Friendship request successfully accepted.'
+    else
+      redirect_to request.referrer, alert: 'Friendship request NOT accepted.'
+    end
+  end
+
+  def destroy 
+  end
 end
