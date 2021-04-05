@@ -1,15 +1,53 @@
 # Scaffold for social media app with Ruby on Rails
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+## Project Specification
+
+Build a social media app called “Stay in touch”.
+
+### As a guest user:
+
+I want to be able to create account/log in.
+
+I can see only “Sign in” and “Sign out” page.
+
+### As a logged-in user:
+
+I want to be able to see all users list.
+
+I want to be able to see selected user page with their user name and all posts written by them (the most recent posts on the top).
+
+I want to be able to send a friendship invitation.
+
+I want to see a button “Invite to friendship” next to the name of user who is not my friend yet - on both users’ list and single user page.
+
+I want to be able to see pending friendship invitations sent to me from other users.
+
+I want to be able to accept or reject friendships invitation.
+
+I want to be able to create new posts (text only).
+
+I want to be able to like/dislike posts (but I can like single post only once).
+
+I want to be able to add comments to posts.
+
+I want to be able to see “Timeline” page with posts (with number of likes and comments) written by me and all my friends (the most recent posts on the top).
+
+Timeline page should be the root page of the app.
+
+#### Without logging in
+
+> ![screenshot](./screenshots/screenshot-login-page.png)
+
+#### Logged in all users page
+
+> ![screenshot](./screenshots/index-page.png)
 
 ## Built With
 
 - Ruby v3.0.0
-- Ruby on Rails v6.1.3
+- Ruby on Rails v6.1
 
 ## Live Demo
-
-TBA
 
 
 ## Getting Started
@@ -24,7 +62,7 @@ Postgres: >=9.5
 
 ### Setup
 
-Instal gems with:
+Install gems with:
 
 ```
 bundle install
@@ -46,7 +84,6 @@ To make sure the linters' checks using Github Actions work properly, you should 
 3. Start working on your milestone as usual.
 4. Open a PR from the `feature/branch` when your work is done.
 
-
 ### Usage
 
 Start server with:
@@ -67,17 +104,38 @@ Open `http://localhost:3000/` in your browser.
 
 ### Deployment
 
-TBA
+From console run the following commands after cloning
+
+```
+   heroku login (login to heroku)
+   heroku create stayintouch (or any app name you like)
+   git push heroku main (pushing from the main branch)
+
+```
 
 ## Authors
 
-TBA
+👤 **Author1**
+
+- GitHub: [@apricot12](https://github.com/apricot12)
+- Twitter: [@apricotfoxtrot](https://www.twitter.com/apricotfoxtrot)
+
+👤 **Author2**
+
+- Github: [@arikarim](https://github.com/arikarim)
+- Twitter: [Ari Karim](https://twitter.com/AriKari86036498)
 
 ## 🤝 Contributing
 
-Contributions, issues and feature requests are welcome!
+Contributions, issues and feature requests are welcome! Start by:
 
-Feel free to check the [issues page](issues/).
+- Forking the project
+- Cloning the project to your local machine
+- `cd` into the project directory
+- Run `git checkout -b your-branch-name`
+- Make your contributions
+- Push your branch up to your forked repository
+- Open a Pull Request with a detailed description to the development branch of the original project for a review
 
 ## Show your support
 
@@ -85,9 +143,8 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-TBA
+- Thanks to Odin project for the tutorials.
 
 ## 📝 License
 
-TBA
-
+This project is [MIT](LICENSE) licensed.

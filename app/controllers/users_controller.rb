@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     @friends = current_user.friends.filter { |friend| friend if friend != current_user }
-    @pending_requests = current_user.pending_requests
+    @pending_requests = current_user.pending_friends
     @friend_requests = current_user.friend_requests
   end
 
@@ -16,14 +16,13 @@ class UsersController < ApplicationController
   def confirm
     @user = User.find(params[:id])
     @friendship = current_user.inverse_friendships.find { |friendship| friendship.user == @user }
-    @friendship.status = true
-    if @friendship.save
-      Friendship.create(user_id: current_user.id, friend_id: @user.id, status: true)
-      redirect_to root_path
-      flash[:notice] = 'Friend request accepted'
-    else
-      flash[:notice] = 'somthing happened'
-    end
+    @friendship.update(status: true)
+    Friendship.create!(friend_id: current_user.id,
+                       user_id: @user.id,
+                       status: true)
+
+    redirect_to root_path
+    flash[:notice] = 'Friend request accepted'
   end
 
   def deny

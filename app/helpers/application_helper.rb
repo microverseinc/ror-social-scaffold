@@ -2,7 +2,7 @@ module ApplicationHelper
   def friend?(user); end
 
   def already_sended?(user)
-    return unless current_user.friendships.any? { |friendship| friendship.friend == user }
+    return unless current_user.pending_friendships.any? { |friendship| friendship.friend_id == user }
 
     redirect_to root_path
     flash[:notice] = 'you already sent a request to this person'
@@ -33,9 +33,9 @@ module ApplicationHelper
   end
 
   def btn_send(user)
-    return unless current_user.friendships.none? { |friendship| friendship.friend == user }
-    return unless current_user.friends.none? { |friend| friend == user }
-    return if current_user.inverse_friendships.any? { |friendship| friendship.friend == current_user }
+    return if current_user.pending_friends.include?(user)
+    return if current_user.friends.include?(user)
+    return if current_user.friend_requests.include?(user)
 
     (button_to 'Send request', user_friendships_path(user), method: :post)
   end
@@ -47,6 +47,44 @@ module ApplicationHelper
     user.friends.map do |friend|
       current_user.friends.map { |friendd| friendd == friend ? mutuals.push(friend.name) : mutuals }
     end
-    mutuals
+    mutuals.uniq
+  end
+
+  def all_users(user)
+    return unless user != current_user
+
+    content_tag(:div) do
+      content_tag(:h4, user.name) +
+        (link_to 'See Profile', user_path(user)) +
+        btn_send(user) +
+        btn_mutual(user)
+    end
+  end
+
+  def user_sessionss
+    if current_user
+      content_tag(:div) do
+        (button_to 'Sign out', destroy_user_session_path, method: :delete)
+      end
+    else
+      (button_to 'Sign in', new_user_session_path) +
+        (link_to 'Sign up', new_user_registration_path)
+    end
+  end
+
+  def notice?
+    return unless notice.present?
+
+    content_tag(:div, class: 'notice') do
+      notice
+    end
+  end
+
+  def alert?
+    return unless alert.present?
+
+    content_tag(:div, class: 'notice') do
+      alert
+    end
   end
 end
