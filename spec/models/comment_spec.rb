@@ -19,7 +19,6 @@ RSpec.describe Friendship, type: :model do
 
   context 'Validation test for Comment model' do
     it 'should valid content' do
-      # comment.content = ''
       expect(comment.content).not_to be_empty
     end
   end
