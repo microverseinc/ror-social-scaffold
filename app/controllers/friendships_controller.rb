@@ -1,8 +1,10 @@
-  class friendshipsController < ApplicationController
+  class FriendshipsController < ApplicationController
 
    before_action :authenticate_user!
     before_action :appoint_friend, only: %i[create destroy]
 
+def index
+end
 
     def create
         if @friendship.nil?
