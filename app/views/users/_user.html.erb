@@ -9,7 +9,7 @@
   </button> <% end %>
 
   <% if !current_user.friend?(user) && current_user.invite_sent?(user) %> | <span class="profile-link">
-    <%= link_to 'Pending invite', class: 'profile-link' %>
+    <%= link_to 'Invitation sent', class: 'profile-link' %>
   </span> <% end %>
 
   <% if current_user.friend?(user) %> | <span class="profile-link">
