@@ -37,4 +37,8 @@ class User < ApplicationRecord
   def friend?(user)
     friends.include?(user)
   end
+
+  def invite_sent?(user)
+    Friendship.find_by(user_id: id, friend_id: user.id) ? true : false
+  end
 end

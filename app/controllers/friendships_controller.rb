@@ -1,6 +1,6 @@
 class FriendshipsController < ApplicationController
   def index
-    @friendships = current_user.friend_requests
+    @friendships = current_user.friend_requests.uniq
   end
 
   def create
