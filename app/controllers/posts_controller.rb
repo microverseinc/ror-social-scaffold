@@ -19,8 +19,17 @@ class PostsController < ApplicationController
 
   private
 
+  def assigned_posts 
+    users_post = []
+    friends_post = []
+    current_user.posts.map { |post| users_post << post }
+    current_user.friendships.map { |friendship| friends_post << friendship.user.post }
+    users_post.concat(friends_post)
+  end
+
   def timeline_posts
-    @timeline_posts ||= Post.all.ordered_by_most_recent.includes(:user)
+    #@timeline_posts ||= Post.all.ordered_by_most_recent.includes(:user)
+    @timeline_posts ||= current_user.friends_and_own_posts
   end
 
   def post_params
