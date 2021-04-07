@@ -37,7 +37,7 @@ class User < ApplicationRecord
   end
 
   # method to check if a given User is our friend
-  def friend?(user)
+  def friends_with?(user)
     friends.include?(user)
   end
 end
