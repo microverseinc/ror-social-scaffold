@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
+  before_action :timeline_posts
 
   def index
     @post = Post.new
