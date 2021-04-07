@@ -39,7 +39,8 @@
 <% end %>
 
 
-<h4> this are inversefriendships </h4>
-<%= render @user.inverse_friendships %>
-
+<h4> this are inverse friendships </h4>
+<%= @user.inverse_friendships.each do |friend| %>
+  <%= friend.name %>
+<%  end %>
 
