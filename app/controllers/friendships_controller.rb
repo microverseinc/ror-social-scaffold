@@ -26,7 +26,7 @@ class FriendshipsController < ApplicationController
     @friendship = Friendship.find(params[:id])
 
     @friendship.destroy
-    redirect_to users_path, notice: 'destroyed that friendship'
+    redirect_to user_path(current_user), notice: 'destroyed that friendship'
   end
 
   private

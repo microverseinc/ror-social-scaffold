@@ -1,5 +1,9 @@
 <li>
-  Name: <%= user.name %>
+  <% if current_user == user %>
+    <h4> This is your profile! <%= user.name %></h4>
+  <% else %>
+    Name: <%= user.name %>
+  <% end %>
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
   </span>
