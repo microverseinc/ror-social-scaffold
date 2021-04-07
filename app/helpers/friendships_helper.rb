@@ -30,7 +30,7 @@ def friendship_button2(user)
   if current_user != user
     if friendship.nil?
 
-      (link_to 'Add Friend', root_path(params: { friend_id: user.id, user_id: current_user.id, confirmed: false}), method: :post, class: 'btn btn-primary')
+      (link_to 'Add Friend', used_path(params: { friend_id: user.id, user_id: current_user.id, confirmed: false}), method: :post, class: 'btn btn-primary')
     elsif friendship.confirmed
       content_tag(:button, 'Already friends', class: %w[btn btn-success disabled])
 
