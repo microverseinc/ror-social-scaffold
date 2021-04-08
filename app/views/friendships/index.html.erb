@@ -2,8 +2,12 @@
 
 <section class="users-section">
   <ul class="users-list">
-    <% @friendships.each do |friendship| %>
-      <%= render partial: "friendship", locals: { friendship: friendship } %>
+    <% if @friendships.length > 0 %>
+      <% @friendships.each do |friendship| %>
+        <%= render partial: "friendship", locals: { friendship: friendship } %>
+      <% end %>
+    <% else %>
+      <li><p>No post available</p></li>
     <% end %>
   </ul>
 </section>
