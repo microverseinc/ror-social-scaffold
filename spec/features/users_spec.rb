@@ -10,7 +10,7 @@ RSpec.feature "Users", type: :feature do
       fill_in 'Password confirmation', with: '12345678'
       click_on 'Sign up'
       visit root_path
-      expect(page).to have_content('Franklin')
+      expect(page).to have_content('Sign out')
     end
   
     scenario 'unsuccesfully sign up' do
@@ -32,7 +32,7 @@ RSpec.feature "Users", type: :feature do
       fill_in 'Email', with: user.email
       fill_in 'Password', with: user.password
       click_on 'Log in'
-      expect(page).to have_content('Franklin')
+      expect(page).to have_content('Signed in successfully')
     end
 
     scenario 'unsuccesfully log in' do
@@ -40,7 +40,7 @@ RSpec.feature "Users", type: :feature do
       fill_in 'Email', with: 'benjamin'
       fill_in 'Password', with: user.password
       click_on 'Log in'
-      expect(page).to_not have_content('Franklin')
+      expect(page).to_not have_content('Signed in successfully')
     end
   end
 
@@ -51,9 +51,9 @@ RSpec.feature "Users", type: :feature do
       fill_in 'Email', with: user.email
       fill_in 'Password', with: user.password
       click_on 'Log in'
-      click_on 'Sign Out'
+      click_on 'Sign out'
       visit root_path
-      expect(page).to have_content('Sign In')
+      expect(page).to have_content('sign in')
     end
   end
 end
