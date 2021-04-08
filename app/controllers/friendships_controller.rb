@@ -15,7 +15,7 @@ class FriendshipsController < ApplicationController
     @friendship = Friendship.find(params[:id])
 
     if @friendship.update(confirmed: true)
-      redirect_to users_path, notice: 'you accepted the invitation'
+      redirect_to user_path(current_user), notice: 'you accepted the invitation'
     else
       timeline_posts
       render :index, alert: 'could not process your request'
