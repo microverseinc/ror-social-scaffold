@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :posts
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
-
+ 
   # confirm friends
   has_many :confirmed_friendships, -> { where status: true }, class_name: 'friendship'
   has_many :friends, through: :confirmed_friendships
