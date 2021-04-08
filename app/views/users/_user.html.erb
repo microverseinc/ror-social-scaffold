@@ -8,11 +8,11 @@
     <%= link_to 'Invite to friendship',  friendships_path(id: user.id), method: 'post' %>
   </button> <% end %>
 
-  <% if !current_user.friend?(user) && current_user.invite_sent?(user) %> | <span class="profile-link">
+  <% if !current_user.friend?(user) && current_user.invite_sent?(user) %> | <button>
     <%= link_to 'Invitation sent', class: 'profile-link' %>
-  </span> <% end %>
+  </button> <% end %>
 
-  <% if current_user.friend?(user) %> | <span class="profile-link">
+  <% if current_user.friend?(user) %> | <button>
     <%= link_to 'Friends', class: 'profile-link' %>
-  </span> <% end %>
+    </button> <% end %>
 </li>
