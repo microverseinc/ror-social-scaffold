@@ -19,7 +19,7 @@ module ApplicationHelper
     if current_user.friend? user
       link_to 'unfriend', user_friendship_path(user_id: user.id, id: current_user.id),class:'reject-link', 
                                                                                     method: :delete
-    elsif current_user.pending_friendship.pluck(:user_id, :friend_id).any?([current_user.id,user.id])
+    elsif current_user.pending_friendships.pluck(:user_id, :friend_id).any?([current_user.id,user.id])
       link_to 'cancel request', user_friendship_path(user_id: user.id, id: current_user.id),class:'reject-link',
                                                                                     method: :delete
     elsif current_user.inverted_friendships.pluck(:user_id, :friend_id).any?([user.id, current_user.id])
