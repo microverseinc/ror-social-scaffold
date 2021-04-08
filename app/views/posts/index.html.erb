@@ -9,7 +9,13 @@
   <h3>
     Recent posts
   </h3>
-  <ul class="posts">
-    <%= render @timeline_posts %>
-  </ul>
+  <% if @timeline_posts.length > 0 %>
+    <ul class="posts">
+      <%= render @timeline_posts %>
+    </ul>
+    <% else %>
+    <ul>
+      <li><p>No post available</p></li>
+    </ul>
+  <% end %>
 </article>
