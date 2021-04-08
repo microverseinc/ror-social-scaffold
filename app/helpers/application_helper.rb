@@ -15,20 +15,20 @@ module ApplicationHelper
       link_to('Like!', post_likes_path(post_id: post.id), method: :post)
     end
   end
-  def check_friendie(user)
+  def check_friendship(user)
     if current_user.friend? user
-      link_to 'unfriend', user_friendie_path(user_id: user.id, id: current_user.id),class:'reject-link', 
+      link_to 'unfriend', user_friendship_path(user_id: user.id, id: current_user.id),class:'reject-link', 
                                                                                     method: :delete
-    elsif current_user.pending_friendie.pluck(:user_id, :friend_id).any?([current_user.id,user.id])
-      link_to 'cancel request',user_friendie_path(user_id: user.id, id: current_user.id),class:'reject-link',
+    elsif current_user.pending_friendship.pluck(:user_id, :friend_id).any?([current_user.id,user.id])
+      link_to 'cancel request',user_friendship_path(user_id: user.id, id: current_user.id),class:'reject-link',
                                                                                     method: :delete
-    elsif current_user.inverted_friendies.pluck(:user_id, :friend_id).any?([user.id, current_user.id])
-       link_to('Confirm', user_friendie_path(user_id: user.id, id: current_user.id), class: 'invite-link',
+    elsif current_user.inverted_friendships.pluck(:user_id, :friend_id).any?([user.id, current_user.id])
+       link_to('Confirm', user_friendship_path(user_id: user.id, id: current_user.id), class: 'invite-link',
                                                                                      method: :patch) +
-       link_to('Reject', user_friendie_path(user_id: user.id, id: current_user.id), class: 'reject-link', 
+       link_to('Reject', user_friendship_path(user_id: user.id, id: current_user.id), class: 'reject-link', 
                                                                                     method: :delete)
     else
-      link_to 'Send Friend Request', user_friendies_path(user_id: user.id), class: 'invite-link',method: :post
+      link_to 'Send Friend Request', user_friendships_path(user_id: user.id), class: 'invite-link',method: :post
       end
       end
 
