@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'friendship_invitations/create', as: 'send_invitation'
+  get 'friendship_invitations/destroy'
   root 'posts#index'
 
   devise_for :users
