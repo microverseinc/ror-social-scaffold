@@ -1,10 +1,10 @@
 class FriendshipsController < ApplicationController
-    before_action :authenticate_user!
-    before_action :set_friendship,only: %i[create destroy]
+  before_action :authenticate_user!
+  before_action :set_friendship, only: %i[create destroy]
 
-def index; end
+  def index; end
 
-def create
+  def create
     if @friendship.nil?
       @request = Friendship.new(user_id: current_user.id, friend_id: params[:user_id])
 
@@ -38,7 +38,4 @@ def create
     @friendship = Friendship.find_by(user_id: params[:user_id], friend_id: current_user.id) ||
                   Friendship.find_by(user_id: current_user.id, friend_id: params[:user_id])
   end
-
-
-
 end
