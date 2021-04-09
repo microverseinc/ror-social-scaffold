@@ -7,7 +7,7 @@ class FriendshipsController < ApplicationController
   def create
     if @friendship.nil?
       @request = Friendship.new(user_id: current_user.id, friend_id: params[:user_id])
-      puts  'juwon', @request
+      puts 'juwon', @request
       if @request.save
         flash.notice = 'you successfully sent a request!'
         redirect_back(fallback_location: root_path)
