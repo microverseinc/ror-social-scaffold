@@ -6,5 +6,6 @@ class CreateFollows < ActiveRecord::Migration[5.2]
       t.boolean :status
 
       t.timestamps
+    end
   end
 end

@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2021_04_08_203832) do
 
   create_table "friendships", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "friend_id", null: false
+    t.integer "friend_id"
     t.boolean "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -61,6 +61,5 @@ ActiveRecord::Schema.define(version: 2021_04_08_203832) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "friendships", "friends"
   add_foreign_key "friendships", "users"
 end
