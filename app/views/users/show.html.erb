@@ -8,11 +8,4 @@
   </article>
 </section>
 
-<% unless add_friend_button(current_user.id, @user.id) %>
-  <%= form_with model: @friendship do |form| %>
-    <%= form.hidden_field :invitee_id, value: @user.id %>
-    <%= form.hidden_field :inviter_id, value: current_user.id %>
-    <%= form.hidden_field :status %>
-    <%= form.submit 'Add Friend', data: { disable_with: "Sent" }%>
-  <% end %>
-<% end %>
+<%= render 'add_friend', friendship: @friendship %>
