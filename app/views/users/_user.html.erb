@@ -7,11 +7,13 @@
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
   </span>
-  <% if user.id != current_user.id && !current_user.pending_friends.include?(user) && !current_user.friends_with?(user) %>
+  <% if user.id != current_user.id && !current_user.pending_friends.include?(user) && !current_user.friends_with?(user) && !current_user.friend_requests.include?(user) %>
     <%= render 'friend_req', friendship: @friendship, user: user %>
   <% elsif current_user.pending_friends.include?(user) %>
     <p class="already">invitation pending!</p>
   <% elsif current_user.friends_with?(user) %>
     <p class="already">you are already friends!</p>
-  <% end %>
+  <% elsif current_user.friend_requests.include?(user) %>
+  <p class="already">You have a friend request from this user!</p>
+<% end %>
 </li>

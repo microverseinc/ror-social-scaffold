@@ -6,13 +6,15 @@
       <%= render @posts %>
     </ul>
   </article>
-  <% if @user.id != current_user.id && !current_user.pending_friends.include?(@user) && !current_user.friends_with?(@user) %>
-    <%= render 'friend_req', friendship: @friendship, user: @user %>
+  <% if @user.id != current_user.id && !current_user.pending_friends.include?(@user) && !current_user.friends_with?(@user) && !current_user.friend_requests.include?(@user) %>
+    <%= render 'friend_req', friendship: @friendship, user: user %>
   <% elsif current_user.pending_friends.include?(@user) %>
     <p class="already">invitation pending!</p>
   <% elsif current_user.friends_with?(@user) %>
     <p class="already">you are already friends!</p>
-  <% end %>
+  <% elsif current_user.friend_requests.include?(@user) %>
+  <p class="already">You have a friend request from this user!</p>
+<% end %>
 </section>
 
 <section class="add-to-friends">
