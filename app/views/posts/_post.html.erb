@@ -1,4 +1,4 @@
-<% if current_user.friends_with?(post.user) %>
+<% if current_user.friends_with?(post.user) || current_user = post.user %>
   <li class="post">
     <div>
       <div class='post-attribution' >
