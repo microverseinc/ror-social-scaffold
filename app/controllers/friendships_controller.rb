@@ -1,5 +1,4 @@
 class FriendshipsController < ApplicationController
-
   def create
     @friendship = current_user.friendships.build(friendships_params)
 
@@ -22,7 +21,7 @@ class FriendshipsController < ApplicationController
     end
   end
 
-  def destroy 
+  def destroy
     @friendship = Friendship.find(params[:id])
 
     @friendship.destroy

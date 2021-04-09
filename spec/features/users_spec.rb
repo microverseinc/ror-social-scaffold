@@ -1,6 +1,6 @@
 require 'rails_helper'
-
-RSpec.feature "Users", type: :feature do
+# rubocop:disable Metrics/BlockLength
+RSpec.feature 'Users', type: :feature do
   context 'signing up:' do
     scenario 'sign up succesfully' do
       visit new_user_registration_path
@@ -12,7 +12,7 @@ RSpec.feature "Users", type: :feature do
       visit root_path
       expect(page).to have_content('Sign out')
     end
-  
+
     scenario 'unsuccesfully sign up' do
       visit new_user_registration_path
       fill_in 'Name', with: ''
@@ -57,3 +57,4 @@ RSpec.feature "Users", type: :feature do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength
