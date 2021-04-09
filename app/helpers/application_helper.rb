@@ -16,7 +16,7 @@ module ApplicationHelper
     end
   end
 
-  def check_friendship(user)
+  def check_friendship_btn(user)
     if current_user.friend? user
       link_to 'unfriend', user_friendship_path(user_id: user.id, id: current_user.id), class: 'reject-link',
                                                                                        method: :delete
