@@ -5,10 +5,10 @@ class FriendshipsController < ApplicationController
 
   def create
     @friendship = Friendship.new(friendship_params)
-    invitee_path = "users/#{params[:invitee_id]}"
+    invitee_path = "/users/#{params[:friendship][:invitee_id]}"
 
     if @friendship.save
-      redirect_to invitee_path, notice: "Friend request was send."
+      redirect_to invitee_path, notice: "Friend request was sent."
     else
       redirect_to invitee_path, notice: "Friend request cannot be sent."
     end
