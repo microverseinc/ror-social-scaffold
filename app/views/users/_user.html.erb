@@ -5,5 +5,5 @@
   </span>
 </li>
 
-<% @user = user %>
-<%= render 'add_friend', friendship: @friendship %>
+<% user(user) %>
+<%= render 'add_friend', friendship: @friendship, class: "btn-1" %>

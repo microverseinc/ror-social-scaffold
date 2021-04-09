@@ -1,6 +1,6 @@
 class FriendshipsController < ApplicationController
   def index
-    @friendships = Friendship.all
+    @friendships = Friendship.where(invitee_id: current_user.id)
   end
 
   def create
@@ -11,6 +11,15 @@ class FriendshipsController < ApplicationController
       redirect_to invitee_path, notice: "Friend request was sent."
     else
       redirect_to invitee_path, notice: "Friend request cannot be sent."
+    end
+  end
+
+  def update
+    @friendship = Friendship.find(params[:id])
+    if @friendship.update(friendship_params) 
+      redirect_to friendships_path, notice: "You have succesfully accepted this request."
+    else
+      render friendships_path, status: :unprocessable_entity
     end
   end
 
