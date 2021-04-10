@@ -14,6 +14,9 @@
   <% elsif current_user.friends_with?(user) %>
     <p class="already">you are already friends!</p>
   <% elsif current_user.friend_requestsu.include?(user) %>
-  <p class="already">You have a friend request from this user!</p>
+  <p class="already">You have a friend request from this user! <% current_user.friend_requests.find(user: user).each do |friendship| %>
+    <%= link_to 'accept invitation', update_friendship_path(friendship.id), method: :patch %> <%= link_to 'reject invitation', friendship_path(friendship.id), method: :delete %>
+    <% end %>
+    </p>
 <% end %>
 </li>
