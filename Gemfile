@@ -30,7 +30,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
-
+gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -42,10 +42,12 @@ gem 'devise'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'rspec-rails'
 end
 
 group :test do
-  gem 'rspec'
+  gem 'capybara'
+  gem 'shoulda-matchers', '~> 4.0'
 end
 
 group :development do

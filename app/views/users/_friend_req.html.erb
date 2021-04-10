@@ -1,0 +1,12 @@
+<span>
+<%= form_with(model: friendship, class: "forma") do |form| %>
+  <div class="field">
+    <%= form.hidden_field :friend_id, value: user.id %>
+    <%= form.hidden_field :confirmed, value: false %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Invite to friendship" %>
+  </div>
+<% end %>
+</span>
