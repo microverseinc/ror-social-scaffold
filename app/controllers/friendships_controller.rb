@@ -16,12 +16,8 @@ class FriendshipsController < ApplicationController
   end
 
   def update
-    friendship = Friendship.find_by({user_id: params[:id].to_i, friend_id: current_user.id.to_i})
-    second_record = Friendship.find_by({user_id: current_user.id.to_i, friend_id: params[:id].to_i})
-    puts second_record.user_id
-    puts friendship.user_id
-    friendship.confirmed = true
-    second_record.confirmed = true
+    friendship = Friendship.find({friendship_id: params[:id].to_i, friend_id: current_user.id.to_i})
+    second_record = Friendship.find({user_id: current_user.id.to_i, friend_id: params[:id].to_i})
     if friendship.save && second_record.save
       redirect_to request.referrer, alert: 'Friendship request successfully accepted.'
     else

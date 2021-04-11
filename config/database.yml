@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: ror_social_scaffold_development
+  database: ror_social_scaffold_development_2
   username: 'postgres'
   password: 'BB.Inc_3'
   # The specified database role being used to connect to postgres.
