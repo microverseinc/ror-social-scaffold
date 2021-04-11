@@ -6,8 +6,9 @@ class FriendshipsController < ApplicationController
   end
 
   def create
-    user = current_user.friendships.build(friend: User.find(params[:id].to_i))
-    if user.save
+    user = Friendship.create({user_id: current_user.id.to_i, friend_id: params[:id].to_i})
+    second_record = Friendship.create({user_id: params[:id].to_i, friend_id: current_user.id.to_i})
+    if user.save && second_record.save
       redirect_to request.referrer, alert: 'Friendship request successfully sent.'
     else
       redirect_to request.referrer, alert: 'Friendship request NOT sent.'
@@ -15,8 +16,13 @@ class FriendshipsController < ApplicationController
   end
 
   def update
-    friendship = Friendship.find_by(user_id: params[:id].to_i, friend_id: current_user.id.to_i)
-    if friendship.update(confirmed: true)
+    friendship = Friendship.find_by({user_id: params[:id].to_i, friend_id: current_user.id.to_i})
+    second_record = Friendship.find_by({user_id: current_user.id.to_i, friend_id: params[:id].to_i})
+    puts second_record.user_id
+    puts friendship.user_id
+    friendship.confirmed = true
+    second_record.confirmed = true
+    if friendship.save && second_record.save
       redirect_to request.referrer, alert: 'Friendship request successfully accepted.'
     else
       redirect_to request.referrer, alert: 'Friendship request NOT accepted.'
@@ -25,7 +31,8 @@ class FriendshipsController < ApplicationController
 
   def destroy
     friendship = Friendship.find_by(user_id: params[:id].to_i, friend_id: current_user.id.to_i)
-    if friendship.destroy
+    second_record = Friendship.find_by(user_id: current_user.id.to_i, friend_id: params[:id].to_i)
+    if friendship.destroy && second_record
       current_user.friend_requests.delete(friendship)
       redirect_to request.referrer, alert: 'Friendship request declined.'
     else
