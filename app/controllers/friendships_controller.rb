@@ -2,7 +2,8 @@ class FriendshipsController < ApplicationController
   before_action :authenticate_user!
   
   def index
-    @friendships = Friendship.all
+    @sent_friendships = current_user.sent_friendships
+    @received_friendships = current_user.received_friendships
   end
 
   def new
@@ -28,8 +29,6 @@ class FriendshipsController < ApplicationController
   end
 
   def update
-    puts "Yusif"
-    puts friendship_params
     if Friendship.update(friendship_params)
       redirect_to request.referrer, alert: 'Friendship request successfully accepted.'
     else

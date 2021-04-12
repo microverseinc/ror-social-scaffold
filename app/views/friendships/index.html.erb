@@ -1,16 +1,27 @@
-<h2>Friendships</h2>
+<h1>Friendships</h1>
 
 <section class="users-section">
+  <h3>Sent friendships</h3>
+
   <ul class="users-list">
-    <% if @friendships.length > 0 %>
-      <% @friendships.each do |friendship| %>
+    <% if @sent_friendships.length > 0 %>
         <%= render partial: "friendship", locals: { friendship: friendship } %>
-      <% end %>
     <% else %>
-      <li><p>No post available</p></li>
+      <li><span>No post available</span></li>
     <% end %>
   </ul>
 </section>
 
+<section class="users-section">
+  <h3>Received friendships</h3>
 
-<%= link_to 'Add Friendship', new_friendship_path %>
+  <ul class="users-list">
+    <% if @received_friendships.length > 0 %>
+      <% @received_friendships.each do |friendship| %>
+        <%= render partial: "friendship", locals: { friendship: friendship } %>
+      <% end %>
+    <% else %>
+      <li><span>No post available</span></li>
+    <% end %>
+  </ul>
+</section>

@@ -1,8 +1,6 @@
 <li>
-  Sender: <%= friendship.user_id %> | Receiver: <%= friendship.friend_id %> | Confirmed: <%= friendship.confirmed %>
+  <%= User.find(friendship.user_id).name %>
   <span class="profile-link">
     <%= link_to 'Show',  friendship, class: 'profile-link' %>
   </span> 
-  | <button><%= link_to 'Edit', edit_friendship_path(friendship) %> </button> 
-  | <button> <%= link_to 'Destroy',  friendship, method: 'delete', data: { confirm: 'Are you sure?' } %> </button> 
 </li>
