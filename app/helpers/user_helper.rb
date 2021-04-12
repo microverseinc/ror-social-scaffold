@@ -6,14 +6,15 @@ module UserHelper
   end
 
   def add_friend_button(inviter_id, invitee_id)
-    if inviter_id == invitee_id || Friendship.exists?(inviter_id: inviter_id, invitee_id: invitee_id)
+    if inviter_id == invitee_id || Friendship.exists?(inviter_id: inviter_id, invitee_id: invitee_id) ||
+      Friendship.exists?(inviter_id: invitee_id, invitee_id: inviter_id)
       return true
     else
       false
     end
   end
 
-  def user(user)  
+  def user(user)
     @user = user
   end
 end
