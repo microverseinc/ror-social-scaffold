@@ -1,6 +1,6 @@
 class FriendshipsController < ApplicationController
   def index
-    @friendships = Friendship.where(invitee_id: current_user.id)
+    @friendships = Friendship.where(invitee_id: current_user.id).joins(:inviter)
   end
 
   def create
@@ -16,7 +16,7 @@ class FriendshipsController < ApplicationController
 
   def update
     @friendship = Friendship.find(params[:id])
-    if @friendship.update(friendship_params) 
+    if @friendship.update(friendship_params)
       redirect_to friendships_path, notice: "You have succesfully accepted this request."
     else
       render friendships_path, status: :unprocessable_entity

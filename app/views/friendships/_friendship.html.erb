@@ -1,7 +1,7 @@
 <li>
   <% unless friendship.status %>
     Name: <%= friendship.inviter.name %>
-      <%= form_with model: friendship, method: "PATCH" do |form| %>
+    <%= form_with model: friendship, method: "PATCH" do |form| %>
       <%= form.hidden_field :invitee_id %>
       <%= form.hidden_field :inviter_id %>
       <%= form.hidden_field :status, value: true %>
