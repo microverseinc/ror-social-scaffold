@@ -8,6 +8,12 @@
       <%= like_or_dislike_btn(post) %>
     </div>
   </div>
+  <div>
+    <div class='post-liking'>
+      <span class='post-counts'><%= post.likes.count %> likes </span> |
+      <span class='post-counts'><%= post.comments.count %> comments </span>
+    </div>
+  </div>
   <p class="post-content">
     <%= post.content %>
   </p>

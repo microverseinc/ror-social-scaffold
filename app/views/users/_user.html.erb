@@ -2,5 +2,17 @@
   Name: <%= user.name %>
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-  </span>
+  </span> 
+
+  <% if !current_user.friend?(user) && !current_user.invite_sent?(user) %> | <button>
+    <%= link_to 'Invite to friendship',  friendships_path(id: user.id), method: 'post' %>
+  </button> <% end %>
+
+  <% if !current_user.friend?(user) && current_user.invite_sent?(user) %> | <button>
+    <%= link_to 'Invitation sent', class: 'profile-link' %>
+  </button> <% end %>
+
+  <% if current_user.friend?(user) %> | <button>
+    <%= link_to 'Friends', class: 'profile-link' %>
+    </button> <% end %>
 </li>
