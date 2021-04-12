@@ -7,5 +7,12 @@
       <%= form.hidden_field :status, value: true %>
       <%= form.submit 'Accept Friendship' %>
     <% end %>
+    <%= form_with model: friendship, method: "DELETE" do |form| %>
+      <%= form.hidden_field :invitee_id %>
+      <%= form.hidden_field :inviter_id %>
+      <%= form.hidden_field :status %>
+      <%= form.submit 'Reject Friendship' %>
+    <% end %>
   <% end %>
 </li>
+

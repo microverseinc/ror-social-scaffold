@@ -27,9 +27,9 @@ class FriendshipsController < ApplicationController
     friendship = Friendship.find_by(friendship_params)
     if friendship
       friendship.destroy
-      redirect_to user_path, notice: 'Friendship request rejected.'
+      redirect_to friendships_path, notice: 'Friendship request rejected.'
     else
-      redirect_to user_path, alert: 'Please try again.'
+      redirect_to friendships_path, alert: 'Please try again.'
     end
   end
 
