@@ -1,6 +1,6 @@
 class FriendshipsController < ApplicationController
   def index
-    @friendships = Friendship.where(invitee_id: current_user.id).joins(:inviter)
+    @friendships = Friendship.joins(:inviter).where(invitee_id: current_user.id)
   end
 
   def create
