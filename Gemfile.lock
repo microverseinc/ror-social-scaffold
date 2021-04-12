@@ -68,6 +68,8 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
+    composite_primary_keys (11.3.1)
+      activerecord (~> 5.2.4)
     concurrent-ruby (1.1.8)
     crass (1.0.6)
     database_cleaner (2.0.1)
@@ -249,6 +251,7 @@ DEPENDENCIES
   byebug
   capybara
   coffee-rails (~> 4.2)
+  composite_primary_keys (~> 11.3, >= 11.3.1)
   database_cleaner
   devise
   jbuilder (~> 2.5)

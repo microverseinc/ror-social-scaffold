@@ -9,41 +9,16 @@ class User < ApplicationRecord
   has_many :posts
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
-  has_many :friendships
-  has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
+
+  has_many :sent_friendships, foreign_key: :user_id, class_name: :Friendship
+  has_many :received_friendships, foreign_key: :friend_id, class_name: :Friendship
+
+  has_many :requested_friends, through: :sent_friendships
+  has_many :requesting_friends, through: :received_friendships
 
   def friends
-    friends_array = friendships.map { |friendship| friendship.friend if friendship.confirmed }
-    friends_array.concat(inverse_friendships.map { |friendship| friendship.user if friendship.confirmed })
-    friends_array.compact
-  end
-
-  # Users who have yet to confirm friend requests
-  def pending_friends
-    friendships.map { |friendship| friendship.friend unless friendship.confirmed }.compact
-  end
-
-  # Users who have requested to be friends
-  def friend_requests
-    inverse_friendships.map { |friendship| friendship.user unless friendship.confirmed }.compact
-  end
-
-  def confirm_friend(user)
-    friendship = inverse_friendships.find { |item| item.user == user }
-    friendship.confirmed = true
-    friendship.save
-  end
-
-  def friend?(user)
-    friends.include?(user)
-  end
-
-  def invite_sent?(user)
-    Friendship.find_by(user_id: id, friend_id: user.id) ? true : false
-  end
-
-  def friends_and_own_posts
-    Post.where(user: (friends.to_a << self)).ordered_by_most_recent
-    # This will produce SQL query with IN. Something like: select * from posts where user_id IN (1,45,874,43);
+    requested_friends
+      .includes(:sent_friendships)
+      .where('friendships.confirmed = true')
   end
 end
