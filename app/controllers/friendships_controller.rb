@@ -23,7 +23,7 @@ class FriendshipsController < ApplicationController
     @user = User.find(params[:user_id])
     current_user.confirm_friend(current_user, @user)
     flash.notice = 'Yipee, request accepted!'
-    redirect_back(fallback_location: root_path)
+    redirect_to users_path
   end
 
   def destroy
