@@ -5,8 +5,11 @@ class FriendshipsController < ApplicationController
     @friendships = Friendship.all
   end
 
+  def new
+    @friendship = Friendship.new
+  end
+
   def create
-    puts friendship_params
     @friendship = Friendship.new(friendship_params)
 
     if @friendship.save
@@ -17,12 +20,10 @@ class FriendshipsController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @friendship.update(friendship_params)
-        redirect_to request.referrer, alert: 'Friendship request successfully accepted.'
-      else
-        redirect_to request.referrer, alert: 'Friendship request NOT accepted.'
-      end
+    if @friendship.update(friendship_params)
+      redirect_to request.referrer, alert: 'Friendship request successfully accepted.'
+    else
+      redirect_to request.referrer, alert: 'Friendship request NOT accepted.'
     end
   end
 
