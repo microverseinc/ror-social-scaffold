@@ -2,13 +2,14 @@ class FriendshipsController < ApplicationController
   before_action :authenticate_user!
   
   def index
-    @friendships = current_user.friend_requests.uniq
+    @friendships = Friendship.all
   end
 
   def create
-    user = Friendship.create({user_id: current_user.id.to_i, friend_id: params[:id].to_i})
-    second_record = Friendship.create({user_id: params[:id].to_i, friend_id: current_user.id.to_i})
-    if user.save && second_record.save
+    puts friendship_params
+    @friendship = Friendship.new(friendship_params)
+
+    if @friendship.save
       redirect_to request.referrer, alert: 'Friendship request successfully sent.'
     else
       redirect_to request.referrer, alert: 'Friendship request NOT sent.'
@@ -16,12 +17,12 @@ class FriendshipsController < ApplicationController
   end
 
   def update
-    friendship = Friendship.find({friendship_id: params[:id].to_i, friend_id: current_user.id.to_i})
-    second_record = Friendship.find({user_id: current_user.id.to_i, friend_id: params[:id].to_i})
-    if friendship.save && second_record.save
-      redirect_to request.referrer, alert: 'Friendship request successfully accepted.'
-    else
-      redirect_to request.referrer, alert: 'Friendship request NOT accepted.'
+    respond_to do |format|
+      if @friendship.update(friendship_params)
+        redirect_to request.referrer, alert: 'Friendship request successfully accepted.'
+      else
+        redirect_to request.referrer, alert: 'Friendship request NOT accepted.'
+      end
     end
   end
 
@@ -34,5 +35,9 @@ class FriendshipsController < ApplicationController
     else
       redirect_to request.referrer, alert: 'Friendship request could NOT be declined'
     end
+  end
+
+  def friendship_params
+    params.require(:friendship).permit(:user_id, :friend_id, :confirmed)
   end
 end
