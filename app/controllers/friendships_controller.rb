@@ -9,6 +9,14 @@ class FriendshipsController < ApplicationController
     @friendship = Friendship.new
   end
 
+  def show
+    set_friendship
+  end
+
+  def edit
+    set_friendship
+  end
+
   def create
     @friendship = Friendship.new(friendship_params)
 
@@ -28,14 +36,16 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
-    friendship = Friendship.find_by(user_id: params[:id].to_i, friend_id: current_user.id.to_i)
-    second_record = Friendship.find_by(user_id: current_user.id.to_i, friend_id: params[:id].to_i)
-    if friendship.destroy && second_record
-      current_user.friend_requests.delete(friendship)
+    if @friendship.destroy
       redirect_to request.referrer, alert: 'Friendship request declined.'
     else
       redirect_to request.referrer, alert: 'Friendship request could NOT be declined'
     end
+  end
+
+  def set_friendship
+ 
+    @friendship = Friendship.find(params[:id])
   end
 
   def friendship_params

@@ -1,0 +1,22 @@
+<%= form_with(model: friendship, local: true) do |form| %>
+ 
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.number_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :friend_id %>
+    <%= form.number_field :friend_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :confirmed %>
+    <%= form.check_box :confirmed %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

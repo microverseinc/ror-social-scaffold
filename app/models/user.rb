@@ -19,6 +19,6 @@ class User < ApplicationRecord
   def friends
     requested_friends
       .includes(:sent_friendships)
-      .where('friendships.status = true')
+      .where('friendships.confirmed = true')
   end
 end
