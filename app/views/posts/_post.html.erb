@@ -20,4 +20,12 @@
       <%= form.submit 'Comment', class: 'btn btn-secondary' %>
     <% end %>
   </div>
+  <div>
+    <p>Likes: </p>
+    <span><%= post.likes.count%></span>
+  </div>
+  <div>
+    <p>Comments: </p>
+    <span><%= post.comments.count%></span>
+  </div>
 </li>
