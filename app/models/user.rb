@@ -17,7 +17,6 @@ class User < ApplicationRecord
   # Users who have yet to confirme friend requests
   has_many :pending_friendships, -> { where status: nil }, class_name: 'Friendship', foreign_key: 'user_id'
   has_many :pending_friends, through: :pending_friendships, source: :friend
- 
 
   # friend_requests(sent to user)
   # Users who have requested to be friends
@@ -32,20 +31,14 @@ class User < ApplicationRecord
     friend = Friendship.find_by(user_id: user.id, friend_id: current_user) ||
              Friendship.find_by(user_id: user.id, friend_id: current_user)
     friend.status = true
-    friend.save 
+    friend.save
   end
-
-  # def confirmed_friendships
-  #   friendship = Friendship.where(user_id: self.id, status: true ) +
-  #                Friendship.where(friend_id: self.id, status:true )
-  # end
 
   def pending_friends
     pending_friendships.map do |f|
       User.find(f.friend_id)
     end
   end
-
 
   def friend?(user)
     friendship = Friendship.find_by(user_id: user.id, friend_id: id, status: true) ||
