@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+.likes,
+.comments {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+

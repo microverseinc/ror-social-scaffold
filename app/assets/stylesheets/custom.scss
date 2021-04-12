@@ -213,16 +213,14 @@ form {
 
   .post {
     width: 100%;
-    margin: 16px 0;
+    margin: 2em 0;
     display: flex;
     flex-direction: column;
   }
 
   .post-attribution {
-    float: left;
-
     .post-author {
-      margin: 0 0 8px 0;
+      margin: 2em 0 8px 0;
       color: $primary-color-dark;
       text-transform: capitalize;
     }
