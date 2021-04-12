@@ -1,0 +1,6 @@
+<li>
+  <%= User.find(friendship.user_id).name %>
+  <span class="profile-link">
+    <%= link_to 'Show',  friendship, class: 'profile-link' %>
+  </span> 
+</li>

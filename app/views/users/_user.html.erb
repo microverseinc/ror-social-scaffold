@@ -2,5 +2,31 @@
   Name: <%= user.name %>
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-  </span>
+  </span> 
+
+  <% if user.received_friendships.where(user_id: current_user.id).exists? %>
+
+    <% if user.received_friendships.where(user_id: current_user.id).first.confirmed %>
+      <span> You're friends with this person </span>
+    <% else %>
+      <button> Friendship pending </button>
+    <% end %>
+
+  <% elsif user.sent_friendships.where(friend_id: current_user.id).exists? %>
+
+    <% if user.sent_friendships.where(friend_id: current_user.id).first.confirmed %>
+      <button> You're friends with this person </button>
+    <% else %>
+      <button>
+      <%= link_to 'Accept', friendship_path(user.sent_friendships.where(friend_id: current_user.id).first, friendship: {user_id: user.id, friend_id: current_user.id, confirmed: true }), method: :patch %>
+      </button> | <button>
+      <%= link_to 'Decline', user.sent_friendships.where(friend_id: current_user.id).first , method: :delete %>        
+      </button>
+    <% end %>
+
+  <% else %>
+
+      <button><%= link_to 'Invite to friendship',  friendships_path(friendship: { user_id: current_user.id, friend_id: user.id, confirmed: false }), method: :post %></button> 
+  
+  <% end %>
 </li>
