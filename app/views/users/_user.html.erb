@@ -18,7 +18,7 @@
       <button> You're friends with this person </button>
     <% else %>
       <button>
-      <%= link_to 'Accept', friendship_path(user.sent_friendships.where(friend_id: current_user.id).first, friendship: {status: true }), method: :patch %>
+      <%= link_to 'Accept', friendship_path(user.sent_friendships.where(friend_id: current_user.id).first, friendship: {user_id: user.id, friend_id: current_user.id, confirmed: true }), method: :patch %>
       </button> | <button>
       <%= link_to 'Decline', user.sent_friendships.where(friend_id: current_user.id).first , method: :delete %>        
       </button>

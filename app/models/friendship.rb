@@ -12,6 +12,6 @@ class Friendship < ActiveRecord::Base
   belongs_to :requesting_friend, foreign_key: :user_id, class_name: :User
 
   def add_reverse_friendship
-    Friendship.create(requested_friend: requesting_friend, requesting_friend: requested_friend, confirmed: true) if status
+    Friendship.create(requested_friend: requesting_friend, requesting_friend: requested_friend, confirmed: true) if confirmed
   end
 end

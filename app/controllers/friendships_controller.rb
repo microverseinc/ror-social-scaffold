@@ -28,7 +28,9 @@ class FriendshipsController < ApplicationController
   end
 
   def update
-    if @friendship.update(friendship_params)
+    puts "Yusif"
+    puts friendship_params
+    if Friendship.update(friendship_params)
       redirect_to request.referrer, alert: 'Friendship request successfully accepted.'
     else
       redirect_to request.referrer, alert: 'Friendship request NOT accepted.'
