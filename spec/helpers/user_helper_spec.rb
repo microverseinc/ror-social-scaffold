@@ -9,7 +9,7 @@ RSpec.describe UserHelper, type: :helper do
 
   let(:inviter) { User.find_by_name('John Smith') }
   let(:invitee) { User.find_by_name('Betty Blue') }
-  let(:inviter_2) { User.find_by_name('Elvis Presley') }
+  let(:inviter2) { User.find_by_name('Elvis Presley') }
   let(:incorrect_invitee_user) { User.find_by_name('Betty') }
 
   describe '#add_friend_button' do
@@ -24,7 +24,6 @@ RSpec.describe UserHelper, type: :helper do
     it 'returns false if invitee_id is not equal to inviter_id' do
       expect(add_friend_button(inviter.id, invitee.id)).to eq(true)
     end
-
 
     it 'returns false if a user is not in a friendship with the current_user' do
       expect(add_friend_button(inviter_2.id, invitee.id)).to eq(false)
