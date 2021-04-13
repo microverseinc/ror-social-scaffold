@@ -8,16 +8,16 @@ class FriendshipsController < ApplicationController
     invitee_path = "/users/#{params[:friendship][:invitee_id]}"
 
     if @friendship.save
-      redirect_to invitee_path, notice: "Friend request was sent."
+      redirect_to invitee_path, notice: 'Friend request was sent.'
     else
-      redirect_to invitee_path, notice: "Friend request cannot be sent."
+      redirect_to invitee_path, notice: 'Friend request cannot be sent.'
     end
   end
 
   def update
     @friendship = Friendship.find(params[:id])
     if @friendship.update(friendship_params)
-      redirect_to friendships_path, notice: "You have succesfully accepted this request."
+      redirect_to friendships_path, notice: 'You have succesfully accepted this request.'
     else
       render friendships_path, status: :unprocessable_entity
     end

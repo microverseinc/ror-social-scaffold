@@ -102,6 +102,4 @@ describe User, type: :model do
       it { should validate_length_of(:name) }
     end
   end
-
-  
 end

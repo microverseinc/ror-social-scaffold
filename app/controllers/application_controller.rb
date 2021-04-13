@@ -13,6 +13,6 @@ class ApplicationController < ActionController::Base
   private
 
   def get_friends(user)
-    user.invitees.where(friendships: {status: true}) + user.inviters.where(friendships: {status: true})
+    user.invitees.where(friendships: { status: true }) + user.inviters.where(friendships: { status: true })
   end
 end
