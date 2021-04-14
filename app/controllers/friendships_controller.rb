@@ -5,10 +5,9 @@ class FriendshipsController < ApplicationController
 
   def create
     @friendship = Friendship.new(friendship_params)
-    @inverse_friendship = Friendship.new(inviter_id: params[:friendship][:invitee_id], invitee_id: params[:friendship][:inviter_id])
     invitee_path = "/users/#{params[:friendship][:invitee_id]}"
 
-    if @friendship.save && @inverse_friendship.save
+    if @friendship.save
       redirect_to invitee_path, notice: 'Friend request was sent.'
     else
       redirect_to invitee_path, notice: 'Friend request cannot be sent.'
@@ -17,7 +16,9 @@ class FriendshipsController < ApplicationController
 
   def update
     @friendship = Friendship.find(params[:id])
-    if @friendship.update(friendship_params)
+    @inverse_friendship = Friendship.new(inviter_id: params[:friendship][:invitee_id], invitee_id: params[:friendship][:inviter_id], status: params[:friendship][:status])
+
+    if @friendship.update(friendship_params) && @inverse_friendship.save
       redirect_to friendships_path, notice: 'You have succesfully accepted this request.'
     else
       render friendships_path, status: :unprocessable_entity
@@ -39,4 +40,8 @@ class FriendshipsController < ApplicationController
   def friendship_params
     params.require(:friendship).permit(:inviter_id, :invitee_id, :status)
   end
+
+  # def inversed_friendship_params
+  #   (inviter_id: params[:friendship][:invitee_id], invitee_id: params[:friendship][:inviter_id], status: params[:friendship][:status])
+  # end
 end
