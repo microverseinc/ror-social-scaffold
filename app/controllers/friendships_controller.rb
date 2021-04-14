@@ -21,7 +21,6 @@ class FriendshipsController < ApplicationController
 
   def update
     @user = User.find(params[:user_id])
-    current_user.confirm_friend(current_user, @user)
     flash.notice = 'Yipee, request accepted!'
     redirect_to users_path
   end
