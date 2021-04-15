@@ -6,12 +6,17 @@ ruby '2.7.2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.6'
 # Use postgresql as the database for Active Record
-gem 'pg', '~> 1.2', '>= 1.2.3'
+
 # Use Puma as the app server
 gem 'capybara', '~> 3.35', '>= 3.35.3'
 gem 'puma', '~> 3.12'
 gem 'selenium-webdriver'
-gem 'sqlite3'
+group :development do
+  gem 'sqlite3'
+end
+group :production do
+  gem 'pg'
+end
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'

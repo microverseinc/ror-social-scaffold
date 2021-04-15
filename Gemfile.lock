@@ -267,7 +267,7 @@ DEPENDENCIES
   devise
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
-  pg (~> 1.2, >= 1.2.3)
+  pg
   puma (~> 3.12)
   rails (~> 6.0.3, >= 6.0.3.6)
   rspec-rails (~> 5.0, >= 5.0.1)
