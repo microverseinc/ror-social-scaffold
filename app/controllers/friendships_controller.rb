@@ -4,7 +4,7 @@ class FriendshipsController < ApplicationController
   end
 
   def create
-    @friendship = Friendship.new(friendship_params)
+    @friendship = Friendship.new(friendship_params) unless check_invitation(current_user, params[:friendship][:invitee_id])
     invitee_path = "/users/#{params[:friendship][:invitee_id]}"
 
     if @friendship.save
