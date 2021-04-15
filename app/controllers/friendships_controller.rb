@@ -18,7 +18,6 @@ class FriendshipsController < ApplicationController
       timeline_posts
       render :index, alert: 'could not send the friend request'
     end
-
   end
 
   def update
