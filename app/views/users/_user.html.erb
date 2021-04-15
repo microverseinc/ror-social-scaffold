@@ -1,8 +1,7 @@
 <li class="user-show-header">
   <div>
-    Name: <%= link_to @user.name, user_path(user), class: 'profile-link' %>
+    Name: <%= link_to user.name, user_path(user), class: 'profile-link' %>
   </div>
+  <% user(user) %>
   <%= render 'add_friend', friendship: @friendship %>
 </li>
-
-<% user(user) %>

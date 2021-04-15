@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     @friendship = Friendship.new
-    @user = User.new(params[:name])
   end
 
   def show
