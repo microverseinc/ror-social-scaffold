@@ -9,6 +9,4 @@ describe 'signin procedure', type: :feature do
     fill_in 'Password', with: 'password_winlopez'
     click_button 'Log in'
   end
-
-  
 end

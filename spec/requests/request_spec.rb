@@ -23,7 +23,5 @@ RSpec.describe 'Users', type: :request do
       get users_path
       assert_response :success
     end
-
-   
   end
 end
