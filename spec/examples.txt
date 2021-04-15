@@ -1,5 +1,8 @@
 example_id                             | status | run_time        |
 -------------------------------------- | ------ | --------------- |
-./spec/integration_test_spec.rb[1:1:1] | passed | 7.7 seconds     |
-./spec/integration_test_spec.rb[1:1:2] | passed | 0.95224 seconds |
-./spec/integration_test_spec.rb[2:1]   | passed | 1.37 seconds    |
+./spec/integration_test_spec.rb[1:1:1] | passed | 8.12 seconds    |
+./spec/integration_test_spec.rb[1:1:2] | passed | 0.90272 seconds |
+./spec/integration_test_spec.rb[2:1]   | passed | 3.1 seconds     |
+./spec/integration_test_spec.rb[3:1]   | passed | 1.01 seconds    |
+./spec/integration_test_spec.rb[3:2]   | passed | 1.05 seconds    |
+./spec/integration_test_spec.rb[3:3]   | passed | 1.85 seconds    |
