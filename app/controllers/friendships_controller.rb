@@ -40,8 +40,4 @@ class FriendshipsController < ApplicationController
   def friendship_params
     params.require(:friendship).permit(:inviter_id, :invitee_id, :status)
   end
-
-  # def inversed_friendship_params
-  #   (inviter_id: params[:friendship][:invitee_id], invitee_id: params[:friendship][:inviter_id], status: params[:friendship][:status])
-  # end
 end

@@ -190,7 +190,8 @@ form {
 
   input[type="submit"] {
     padding: 8px;
-    width: 50%;
+    margin: 0;
+    width: 25em;
     border: none;
     border-radius: 4px;
     background-color: $primary-color-dark;
@@ -330,22 +331,22 @@ form {
   width: 100%;
   margin: 10px;
 
+  .users-list {
+    padding: 0;
+  }
+
   .users-list li {
-    margin-bottom: 16px;
     text-transform: capitalize;
     font-size: 1.2em;
   }
 
   .profile-link {
-    font-size: 0.8em;
-    margin: 0 0 8px 0;
     color: $primary-color-dark;
   }
 }
 
 .user-section {
   width: 100%;
-  margin-left: 16px;
 
   h2 {
     text-transform: capitalize;
