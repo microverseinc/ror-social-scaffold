@@ -23,13 +23,15 @@
 
 .user-show-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
   align-items: center;
   margin: 2em 0;
   padding: 0;
 }
 
-.add-friend-btn {
-  margin: 0;
-  padding: 0;
+.friend-status {
+  margin: 8px 0;
+  border: 2px solid #689f38;
+  border-radius: 4px;
+  padding: 4px 2em;
 }

@@ -190,7 +190,7 @@ form {
 
   input[type="submit"] {
     padding: 8px;
-    margin: 0;
+    margin-right: 1em;
     width: 25em;
     border: none;
     border-radius: 4px;
@@ -198,6 +198,7 @@ form {
     color: $primary-color-light;
     text-transform: uppercase;
     font-weight: 900;
+    position: relative;
   }
 
   input[type="submit"]:hover {
@@ -342,6 +343,7 @@ form {
 
   .profile-link {
     color: $primary-color-dark;
+    margin-right: 1em;
   }
 }
 
