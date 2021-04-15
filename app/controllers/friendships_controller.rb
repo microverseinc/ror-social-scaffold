@@ -18,7 +18,7 @@ class FriendshipsController < ApplicationController
       timeline_posts
       render :index, alert: 'could not send the friend request'
     end
-  
+
   end
 
   def update
@@ -38,8 +38,8 @@ class FriendshipsController < ApplicationController
     @friendship = Friendship.find_by(user_id: current_user.id, friend_id: latest_friend_id)
     @inverse_friendship = Friendship.find_by(user_id: latest_friend_id, friend_id: current_user.id)
     if Friendship.destroy(@friendship.id) && Friendship.destroy(@inverse_friendship.id)
-    redirect_to user_path(current_user), notice: 'destroyed that friendship'
-      else
+      redirect_to user_path(current_user), notice: 'destroyed that friendship'
+    else
       notice[:alert] = 'something broke'
     end
   end
