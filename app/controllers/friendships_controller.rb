@@ -4,7 +4,8 @@ class FriendshipsController < ApplicationController
   end
 
   def create
-    @friendship = Friendship.new(friendship_params) unless check_invitation(current_user, params[:friendship][:invitee_id])
+    @friendship = Friendship.new(friendship_params) unless check_invitation(current_user,
+                                                                            params[:friendship][:invitee_id])
     invitee_path = "/users/#{params[:friendship][:invitee_id]}"
 
     if @friendship.save
@@ -16,7 +17,8 @@ class FriendshipsController < ApplicationController
 
   def update
     @friendship = Friendship.find(params[:id])
-    @inverse_friendship = Friendship.new(inviter_id: params[:friendship][:invitee_id], invitee_id: params[:friendship][:inviter_id], status: params[:friendship][:status])
+    @inverse_friendship = Friendship.new(inviter_id: @friendship.invitee_id,
+                                         invitee_id: @friendship.inviter_id, status: true)
 
     if @friendship.update(friendship_params) && @inverse_friendship.save
       redirect_to friendships_path, notice: 'You have succesfully accepted this request.'

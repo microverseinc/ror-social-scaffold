@@ -21,6 +21,7 @@ class ApplicationController < ActionController::Base
   end
 
   def check_invitation(logged_user, user)
-    Friendship.exists?(inviter_id: logged_user, invitee_id: user) || Friendship.exists?(inviter_id: user, invitee_id: logged_user)
+    Friendship.exists?(inviter_id: logged_user,
+                       invitee_id: user) || Friendship.exists?(inviter_id: user, invitee_id: logged_user)
   end
 end
