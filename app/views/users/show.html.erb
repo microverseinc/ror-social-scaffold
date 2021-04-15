@@ -12,7 +12,7 @@
     <p class="already">invitation pending!</p>
   <% elsif current_user.friends_with?(@user) %>
     <p class="already">you are already friends!</p>
-    <% elsif current_user.friend_requestsu.include?(@user) %>
+    <% elsif current_user.friend_requests.include?(@user) %>
   <p class="already">You have a friend request from this user!</p>
 <% end %>
 </section>
