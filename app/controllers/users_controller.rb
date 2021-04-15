@@ -8,7 +8,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.ordered_by_most_recent
     @friendship = Friendship.new
+    if check_friendship(current_user, @user) || @user == current_user
+      @posts = @user.posts.ordered_by_most_recent
+    end
   end
 end
