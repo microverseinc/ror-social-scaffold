@@ -1,14 +1,14 @@
 require 'rails_helper'
 
-describe Friendship, type: :model do
+RSpec.describe Friendship, type: :model do
   before do
-    User.create(name: 'John Smith', email: 'john.smith@email.com', password: 'abc123', gravatar_url: '')
-    User.create(name: 'Betty Blue', email: 'betty_blue@email.com', password: 'abc123', gravatar_url: '')
+    User.create(name: 'Peter Parker', email: 'peter.parker@email.com', password: 'abc123', gravatar_url: '')
+    User.create(name: 'Jane Watson', email: 'jane_watson@email.com', password: 'abc123', gravatar_url: '')
   end
 
-  let(:inviter) { User.find_by_name('John Smith') }
-  let(:invitee) { User.find_by_name('Betty Blue') }
-  let(:incorrect_invitee_user) { User.find_by_name('Betty') }
+  let(:inviter) { User.find_by_name('Peter Parker') }
+  let(:invitee) { User.find_by_name('Jane Watson') }
+  let(:incorrect_invitee_user) { User.find_by_name('Jane') }
 
   # Model Tests
   context 'with correct params' do
