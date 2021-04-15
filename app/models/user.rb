@@ -1,5 +1,4 @@
 class User < ApplicationRecord
- 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -9,14 +8,11 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
- 
   has_many :friends, class_name: 'Friendship', foreign_key: 'friend_id'
 
-  
   has_many :pending_friendships, -> { where status: nil }, class_name: 'Friendship', foreign_key: 'user_id'
   has_many :pending_friends, through: :pending_friendships, source: :friend
 
-  
   has_many :friendships
   has_many :inverted_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
   has_many :friend_requests, through: :inverted_friendships, source: :user
