@@ -27,19 +27,6 @@ class User < ApplicationRecord
   has_many :confirmed_friendships, -> { where status: true }, class_name: 'Friendship'
   has_many :friends, through: :confirmed_friendships
 
-  # def confirm_friend(current_user, user)
-  #   friend = Friendship.find_by(user_id: user.id, friend_id: current_user) ||
-  #            Friendship.find_by(user_id: user.id, friend_id: current_user)
-  #   friend.status = true
-  #   friend.save
-  # end
-
-  # def pending_friends
-  #   pending_friendships.map do |f|
-  #     User.find(f.friend_id)
-  #   end
-  # end
-
   def friend?(user)
     friendship = Friendship.find_by(user_id: user.id, friend_id: id, status: true) ||
                  Friendship.find_by(user_id: id, friend_id: user.id, status: true)

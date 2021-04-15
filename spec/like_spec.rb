@@ -12,4 +12,8 @@ RSpec.describe Like, type: :model do
       expect(subject).to_not be_valid
     end
   end
+  describe 'Associations' do
+    it { should belong_to(:user) }
+    it { should belong_to(:post) }
+  end
 end
