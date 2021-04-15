@@ -1,3 +1,4 @@
+require: rubocop-rails
 AllCops:
   Exclude:
     - "db/**/*"
@@ -56,4 +57,6 @@ Style/HashEachMethods:
 Style/HashTransformKeys:
   Enabled: false
 Style/HashTransformValues:
+  Enabled: false
+Style/HashSyntax:
   Enabled: false
