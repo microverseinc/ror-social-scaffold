@@ -25,10 +25,15 @@ class FriendshipsController < ApplicationController
     Friendship.where(user_id: user, friend_id: friend)
   end
 
+  def reverse_frienship(user, friend, status)
+    Friendship.create(user_id: friend, friend_id: user, status: status)
+  end
+
   def accept_or_reject_friend_request
     friend_status = Friendship.where(user_id: params[:friend], friend_id: params[:user])
     friend_status.update(status: params[:status])
     if params[:status] == 'accept'
+      Friendship.create(user_id: params[:user], friend_id: params[:friend], status: params[:status])
       redirect_back(fallback_location: users_path, notice: 'Friend request Accepted')
     else
       redirect_back(fallback_location: users_path, notice: 'Friend request Rejected')
@@ -59,6 +64,7 @@ class FriendshipsController < ApplicationController
   def update
     respond_to do |format|
       if @friendship.update(friendship_params)
+        reverse_frienship(friendship_params)
         format.html { redirect_to @friendship, notice: 'Friendship was successfully updated.' }
         format.json { render :show, status: :ok, location: @friendship }
       else
@@ -87,6 +93,6 @@ class FriendshipsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def friendship_params
-    params.require(:friendship).permit(:user_id, :friendship_id, :status)
+    params.require(:friendship).permit(:user_id, :friend_id, :status)
   end
 end

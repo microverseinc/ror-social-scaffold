@@ -17,12 +17,9 @@
         <div class="menu-item">
           <%= menu_link_to 'All users', users_path %>
         </div>
-        <div class="menu-item">
-          <%= menu_link_to 'All friends', friendships_path %>
-        </div>
         <% if current_user %>
         <div class="menu-item">
-          <%= menu_link_to "#{current_user.name}", friendships_path %>
+          <%= "#{current_user.name}" %>
         </div>
         <% end %>
       </div>
