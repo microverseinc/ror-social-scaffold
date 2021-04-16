@@ -9,7 +9,7 @@
   </head>
   <body>
     <nav class="nav">
-      <%= link_to 'Stay in touch', root_path %>
+      <%= link_to 'friendship', root_path %>
       <div class="menu">
         <div class="menu-item">
           <%= menu_link_to 'Timeline', posts_path %>
@@ -18,6 +18,11 @@
           <%= menu_link_to 'All users', users_path %>
         </div>
       </div>
+      <% if current_user %>
+      <div class="menu-item">
+        <%= link_to 'Friends',  user_friendships_path(user_id: current_user.id), method: :get %>
+      </div>
+      <% end %>
       <% if current_user %>
         <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
       <% else %>

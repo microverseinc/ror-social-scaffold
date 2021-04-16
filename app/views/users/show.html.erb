@@ -1,5 +1,9 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
+  <% if @user != current_user %>
+     <%= check_friendship_btn(@user) %>
+  <% end %>
+
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">

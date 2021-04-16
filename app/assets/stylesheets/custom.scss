@@ -1,10 +1,10 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap");
 
-$primary-color-dark: #689f38;
-$primary-color: #8bc34a;
-$primary-color-light: #dcedc8;
+$primary-color-dark: #38509f;
+$primary-color: #c34aaf;
+$primary-color-light: #5f570e;
 $primary-color-text: #212121;
-$divider-color: #bdbdbd;
+$divider-color: #4703033b;
 
 * {
   margin: 0;
@@ -83,6 +83,20 @@ a {
   padding: 5px;
   color: dimgrey;
   font-size: 14px;
+}
+
+.invite-link {
+  background: #689f38;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.reject-link {
+  background: #ff385c;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
 }
 
 .notice {

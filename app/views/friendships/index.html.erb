@@ -1,0 +1,48 @@
+<section class="users-section">
+<h2>Friends(those who have become my friends)</h2>
+<ul class="users-list">
+<% current_user.friends.each do |friend| %>
+<li>
+  Name: <%= friend.name %>
+  <span class="profile-link">
+    <%= link_to 'See Profile',  user_path(friend), class: 'profile-link' %>
+  </span>
+</li>
+<% end %>
+</ul>
+</section>
+
+<section class="users-section">
+<h2>Friends on hold(sent invitations)</h2>
+<ul class="users-list">
+<% current_user.pending_friends.each do |friend| %>
+<li>
+  Name: <%= friend.name %>
+  <span class="profile-link">
+    <%= link_to 'cancel request',  user_friendship_path(user_id: friend.id, id: current_user.id), class: 'reject-link', method: :delete %>
+  </span>
+</li>
+<% end %>
+</ul>
+
+</section>
+
+<section class="users-section">
+  <h2>Friend requests(received) </h2>
+  <ul class="users-list">
+    <% current_user.friend_requests.each do |friend| %>
+    <li>
+      Name: <%= friend.name %>
+      <span class="profile-link">
+        <%= link_to 'See Profile',  user_path(friend), class: 'profile-link' %>
+      </span>
+      <span class="profile-link">
+        <%= link_to('Confirm', user_friendship_path(user_id: friend.id, id: current_user.id), class: 'invite-link', method: :patch) %>
+      </span>
+      <span class="profile-link">
+        <%= link_to('Reject', user_friendship_path(user_id: friend.id, id: current_user.id), class: 'reject-link', method: :delete) %>
+      </span>
+    </li>
+    <% end %>
+  </ul>
+</section>
