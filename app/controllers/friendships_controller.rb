@@ -19,10 +19,8 @@ class FriendshipsController < ApplicationController
 
   def update
     @friendship = Friendship.find(params[:id])
-    @inverse_friendship = Friendship.new(inviter_id: @friendship.invitee_id,
-                                         invitee_id: @friendship.inviter_id, status: true)
 
-    if @friendship.update(friendship_params) && @inverse_friendship.save
+    if @friendship.confirm_friend
       redirect_to friendships_path, notice: 'You have succesfully accepted this request.'
     else
       render friendships_path, status: :unprocessable_entity
