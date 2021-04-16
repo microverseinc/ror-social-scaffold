@@ -13,4 +13,6 @@ class User < ApplicationRecord
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: :invitee_id
   has_many :invitees, through: :friendships
   has_many :inviters, through: :inverse_friendships
+  has_many :confirmed_friendships, -> { where status: true }, class_name: "Friendship", foreign_key: :inviter_id
+  has_many :invitees, through: :confirmed_friendships
 end
