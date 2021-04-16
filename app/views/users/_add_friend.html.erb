@@ -5,8 +5,10 @@
     <%= form.hidden_field :status %>
     <%= form.submit 'Invite to friendship' %>
   <% end %>
-<% elsif Friendship.exists?(inviter_id: current_user, invitee_id: @user, status: true) %>
+<% elsif current_user.comfirmed_friendships.exists?(invitee_id: @user) %>
   <p class="friend-status">You are friends with this user</p>
+  <% elsif current_user.inverse_friendships.exists?(inviter_id: @user) %>
+  <p class="friend-status">Friend Request</p>
 <% elsif @user != current_user %>
   <p class="friend-status">Pending invitation</p>
 <% end %>

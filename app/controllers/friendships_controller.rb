@@ -2,7 +2,7 @@ class FriendshipsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @friendships = Friendship.joins(:inviter).where(invitee_id: current_user.id)
+    @friendships = current_user.friend_requests
   end
 
   def create

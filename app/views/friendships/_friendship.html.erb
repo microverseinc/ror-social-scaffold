@@ -1,5 +1,4 @@
 <li>
-  <% unless friendship.status %>
     From: <%= friendship.inviter.name %>
     <%= form_with model: friendship, method: "PATCH" do |form| %>
       <%= form.hidden_field :invitee_id %>
@@ -13,6 +12,5 @@
       <%= form.hidden_field :status %>
       <%= form.submit 'Reject Friendship' %>
     <% end %>
-  <% end %>
 </li>
 
