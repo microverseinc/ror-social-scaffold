@@ -20,7 +20,7 @@ class User < ApplicationRecord
   has_many :friends, through: :comfirmed_friendships, source: :invitee, class_name: 'User'
 
   def friends_and_own_posts
-    Post.where(user_id: [*self.friends, self])
+    Post.where(user_id: [*friends, self])
   end
 
   def friend_requests
