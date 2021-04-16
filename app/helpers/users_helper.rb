@@ -18,7 +18,4 @@ module UsersHelper
     status = user.pluck(:status)
     status[0]
   end
-
-  
-
 end
