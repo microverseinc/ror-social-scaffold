@@ -12,10 +12,6 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def get_friends(user)
-    user.inviters.where(friendships: { status: true })
-  end
-
   def check_friendship(logged_user, user)
     Friendship.exists?(inviter_id: logged_user, invitee_id: user, status: true)
   end
