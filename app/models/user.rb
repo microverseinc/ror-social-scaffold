@@ -10,28 +10,29 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
-  has_many :requested_friends, foreign_key: 'requested_id', class_name: 'Friendship'
-  has_many :received_friends, foreign_key: 'receiver_id', class_name: 'Friendship'
+  has_many :requested_friendships, foreign_key: 'requester_id', class_name: 'Friendship'
+  has_many :received_friendships, foreign_key: 'receiver_id', class_name: 'Friendship'
 
-
+#  has_many :friendships
+#  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
 
   def friends
-    req_array = requested_friends.map{|friendship| friendship.friend if friendship.confirmed}
-    inverse_array = inverse_friendships.map{|friendship| friendship.user if friendship.confirmed}
-    (friends_array + inverse_array).compact
+    requested_array = requested_friendships.map{|fr| fr.receiver if fr.status}
+    received_array = received_friendships.map{|fr| fr.requester if fr.status}
+    (requested_array + received_array).compact
   end
 
   def pending_friends
-    requested_friends.map{|friendship| friendship.friend if !friendship.confirmed}.compact
+    requested_friendships.map{|fr| fr.requester unless fr.status}.compact
   end
 
   def friend_requests
-    inverse_friendships.map{|friendship| friendship.user if !friendship.confirmed}.compact
+    received_friendships.map{|fr| fr.user unless fr.status}.compact
   end
 
   def confirm_friend(user)
-    friendship = inverse_friendships.find{|friendship| friendship.user == user}
-    friendship.confirmed = true
+    friendship = received_friendships.find{|fr| fr.requester == user}
+    friendship.status = true
     friendship.save
   end
 
