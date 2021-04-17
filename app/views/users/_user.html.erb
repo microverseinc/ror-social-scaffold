@@ -1,20 +1,12 @@
 <li>
-  Name: <%= user.name %>
+  <%= user.name %>
   <span class="profile-link">
-    <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+    
+    <%= btn_link_profile(user) %>
   </span>
 
   <div class="mb-4">
-  <% if current_user == user%>
-    <%= "This is you !!" %>
-  <% elsif current_user.friend?(user)  %>
-    <%= link_to "Remove", remove_friends_path(user_id: user.id), class: "btn btn-danger" %>
-  <% elsif current_user.pending_friends.include?(user)  %>
-      <%= "Friend request already sent" %>
-  <% elsif current_user.friend_requests.include?(user)  %>
-    <%= "You have a friend request from this user" %>
-  <% else %>
-    <%= button_to "Add friend", friendships_path(friend_id: user.id), class:"btn btn-primary" %>
-  <% end %>
+
+  <%= friendship_status(user) %>
   </div>
 </li>
