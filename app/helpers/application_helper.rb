@@ -7,18 +7,19 @@ module ApplicationHelper
     end
   end
 
-  def friendship_status(user)
-    if current_user == user
+  def friendship_status(receiver)
+    requester = User.find(current_user.id)
+    if requester == receiver
         "This is you !!" 
-    elsif current_user.friend?(user)  
+    elsif requester.friend?(receiver)  
         "It's your friend ".html_safe +
-        (link_to "Remove", remove_friends_path(user_id: user.id), class: "btn btn-danger", data: { confirm: "You sure?" })
-    elsif current_user.pending_friends.include?(user)  
+        (link_to "Remove", remove_friends_path(receiver_id: receiver.id), class: "btn btn-danger", data: { confirm: "You sure?" })
+    elsif requester.pending_friends.include?(receiver)  
           "Friend request already sent"
-    elsif current_user.friend_requests.include?(user)  
+    elsif requester.friend_requests.include?(receiver)  
         "You have a friend request from this user" 
     else 
-        button_to "Add friend", friendships_path(friend_id: user.id), class:"btn btn-primary" 
+        button_to "Add friend", friendships_path(receiver_id: receiver.id, requester_id: requester.id), class:"btn btn-primary"
     end 
   end
 
