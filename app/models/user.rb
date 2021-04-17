@@ -22,12 +22,18 @@ class User < ApplicationRecord
     (requested_array + received_array).compact
   end
 
+  def friendships
+    requested = requested_friendships
+    received = received_friendships
+    (requested + received)
+  end
+
   def pending_friends
-    requested_friendships.map{|fr| fr.requester unless fr.status}.compact
+    requested_friendships.map{|fr| fr.receiver unless fr.status}.compact
   end
 
   def friend_requests
-    received_friendships.map{|fr| fr.user unless fr.status}.compact
+    received_friendships.map{|fr| fr.requester unless fr.status}.compact
   end
 
   def confirm_friend(user)

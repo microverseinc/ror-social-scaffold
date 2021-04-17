@@ -8,9 +8,11 @@
   <h3 class="badge bg-primary rounded-pill text-light"> Total Friends (<%= @user.friends.count %>)</h3>
   <ul class="list-group">
     <% @user.friends.each do |friend| %>
+
       <li class="list-group-item"> <%= friend.name %>
-      <%= btn_to_remove(friend, @user, "remove friend") %> 
+        <%= btn_to_remove(friend, @user, "remove friend") %> 
       </li>
+      
     <% end %> 
   </ul>
 
@@ -27,8 +29,10 @@
 
   <h3 class="badge bg-primary rounded-pill text-light"> Friend Requests (<%= @user.friend_requests.count %>)</h3>
   <ul class="list-group">
-    <% @user.friend_requests.each do |request_user| %>
-    <li class="list-group-item"> <%= request_user.name %>
+    <% current_user.friend_requests.each do |request_user| %>
+    <li class="list-group-item"> 
+    
+    <%= request_user.name %>
 
     <%= btn_to_accept(request_user, @user, "Accept") %>
     <%= btn_to_remove(request_user, @user, "Reject") %>

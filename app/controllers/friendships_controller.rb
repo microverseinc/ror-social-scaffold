@@ -20,11 +20,10 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
-    requester = User.find params[:user_id]
-    @friendship = current_user.friendships.select { |f| f.friend_id == requester.id } || current_user.inverse_friendships.select  { |f| f.friend_id == requester.id }
-
+    requester = User.find params[:id]
+    @friendship = current_user.requested_friendships.select { |f| f.receiver_id == requester.id } || current_user.received_friendships.select  { |f| f.receiver_id == requester.id }
     unless @friendship.any?
-    @friendship =  requester.friendships.each { |f| f.friend_id == current_user.id } || requester.inverse_friendships.each { |f| f.friend_id == current_user.id }
+      @friendship =  requester.requested_friendships.select { |f| f.receiver_id == current_user.id } || requester.received_friendships.each { |f| f.requester_id == current_user.id }
     end
     @friendship.each(&:destroy)
     flash[:notice] = "Deleted succesfully"
@@ -36,7 +35,7 @@ class FriendshipsController < ApplicationController
   def friendship_params
     {receiver_id: params[:receiver_id],
     requester_id: params[:requester_id],
-    status: true}
+    status: false}
   end
 
 end

@@ -12,8 +12,7 @@ module ApplicationHelper
     if requester == receiver
         "This is you !!" 
     elsif requester.friend?(receiver)  
-        "It's your friend ".html_safe +
-        (link_to "Remove", remove_friends_path(receiver_id: receiver.id), class: "btn btn-danger", data: { confirm: "You sure?" })
+        link_to "Remove", remove_friends_path(id: receiver.id), class: "btn btn-danger", data: { confirm: "You sure?" }
     elsif requester.pending_friends.include?(receiver)  
           "Friend request already sent"
     elsif requester.friend_requests.include?(receiver)  
@@ -31,15 +30,15 @@ module ApplicationHelper
     end
   end
 
-  def btn_to_remove(item, user, str)
-    if current_user == user
-      link_to "#{str}", remove_friends_path(user_id: item.id), class: "btn btn-danger ml-3", data: { confirm: "You sure?" }
+  def btn_to_remove(user_to_remove, user_asking, str)
+    if current_user == user_asking
+      link_to "#{str}", remove_friends_path(id: user_to_remove.id), class: "btn btn-danger ml-3", data: { confirm: "You sure?" }
     end
   end
 
-  def btn_to_accept(item, user, str)
+  def btn_to_accept(user_to_accept, user, str)
     if current_user == user
-      link_to "#{str}", update_friends_path(user_id: item.id), class: "btn btn-success ml-3"
+      link_to "#{str}", update_friends_path(user_id: user_to_accept.id), class: "btn btn-success ml-3"
     end
   end
 
