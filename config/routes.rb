@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :friendships, only: [:create, :update]
+  resources :friendships, only: [:create]
   get "remove_friends" => "friendships#destroy"
+  get "update_friends" => "friendships#update"
   
   root 'posts#index'
 

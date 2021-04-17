@@ -5,7 +5,11 @@
   <h3 class="badge bg-primary rounded-pill text-light"> Total Friends (<%= @user.friends.count %>)</h3>
   <ul class="list-group">
     <% @user.friends.each do |friend| %>
-    <li class="list-group-item"> <%= friend.name %> </li>
+    <li class="list-group-item"> <%= friend.name %> 
+      <% if current_user == @user%>
+          <%= link_to "Remove user", remove_friends_path(user_id: friend.id) %>
+      <% end %>
+        </li>
     <% end %> 
   </ul>
 
@@ -15,7 +19,7 @@
     <li class="list-group-item"> <%= pending.name %> <br/>
     
       <% if current_user == @user%>
-        <%= link_to "Cancel request", remove_friends_path(user_id: pending.id) %>
+        <%= link_to "Cancel request", remove_friends_path(user_id: pending.id), data: { confirm: "You sure?" } %>
       <% end %> 
 
     </li>
@@ -28,9 +32,9 @@
     <li class="list-group-item"> <%= request_user.name %> <br/>
 
     <% if current_user == @user%>
-        <%= link_to "Cancel request", remove_friends_path(user_id: request_user.id) %>
+        <%= link_to "Cancel request", remove_friends_path(user_id: request_user.id), data: { confirm: "You sure?" } %>
         <p>  </p>
-        <%= link_to "Accept", "" %>
+        <%= link_to "Accept", update_friends_path(user_id: request_user.id) %>
       <% end %>  
 
     </li>

@@ -2,14 +2,23 @@ class FriendshipsController < ApplicationController
   def create
     @friendship = current_user.friendships.build(friendship_params)
     if @friendship.save
-      flash[:notice] = "Friend Request Sent."
-      redirect_to root_url
+      flash[:notice] = "Friend request sent."
+      redirect_to request.referrer
     else
       flash[:notice] = "Unable to send friend request."
-      redirect_to root_url
+      redirect_to request.referrer
     end
   end
   
+  def update
+    requester = User.find params[:user_id]
+    if current_user.confirm_friend(requester)
+      redirect_back(fallback_location: users_path, notice: 'Friendship request accepted!')
+    else
+      redirect_back(fallback_location: users_path, notice: 'Friendship request denied!')
+    end
+  end
+
   def destroy
     requester = User.find params[:user_id]
     @friendship = current_user.friendships.select { |f| f.friend_id == requester.id } || current_user.inverse_friendships.select  { |f| f.friend_id == requester.id }
@@ -18,7 +27,8 @@ class FriendshipsController < ApplicationController
     @friendship =  requester.friendships.each { |f| f.friend_id == current_user.id } || requester.inverse_friendships.each { |f| f.friend_id == current_user.id }
     end
     @friendship.each(&:destroy)
-    redirect_to root_url
+    flash[:notice] = "Deleted succesfully"
+    redirect_to request.referrer
   end
 
   private
@@ -29,7 +39,3 @@ class FriendshipsController < ApplicationController
   end
 
 end
-
-
-#     friendship = current_user.friendships.each { |f| f.friend_id == requester.id } || current_user.inverse_friendships.each  { |f| f.friend_id == requester.id } || 
-#      requester.friendships.each { |f| f.friend_id == current_user.id } || requester.inverse_friendships.each { |f| f.friend_id == current_user.id }
