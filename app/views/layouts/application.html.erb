@@ -21,6 +21,7 @@
           <%= menu_link_to 'Friendship Requests', friendships_path %>
         </div>
       </div>
+      <%= link_to(current_user.name, user_path(current_user.id)) if current_user %>
       <% if current_user %>
         <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
       <% else %>

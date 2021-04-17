@@ -1,10 +1,13 @@
 class FriendshipsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
-    @friendships = Friendship.joins(:inviter).where(invitee_id: current_user.id)
+    @friendships = current_user.friend_requests
   end
 
   def create
-    @friendship = Friendship.new(friendship_params)
+    @friendship = Friendship.new(friendship_params) unless check_invitation(current_user,
+                                                                            params[:friendship][:invitee_id])
     invitee_path = "/users/#{params[:friendship][:invitee_id]}"
 
     if @friendship.save
@@ -16,7 +19,8 @@ class FriendshipsController < ApplicationController
 
   def update
     @friendship = Friendship.find(params[:id])
-    if @friendship.update(friendship_params)
+
+    if @friendship.confirm_friend
       redirect_to friendships_path, notice: 'You have succesfully accepted this request.'
     else
       render friendships_path, status: :unprocessable_entity

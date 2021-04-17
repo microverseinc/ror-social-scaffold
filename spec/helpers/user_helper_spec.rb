@@ -26,7 +26,7 @@ RSpec.describe UserHelper, type: :helper do
     end
 
     it 'returns false if a user is not in a friendship with the current_user' do
-      expect(add_friend_button(inviter_2.id, invitee.id)).to eq(false)
+      expect(add_friend_button(inviter2.id, invitee.id)).to eq(false)
     end
   end
 end

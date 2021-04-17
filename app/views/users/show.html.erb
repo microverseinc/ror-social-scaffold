@@ -1,11 +1,15 @@
 <section class="user-section">
-  <h2><%= "Name: #{@user.name}" %></h2>
-  <article class="timeline">
-    <h3>Recent posts:</h3>
-    <ul class="posts">
-      <%= render @posts %>
-    </ul>
-  </article>
-</section>
+  <div class="user-show-header">
+    <h2><%= "Name: #{@user.name}" %></h2>
+    <%= render 'add_friend', friendship: @friendship, class: "btn-2" %>
+  </div>
 
-<%= render 'add_friend', friendship: @friendship, class: "btn-2" %>
+  <% if @posts %>
+    <article class="timeline">
+      <h3>Recent posts:</h3>
+      <ul class="posts">
+        <%= render @posts %>
+      </ul>
+    </article>
+  <% end %>
+</section>

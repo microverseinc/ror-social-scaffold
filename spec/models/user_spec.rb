@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-describe User, type: :model do
+RSpec.describe User, type: :model do
   # Model Tests
   context 'with correct params' do
     before do
-      @user = User.create(name: 'John Smith', email: 'john.smith@email.com', password: 'abc123', gravatar_url: '')
+      @user = User.create(name: 'Peter Parker', email: 'peter.parker@email.com', password: 'abc123', gravatar_url: '')
     end
 
     it 'creates a user' do
@@ -12,13 +12,13 @@ describe User, type: :model do
     end
 
     it 'reads a user' do
-      expect(User.find_by(name: 'John Smith')).to eq(@user)
+      expect(User.find_by(name: 'Peter Parker')).to eq(@user)
     end
   end
 
   context 'with incorrect params' do
     before do
-      @user = User.create(email: 'john.smith@email.com', password: 'abc123', gravatar_url: '')
+      @user = User.create(email: 'peter.parker@email.com', password: 'abc123', gravatar_url: '')
     end
 
     it 'cannot create a user' do
@@ -26,7 +26,7 @@ describe User, type: :model do
     end
 
     it 'cannot read a user' do
-      expect(User.find_by(name: 'John Smith')).not_to eq(@user)
+      expect(User.find_by(name: 'Peter Parker')).not_to eq(@user)
     end
   end
 
@@ -37,12 +37,12 @@ describe User, type: :model do
 
   context 'user as an inviter' do
     before do
-      User.create(name: 'John Smith', email: 'john.smith@email.com', password: 'abc123', gravatar_url: '')
-      User.create(name: 'Betty Blue', email: 'betty_blue@email.com', password: 'abc123', gravatar_url: '')
+      User.create(name: 'Peter Parker', email: 'peter.parker@email.com', password: 'abc123', gravatar_url: '')
+      User.create(name: 'Jane Watson', email: 'jane_watson@email.com', password: 'abc123', gravatar_url: '')
     end
 
-    let(:inviter) { User.find_by_name('John Smith') }
-    let(:invitee) { User.find_by_name('Betty Blue') }
+    let(:inviter) { User.find_by_name('Peter Parker') }
+    let(:invitee) { User.find_by_name('Jane Watson') }
     let(:friend_request) { inviter.friendships.build(invitee_id: invitee.id) }
 
     it { should have_many(:friendships) }
@@ -61,18 +61,18 @@ describe User, type: :model do
     it 'can see the name of the invitee' do
       invitee_user = User.find(friend_request.invitee_id)
       invitee_user_name = User.find(invitee_user.id).name
-      expect(invitee_user_name).to eq('Betty Blue')
+      expect(invitee_user_name).to eq('Jane Watson')
     end
   end
 
   context 'user as an invitee' do
     before do
-      User.create(name: 'John Smith', email: 'john.smith@email.com', password: 'abc123', gravatar_url: '')
-      User.create(name: 'Betty Blue', email: 'betty_blue@email.com', password: 'abc123', gravatar_url: '')
+      User.create(name: 'Peter Parker', email: 'peter.parker@email.com', password: 'abc123', gravatar_url: '')
+      User.create(name: 'Jane Watson', email: 'jane_watson@email.com', password: 'abc123', gravatar_url: '')
     end
 
-    let(:inviter) { User.find_by_name('John Smith') }
-    let(:invitee) { User.find_by_name('Betty Blue') }
+    let(:inviter) { User.find_by_name('Peter Parker') }
+    let(:invitee) { User.find_by_name('Jane Watson') }
     let(:friend_request) { inviter.friendships.create(invitee_id: invitee.id, status: true) }
 
     it { should have_many(:inverse_friendships) }
@@ -87,7 +87,7 @@ describe User, type: :model do
     it 'can see the name of the inviter' do
       inviter_user = User.find(friend_request.inviter_id)
       inviter_user_name = User.find(inviter_user.id).name
-      expect(inviter_user_name).to eq('John Smith')
+      expect(inviter_user_name).to eq('Peter Parker')
     end
   end
 

@@ -1,9 +1,7 @@
-<li>
-  Name: <%= user.name %>
-  <span class="profile-link">
-    <%= link_to 'See Profile', user_path(user), class: 'profile-link' %>
-  </span>
+<li class="user-show-header">
+  <div>
+    Name: <%= link_to user.name, user_path(user), class: 'profile-link' %>
+  </div>
+  <% user(user) %>
+  <%= render 'add_friend', friendship: @friendship %>
 </li>
-
-<% user(user) %>
-<%= render 'add_friend', friendship: @friendship, class: "btn-1" %>
