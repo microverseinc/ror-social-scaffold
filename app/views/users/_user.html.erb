@@ -3,4 +3,14 @@
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
   </span>
+
+  <div class="mb-4">
+  <% if current_user == user%>
+    <%= "This is you !!" %>
+  <% elsif current_user.friend?(user)  %>
+    <%= link_to "Remove friend", remove_friends_path(user_id: user.id) %>
+  <% else %>
+    <%= button_to "Add friend", friendships_path(friend_id: user.id), class:"btn" %>
+  <% end %>
+  </div>
 </li>
