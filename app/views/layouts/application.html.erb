@@ -17,7 +17,11 @@
         <div class="menu-item">
           <%= menu_link_to 'All users', users_path %>
         </div>
+        <div class="menu-item">
+          <%= menu_link_to 'Friendship Requests', friendships_path %>
+        </div>
       </div>
+      <%= link_to(current_user.name, user_path(current_user.id)) if current_user %>
       <% if current_user %>
         <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
       <% else %>
@@ -37,5 +41,7 @@
     <main class="main">
       <%= yield %>
     </main>
+
+  <script src="https://kit.fontawesome.com/2f23168c29.js" crossorigin="anonymous"></script>
   </body>
 </html>
