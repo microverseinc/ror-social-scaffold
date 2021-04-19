@@ -37,6 +37,7 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
+    @friendship = set_friendship
     if @friendship.destroy
       redirect_to request.referrer, alert: 'Friendship request declined.'
     else
