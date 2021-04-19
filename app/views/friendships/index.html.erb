@@ -5,7 +5,7 @@
 
   <ul class="users-list">
     <% if @sent_friendships.length > 0 %>
-        <%= render partial: "friendship", locals: { friendship: friendship } %>
+        <%= render @sent_friendships %>
     <% else %>
       <li><span>No post available</span></li>
     <% end %>
@@ -17,9 +17,7 @@
 
   <ul class="users-list">
     <% if @received_friendships.length > 0 %>
-      <% @received_friendships.each do |friendship| %>
-        <%= render partial: "friendship", locals: { friendship: friendship } %>
-      <% end %>
+        <%= render @received_friendships %>
     <% else %>
       <li><span>No post available</span></li>
     <% end %>

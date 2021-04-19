@@ -60,4 +60,4 @@ require 'rails_helper'
 #   scenario " User would not be able to see a post of a user who's not his friend " do
 #     expect(page).to_not have_content('A new post by Oscar.')
 #   end
-#end
+# end

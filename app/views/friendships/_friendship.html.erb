@@ -1,5 +1,5 @@
 <li>
-  <%= User.find(friendship.user_id).name %>
+  <small>From: </small><%= User.find(friendship.user_id).name %> || <small>To: </small><%= User.find(friendship.friend_id).name %>
   <span class="profile-link">
     <%= link_to 'Show',  friendship, class: 'profile-link' %>
   </span> 
