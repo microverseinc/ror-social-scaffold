@@ -1,6 +1,6 @@
 class FriendshipsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def index
     @sent_friendships = current_user.sent_friendships
     @received_friendships = current_user.received_friendships
@@ -46,7 +46,6 @@ class FriendshipsController < ApplicationController
   end
 
   def set_friendship
- 
     @friendship = Friendship.find(params[:id])
   end
 
