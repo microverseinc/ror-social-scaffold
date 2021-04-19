@@ -32,6 +32,12 @@ RSpec.describe 'User session actions', type: :feature do
     click_on 'Log in'
     expect(page).to have_content('Signed in successfully.')
   end
+end
+
+RSpec.describe 'User login actions', type: :feature do
+  before :each do
+    User.create(name: 'Oscar', email: 'a@mail.com', password: '123456')
+  end
 
   scenario 'User fails trying to log in' do
     visit user_session_path
