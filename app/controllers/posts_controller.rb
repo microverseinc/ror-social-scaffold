@@ -3,6 +3,7 @@ class PostsController < ApplicationController
 
   def index
     @post = Post.new
+
     timeline_posts
   end
 
@@ -20,9 +21,9 @@ class PostsController < ApplicationController
   private
 
   def timeline_posts
-    user_list = current_user.friends
-    # user_list << current_user
-    @timeline_posts ||= Post.all.where(user: user_list).ordered_by_most_recent.includes(:user) 
+    user_list = current_user.friends.pluck(:id) 
+    user_list << current_user.id
+    @timeline_posts ||= Post.all.where(user: user_list || user == current_user).ordered_by_most_recent.includes(:user) 
   end
 
   def post_params

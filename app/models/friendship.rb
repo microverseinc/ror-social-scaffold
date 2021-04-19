@@ -12,4 +12,7 @@ class Friendship < ApplicationRecord
 
     @friends = Friendship.they_are_friends(user_id: @user_id, friend_id: @friend_id).first
   end
+  after_update do |friendship|
+    # Code goes here
+  end
 end
