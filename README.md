@@ -110,4 +110,4 @@ Give a ⭐️ if you like this project!
 
 ## 📝 License
 
-This project is [MIT](https://github.com/alexisbec/ror-social-scaffold/blob/master/LICENSE)
+This project is [MIT](https://github.com/alexisbec/ror-social-scaffold/blob/master/LICENSE) licensed.
