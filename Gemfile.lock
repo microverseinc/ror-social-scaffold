@@ -190,7 +190,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    thor (1.1.0)
+    thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
     turbolinks (5.2.1)
@@ -227,7 +227,11 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
+<<<<<<< HEAD
   puma (~> 3.12)
+=======
+  puma (~> 3.11)
+>>>>>>> e22ac33cf073b937a8b5b1cf38622fa56e8a10a7
   rails (~> 5.2.4)
   rspec
   rubocop
