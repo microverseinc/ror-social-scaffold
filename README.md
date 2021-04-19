@@ -1,61 +1,79 @@
 # Scaffold for social media app with Ruby on Rails
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+> This is a basic Social Media App (think Facebook) where users can befriend other users where the main objective was to build advanced model associations.
+
+# About
+
+> This is a social media app where you can create posts, add other users as friends, and make comments or like another post. The main purpose of this project was to build advanced associations, scopes for faster queries, and model methods.
+
+What you can do on the app:
+- Sign up and Log in
+- Add other users as friends
+- Accept or rejects friend requests
+- See the status of your relationship with other users
+- Create posts and see posts from your friends
+- Users can comment and like on their friends' posts
+
+In this project we:
+- Used PostgreSQL as the database
+- Created advanced associations between users
+- Used scopes to make more efficient database queries
+- Created models, views, and controllers for users
+- Used devise gem for user authentication and authorization
+- We implemented integration tests with Capybara
+- Used Rspec to test model validations and associations
+
+# Application Screenshot
+![screenshot](./app_screenshot.png)
 
 ## Built With
 
-- Ruby v2.7.0
-- Ruby on Rails v5.2.4
+- Ruby v2.7.2
+- Ruby on Rails v6.0.3.6
+- Heroku
+- PostgreSQL
 
 ## Live Demo
 
-TBA
-
+You can visit [here](https://fast-wildwood-38105.herokuapp.com) our app.
 
 ## Getting Started
 
-To get a local copy up and running follow these simple example steps.
+To get a local copy up and running follow these simple example steps:
 
-### Prerequisites
+- Clone this repository.
+- Open the project folder where the repository was downloaded.
+- In your terminal, run the command `bundle install`. This will install all the required dependencies.
+- Thereafter, run the migrations. To do this, while in the project root folder, run the command: `rails db:migrate`.
+- Run the command `yarn install --check-files` to install all the yarn dependencies of the project.
 
-Ruby: 2.6.3
-Rails: 5.2.3
-Postgres: >=9.5
+## Prerequisites
 
-### Setup
+- Ruby v2.7.2
+- Ruby on Rails v6.0.3.6
+- Postgres: >=9.5
 
-Instal gems with:
+## Usage
+### Heroku
 
-```
-bundle install
-```
+- Open this [link](https://fast-wildwood-38105.herokuapp.com) in your browser
 
-Setup database with:
+### Local
 
-```
-   rails db:create
-   rails db:migrate
-```
-
-### Github Actions
-
-To make sure the linters' checks using Github Actions work properly, you should follow the next steps:
-
-1. On your recently forked repo, enable the GitHub Actions in the Actions tab.
-2. Create the `feature/branch` and push.
-3. Start working on your milestone as usual.
-4. Open a PR from the `feature/branch` when your work is done.
-
-
-### Usage
-
-Start server with:
+- Start the server with:
 
 ```
     rails server
 ```
+- Open `http://localhost:3000/` in your browser
 
-Open `http://localhost:3000/` in your browser.
+### Instructions
+
+1. Create a user in 'Sign Up'
+2. Post something
+3. Add a friend in 'All Users'
+4. Wait for a response
+5. If your friend request is accepted, now you can see each other's posts
 
 ### Run tests
 
@@ -63,31 +81,31 @@ Open `http://localhost:3000/` in your browser.
     rpsec --format documentation
 ```
 
-> Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
+In this project there are two different types of tests:
 
-### Deployment
-
-TBA
+- Integration Tests made with Capybara (You will need a Chrome browser for these tests to work.)
+- Unit Tests made with Rspec
 
 ## Authors
 
-TBA
+👤 **Alexisbec**
+- Github: [@alexisbec](https://github.com/alexisbec)
+- Linkedin: [Alexis Varela](www.linkedin.com/in/alexbec)
+- Twitter : [@AlexisV31667779](https://twitter.com/AlexisV31667779)
+
+👤 **Arturo Alvarez**
+- Github: [@StarSheriff2](https://github.com/StarSheriff2)
+- Twitter: [@ArturoAlvarezV](https://twitter.com/ArturoAlvarezV)
+- Linkedin: [Arturo Alvarez](https://www.linkedin.com/in/arturoalvarezv/)
 
 ## 🤝 Contributing
 
-Contributions, issues and feature requests are welcome!
-
-Feel free to check the [issues page](issues/).
+Contributions, issues, and feature requests are welcome!
 
 ## Show your support
 
 Give a ⭐️ if you like this project!
 
-## Acknowledgments
-
-TBA
-
 ## 📝 License
 
-TBA
-
+This project is [MIT](https://github.com
