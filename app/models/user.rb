@@ -17,7 +17,7 @@ class User < ApplicationRecord
   has_many :inviters, through: :inverse_friendships
 
   has_many :comfirmed_friendships, -> { where status: true }, class_name: 'Friendship', foreign_key: :inviter_id
-  has_many :friends, through: :comfirmed_friendships, source: :invitee, class_name: 'User'
+  has_many :friends, through: :comfirmed_friendships, source: :invitee
 
   def friends_and_own_posts
     Post.where(user_id: [*friends, self])
