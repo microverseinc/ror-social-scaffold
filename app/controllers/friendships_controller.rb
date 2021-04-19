@@ -32,7 +32,7 @@ class FriendshipsController < ApplicationController
   def accept_or_reject_friend_request
     friend_status = Friendship.where(friend_id: current_user.id, user_id: params[:friend])
     friend_status.update(status: params[:status])
-  
+
     if params[:status] == 'accept'
       # Friendship.create(user_id: params[:user], friend_id: params[:friend], status: params[:status])
       redirect_back(fallback_location: users_path, notice: 'Friend request Accepted')
@@ -68,7 +68,7 @@ class FriendshipsController < ApplicationController
         reverse_frienship(friendship_params)
         format.html { redirect_to @friendship, notice: 'Friendship was successfully updated.' }
         format.json { render :show, status: :ok, location: @friendship }
-      else 
+      else
         format.html { render :edit }
         format.json { render json: @friendship.errors, status: :unprocessable_entity }
       end
@@ -96,5 +96,4 @@ class FriendshipsController < ApplicationController
   def friendship_params
     params.require(:friendship).permit(:user_id, :friend_id, :status)
   end
-
 end
