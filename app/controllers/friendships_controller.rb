@@ -30,10 +30,10 @@ class FriendshipsController < ApplicationController
   end
 
   def accept_or_reject_friend_request
-    friend_status = Friendship.where(user_id: params[:friend], friend_id: params[:user])
+    friend_status = Friendship.where(friend_id: current_user.id, user_id: params[:friend])
     friend_status.update(status: params[:status])
     if params[:status] == 'accept'
-      Friendship.create(user_id: params[:user], friend_id: params[:friend], status: params[:status])
+      # Friendship.create(user_id: params[:user], friend_id: params[:friend], status: params[:status])
       redirect_back(fallback_location: users_path, notice: 'Friend request Accepted')
     else
       redirect_back(fallback_location: users_path, notice: 'Friend request Rejected')
