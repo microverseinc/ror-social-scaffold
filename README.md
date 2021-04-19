@@ -24,7 +24,9 @@ In this project we:
 - Used Rspec to test model validations and associations
 
 # Application Screenshot
-![screenshot](./app_screenshot.png)
+![screenshot of Timeline Page](./Assets/RorSocialScaffold-Timeline.png)
+![screenshot of Timeline Page](./Assets/RorSocialScaffold-All-Users.png)
+![screenshot of Timeline Page](./Assets/RorSocialScaffold-Friendship-Requests.png)
 
 ## Built With
 
@@ -108,4 +110,4 @@ Give a ⭐️ if you like this project!
 
 ## 📝 License
 
-This project is [MIT](https://github.com
+This project is [MIT](https://github.com/alexisbec/ror-social-scaffold/blob/master/LICENSE)
