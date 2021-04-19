@@ -2,5 +2,7 @@
   Name: <%= user.name %>
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+    <%= link_to '| Add Friend',  add_friend_user_path(user), class: 'profile-link' unless current_user == user %>
+      <%#= current_user.friendships.find_by(friend: user.id).status unless current_user == user %>
   </span>
 </li>
