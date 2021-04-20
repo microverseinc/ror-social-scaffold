@@ -11,8 +11,8 @@ module UserHelper
   end
 
   def current_user_friends
-    friend_list = current_user.friendships.map { |f| f.friend_id  if f.status == 'confirmed' }
-    friend_list += current_user.inverse_friendships.map { |f| f.user_id  if f.status == 'confirmed'}
+    friend_list = current_user.friendships.map { |f| f.friend_id if f.status == 'confirmed' }
+    friend_list += current_user.inverse_friendships.map { |f| f.user_id if f.status == 'confirmed' }
     friend_list += [current_user.id]
     friend_list
   end
