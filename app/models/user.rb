@@ -11,7 +11,6 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
-
   def friendship_status(user, friend)
     user.friendships.find_by(friend: friend.id).status
   end

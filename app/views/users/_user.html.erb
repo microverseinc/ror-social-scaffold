@@ -2,7 +2,7 @@
   Name: <%= user.name %>
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-    <% friendship_status = User.find(current_user.id).friendships.find_by(friend: user.id) %>
+    <% friendship_status = Friendship.where(user: current_user.id, friend: user.id).first %>
     <% if friendship_status %>
       <%= "| #{ friendship_status.status }" %>
     <% else %>
