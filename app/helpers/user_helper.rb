@@ -1,6 +1,6 @@
 module UserHelper
   def all_users
-    User.reject { |u| u.id == current_user.id }
+    User.select { |u| u.id != current_user.id }
   end
 
   def gravatar_for(user, size = '32')
