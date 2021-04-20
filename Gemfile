@@ -40,7 +40,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
 
 # Omniauth Gem setup. Set up tutorial: https://www.youtube.com/watch?v=Dd8dOAL6WYs
-gem 'omniauth'
+gem "omniauth", "~> 1.0.0.pr2"
 gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-twitter'
