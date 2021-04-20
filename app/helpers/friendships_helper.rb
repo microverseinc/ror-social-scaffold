@@ -11,10 +11,10 @@ module FriendshipsHelper
       link_to('| Add Friend',
               friendships_path(params: { friendship: { friend_id: user.id, user_id: current_user.id } }), method: :post, class: 'profile-link')
     elsif friendship.confirmed?
-      content_tag(:span, '| Friend of yours', class: 'profile-link friend')
+      content_tag(:span, ' | Friend of yours', class: 'profile-link friend')
     elsif friendship.user_id == user.id
-      link_to('| Accept', friendship_path(friendship.id), method: :put, class: 'profile-link') +
-        link_to('| Reject', friendship_path(friendship.id), method: :delete, class: 'profile-link')
+      link_to(' | Accept', friendship_path(friendship.id), method: :put, class: 'profile-link') +
+        link_to(' | Reject', friendship_path(friendship.id), method: :delete, class: 'profile-link')
     else
       content_tag(:span, 'Pending...', class: 'profile-link pending')
     end

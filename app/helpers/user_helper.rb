@@ -11,21 +11,15 @@ module UserHelper
   end
 
   def current_user_friends
-    friend_list = current_user.friendships.map { |f| f.friend_id if f.status == 1 }
-    friend_list += current_user.inverse_friendships.map { |f| f.friend_id if f.status == 1 }
+    friend_list = current_user.friendships.map { |f| f.friend_id  if f.status == 'confirmed' }
+    friend_list += current_user.inverse_friendships.map { |f| f.user_id  if f.status == 'confirmed'}
     friend_list += [current_user.id]
-    p friend_list
-  end
-
-  def requested_and_received
-    requested_list = current_user.friendships.map { |f| f.friend_id if f.status.zero? }
-    requested_list += current_user.inverse_friendships.map { |f| f.friend_id if f.status.zero? }
-    p User.where(id: requested_list)
+    friend_list
   end
 
   def friend_posts(user, _posts)
     if current_user_friends.include? user.id
-      content_tag(:h3, 'Recent Posts: ') + content_tag(:ul, (render :post), class: 'posts')
+      content_tag(:h3, 'Recent Posts: ') + content_tag(:ul, (render @posts), class: 'posts')
     else
       content_tag(:p, "You can only see your friends posts. Click on 'Add friend' button above to invite")
     end
