@@ -19,7 +19,10 @@
         </div>
       </div>
       <% if current_user %>
-        <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+        <span>
+          Welcome, <%= current_user.name %>
+          <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+        </span>
       <% else %>
         <%= link_to 'Sign in', user_session_path %>
       <% end %>

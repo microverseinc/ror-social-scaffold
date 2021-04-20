@@ -1,5 +1,4 @@
 module FriendshipsHelper
-
   def check_friendship(friend_id)
     Friendship.where(user: current_user.id, friend: friend_id).first
   end
@@ -7,12 +6,16 @@ module FriendshipsHelper
   def friendship_link(user)
     friendship = check_friendship(user)
     if friendship.nil?
-      link_to('| Add Friend',  friendships_path(params: { friendship:{ friend_id: user.id, user_id: current_user.id } }), method: :post, class: 'profile-link')
+      link_to('| Add Friend',
+              friendships_path(params: { friendship: { friend_id: user.id, user_id: current_user.id } }), method: :post, class: 'profile-link')
+    elsif friendship.status
+    elsif friendship.user_id == user.id
+      link_to('| Accept', friendships_path(friendship.id), method: :put, class: 'profile-link') +
+        link_to('| Reject', friendships_path(friendship.id), method: :delete, class: 'profile-link')
     else
-      content_tag(:p, friendship.status)
+      content_tag(:p, 'Pending response')
     end
   end
-
 end
 
 # <%# friendship_status = Friendship.where(user: current_user.id, friend: user.id).first %>
@@ -22,5 +25,3 @@ end
 #       <%#= link_to '| Add Friend',  add_friend_user_path(user), class: 'profile-link' unless current_user == user %>
 #     <% end %>
 #       <%= current_user.friendships.find_by(friend: user.id).status unless current_user == user %>
-
-
