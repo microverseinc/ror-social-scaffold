@@ -11,4 +11,10 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :received_invitations, class_name: 'FriendshipInvitation', foreign_key: 'invitee_id'
   has_many :sent_invitations, class_name: 'FriendshipInvitation', foreign_key: 'inviter_id'
+
+  def friends
+    friends = received_invitations.map { |invitation| invitation.inviter if invitation.confirmed == true }
+    friends << sent_invitations.map { |invitation| invitation.invitee if invitation.confirmed == true }
+    friends.compact
+  end
 end
