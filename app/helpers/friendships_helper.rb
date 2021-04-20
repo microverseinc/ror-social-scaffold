@@ -7,6 +7,8 @@ module FriendshipsHelper
 
   def friendship_link(user)
     friendship = check_friendship(user)
+    return '' if current_user == user
+
     if friendship.nil?
       link_to('| Add Friend',
               friendships_path(params: { friendship: { friend_id: user.id, user_id: current_user.id } }), method: :post, class: 'profile-link')
