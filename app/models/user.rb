@@ -25,4 +25,14 @@ class User < ApplicationRecord
   def friendship_requests
     received_invitations.map { |invitation| invitation.inviter if invitation.confirmed == false }.compact
   end
+
+  def confirm_friend(user)
+    friend_invitation = received_invitations.find { |invitation| invitation.inviter == user }
+    friend_invitation.confirmed = true
+    friend_invitation.save
+  end
+
+  def friend?(user)
+    friends.include? user
+  end
 end
