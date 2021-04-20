@@ -1,15 +1,14 @@
 require 'rails_helper'
 
-
 RSpec.describe User, type: :model do
-	subject(:user) { User.new(name: 'Mickey', email: 'mickey@mail.com', password: 'tester') }
+  subject(:user) { User.new(name: 'Mickey', email: 'mickey@mail.com', password: 'tester') }
 
-	describe 'Valid' do
-		it { should validate_length_of(:name).is_at_most(20) }
+  describe 'Valid' do
+    it { should validate_length_of(:name).is_at_most(20) }
 
     it { should_not allow_value('').for(:name) }
-	end
-	
+  end
+
   describe 'User' do
     it { should have_many(:posts) }
 
