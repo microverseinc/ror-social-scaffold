@@ -1,6 +1,8 @@
+# rubocop:disable Layout/LineLength
 module FriendshipsHelper
   def check_friendship(friend_id)
-    Friendship.where('(user_id=? and friend_id=?) or (user_id=? and friend_id=?)', current_user.id, friend_id, friend_id, current_user.id).first
+    Friendship.where('(user_id=? and friend_id=?) or (user_id=? and friend_id=?)', current_user.id, friend_id,
+                     friend_id, current_user.id).first
   end
 
   def friendship_link(user)
@@ -12,18 +14,10 @@ module FriendshipsHelper
       content_tag(:span, '| Friend of yours', class: 'profile-link friend')
     elsif friendship.user_id == user.id
       link_to('| Accept', friendship_path(friendship.id), method: :put, class: 'profile-link') +
-      link_to('| Reject', friendship_path(friendship.id), method: :delete, class: 'profile-link')
+        link_to('| Reject', friendship_path(friendship.id), method: :delete, class: 'profile-link')
     else
       content_tag(:span, 'Pending...', class: 'profile-link pending')
     end
-
   end
 end
-
-# <%# friendship_status = Friendship.where(user: current_user.id, friend: user.id).first %>
-#     <%# if friendship_status %>
-#       <%#= "| #{ friendship_status.status }" %>
-#     <%# else %>
-#       <%#= link_to '| Add Friend',  add_friend_user_path(user), class: 'profile-link' unless current_user == user %>
-#     <% end %>
-#       <%= current_user.friendships.find_by(friend: user.id).status unless current_user == user %>
+# rubocop:enable Layout/LineLength
