@@ -10,11 +10,12 @@ module FriendshipsHelper
               friendships_path(params: { friendship: { friend_id: user.id, user_id: current_user.id } }), method: :post, class: 'profile-link')
     elsif friendship.status
     elsif friendship.user_id == user.id
-      link_to('| Accept', friendships_path(friendship.id), method: :put, class: 'profile-link') +
-        link_to('| Reject', friendships_path(friendship.id), method: :delete, class: 'profile-link')
+      link_to('| Accept', friendship_path(friendship.id), method: :put, class: 'profile-link') +
+      link_to('| Reject', friendship_path(friendship.id), method: :delete, class: 'profile-link')
     else
       content_tag(:p, 'Pending response')
     end
+
   end
 end
 

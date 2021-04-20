@@ -1,5 +1,8 @@
 <section class="users-section">
   <ul class="users-list">
-    <%= render @users %>
+    <% all_users.each do |user| %>
+      <li><%= user.name %></li>
+      <%= render 'friendship_link', user: user %>
+    <% end %>
   </ul>
 </section>
