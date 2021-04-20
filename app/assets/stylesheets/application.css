@@ -23,14 +23,14 @@
 
 .user-show-header {
   display: flex;
-  justify-content: start;
   align-items: center;
   margin: 2em 0;
   padding: 0;
+  justify-content: space-between;
 }
 
-.user-show-header h2 {
-  margin-right: 3em;
+.user-show-header div {
+  margin-right: 4em;
 }
 
 .friend-status {

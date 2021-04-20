@@ -191,7 +191,7 @@ form {
   input[type="submit"] {
     padding: 8px;
     margin-right: 1em;
-    width: 25em;
+    width: 100%;
     border: none;
     border-radius: 4px;
     background-color: $primary-color-dark;
@@ -396,8 +396,11 @@ form {
 
   .new_post,
   .timeline,
-  .users-section,
   .user-section {
     width: 50%;
+  }
+
+  .users-section {
+    width: auto;
   }
 }
