@@ -1,6 +1,6 @@
 module FriendshipsHelper
   def check_friendship(friend_id)
-    Friendship.where(user: current_user.id, friend: friend_id).first
+    Friendship.where('(user_id=? and friend_id=?) or (user_id=? and friend_id=?)', current_user.id, friend_id, friend_id, current_user.id).first
   end
 
   def friendship_link(user)
@@ -8,7 +8,7 @@ module FriendshipsHelper
     if friendship.nil?
       link_to('| Add Friend',
               friendships_path(params: { friendship: { friend_id: user.id, user_id: current_user.id } }), method: :post, class: 'profile-link')
-    elsif friendship.status
+    elsif friendship.confirmed?
     elsif friendship.user_id == user.id
       link_to('| Accept', friendship_path(friendship.id), method: :put, class: 'profile-link') +
       link_to('| Reject', friendship_path(friendship.id), method: :delete, class: 'profile-link')
