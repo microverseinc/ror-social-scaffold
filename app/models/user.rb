@@ -14,7 +14,7 @@ class User < ApplicationRecord
 
   def friends
     friends = received_invitations.map { |invitation| invitation.inviter if invitation.confirmed == true }
-    friends << sent_invitations.map { |invitation| invitation.invitee if invitation.confirmed == true }
+    friends += sent_invitations.map { |invitation| invitation.invitee if invitation.confirmed == true }
     friends.compact
   end
 
