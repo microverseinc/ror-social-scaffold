@@ -14,6 +14,8 @@
   <% end %>
 </section>
 
-<footer>
-  <%= link_to 'Edit or Delete your Account Here', edit_user_registration_path, class: 'profile-link-edit' %>
-</footer>
+<% if @user == current_user %>
+  <footer>
+    <%= link_to 'Edit or Delete your Account Here', edit_user_registration_path, class: 'profile-link-edit' %>
+  </footer>
+<% end %>
