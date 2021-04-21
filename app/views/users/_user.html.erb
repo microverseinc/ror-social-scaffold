@@ -4,7 +4,7 @@
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
   </span>
   <span>
-<%= form_with(model: Friendship, class: "forms") do |form| %>
+<%= form_with(model: @friendship) do |form| %>
   <div class="field">
     <%= form.hidden_field :friend_id, value: user.id %>
     <%= form.hidden_field :status, value: false %>
