@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'friendship_invitations/create', as: 'send_invitation'
+  post 'friendship_invitations/create', as: 'send_invitation'
   get 'friendship_invitations/destroy'
   root 'posts#index'
 
