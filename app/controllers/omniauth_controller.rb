@@ -11,7 +11,7 @@ class OmniauthController < ApplicationController
   end
 
   def google_oauth2
-    @user = User.create_from_google_data(request.env['omniauth.auth'])
+    @user = User.create_from_provider_data(request.env['omniauth.auth'])
     if @user.persisted?
       sign_in_and_redirect root
       set_flash_message(:notice, :success, kind: 'Google') if is_navigational_format?

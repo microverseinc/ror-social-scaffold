@@ -33,6 +33,11 @@
         <p> <%= notice %> </p>
       </div>
     <% end %>
+    <% if flash.present? %>
+      <div class="notice">
+        <p> <%= flash[:error] %> </p>
+      </div>
+    <% end %>
     <% if alert.present? %>
       <div class="alert">
         <p> <%= alert %> </p>
