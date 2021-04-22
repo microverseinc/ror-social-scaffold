@@ -275,11 +275,11 @@ form {
   }
 }
 
-.users-section {
+.users-section, .invitations-section {
   width: 100%;
   margin: 10px;
 
-  .users-list li {
+  .users-list li,  .invitations-list li {
     margin-bottom: 16px;
     text-transform: capitalize;
     font-size: 1.2em;
@@ -330,6 +330,7 @@ form {
   .new_post,
   .timeline,
   .users-section,
+  .invitations-section,
   .user-section {
     width: 70%;
   }
@@ -343,6 +344,7 @@ form {
   .new_post,
   .timeline,
   .users-section,
+  .invitations-section,
   .user-section {
     width: 50%;
   }
