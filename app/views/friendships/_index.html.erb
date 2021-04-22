@@ -1,0 +1,9 @@
+<% @friendships.each do |friendship| %>
+    <tr>
+
+      <% @friendships = Friendship.where(user_id: current_user, status: :accept) %>
+    
+      <td><%= User.find(friendship.friend_id).name %></td>
+      
+    </tr>
+  <% end %>
