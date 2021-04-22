@@ -376,3 +376,18 @@ form {
   font-size: .8rem;
   text-transform: uppercase;
 }
+
+.un-friend {
+  padding: 8px;
+  width: fit-content;
+  border: none;
+  border-radius: 4px;
+  background-color: rgb(255, 103, 103);
+  color: white;
+  font-size: .8rem;
+  text-transform: uppercase;
+}
+
+.un-friend:hover {
+  background-color: rgb(116, 41, 41);
+}

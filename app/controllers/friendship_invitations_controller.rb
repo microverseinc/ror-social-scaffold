@@ -25,7 +25,9 @@ class FriendshipInvitationsController < ApplicationController
   end
 
   def destroy
-    if @invitation.destroy
+    user = User.find(params[:id])
+    invitation = current_user.friend_invitation user
+    if invitation.destroy
       redirect_to users_path, notice: 'Friendship canceled'
     else
       flash.now.alert = 'Error'

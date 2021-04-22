@@ -35,4 +35,11 @@ class User < ApplicationRecord
   def friend?(user)
     friends.include? user
   end
+
+  def friend_invitation(user)
+    received_invitation = received_invitations.find { |invitation| invitation if invitation.inviter == user }
+    return received_invitation unless received_invitation.nil?
+
+    sent_invitations.find { |invitation| invitation if invitation.invitee == user }
+  end
 end
