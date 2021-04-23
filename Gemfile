@@ -54,6 +54,12 @@ group :development, :test do
 end
 
 group :test do
+  # Guard allows auto restart
+  gem 'guard-minitest', '~> 2.4', '>= 2.4.6'
+  gem 'minitest', '~> 5.14', '>= 5.14.4'
+  gem 'minitest-reporters', '~> 1.4', '>= 1.4.3'
+  gem 'simplecov', require: false
+  gem 'simplecov-rcov'
 end
 
 group :development do
