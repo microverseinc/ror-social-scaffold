@@ -7,6 +7,14 @@ module ApplicationHelper
     end
   end
 
+  def notifications
+    if notice.present?
+      content_tag :div, content_tag(:div, notice), class: 'notice'
+    elsif alert.present?
+      content_tag :div, content_tag(:div, alert), class: 'alert'
+    end
+  end
+
   def menu_link_to(link_text, link_path)
     class_name = current_page?(link_path) ? 'menu-item active' : 'menu-item'
 
