@@ -35,6 +35,10 @@ class User < ApplicationRecord
     friendship.save
   end
 
+  def friendship(user)
+    friendship = inverse_friendships.find{|friendship| friendship.user == user}
+  end
+
   def friend?(user)
     friends.include?(user)
   end

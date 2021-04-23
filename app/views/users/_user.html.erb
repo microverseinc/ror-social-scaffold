@@ -11,7 +11,17 @@
   </div>
 
   <div class="actions">
-    <%= form.submit "Invite to friendship" %>
+    <% if current_user.id != user.id && !current_user.pending_friends.include?(user) && current_user.friend?(user) && !current_user.friend_requests.include?(user)%>
+      <%= form.submit "Invite to friendship" %>
+    <% elsif current_user.pending_friends.include?(user) %>
+       <p>Invitation pending</p>
+    <% elsif current_user.friend?(user) %>
+        <p>Friend of this user</p>
+    <% elsif current_user.friend_requests.include?(user) %>
+        <%= friendship = current_user.friendship(user) %>
+        <%= friendship.id %>
+        <span><%= link_to 'Accept Friend', friendship_path(friendship.id), method: 'patch' %></span> | <span><%= link_to 'Reject Invitation' %></span>   
+    <% end %>
   </div>
 <% end %>
 </span>

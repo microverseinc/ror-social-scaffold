@@ -13,4 +13,6 @@ class UsersController < ApplicationController
     @friend_requests = @user.friend_requests
     @friendship = Friendship.new
   end
+
+  
 end
