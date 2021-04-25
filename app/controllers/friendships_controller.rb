@@ -43,7 +43,6 @@ class FriendshipsController < ApplicationController
 
   # POST /friendships or /friendships.json
   def create
-    
     @sender = current_user
     @reciever = User.find(params[:friend])
 
