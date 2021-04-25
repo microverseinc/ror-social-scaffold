@@ -24,8 +24,8 @@ default: &default
 development:
   <<: *default
   database: ror_social_scaffold_development
-  username: franklin
-  password: FranklinBenjamin23
+  username: sammy
+  password: password1234
   host: localhost
   pool: 5
 
@@ -62,8 +62,8 @@ development:
 test:
   <<: *default
   database: ror_social_scaffold_development
-  username: franklin
-  password: FranklinBenjamin23
+  username: sammy
+  password: password1234
   host: localhost
   pool: 5
 
