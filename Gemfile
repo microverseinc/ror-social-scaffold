@@ -46,8 +46,8 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'rspec-rails', '~> 5.0', '>= 5.0.1'
 
-   # Capybara, the library that allows us to interact with the browser using Ruby
-   gem 'capybara'
+  # Capybara, the library that allows us to interact with the browser using Ruby
+  gem 'capybara'
 
   # The following gems aids with the nuts and bolts
   # of interacting with the browser.
