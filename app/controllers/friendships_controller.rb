@@ -1,36 +1,45 @@
 class FriendshipsController < ApplicationController
+  before_action :find_user, only: %i[create friends pending_friends accept_friend]
+  
   def create
-    @friendship = current_user.friendships.build(friendships_params)
-
-    if @friendship.save
-      redirect_to users_path, notice: 'you sent a friend invitation!'
+    friendship = current_user.friendships.create
+    friendship.friend_id = @user.id
+    if friendship.save
+      flash[:success] = "Friendship sent successfully to #{@user.first_name} "
     else
-      timeline_posts
-      render :index, alert: 'could not send the friend request'
+      flash[:danger] = 'Something went wrong '
     end
+
+    redirect_to users_path
   end
 
-  def update
-    @friendship = Friendship.find(params[:id])
-
-    if @friendship.update(confirmed: true)
-      redirect_to user_path(current_user), notice: 'you accepted the invitation'
-    else
-      timeline_posts
-      render :index, alert: 'could not process your request'
-    end
+  def friends
+    @friends = @user.friends
   end
 
-  def destroy
-    @friendship = Friendship.find(params[:id])
+  def pending_friends
+    @friends = @user.pending_friends
 
-    @friendship.destroy
-    redirect_to user_path(current_user), notice: 'destroyed that friendship'
+    render 'friends'
+  end
+
+  def friend_requests
+    @friends = current_user.friend_requests
+  end
+
+  def accept_friend
+    if current_user.comfirm_friend(@user)
+      flash[:success] = "Friendship confirmed successfully from #{@user.first_name} "
+    else
+      flash[:danger] = 'Something went wrong '
+    end
+
+    redirect_to friend_request_path
   end
 
   private
 
-  def friendships_params
-    params.require(:friendship).permit(:friend_id, :confirmed)
+  def find_user
+    @user = User.friendly.find(params[:id])
   end
 end
