@@ -12,36 +12,36 @@ class User < ApplicationRecord
   has_many :friendships
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
 
-  # to find all users
   def friends
-    friends_array = friendships.map { |friendship| friendship.friend if friendship.confirmed }
-    friends_array += inverse_friendships.map { |friendship| friendship.user if friendship.confirmed }
+    friends_array = []
+    friendships.each { |friendship| friends_array << friendship.friend if friendship.comfirmed }
+    inverse_friendships.each { |friendship| friends_array << friendship.user if friendship.comfirmed }
     friends_array.compact
   end
 
-  # Users who have yet to confirme friend requests
-  def pending_friends
-    friendships.map { |friendship| friendship.friend unless friendship.confirmed }.compact
-  end
-
-  # Users who have requested to be friends
-  def friend_requests
-    inverse_friendships.map { |friendship| friendship unless friendship.confirmed }.compact
-  end
-
-  def friend_requestsu
-    inverse_friendships.map { |friendship| friendship.user unless friendship.confirmed }.compact
-  end
-
-  # Method to confirm friend requests
-  def confirm_friend(user)
+  def comfirm_friend(user)
     friendship = inverse_friendships.find { |friend| friend.user == user }
-    friendship.confirmed = true
+    friendship.comfirmed = true
     friendship.save
   end
 
-  # method to check if a given User is our friend
-  def friends_with?(user)
+  def friend?(user)
     friends.include?(user)
+  end
+
+  def pending_friends
+    friendships.map { |friendship| friendship.friend unless friendship.comfirmed }.compact
+  end
+
+  def friend_requests
+    inverse_friendships.map { |friendship| friendship.user unless friendship.comfirmed }.compact
+  end
+
+  def pending_friend?(user)
+    pending_friends.include?(user)
+  end
+
+  def potential_friends(current_user)
+    User.all.map { |user| user unless friend?(user) || current_user == user }.compact
   end
 end
