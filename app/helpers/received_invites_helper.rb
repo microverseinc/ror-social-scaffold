@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module ReceivedInvitesHelper
   def received_invites(received_invites)
     out = ''

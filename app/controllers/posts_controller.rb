@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class PostsController < ApplicationController
   before_action :authenticate_user!
 
@@ -29,9 +27,7 @@ class PostsController < ApplicationController
   def timeline_posts
     @timeline_posts = current_user.posts.ordered_by_most_recent.includes(:user)
     @timeline_posts += current_user.mutual_friends.map do |friend|
-      if current_user.confirmed_friend?(friend)
-        friend.posts.ordered_by_most_recent.includes(:user)
-      end
+      friend.posts.ordered_by_most_recent.includes(:user) if current_user.confirmed_friend?(friend)
     end
     @timeline_posts.flatten!
     @timeline_posts

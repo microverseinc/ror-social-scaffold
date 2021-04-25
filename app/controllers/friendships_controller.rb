@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class FriendshipsController < ApplicationController
   def create
     @friendship = Friendship.new(friendship_params)

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module SentInvitesHelper
   def sent_invites(sent_invites)
     out = ''
