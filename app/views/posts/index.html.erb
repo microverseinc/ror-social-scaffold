@@ -1,15 +1,4 @@
-<%= form_for(@post) do |form| %>
-  <%= form.label :content %>
-  <%= form.text_field :content, id: :post_content, class: 'form-control', placeholder: 'Add New Post' %>
-  <%= display_errors(@post) %>
-  <%= form.submit 'Save', class: 'btn btn-primary' %>
-<% end %>
-
-<article class="timeline">
-  <h3>
-    Recent posts from your friends!
-  </h3>
-  <ul class="posts">
-    <%= render @timeline_posts %>
-  </ul>
-</article>
+<div class="mt-5">
+  <%= render "layouts/flash_message" %>
+</div>
+<%= render "layouts/posts" %>
