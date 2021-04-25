@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class FriendshipsController < ApplicationController
   def create
     @friendship = Friendship.new(friendship_params)
@@ -46,5 +48,4 @@ class FriendshipsController < ApplicationController
   def friendship_params
     params.require(:friendship).permit(:user_id, :friend_id, :confirmed)
   end
-  
 end
