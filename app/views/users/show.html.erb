@@ -1,42 +1,12 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
+
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
       <%= render @posts %>
     </ul>
   </article>
-  <% if @user.id != current_user.id && !current_user.pending_friends.include?(@user) && !current_user.friends_with?(@user) && !current_user.friend_requestsu.include?(@user) %>
-    <%= render 'friend_req', friendship: @friendship, user: @user %>
-  <% elsif current_user.pending_friends.include?(@user) %>
-    <p class="already">invitation pending!</p>
-  <% elsif current_user.friends_with?(@user) %>
-    <p class="already">you are already friends!</p>
-    <% elsif current_user.friend_requests.include?(@user) %>
-  <p class="already">You have a friend request from this user!</p>
-<% end %>
 </section>
 
-<section class="add-to-friends">
-</section>
-
-<section class="friends-section">
-  <h3> Friends of <%= @user.name %> </h3>
-  <ul class="friends">
-    <% @user_friends.each do |friend| %>
-      <li class="list-item"> <%= friend.name %> </li>
-    <% end %>
-  </ul>
-</section>
-
-<% if current_user == @user %>
-  <section class="friends-request-section">
-    <h3> Friend requests </h3>
-    <ul class="friends">
-      <% @friend_requests.each do |friendship| %>
-        <li class="list-item"> <%= friendship.user.name %> <%= link_to 'accept invitation', update_friendship_path(friendship.id), method: :patch %> <%= link_to 'reject invitation', friendship_path(friendship.id), method: :delete %> </li>
-      <% end %>
-    </ul>
-  </section>
-<% end %>
-
+<%= added_friend(@user, @friendship) %>

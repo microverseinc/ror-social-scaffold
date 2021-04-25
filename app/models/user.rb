@@ -10,38 +10,28 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :friendships
-  has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
+  has_many :inverse_friendships, class_name: 'Friendship', foreign_key: :friend_id
 
-  def friends
-    friends_array = []
-    friendships.each { |friendship| friends_array << friendship.friend if friendship.comfirmed }
-    inverse_friendships.each { |friendship| friends_array << friendship.user if friendship.comfirmed }
+  def sent_invitation
+    friends_array = friendships.map(&:friend)
     friends_array.compact
   end
 
-  def comfirm_friend(user)
-    friendship = inverse_friendships.find { |friend| friend.user == user }
-    friendship.comfirmed = true
-    friendship.save
+  def received_invitation
+    friends_array = inverse_friendships.map(&:user)
+    friends_array.compact
   end
 
-  def friend?(user)
-    friends.include?(user)
+  def confirmed_friend?(user)
+    sent_invitation.include?(user) && received_invitation.include?(user)
   end
 
-  def pending_friends
-    friendships.map { |friendship| friendship.friend unless friendship.comfirmed }.compact
+  def sent_to_friend?(user)
+    sent_invitation.include?(user)
   end
 
-  def friend_requests
-    inverse_friendships.map { |friendship| friendship.user unless friendship.comfirmed }.compact
-  end
-
-  def pending_friend?(user)
-    pending_friends.include?(user)
-  end
-
-  def potential_friends(current_user)
-    User.all.map { |user| user unless friend?(user) || current_user == user }.compact
+  def mutual_friends
+    friends_array = sent_invitation.map { |friend| friend if friend.confirmed_friend?(self) }
+    friends_array.compact
   end
 end

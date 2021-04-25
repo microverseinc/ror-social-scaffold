@@ -1,45 +1,49 @@
 class FriendshipsController < ApplicationController
-  before_action :find_user, only: %i[create friends pending_friends accept_friend]
-  
   def create
-    friendship = current_user.friendships.create
-    friendship.friend_id = @user.id
-    if friendship.save
-      flash[:success] = "Friendship sent successfully to #{@user.first_name} "
-    else
-      flash[:danger] = 'Something went wrong '
+    @friendship = Friendship.new(friendship_params)
+
+    respond_to do |format|
+      if @friendship.save
+        format.html do
+          redirect_to root_path, notice: 'Friend request sent!'
+        end
+        format.json { render :show, status: :created, location: @friendship }
+      else
+        format.html { render :show, status: :unprocessable_entity }
+        format.json { render json: @friendship.errors, status: :unprocessable_entity }
+      end
     end
-
-    redirect_to users_path
   end
 
-  def friends
-    @friends = @user.friends
-  end
+  def update
+    @friendship = Friendship.find(params[:id])
 
-  def pending_friends
-    @friends = @user.pending_friends
-
-    render 'friends'
-  end
-
-  def friend_requests
-    @friends = current_user.friend_requests
-  end
-
-  def accept_friend
-    if current_user.comfirm_friend(@user)
-      flash[:success] = "Friendship confirmed successfully from #{@user.first_name} "
-    else
-      flash[:danger] = 'Something went wrong '
+    respond_to do |format|
+      if @friendship.update(confirmed: true)
+        format.html do
+          redirect_to root_path, notice: 'You are now friends!'
+        end
+        format.json { render :show, status: :created, location: @friendship }
+      else
+        format.html { render :show, status: :unprocessable_entity }
+        format.json { render json: @friendship.errors, status: :unprocessable_entity }
+      end
     end
+  end
 
-    redirect_to friend_request_path
+  def destroy
+    @friendship = Friendship.find(params[:id])
+
+    @friendship.destroy
+    respond_to do |format|
+      format.html { redirect_to root_path, notice: 'Friendship was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
 
   private
 
-  def find_user
-    @user = User.friendly.find(params[:id])
+  def friendship_params
+    params.require(:friendship).permit(:user_id, :friend_id, :confirmed)
   end
 end
