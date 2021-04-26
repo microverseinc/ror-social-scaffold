@@ -4,25 +4,23 @@
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
   </span>
   <span>
-<%= form_with(model: @friendship) do |form| %>
-  <div class="field">
-    <%= form.hidden_field :friend_id, value: user.id %>
-    <%= form.hidden_field :status, value: false %>
-  </div>
-
   <div class="actions">
-    <% if current_user.id != user.id && !current_user.pending_friends.include?(user) && current_user.friend?(user) && !current_user.friend_requests.include?(user)%>
-      <%= form.submit "Invite to friendship" %>
+    <% if current_user.friend?(user) %>
+      <p>Friend of this user</p>
     <% elsif current_user.pending_friends.include?(user) %>
-       <p>Invitation pending</p>
-    <% elsif current_user.friend?(user) %>
-        <p>Friend of this user</p>
+      <p>Invitation pending</p>
+    <% elsif current_user.id != user.id && !current_user.pending_friends.include?(user) && !current_user.friend?(user) && !current_user.friend_requests.include?(user) %>
+      <%= form_with(model: @friendship) do |form| %>
+        <div class="field">
+          <%= form.hidden_field :friend_id, value: user.id %>
+          <%= form.hidden_field :status, value: false %>
+        </div>
+        <%= form.submit "Invite to friendship" %>
+      <% end %>
     <% elsif current_user.friend_requests.include?(user) %>
-        <%= friendship = current_user.friendship(user) %>
-        <%= friendship.id %>
-        <span><%= link_to 'Accept Friend', friendship_path(friendship.id), method: 'patch' %></span> | <span><%= link_to 'Reject Invitation' %></span>   
+        <span><%= link_to 'Accept Friend', friendship_path(current_user.friendship(user).id), method: 'patch' %></span>| <span><%= link_to 'Reject Invitation',  friendship_path(current_user.friendship(user).id), method: 'destroy' %></span>
     <% end %>
   </div>
-<% end %>
+
 </span>
 </li>
