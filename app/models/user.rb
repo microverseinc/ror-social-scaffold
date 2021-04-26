@@ -31,9 +31,7 @@ class User < ApplicationRecord
   end
 
   def mutual_friends
-    friends_array = sent_invitation.map do |friend|
-      friend if friend.confirmed_friend?(self)
-    end
+    friends_array = sent_invitation.map { |friend| friend if friend.confirmed_friend?(self) }
     friends_array.compact
   end
 end
