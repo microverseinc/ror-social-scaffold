@@ -1,0 +1,5 @@
+example_id                           | status | run_time        |
+------------------------------------ | ------ | --------------- |
+./spec/models/comment_spec.rb[1:2:1] | passed | 0.14433 seconds |
+./spec/models/comment_spec.rb[1:3:1] | passed | 0.00886 seconds |
+./spec/models/comment_spec.rb[1:3:2] | passed | 0.01044 seconds |
