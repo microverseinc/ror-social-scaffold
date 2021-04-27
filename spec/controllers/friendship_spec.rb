@@ -3,10 +3,10 @@ require 'rails_helper'
 feature 'Add new friends', type: :feature do
   feature 'Login an existing user' do
     let(:user1) do
-      User.create(name: 'Tayo', email: 'tayo@mail.com', password: 'password', password_confirmation: 'password')
+      User.create(name: 'Foo', email: 'foo@mail.com', password: 'password', password_confirmation: 'password')
     end
     let(:user2) do
-      User.create(name: 'Hassan', email: 'friend@mail.com', password: 'password', password_confirmation: 'password')
+      User.create(name: 'Bar', email: 'bar@mail.com', password: 'password', password_confirmation: 'password')
     end
 
     before(:each) do
@@ -14,7 +14,7 @@ feature 'Add new friends', type: :feature do
       user2
       visit '/users/sign_in'
       within('#new_user') do
-        fill_in 'Email', with: 'tayo@mail.com'
+        fill_in 'Email', with: 'foo@mail.com'
         fill_in 'Password', with: 'password'
       end
       click_button 'Log in'
