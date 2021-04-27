@@ -22,7 +22,7 @@
     <div class='post-liking'>
       <span class='post-date'> <%= post.created_at.strftime("%Y/%m/%d") %> </span>
       <%= like_or_dislike_btn(post) %>
-      <%= post.likes.length %>
+      likes <%= post.likes.length %>
       <span>comments <%= post.comments.length %></span>
     </div>
     
