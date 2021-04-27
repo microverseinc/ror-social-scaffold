@@ -10,7 +10,7 @@ group :development, :test do
 end
 # Use postgresql as the database for Active Record
 group :production do
-gem 'pg', '>= 0.18', '< 2.0'
+  gem 'pg', '>= 0.18', '< 2.0'
 end
 # Use Puma as the app server
 gem 'puma', '~> 3.12'
