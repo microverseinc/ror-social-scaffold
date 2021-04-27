@@ -23,11 +23,34 @@
 </li>
 
 <% user_post = [] %>
-<% current_user.posts.each do |post| %>
-  <% user_post << post.content %>
-<% end %> 
-<%= current_user.friends.each do |user| %>
-  <%= user.posts.each do |post| %>
-    <%= post.content %>
+
+  <% current_user.posts.each do |post| %>
+    <% user_post << post %>
   <% end%>
-<% end %>
+
+  <% current_user.friends.each do |user| %>
+    <% user.posts.each do |post| %>
+      <% user_post << post %>
+    <% end%>
+  <% end %>
+
+  <% user_post.each do |post| %>
+    <li class="post"> 
+    <%= post.content %> 
+    <li>
+  <% end %>
+
+  
+ 
+
+
+
+
+
+
+
+
+
+
+
+
