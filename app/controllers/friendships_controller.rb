@@ -1,17 +1,17 @@
 class FriendshipsController < ApplicationController
   def create
     return if current_user.id == params[:user_id]
-  return if friend_request_sent?(User.find(params[:user_id]))
-  return if friend_request_received?(User.find(params[:user_id]))
+    return if friend_request_sent?(User.find(params[:user_id]))
+    return if friend_request_received?(User.find(params[:user_id]))
 
-  @friendship = current_user.friend_sent.build(friend_id: params[:user_id])
+    @friendship = current_user.friend_sent.build(friend_id: params[:user_id])
 
-  if @friendship.save
-    flash[:success] = 'Friend Request Sent!'
-  else
-    flash[:danger] = 'Friend Request Failed!'
-  end
-  redirect_back(fallback_location: root_path)
+    if @friendship.save
+      flash[:success] = 'Friend Request Sent!'
+    else
+      flash[:danger] = 'Friend Request Failed!'
+    end
+    redirect_back(fallback_location: root_path)
   end
 
   def accept_friend
