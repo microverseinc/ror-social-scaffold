@@ -26,17 +26,17 @@ RSpec.describe 'User Authentication', type: :system do
     context 'with Google sigin in correct credentials' do
       before do
         OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new({
-          :provider => 'google_oauth2',
-          :uid => '123545',
-          :info => {
-            :name => "Frodo Baggins",
-            :email => "frodo@baggins.com"
-          },
-          :credentials => {
-            :token => 'mock_token',
-            :refresh_token => 'mock_secret'
-          }
-        })
+                                                                             provider: 'google_oauth2',
+                                                                             uid: '123545',
+                                                                             info: {
+                                                                               name: 'Frodo Baggins',
+                                                                               email: 'frodo@baggins.com'
+                                                                             },
+                                                                             credentials: {
+                                                                               token: 'mock_token',
+                                                                               refresh_token: 'mock_secret'
+                                                                             }
+                                                                           })
       end
 
       it 'allows user to create new account and sign out' do
