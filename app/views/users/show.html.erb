@@ -15,7 +15,7 @@
         <%= form.submit "Invite to friendship" %>
       <% end %>
     <% elsif current_user.friend_requests.include?(@user) %>
-        <span><%= link_to 'Accept Friend', friendship_path(current_user.friendship(@user).id), method: 'patch' %></span>| <span><%= link_to 'Reject Invitation',  friendship_path(current_user.friendship(@user).id), method: 'destroy' %></span>
+        <span><%= link_to 'Accept Friend', friendship_path(current_user.friendship(@user).id), method: 'patch' %></span>| <span><%= link_to 'Reject Invitation',  friendship_path(current_user.friendship(@user).id), method: :delete %></span>
     <% end %>
   </div>
   </span>
