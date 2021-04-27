@@ -61,7 +61,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: ror_social_scaffold_development
+  database: ror_social_scaffold_test
   username: sammy
   password: password1234
   host: localhost
