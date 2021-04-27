@@ -42,4 +42,35 @@ module ApplicationHelper
     out += "<div class=\"alert\"><p>#{alert}</p></div>" if alert.present?
     out.html_safe
   end
+
+  def notice_present
+    out = ''
+    out += if notice.present?.to_s
+      "<div class=\"notice\">
+        <p>#{notice} </p>
+      </div>"
+     end
+     out.html_safe
+  end
+  
+  def alert_present
+    out = ''
+    out += if alert.present?.to_s
+      "<div class=\"alert\">
+        <p>#{alert}</p>
+      </div>"
+      end
+    out.html_safe
+  end
+
+  def user_login
+    out = ''
+    out += if current_user
+        "<p>#{link_to('Sign out', destroy_user_session_path, method: :delete)}</p>"
+      else
+        "<p>#{link_to('Sign in', user_session_path)}</p>"
+     end
+     out.html_safe
+  end
+
 end
