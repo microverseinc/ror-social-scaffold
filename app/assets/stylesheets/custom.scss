@@ -191,7 +191,7 @@ form {
   input[type="submit"] {
     padding: 8px;
     margin-right: 1em;
-    width: 100%;
+    min-width: 100%;
     border: none;
     border-radius: 4px;
     background-color: $primary-color-dark;
@@ -341,6 +341,7 @@ form {
     font-size: 1.2em;
   }
 
+  .profile-link-edit,
   .profile-link {
     color: $primary-color-dark;
     margin-right: 1em;

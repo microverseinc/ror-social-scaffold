@@ -39,6 +39,12 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'devise'
 
+# Omniauth Gem setup. Set up tutorial: https://www.youtube.com/watch?v=Dd8dOAL6WYs
+gem 'activerecord-session_store'
+gem 'omniauth', '~> 1.0.0.pr2'
+gem 'omniauth-github'
+gem 'omniauth-google-oauth2'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
