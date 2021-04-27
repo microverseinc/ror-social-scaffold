@@ -24,6 +24,7 @@
 
 <% user_post = [] %>
 
+
   <% current_user.posts.each do |post| %>
     <% user_post << post %>
   <% end%>
@@ -36,7 +37,7 @@
 
   <% user_post.each do |post| %>
     <li class="post"> 
-    <%= post.content %> 
+    <%= post.content %>
     <li>
   <% end %>
 
