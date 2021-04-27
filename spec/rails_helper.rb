@@ -48,6 +48,7 @@ RSpec.configure do |config|
   # This makes it so Capybara can see the database.
   config.before(:each) do
     DatabaseCleaner.start
+    # OmniAuth.config.mock_auth[:google_oauth2] = nil
   end
 
   config.after(:each) do

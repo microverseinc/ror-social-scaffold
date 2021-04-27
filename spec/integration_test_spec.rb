@@ -22,6 +22,45 @@ RSpec.describe 'User Authentication', type: :system do
       click_link 'Sign out'
       expect(page).to have_content('Sign in')
     end
+
+    context 'with Google sigin in correct credentials' do
+      before do
+        OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new({
+          :provider => 'google_oauth2',
+          :uid => '123545',
+          :info => {
+            :name => "Frodo Baggins",
+            :email => "frodo@baggins.com"
+          },
+          :credentials => {
+            :token => 'mock_token',
+            :refresh_token => 'mock_secret'
+          }
+        })
+      end
+
+      it 'allows user to create new account and sign out' do
+        visit root_path
+        click_link 'Sign in with Google'
+        expect(page).to_not have_content('BILBO BAGGINS')
+        expect(page).to have_content('FRODO BAGGINS')
+        click_link 'Sign out'
+        expect(page).to have_content('Sign in')
+      end
+    end
+
+    context 'with Google sigin in invalid credentials' do
+      before do
+        OmniAuth.config.mock_auth[:google_oauth2] = :invalid_credentials
+      end
+
+      it 'won\'t allow user to sign in' do
+        visit root_path
+        click_link 'Sign in with Google'
+        expect(page).to_not have_content('BILBO BAGGINS')
+        expect(page).to have_content('There was a problem signing you in.')
+      end
+    end
   end
 end
 
