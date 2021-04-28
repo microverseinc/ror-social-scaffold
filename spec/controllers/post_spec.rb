@@ -20,7 +20,6 @@ feature 'Creating a post', type: :feature do
 
     scenario 'when you create a new post' do
       expect(page).to have_content('Post was successfully created.')
-      
     end
   end
 end

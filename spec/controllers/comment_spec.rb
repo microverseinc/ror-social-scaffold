@@ -20,7 +20,6 @@ feature 'Creating a comment', type: :feature do
 
     scenario 'when you create a new comment' do
       expect(page).to have_content('Comment was successfully created.')
-      
     end
   end
 end
