@@ -1,6 +1,6 @@
-# Scaffold for social media app with Ruby on Rails
+# Stay in touch
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+> With this social media app you are able to get in touch with your friends, feel free to send friend requests, write posts, comment such posts, like and dislike what your friends are posting.
 
 ## Built With
 
@@ -15,6 +15,12 @@ TBA
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
+
+* 1 - Make a clone of the [repository:](https://github.com/SunnySparks/ror-social-scaffold).
+
+* 2 - Open the project directory with your preferred code editor (VSCode, Sublime Text, Etc).
+
+* 3 - Open your terminal, drag and drop the project's folder into it and hit enter, make sure the route to the project is shown before hitting enter.
 
 ### Prerequisites
 
@@ -71,13 +77,17 @@ TBA
 
 ## Authors
 
-TBA
+
+👤 **José Francisco Silva Díaz**
+
+- GitHub: [@SunnySpark](https://github.com/SunnySparks)
+- Twitter: [@JosfranT6](https://twitter.com/JosFranT6)
 
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the [issues page](issues/).
+Feel free to check the [issues page](https://github.com/SunnySparks/ror-social-scaffold/issues/).
 
 ## Show your support
 
@@ -89,5 +99,5 @@ TBA
 
 ## 📝 License
 
-TBA
+-This project is MIT licensed.
 
