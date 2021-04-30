@@ -1,9 +1,78 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+
+
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
+
+  <%= friend_button(current_user, @user)%>
+
+<article class="timeline">
+    <h3><%= "#{@user.name.capitalize}'s Friends:" %></h3>
+  <ul>
+    <% @friends.each do |friend| %>
+        <li>
+          <%= friend.name %>
+        </li>
+    <% end %>
+  </ul>
+</article>
+</section>
+</div>
+
+    <div class="col">
+<div class="panel panel-default">
+<% if @my_friends.count > 0  || @requested_friends.count > 0 %>
+<h2 align="center" class="panel panel-primary">My Friends</h2>
+	<table class="table table-striped">
+		<thread>
+			<tr>
+				<th>Name</th>
+				<th> Request </th>
+			</tr>
+		</thread>
+		<tbody>
+			<% @my_friends.each do |friend| %>
+			<tr>	
+				<td><%= friend.name %></td>
+				<td>
+					<%= link_to "View Profile", user_path(friend), class:"btn btn-primary btn-xs" %>
+					<%= link_to 'Remove Friend', decline_request_path(friend), method: :delete, :confirm => "Are you sure?", :class => "btn btn-xs btn-danger" %>
+				</td>
+			</tr>
+			<% end %>
+			<% @requested_friends.each do |requested_friend| %>
+			<tr>
+			
+				<td><%= requested_friend.name %></td>
+				<td>
+					<%= link_to "View Profile", user_path(requested_friend), class:"btn btn-primary btn-xs" %>
+					<%= link_to "Accept", accept_request_path(requested_friend), method: :put, class:"btn btn-default btn-xs" %>
+					<%= link_to "Decline", decline_request_path(requested_friend), method: :delete, class: "btn btn-xs btn-danger" %>
+				</td>
+			</tr>
+			<% end %>
+
+		</tbody>
+	</table>
+<% else %>
+
+		<p class="lead", align = "center"> You don't have any friends yet. Go out and make some. </p>
+
+<% end %>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<main class="main">
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
       <%= render @posts %>
     </ul>
   </article>
-</section>
+</main>
+
