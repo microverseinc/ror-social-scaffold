@@ -1,4 +1,3 @@
-			<% if current_user.id === params[:id] && @my_friends.count > 0  || @requested_friends.count > 0 %>
 			<h2 align="center" class="panel panel-primary">My Friends</h2>
 			<table class="table table-striped">
 				<thread>
@@ -31,8 +30,3 @@
 
 				</tbody>
 			</table>
-			<% else %>
-
-				<p class="lead", align = "center"> You don't have any friends yet. make some friends. </p>
-
-			<% end %>
