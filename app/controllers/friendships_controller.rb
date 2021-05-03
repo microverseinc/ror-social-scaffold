@@ -15,18 +15,18 @@ class FriendshipsController < ApplicationController
   end
 
   def decline
-    current_user.requested_friends.delete(User.find(@friend.id))
+    @user1.requested_friends.delete(User.find(@friend.id))
+    @friend.pending_friends.delete(User.find(@user1.id))
     flash[:notice] = "You have rejected #{@friend.name}'s friend request."
     redirect_to user_path(@user1)
   end
 
   def destroy
-    current_user.friends.delete(User.find(@friend.id))
-    @friend.friends.delete(User.find(current_user.id))
+    @user1.friends.delete(User.find(@friend.id))
+    @friend.friends.delete(User.find(@user1.id))
     flash[:notice] = "#{@friend.name} has been removed from your friends."
     redirect_to user_path(@user1)
   end
-
 
   private
 
