@@ -7,7 +7,7 @@
 		<section class="user-section">
 			<h2><%= "Name: #{@user.name}" %></h2>
 
-			<%= friend_button(current_user, @user)%>
+			<%= friend_button(current_user, @user) %>
 
 			<article class="timeline">
 			    <h3><%= "#{@user.name.capitalize}'s Friends:" %></h3>
@@ -24,8 +24,7 @@
 
     <div class="col">
 		<div class="panel panel-default">
-			<%= render 'shared/myfriends' %>
-			<%= current_user.id.to_i == params[:id] %>
+		<%= friendship_table(@my_friends, @requested_friends, current_user, @user) %>
 		</div>
 	</div>
 
