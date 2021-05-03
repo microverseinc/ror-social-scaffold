@@ -21,7 +21,7 @@
         </div>
       </div>
       <% if current_user %>
-        <%= link_to 'My Profile',  user_path(current_user), class: 'profile-link' %>
+        <%= link_to '| My Profile |',  user_path(current_user), class: 'profile-link' %>
         <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
       <% else %>
         <%= link_to 'Sign in', user_session_path %>
