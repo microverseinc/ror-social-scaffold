@@ -12,5 +12,6 @@ class UsersController < ApplicationController
     @my_friends = current_user.friends.uniq
     @pending_requests = current_user.pending_friends.uniq
     @requested_friends = current_user.requested_friends.uniq
+    # @is_it_me = current_user.id == params[:id] 
   end
 end
