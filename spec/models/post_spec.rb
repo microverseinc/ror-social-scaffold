@@ -6,14 +6,11 @@ RSpec.describe Post, type: :model do
                           password_confirmation: '123456')
     @post = Post.create(user_id: @user2.id, content: 'Hello world')
     @like = Like.create(post_id: @post.id, user_id: @user2.id)
-    
   end
-
 
   it 'should have valid attributes' do
     expect(@post).to be_valid
   end
-
 
   it 'should not be valid without user id' do
     post = Post.new(user_id: nil)
@@ -23,7 +20,6 @@ RSpec.describe Post, type: :model do
   it 'should find post user id' do
     expect(Post.find_by(user_id: 99)).to eq(@post)
   end
-
 
   describe 'Associations' do
     it { should have_many(:likes) }
@@ -36,5 +32,4 @@ RSpec.describe Post, type: :model do
   describe 'Associations' do
     it { should belong_to(:user) }
   end
-
 end
