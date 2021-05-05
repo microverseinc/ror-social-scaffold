@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   before(:all) do
-    @user5 = User.create!(id:100, name: 'bruno', email: 'bruno@gmail.com', password: '123456', password_confirmation: '123456')
+    @user5 = User.create!(id: 100, name: 'bruno', email: 'bruno@gmail.com', password: '123456',
+                          password_confirmation: '123456')
   end
 
   it 'should have valid attributes' do
@@ -19,10 +20,10 @@ RSpec.describe User, type: :model do
   end
 
   describe 'Associations' do
-    it { should have_many(:friendships)}
+    it { should have_many(:friendships) }
   end
 
   describe 'Associations' do
-    it { should have_many(:friends)}
+    it { should have_many(:friends) }
   end
 end

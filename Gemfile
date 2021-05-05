@@ -46,20 +46,19 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 6.1'
   gem 'rubocop-rails', '~> 2.9', '>= 2.9.1'
   # gem 'rails-controller-testing'
-  gem 'selenium-webdriver'
   gem 'shoulda-matchers'
   gem 'sqlite3', '~> 1.4', '>= 1.4.2'
 end
 
 group :test do
   # Guard allows auto restart
-  gem 'rspec-rails', '~> 4.0', '>= 4.0.2'
   gem 'capybara', '>= 3.26'
   gem 'database_cleaner'
+  gem 'rspec-rails', '~> 4.0', '>= 4.0.2'
   gem 'selenium-webdriver'
-  gem 'webdrivers'
   gem 'simplecov', require: false
   gem 'simplecov-rcov'
+  gem 'webdrivers'
 end
 
 group :development do
