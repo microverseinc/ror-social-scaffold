@@ -40,8 +40,6 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
 
 group :development, :test do
-  # Strategies for cleaning databases to ensure a clean slate for testing.
-  gem 'database_cleaner', '~> 2.0', '>= 2.0.1'
   # install rspec rails
   gem 'rspec-rails', '~> 5.0', '>= 5.0.1'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -49,7 +47,12 @@ group :development, :test do
 end
 
 group :test do
-  gem 'rspec'
+  # Adds support for Capybara system testing and selenium driver
+  gem 'capybara', '>= 2.15'
+  # Strategies for cleaning databases to ensure a clean slate for testing.
+  gem 'database_cleaner-active_record'
+  gem 'selenium-webdriver'
+  # Easy installation and use of web drivers to run system tests with browsers
   gem 'shoulda-matchers', '~> 3.1', '>= 3.1.1'
 end
 
