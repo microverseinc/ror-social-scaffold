@@ -6,14 +6,11 @@ RSpec.describe Like, type: :model do
                           password_confirmation: '123456')
     @post = Post.create(user_id: @user3.id, content: 'Hello world')
     @like = Like.create(post_id: @post.id, user_id: @user3.id)
-    
   end
-
 
   it 'should have valid attributes' do
     expect(@like).to be_valid
   end
-
 
   it 'should not be valid without post id' do
     like = Like.new(post_id: nil)
@@ -25,11 +22,9 @@ RSpec.describe Like, type: :model do
     expect(like).to be_a_kind_of(Integer)
   end
 
-
   it 'should find like by user id' do
     expect(Like.find_by(user_id: 98)).to eq(@like)
   end
-
 
   describe 'Associations' do
     it { should belong_to(:user) }
@@ -38,5 +33,4 @@ RSpec.describe Like, type: :model do
   describe 'Associations' do
     it { should belong_to(:post) }
   end
-
 end
