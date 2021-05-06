@@ -42,6 +42,9 @@ gem 'devise'
 #env variables
 gem "figaro"
 
+gem 'bootstrap', '~> 5.0.0.beta3'
+gem 'jquery-rails'
+gem 'popper_js', '~> 2.9.2'
 
 
 group :development, :test do

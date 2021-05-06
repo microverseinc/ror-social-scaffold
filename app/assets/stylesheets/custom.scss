@@ -167,22 +167,6 @@ form {
     margin: 8px 0;
   }
 
-  input[type="submit"] {
-    padding: 8px;
-    width: 50%;
-    border: none;
-    border-radius: 4px;
-    background-color: $primary-color-dark;
-    color: $primary-color-light;
-    text-transform: uppercase;
-    font-weight: 900;
-  }
-
-  input[type="submit"]:hover {
-    background-color: $primary-color;
-    color: #fff;
-  }
-
   .actions.reset {
     input[type="submit"] {
       width: 100%;
@@ -256,7 +240,7 @@ form {
     .post-comments {
       position: relative;
       display: flex;
-      border-bottom: 1px solid $divider-color;
+
       border-radius: 3px;
       margin-bottom: 2px;
       padding: 10px;
