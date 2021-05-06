@@ -15,4 +15,9 @@ module ApplicationHelper
       link_to('Like!', post_likes_path(post_id: post.id), method: :post)
     end
   end
+  def accept_friendship(friendship)
+    return unless current_user == @user
+
+    link_to('Accept', user_friendship_path(friendship.user, friendship.id), method: :put, class: 'profile-link')
+  end
 end
