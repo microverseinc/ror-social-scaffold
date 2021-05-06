@@ -3,9 +3,12 @@
       <div class="fw-bold"><%= user.name %></div>
       <%= user.email %>
     </div>
+    
+   
    
     <%= link_to 'See Profile',  user_path(user), class: 'btn btn-primary' %>
-    <%= link_to 'Add friend',  user_path(user), class: 'btn btn-secondary ms-2' %>
+    <%= add_friend_request_btn(user) %>
+    
     
     
     
