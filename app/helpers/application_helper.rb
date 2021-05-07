@@ -26,8 +26,8 @@ module ApplicationHelper
 
   def add_friend_request_btn(user)
     return if current_user == user
-    
-    unless current_user.pending_friends.include?(user)
+    return if current_user.friend_requests.include?(user)
+    unless current_user.pending_friends.include?(user) 
       return link_to('Add friend',  user_friendships_url(user), method: :post, class: 'btn btn-secondary ms-2')
     else
       return content_tag(:h6, class: 'ms-2') do
@@ -35,6 +35,13 @@ module ApplicationHelper
       end
     end
     
+  end
+
+  def accept_friend_request_btn(user)
+    return if current_user == user ||  current_user.pending_friends.include?(user) 
+    if current_user.friend_requests.include?(user)
+      return link_to('Accept',  user_friendships_url(user), method: :post, class: 'btn btn-secondary ms-2')
+    end
   end
 
   # def accept_friendship_with_user(user)
