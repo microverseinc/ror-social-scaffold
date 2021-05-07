@@ -16,8 +16,7 @@ class FriendshipsController < ApplicationController
     end
   
     def destroy
-      friendship = Friendship.find(params[:id])
-      friend = friendship.user
+      friend = User.find(params[:user_id])
       current_user.reject_friend(friend)
   
       redirect_to user_path(current_user), notice: "You've rejected #{friend.name} :("

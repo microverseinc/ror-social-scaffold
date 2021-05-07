@@ -33,6 +33,11 @@ class User < ApplicationRecord
     friendship.confirmed = true
     friendship.save
   end
+   #To reject invitation to friendship
+   def reject_friend(user)
+    friendship = inverse_friendships.find{|friendship| friendship.user == user}
+    friendship.destroy
+  end
 
   #validate if user are already friends
   def friend?(user)

@@ -40,7 +40,8 @@ module ApplicationHelper
   def accept_friend_request_btn(user)
     return if current_user == user ||  current_user.pending_friends.include?(user) || user.friend?(current_user)
     if current_user.friend_requests.include?(user)
-      return link_to('Accept',  user_friendship_path(user, current_user), method: :put, class: 'btn btn-secondary ms-2')
+      return link_to('Accept',  user_friendship_path(user, current_user), method: :put, class: 'btn btn-secondary ms-2') +
+             link_to('Reject',  user_friendship_path(user, current_user), method: :delete, class: 'btn btn-secondary ms-2')
     end
   end
 
