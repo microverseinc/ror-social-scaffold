@@ -19,13 +19,13 @@ module ApplicationHelper
     current_user == user || current_user.friend?(user)
   end
 
-  def accept_friendship(friendship)
-    return unless current_user == @user
-    link_to('Accept', user_friendship_path(friendship.user, friendship.id), method: :put, class: 'profile-link')
-  end
+  # def accept_friendship(friendship)
+  #   return unless current_user == @user
+  #   link_to('Accept', user_friendship_path(friendship.user, friendship.id), method: :put, class: 'profile-link')
+  # end
 
   def add_friend_request_btn(user)
-    return if current_user == user
+    return if current_user == user || user.friend?(current_user)
     return if current_user.friend_requests.include?(user)
     unless current_user.pending_friends.include?(user) 
       return link_to('Add friend',  user_friendships_url(user), method: :post, class: 'btn btn-secondary ms-2')
@@ -38,9 +38,9 @@ module ApplicationHelper
   end
 
   def accept_friend_request_btn(user)
-    return if current_user == user ||  current_user.pending_friends.include?(user) 
+    return if current_user == user ||  current_user.pending_friends.include?(user) || user.friend?(current_user)
     if current_user.friend_requests.include?(user)
-      return link_to('Accept',  user_friendships_url(user), method: :post, class: 'btn btn-secondary ms-2')
+      return link_to('Accept',  user_friendship_path(user, current_user), method: :put, class: 'btn btn-secondary ms-2')
     end
   end
 

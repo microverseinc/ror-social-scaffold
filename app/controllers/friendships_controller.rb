@@ -12,7 +12,7 @@ class FriendshipsController < ApplicationController
       friend = User.find(params[:user_id])
       current_user.confirm_friend(friend)
   
-      redirect_to user_path(current_user), notice: "#{friend.name} is now your friend"
+      redirect_to users_path(current_user), notice: "#{friend.name} is now your friend"
     end
   
     def destroy
