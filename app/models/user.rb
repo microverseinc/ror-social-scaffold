@@ -22,10 +22,10 @@ class User < ApplicationRecord
     Post.where(user: (friends.to_a << self))
   end
 
-  def friends
-    friends_array = friendships.map { |friendship| friendship.friend if friendship.confirmed }
-    friends_array.compact
-  end
+  # def friends
+  #   friends_array = friendships.map { |friendship| friendship.friend if friendship.confirmed }
+  #   friends_array.compact
+  # end
 
   def pending_friends
     friendships.map { |friendship| friendship.friend unless friendship.confirmed }.compact

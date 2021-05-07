@@ -46,5 +46,3 @@ end
 def inverse_record
   Friendship.where(user: friend, friend: user).first
 end
-end
-
