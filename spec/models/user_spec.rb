@@ -5,8 +5,8 @@ RSpec.describe User, type: :model do
   let(:user2) { User.create(name: 'user_test2', email: 'mail2@mail.com', password: 'password') }
   let(:user3) { User.create(name: 'user_test3', email: 'mail2@mail.com', password: 'password') }
   let(:invalid_user) { User.create(name: nil, email: 'mail3@mail.com', password: 'password') }
-  let(:post_1) { user1.posts.create(content: 'Post test') }
-  let(:comment_1) { Comment.new(content: 'Test comment') }
+  let(:post1) { user1.posts.create(content: 'Post test') }
+  let(:comment1) { Comment.new(content: 'Test comment') }
 
   describe 'An User can be created it has all the validations' do
     it 'Has email, name and password' do
@@ -27,13 +27,13 @@ RSpec.describe User, type: :model do
       expect(post).to_not be_valid
     end
     it 'can comment post' do
-      comment_1.user = user1
-      post_1.comments << comment_1
-      post_1.save
-      expect(post_1).to be_valid
+      comment1.user = user1
+      post1.comments << comment1
+      post1.save
+      expect(post1).to be_valid
     end
     it 'can Like post' do
-      like = Like.new(user: user1, post: post_1)
+      like = Like.new(user: user1, post: post1)
       expect(like).to be_valid
     end
   end
