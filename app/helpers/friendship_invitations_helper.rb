@@ -6,6 +6,6 @@ module FriendshipInvitationsHelper
   end
 
   def reject_friendship_btn(inviter)
-    link_to 'Reject friendship', reject_invitation_path(inviter.id), class: 'un-friend'
+    link_to 'Reject friendship', reject_invitation_path(inviter.id), class: 'un-friend', method: :delete
   end
 end
