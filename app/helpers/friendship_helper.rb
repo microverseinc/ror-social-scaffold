@@ -1,8 +1,8 @@
-module FriendshipInvitationsHelper
+module FriendshipHelper
   def confirm_friendship_btn(inviter)
     button_to 'Confirm friendship',\
               confirm_invitation_path,\
-              params: { invitation: { inviter_id: inviter.id, invitee_id: current_user.id } }
+              params: { invitation: { user_id: inviter.id, friend_id: current_user.id } }
   end
 
   def reject_friendship_btn(inviter)

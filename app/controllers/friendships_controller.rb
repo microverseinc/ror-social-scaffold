@@ -1,10 +1,10 @@
-class FriendshipInvitationsController < ApplicationController
+class FriendshipsController < ApplicationController
   def index
     @invitations = current_user.friendship_requests
   end
 
   def create
-    invitation = FriendshipInvitation.new(invitation_params)
+    invitation = Friendship.new(invitation_params)
     if invitation.save
       redirect_to users_path, notice: 'Invitation sent'
     else
@@ -14,10 +14,10 @@ class FriendshipInvitationsController < ApplicationController
   end
 
   def update
-    invitation = current_user.received_invitations.find_by(inviter_id: invitation_params[:inviter_id])
+    invitation = current_user.received_invitations.find_by(user_id: invitation_params[:user_id])
     invitation.confirmed = true
     if invitation.save
-      redirect_to invitations_path, notice: "#{invitation.inviter.name} is your friend now!"
+      redirect_to invitations_path, notice: "#{invitation.user.name} is your friend now!"
     else
       flash.now.alert = 'Error'
       render users_path
@@ -38,6 +38,6 @@ class FriendshipInvitationsController < ApplicationController
   private
 
   def invitation_params
-    params.require(:invitation).permit(:inviter_id, :invitee_id)
+    params.require(:invitation).permit(:user_id, :friend_id)
   end
 end

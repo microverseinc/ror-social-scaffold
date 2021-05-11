@@ -9,7 +9,7 @@ module UserHelper
     else
       button_to 'Invite to friendship',\
                 send_invitation_path,\
-                params: { invitation: { inviter_id: current_user.id, invitee_id: user.id } }
+                params: { invitation: { user_id: current_user.id, friend_id: user.id } }
     end
   end
 
@@ -26,6 +26,6 @@ module UserHelper
   def confirm_friendship_btn(user)
     button_to('Confirm friendship',\
               confirm_invitation_path,\
-              params: { invitation: { inviter_id: user.id, invitee_id: current_user.id } })
+              params: { invitation: { user_id: user.id, friend_id: current_user.id } })
   end
 end
