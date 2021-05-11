@@ -30,8 +30,14 @@ RSpec.describe Friendship, type: :model do
     it 'can be friend' do
       friendship = user1.friendships.new(friend_id: user2.id)
       friendship.save
-
       expect(user1.pending_friends.size).to eq(1)
+    end
+    it 'Accept invitation and both are friends' do
+      friendship = user1.friendships.new(friend_id: user2.id)
+      friendship.save
+      user2.confirm_friend(user1)
+      friends = user2.friend?(user1)
+      expect(friends).to eq(true)
     end
   end
 end

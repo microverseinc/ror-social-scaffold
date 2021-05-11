@@ -22,9 +22,17 @@ class Friendship < ApplicationRecord
   end
 
   def update_inverse
+    create_inverse
+    #ir = inverse_record
+    #return if ir.confirmed == confirmed
+    #ir.confirmed = confirmed
+    #ir.save
+  end
+
+  def destroy_inverse
     ir = inverse_record
-    return if ir.confirmed == confirmed
-    ir.confirmed = confirmed
-    ir.save
+    return if ir.nil?
+
+    ir.destroy
   end
 end
