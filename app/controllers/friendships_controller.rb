@@ -14,10 +14,9 @@ class FriendshipsController < ApplicationController
   end
 
   def update
-    invitation = current_user.inverted_friendships.find_by(user_id: invitation_params[:user_id])
-    invitation.confirmed = true
-    if invitation.save
-      redirect_to invitations_path, notice: "#{invitation.user.name} is your friend now!"
+    inviter = User.find(invitation_params[:user_id])
+    if current_user.confirm_friend inviter
+      redirect_to invitations_path, notice: "#{inviter.name} is your friend now!"
     else
       flash.now.alert = 'Error'
       render users_path
