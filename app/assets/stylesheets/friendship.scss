@@ -1,0 +1,13 @@
+@import 'custom.scss';
+
+.friendship_btn {
+  padding: 4px 10px;
+  margin: 0 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  background-color: $primary-color-dark;
+  color: $primary-color-light;
+  text-transform: uppercase;
+  font-weight: 900;
+}
