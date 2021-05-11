@@ -46,4 +46,8 @@ class User < ApplicationRecord
 
     friendships.find { |invitation| invitation if invitation.friend == user }
   end
+
+  def friends_and_own_posts
+    Post.where(user: (friends.to_a << self)).ordered_by_most_recent
+  end
 end
