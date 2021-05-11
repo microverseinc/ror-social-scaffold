@@ -16,7 +16,6 @@ module ApplicationHelper
     end
   end
 
-  
   def friendship_button(user)
     if current_user.friend? user
       link_to 'Unfriend', friendship_path(user.id), class: 'friendship_btn', method: :delete, remote: true
