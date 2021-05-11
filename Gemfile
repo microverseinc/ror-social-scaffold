@@ -39,6 +39,14 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'devise'
 
+# env variables
+gem 'figaro'
+
+gem 'bootstrap', '~> 5.0.0.beta3'
+gem 'jquery-rails'
+gem 'popper_js', '~> 2.9.2'
+gem 'selenium-webdriver'
+gem 'webdrivers'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
@@ -56,6 +64,11 @@ group :development do
   gem 'rubocop'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+end
+
+group :development, :test do
+  gem 'capybara'
+  gem 'rspec-rails', '~> 5.0.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
