@@ -9,16 +9,14 @@ class User < ApplicationRecord
   has_many :posts
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
-  has_many :inverted_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
-  has_many :friendships, class_name: 'Friendship', foreign_key: 'user_id'
+  has_many :inverted_friendships, class_name: 'Friendship', foreign_key: 'friend_id', dependent: :destroy
+  has_many :friendships, class_name: 'Friendship', foreign_key: 'user_id', dependent: :destroy
 
   def friends
-    friends = inverted_friendships.map { |invitation| invitation.user if invitation.confirmed == true }
-    friends += friendships.map { |invitation| invitation.friend if invitation.confirmed == true }
-    friends.compact
+    friendships.map { |invitation| invitation.friend if invitation.confirmed == true }.compact
   end
 
-  def pending_invitations
+  def pending_friends
     friendships.map { |invitation| invitation.friend if invitation.confirmed == false }.compact
   end
 
@@ -30,7 +28,7 @@ class User < ApplicationRecord
     friendship = inverted_friendships.find { |invitation| invitation.user == user }
     friendship.confirmed = true
     friendship.save
-    inverted_friendship = Friendship.new(user_id: friendship.friend_id, friend_id: friendship.user_id)
+    inverted_friendship = Friendship.new(user_id: friendship.friend_id, friend_id: friendship.user_id, confirmed: true)
     inverted_friendship.save
   end
 
