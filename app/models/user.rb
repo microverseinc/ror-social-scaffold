@@ -40,11 +40,14 @@ class User < ApplicationRecord
     inverted_friendships.one? { |invitation| invitation.user == user and invitation.confirmed == false }
   end
 
-  def friend_invitation(user)
-    received_invitation = inverted_friendships.find { |invitation| invitation if invitation.user == user }
-    return received_invitation unless received_invitation.nil?
-
-    friendships.find { |invitation| invitation if invitation.friend == user }
+  def destroy_friendship(user)
+    received_invitation = inverted_friendships.find_by(user_id: user.id)
+    if received_invitation.confirmed == false
+      received_invitation.destroy
+    elsif received_invitation.confirmed == true
+      received_invitation.destroy
+      friendships.find_by(friend_id: user.id).destroy
+    end
   end
 
   def friends_and_own_posts
