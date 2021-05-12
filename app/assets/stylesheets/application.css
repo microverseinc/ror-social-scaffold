@@ -14,12 +14,13 @@
  *= require_self
  */
 
-body {
-  font-family: 'Raleway', sans-serif;
-}
-
 .logo {
   height: 3em;
+}
+
+.logo:hover {
+  transform: scale(1.2);
+  transition: 0.5s;
 }
 
 .likes,

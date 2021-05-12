@@ -11,12 +11,12 @@ $divider-color: #bdbdbd;
   padding: 0;
   box-sizing: border-box;
   outline: none;
+  font-family: 'Raleway', sans-serif;
 }
 
 body {
   background: #f7f3e9;
   position: relative;
-  font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
 
@@ -47,6 +47,7 @@ a {
     color: $primary-color;
     text-transform: uppercase;
     font-weight: 900;
+    transition: 0.5s;
   }
 
   .active a {
@@ -55,6 +56,8 @@ a {
 
   a:hover {
     color: $primary-color-light;
+    transform: scale(1.2);
+    transition: 0.5s;
   }
 
   .menu {
@@ -208,11 +211,13 @@ form {
     font-weight: 900;
     position: relative;
     cursor: pointer;
+    transition: 0.5s;
   }
 
   input[type="submit"]:hover {
     background-color: $primary-color;
-    color: #fff;
+    color: $primary-color-light;
+    transition: 0.5s;
   }
 
   .actions.reset {
