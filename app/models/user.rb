@@ -11,10 +11,8 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :inverted_friendships, class_name: 'Friendship', foreign_key: 'friend_id', dependent: :destroy
   has_many :friendships, class_name: 'Friendship', foreign_key: 'user_id', dependent: :destroy
-
-  def friends
-    friendships.map { |invitation| invitation.friend if invitation.confirmed == true }.compact
-  end
+  has_many :confirmed_friendships, -> { where confirmed: true }, class_name: 'Friendship'
+  has_many :friends, through: :confirmed_friendships
 
   def pending_friends
     friendships.map { |invitation| invitation.friend if invitation.confirmed == false }.compact
