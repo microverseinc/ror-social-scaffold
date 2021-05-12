@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap");
 
-$primary-color-dark: #689f38;
-$primary-color: #8bc34a;
-$primary-color-light: #dcedc8;
+$primary-color-dark: #a3d2ca;
+$primary-color: #5eaaa8;
+$primary-color-light: #f7f3e9;
 $primary-color-text: #212121;
 $divider-color: #bdbdbd;
 
@@ -14,7 +14,7 @@ $divider-color: #bdbdbd;
 }
 
 body {
-  background: #fff;
+  background: #f7f3e9;
   position: relative;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
@@ -38,22 +38,23 @@ a {
 .nav {
   display: flex;
   justify-content: space-between;
-  padding: 16px 48px;
+  align-items: center;
+  padding: 8px 48px;
   background-color: $primary-color-dark;
   color: $primary-color-light;
 
   a {
-    color: $primary-color-light;
+    color: $primary-color;
     text-transform: uppercase;
     font-weight: 900;
   }
 
   .active a {
-    color: #fff;
+    color: $primary-color-light;
   }
 
   a:hover {
-    color: #fff;
+    color: $primary-color-light;
   }
 
   .menu {
@@ -64,6 +65,13 @@ a {
       float: left;
       margin: 0 15px;
     }
+  }
+
+  .user-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 10em;
   }
 }
 
@@ -199,6 +207,7 @@ form {
     text-transform: uppercase;
     font-weight: 900;
     position: relative;
+    cursor: pointer;
   }
 
   input[type="submit"]:hover {
@@ -318,6 +327,7 @@ form {
 
       .btn {
         margin: 0 1em;
+        cursor: pointer;
       }
 
       i,

@@ -6,10 +6,14 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap" rel="stylesheet">
   </head>
   <body>
     <nav class="nav">
-      <%= link_to 'Stay in touch', root_path %>
+      <%= link_to root_path do %>
+        <%= image_tag 'logo.png', class: "logo" %>
+      <% end %>
       <div class="menu">
         <div class="menu-item">
           <%= menu_link_to 'Timeline', posts_path %>
@@ -21,12 +25,14 @@
           <%= menu_link_to 'Friendship Requests', friendships_path %>
         </div>
       </div>
-      <%= link_to(current_user.name, user_path(current_user.id)) if current_user %>
-      <% if current_user %>
-        <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-      <% else %>
-        <%= link_to 'Sign in', user_session_path %>
-      <% end %>
+      <div class="user-menu">
+        <%= link_to(current_user.name, user_path(current_user.id)) if current_user %>
+        <% if current_user %>
+          <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+        <% else %>
+          <%= link_to 'Sign in', user_session_path %>
+        <% end %>
+      </div>
     </nav>
     <% if notice.present? %>
       <div class="notice">
