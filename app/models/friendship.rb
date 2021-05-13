@@ -4,10 +4,10 @@ class Friendship < ActiveRecord::Base
 
 
   # private
-  def self.requested_before?(sender_id,receiver_id)
+  def self.requested_before?(sen_id,rec_id)
     Friendship.find_each do |friendship|
-      if (friendship.receiver_id = receiver_id && friendship.sender_id = sender_id) ||
-      (friendship.receiver_id = sender_id && friendship.sender_id = receiver_id)
+      if (friendship.receiver_id = rec_id && friendship.sender_id = sen_id) ||
+         (friendship.receiver_id = sen_id && friendship.sender_id = rec_id)
         return true
       end
     end
