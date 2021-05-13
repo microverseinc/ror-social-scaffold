@@ -27,8 +27,14 @@ class User < ApplicationRecord
   def friend_requests
     friendships.map{|friendship| friendship.sendedr if !friendship.status} 
   end
-  
-  def conirm_friend(user)
+
+  def send_request(user)
+    unless Friendship.requested_before?(self.id,user.id) 
+      friendships.create(sender_id: self.id, receiver_id: user.id)
+    end
+  end
+
+  def confirm_friend(user)
     friendship = inverse_friendships.find{|friendship| friendship.sender == user}
     friendship.confirmed = true
     friendship.save
