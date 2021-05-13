@@ -25,7 +25,7 @@ class User < ApplicationRecord
   end
 
   def friend_requests
-    friendships.map { |friendship| friendship.sendedr unless friendship.status }
+    inverse_friendships.map { |friendship| friendship.sender unless friendship.status }
   end
 
   def send_request(user)
