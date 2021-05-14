@@ -1,9 +1,6 @@
-<li class="post">
+<li class="posts-li">
   <div class="post-title">
-    <div class='post-attribution' >
-      <%= link_to post.user.name, user_path(post.user), class: 'post-author' %>
-      <span class='post-date'> <%= post.created_at.strftime("%Y/%m/%d") %> </span>
-    </div>
+    <span class='post-date'><%= link_to post.user.name, user_path(post.user), class: 'post-author' %></span>
     <div class='post-liking'>
       <%= like_or_dislike_btn(post) %>
       <i class="far fa-thumbs-up"></i>
