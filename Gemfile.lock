@@ -230,6 +230,7 @@ DEPENDENCIES
   devise
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
+  mimemagic
   pg (>= 0.18, < 2.0)
   puma (~> 3.12)
   rails (~> 5.2.4)
@@ -247,4 +248,4 @@ RUBY VERSION
    ruby 2.5.8p224
 
 BUNDLED WITH
-   2.1.2
+   2.2.17
