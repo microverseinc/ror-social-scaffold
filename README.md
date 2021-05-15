@@ -1,11 +1,13 @@
+![](https://img.shields.io/badge/Microverse-blueviolet)
+
 # Scaffold for social media app with Ruby on Rails
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+> On this project we had to finish a social media app by adding friendship requests to it, as well as build an ERD for the project.
 
 ## Built With
 
-- Ruby v2.7.0
-- Ruby on Rails v5.2.4
+- Ruby >= 2.7.0
+- Ruby on Rails >= 5.2.4
 
 ## Live Demo
 
@@ -18,9 +20,9 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-Ruby: 2.6.3
-Rails: 5.2.3
-Postgres: >=9.5
+Ruby: >= 2.7.0
+Rails: >= 5.2.4
+Postgres: >= 9.5
 
 ### Setup
 
@@ -65,29 +67,32 @@ Open `http://localhost:3000/` in your browser.
 
 > Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
 
+### Troubleshooting
+
+#### Error "Webpacker::Manifest::MissingEntryError" on starting application
+
+- stop the web app
+- run `bundle exec rake webpacker:install`
+- run `rails s`
+
 ### Deployment
 
 TBA
 
-## Authors
+## Author
 
-TBA
+👤 **Fernando R P Marques**
+
+- GitHub: [@fernandorpm](https://github.com/fernandorpm)
+- Twitter: [@rpm_fernando](https://twitter.com/rpm_fernando)
+- LinkedIn: [Fernando R P Marques](https://linkedin.com/fernandorpm)
 
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the [issues page](issues/).
+Feel free to check the [issues page](../../issues/).
 
 ## Show your support
 
 Give a ⭐️ if you like this project!
-
-## Acknowledgments
-
-TBA
-
-## 📝 License
-
-TBA
-
