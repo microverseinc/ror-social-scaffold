@@ -11,6 +11,8 @@ RSpec.describe User, type: :model do
     it { should have_many(:comments).dependent(:destroy) }
     it { should have_many(:likes).dependent(:destroy) }
     it { should have_many(:friendships) }
-    it { should have_many(:inverted_friendships) }
+    it { should have_many(:friends) }
+    it { should have_many(:pending_friends) }
+    it { should have_many(:friend_requests) }
   end
 end
