@@ -17,7 +17,7 @@ TBA
 
 ## Entity Relationship Diagram
 
-![Entity Relationship Diagram](./ERD.jpeg)
+![Entity Relationship Diagram](./docs/ERD.jpeg)
 
 
 ## Getting Started
