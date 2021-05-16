@@ -11,7 +11,6 @@
 
 TBA
 
-
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
@@ -65,13 +64,13 @@ Open `http://localhost:3000/` in your browser.
 
 > Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
 
-### Deployment
-
-TBA
-
 ## Authors
 
-TBA
+👤 **Hubert MUGABO**
+
+- Github: [@mugberto](https://github.com/mugberto)
+- Twitter: [@mugberto](https://twitter.com/mugberto)
+- Linkedin: [mugberto](https://www.linkedin.com/in/hubert-mugabo-23144b6a/)
 
 ## 🤝 Contributing
 
@@ -85,9 +84,9 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-TBA
+- Project inspired by Microverse Program
 
 ## 📝 License
 
-TBA
+This project is MIT Lisenced
 
