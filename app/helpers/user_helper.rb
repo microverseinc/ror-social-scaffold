@@ -16,11 +16,11 @@ module UserHelper
   def cancel_friendship_btn(user)
     return unless current_user.friend? user
 
-    link_to 'Undo friendship', reject_invitation_path(user), method: :delete, class: 'un-friend'
+    link_to 'Undo friendship', reject_invitation_path(user.id, 'friendship'), method: :delete, class: 'un-friend'
   end
 
   def reject_friendship_btn(user)
-    link_to('Reject Friendship', reject_invitation_path(user), method: :delete, class: 'un-friend')
+    link_to('Reject Friendship', reject_invitation_path(user.id, 'invitation'), method: :delete, class: 'un-friend')
   end
 
   def confirm_friendship_btn(user)

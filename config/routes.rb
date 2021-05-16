@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'friendships', to: 'friendships#index', as: 'invitations'
   post 'friendship/create', to: 'friendships#create', as: 'send_invitation'
   post 'friendship/update', to: 'friendships#update', as: 'confirm_invitation'
-  delete 'friendship/destroy/:id', to: 'friendships#destroy', as: 'reject_invitation' 
+  delete 'friendship/destroy/:id/:status', to: 'friendships#destroy', as: 'reject_invitation' 
   root 'posts#index'
 
   devise_for :users

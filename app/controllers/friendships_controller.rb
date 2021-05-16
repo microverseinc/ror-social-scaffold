@@ -1,6 +1,6 @@
 class FriendshipsController < ApplicationController
   def index
-    @invitations = current_user.friendship_requests
+    @invitations = current_user.friend_requests
   end
 
   def create
@@ -14,9 +14,9 @@ class FriendshipsController < ApplicationController
   end
 
   def update
-    inviter = User.find(invitation_params[:user_id])
-    if current_user.confirm_friend inviter
-      redirect_to invitations_path, notice: "#{inviter.name} is your friend now!"
+    invitation = current_user.inverted_friendships.find_by(user_id: invitation_params[:user_id])
+    if invitation.confirm_friend
+      redirect_to invitations_path, notice: "#{invitation.user.name} is your friend now!"
     else
       flash.now.alert = 'Error'
       render users_path
@@ -24,12 +24,13 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
-    user = User.find(params[:id])
-    if current_user.destroy_friendship(user)
+    if params[:status] == 'invitation'
+      current_user.inverted_friendships.find_by(user_id: params[:id]).destroy
       redirect_to users_path, notice: 'Friendship canceled'
-    else
-      flash.now.alert = 'Error'
-      render users_path
+    elsif params[:status] == 'friendship'
+      current_user.friendships.find_by(friend_id: params[:id]).destroy
+      current_user.inverted_friendships.find_by(user_id: params[:id]).destroy
+      redirect_to users_path, notice: 'Friendship canceled'
     end
   end
 
