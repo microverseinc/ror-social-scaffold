@@ -4,6 +4,8 @@
 
 > On this project we had to finish a social media app by adding friendship requests to it, as well as build an ERD for the project.
 
+![App Screenshot](./Screenshot.png)
+
 ## Built With
 
 - Ruby >= 2.7.0
@@ -12,6 +14,10 @@
 ## Live Demo
 
 TBA
+
+## Entity Relationship Diagram
+
+![Entity Relationship Diagram](./ERD.jpeg)
 
 
 ## Getting Started
