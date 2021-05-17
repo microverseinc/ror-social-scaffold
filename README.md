@@ -1,11 +1,11 @@
 # Scaffold for social media app with Ruby on Rails
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+> This repo includes code for basic social media app built with rails. The app allows users to create account, see other users, invite them to friendship, and accept or reject thier friendship requests. A user also can create posts, publish them on their timeline, and see his friends' posts
 
 ## Built With
 
 - Ruby v2.7.0
-- Ruby on Rails v5.2.4
+- Ruby on Rails v6.0.3
 
 
 ## Getting Started
@@ -20,7 +20,7 @@ Postgres: >=9.5
 
 ### Setup
 
-Instal gems with:
+Install gems with:
 
 ```
 bundle install
@@ -32,16 +32,6 @@ Setup database with:
    rails db:create
    rails db:migrate
 ```
-
-### Github Actions
-
-To make sure the linters' checks using Github Actions work properly, you should follow the next steps:
-
-1. On your recently forked repo, enable the GitHub Actions in the Actions tab.
-2. Create the `feature/branch` and push.
-3. Start working on your milestone as usual.
-4. Open a PR from the `feature/branch` when your work is done.
-
 
 ### Usage
 
