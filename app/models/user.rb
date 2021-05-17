@@ -9,41 +9,24 @@ class User < ApplicationRecord
   has_many :posts
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
-  has_many :received_invitations, class_name: 'FriendshipInvitation', foreign_key: 'invitee_id'
-  has_many :sent_invitations, class_name: 'FriendshipInvitation', foreign_key: 'inviter_id'
-
-  def friends
-    friends = received_invitations.map { |invitation| invitation.inviter if invitation.confirmed == true }
-    friends += sent_invitations.map { |invitation| invitation.invitee if invitation.confirmed == true }
-    friends.compact
-  end
-
-  def pending_invitations
-    sent_invitations.map { |invitation| invitation.invitee if invitation.confirmed == false }.compact
-  end
-
-  def friendship_requests
-    received_invitations.map { |invitation| invitation.inviter if invitation.confirmed == false }.compact
-  end
-
-  def confirm_friend(user)
-    friend_invitation = received_invitations.find { |invitation| invitation.inviter == user }
-    friend_invitation.confirmed = true
-    friend_invitation.save
-  end
+  has_many :inverted_friendships, class_name: 'Friendship', foreign_key: 'friend_id', dependent: :destroy
+  has_many :friendships, class_name: 'Friendship', foreign_key: 'user_id', dependent: :destroy
+  has_many :confirmed_friendships, -> { where confirmed: true }, class_name: 'Friendship'
+  has_many :friends, through: :confirmed_friendships
+  has_many :pending_friendships, -> { where confirmed: false }, class_name: 'Friendship', foreign_key: 'user_id'
+  has_many :pending_friends, through: :pending_friendships, source: :friend
+  has_many :unconfirmed_friendships, -> { where confirmed: false }, class_name: 'Friendship', foreign_key: 'friend_id'
+  has_many :friend_requests, through: :unconfirmed_friendships, source: :user
 
   def friend?(user)
     friends.include? user
   end
 
   def invited_by?(user)
-    received_invitations.one? { |invitation| invitation.inviter == user and invitation.confirmed == false }
+    friend_requests.include? user
   end
 
-  def friend_invitation(user)
-    received_invitation = received_invitations.find { |invitation| invitation if invitation.inviter == user }
-    return received_invitation unless received_invitation.nil?
-
-    sent_invitations.find { |invitation| invitation if invitation.invitee == user }
+  def friends_and_own_posts
+    Post.where(user: (friends.to_a << self)).ordered_by_most_recent
   end
 end

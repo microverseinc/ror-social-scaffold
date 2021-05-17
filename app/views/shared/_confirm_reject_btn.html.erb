@@ -1,5 +1,5 @@
 <%= button_to('Confirm friendship',\
               confirm_invitation_path,\
-              params: { invitation: { inviter_id: user.id, invitee_id: current_user.id } }) %>
+              params: { invitation: { user_id: user.id, friend_id: current_user.id } }) %>
 
-<%= link_to('Reject Friendship', reject_invitation_path(user), method: :delete, class: 'un-friend') %>
+<%= link_to('Reject Friendship', reject_invitation_path(user, 'invitation'), method: :delete, class: 'un-friend') %>
