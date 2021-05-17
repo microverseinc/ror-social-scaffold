@@ -2,6 +2,10 @@
 
 > This repo includes code for basic social media app built with rails. The app allows users to create account, see other users, invite them to friendship, and accept or reject thier friendship requests. A user also can create posts, publish them on their timeline, and see his friends' posts
 
+## Live demo
+
+View the demo [here](https://fierce-ocean-92729.herokuapp.com/)
+
 ## Built With
 
 - Ruby v2.7.0
