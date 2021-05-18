@@ -22,5 +22,22 @@ class User < ApplicationRecord
   def pending_friends
     friendships.map { |friendship| friendship.friend unless friendship.status }.compact
   end
+
+  def friend_requests
+    inverse_friendships.map { |friendship| friendship.user unless friendship.confirmed }.compact
+  end
+
+  def accept_friend(user)
+    friendship = inverse_friendships.find{ |f| f.user_id == user_id }
+    friendship.status = true
+    frindship.save
+  end
+
+  def reject_friend(user)
+    friendship = inverse_friendships.find { |f| f.user == user }
+    friendship.destroy
+  end
+
+  
 end
 
