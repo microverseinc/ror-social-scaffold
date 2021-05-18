@@ -11,11 +11,11 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
 
   has_many :friendships
-  has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id' 
+  has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
 
   def friends
-    friends_array = friendships.map{|friendship| friendship.friend if friendship.status}
-    friends_array + inverse_friendships.map{|friendship| friendship.user if friendship.status}
+    friends_array = friendships.map { |friendship| friendship.friend if friendship.status }
+    friends_array += inverse_friendships.map { |friendship| friendship.user if friendship.status }
     friends_array.compact
   end
 
@@ -27,8 +27,8 @@ class User < ApplicationRecord
     inverse_friendships.map { |friendship| friendship.user unless friendship.status }.compact
   end
 
-  def accept_friend(user)
-    friendship = inverse_friendships.find{ |f| f.user_id == user_id }
+  def accept_friend(_user)
+    friendship = inverse_friendships.find { |f| f.user_id == user_id }
     friendship.status = true
     frindship.save
   end
@@ -37,7 +37,4 @@ class User < ApplicationRecord
     friendship = inverse_friendships.find { |f| f.user == user }
     friendship.destroy
   end
-
-  
 end
-
