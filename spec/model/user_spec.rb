@@ -13,6 +13,25 @@ RSpec.describe User, type: :model do
     @user = User.create(name: 'user', email: 'user@example.com', password: '987654321')
     expect(@user).to be_valid
   end
+  it 'checks if post association is has_many' do
+    expect(posts).to eq(:has_many)
+  end
+
+  it 'checks if comment association is :has_many' do
+    expect(comments).to eq(:has_many)
+  end
+
+  it 'checks if likes association is :has_many' do
+    expect(likes).to eq(:has_many)
+  end
+
+  it 'check for the correct friendship association' do
+    expect(friendships).to eq(:has_many)
+  end
+
+  it 'check if inverse_friendships association is correct' do
+    expect(inverse_friendships).to eq(:has_many)
+  end
 
 end
 
