@@ -12,20 +12,6 @@ $divider-color: #5eaaa8;
   align-items: flex-start;
   flex-direction: column;
   width: 100%;
-  margin-left: 1em;
-
-  .form-comments-control {
-    width: 60%;
-    border: 1px solid $divider-color;
-    height: 64px;
-    padding: 8px;
-    margin: 0.8em 0;
-    border-radius: 4px;
-  }
-
-  .btn-secondary {
-    width: 40%;
-  }
 }
 
 .new_post {
@@ -39,7 +25,7 @@ $divider-color: #5eaaa8;
   }
 
   .form-control {
-    width: 70%;
+    width: 90%;
     border: 1px solid $divider-color;
     height: 64px;
     padding: 8px;
@@ -53,14 +39,6 @@ $divider-color: #5eaaa8;
     .form-control {
       border: 1px solid #f00;
     }
-  }
-
-  .btn-primary {
-    width: 70%;
-  }
-
-  .btn-secondary {
-    width: 30%;
   }
 }
 
@@ -88,103 +66,17 @@ form {
       width: fit-content;
     }
   }
-
-  .actions {
-    display: flex;
-    justify-content: center;
-    margin: 8px 0;
-  }
-
-  .actions.reset {
-    input[type="submit"] {
-      width: 100%;
-    }
-  }
 }
 
 
 .timeline {
 
-
-  .post-title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1em;
-  }
-
-  .post-attribution {
-    .post-author {
-      margin: 2em 0 8px 0;
-      color: $primary-color-dark;
-      text-transform: capitalize;
-      font-size: 1.5em;
-    }
-
     .post-date {
       font-size: 0.7em;
     }
-  }
 
-  .post-liking {
-    a {
-      color: $primary-color-dark;
-      font-weight: bold;
-      font-size: 1em;
-    }
 
-    span,
-    i {
-      color: $primary-color-dark;
-    }
-  }
-
-  .post-content {
-    font-size: 1.1em;
-    padding: 4px 0;
-  }
-
-  .post-comments-section {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
-
-    .post-comments {
-      display: flex;
-      justify-content: center;
-      align-items: start;
-      flex-direction: column;
-      border-bottom: 1px solid $divider-color;
-      border-radius: 3px;
-      margin-bottom: 2px;
-      padding: 10px;
-      width: 60%;
-      margin-left: 1em;
-
-      p {
-        font-size: 0.8em;
-        width: 90%;
-      }
-
-      span {
-        font-size: 0.6em;
-      }
-    }
-
-    .comment-footer {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      width: 60%;
-
-      i,
-      span {
-        color: $primary-color-dark;
-      }
-    }
-  }
+  
 }
 
 .users-section {

@@ -178,7 +178,7 @@ ul {
 
 .timeline h3 {
   font-size: 2em;
-  margin: 2.5em 0 1.5em 0;
+  margin: 2em 0 1.5em 0;
 }
 
 .posts-ul {
@@ -187,30 +187,114 @@ ul {
 
 .posts-li {
   display: flex;
+  align-items: center;
   flex-direction: column;
   margin-bottom: 4em;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.likes,
-.comments {
-  display: flex;
-  justify-content: start;
-  align-items: center;
+.posts-li div {
+  width: 35vw;
 }
+
+.post-author {
+  font-size: 1.8em;
+  color: #5eaaa8;
+  font-weight: 800;
+}
+
+.post-content {
+  font-size: 1.5em;
+  margin: 0.5em 0 1em 0.5em;
+}
+
+.form-comments-control {
+  width: 85%;
+  border: 1px solid #5eaaa8;
+  height: 64px;
+  padding: 8px;
+  margin: 0.8em 0;
+  border-radius: 4px;
+}
+
+.post-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 105% !important;
+}
+
+.post-liking a {
+  text-transform: uppercase;
+  border: none;
+  border-radius: 4px;
+  transition: 0.5s;
+  cursor: pointer;
+  background: #a3d2ca;
+  font-size: 0.8em;
+  padding: 5px 50px;
+  color: #fff;
+  font-weight: 800;
+}
+
+.post-liking a:hover,
+.comment-btn:hover {
+  background: #5eaaa8;
+}
+
+.comment-btn {
+  text-transform: uppercase;
+  border: none;
+  border-radius: 4px;
+  transition: 0.5s;
+  cursor: pointer;
+  background: #a3d2ca;
+  font-size: 0.8em;
+  padding: 5px 50px;
+  color: #fff;
+  font-weight: 800;
+}
+
+.post-liking span,
+.post-liking i,
+.comments-footer span,
+.comments-footer i {
+  font-weight: 800;
+  font-size: 1em;
+  color: #a3d2ca;
+}
+
+.post-comments-section {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  margin: 0 3em;
+  width: 100% !important;
+}
+
+.post-comments {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+  border-bottom: 1px solid #5eaaa8;
+  border-radius: 3px;
+  padding: 10px;
+  width: 85% !important;
+}
+
+.comments-footer {
+}
+
+
+
+
+
+
+
+
+
+
 
 .user-show-header {
   display: flex;
