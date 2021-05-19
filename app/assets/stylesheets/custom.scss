@@ -3,7 +3,7 @@
 $primary-color-dark: #a3d2ca;
 $primary-color: #5eaaa8;
 $primary-color-light: #f7f3e9;
-$primary-color-text: #212121;
+$primary-color-text: #126e82;
 $divider-color: #5eaaa8;
 
 .new_comment {
@@ -54,14 +54,6 @@ form {
       margin-bottom: 8px;
     }
 
-    input {
-      width: 100%;
-      border: 1px solid $divider-color;
-      border-radius: 4px;
-      padding: 8px;
-      background-color: $primary-color-light;
-    }
-
     input[type="checkbox"] {
       width: fit-content;
     }
@@ -90,12 +82,6 @@ form {
   .users-list li {
     text-transform: capitalize;
     font-size: 1.2em;
-  }
-
-  .profile-link-edit,
-  .profile-link {
-    color: $primary-color-dark;
-    margin-right: 1em;
   }
 }
 

@@ -20,6 +20,7 @@
   box-sizing: border-box;
   outline: none;
   font-family: 'Raleway', sans-serif;
+  transition: 0.5s;
 }
 
 body {
@@ -283,18 +284,54 @@ ul {
   width: 85% !important;
 }
 
-.comments-footer {
+
+/* ------------------------ User Index ------------------------ */
+
+.profile-link strong {
+  font-size: 0.8em;
+  font-weight: 500;
 }
 
+.profile-link a {
+  color: #5eaaa8;
+  margin: 0 1em;
+  font-size: 1.3em;
+  font-weight: 600;
+}
 
+.profile-link a:hover {
+  color: #126e82;
+}
 
+.add-friend-btn {
+  border: none;
+  border-radius: 4px;
+  transition: 0.5s;
+  cursor: pointer;
+  background: #a3d2ca;
+  font-size: 1em;
+  padding: 5px 35px;
+  color: #fff;
+  font-weight: 800;
+}
 
+.add-friend-btn:hover {
+  transform: scale(1.05);
+  background: #126e82;
+}
 
+.friend-status {
+  margin: 8px 0;
+  border: 2px solid #126e82;
+  border-radius: 4px;
+  padding: 4px 2em;
+  font-size: 0.9em;
+  font-weight: 800;
+  cursor: pointer;
+  color: #126e82;
+}
 
-
-
-
-
+/* ------------------------ User Show ------------------------ */
 
 .user-show-header {
   display: flex;
@@ -308,13 +345,13 @@ ul {
   margin-right: 4em;
 }
 
-.friend-status {
-  margin: 8px 0;
-  border: 2px solid #689f38;
-  border-radius: 4px;
-  padding: 4px 2em;
+.profile-link-edit {
+  color: #126e82;
+  font-weight: 600;
+  font-size: 1.1em;
 }
 
-.profile-link-edit {
-  color: #689f38;
+.profile-link-edit:hover {
+  font-size: 1.2em;
+  color: #a3d2ca;
 }

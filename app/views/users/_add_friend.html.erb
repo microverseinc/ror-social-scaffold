@@ -3,7 +3,7 @@
     <%= form.hidden_field :invitee_id, value: @user.id %>
     <%= form.hidden_field :inviter_id, value: current_user.id %>
     <%= form.hidden_field :status %>
-    <%= form.submit 'Invite to friendship' %>
+    <%= form.submit 'Invite to friendship', class: 'add-friend-btn' %>
   <% end %>
 <% elsif current_user.comfirmed_friendships.exists?(invitee_id: @user) %>
   <p class="friend-status">You are friends with this user</p>
