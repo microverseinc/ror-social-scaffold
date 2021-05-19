@@ -355,3 +355,37 @@ ul {
   font-size: 1.2em;
   color: #a3d2ca;
 }
+
+/* ------------------------ Friendship Index ------------------------ */
+
+.friendship-li {
+  margin: 2em 0;
+}
+
+.friendship-name {
+  margin-bottom: 1em;
+}
+
+.friendship-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50vw;
+}
+
+.friendship-btn {
+  border: none;
+  border-radius: 4px;
+  transition: 0.5s;
+  cursor: pointer;
+  background: #a3d2ca;
+  font-size: 1.1em;
+  padding: 5px 35px;
+  color: #fff;
+  font-weight: 800;
+}
+
+.friendship-btn:hover {
+  background: #126e82;
+  transform: scale(1.05);
+}
