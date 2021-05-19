@@ -25,7 +25,7 @@ $divider-color: #5eaaa8;
   }
 
   .form-control {
-    width: 90%;
+    width: 100%;
     border: 1px solid $divider-color;
     height: 64px;
     padding: 8px;
@@ -43,7 +43,7 @@ $divider-color: #5eaaa8;
 }
 
 form {
-  width: 80%;
+  width: 100%;
   margin: 8px 0;
 
   .field {
@@ -55,7 +55,7 @@ form {
     }
 
     input {
-      width: 80%;
+      width: 100%;
       border: 1px solid $divider-color;
       border-radius: 4px;
       padding: 8px;
@@ -70,13 +70,9 @@ form {
 
 
 .timeline {
-
     .post-date {
       font-size: 0.7em;
     }
-
-
-  
 }
 
 .users-section {
@@ -106,8 +102,6 @@ form {
     h3 {
       width: 100%;
     }
-
-    justify-content: start;
   }
 }
 

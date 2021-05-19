@@ -389,3 +389,55 @@ ul {
   background: #126e82;
   transform: scale(1.05);
 }
+
+/* ------------------------ User Sessions ------------------------ */
+
+.user-btn input {
+  border: none;
+  border-radius: 4px;
+  transition: 0.5s;
+  cursor: pointer;
+  background: #a3d2ca;
+  font-size: 1.1em;
+  padding: 5px 35px;
+  color: #fff;
+  font-weight: 800;
+  width: 100%;
+  margin: 1em 0;
+}
+
+.user-btn input:hover {
+  background: #126e82;
+  transform: scale(1.05);
+}
+
+.devise-links {
+  color: #126e82;
+  font-weight: 800;
+  font-size: 1.1em;
+}
+
+.devise-links:hover {
+  color: #a3d2ca;
+}
+
+.omniauth-flex:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.omniauth-links {
+  margin-right: 0.1em;
+  color: #126e82;
+  font-weight: 800;
+  font-size: 1.5em;
+}
+
+.omniauth-links:hover {
+  color: #a3d2ca;
+}
+
+.omniauth-flex i {
+  color: #eb1212;
+  font-size: 1.3em;
+}
