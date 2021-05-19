@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  
 
   def index
     @users = User.all
@@ -30,5 +29,4 @@ class UsersController < ApplicationController
       redirect_to users_path, alert: 'woohps something went wrong with the rejection.'
     end
   end
-
 end

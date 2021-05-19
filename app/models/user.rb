@@ -38,7 +38,6 @@ class User < ApplicationRecord
     friendship.destroy
   end
 
-
   def friend?(user)
     friends.include?(user)
   end

@@ -4,7 +4,7 @@ module UserHelper
 
     return if current_user.friend?(obj)
 
-     foo = ''
+    foo = ''
     if current_user.pending_friends.include?(obj)
       foo << link_to('Status: Invite sent', '#')
     elsif current_user.friend_requests.include?(obj)
