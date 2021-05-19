@@ -2,13 +2,8 @@
   <h2><%= "Name: #{@user.name}" %></h2>
   <%= invitation_button(@user) %>
 
-  <% if @user.friends.include?(current_user) %>
-  <h1>Friend</h1>
-  <% end %>
-
-  <% if @user.inverse_friendships.find { |frd| frd.user_id == current_user.id && !frd.confirmed } %>
-  <h1>Pending Requests</h1>
-  <% end %>
+  <%= friend(@user) %>
+  <%= pendings(@user) %>
 
   <article class="timeline">
     <h3>Recent posts:</h3>

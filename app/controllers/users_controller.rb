@@ -7,7 +7,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
     @posts = @user.posts.ordered_by_most_recent
   end
 
@@ -18,7 +17,7 @@ class UsersController < ApplicationController
 
   def decline
     user = User.find(params[:data])
-    friendship = @user.inverse_friendshiips.find { |f| f.user == user }
+    friendship = @user.inverse_friendships.find { |f| f.user == user }
     friendship.destroy
     redirect_to request.referrer, notice: 'Declined friend request'
   end

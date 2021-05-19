@@ -62,4 +62,14 @@ module ApplicationHelper
     end
     result.html_safe
   end
+
+  def friend(user)
+    '<h1>Friend</h1>'.html_safe if user.friends.include?(current_user)
+  end
+
+  def pendings(user)
+    '<h1>Pending Requests</h1>'.html_safe if user.inverse_friendships.find do |frd|
+                                               frd.user_id == current_user.id && !frd.confirmed
+                                             end
+  end
 end
