@@ -46,7 +46,7 @@ module ApplicationHelper
   def accept_decline_buttons(user)
     result = ''
     current_user.friend_requests.each do |request|
-      if requster == user
+      if request == user
         result += (button_to 'Accept', accept_user_path(request.id), method: :get).to_s
         result += (button_to 'Decline', decline_user_path(request.id), method: :get).to_s
       end

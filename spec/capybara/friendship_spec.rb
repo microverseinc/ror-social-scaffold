@@ -13,7 +13,7 @@ RSpec.feature 'Friendships', type: :feature do
     click_button 'Log in'
     expect(page).to have_content('Recent posts')
     visit users_path
-    click_button 'send invitation'
+    click_button 'Add Friend'
     click_link 'Sign out'
 
     visit new_user_session_path
