@@ -6,10 +6,27 @@
   <h1>Friend</h1>
   <% end %>
 
+  <% if @user.inverse_friendships.find { |frd| frd.user_id == current_user.id && !frd.confirmed } %>
+  <h1>Pending Requests</h1>
+  <% end %>
+
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
       <%= render @posts %>
     </ul>
   </article>
+
+
+<article>
+  <h3>Displaying all friends:</h3>
+  <%= friends_names(@user) %>
+</article>
+<br>
+<article>
+  <h3>Pending friend requests:</h3>
+  <%= pending_requests(@user) %>
+</article>
+
+
 </section>

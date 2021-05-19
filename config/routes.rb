@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show]
 
   resources :users do
-    members do
+    member do
       get :create_friendship
       get :accept
       get :decline

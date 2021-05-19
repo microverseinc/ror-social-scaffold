@@ -17,7 +17,7 @@ module ApplicationHelper
   end
 
   def friends_names(user)
-    result = '<b>There are no friends</b>'
+    result = 'You currently have:'
     unless user.friends.empty?
       result = ''
       user.friends.each do |friend|
@@ -28,7 +28,7 @@ module ApplicationHelper
   end
 
   def pending_requests(user)
-    result = '<b>There are no friend requests</b>'
+    result = 'You have no friends. How about adopting a dog or a cat?'
     unless user.friend_requests.empty?
       result = ''
       user.friend_requests.each do |request|
@@ -57,7 +57,7 @@ module ApplicationHelper
   def invitation_button(user)
     result = ''
     if !user.friends.include?(current_user) && user != current_user && !user.pending?(current_user)
-      result += (button_to 'Invite to friendship', create_friendship_user_path(user.id),
+      result += (button_to 'Add Friend', create_friendship_user_path(user.id),
                            method: :get).to_s
     end
     result.html_safe
