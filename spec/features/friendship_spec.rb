@@ -1,4 +1,3 @@
-
 require 'rails_helper'
 
 RSpec.feature 'Friendships', type: :feature do
@@ -33,6 +32,6 @@ RSpec.feature 'Friendships', type: :feature do
     visit users_path
     expect(page).to have_link('Add Friend')
     click_link 'Add Friend'
-    #expect(page).to have_link('Status: Invite Sent')
+    # expect(page).to have_link('Status: Invite Sent')
   end
 end
