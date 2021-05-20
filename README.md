@@ -2,6 +2,11 @@
 
 > This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
 
+## Screenshot
+
+![Screenshot](../../images/Rpost.png)
+![Screenshot](../../images/Uprofile.png)
+
 ## Built With
 
 - Ruby v2.7.0
@@ -71,7 +76,17 @@ TBA
 
 ## Authors
 
-TBA
+ **Makungong Collins Tatang**
+
+- GitHub: [@CollinsTatang](https://github.com/CollinsTatang)
+- Twitter: [@CollinsTatang1](https://twitter.com/CollinsTatang1)
+- LinkedIn: [makungong-collins](https://www.linkedin.com/in/makungong-collins-b43260190/)
+
+ **Olaoluwa Soladoye**
+
+- GitHub: [@Crappypapa](https://github.com/crappypapa)
+- Twitter: [@Laoluwa](https://twitter.com/_laoluwa)
+- LinkedIn: [Olaoluwa](https://www.linkedin.com/in/olaoluwa-soladoye)
 
 ## 🤝 Contributing
 
