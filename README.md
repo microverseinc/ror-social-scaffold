@@ -1,4 +1,4 @@
-# Chat-and-coffee Social Media App
+# We-talk Social Media App
 A social media app where you can meet new people, request friendships, create and like posts.
 Share with the world the people the stories you have. Discuss what's popular with your friends.
 
