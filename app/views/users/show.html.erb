@@ -9,4 +9,21 @@
       <%= render @posts %>
     </ul>
   </article>
+
+  <div class="timeline">
+    <h3>Sent Invitations:</h3>
+    <ul class="posts">
+      <% @user.pending_friends.each do |invi|%>
+          <li><%= invi.name %></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="timeline">
+    <h3>Incoming Invitations:</h3>
+    <ul class="posts">
+      <% @user.friend_requests.each do |invi|%>
+          <li><%= invi.name %> <%= request_control(invi) %></li>
+      <% end %>
+    </ul>
+  </div>
 </section>
