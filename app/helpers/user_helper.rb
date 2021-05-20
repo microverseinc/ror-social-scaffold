@@ -50,10 +50,7 @@ module UserHelper
     friend_requests = current_user.friend_requests
     content_tag(:div, class: 'a class') do
       friend_requests.each do |sender|
-        if sender
-          concat(link_to('approve', "/users/#{current_user.id}/approve/#{sender.id}", method: :put,
-                                                                                      data: { confrim: 'approve request?' }))
-        end
+        concat(link_to('approve', "/users/#{current_user.id}/approve/#{sender.id}", method: :put)) if sender
       end
     end
   end
@@ -62,10 +59,7 @@ module UserHelper
     friend_requests = current_user.friend_requests
     content_tag(:div, class: 'a class') do
       friend_requests.each do |sender|
-        if sender
-          concat(link_to('delete', "/users/#{current_user.id}/reject/#{sender.id}", method: :delete,
-                                                                                    data: { confrim: 'approve request?' }))
-        end
+        concat(link_to('delete', "/users/#{current_user.id}/reject/#{sender.id}", method: :delete)) if sender
       end
     end
   end
