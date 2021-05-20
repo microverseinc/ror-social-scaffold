@@ -31,7 +31,6 @@ class User < ApplicationRecord
     friendship.save
   end
 
-
   def reject_request(user)
     friendship = inverse_friendships.find { |fs| fs.sender == user }
     friendship.destroy
@@ -39,7 +38,7 @@ class User < ApplicationRecord
 
   def friends
     friends_array =
-    inverse_friendships.map { |friendship| friendship.sender if friendship.status } +
+      inverse_friendships.map { |friendship| friendship.sender if friendship.status } +
       friendships.map { |friendship| friendship.receiver if friendship.status }
     friends_array.compact
   end
