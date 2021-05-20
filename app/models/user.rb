@@ -11,5 +11,4 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :senders, foreign_key: 'sender_id', class_name: 'Friendship', dependent: :destroy
   has_many :receivers, foreign_key: 'receiver_id', class_name: 'Friendship', dependent: :destroy
-
 end

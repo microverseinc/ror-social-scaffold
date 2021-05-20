@@ -1,7 +1,7 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
   <span class="profile-link">
-    <button><%= is_friend?(@user) %></button>
+    <%= friend?(@user) %>
   </span>
   <article class="timeline">
     <h3>Recent posts:</h3>
