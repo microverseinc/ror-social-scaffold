@@ -83,7 +83,6 @@ ul {
 
 /* ------------------------ Navbar ------------------------ */
 
-
 .nav-bar {
   display: flex;
   justify-content: space-between;
@@ -104,6 +103,30 @@ ul {
   transition: 0.5s;
 }
 
+.active a {
+  color: #f7f3e9;
+}
+
+.post-liking a {
+  text-transform: uppercase;
+  border: none;
+  border-radius: 4px;
+  transition: 0.5s;
+  cursor: pointer;
+  background: #a3d2ca;
+  font-size: 0.8em;
+  padding: 5px 50px;
+  color: #fff;
+  font-weight: 800;
+}
+
+.profile-link a {
+  color: #5eaaa8;
+  margin: 0 1em;
+  font-size: 1.3em;
+  font-weight: 600;
+}
+
 .nav-bar a:hover {
   color: #f7f3e9;
   transform: scale(1.2);
@@ -113,10 +136,6 @@ ul {
 .nav-menu {
   width: 80%;
   justify-content: space-between;
-}
-
-.active a {
-  color: #f7f3e9;
 }
 
 .menu-item {
@@ -140,7 +159,6 @@ ul {
 
 
 /* ------------------------ Timeline ------------------------ */
-
 
 .new-post-form {
   width: 70vw;
@@ -228,7 +246,7 @@ ul {
   width: 105% !important;
 }
 
-.post-liking a {
+.comment-btn {
   text-transform: uppercase;
   border: none;
   border-radius: 4px;
@@ -244,19 +262,6 @@ ul {
 .post-liking a:hover,
 .comment-btn:hover {
   background: #5eaaa8;
-}
-
-.comment-btn {
-  text-transform: uppercase;
-  border: none;
-  border-radius: 4px;
-  transition: 0.5s;
-  cursor: pointer;
-  background: #a3d2ca;
-  font-size: 0.8em;
-  padding: 5px 50px;
-  color: #fff;
-  font-weight: 800;
 }
 
 .post-liking span,
@@ -294,13 +299,6 @@ ul {
 .profile-link strong {
   font-size: 0.8em;
   font-weight: 500;
-}
-
-.profile-link a {
-  color: #5eaaa8;
-  margin: 0 1em;
-  font-size: 1.3em;
-  font-weight: 600;
 }
 
 .profile-link a:hover {
