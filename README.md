@@ -99,9 +99,9 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-TBA
+- Microverse
+- The Odin Project
 
-## 📝 License
+## 📝 MIT License
 
-TBA
-
+This project makes use of the MIT license.
