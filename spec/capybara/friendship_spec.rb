@@ -13,7 +13,7 @@ RSpec.feature 'Friendships', type: :feature do
     click_button 'Log in'
     expect(page).to have_content('Recent posts')
     visit users_path
-    click_button 'send invitation'
+    click_button 'Add Friend'
     click_link 'Sign out'
 
     visit new_user_session_path
@@ -25,5 +25,13 @@ RSpec.feature 'Friendships', type: :feature do
     expect(page).to have_selector(:link_or_button, 'Accept')
     expect(page).to have_selector(:link_or_button, 'Decline')
     click_button 'Accept'
+  end
+
+  scenario 'user logs in and see his posts as well as his friends posts in the homepage' do
+    visit root_path
+    fill_in 'Email', with: 'user1@example.com'
+    fill_in 'Password', with: 'password'
+    click_button 'Log in'
+    expect(page).to have_content('Recent posts')
   end
 end

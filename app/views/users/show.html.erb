@@ -1,9 +1,27 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
+  <%= invitation_button(@user) %>
+
+  <%= friend(@user) %>
+  <%= pendings(@user) %>
+
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
       <%= render @posts %>
     </ul>
   </article>
+
+
+<article>
+  <h3>Displaying all friends:</h3>
+  <%= friends_names(@user) %>
+</article>
+<br>
+<article>
+  <h3>Pending friend requests:</h3>
+  <%= pending_requests(@user) %>
+</article>
+
+
 </section>
