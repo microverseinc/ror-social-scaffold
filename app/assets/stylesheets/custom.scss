@@ -294,10 +294,11 @@ form {
 
 .user-section {
   width: 100%;
-  margin-left: 16px;
+  margin-top: 50px;
 
   h2 {
     text-transform: capitalize;
+    padding: 10px 0;
   }
 
   .timeline {
@@ -305,6 +306,7 @@ form {
 
     h3 {
       width: 100%;
+      padding: 10px 0;
     }
 
     justify-content: start;
@@ -320,6 +322,10 @@ form {
   ul {
     color: #f00;
   }
+}
+
+.my-user {
+  background: red;
 }
 
 @media only screen and (min-width: 480px) {
@@ -345,5 +351,6 @@ form {
   .users-section,
   .user-section {
     width: 50%;
+    margin-right: 350px;
   }
 }

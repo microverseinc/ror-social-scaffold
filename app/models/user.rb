@@ -30,7 +30,7 @@ class User < ApplicationRecord
     friendship = inverted_friendships.find { |frship| frship.user_id == user.id }
     friendship.confirmed = true
     friendship.save
-    Friendship.create!(friend_id: friendship.user_id, nuser_id: id, confirmed: true)
+    Friendship.create!(friend_id: friendship.user_id, user_id: id, confirmed: true)
   end
 
   def pending_friends
