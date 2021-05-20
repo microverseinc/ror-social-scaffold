@@ -13,7 +13,8 @@ class User < ApplicationRecord
   has_many :requests_send_unconfirmed,
            -> { where(confirmed: false) },
            class_name: :Friendship,
-           foreign_key: :user_id
+           foreign_key: :user_id,
+           dependent: :destroy
 
   has_many :users_requested,
            through: :requests_send_unconfirmed,
@@ -22,7 +23,8 @@ class User < ApplicationRecord
   has_many :requests_send_confirmed,
            -> { where(confirmed: true) },
            class_name: :Friendship,
-           foreign_key: :user_id
+           foreign_key: :user_id,
+           dependent: :destroy
 
   has_many :friends_from_request_send,
            through: :requests_send_confirmed,
@@ -31,7 +33,8 @@ class User < ApplicationRecord
   has_many :requests_recieved_unconfirmed,
            -> { where(confirmed: false) },
            class_name: :Friendship,
-           foreign_key: :friend_id
+           foreign_key: :friend_id,
+           dependent: :destroy
 
   has_many :users_requesting,
            through: :requests_recieved_unconfirmed,
@@ -40,9 +43,16 @@ class User < ApplicationRecord
   has_many :requests_recieved_confirmed,
            -> { where(confirmed: true) },
            class_name: :Friendship,
-           foreign_key: :friend_id
+           foreign_key: :friend_id,
+           dependent: :destroy
 
   has_many :friends_from_requests_accepted,
            through: :requests_recieved_confirmed,
            source: :user
+
+
+
+  def friends
+    friends_from_request_send + friends_from_requests_accepted
+  end
 end
