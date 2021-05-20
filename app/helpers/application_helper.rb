@@ -27,8 +27,17 @@ module ApplicationHelper
     elsif current_user.id == user.id
       nil
     else
-      link_to '| Invite to Friendship', new_friendship_path(receiver_id: user.id), method: :post,
-                                                                                   class: 'profile-link'
+      is_friend = current_user.receivers.find_by(sender_id: user.id)
+      if is_friend
+        if is_friend.status.zero?
+          link_to '| Accept Friendship', accept_friendship_path(id: is_friend.id), method: :put, class: 'profile-link'
+        else
+          nil
+        end
+      else
+        link_to '| Invite to Friendship', new_friendship_path(receiver_id: user.id), method: :post,
+                                                                                     class: 'profile-link'
+      end
     end
   end
 end

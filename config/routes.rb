@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show]
   resources :friendships, only: [:index, :destroy]
   post '/new_friendship', to: 'friendships#create'
-  put '/accept_friendship', to: 'friendships#update'
+  put '/accept_friendship', to: 'friendships#accept'
 
   resources :posts, only: [:index, :create] do
     resources :comments, only: [:create]
