@@ -11,6 +11,12 @@ To get started with the app, first clone the repo and `cd` into the directory:
 $ git clone https://github.com/SamroodAli/ror-social-scaffold.git
 $ cd members-only
 ```
+on:
+  # Triggers the workflow on push or pull request events but only for the development branch
+  push:
+    branches: [ development ]
+  pull_request:
+    branches: [ development ]
 
 Then install the needed packages (while skipping any Ruby gems needed only in production):
 
