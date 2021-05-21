@@ -29,4 +29,8 @@ class FriendshipsController < ApplicationController
     flash[:notice] = "Request accepted from #{User.find(params[:user_id]).name}"
     redirect_back fallback_location: root_url
   end
+
+  def delete
+    
+  end
 end
