@@ -22,7 +22,7 @@ class PostsController < ApplicationController
   def timeline_posts
     @timeline_posts = current_user.posts
     current_user.friends.each do |friend|
-      @timeline_posts+=friend.posts
+      @timeline_posts += friend.posts
     end
     # @timeline_posts ||= Post.all.ordered_by_most_recent.includes(:user)
   end
