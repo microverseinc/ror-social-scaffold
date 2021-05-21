@@ -1,1 +1,4 @@
-
+<%= form_with model: @request, local: true do |form|%>
+  <%= hidden_field_tag :friend_id, @user.id %>
+  <%= form.submit "Invite to frinedship", class:"btn btn-success" %>
+<% end %>
