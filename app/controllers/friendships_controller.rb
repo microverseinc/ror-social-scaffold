@@ -10,7 +10,6 @@ class FriendshipsController < ApplicationController
   def reject
     request = current_user.requests_recieved_unconfirmed.find(params[:id])
     request.destroy
-    user_requested = User.find(params[:user_id])
     flash[:notice] = 'Cancelled invitation'
     redirect_back fallback_location: root_url
   end
@@ -18,7 +17,6 @@ class FriendshipsController < ApplicationController
   def destroy
     request = current_user.requests_sent_unconfirmed.find(params[:id])
     request.destroy
-    user_requested = User.find(params[:user_id])
     flash[:notice] = 'Cancelled invitation'
     redirect_back fallback_location: root_url
   end
@@ -30,7 +28,5 @@ class FriendshipsController < ApplicationController
     redirect_back fallback_location: root_url
   end
 
-  def delete
-    
-  end
+  def delete; end
 end

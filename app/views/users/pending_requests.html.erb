@@ -1,5 +1,16 @@
-<section class="users-section">
-  <ul class="users-list">
-    <%= render @users ,index:"pending"%>
-  </ul>
-</section>
+<div class="pending-div">
+  <section class="users-section w-100">
+    <h2>Users requesting</h2>
+    <hr>
+    <ul class="users-list">
+      <%= render @users_requesting ,index:"pending"%>
+    </ul>
+  </section>
+  <section class="users-section">
+    <h2>Users requested</h2>
+    <hr>
+    <ul class="users-list">
+      <%= render @users_requested ,index:"pending"%>
+    </ul>
+  </section>
+</div>

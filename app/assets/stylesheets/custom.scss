@@ -345,5 +345,21 @@ form {
   .users-section,
   .user-section {
     width: 50%;
+        border: 1px solid green;
+    padding: 2rem;
   }
 }
+
+
+.pending-div{
+  width: 90%;
+  display: flex;
+  form input[type="submit"] {
+   width: 100%; 
+  }
+
+  hr{
+    margin: 1rem;
+  }
+}
+

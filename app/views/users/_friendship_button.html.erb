@@ -1,5 +1,4 @@
-<% if current_user.friend?(user) %>
-<% elsif requesting_user?(user) %>
+<% if requesting_user?(user) %>
   <%= render 'accept_request',index:index,user:user %>
   <%= render 'reject_request',index:index,user:user %>
 <% elsif !requested_user?(user) %>
