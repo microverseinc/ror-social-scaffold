@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RorSocialScaffold</title>
+    <title>Stay in touch</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -17,6 +17,12 @@
           </div>
           <div class="menu-item">
             <%= menu_link_to 'All users', users_path %>
+          </div>
+          <div class="menu-item">
+            <%= menu_link_to 'My friends',friends_user_path(current_user)  %>
+          </div>
+          <div class="menu-item">
+            <%= menu_link_to 'New post',friends_user_path(current_user)  %>
           </div>
           <div class="menu-item">
             <%= menu_link_to 'Pending requests', pending_requests_user_path(current_user) %>
