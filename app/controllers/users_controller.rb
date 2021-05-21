@@ -14,4 +14,9 @@ class UsersController < ApplicationController
     @users_requesting= current_user.users_requesting
     @users_requested= current_user.users_requested
   end
+
+  def friends
+    @users = current_user.friends
+    render :index
+  end
 end
