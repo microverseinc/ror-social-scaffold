@@ -16,6 +16,7 @@ module ApplicationHelper
     end
   end
 
+  # rubocop:disable Metrics/PerceivedComplexity
   def friend?(user)
     is_friend = current_user.senders.find_by(receiver_id: user.id)
     if is_friend
@@ -31,8 +32,6 @@ module ApplicationHelper
       if is_friend
         if is_friend.status.zero?
           link_to '| Accept Friendship', accept_friendship_path(id: is_friend.id), method: :put, class: 'profile-link'
-        else
-          nil
         end
       else
         link_to '| Invite to Friendship', new_friendship_path(receiver_id: user.id), method: :post,
@@ -40,4 +39,5 @@ module ApplicationHelper
       end
     end
   end
+  # rubocop:enable Metrics/PerceivedComplexity
 end

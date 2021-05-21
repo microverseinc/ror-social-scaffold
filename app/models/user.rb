@@ -13,7 +13,7 @@ class User < ApplicationRecord
   has_many :receivers, foreign_key: 'receiver_id', class_name: 'Friendship', dependent: :destroy
 
   def friends_id
-    senders.where('status = ? AND (sender_id = ? OR receiver_id = ?)', 1, id, id).pluck(:sender_id, :receiver_id).flatten
-    
+    senders.where('status = ? AND (sender_id = ? OR receiver_id = ?)', 1, id, id).pluck(:sender_id,
+                                                                                        :receiver_id).flatten
   end
 end
