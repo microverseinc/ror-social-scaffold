@@ -1,2 +1,2 @@
-<%= form_with model: current_user.requests_sent_unco, local: true do |form|%>
-<% end %>
+<%= form_with model: request_sent(@user), local: true,html: {method: :delete}do |form|%>
+  <%= form.submit "Cancel invitation to friendship", class:"btn btn-success" %><% end %>
