@@ -4,12 +4,12 @@ User.create!( name:  "Samrood",
               password:              "passpass",
               password_confirmation: "passpass",
             )
-User.create!( name:  "Samreena",
+User.create!( name:  "Omar",
               email: "example2@social.org",
               password:              "passpass",
               password_confirmation: "passpass",
             )
-User.create!( name:  "Sanjeed",
+User.create!( name:  "Deepak",
               email: "example3@social.org",
               password:              "passpass",
               password_confirmation: "passpass",
@@ -23,6 +23,12 @@ User.create!( name:  "Jean",
 
 User.create!( name:  "Leon",
               email: "example5@social.org",
+              password:              "passpass",
+              password_confirmation: "passpass",
+            )
+
+User.create!( name:  "Nasser",
+              email: "example6@social.org",
               password:              "passpass",
               password_confirmation: "passpass",
             )
