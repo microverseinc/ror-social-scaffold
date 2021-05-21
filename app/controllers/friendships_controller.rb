@@ -31,6 +31,8 @@ class FriendshipsController < ApplicationController
 
 
   def accept
-    
+    request = current_user.requests_recieved_unconfirmed.find_by(user_id: params[:user_id])
+    request.update(confirmed:true)
+    redirect_to pending_requests_user_url(current_user)
   end
 end
