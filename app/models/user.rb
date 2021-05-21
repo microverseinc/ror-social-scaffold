@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
-  has_many :requests_send_unconfirmed,
+  has_many :requests_sent_unconfirmed,
            -> { where(confirmed: false) },
            class_name: :Friendship,
            foreign_key: :user_id,
@@ -20,13 +20,13 @@ class User < ApplicationRecord
            through: :requests_send_unconfirmed,
            source: :friend
 
-  has_many :requests_send_confirmed,
+  has_many :requests_sent_confirmed,
            -> { where(confirmed: true) },
            class_name: :Friendship,
            foreign_key: :user_id,
            dependent: :destroy
 
-  has_many :friends_from_request_send,
+  has_many :friends_from_requests_send,
            through: :requests_send_confirmed,
            source: :friend
 
@@ -49,10 +49,16 @@ class User < ApplicationRecord
   has_many :friends_from_requests_accepted,
            through: :requests_recieved_confirmed,
            source: :user
-
-
-
+r
   def friends
-    friends_from_request_send + friends_from_requests_accepted
+    friends_from_requests_send + friends_from_requests_accepted
+  end
+
+  def friends_ids
+    friends_from_request_send_ids
+  end
+
+  def friend?(user)
+    friends_ids.include?(user.id)
   end
 end

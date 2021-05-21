@@ -2,7 +2,11 @@ Rails.application.routes.draw do
 
   root 'posts#index'
 
-  devise_for :users
+  devise_for :users do
+    member do
+      get :friends
+    end
+  end
 
   resources :users, only: [:index, :show]
   resources :posts, only: [:index, :create] do
