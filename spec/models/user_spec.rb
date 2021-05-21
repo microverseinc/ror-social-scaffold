@@ -35,45 +35,5 @@ RSpec.describe User, type: :model do
       friendship.destroy
       expect(Friendship.where(sender_id: 1, receiver_id: 2).first).to eq nil
     end
-
-    # describe '#friends' do
-    #   it 'returns friends of a given user' do
-    #     user1.requests_for_friendship(user2)
-    #     user2.approve_request(user1)
-    #     expect(user1.friends).to include user2
-    #   end
-
-    #   it 'doesnt return users that are not friends' do
-    #     user1.requests_for_friendship(user2)
-    #     expect(user1.friends).not_to include user2
-    #   end
-    # end
-
-    # describe '#friend?' do
-    #   it 'returns true if a given user is a friend' do
-    #     user1.requests_for_friendship(user2)
-    #     user2.approve_request(user1)
-    #     expect(user1.friend?(user2)).to eq true
-    #   end
-
-    #   it 'returns false if a given user is not a friend' do
-    #     user1.requests_for_friendship(user2)
-    #     expect(user1.friend?(user2)).to eq false
-    #   end
-    # end
-
-    # describe '#pending_requests_i_sent' do
-    #   it 'returns users that has not accepted my request yet' do
-    #     user1.requests_for_friendship(user2)
-    #     expect(user1.pending_requests_i_sent).to include user2
-    #   end
-    # end
-
-    # describe '#pending_requests_i_got' do
-    #   it 'returns users that I have not accepted their requests yet' do
-    #     user2.requests_for_friendship(user1)
-    #     expect(user1.pending_requests_i_got).to include user2
-    #   end
-    # end
   end
 end
