@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   devise_for :users do
     member do
-      get :friends
+      get :friends,:pending_requests
     end
   end
 
