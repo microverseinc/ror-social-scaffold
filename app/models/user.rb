@@ -17,7 +17,7 @@ class User < ApplicationRecord
            dependent: :destroy
 
   has_many :users_requested,
-           through: :requests_send_unconfirmed,
+           through: :requests_sent_unconfirmed,
            source: :friend
 
   has_many :requests_sent_confirmed,
@@ -26,8 +26,8 @@ class User < ApplicationRecord
            foreign_key: :user_id,
            dependent: :destroy
 
-  has_many :friends_from_requests_send,
-           through: :requests_send_confirmed,
+  has_many :friends_from_requests_sent,
+           through: :requests_sent_confirmed,
            source: :friend
 
   has_many :requests_recieved_unconfirmed,
@@ -49,13 +49,13 @@ class User < ApplicationRecord
   has_many :friends_from_requests_accepted,
            through: :requests_recieved_confirmed,
            source: :user
-r
+
   def friends
-    friends_from_requests_send + friends_from_requests_accepted
+    friends_from_requests_sent + friends_from_requests_accepted
   end
 
   def friends_ids
-    friends_from_request_send_ids
+    friends_from_requests_sent_ids + friends_from_requests_accepted_ids
   end
 
   def friend?(user)
