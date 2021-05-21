@@ -28,4 +28,9 @@ class FriendshipsController < ApplicationController
       redirect_to user_requested
     end
   end
+
+
+  def accept
+    
+  end
 end
