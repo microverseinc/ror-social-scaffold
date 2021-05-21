@@ -344,27 +344,37 @@ form {
   .users-section,
   .user-section {
     width: 50%;
-        border: 1px solid green;
+    border: 1px solid green;
     padding: 1rem;
   }
 }
 
-
-.pending-div{
+.pending-div {
   width: 90%;
   display: flex;
-  form input[type="submit"] {
-   width: 100%; 
-  }
 
-  hr{
+  hr {
     margin: 1rem;
   }
 }
 
-.user{
+.user {
+  text-align: center;
   display: grid;
+  grid-template-columns: repeat(4, 1fr);
   border: 1px solid green;
-  padding: 0.25rem;
-  background-color: ghostwhite;
+  padding: 1rem;
+  position: relative;
+
+  .bg-red {
+    background-color: indianred;
+
+    &:hover {
+      background-color: red;
+    }
+  }
+
+  .user-name {
+    margin-top: 0.5rem;
+  }
 }
