@@ -2,5 +2,9 @@
   Name: <%= user.name %>
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+    
+    <%= link_to 'Send Friend Request', "/users/#{user.id}/request", method: :post, 
+    data: {confrim:"Send a friend request?"} if Friendship.requested_before?(current_user.id, user.id)==false && current_user.id != user.id%>
+    <% 'Friend' if current_user.friend?(user)%>
   </span>
 </li>
