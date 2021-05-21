@@ -1,0 +1,10 @@
+<li>
+  Request sent by:
+  <span class="profile-link">
+    <%= link_to friendship.sender.name, user_path(friendship.sender), class: 'profile-link' %>
+  </span>
+  <span class="profile-link">
+    <%= link_to 'Accept Request', accept_friendship_path(id: friendship.id), class: 'profile-link', method: :update %> | 
+    <%= link_to 'Refuse Request', friendship_path(id: friendship.id), class: 'profile-link', method: :delete %>
+  </span>
+</li>

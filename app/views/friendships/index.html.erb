@@ -1,0 +1,27 @@
+<section class="users-section">
+  <ul class="users-list">
+    <% if !@friendships.empty? %>
+      <table>
+        <thead>
+          <tr>
+            <th>Request sent by</th>
+            <th>Options</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+      
+        <tbody>
+            <% @friendships.each do |f| %>
+              <tr>
+                <td><%= f.sender.name %></td>
+                <td><%= link_to 'Accept Request', accept_friendship_path(id: f.id), class: 'profile-link', method: :put %> | </td>
+                <td><%= link_to 'Refuse Request', friendship_path(id: f.id), class: 'profile-link', method: :delete %></td>
+              </tr>
+            <% end %>
+        </tbody>
+      </table>
+    <% else %>
+    <p>You don't have any friendship requests</p>
+  <% end %>
+  </ul>
+</section>

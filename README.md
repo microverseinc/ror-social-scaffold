@@ -8,8 +8,8 @@
 
 ## Built With
 
-- Ruby >= 2.7.0
-- Ruby on Rails >= 5.2.4
+- Ruby >= 2.7.2
+- Ruby on Rails >= 6.1.3.1
 
 ## Live Demo
 
