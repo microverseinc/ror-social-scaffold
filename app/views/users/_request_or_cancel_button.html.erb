@@ -1,5 +1,5 @@
 <% if !requested_user?(user) %>
-  <%= render 'request',user:user %>
+  <%= render 'request',user:user ,index:index%>
 <% else %>
-  <%= render 'cancel_request', user: user %>
+  <%= render 'cancel_request', user: user, index:index %>
 <% end %>
