@@ -1,29 +1,30 @@
-<li class="post">
-  <div class="post-title">
-    <div class='post-attribution' >
-      <%= link_to post.user.name, user_path(post.user), class: 'post-author' %>
-      <span class='post-date'> <%= post.created_at.strftime("%Y/%m/%d") %> </span>
+<li class="posts-li">
+  <div>
+    <div>
+      <strong>by: </strong><%= link_to post.user.name, user_path(post.user), class: 'post-author' %>
     </div>
-    <div class='post-liking'>
-      <%= like_or_dislike_btn(post) %>
-      <i class="far fa-thumbs-up"></i>
-      <span><%= post.likes.count%></span>
+    <p class="post-content">
+      <%= post.content %>
+    </p>
+
+    <div class='post-comments-section'>
+      <%= render partial: 'comments/comment', collection: post.comments %>
+
+      <%= form_for(post.comments.new, url: post_comments_path(post)) do |form| %>
+        <%= form.text_field :content, id: :comment_content, class: 'form-comments-control', placeholder: 'Add new Comment' %>
+        <div class="post-actions">
+          <div class='post-liking'>
+            <%= like_or_dislike_btn(post) %>
+            <i class="far fa-thumbs-up"></i>
+            <span><%= post.likes.count%></span>
+          </div>
+          <div class="comments-footer">
+            <span><%= post.comments.count%></span>
+            <i class="far fa-comments"></i>
+            <%= form.submit 'Comment', class: 'comment-btn' %>
+          </div>
+        </div>
+      <% end %>
     </div>
-  </div>
-  <p class="post-content">
-    <%= post.content %>
-  </p>
-
-  <div class='post-comments-section'>
-    <%= render partial: 'comments/comment', collection: post.comments %>
-
-    <%= form_for(post.comments.new, url: post_comments_path(post)) do |form| %>
-      <%= form.text_field :content, id: :comment_content, class: 'form-comments-control', placeholder: 'Add new Comment' %>
-      <div class="comment-footer">
-        <%= form.submit 'Comment', class: 'btn btn-secondary' %>
-        <i class="far fa-comments"></i>
-        <span><%= post.comments.count%></span>
-      </div>
-    <% end %>
   </div>
 </li>

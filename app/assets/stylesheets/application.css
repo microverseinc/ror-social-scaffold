@@ -14,12 +14,324 @@
  *= require_self
  */
 
-.likes,
-.comments {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  font-family: 'Raleway', sans-serif;
+  transition: 0.5s;
+}
+
+body {
+  background: #f7f3e9;
+  color: #126e82;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.main {
   display: flex;
-  justify-content: start;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+}
+
+.notice,
+.alert {
+  margin-bottom: 8px;
+  width: 100%;
+  height: 30px;
+  text-align: center;
+  padding: 5px;
+  color: dimgrey;
+  font-size: 14px;
+}
+
+.notice {
+  background-color: #d4f6c6;
+}
+
+.alert {
+  background-color: #f6cfc6;
+}
+
+.errors {
+  font-size: 10px;
+  color: red;
+}
+
+.btn {
+  text-transform: uppercase;
+  border: none;
+  border-radius: 4px;
+  transition: 0.5s;
+  cursor: pointer;
+  background: #a3d2ca;
+}
+
+.btn:hover {
+  transition: 0.5s;
+  background: #5eaaa8;
+}
+
+/* ------------------------ Navbar ------------------------ */
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 48px;
+  background-color: #a3d2ca;
+  color: #5eaaa8;
+}
+
+.logo {
+  height: 3em;
+}
+
+.nav-bar a {
+  color: #5eaaa8;
+  text-transform: uppercase;
+  font-weight: 900;
+  transition: 0.5s;
+}
+
+.active a {
+  color: #f7f3e9;
+}
+
+.post-liking a {
+  text-transform: uppercase;
+  border: none;
+  border-radius: 4px;
+  transition: 0.5s;
+  cursor: pointer;
+  background: #a3d2ca;
+  font-size: 0.8em;
+  padding: 5px 50px;
+  color: #fff;
+  font-weight: 800;
+}
+
+.profile-link a {
+  color: #5eaaa8;
+  margin: 0 1em;
+  font-size: 1.3em;
+  font-weight: 600;
+}
+
+.nav-bar a:hover {
+  color: #f7f3e9;
+  transform: scale(1.2);
+  transition: 0.5s;
+}
+
+.nav-menu {
+  width: 80%;
+  justify-content: space-between;
+}
+
+.menu-item {
+  float: left;
+  margin: 0 15px;
+  transition: 0.5s;
+}
+
+.menu-item:hover {
+  color: #f7f3e9;
+  transform: scale(1.1);
+  transition: 0.5s;
+}
+
+.nav-user-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 10em;
+}
+
+/* ------------------------ Timeline ------------------------ */
+
+.new-post-form {
+  width: 70vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.new-post-input {
+  width: 100%;
+  margin: 2em 0;
+  height: 3em;
+  border: #a3d2ca solid 1px;
+  border-radius: 5px;
+  padding: 1em;
+}
+
+.new-post-input:focus {
+  border: #5eaaa8 solid 2px;
+}
+
+.post-btn {
+  width: 100%;
+  padding: 0.6em;
+  color: #f7f3e9;
+  font-weight: 600;
+}
+
+.timeline {
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
   align-items: center;
 }
+
+.timeline h3 {
+  font-size: 2em;
+  margin: 2em 0 1.5em 0;
+}
+
+.posts-ul {
+  width: 100%;
+}
+
+.posts-li {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 4em;
+}
+
+.posts-li div {
+  width: 35vw;
+}
+
+.post-author {
+  font-size: 1.8em;
+  color: #5eaaa8;
+  font-weight: 800;
+}
+
+.post-date {
+  font-size: 0.7em;
+}
+
+.post-content {
+  font-size: 1.5em;
+  margin: 0.5em 0 1em 0.5em;
+}
+
+.form-comments-control {
+  width: 85%;
+  border: 1px solid #5eaaa8;
+  height: 64px;
+  padding: 8px;
+  margin: 0.8em 0;
+  border-radius: 4px;
+}
+
+.post-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 105% !important;
+}
+
+.comment-btn {
+  text-transform: uppercase;
+  border: none;
+  border-radius: 4px;
+  transition: 0.5s;
+  cursor: pointer;
+  background: #a3d2ca;
+  font-size: 0.8em;
+  padding: 5px 50px;
+  color: #fff;
+  font-weight: 800;
+}
+
+.post-liking a:hover,
+.comment-btn:hover {
+  background: #5eaaa8;
+}
+
+.post-liking span,
+.post-liking i,
+.comments-footer span,
+.comments-footer i {
+  font-weight: 800;
+  font-size: 1em;
+  color: #a3d2ca;
+}
+
+.post-comments-section {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  margin: 0 3em;
+  width: 100% !important;
+}
+
+.post-comments {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+  border-bottom: 1px solid #5eaaa8;
+  border-radius: 3px;
+  padding: 10px;
+  width: 85% !important;
+}
+
+/* ------------------------ User Index ------------------------ */
+
+.profile-link strong {
+  font-size: 0.8em;
+  font-weight: 500;
+}
+
+.profile-link a:hover {
+  color: #126e82;
+}
+
+.add-friend-btn {
+  border: none;
+  border-radius: 4px;
+  transition: 0.5s;
+  cursor: pointer;
+  background: #a3d2ca;
+  font-size: 1em;
+  padding: 5px 35px;
+  color: #fff;
+  font-weight: 800;
+}
+
+.add-friend-btn:hover {
+  transform: scale(1.05);
+  background: #126e82;
+}
+
+.friend-status {
+  margin: 8px 0;
+  border: 2px solid #126e82;
+  border-radius: 4px;
+  padding: 4px 2em;
+  font-size: 0.9em;
+  font-weight: 800;
+  cursor: pointer;
+  color: #126e82;
+}
+
+/* ------------------------ User Show ------------------------ */
 
 .user-show-header {
   display: flex;
@@ -33,13 +345,99 @@
   margin-right: 4em;
 }
 
-.friend-status {
-  margin: 8px 0;
-  border: 2px solid #689f38;
-  border-radius: 4px;
-  padding: 4px 2em;
+.profile-link-edit {
+  color: #126e82;
+  font-weight: 600;
+  font-size: 1.1em;
 }
 
-.profile-link-edit {
-  color: #689f38;
+.profile-link-edit:hover {
+  font-size: 1.2em;
+  color: #a3d2ca;
+}
+
+/* ------------------------ Friendship Index ------------------------ */
+
+.friendship-li {
+  margin: 2em 0;
+}
+
+.friendship-name {
+  margin-bottom: 1em;
+}
+
+.friendship-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50vw;
+}
+
+.friendship-btn {
+  border: none;
+  border-radius: 4px;
+  transition: 0.5s;
+  cursor: pointer;
+  background: #a3d2ca;
+  font-size: 1.1em;
+  padding: 5px 35px;
+  color: #fff;
+  font-weight: 800;
+}
+
+.friendship-btn:hover {
+  background: #126e82;
+  transform: scale(1.05);
+}
+
+/* ------------------------ User Sessions ------------------------ */
+
+.user-btn input {
+  border: none;
+  border-radius: 4px;
+  transition: 0.5s;
+  cursor: pointer;
+  background: #a3d2ca;
+  font-size: 1.1em;
+  padding: 5px 35px;
+  color: #fff;
+  font-weight: 800;
+  width: 100%;
+  margin: 1em 0;
+}
+
+.user-btn input:hover {
+  background: #126e82;
+  transform: scale(1.05);
+}
+
+.devise-links {
+  color: #126e82;
+  font-weight: 800;
+  font-size: 1.1em;
+}
+
+.devise-links:hover {
+  color: #a3d2ca;
+}
+
+.omniauth-flex:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.omniauth-links {
+  margin-right: 0.1em;
+  color: #126e82;
+  font-weight: 800;
+  font-size: 1.5em;
+}
+
+.omniauth-links:hover {
+  color: #a3d2ca;
+}
+
+.omniauth-flex i {
+  color: #eb1212;
+  font-size: 1.3em;
 }

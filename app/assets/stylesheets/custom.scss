@@ -1,102 +1,10 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap");
 
-$primary-color-dark: #689f38;
-$primary-color: #8bc34a;
-$primary-color-light: #dcedc8;
-$primary-color-text: #212121;
-$divider-color: #bdbdbd;
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  outline: none;
-}
-
-body {
-  background: #fff;
-  position: relative;
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
-}
-
-h1,
-h2,
-h3 {
-  font-weight: 700;
-}
-
-ul {
-  list-style-type: none;
-}
-
-a {
-  text-decoration: none;
-  color: $primary-color-text;
-}
-
-.nav {
-  display: flex;
-  justify-content: space-between;
-  padding: 16px 48px;
-  background-color: $primary-color-dark;
-  color: $primary-color-light;
-
-  a {
-    color: $primary-color-light;
-    text-transform: uppercase;
-    font-weight: 900;
-  }
-
-  .active a {
-    color: #fff;
-  }
-
-  a:hover {
-    color: #fff;
-  }
-
-  .menu {
-    width: 80%;
-    justify-content: space-between;
-
-    .menu-item {
-      float: left;
-      margin: 0 15px;
-    }
-  }
-}
-
-.main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 16px;
-}
-
-.notice,
-.alert {
-  margin-bottom: 8px;
-  width: 100%;
-  height: 30px;
-  text-align: center;
-  padding: 5px;
-  color: dimgrey;
-  font-size: 14px;
-}
-
-.notice {
-  background-color: #d4f6c6;
-}
-
-.alert {
-  background-color: #f6cfc6;
-}
-
-.errors {
-  font-size: 10px;
-  color: red;
-}
+$primary-color-dark: #a3d2ca;
+$primary-color: #5eaaa8;
+$primary-color-light: #f7f3e9;
+$primary-color-text: #126e82;
+$divider-color: #5eaaa8;
 
 .new_comment {
   display: flex;
@@ -104,20 +12,6 @@ a {
   align-items: flex-start;
   flex-direction: column;
   width: 100%;
-  margin-left: 1em;
-
-  .form-comments-control {
-    width: 60%;
-    border: 1px solid $divider-color;
-    height: 64px;
-    padding: 8px;
-    margin: 0.8em 0;
-    border-radius: 4px;
-  }
-
-  .btn-secondary {
-    width: 40%;
-  }
 }
 
 .new_post {
@@ -131,7 +25,7 @@ a {
   }
 
   .form-control {
-    width: 70%;
+    width: 100%;
     border: 1px solid $divider-color;
     height: 64px;
     padding: 8px;
@@ -146,19 +40,10 @@ a {
       border: 1px solid #f00;
     }
   }
-
-  .btn-primary {
-    width: 70%;
-  }
-
-  .btn-secondary {
-    width: 30%;
-    margin-left: 70%;
-  }
 }
 
 form {
-  width: 80%;
+  width: 100%;
   margin: 8px 0;
 
   .field {
@@ -181,151 +66,6 @@ form {
       width: fit-content;
     }
   }
-
-  .actions {
-    display: flex;
-    justify-content: center;
-    margin: 8px 0;
-  }
-
-  input[type="submit"] {
-    padding: 8px;
-    margin-right: 1em;
-    min-width: 100%;
-    border: none;
-    border-radius: 4px;
-    background-color: $primary-color-dark;
-    color: $primary-color-light;
-    text-transform: uppercase;
-    font-weight: 900;
-    position: relative;
-  }
-
-  input[type="submit"]:hover {
-    background-color: $primary-color;
-    color: #fff;
-  }
-
-  .actions.reset {
-    input[type="submit"] {
-      width: 100%;
-    }
-  }
-}
-
-.title {
-  text-align: center;
-  margin-bottom: 16px;
-  text-transform: capitalize;
-}
-
-.timeline {
-  width: 100%;
-  margin: 16px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  h3 {
-    margin: 1.8em 0;
-    font-size: 1.5em;
-    color: #2d550a;
-  }
-
-  .posts {
-    width: 85%;
-  }
-
-  .post {
-    width: 100%;
-    margin: 2em 0;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .post-title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1em;
-  }
-
-  .post-attribution {
-    .post-author {
-      margin: 2em 0 8px 0;
-      color: $primary-color-dark;
-      text-transform: capitalize;
-      font-size: 1.5em;
-    }
-
-    .post-date {
-      font-size: 0.7em;
-    }
-  }
-
-  .post-liking {
-    a {
-      color: $primary-color-dark;
-      font-weight: bold;
-      font-size: 1em;
-    }
-
-    span,
-    i {
-      color: $primary-color-dark;
-    }
-  }
-
-  .post-content {
-    font-size: 1.1em;
-    padding: 4px 0;
-  }
-
-  .post-comments-section {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
-
-    .post-comments {
-      display: flex;
-      justify-content: center;
-      align-items: start;
-      flex-direction: column;
-      border-bottom: 1px solid $divider-color;
-      border-radius: 3px;
-      margin-bottom: 2px;
-      padding: 10px;
-      width: 60%;
-      margin-left: 1em;
-
-      p {
-        font-size: 0.8em;
-        width: 90%;
-      }
-
-      span {
-        font-size: 0.6em;
-      }
-    }
-
-    .comment-footer {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      width: 60%;
-
-      .btn {
-        margin: 0 1em;
-      }
-
-      i,
-      span {
-        color: $primary-color-dark;
-      }
-    }
-  }
 }
 
 .users-section {
@@ -339,12 +79,6 @@ form {
   .users-list li {
     text-transform: capitalize;
     font-size: 1.2em;
-  }
-
-  .profile-link-edit,
-  .profile-link {
-    color: $primary-color-dark;
-    margin-right: 1em;
   }
 }
 
@@ -361,8 +95,6 @@ form {
     h3 {
       width: 100%;
     }
-
-    justify-content: start;
   }
 }
 

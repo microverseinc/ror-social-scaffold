@@ -1,15 +1,17 @@
-<%= form_for(@post) do |form| %>
-  <%= form.label :content %>
-  <%= form.text_field :content, id: :post_content, class: 'form-control', placeholder: 'Add New Post' %>
-  <%= display_errors(@post) %>
-  <%= form.submit 'Save', class: 'btn btn-primary' %>
-<% end %>
+<div class="new-post-form">
+  <%= form_for(@post) do |form| %>
+    <%= form.label :content %>
+    <%= form.text_field :content, id: :post_content, class: 'new-post-input', placeholder: 'Add New Post' %>
+    <%= display_errors(@post) %>
+    <%= form.submit 'Save', class: 'post-btn btn' %>
+  <% end %>
+</div>
 
 <article class="timeline">
   <h3>
     Recent posts
   </h3>
-  <ul class="posts">
+  <ul class="posts-ul">
     <%= render @timeline_posts %>
   </ul>
 </article>

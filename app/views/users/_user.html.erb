@@ -1,6 +1,6 @@
 <li class="user-show-header">
-  <div>
-    Name: <%= link_to user.name, user_path(user), class: 'profile-link' %>
+  <div class="profile-link">
+    <strong>Name:</strong><%= link_to user.name, user_path(user) %>
   </div>
   <% user(user) %>
   <%= render 'add_friend', friendship: @friendship %>

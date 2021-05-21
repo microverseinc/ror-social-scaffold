@@ -1,16 +1,20 @@
-<li>
-    From: <%= friendship.inviter.name %>
+<li class="friendship-li">
+  <div class="friendship-name">
+    <strong>From: </strong><%= friendship.inviter.name %>
+  </div>
+  <div class="friendship-flex">
     <%= form_with model: friendship, method: "PATCH" do |form| %>
       <%= form.hidden_field :invitee_id %>
       <%= form.hidden_field :inviter_id %>
       <%= form.hidden_field :status, value: true %>
-      <%= form.submit 'Accept Friendship' %>
+      <%= form.submit 'Accept Friendship', class: 'friendship-btn' %>
     <% end %>
     <%= form_with model: friendship, method: "DELETE" do |form| %>
       <%= form.hidden_field :invitee_id %>
       <%= form.hidden_field :inviter_id %>
       <%= form.hidden_field :status %>
-      <%= form.submit 'Reject Friendship' %>
+      <%= form.submit 'Reject Friendship', class: 'friendship-btn' %>
     <% end %>
+  </div>
 </li>
 
