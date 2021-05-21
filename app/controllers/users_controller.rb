@@ -13,5 +13,4 @@ class UsersController < ApplicationController
   def pending_requests
     @users = current_user.users_requesting
   end
-
 end
