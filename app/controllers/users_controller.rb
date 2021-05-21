@@ -9,4 +9,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @posts = @user.posts.ordered_by_most_recent
   end
+
+  def pending_requests
+    @requests = current_user.requests_recieved_unconfirmed
+  end
+
 end
