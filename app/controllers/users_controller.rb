@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   end
 
   def pending_requests
-    @requests = current_user.requests_recieved_unconfirmed
+    @users = current_user.users_requesting
   end
 
 end
