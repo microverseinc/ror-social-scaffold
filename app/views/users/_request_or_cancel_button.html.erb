@@ -1,0 +1,5 @@
+<% if !requested_user?(user) %>
+  <%= render 'request',user:user %>
+<% else %>
+  <%= render 'cancel_request', user: user %>
+<% end %>

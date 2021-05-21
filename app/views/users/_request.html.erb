@@ -1,6 +1,6 @@
-<% if !current_user?(@user) %>
-  <%= form_with model: @request, local: true do |form|%>
-    <%= hidden_field_tag :user_id, @user.id %>
-    <%= form.submit "Invite to friendship", class:"btn btn-success" %>
+<% if !current_user?(user) %>
+  <%= form_with model: new_request(user), local: true do |form|%>
+    <%= hidden_field_tag :friend_id, user.id %>
+    <%= form.submit "Invite to friendship" %>
   <% end %>
 <% end %>

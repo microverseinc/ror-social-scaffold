@@ -6,7 +6,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @request = current_user.requests_sent_unconfirmed.build
     @user = User.find(params[:id])
     @posts = @user.posts.ordered_by_most_recent
   end

@@ -1,10 +1,10 @@
 class FriendshipsController < ApplicationController
 
   def create
-    user_requested = User.find(params[:user_id]) 
-    current_user.users_requested << user_requested
+    user_requested = User.find(params[:friend_id])
+    current_user.users_requested<< user_requested
     redirect_to user_requested
-  end
+  end 
 
 
   def destroy
