@@ -22,6 +22,9 @@
             <%= menu_link_to 'My friends',friends_user_path(current_user)  %>
           </div>
           <div class="menu-item">
+            <%= menu_link_to 'New post',friends_user_path(current_user)  %>
+          </div>
+          <div class="menu-item">
             <%= menu_link_to 'Pending requests', pending_requests_user_path(current_user) %>
           </div>
         </div>
