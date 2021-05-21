@@ -61,4 +61,5 @@ class User < ApplicationRecord
   def friend?(user)
     friends_ids.include?(user.id)
   end
+
 end

@@ -7,4 +7,5 @@ module UsersHelper
   def requesting_user?(user)
     current_user.users_requesting_ids.include?(user.id)
   end
+
 end

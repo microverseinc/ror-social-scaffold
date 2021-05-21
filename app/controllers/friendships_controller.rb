@@ -18,10 +18,28 @@ class FriendshipsController < ApplicationController
   end 
 
 
+  def reject
+    if request = current_user.requests_recieved_unconfirmed.find(params[:id])
+      request.destroy
+      user_requested = User.find(params[:user_id])
+      flash[:notice] = "Cancelled invitation"
+    end
+    if params[:index] == "true"
+         redirect_to users_url
+    else
+      redirect_to user_requested
+    end
+  end
+
+
   def destroy
-    request = current_user.requests_sent_unconfirmed.find(params[:id]).destroy
-    user_requested = User.find(params[:user_id])
-    flash[:notice] = "Cancelled invitation to #{user_requested.name}"
+    # if request = current_user.requests_recieved_unconfirmed.find(params[:id])
+      # request.destroy
+    if request = current_user.requests_sent_unconfirmed.find(params[:id])
+      request.destroy
+      user_requested = User.find(params[:user_id])
+      flash[:notice] = "Cancelled invitation"
+    end
     if params[:index] == "true"
          redirect_to users_url
     else
