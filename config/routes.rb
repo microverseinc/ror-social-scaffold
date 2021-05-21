@@ -11,7 +11,5 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
     resources :likes, only: [:create, :destroy]
   end
-  resources :friendships, only:[:create,:destroy] do
-    patch :accept, on: :member
-  end
+  resources :friendships, only:[:create,:destroy, :update]
 end

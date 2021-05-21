@@ -30,9 +30,10 @@ class FriendshipsController < ApplicationController
   end
 
 
-  def accept
+  def update
     request = current_user.requests_recieved_unconfirmed.find_by(user_id: params[:user_id])
     request.update(confirmed:true)
+    flash[:notice] = "Request accepted from #{User.find(params[:user_id]).name}"
     redirect_to pending_requests_user_url(current_user)
   end
 end
