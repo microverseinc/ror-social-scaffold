@@ -9,11 +9,53 @@ class User < ApplicationRecord
   has_many :posts
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
-  has_many :senders, foreign_key: 'sender_id', class_name: 'Friendship', dependent: :destroy
-  has_many :receivers, foreign_key: 'receiver_id', class_name: 'Friendship', dependent: :destroy
 
-  def friends_id
-    senders.where('status = ? AND (sender_id = ? OR receiver_id = ?)', 1, id, id).pluck(:sender_id,
-                                                                                        :receiver_id).flatten
+  has_many :invitations_received, foreign_key: :invitee_id, class_name: 'Friendship', dependent: :destroy
+  has_many :who_invited_me, through: :invitations_received, source: :inviter, dependent: :destroy
+
+  has_many :invitations_sent, foreign_key: :inviter_id, class_name: 'Friendship', dependent: :destroy
+  has_many :who_i_invited, through: :invitations_sent, source: :invitee, dependent: :destroy
+
+  def friendship_requests(user)
+    return false if who_i_invited.include?(user) || who_invited_me.include?(user)
+
+    who_i_invited << user
   end
+
+  def accept_request(user)
+    friend_request = invitations_i_got.where(inviter_id: user.id).first
+    friend_request.update(accepted: true)
+  end
+
+  def reject_request(user)
+    friend_request = invitations_i_got.where(inviter_id: user.id).first
+    friend_request.destroy
+  end
+
+  def friends
+    User.where(id: invitations_i_got.where(accepted: true).pluck(:inviter_id))
+  end
+
+  def friend?(user)
+    friends.include?(user)
+  end
+
+  def pending_requests_received?(user)
+    pending_requests_i_received.include?(user)
+  end
+
+  def pending_requests_sent?(user)
+    pending_requests_i_sent.include?(user)
+  end
+
+  # People who haven't accepted my request yet
+  def pending_requests_i_sent
+    invitations_sent.map { |friendship| friendship.invitee unless friendship.accepted }
+  end
+
+  # People who I haven't accepted their request yet
+  def pending_requests_i_received
+    invitations_received.map { |friendship| friendship.inviter unless friendship.accepted }
+  end
+
 end

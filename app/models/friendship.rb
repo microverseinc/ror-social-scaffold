@@ -1,4 +1,10 @@
 class Friendship < ApplicationRecord
-  belongs_to :sender, foreign_key: 'sender_id', class_name: 'User'
-  belongs_to :receiver, foreign_key: 'receiver_id', class_name: 'User'
+  after_update(:add_reverse_friendship_pair)
+  belongs_to :inviter, class_name: 'User'
+  belongs_to :invitee, class_name: 'User'
+
+  def add_reverse_friendship_pair
+    friendship = Friendship.find(id)
+    Friendship.create(inviter_id: friendship.invitee_id, invitee_id: friendship.inviter_id, accepted: true) if friendship
+  end
 end
