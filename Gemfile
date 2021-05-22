@@ -44,8 +44,9 @@ group :development, :test do
 end
 
 group :test do
+  gem 'capybara'
   gem 'rspec'
-    gem 'capybara'
+  gem 'shoulda-matchers'
 end
 
 group :development do
