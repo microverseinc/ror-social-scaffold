@@ -57,5 +57,4 @@ class User < ApplicationRecord
   def pending_requests_i_received
     invitations_received.map { |friendship| friendship.inviter unless friendship.accepted }
   end
-
 end
