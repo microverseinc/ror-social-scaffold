@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 
   def index
     @post = Post.new
-    timeline_posts
+    @posts = timeline_posts
   end
 
   def create
@@ -20,12 +20,7 @@ class PostsController < ApplicationController
   private
 
   def timeline_posts
-    target_posts = []
-    current_user.friends.each do |friend|
-      target_posts << friend.posts
-    end
-    target_posts << current_user.posts
-    @timeline_posts ||= target_posts.flatten.sort_by(&:updated_at).reverse
+    current_user.friends_and_own_posts.includes(:comments)
   end
 
   def post_params

@@ -1,0 +1,13 @@
+<hr>
+<br>
+<h3>Friend Requests:</h3>
+<ul>
+  <% current_user.who_invited_me.each do |user| %>
+    <li>
+      <%= user.name %>
+        <%= render 'friendship_status' , user: user %>
+    </li>
+    <% end %>
+</ul>
+<br>
+<hr>
