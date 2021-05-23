@@ -16,7 +16,7 @@ class User < ApplicationRecord
   has_many :invitations_sent, foreign_key: :inviter_id, class_name: 'Friendship', dependent: :destroy
   has_many :who_i_invited, through: :invitations_sent, source: :invitee, dependent: :destroy
 
-  def friendship_request(user)
+def friendship_request(user)
     return false if who_i_invited.include?(user) || who_invited_me.include?(user)
 
     who_i_invited << user
@@ -36,8 +36,12 @@ class User < ApplicationRecord
     User.where(id: invitations_received.where(accepted: true).pluck(:inviter_id))
   end
 
+  def friends_and_own_posts
+    Post.where(user: (friends.to_a << self))
+  end
+
   def friend?(user)
-    friends.include?(user)
+    self.friends.include?(user)
   end
 
   def pending_requests_sent?(user)
