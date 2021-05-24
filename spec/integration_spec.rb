@@ -8,11 +8,11 @@ feature 'Friendship integration testing by requests sent and accepted' do
   end
 
   scenario 'home page has new post input tag' do
-    page.has_selector?('#post_content')
+    expect(page).to have_selector('#post_content')
   end
 
   scenario 'users page has users' do
     visit users_path
-    page.has_selector?('.user')
+    expect(page).to have_selector('.user')
   end
 end
