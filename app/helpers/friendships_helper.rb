@@ -10,4 +10,10 @@ module FriendshipsHelper
   def new_request(user)
     current_user.requests_sent_unconfirmed.build(friend_id: user.id)
   end
+
+  def request(user)
+    request_sent = Friendship.find_by(user_id:current_user,friend_id: user.id)
+    request_recieved=Friendship.find_by(user_id:user.id,friend_id:current_user.id)
+    request_sent || request_recieved
+  end
 end

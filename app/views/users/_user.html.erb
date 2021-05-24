@@ -2,7 +2,5 @@
   <span class="user-name"><%= link_to user.name, user %></span>
   <span class="profile-link">
   </span>
-  <% unless current_user.friend?(user) %>
-    <%= render 'friendship_button', user: user ,index:index%>
-  <% end %>
+  <%= render 'friendship_button', user: user ,index:index%>
 </li>
