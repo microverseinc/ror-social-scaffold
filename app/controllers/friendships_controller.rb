@@ -29,7 +29,7 @@ class FriendshipsController < ApplicationController
     redirect_back fallback_location: root_url
   end
 
-  def delete; 
+  def delete
     user = User.find(params[:user_id])
     friendship(user).destroy
     flash[:notice] = "Cancelled friendship with #{user.name}"

@@ -10,14 +10,13 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
-
   has_many :requests_sent,
-            foreign_key: :user_id,
-            dependent: :destroy
+           foreign_key: :user_id,
+           dependent: :destroy
 
   has_many :request_recieved,
-            foreign_key: :friend_id,
-            dependent: :destroy
+           foreign_key: :friend_id,
+           dependent: :destroy
 
   has_many :requests_sent_unconfirmed,
            -> { where(confirmed: false) },

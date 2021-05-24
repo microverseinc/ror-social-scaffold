@@ -12,8 +12,8 @@ module FriendshipsHelper
   end
 
   def friendship(user)
-    request_sent = Friendship.find_by(user_id:current_user,friend_id: user.id)
-    request_recieved=Friendship.find_by(user_id:user.id,friend_id:current_user.id)
+    request_sent = Friendship.find_by(user_id: current_user, friend_id: user.id)
+    request_recieved = Friendship.find_by(user_id: user.id, friend_id: current_user.id)
     request_sent || request_recieved
   end
 end
