@@ -1,18 +1,14 @@
 Rails.application.routes.draw do
 
   root 'posts#index'
-
   devise_for :users
 
-  resources :users, only: [:index, :show]
-  resources :friendships, only: [:index, :destroy]
-  post '/new_friendship', to: 'friendships#create'
-  put '/accept_friendship', to: 'friendships#accept'
-
-  resources :posts, only: [:index, :create] do
+  resources :users, only: %i[index show]
+  resources :posts, only: %i[index create] do
     resources :comments, only: [:create]
-    resources :likes, only: [:create, :destroy]
+    resources :likes, only: %i[create destroy]
   end
+  resources :friendships, only: %i[create update], controller: 'friendships'
+  delete '/friendships/:id' => 'friendships#destroy', as: :destroy_friendship
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -1,33 +1,19 @@
 class FriendshipsController < ApplicationController
   before_action :authenticate_user!
 
-  def index
-    @friendships = current_user.receivers.where(status: 0).all
-  end
-
   def create
-    @friendship = current_user.senders.new(receiver_id: params[:receiver_id])
-
-    if @friendship.save
-      redirect_to users_path, notice: 'Request sent!'
-    else
-      redirect_to users_path, alert: @friendship.errors.full_messages.join('. ').to_s
-    end
+    invitee = User.find(params[:invitee_id])
+    current_user.friendship_request(invitee) if invitee
+    redirect_to user_path(params[:invitee_id])
   end
 
-  def accept
-    @friendship = Friendship.find_by(id: params[:id])
-    @friendship.update(status: 1)
-    redirect_to friendships_path
+  def update
+    current_user.accept_request(Friendship.find(params[:id]).inviter)
+    redirect_to users_path
   end
 
   def destroy
-    @friendship = Friendship.find_by(id: params[:id])
-    if @friendship
-      @friendship.destroy
-      redirect_to users_path, notice: 'Connection removed.'
-    else
-      redirect_to users_path, alert: 'You are not friends with this person nor have requested a friendship.'
-    end
+    current_user.reject_request(Friendship.find(params[:id]).inviter)
+    redirect_to users_path
   end
 end

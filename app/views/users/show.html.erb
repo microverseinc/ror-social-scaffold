@@ -1,8 +1,9 @@
 <section class="user-section">
-  <h2><%= "Name: #{@user.name}" %></h2>
-  <span class="profile-link">
-    <%= friend?(@user) %>
-  </span>
+  <h2><%= @user.name %></h2>
+
+  <%= display_friendship_requests(@user) %>
+  <%= display_other_user_friendship_options(@user) %>
+
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">

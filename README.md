@@ -26,13 +26,13 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-Ruby: >= 2.7.0
-Rails: >= 5.2.4
-Postgres: >= 9.5
+- Ruby >= 2.7.2
+- Ruby on Rails >= 6.1.3.1
+- Postgres >= 9.5
 
 ### Setup
 
-Instal gems with:
+Install gems with:
 
 ```
 bundle install
@@ -70,8 +70,6 @@ Open `http://localhost:3000/` in your browser.
 ```
     rpsec --format documentation
 ```
-
-> Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
 
 ### Troubleshooting
 
