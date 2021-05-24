@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User do
   fixtures :users
+  fixtures :friendships
 
   subject(:user) { users(:John) }
   let(:invalid_user) { User.new }
@@ -17,4 +18,18 @@ RSpec.describe User do
       expect(invalid_user).not_to be_valid
     end
   end
+
+
+  describe "friends list has all friends" do
+    it 'should have two friends from fixtures' do
+      expect(subject.friends.count).to eq 2
+    end
+  end
+
+  describe "friends should have request sent" do
+    it 'should have user sam from fixtures in friends array' do
+        friend_requested = users(:Sam)
+      expect(subject.friends_from_requests_sent).to be_include(friend_requested)
+      end
+    end
 end

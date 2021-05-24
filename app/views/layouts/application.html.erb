@@ -27,6 +27,9 @@
           <div class="menu-item">
             <%= menu_link_to 'Pending requests', pending_requests_user_path(current_user) %>
           </div>
+          <div class="menu-item">
+            <%= menu_link_to current_user.name, user_path(current_user) %>
+          </div>
         </div>
         <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
       <% else %>
