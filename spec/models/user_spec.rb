@@ -19,17 +19,23 @@ RSpec.describe User do
     end
   end
 
-
-  describe "friends list has all friends" do
+  describe 'friends list has all friends' do
     it 'should have two friends from fixtures' do
       expect(subject.friends.count).to eq 2
     end
   end
 
-  describe "friends should have request sent" do
+  describe 'friends should have request sent' do
     it 'should have user sam from fixtures in friends array' do
-        friend_requested = users(:Sam)
+      friend_requested = users(:Sam)
       expect(subject.friends_from_requests_sent).to be_include(friend_requested)
-      end
     end
+  end
+
+  describe 'friends should have request recieved' do
+    it 'should have user sam from fixtures in friends array' do
+      friend_accepted = users(:Jean)
+      expect(subject.friends_from_requests_accepted).to be_include(friend_accepted)
+    end
+  end
 end
