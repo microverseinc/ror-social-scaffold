@@ -8,6 +8,11 @@ RSpec.describe User, type: :model do
   let(:posts) { User.reflect_on_association(:posts).macro }
   let(:likes) { User.reflect_on_association(:likes).macro }
   let(:comments) { User.reflect_on_association(:comments).macro }
+  let(:pending_friendships) { User.reflect_on_association(:pending_friendships).macro }
+  let(:pending_friends) { User.reflect_on_association(:pending_friends).macro }
+  let(:friends) { User.reflect_on_association(:friends).macro }
+  let(:accepted_friends) { User.reflect_on_association(:accepted_friends).macro }
+  let(:friendships_request) { User.reflect_on_association(:friendships_request).macro }
 
   it 'checks and validates user' do
     @user = User.create(name: 'user', email: 'user@example.com', password: '987654321')
@@ -32,6 +37,26 @@ RSpec.describe User, type: :model do
 
   it 'check if inverse_friendships association is correct' do
     expect(inverse_friendships).to eq(:has_many)
+  end
+
+  it 'check if pending_friendships association is correct' do
+    expect(pending_friendships).to eq(:has_many)
+  end
+
+  it 'check if pending_friends association is correct' do
+    expect(pending_friends).to eq(:has_many)
+  end
+
+  it 'check if friends association is correct' do
+    expect(friends).to eq(:has_many)
+  end
+
+  it 'check if accepted_friends association is correct' do
+    expect(accepted_friends).to eq(:has_many)
+  end
+
+  it 'check if friendships_request association is correct' do
+    expect(friendships_request).to eq(:has_many)
   end
 
   context 'validation test' do

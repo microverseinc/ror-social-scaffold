@@ -12,12 +12,11 @@ class User < ApplicationRecord
   has_many :friendships
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
   has_many :pending_friendships, -> { where Acceptance: false }, class_name: 'Friendship', foreign_key: 'user_id'
-  has_many :pending_friends, through: :pending_friendships, source: :friend 
+  has_many :pending_friends, through: :pending_friendships, source: :friend
   has_many :friends, through: :accepted_friendships
-  has_many :accepted_friends, -> { where Acceptance: true}, class_name: 'Friendship'
+  has_many :accepted_friends, -> { where Acceptance: true }, class_name: 'Friendship'
   has_many :friend_request, through: :inverse_friendships, source: :friend
-  has_many :friendships_request, -> { where Acceptance: false}, class_name: 'Friendship'
-  
+  has_many :friendships_request, -> { where Acceptance: false }, class_name: 'Friendship'
 
   def friends
     friends_array = friendships.map { |friendship| friendship.friend if friendship.Acceptance }
