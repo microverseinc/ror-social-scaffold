@@ -27,11 +27,13 @@ feature 'Friendship integration testing by requests sent and accepted' do
     page.has_button?("Invite to friendship")
   end
   
-  scenario 'users have option to invite to friendship' do
+  scenario 'users have option to invite to friendship and can cancel invite' do
     visit user_path(users(:John))
     count_before  = Friendship.count
     click_button('Invite to friendship')
-    # expect(page).to have_button('Cancel invitation')
     expect(Friendship.count).to eq(count_before + 1)
+    click_button('Cancel invitation')
+    expect(Friendship.count).to eq(count_before)
   end
+
 end
