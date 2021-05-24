@@ -7,5 +7,12 @@
     <ul class="posts">
       <%= render @posts %>
     </ul>
+    <br>
+    <h3>Pending Friend Requests:</h3>
+    <ul class="posts">
+      <% @user.friend_requests.each do |request| %>
+          <%= request.name %>
+        <% end %>
+    </ul>
   </article>
 </section>
