@@ -365,15 +365,15 @@ form {
   padding: 1rem;
   position: relative;
 
-  .bg-red {
-    background-color: indianred;
-
-    &:hover {
-      background-color: red;
-    }
-  }
-
   .user-name {
     margin-top: 0.5rem;
+  }
+}
+
+form [type=submit].bg-red {
+  background-color: indianred;
+
+  &:hover {
+    background-color: red;
   }
 }
