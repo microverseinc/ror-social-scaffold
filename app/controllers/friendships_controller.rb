@@ -1,4 +1,5 @@
 class FriendshipsController < ApplicationController
+  include FriendshipsHelper
   def create
     new_request = current_user.requests_sent_unconfirmed.build(friend_id: params[:friend_id])
     user_requested = User.find(params[:friend_id])
@@ -28,5 +29,10 @@ class FriendshipsController < ApplicationController
     redirect_back fallback_location: root_url
   end
 
-  def delete; end
+  def delete; 
+    user = User.find(params[:user_id])
+    friendship(user).destroy
+    flash[:notice] = "Cancelled friendship with #{user.name}"
+    redirect_back fallback_location: root_url
+  end
 end
