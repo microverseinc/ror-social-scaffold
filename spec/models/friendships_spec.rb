@@ -23,11 +23,11 @@ RSpec.describe Friendship do
   end
 
   describe :invalid_password do
-    it "should have valid name" do
-      user = User.new(name:'samrood',email:'some@gmail.com')
-      user.valid?
-      expect(user.errors.full_messages).to include("Password can't be blank")
-      expect(user).not_to be_valid
+    it "should have valid friend id" do
+      friendship = Friendship.new(user_id:1,confirmed:true)
+      friendship.valid?
+      expect(friendship.errors.full_messages).to include("Friend must exist")
+      expect(friendship).not_to be_valid
     end
   end
 
