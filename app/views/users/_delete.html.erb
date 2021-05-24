@@ -1,0 +1,4 @@
+<%= form_with url:delete_friendship_url(friendship(user)), local: true, html:{method: :delete},data:{confirm:"Are you sure you want to  cancel friendship with #{user.name}?"} do |form|%>
+  <%= hidden_field_tag :user_id, user.id %>
+  <%= form.submit "Delete friendship",class:"bg-red" %>
+<% end %>

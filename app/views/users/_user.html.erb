@@ -1,6 +1,8 @@
-<li>
-  Name: <%= user.name %>
-  <span class="profile-link">
-    <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-  </span>
+<li class="user">
+  <div>
+    <%= link_to gravatar_for(user,size:50), user %>
+    <span class="user-name"><%= link_to user.name, user %></span>
+  </div>
+  <span class="profile-link"><%= link_to "View profile",user %></span>
+  <%= render 'friendship_button', user: user ,index:index%>
 </li>

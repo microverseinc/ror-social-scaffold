@@ -1,0 +1,5 @@
+<%= form_with url:reject_friendship_url(request_recieved(user)), local: true, html:{method: :delete} do |form|%>
+  <%= hidden_field_tag :user_id, user.id %>
+  <%= hidden_field_tag :index, index %>
+  <%= form.submit "Reject invitation" ,class:"bg-red"%>
+<% end %>

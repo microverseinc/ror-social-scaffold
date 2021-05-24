@@ -1,0 +1,5 @@
+<%= form_with model: request_sent(user), local: true, html:{method: :delete} do |form|%>
+  <%= hidden_field_tag :user_id, user.id %>
+  <%= hidden_field_tag :index, index %>
+  <%= form.submit "Cancel invitation",class:"bg-red" %>
+<% end %>

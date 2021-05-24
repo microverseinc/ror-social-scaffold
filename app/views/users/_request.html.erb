@@ -1,0 +1,7 @@
+<% if !current_user?(user) %>
+  <%= form_with model: new_request(user), local: true do |form|%>
+    <%= hidden_field_tag :friend_id, user.id %>
+    <%= hidden_field_tag :index, index %>
+    <%= form.submit "Invite to friendship" %>
+  <% end %>
+<% end %>

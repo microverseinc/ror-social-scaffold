@@ -1,5 +1,6 @@
 <div class="post-comments">
   <p>
+    <%= link_to gravatar_for(comment.user,size:30), comment.user%>
     <b><%= comment.user.name %>:</b> <%= comment.content %>
   </p>
   <span> <%= comment.created_at.strftime("%Y/%m/%d") %> </span>

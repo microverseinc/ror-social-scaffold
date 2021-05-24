@@ -1,0 +1,10 @@
+<% if current_user.friend?(user) %>
+  <%= render 'delete',user:user %>
+<% elsif requesting_user?(user) %>
+  <%= render 'accept_request',index:index,user:user %>
+  <%= render 'reject_request',index:index,user:user %>
+<% elsif !requested_user?(user) %>
+  <%= render 'request',user:user ,index:index%>
+<% else %>
+  <%= render 'cancel_request', user: user, index:index %>
+<% end %>

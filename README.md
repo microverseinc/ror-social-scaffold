@@ -1,8 +1,9 @@
-# We-talk Social Media App
+# Stay in touch
 A social media app where you can meet new people, request friendships, create and like posts.
 Share with the world the people the stories you have. Discuss what's popular with your friends.
 
-<!-- ![Screenshot of the app](./social-media-app.png) -->
+![Screenshot of the app](./app-ss-requests.png)
+![Screenshot of the app](./app-ss-home-page.png)
 ## Getting started
 
 To get started with the app, first clone the repo and `cd` into the directory:
