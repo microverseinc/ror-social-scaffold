@@ -15,10 +15,10 @@ RSpec.describe Friendship do
 
   describe :invalid_name do
     it "should have valid name" do
-      user = User.new(name:'',email:'some@gmail.com')
-      user.valid?
-      expect(user.errors.full_messages).to include("Name can't be blank")
-      expect(user).not_to be_valid
+      friendship = Friendship.new(friend_id:2,confirmed:true)
+      friendship.valid?
+      expect(friendship.errors.full_messages).to include("User must exist")
+      expect(friendship).not_to be_valid
     end
   end
 
