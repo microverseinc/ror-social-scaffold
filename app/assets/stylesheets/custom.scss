@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap");
 
-$primary-color-dark: #689f38;
-$primary-color: #8bc34a;
+$primary-color-dark: #024b;
+$primary-color: #07365f;
 $primary-color-light: #dcedc8;
 $primary-color-text: #212121;
 $divider-color: #bdbdbd;
@@ -46,6 +46,7 @@ a {
     color: $primary-color-light;
     text-transform: uppercase;
     font-weight: 900;
+    margin: 0 1rem;
   }
 
   .active a {
@@ -86,7 +87,8 @@ a {
 }
 
 .notice {
-  background-color: #d4f6c6;
+  background-color: #0074d9;
+  color: white;
 }
 
 .alert {
@@ -361,7 +363,7 @@ form {
   text-align: center;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  border: 1px solid green;
+  border: 1px solid #0074d9;
   padding: 1rem;
   position: relative;
 
@@ -371,7 +373,7 @@ form {
 }
 
 form [type=submit].bg-red {
-  background-color: indianred;
+  background-color: rgb(182, 3, 3);
 
   &:hover {
     background-color: red;

@@ -22,7 +22,7 @@
             <%= menu_link_to 'My friends',friends_user_path(current_user)  %>
           </div>
           <div class="menu-item">
-            <%= menu_link_to 'New post',friends_user_path(current_user)  %>
+            <%= menu_link_to 'New post',root_path %>
           </div>
           <div class="menu-item">
             <%= menu_link_to 'Pending requests', pending_requests_user_path(current_user) %>
@@ -33,7 +33,10 @@
         </div>
         <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
       <% else %>
-        <%= link_to 'Sign in', user_session_path %>
+        <div class="sign-link">
+          <%= link_to 'Sign in', user_session_path %>
+          <%= link_to 'Sign Up', new_user_registration_path %>
+        </div>
       <% end %>
     </nav>
     <% if notice.present? %>
