@@ -46,4 +46,9 @@ class User < ApplicationRecord
   def friend?(user)
     friends.include?(user)
   end
+
+  def friends_and_own_posts
+    Post.where(user: (friends.to_a << self))
+    # This will produce SQL query with IN. Something like: select * from posts where user_id IN (1,45,874,43);
+  end
 end
