@@ -17,6 +17,6 @@ module ApplicationHelper
   end
 
   def friendship_id(inviter_id, invitee_id)
-    Friendship.where(inviter_id: inviter_id, invitee_id: invitee_id).take.id
+    Friendship.where(inviter_id: inviter_id, invitee_id: invitee_id).first.id
   end
 end

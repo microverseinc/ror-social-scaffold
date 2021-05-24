@@ -22,13 +22,13 @@ class User < ApplicationRecord
 
   has_many :confirmed_friendships, lambda {
                                      where accepted: true
-                                   }, foreign_key: :invitee_id, class_name: 'Friendship', dependent: :destroy
-  has_many :friends, through: :confirmed_friendships, source: :inviter, dependent: :destroy
+                                   }, foreign_key: :inviter_id, class_name: 'Friendship', dependent: :destroy
+  has_many :friends, through: :confirmed_friendships, source: :invitee, dependent: :destroy
 
   def friendship_request(user)
     return false if who_i_invited.include?(user) || who_invited_me.include?(user)
 
-    who_i_invited << user
+    Friendship.create!(inviter: self, invitee: user)
   end
 
   def accept_request(user)

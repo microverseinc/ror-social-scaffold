@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
     resources :likes, only: %i[create destroy]
   end
-  resources :friendships, only: %i[create update destroy]
+  resources :friendships, only: %i[create update], controller: 'friendships'
+  delete '/friendships/:id' => 'friendships#destroy', as: :destroy_friendship
 
 end

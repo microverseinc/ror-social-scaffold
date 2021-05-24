@@ -6,7 +6,7 @@
     <span class="status">Pending</span>
   <% elsif current_user.pending_requests_received?(user) %>
     <%= link_to 'Accept Request', friendship_path(id: friendship_id(user.id, current_user.id)), method: :patch %> | 
-    <%= link_to 'Cancel Request', friendship_path(id: friendship_id(user.id, current_user.id)), method: :delete %>
+    <%= link_to 'Cancel Request', destroy_friendship_path(id: friendship_id(user.id, current_user.id)), method: :delete %>
   <% else%>
     <%= link_to 'Add Friend', friendships_path(invitee_id: user.id), method: :post %>
   <% end %>
