@@ -14,8 +14,8 @@ RSpec.describe User do
   end
 
   describe :invalid_name do
-    it "should have valid name" do
-      user = User.new(name:'',email:'some@gmail.com')
+    it 'should have valid name' do
+      user = User.new(name: '', email: 'some@gmail.com')
       user.valid?
       expect(user.errors.full_messages).to include("Name can't be blank")
       expect(user).not_to be_valid
@@ -23,14 +23,13 @@ RSpec.describe User do
   end
 
   describe :invalid_password do
-    it "should have valid name" do
-      user = User.new(name:'samrood',email:'some@gmail.com')
+    it 'should have valid name' do
+      user = User.new(name: 'samrood', email: 'some@gmail.com')
       user.valid?
       expect(user.errors.full_messages).to include("Password can't be blank")
       expect(user).not_to be_valid
     end
   end
-
 
   describe :invalidity do
     it 'should not be valid with blank fields' do
