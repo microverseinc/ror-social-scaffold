@@ -22,9 +22,7 @@ class FriendshipsController < ApplicationController
   end
 
   def update
-    request = current_user.requests_recieved_unconfirmed.find_by(user_id: params[:user_id])
-    request.update(confirmed: true)
-    Friendship.create(user_id: current_user.id, friend_id: params[:user_id], confirmed: true)
+    current_user.confirm_friend params[:friend_id]
     flash[:notice] = "Request accepted from #{User.find(params[:user_id]).name}"
     redirect_back fallback_location: root_url
   end
