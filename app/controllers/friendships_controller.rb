@@ -1,9 +1,9 @@
 class FriendshipsController < ApplicationController
   include FriendshipsHelper
   def create
-    new_request = current_user.requests_sent_unconfirmed.build(friend_id: params[:friend_id])
+    current_user.requests_sent_unconfirmed.create(friend_id: params[:friend_id])
     user_requested = User.find(params[:friend_id])
-    current_user.requests_sent_unconfirmed << new_request
+    user_requested.requents_sent_unconfirmed.create(friend_id:current_user.id)
     flash[:notice] = "Invitation Sent to #{user_requested.name}"
     redirect_back fallback_location: root_url
   end
