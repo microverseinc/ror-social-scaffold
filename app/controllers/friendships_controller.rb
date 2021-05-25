@@ -1,9 +1,8 @@
 class FriendshipsController < ApplicationController
   include FriendshipsHelper
   def create
-    new_request = current_user.requests_sent_unconfirmed.build(friend_id: params[:friend_id])
+    current_user.requests_sent_unconfirmed.create(friend_id: params[:friend_id])
     user_requested = User.find(params[:friend_id])
-    current_user.requests_sent_unconfirmed << new_request
     flash[:notice] = "Invitation Sent to #{user_requested.name}"
     redirect_back fallback_location: root_url
   end
@@ -23,9 +22,9 @@ class FriendshipsController < ApplicationController
   end
 
   def update
-    request = current_user.requests_recieved_unconfirmed.find_by(user_id: params[:user_id])
-    request.update(confirmed: true)
-    flash[:notice] = "Request accepted from #{User.find(params[:user_id]).name}"
+    request = current_user.requests_recieved_unconfirmed.find_by(user_id: params[:friend_id])
+    request.confirm_friend
+    flash[:notice] = "Request accepted from #{User.find(params[:friend_id]).name}"
     redirect_back fallback_location: root_url
   end
 

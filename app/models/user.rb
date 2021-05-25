@@ -59,7 +59,7 @@ class User < ApplicationRecord
            source: :user
 
   def friends
-    friends_from_requests_sent + friends_from_requests_accepted
+    (friends_from_requests_sent + friends_from_requests_accepted).uniq
   end
 
   def friends_ids
@@ -68,5 +68,9 @@ class User < ApplicationRecord
 
   def friend?(user)
     friends_ids.include?(user.id)
+  end
+
+  def friends_and_own_posts
+    Post.where(user: (friends.to_a << self))
   end
 end
