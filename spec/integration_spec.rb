@@ -35,12 +35,4 @@ feature 'Friendship integration testing by requests sent and accepted' do
     click_button('Cancel invitation')
     expect(Friendship.count).to eq(count_before)
   end
-
-
-  scenario 'mutual friendships when one user accepted' do
-    visit user_path(users(:John))
-    count_before = Friendship.count
-    click_button('Invite to friendship')
-    expect(Friendship.count).to eq(count_before + 1)
-  end
 end

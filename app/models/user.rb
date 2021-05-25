@@ -69,4 +69,8 @@ class User < ApplicationRecord
   def friend?(user)
     friends_ids.include?(user.id)
   end
+
+  def friends_and_own_posts
+    Post.where(user: (friends.to_a << self))
+  end
 end
