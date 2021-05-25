@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
+
   has_many :requests_sent,
            foreign_key: :user_id,
            dependent: :destroy
@@ -59,7 +60,7 @@ class User < ApplicationRecord
            source: :user
 
   def friends
-    friends_from_requests_accepted
+    (friends_from_requests_sent + friends_from_requests_accepted).uniq
   end
 
   def friends_ids
