@@ -59,7 +59,7 @@ class User < ApplicationRecord
            source: :user
 
   def friends
-    friends_from_requests_sent + friends_from_requests_accepted
+    friends_from_requests_accepted
   end
 
   def friends_ids
