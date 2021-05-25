@@ -10,7 +10,6 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
-
   has_many :requests_sent,
            foreign_key: :user_id,
            dependent: :destroy
