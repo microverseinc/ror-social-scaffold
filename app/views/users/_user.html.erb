@@ -3,4 +3,7 @@
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
   </span>
+  <div>
+    <%= request_control(user)%>
+  </div>
 </li>
