@@ -3,26 +3,3 @@
     <%= render @users %>
   </ul>
 </section>
-
-<h2> friends</h2>
-<% @friends.uniq.each do |friend| %>
-<%= friend.name %><br/>
-<% end%>
-
-
-<br/><br/>
-
-<h2> recieved requests</h2>
-<% @friend_requests.each do |friend| %>
-<%= friend.name %><br/>
-<%= link_to 'Confirm', confirm_user_path(friend) %>
-<%= link_to 'Deny', deny_user_path(friend) %>
-<% end%>
-
-
-<br/><br/>
-
-<h2> pending requests</h2>
-<% @pending_requests.each do |friend|%>
-<%= friend.name %><br/>
-<% end%> 
