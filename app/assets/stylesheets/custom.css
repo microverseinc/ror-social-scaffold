@@ -54,7 +54,6 @@ a {
 
 .nav {
   display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
@@ -92,7 +91,6 @@ a {
 
 .main {
   display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -131,7 +129,6 @@ a {
 .new_post,
 .new_comment {
   display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -209,7 +206,6 @@ form .field input[type="checkbox"] {
 
 form .actions {
   display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
@@ -247,7 +243,6 @@ form .actions.reset input[type="submit"] {
   width: 100%;
   margin: 16px 0;
   display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -270,7 +265,6 @@ form .actions.reset input[type="submit"] {
   width: 100%;
   margin: 16px 0;
   display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -317,7 +311,6 @@ form .actions.reset input[type="submit"] {
 .timeline .post-comments-section .post-comments {
   position: relative;
   display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   border-bottom: 1px solid #bdbdbd;
   border-radius: 3px;
@@ -339,6 +332,7 @@ form .actions.reset input[type="submit"] {
 .users-section {
   width: 100%;
   margin: 10px;
+  margin-left: 16px;
 }
 
 .users-section .users-list li {
@@ -351,11 +345,6 @@ form .actions.reset input[type="submit"] {
   font-size: 0.8em;
   margin: 0 0 8px 0;
   color: #689f38;
-}
-
-.user-section {
-  width: 100%;
-  margin-left: 16px;
 }
 
 .user-section h2 {
