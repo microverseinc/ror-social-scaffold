@@ -31,8 +31,8 @@ gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 gem 'bootstrap', '~> 4.4.1'
-gem 'popper_js', '~> 1.16'
 gem 'jquery-rails', '~> 4.3.5'
+gem 'popper_js', '~> 1.16'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
