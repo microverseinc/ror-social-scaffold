@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/mimemagicrb/mimemagic.git
+  revision: 01f92d86d15d85cfd0f20dabd025dcbd36a8a60f
+  ref: 01f92d86d15d85cfd0f20dabd025dcbd36a8a60f
+  specs:
+    mimemagic (0.3.5)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -159,6 +166,14 @@ GEM
     rspec-mocks (3.10.2)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.10.0)
+    rspec-rails (5.0.1)
+      actionpack (>= 5.2)
+      activesupport (>= 5.2)
+      railties (>= 5.2)
+      rspec-core (~> 3.10)
+      rspec-expectations (~> 3.10)
+      rspec-mocks (~> 3.10)
+      rspec-support (~> 3.10)
     rspec-support (3.10.2)
     rubocop (1.16.0)
       parallel (~> 1.10)
@@ -240,11 +255,13 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails (~> 4.3.5)
   listen (>= 3.0.5, < 3.2)
+  mimemagic!
   pg (>= 0.18, < 2.0)
   popper_js (~> 1.16)
   puma (~> 3.12)
   rails (~> 5.2.4)
   rspec
+  rspec-rails
   rubocop
   sass-rails (~> 5.0)
   spring

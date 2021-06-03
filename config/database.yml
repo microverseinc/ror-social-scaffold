@@ -17,14 +17,17 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  database: social_media_app
+  username: postgres
+  password: password
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: localhost
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
-  database: ror_social_scaffold_development
-
+  database: social_media_app
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
@@ -57,7 +60,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: ror_social_scaffold_test
+  database: social_media_app
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -80,6 +83,6 @@ test:
 #
 production:
   <<: *default
-  database: ror_social_scaffold_production
-  username: ror_social_scaffold
-  password: <%= ENV['ROR_SOCIAL_SCAFFOLD_DATABASE_PASSWORD'] %>
+  database: social_media_app_production
+  username: social_media_app
+  password: <%= ENV['ROR_SOCIAL_MEDIA_APP_DATABASE_PASSWORD'] %>
