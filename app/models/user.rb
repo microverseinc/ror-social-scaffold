@@ -6,6 +6,9 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 20 }
 
+  has_many :friendships
+  has_many :inverse_frienships, class_name: 'User', foreign_key: 'friend_id'
+
   has_many :posts
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
