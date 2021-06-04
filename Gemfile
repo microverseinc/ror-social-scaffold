@@ -10,13 +10,10 @@ gem 'rails', '~> 6.1.3', '>= 6.1.3.2'
 # Use postgresql as the database for Active Record
 group :development, :test do
   gem 'database_cleaner'
-  gem 'pg'
   gem 'sqlite3', '~> 1.4'
 end
 
-group :production do
-  gem 'pg'
-end
+gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 5.2', '>= 5.2.2'
 # Use SCSS for stylesheets
