@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  user = User.create(name: 'friend', email: 'foot@bar.com', password: '123456')
+  user = User.create(name: 'user', email: 'foot@bar.com', password: '123456')
   friend = User.create(name: 'friend', email: 'foot@bar.com', password: '123456')
 
   describe 'Associations' do

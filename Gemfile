@@ -10,8 +10,8 @@ gem 'rails', '~> 6.1.3', '>= 6.1.3.2'
 # Use postgresql as the database for Active Record
 group :development, :test do
   gem 'database_cleaner'
-  gem 'sqlite3', '~> 1.4'
   gem 'pg'
+  gem 'sqlite3', '~> 1.4'
 end
 
 group :production do
