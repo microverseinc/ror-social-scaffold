@@ -10,32 +10,19 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
-  has_many :friendships
-  has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
+  # Friendship
+  has_many :friendships, -> { where(status: 'confirmed') }
+  has_many :friends, through: :friendships
 
-  def friends
-    friends_array = friendships.map { |friendd| friendd.friend if friendd.confirmed }
-    friends_array.concact(inverse_friendships.map { |friendd| friendd.user if friendd.confirmed })
-    friends_array.compact
-  end
-
-  # Users who have yet to confirme friend requests
-  def pending_friends
-    friendships.map { |friend_pen| friend_pen.friend unless friend_pen.confirmed }.compact
-  end
-
-  # Users who have requested to be friends
-  def friend_requests
-    inverse_friendships.map { |friend_req| friend_req.user unless friend_req.confirmed }.compact
-  end
-
-  def confirm_friend(user)
-    friendship = inverse_friendships.find { |confirm_friendship| confirm_friendship.user == user }
-    friendship.confirmed = true
-    friendship.save
-  end
+  has_many :friend_requests_sent, -> { where(status: 'pending') },
+           class_name: 'Friendship', foreign_key: 'user_id'
+  has_many :friend_requests_received, -> { where(status: 'pending') },
+           class_name: 'Friendship', foreign_key: 'friend_id'
+  has_many :friend_requests, through: :friend_requests_received, source: :user
 
   def friend?(user)
-    friends.include?(user)
+    friendship = Friendship.find_by(user_id: user.id, friend_id: id, status: 'confirmed') ||
+                 Friendship.find_by(user_id: id, friend_id: user.id, status: 'confirmed')
+    true unless friendship.nil?
   end
 end
