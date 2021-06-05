@@ -16,7 +16,7 @@ class PostsController < ApplicationController
       render :index, alert: 'Post was not created.'
     end
   end
-   
+
   private
 
   def timeline_posts
@@ -26,5 +26,4 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:content)
   end
-
 end
