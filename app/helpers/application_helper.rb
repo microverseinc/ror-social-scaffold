@@ -1,3 +1,4 @@
+# rubocop:disable Layout/LineLength
 module ApplicationHelper
   def menu_link_to(link_text, link_path)
     class_name = current_page?(link_path) ? 'menu-item active' : 'menu-item'
@@ -16,17 +17,40 @@ module ApplicationHelper
     end
   end
 
-  def friendship_button(user)
-    if current_user.friend? user
-      link_to 'Unfriend', friendship_path(user.id), class: 'friendship_btn', method: :delete, remote: true
-    elsif current_user.friend_requests_sent.pluck(:user_id, :friend_id).any?([current_user.id, user.id])
-      link_to 'Cancel Request', friendship_path(user.id), class: 'friendship_btn', method: :delete, remote: true
-    elsif current_user.friend_requests_received.pluck(:user_id, :friend_id).any?([user.id, current_user.id])
-      link_to('Accept friendship?', friendship_path(user.id), class: 'friendship_btn', method: :patch, remote: true) +
-        link_to('Reject friendship', friendship_path(user.id), class: 'friendship_btn', method: :delete, remote: true)
+  def owner_or_friend?(user)
+    current_user.id == user.id || current_user.friend?(user)
+  end
+
+  def owner?(user)
+    current_user.id == user.id
+  end
+
+  def friend_requests_button(user)
+    return if owner?(user)
+
+    if current_user.friend?(user)
+      render html: '<span class="btn btn-success fr"> <i class="fas fa-thumbs-up"></i> Friendship confirmed </span>'.html_safe
+
+    elsif current_user.pending_friendship?(user)
+      render html: '<button type="button" class=""><i class="fas fa-heartbeat"></i><span> Pending </span></button>'.html_safe
+
     else
-      link_to 'Invite to friendship', friendships_path(id: user.id), class: 'friendship_btn', method: :post,
-                                                                     remote: true
+      link_to('Add Friend', user_friendships_path(user_id: user.id), method: :post, class: 'friendship_btn')
     end
   end
+
+  def accept_friendship(friendship)
+    actual_user = User.find_by(id: params[:id])
+    return unless current_user == actual_user
+
+    link_to('Accept', user_friendship_path(friendship.user, friendship.id), method: :put, class: 'friendship_btn')
+  end
+
+  def reject_friendship(friendship)
+    actual_user = User.find_by(id: params[:id])
+    return unless current_user == actual_user
+
+    link_to('Reject', user_friendship_path(friendship.user, friendship.id), method: :delete, class: 'friendship_btn_2')
+  end
 end
+# rubocop:enable Layout/LineLength

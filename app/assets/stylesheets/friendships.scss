@@ -5,15 +5,23 @@
 @import 'custom.scss';
 
 .friendship_btn {
+  background-color: lightgreen;
+}
+
+.friendship_btn_2 {
+  background-color: red;
+}
+
+.friendship_btn,
+.friendship_btn_2 {
   padding: 4px 10px;
   margin: 0 10px;
   font-size: 14px;
   border: none;
   border-radius: 4px;
-  background-color: lightgreen;
-  color: white;
   text-transform: capitalize;
   text-decoration: none;
+  color: white;
 }
 
 .friendship_btn:hover {
