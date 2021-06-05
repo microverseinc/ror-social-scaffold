@@ -23,7 +23,7 @@ module ApplicationHelper
       link_to('pending friendship ', '#', class: 'profile-link')
     elsif current_user.friend_requests.include?(user)
       link_to('Accept  ', invite_path(user_id: user.id), class: 'profile-link', method: :put, remote: true) +
-      link_to('  Reject', reject_path(user_id: user.id), class: 'profile-link', method: :delete, remote: true)
+        link_to('  Reject', reject_path(user_id: user.id), class: 'profile-link', method: :delete, remote: true)
     else
       link_to('Invite to friendship', invite_path(user_id: user.id), class: 'profile-link', method: :post)
     end
