@@ -18,6 +18,8 @@ default: &default
   adapter: postgresql
   encoding: unicode
   database: social_media_app
+  username: postgres
+  password: password
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   host: localhost
   # For details on connection pooling, see Rails configuration guide

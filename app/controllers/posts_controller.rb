@@ -16,14 +16,15 @@ class PostsController < ApplicationController
       render :index, alert: 'Post was not created.'
     end
   end
-
+   
   private
 
   def timeline_posts
-    @timeline_posts ||= Post.all.ordered_by_most_recent.includes(:user)
+    @timeline_posts = Post.where(user: (current_user.friends.to_a << current_user)).ordered_by_most_recent
   end
 
   def post_params
     params.require(:post).permit(:content)
   end
+
 end
