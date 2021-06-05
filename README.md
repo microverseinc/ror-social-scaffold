@@ -16,6 +16,12 @@ TBA
 
 To get a local copy up and running follow these simple example steps.
 
+- To get a local copy of this project, run
+`git clone https://github.com/francisuloko/stay-in-touch.git`
+
+- Change into the project directory, run
+`cd stay-in-touch`
+
 ### Prerequisites
 
 Ruby: 2.6.3
@@ -23,6 +29,11 @@ Rails: 5.2.3
 Postgres: >=9.5
 
 ### Setup
+Instal webpacker with:
+
+```
+rails webpacker:instal
+```
 
 Instal gems with:
 
@@ -71,13 +82,17 @@ TBA
 
 ## Authors
 
-TBA
+👤 **Francis Uloko**
+
+[Github](https://github.com/francisuloko)
+[Twitter](https://twitter.com/francisuloko)
+[LinkedIn](https://linkedin.com/in/francisuloko)
 
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the [issues page](issues/).
+Feel free to check the [issues page](https://github.com/francisuloko/stay-in-touch/issues).
 
 ## Show your support
 
@@ -89,5 +104,4 @@ TBA
 
 ## 📝 License
 
-TBA
-
+This project is [MIT](https://mit-license.org) licensed.

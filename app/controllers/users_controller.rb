@@ -9,4 +9,24 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @posts = @user.posts.ordered_by_most_recent
   end
+
+  def update
+    @user = User.find(params[:user_id])
+
+    if current_user.confirm_friend(@user)
+      redirect_to users_path, notice: 'Accepted Friendship Invitation.'
+    else
+      redirect_to users_path, alert: 'Something Went Wrong'
+    end
+  end
+
+  def destroy
+    @user = User.find(params[:user_id])
+
+    if current_user.reject_request(@user)
+      redirect_to users_path, notice: 'Denied Friendship Invitation.'
+    else
+      redirect_to users_path, alert: 'Something Went Wrong.'
+    end
+  end
 end
