@@ -1,15 +1,20 @@
   
 <section class="user-section">
-  <h2><%= "Name: #{@user.name}" %> <span><%= friend_requests_button(@user) %></span></h2>
+  <div class="d-flex aling-items-center">
+  <h2><%= "Name: #{@user.name}" %> </h2>
+  <% if @user != current_user %>
+  <%= link_to('Add Friend', user_friendships_path(user_id: @user.id), method: :post, class: 'friendship_btn') %>
+  <% end %>
+  </div>
   <% if owner?(@user)%>
    <div>
         <span>Pending friend request(s): <%=@user.friend_requests.count %></span>
-        <%@user.friend_requests.each do |friendship|%>
+        <% @user.friend_requests.each do |friendship| %>
 
         <div class="friend-lineup">
-            <%=friendship.user.name%>:
-            <button type="button" class="bttn-accept"><%= accept_friendship(friendship)%></button> 
-            <button type="button" class="bttn-reject"><%= reject_friendship(friendship)%></button>
+            <%=friendship.user.name%> <span class="text-lowercase"> wans to be your friend </span>
+            <button type="button" class="friendship_btn"><%= accept_friendship(friendship)%></button> 
+            <button type="button" class="friendship_btn_2"><%= reject_friendship(friendship)%></button>
         </div>
         <% end %>
     </div>

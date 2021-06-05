@@ -32,8 +32,8 @@ module ApplicationHelper
       render html: '<span class="btn btn-success fr"> <i class="fas fa-thumbs-up"></i> Friendship confirmed </span>'.html_safe
 
     elsif current_user.pending_friendship?(user)
-      render html: '<button type="button" class=""><i class="fas fa-heartbeat"></i><span> Pending </span></button>'.html_safe
-
+      # render html: '<button type="button" class="btn btn-warning"><i class="fas fa-heartbeat"></i><span> Pending </span></button>'.html_safe
+      link_to('Pending', user_path(current_user), class: 'btn btn-warning fas fa-heartbeat')
     else
       link_to('Add Friend', user_friendships_path(user_id: user.id), method: :post, class: 'friendship_btn')
     end

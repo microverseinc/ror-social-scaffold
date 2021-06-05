@@ -14,13 +14,13 @@ class FriendshipsController < ApplicationController
   def update
     friend = User.find(params[:user_id])
     current_user.confirm_friend(friend)
-    redirect_to user_path, notice: 'Friend invitation accepted'
+    redirect_to users_path, notice: 'Friend invitation accepted'
   end
 
   def destroy
     friendship = Friendship.find(params[:id])
     friend = friendship.user
     current_user.reject_friend(friend)
-    redirect_to user_path, notice: 'Invitation rejected'
+    redirect_to users_path, alert: 'Invitation rejected'
   end
 end
