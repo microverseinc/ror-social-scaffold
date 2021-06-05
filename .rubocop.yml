@@ -6,7 +6,7 @@ AllCops:
     - "Guardfile"
     - "Rakefile"
     - "node_modules/**/*"
-    - "app/controllers/user_controller.rb"
+    - "app/controllers/users_controller.rb"
 
   DisplayCopNames: true
 
