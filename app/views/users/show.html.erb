@@ -2,7 +2,7 @@
 <section class="user-section">
   <div class="d-flex aling-items-center">
   <h2><%= "Name: #{@user.name}" %> </h2>
-  <% if @user != current_user %>
+  <% if @user != current_user && current_user.friend?(@user) == false %>
   <%= link_to('Add Friend', user_friendships_path(user_id: @user.id), method: :post, class: 'friendship_btn') %>
   <% end %>
   </div>
