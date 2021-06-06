@@ -18,14 +18,18 @@ module ApplicationHelper
 
   def friendship_button(user)
     if current_user.friend? user
-      link_to('Unfriend', reject_path(user_id: user.id), class: 'profile-link', method: :delete, remote: true)
+      link_to('Unfriend', reject_path(user_id: user.id), class: 'profile-link frienship_button', method: :delete,
+                                                         remote: true)
     elsif current_user.pending_friends.include?(user)
-      link_to('pending friendship ', '#', class: 'profile-link')
+      link_to('pending friendship ', user, class: 'profile-link frienship_button')
     elsif current_user.friend_requests.include?(user)
-      link_to('Accept  ', invite_path(user_id: user.id), class: 'profile-link', method: :put, remote: true) +
-        link_to('  Reject', reject_path(user_id: user.id), class: 'profile-link', method: :delete, remote: true)
+      link_to('Accept  ', invite_path(user_id: user.id), class: 'profile-link frienship_button', method: :put,
+                                                         remote: true) +
+        link_to('  Reject', reject_path(user_id: user.id), class: 'profile-link frienship_button', method: :delete,
+                                                           remote: true)
     else
-      link_to('Invite to friendship', invite_path(user_id: user.id), class: 'profile-link', method: :post)
+      link_to('Invite to friendship', invite_path(user_id: user.id), class: 'profile-link frienship_button',
+                                                                     method: :post)
     end
   end
 end
