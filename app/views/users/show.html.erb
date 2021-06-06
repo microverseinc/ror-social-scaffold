@@ -1,7 +1,24 @@
+  
 <section class="user-section">
-  <h2><%= "Name: #{@user.name}" %></h2>
-  <span style="display: inline;"> <%= friendship_button(@user) if @user != current_user %> </span>
- 
+  <div class="d-flex aling-items-center">
+  <h2><%= "Name: #{@user.name}" %> </h2>
+  <% if @user != current_user && current_user.friend?(@user) == false %>
+    <%= link_to('Add Friend', user_friendships_path(user_id: @user.id), method: :post, class: 'friendship_btn') %>
+  <% end %>
+  </div>
+  <% if owner?(@user)%>
+   <div>
+        <span>Pending friend request(s): <%=@user.friend_requests.count %></span>
+        <% @user.friend_requests.each do |friendship| %>
+
+        <div class="friend-lineup">
+            <%=friendship.user.name%> <span class="text-lowercase"> wans to be your friend </span>
+            <button type="button" class="friendship_btn"><%= accept_friendship(friendship)%></button> 
+            <button type="button" class="friendship_btn_2"><%= reject_friendship(friendship)%></button>
+        </div>
+        <% end %>
+    </div>
+  <% end %>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">

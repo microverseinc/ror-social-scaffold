@@ -1,38 +1,26 @@
 class FriendshipsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_friendship
 
   def create
-    if @friendship.nil?
-      @friend_request = Friendship.new(user_id: current_user.id, friend_id: params[:id])
-      if @friend_request.save
-        @friend_request.pending!
-        flash[:notice] = 'Friend Request Sent!'
-      else
-        flash[:alert] = 'Something Went Wrong!'
-      end
-    else
-      flash[:notice] = 'Sorry! there is already a friend request pending with this user!'
-    end
+    @friendship = Friendship.new(user_id: current_user.id, friend_id: params[:user_id])
 
-    redirect_to users_path
+    if @friendship.save
+      redirect_to users_path, notice: 'Friend invitation send'
+    else
+      redirect_to users_path, alert: 'Something get wrong :( '
+    end
   end
 
   def update
-    @friend_request = Friendship.find_by(user_id: params[:id], friend_id: current_user.id)
-    redirect_to users_path @friend_request.confirmed!
-    flash[:notice] = 'Friend Request Accepted!'
+    friend = User.find(params[:user_id])
+    current_user.confirm_friend(friend)
+    redirect_to users_path, notice: 'Friend invitation accepted'
   end
 
   def destroy
-    redirect_to users_path if @friendship.destroy
-    flash[:alert] = 'Friend Request Rejected!'
-  end
-
-  private
-
-  def set_friendship
-    @friendship = Friendship.find_by(user_id: params[:id], friend_id: current_user.id) ||
-                  Friendship.find_by(user_id: current_user.id, friend_id: params[:id])
+    friendship = Friendship.find(params[:id])
+    friend = friendship.user
+    current_user.reject_friend(friend)
+    redirect_to users_path, alert: 'Invitation rejected'
   end
 end
