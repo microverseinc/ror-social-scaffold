@@ -80,30 +80,27 @@ bundle install
 
 ## Setup your envriroment running in your console: 
 
-
-# For frontend dependencies:
-
 ```
 yarn
 ```
 
-# For boostrap styles:
+## For boostrap styles:
 
 ```
 yarn add jquery popper.js bootstrap
 ```
 
-# If you wish to interact with the console:
+## If you wish to interact with the console:
 
 ```
 rails c
 ```
 
-### Postgres database setup:
+# Postgres database setup:
 
 - Edit your **password, username, and database** fields in the database.yml file on the config folder
 
-**NOTE: postgres gems are already installed**
+- **NOTE: postgres gems are already installed**
 
 Run: 
 
@@ -119,13 +116,13 @@ bundle install
 
 - On Conection tab, put host name you want (could be localhost)
 
-- Port: 5432
+- **Port:** 5432
 
-- Manteniance database: postgres
+- **Manteniance database:** postgres
 
-- Username: Same as you have on the database.yml
+- **Username:** Same as you have on the database.yml
 
-- Password: Same password you have on the databaase.yml
+- **Password:** Same password you have on the databaase.yml
 
 - Run rails db:setup to migrate and create databases on pgadmin.
 
