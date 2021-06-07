@@ -1,11 +1,44 @@
-# Scaffold for social media app with Ruby on Rails
+![](https://img.shields.io/badge/Microverse-blueviolet)
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+# Social Media Website
+
+> This repo includes initial code for [social media app](https://github.com/microverseinc/ror-social-scaffold) with basic styling. Its purpose is to be a starting point for Microverse students. This project contains the basics of a social app, focusing on friendship features, where guests and logged-in users have different functions and access; logged-in users can like/dislike a post, see posts and comments of their friends, and send/reject friendships requests.
+
+**What was built in this project**
+
+- Created User, Friendship, Post, Like, Comment and Friendship models.
+
+- Created validations.
+
+- Stabilised relationships between tables using has-many-trhough relation and associations.
+
+- Created friendship features, such as accept, reject and send friendships requests.
+
+- Created TTD for models and authentication, using capybara.
+
+- Bootstrap.
+
+- Font awesome.
+
+- Devise.
 
 ## Built With
 
 - Ruby v2.7.0
+
 - Ruby on Rails v5.2.4
+
+- Postgres
+
+- VS code
+
+- Linters (RuboCop)
+
+- Stylelint
+
+## Prerequisites
+
+Text Editor (VSCode is suggested.), Ruby Rails Bundler, Yarn, SQL, Postgres
 
 ## Live Demo
 
@@ -14,28 +47,88 @@ TBA
 
 ## Getting Started
 
-To get a local copy up and running follow these simple example steps.
+To get a local copy up and running follow these simple example steps:
 
-### Prerequisites
+- On the project, GitHub page, navigate to the [main page of the repository](https://github.com/mrigorir/social-media-app)
 
-Ruby: 2.6.3
-Rails: 5.2.3
-Postgres: >=9.5
+- Click on a button named `Code`
+
+- Copy the project URL as displayed on HTTPS tab
+
+- If you're running Windows Operating System, open your command prompt. On Linux, Open your terminal
+
+- Change the current working directory to the location where you want the cloned directory to be made. Leave as it is if the current location is where you want the project to be.
+
+- Type `git clone`, and then paste the URL you copied in Step 3.<br>
+
+  `$ git clone https://github.com/mrigorir/social-media-app` <em>Press Enter key</em><br>
+
+- Your local copy will be created.
+
+- Please note that you must have Git installed on your PC, this can be done [here](https://gist.github.com/derhuerst/1b15ff4652a867391f03)
+
+- After you get the project aiming to the desired directory, you need now to install ruby globally and follow the steps below:
+  
 
 ### Setup
 
-Instal gems with:
+# Install gems with:
 
 ```
 bundle install
 ```
 
-Setup database with:
+## Setup your envriroment running in your console: 
+
+
+# For frontend dependencies:
 
 ```
-   rails db:create
-   rails db:migrate
+yarn
 ```
+
+# For boostrap styles:
+
+```
+yarn add jquery popper.js bootstrap
+```
+
+# If you wish to interact with the console:
+
+```
+rails c
+```
+
+### Postgres database setup:
+
+- Edit your **password, username, and database** fields in the database.yml file on the config folder
+
+**NOTE: postgres gems are already installed**
+
+Run: 
+
+```
+bundle install
+```
+
+- Install posgres from https://www.postgresql.org/ and follow the install process as indicated (depending on your OS)
+
+- Create a server using the pgadmin (elephant icon) on Object option
+		
+- In General tab, put the name of your project
+
+- On Conection tab, put host name you want (could be localhost)
+
+- Port: 5432
+
+- Manteniance database: postgres
+
+- Username: Same as you have on the database.yml
+
+- Password: Same password you have on the databaase.yml
+
+- Run rails db:setup to migrate and create databases on pgadmin.
+
 
 ### Github Actions
 
@@ -57,27 +150,26 @@ Start server with:
 
 Open `http://localhost:3000/` in your browser.
 
+
 ### Run tests
 
 ```
-    rpsec --format documentation
+    rpsec 
 ```
 
-> Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
+## Author
 
-### Deployment
+👤 **Marco Parra**
 
-TBA
-
-## Authors
-
-TBA
+- GitHub: [@mrigorir](https://github.com/mrigorir)
+- Twitter: [@marcoparra311](https://twitter.com/marcoparra311)
+- LinkedIn: [@marco-alonso-parra](https://www.linkedin.com/in/marco-alonso-parra/)
 
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the [issues page](issues/).
+Feel free to check the [issues page](https://github.com/mrigorir/social-media-app.git/issues).
 
 ## Show your support
 
@@ -85,9 +177,11 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-TBA
+- Microverse
+
+- [Social media scaffold](https://github.com/microverseinc/ror-social-scaffold) forked project
 
 ## 📝 License
 
-TBA
+This project is [MIT](https://en.wikipedia.org/wiki/MIT_License) licensed.
 
