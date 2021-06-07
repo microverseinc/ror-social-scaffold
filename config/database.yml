@@ -83,4 +83,4 @@ production:
   <<: *default
   database: ror_social_scaffold_production
    username: social_media
-   password: <%= ENV['ROR_SOCIAL_SCAFFOLD_DATABASE_PASSWORD'] %>
+   password: <%= ENV['SOCIAL_MEDIA_DATABASE_PASSWORD'] %>
