@@ -40,9 +40,9 @@
 
 Text Editor (VSCode is suggested.), Ruby Rails Bundler, Yarn, SQL, Postgres
 
-## Live Demo
+## :star::star: Live Demo :star::star:
 
-TBA
+click to see [live demo](https://safe-river-08429.herokuapp.com/)
 
 
 ## Getting Started
