@@ -14,7 +14,7 @@
 
 - Created friendship features, such as accept, reject and send friendships requests.
 
-- Created TTD for models and authentication, using capybara.
+- Created tests driven development (TDD) for models and authentication, using capybara.
 
 - Bootstrap.
 
