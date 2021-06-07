@@ -83,9 +83,9 @@ TBA
 
 👤 **Francis Uloko**
 
-[Github](https://github.com/francisuloko)
-[Twitter](https://twitter.com/francisuloko)
-[LinkedIn](https://linkedin.com/in/francisuloko)
+- [Github](https://github.com/francisuloko)
+- [Twitter](https://twitter.com/francisuloko)
+- [LinkedIn](https://linkedin.com/in/francisuloko)
 
 ## 🤝 Contributing
 
