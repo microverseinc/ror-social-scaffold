@@ -1,11 +1,12 @@
 # Scaffold for social media app with Ruby on Rails
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students. In addition, I designed the Entity Relationship Diagram (ERD) for the database tables and the associations between them; Using the ERD, I modelled a many-to-many relationship between the user and frienship model. I also added the friendship functionality to the app, which enabled logged in users to send, accept or reject friendship invitation from other users. The app was also developed with testing in view using Rspec with shoulda-matchers and Capybara. Finally, a version of the app was deployed to heroku.
 
 ## Built With
 
 - Ruby v2.7.0
 - Ruby on Rails v5.2.4
+- Rspec
 
 ## Live Demo
 
@@ -14,7 +15,7 @@ TBA
 
 ## Getting Started
 
-To get a local copy up and running follow these simple example steps.
+To get a local copy up and running follow these simple steps.
 
 - To get a local copy of this project, run
 `git clone https://github.com/francisuloko/stay-in-touch.git`
@@ -29,13 +30,13 @@ Rails: 5.2.3
 Postgres: >=9.5
 
 ### Setup
-Instal webpacker with:
+Install webpacker with:
 
 ```
 rails webpacker:instal
 ```
 
-Instal gems with:
+Install gems with:
 
 ```
 bundle install
@@ -74,8 +75,6 @@ Open `http://localhost:3000/` in your browser.
     rpsec --format documentation
 ```
 
-> Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
-
 ### Deployment
 
 TBA
@@ -100,7 +99,7 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-TBA
+- The Microverse ror-social-scaffold Team
 
 ## 📝 License
 
