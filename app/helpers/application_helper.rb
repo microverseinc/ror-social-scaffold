@@ -29,7 +29,7 @@ module ApplicationHelper
     return if owner?(user)
 
     if current_user.friend?(user)
-      render html: '<span class="btn btn-success fr"> <i class="fas fa-thumbs-up"></i> Friendship confirmed </span>'.html_safe
+      render html: '<span class="btn btn-success"> <i class="fas fa-thumbs-up"></i> Friendship confirmed </span>'.html_safe
 
     elsif current_user.pending_friendship?(user)
       # render html: '<button type="button" class="btn btn-warning"><i class="fas fa-heartbeat"></i><span> Pending </span></button>'.html_safe
