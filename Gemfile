@@ -12,8 +12,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'sqlite3', '~> 1.4'
 end
-
-gem 'pg', '>= 0.18', '< 2.0'
+gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 5.2', '>= 5.2.2'
 # Use SCSS for stylesheets
