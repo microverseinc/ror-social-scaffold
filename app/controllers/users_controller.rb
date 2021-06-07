@@ -6,7 +6,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = begin
+      User.find(params[:id])
+    rescue StandardError
+      StandardError current_user
+    end
     @posts = @user.posts.ordered_by_most_recent
   end
 end
