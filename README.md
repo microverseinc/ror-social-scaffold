@@ -72,7 +72,7 @@ To get a local copy up and running follow these simple example steps:
 
 ### Setup
 
-# Install gems with:
+## Install gems with:
 
 ```
 bundle install
@@ -100,7 +100,7 @@ rails c
 
 - Edit your **password, username, and database** fields in the database.yml file on the config folder
 
-- **NOTE: postgres gems are already installed**
+- **NOTE: Postgres gems are already installed**
 
 Run: 
 
