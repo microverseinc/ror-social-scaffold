@@ -4,7 +4,7 @@
 
 > This repo includes initial code for [social media app](https://github.com/microverseinc/ror-social-scaffold) with basic styling. Its purpose is to be a starting point for Microverse students. This project contains the basics of a social app, focusing on friendship features, where guests and logged-in users have different functions and access; logged-in users can like/dislike a post, see posts and comments of their friends, and send/reject friendships requests.
 
-**What was built in this project**
+## What was built in this project
 
 - Created User, Friendship, Post, Like, Comment and Friendship models.
 
