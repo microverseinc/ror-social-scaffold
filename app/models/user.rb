@@ -23,13 +23,12 @@ class User < ApplicationRecord
   def pending_friends
     friendships.map{|friendship| friendship.friend if !friendship.confirmed}.compact
   end
-
-  # Users who have requested to be friends
+    # Users who have requested to be friends
   def friend_requests
     inverse_friendships.map{|friendship| friendship.user if !friendship.confirmed}.compact
   end
-
-  def confirm_friend(user)
+  
+  def confirm_friend(user, friend)
     friendship = inverse_friendships.find{|friendship| friendship.user == user}
     friendship.confirmed = true
     friendship.save
@@ -37,5 +36,5 @@ class User < ApplicationRecord
 
   def friend?(user)
     friends.include?(user)
-  end
+  end 
 end

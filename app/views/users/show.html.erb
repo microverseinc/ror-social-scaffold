@@ -1,9 +1,30 @@
 <section class="user-section">
+
   <h2><%= "Name: #{@user.name}" %></h2>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
       <%= render @posts %>
     </ul>
+     
   </article>
+ <h1>hello</h1>
+ <% current_user.confirm_friend.all.each do |user|%>
+    <%=user.name%>
+    <button class='btn btn-secondary btn-sm gap-2 mb-2'>
+      <%= current_user.friendships.find_by_friend_id(user).status %>
+    </button>
+    <%if current_user.confirm_friend.include?(user)%>
+      <button class='btn btn-outline-warning btn-sm gap-1 mb-2'>
+       <%= link_to 'Delete', user_friendship(:id => user.id), :method => :delete%>
+      </button>
+      <button class='btn btn-outline-success btn-sm gap-1 mb-2'>          
+        <%= link_to 'Accept', user_friendship_path(:id => user.id), :method => :patch%>
+      </button>
+    <%end%>
+  <%end%>
 </section>
+
+
+
+ 
