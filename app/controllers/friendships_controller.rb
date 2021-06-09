@@ -9,20 +9,10 @@ class FriendshipsController < ApplicationController
     end
   end
 
-  def destroy
-    friendship = Friendship.find_by(id: params[:id], user: current_user, user_id: params[:user_id])
-    if friendship
-      friendship.destroy
-      redirect_to users_path, notice: 'You are no longer friends with this user.'
-    else
-      redirect_to users_path, alert: 'You can delete the is friendship.'
-    end
-  end
-
 
   def update
     if @user.pending_friends.include?(@friend)
-      User.confirm_friend(@user, @friend)
+      Friendship.confirm_friend(@user, @friend)
       flash[:notice] = "Friendship with #{@friend.name} accepted!"
     else
       flash[:notice] = "No friendship request from #{@friend.name}."
@@ -33,6 +23,16 @@ class FriendshipsController < ApplicationController
   def setup_friend
     @user = current_user
     @friend = User.find(params[:id])
+  end
+
+  def destroy
+    friendship = Friendship.find_by(id: params[:id], user: current_user, user_id: params[:user_id])
+    if friendship
+      friendship.destroy
+      redirect_to users_path, notice: 'You are no longer friends with this user.'
+    else
+      redirect_to users_path, alert: 'You can delete the is friendship.'
+    end
   end
 
   

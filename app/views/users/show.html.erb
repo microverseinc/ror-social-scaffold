@@ -8,20 +8,22 @@
     </ul>
      
   </article>
- <h1>hello</h1>
- <% current_user.confirm_friend.all.each do |user|%>
+ <h1>friend requests</h1>
+ 
+ <% current_user.pending_friends.each do |user|%>
     <%=user.name%>
     <button class='btn btn-secondary btn-sm gap-2 mb-2'>
-      <%= current_user.friendships.find_by_friend_id(user).status %>
+      <%= current_user.friendships.find_by_friend_id(user).confirmed %>
     </button>
-    <%if current_user.confirm_friend.include?(user)%>
+    <%if current_user.pending_friends.include?(user)%>
       <button class='btn btn-outline-warning btn-sm gap-1 mb-2'>
-       <%= link_to 'Delete', user_friendship(:id => user.id), :method => :delete%>
+       <%= link_to 'Delete', friendships_path(:id => user.id), :method => :delete%>
       </button>
       <button class='btn btn-outline-success btn-sm gap-1 mb-2'>          
-        <%= link_to 'Accept', user_friendship_path(:id => user.id), :method => :patch%>
+        <%= link_to 'Accept', friendship_path(:id => user.id), :method => :patch%>
       </button>
     <%end%>
+    <%= render user%>
   <%end%>
 </section>
 

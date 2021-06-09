@@ -2,14 +2,12 @@
   Name: <%= user.name %>
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-    
-    <% unless user == current_user  || current_user.friend?(user) %>
-      <button type="button" class="btn btn-success">
-       <%= link_to 'friend', user_friendships_path(user), method: :post %>
-      </button>
-    <% end %>
   </span>
-    
+  <span class= "friend">
+   <% unless user == current_user  || current_user.friend?(user) %>
+       <%= link_to 'friend', friendships_path(user), method: :post %>
+    <% end %>
+  </span> 
 </li>
 
     

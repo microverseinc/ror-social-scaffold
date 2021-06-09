@@ -4,13 +4,16 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :users, only: [:index, :show] do
-    resources :friendships, only: [:create, :update, :destroy]
-  end  
+  resources :users, only: [:index,   :show]
+
+  resources :friendships, only: [:create, :update, :destroy] 
   resources :posts, only: [:index, :create] do
     resources :comments, only: [:create]
     resources :likes, only: [:create, :destroy]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   match '/users/:user_id/friendships', to: 'users#index', via: :get
+  match '/friendships/:id', to: 'users#index', via: :get
+
+  
 end
