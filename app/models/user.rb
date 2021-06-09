@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :name, presence: true, length: { maximum: 20 }
+  validates :name,  uniqueness: true, presence: true, length: { maximum: 20 } 
 
   has_many :posts
   has_many :comments, dependent: :destroy
@@ -12,8 +12,6 @@ class User < ApplicationRecord
 
   has_many :friendships
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
-  has_many :pending_friends, lambda { where(friendships: { confirmed: nil }).order(created_at: :asc)
-  }, through: :friendships, source: :friend
 
   def friends
     friends_array = friendships.map{|friendship| friendship.friend if friendship.confirmed}

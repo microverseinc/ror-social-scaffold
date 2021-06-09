@@ -5,8 +5,9 @@
   </span>
   <span class= "friend">
    <% unless user == current_user  || current_user.friend?(user) %>
-       <%= link_to 'friend', friendships_path(user), method: :post %>
+       <%= link_to 'friend', create_friendship_path(user), method: :post %>
     <% end %>
+  
   </span> 
 </li>
 

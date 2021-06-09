@@ -1,6 +1,6 @@
 class FriendshipsController < ApplicationController
   def create
-    @friendship = current_user.friendships.new(friend_id: params[:user_id])
+    @friendship = current_user.friendships.new(friend_id: params[:id])
 
     if @friendship.save
       redirect_to users_path, notice: 'You succesfully made friend request.'
@@ -9,30 +9,22 @@ class FriendshipsController < ApplicationController
     end
   end
 
-
   def update
-    if @user.pending_friends.include?(@friend)
-      Friendship.confirm_friend(@user, @friend)
-      flash[:notice] = "Friendship with #{@friend.name} accepted!"
+    @friendship = Friendship.where(friend_id: [current_user, params[:id]], user_id: [current_user, params[:id]]).first
+    @friendship.update(confirmed: true)
+    if @friendship.save
+      redirect_to users_path, notice: "Friend request accepted."
     else
-      flash[:notice] = "No friendship request from #{@friend.name}."
+      redirect_to users_path, alert: "Unable to accept friend request."
     end
-    redirect_to root_path
-  end
-  
-  def setup_friend
-    @user = current_user
-    @friend = User.find(params[:id])
   end
 
+  
   def destroy
-    friendship = Friendship.find_by(id: params[:id], user: current_user, user_id: params[:user_id])
-    if friendship
-      friendship.destroy
-      redirect_to users_path, notice: 'You are no longer friends with this user.'
-    else
-      redirect_to users_path, alert: 'You can delete the is friendship.'
-    end
+    @friendship = Friendship.where(friend_id: [current_user, params[:id]]).where(user_id: [current_user, params[:id]]).last
+    @friendship.destroy
+    flash[:notice] = "Friend request declined."
+    redirect_to users_path
   end
 
   
