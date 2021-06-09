@@ -12,7 +12,8 @@ class User < ApplicationRecord
 
   has_many :friendships
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
-  has_many :pending_friends, -> { where(friendships: { accepted: false}) }, :through => :friendships, :source => :friend
+  has_many :pending_friends, lambda { where(friendships: { confirmed: nil }).order(created_at: :asc)
+  }, through: :friendships, source: :friend
 
   def friends
     friends_array = friendships.map{|friendship| friendship.friend if friendship.confirmed}
