@@ -1,6 +1,6 @@
 # Social media website
 
-> We build a social media app.
+> We build a social media app for users to create and like each other's posts. They can also comment on posts.
 - As a guest user:
 - You're able to create account/log in.
 - You can see “Sign in” and “Sign out” page.
