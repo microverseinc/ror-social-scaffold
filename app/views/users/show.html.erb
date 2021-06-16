@@ -6,4 +6,20 @@
       <%= render @posts %>
     </ul>
   </article>
+  <% if current_user.id == @user.id %>
+  <ul>
+    <h3>Friend Requests:</h3>
+    <% current_user.friend_requests.each do |friend| %>
+      <li><%= friend.name %></li>
+      <%= button_to "Accept Request", {:controller => "users", :action => "confirm", :friend_id => friend.id}, :method=>:post %>
+      <%= button_to "Reject Request", {:controller => "users", :action => "destroy", :friend_id => friend.id}, :method=>:delete %>
+    <% end %>
+  </ul>
+  <h3>All Friends:</h3>
+    <ul>
+      <% @all_friends.each do |f| %>
+        <li><%= f.name %></li>
+      <% end %>
+    </ul>
+  <% end %>
 </section>
