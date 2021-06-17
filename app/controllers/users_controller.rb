@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 
   def destroy
     user = User.find(params[:friend_id])
-    friend = Friendship.where('friend_id = ? and user_id = ?', current_user.id, user.id).first
+    friend = Friendship.where('friend_id = ? and user_id = ?', user.id, current_user.id).first
     if friend.delete
       redirect_to user_path(current_user), notice: 'Rejected'
     else
