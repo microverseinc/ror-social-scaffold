@@ -19,6 +19,8 @@ class UsersController < ApplicationController
     friend = Friendship.where('friend_id = ? and user_id = ?', current_user.id, user.id).first
     friend.status = true
     if friend.save
+      @add_friend = Friendship.new(user_id: current_user.id, friend_id: user.id, status: true)
+      @add_friend.save
       redirect_to user_path(current_user), notice: 'Accepted'
     else
       redirect_to user_path(current_user), alert: 'Rejected'
