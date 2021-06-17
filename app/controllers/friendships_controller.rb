@@ -24,6 +24,9 @@ class FriendshipsController < ApplicationController
   # POST /friendships
   # POST /friendships.json
   def create
+    @friend = User.find(params{:friend_id}) 
+    @friendship = current_user.build(friend_id: friend.id) 
+
     @friendship = Friendship.new(friendship_params)
 
     respond_to do |format|
@@ -36,7 +39,6 @@ class FriendshipsController < ApplicationController
       end
     end
   end
-
   # PATCH/PUT /friendships/1
   # PATCH/PUT /friendships/1.json
   def update
