@@ -49,5 +49,4 @@ class UsersController < ApplicationController
   end
 
   # rubocop:enable Metrics/PerceivedComplexity
-
 end
