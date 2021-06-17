@@ -31,13 +31,13 @@ class UsersController < ApplicationController
     user = User.find(params[:friend_id])
     friend1 = Friendship.where('friend_id = ? and user_id = ?', user.id, current_user.id).first
     friend2 = Friendship.where('friend_id = ? and user_id = ?', current_user.id, user.id).first
-    if friend1 != nil
+    if !friend1.nil?
       if friend1.delete
         redirect_to user_path(current_user), notice: 'Rejected'
       else
         redirect_to user_path(current_user), alert: 'Failed'
       end
-    elsif friend2 != nil
+    elsif !friend2.nil?
       if friend2.delete
         redirect_to user_path(current_user), notice: 'Rejected'
       else
