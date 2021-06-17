@@ -2,6 +2,6 @@
   Name: <%= user.name %>
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-    <%= button_to 'Invite to friendship', { controller: 'friendship', action: 'create', :friend_id => user.id  },:method => post %>
+    <%= button_to 'Invite to friendship', { :controller => "friendships", :action => "create", :friend_id => user.id  }, method: :post %>
   </span>
 </li>

@@ -1,5 +1,6 @@
 class FriendshipsController < ApplicationController
   before_action :set_friendship, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:index, :show]
 
   # GET /friendships
   # GET /friendships.json
@@ -24,12 +25,18 @@ class FriendshipsController < ApplicationController
   # POST /friendships
   # POST /friendships.json
   def create
-    @friend = User.find(params{:friend_id}) 
-    @friendship = current_user.build(friend_id: friend.id) 
+    friend = User.find(params[:friend_id]) 
+    if Friendship.where(user_id: current_user.id, friend_id: friend.id).exists?
+      redirect_to root_path, notice: "Frend request already sent"
+      return
+    elsif current_user == friend
+      redirect_to root_path, notice: "You can't send request to yourself"
+      return
+    end
+    
+    @friendship = current_user.friendships.build(friend_id: friend.id) 
 
-    @friendship = Friendship.new(friendship_params)
-
-    respond_to do |format|
+        respond_to do |format|
       if @friendship.save
         format.html { redirect_to @friendship, notice: 'Friendship was successfully created.' }
         format.json { render :show, status: :created, location: @friendship }
