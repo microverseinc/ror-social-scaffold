@@ -21,7 +21,7 @@ class PostsController < ApplicationController
 
   def timeline_posts
     friend_ids = []
-    current_user.friendships.each {|f| friend_ids << f.friend_id if f.status == true}
+    current_user.friendships.each { |f| friend_ids << f.friend_id if f.status == true }
     @timeline_posts = []
     friend_ids << current_user.id
     index = 0
