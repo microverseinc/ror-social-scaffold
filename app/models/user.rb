@@ -16,8 +16,4 @@ class User < ApplicationRecord
   def friend_requests
     inverse_friendships.map { |friendship| friendship.user unless friendship.status }.compact
   end
-
-  def friend?(user)
-    friends.include?(user)
-  end
 end
