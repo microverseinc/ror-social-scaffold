@@ -38,7 +38,7 @@ class FriendshipsController < ApplicationController
 
         respond_to do |format|
       if @friendship.save
-        format.html { redirect_to @friendship, notice: 'Friendship was successfully created.' }
+        format.html { redirect_to @friendship, notice: 'Friend request sent' }
         format.json { render :show, status: :created, location: @friendship }
       else
         format.html { render :new }

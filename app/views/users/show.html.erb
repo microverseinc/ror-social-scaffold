@@ -5,5 +5,15 @@
     <ul class="posts">
       <%= render @posts %>
     </ul>
+    <%= button_to 'Invite to friendship', { :controller => "friendships", :action => "create", :friend_id => @user.id  }, method: :post %>
   </article>
+  <article class="timeline">
+    <h3>Received friend requests</h3>
+    <ul class="posts">
+      <% @received.each do |received| %>
+      <%= received.user.name%>
+      <% end%>
+    </ul>    
+  </article>
+  
 </section>
