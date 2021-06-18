@@ -20,7 +20,16 @@ class PostsController < ApplicationController
   private
 
   def timeline_posts
-    @timeline_posts ||= Post.all.ordered_by_most_recent.includes(:user)
+    friend_ids = []
+    current_user.friendships.each { |f| friend_ids << f.friend_id if f.status == true }
+    @timeline_posts = []
+    friend_ids << current_user.id
+    index = 0
+    while index < friend_ids.length
+      @timeline_posts += Post.where('user_id = ?', friend_ids[index])
+      index += 1
+    end
+    @timeline_posts.reverse!
   end
 
   def post_params
