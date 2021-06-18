@@ -1,7 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :model do  
-    
+RSpec.describe User, type: :model do
   it 'should have many posts' do
     t = User.reflect_on_association(:posts)
     expect(t.macro).to eq(:has_many)
@@ -16,7 +15,7 @@ RSpec.describe User, type: :model do
     t = User.reflect_on_association(:likes)
     expect(t.macro).to eq(:has_many)
   end
-  
+
   it 'should have many friendships' do
     t = User.reflect_on_association(:friendships)
     expect(t.macro).to eq(:has_many)

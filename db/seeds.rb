@@ -7,5 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 10.times do |index|
-    User.create(name: "Doe#{index}", email: "doe#{index}@gamil.com", password: "#{index}123456", password_confirmation: "#{index}123456")
+  User.create(name: "Doe#{index}", email: "doe#{index}@gamil.com", password: "#{index}123456",
+              password_confirmation: "#{index}123456")
 end

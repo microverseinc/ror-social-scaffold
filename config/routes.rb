@@ -1,14 +1,10 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
-
   resources :friendships
-=======
->>>>>>> erb
   root 'posts#index'
 
   devise_for :users
-  
-  get  'friendships/:id', to: 'friendships#destroy', as: 'destroy'
+
+  get 'friendships/:id', to: 'friendships#destroy', as: 'destroy'
 
   resources :users, only: %i[index show]
   resources :posts, only: %i[index create] do
