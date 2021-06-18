@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   root 'posts#index'
 
   devise_for :users
+  
+  get  'friendships/:id', to: 'friendships#destroy', as: 'destroy'
 
   resources :users, only: [:index, :show]
   resources :posts, only: [:index, :create] do

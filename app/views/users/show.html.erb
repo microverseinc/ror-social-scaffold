@@ -12,6 +12,9 @@
     <ul class="posts">
       <% @received.each do |received| %>
       <%= received.user.name%>
+      <%= link_to 'Accept', edit_friendship_path(received) %>
+      <%= link_to 'Deny', destroy_path(received), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <br>
       <% end%>
     </ul>    
   </article>
