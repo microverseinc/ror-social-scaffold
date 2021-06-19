@@ -2,22 +2,18 @@ class FriendshipsController < ApplicationController
   before_action :set_friendship, only: %i[show edit update destroy]
   before_action :authenticate_user!, only: %i[index show]
 
-  
   def index
     @friendships = Friendship.all
   end
 
-  
   def show; end
 
   def new
     @friendship = Friendship.new
   end
 
-  
   def edit; end
 
-  
   def create
     friend = User.find(params[:friend_id])
     if Friendship.where(user_id: current_user.id, friend_id: friend.id).exists?
