@@ -5,7 +5,9 @@
     <ul class="posts">
       <%= render @posts %>
     </ul>
-    <%= button_to 'Invite to friendship', { :controller => "friendships", :action => "create", :friend_id => @user.id  }, method: :post %>
+    <%if @user != current_user %>
+      <%= button_to 'Invite to friendship', { :controller => "friendships", :action => "create", :friend_id => @user.id  }, method: :post %>
+    <%end%>
   </article>
   <article class="timeline">
     <h3>Received friend requests</h3>
