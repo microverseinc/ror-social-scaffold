@@ -1,3 +1,5 @@
+# rubocop: disable Metrics/MethodLength
+
 class FriendshipsController < ApplicationController
   before_action :set_friendship, only: %i[show edit update destroy]
   before_action :authenticate_user!, only: %i[index show]
@@ -70,3 +72,4 @@ class FriendshipsController < ApplicationController
     params.require(:friendship).permit(:user_id, :friend_id, :confirmed)
   end
 end
+# rubocop: enable Metrics/MethodLength
