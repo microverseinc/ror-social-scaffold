@@ -1,6 +1,6 @@
 # Scaffold for social media app with Ruby on Rails
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+> This repo includes initial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
 
 ## Built With
 
@@ -10,7 +10,6 @@
 ## Live Demo
 
 TBA
-
 
 ## Getting Started
 
@@ -24,7 +23,7 @@ Postgres: >=9.5
 
 ### Setup
 
-Instal gems with:
+Install gems with:
 
 ```
 bundle install
@@ -46,7 +45,6 @@ To make sure the linters' checks using Github Actions work properly, you should 
 3. Start working on your milestone as usual.
 4. Open a PR from the `feature/branch` when your work is done.
 
-
 ### Usage
 
 Start server with:
@@ -60,7 +58,7 @@ Open `http://localhost:3000/` in your browser.
 ### Run tests
 
 ```
-    rpsec --format documentation
+    rspec --format documentation
 ```
 
 > Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
@@ -90,4 +88,3 @@ TBA
 ## 📝 License
 
 TBA
-
