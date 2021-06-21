@@ -19,9 +19,30 @@ class PostsController < ApplicationController
 
   private
 
-  def timeline_posts
-    @timeline_posts ||= Post.all.ordered_by_most_recent.includes(:user)
+  # def timeline_posts
+  #   @user = current_user.friendships
+  #   # @timeline_posts ||= @user.posts
+  #   # @timeline_posts ||= user.posts.all.ordered_by_most_recent.includes(:user)
+  # end
+
+  def timeline_posts    
+    # friend_ids = []    
+    # current_user.friendships.each { |f| friend_ids << f.friend_id if f.confirmed == true }    
+    # @timeline_posts = []    
+    # friend_ids << current_user.id    
+    # index = 0    
+    # while index < friend_ids.length do   
+    #   @timeline_posts += Post.where('user_id = ?', friend_ids[index])    
+    #   index += 1   
+    # end    
+    # @timeline_posts.reverse!
+    ids = []
+    current_user.friendships.map{ |f| ids << f.friend_id if f.confirmed == true } << current_user.id
+    ids << current_user.id
+    @timeline_posts = Post.where(user_id: ids).ordered_by_most_recent
   end
+
+
 
   def post_params
     params.require(:post).permit(:content)

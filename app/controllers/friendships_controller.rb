@@ -19,6 +19,9 @@ class FriendshipsController < ApplicationController
     if Friendship.where(user_id: current_user.id, friend_id: friend.id).exists?
       redirect_to root_path, notice: 'Frend request already sent'
       return
+    elsif Friendship.where(user_id: friend.id, friend_id: current_user.id).exists?
+      redirect_to root_path, notice: 'You allready recive a request from this user'
+      return
     elsif current_user == friend
       redirect_to root_path, notice: "You can't send request to yourself"
       return
