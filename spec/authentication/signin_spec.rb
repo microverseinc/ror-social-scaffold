@@ -1,5 +1,4 @@
 require 'rails_helper'
-# rubocop: disable Metrics/BlockLength
 
 describe 'User signs in', type: :system do
   before do
@@ -45,4 +44,3 @@ describe 'User signs in', type: :system do
     expect(page).to have_text 'Invalid Email or password.'
   end
 end
-# rubocop: enable Metrics/BlockLength

@@ -1,5 +1,4 @@
 require 'rails_helper'
-# rubocop: disable Metrics/BlockLength
 
 describe 'User signs up', type: :system do
   let(:name) { 'john@doe' }
@@ -50,4 +49,3 @@ describe 'User signs up', type: :system do
     expect(page).to have_text 'Password is too short (minimum is 6 characters)'
   end
 end
-# rubocop: enable Metrics/BlockLength
