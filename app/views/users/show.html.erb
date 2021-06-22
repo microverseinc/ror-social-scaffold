@@ -5,5 +5,31 @@
     <ul class="posts">
       <%= render @posts %>
     </ul>
+    <%if @user != current_user %>
+      <%= button_to 'Invite to friendship', { :controller => "friendships", :action => "create", :friend_id => @user.id  }, method: :post %>
+    <%end%>
+  </article>
+  
+  <article class="timeline">
+    <h3>Received friend requests</h3>
+    <ul class="posts">
+      <% @received.each do |received| %>
+      <%= received.user.name%>
+      <%= link_to 'Accept', edit_friendship_path(received) %>
+      <%= link_to 'Deny', destroy_path(received), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <br>
+      <% end%>
+    </ul>    
+  </article>
+  
+  <article class="timeline">
+    <h3>Send friend requests</h3>
+    <ul class="posts">
+      <% @send.each do |send| %>
+      <%= send.friend.name%>
+      <%= link_to 'Delete', destroy_path(send), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <br>
+      <% end%>
+    </ul>    
   </article>
 </section>
