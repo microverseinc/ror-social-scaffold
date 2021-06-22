@@ -69,7 +69,7 @@ Open `http://localhost:3000/` in your browser.
 
 ### Deployment
 
-TBA
+Project is deployed at [Heroku](https://evening-earth-80698.herokuapp.com/users/sign_in)
 
 ## Authors
 👤 **Moises Hernandez Coronado** 
