@@ -1,3 +1,6 @@
+# rubocop: disable Metrics/MethodLength
+# rubocop: disable Layout/LineLength
+
 class FriendshipsController < ApplicationController
   before_action :set_friendship, only: %i[show edit update destroy]
   before_action :authenticate_user!, only: %i[index show]
@@ -18,6 +21,9 @@ class FriendshipsController < ApplicationController
     friend = User.find(params[:friend_id])
     if Friendship.where(user_id: current_user.id, friend_id: friend.id).exists?
       redirect_to root_path, notice: 'Frend request already sent'
+      return
+    elsif Friendship.where(user_id: friend.id, friend_id: current_user.id).exists?
+      redirect_to root_path, notice: 'You already recived a request from this user. If you want to be a friend with this person, just respond to that request'
       return
     elsif current_user == friend
       redirect_to root_path, notice: "You can't send request to yourself"
@@ -67,3 +73,5 @@ class FriendshipsController < ApplicationController
     params.require(:friendship).permit(:user_id, :friend_id, :confirmed)
   end
 end
+# rubocop: enable Metrics/MethodLength
+# rubocop: enable Layout/LineLength
