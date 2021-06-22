@@ -1,4 +1,5 @@
 # rubocop: disable Metrics/MethodLength
+# rubocop: disable Layout/LineLength
 
 class FriendshipsController < ApplicationController
   before_action :set_friendship, only: %i[show edit update destroy]
@@ -73,3 +74,4 @@ class FriendshipsController < ApplicationController
   end
 end
 # rubocop: enable Metrics/MethodLength
+# rubocop: enable Layout/LineLength
