@@ -1,4 +1,7 @@
 <section class="user-section">
+<<<<<<< HEAD
+  <h2><%= "Name: #{@user.name}" %> Test</h2>
+=======
   <h2><%= "Name: #{@user.name}" %></h2>
   <% if current_user.id != @user.id %>
       <% if !friends?(@user.id) %>
@@ -7,6 +10,7 @@
       <% end %>
       
     <% end %>
+>>>>>>> 136dd8b471db08aad333eafcaea9955b002ed84f
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">

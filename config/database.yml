@@ -11,10 +11,18 @@ development:
   <<: *default
   database: ror_social_scaffold_development
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 136dd8b471db08aad333eafcaea9955b002ed84f
 test:
   <<: *default
   database: ror_social_scaffold_test
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 136dd8b471db08aad333eafcaea9955b002ed84f
 production:
   <<: *default
   database: ror_social_scaffold_production
