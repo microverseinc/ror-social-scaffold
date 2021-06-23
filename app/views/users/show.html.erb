@@ -1,9 +1,51 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
+  <% if current_user.id != @user.id %>
+      <% if !friends?(@user.id) %>
+      <%= button_to 'Add friend', {:controller => "friendships", :action => "create", :friend_id => @user.id} , :method=>:post  %>
+      
+      <% end %>
+      
+    <% end %>
+
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
       <%= render @posts %>
     </ul>
   </article>
+  <hr>
+  <article>
+  <% if current_user.id == @user.id %>
+  <ul>
+    <h3>Pending Friend Requests:</h3>
+    <% sent_requests.each do |friend| %>
+      <li><%= friend.name %></li>
+      <%= button_to "Remove Request", {:controller => "users", :action => "destroy", :friend_id => friend.id}, :method=>:delete %>
+    <% end %>
+  <% end %>
+  </ul>
+  </article>
+  <hr>
+
+  <article>
+    <% if current_user.id == @user.id %>
+      <ul>
+        <h3>Recived Friend Requests:</h3>
+        <% current_user.friend_requests.each do |friend| %>
+          <li><%= friend.name %></li>
+          <%= button_to "Accept Request", {:controller => "users", :action => "confirm", :friend_id => friend.id}, :method=>:post %>
+          <%= button_to "Reject Request", {:controller => "users", :action => "destroy", :friend_id => friend.id}, :method=>:delete %>
+        <% end %>
+      </ul>
+    <% end %>
+  </article>
+  <hr>
+  
+  <h3>All Friends:</h3>
+    <ul>
+      <% @all_friends.each do |f| %>
+        <li><%= f.name %></li>
+      <% end %>
+    </ul>
 </section>
