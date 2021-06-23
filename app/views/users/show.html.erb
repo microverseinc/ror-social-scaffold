@@ -40,4 +40,12 @@
       </ul>
     <% end %>
   </article>
+  <hr>
+  
+  <h3>All Friends:</h3>
+    <ul>
+      <% @all_friends.each do |f| %>
+        <li><%= f.name %></li>
+      <% end %>
+    </ul>
 </section>
