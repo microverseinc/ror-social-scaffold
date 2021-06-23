@@ -7,12 +7,24 @@
       <% end %>
       
     <% end %>
-    
+
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
       <%= render @posts %>
     </ul>
   </article>
-  
+  <hr>
+  <article>
+  <% if current_user.id == @user.id %>
+  <ul>
+    <h3>Pending Friend Requests:</h3>
+    <% sent_requests.each do |friend| %>
+      <li><%= friend.name %></li>
+      <%= button_to "Remove Request", {:controller => "users", :action => "destroy", :friend_id => friend.id}, :method=>:delete %>
+    <% end %>
+  <% end %>
+  </ul>
+  </article>
+  <hr>
 </section>
