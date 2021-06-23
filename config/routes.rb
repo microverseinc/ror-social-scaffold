@@ -1,12 +1,17 @@
 Rails.application.routes.draw do
-
-  get 'friendships/create'
   root 'posts#index'
+  get 'friendships/create'
+  # code from lastnight
+  get 'my_friends', to: 'users#my_friends'
+  get 'pending_requests', to: 'users#pending_requests'
+  
+
+
 
   devise_for :users
 
   resources :users, only: [:index, :show]
-  resources :friendships, only: [:new, :create]
+  resources :friendships, only: [:new, :create, :update, :destroy]
   
   resources :posts, only: [:index, :create] do
     resources :comments, only: [:create]
