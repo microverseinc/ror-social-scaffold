@@ -25,5 +25,18 @@
   <% end %>
   </ul>
   </article>
-  
+
+  <article>
+    <% if current_user.id == @user.id %>
+      <ul>
+        <h3>Recived Friend Requests:</h3>
+        <% current_user.friend_requests.each do |friend| %>
+          <li><%= friend.name %></li>
+          <%= button_to "Accept Request", {:controller => "users", :action => "confirm", :friend_id => friend.id}, :method=>:post %>
+          <%= button_to "Reject Request", {:controller => "users", :action => "destroy", :friend_id => friend.id}, :method=>:delete %>
+        <% end %>
+      </ul>
+    <% end %>
+  </article>
+
 </section>
