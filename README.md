@@ -50,10 +50,6 @@ To make sure the linters' checks using Github Actions work properly, you should 
 - Then run `rails db:migrate db:test:prepare`
 - Then run `rspec --format doc`. This will display detailed information about models and test results.
 
-### Deployment
-
-TBA
-
 ## Authors
 
 :bust_in_silhouette: **Victor Otieno**
