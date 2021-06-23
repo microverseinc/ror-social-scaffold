@@ -6,8 +6,8 @@
 
 ## Built With
 
-- Ruby v2.7.0
-- Ruby on Rails v5.2.4
+- Ruby v2.7.3
+- Ruby on Rails v6.1.3.2
 
 ## Live Demo
 
