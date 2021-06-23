@@ -9,7 +9,7 @@
 
 ## Live Demo
 
-TBA
+[Live Demo Link](https://stay-in-touch-vikita.herokuapp.com/)
 
 ## Getting Started
 
@@ -27,8 +27,8 @@ Postgres: >=9.5
 - Click on the `Code` green button
 - By the right end of the read-only input containing the repository link click the clipboard icon to copy the link
 - In your local PC, open your terminal in the folder you would like to clone the repository into
-- Clone the repository with the command: `git clone (copied link)`; like so: `git clone https://github.com/vikitaotiz/private_events.git`
-- After the clone, type in the command `cd private_events` to access the app directory on the terminal
+- Clone the repository with the command: `git clone (copied link)`; like so: `git clone https://github.com/vikitaotiz/ror-social-scaffold.git`
+- After the clone, type in the command `cd ror-social-scaffold` to access the app directory on the terminal
 - Then run 'bundle install' to install all the required dependencies
 - Then run 'npm install' to avoid this error 'Webpacker::Manifest::MissingEntryError in posts#index'
 - Run 'rails db:create db:migrate'
@@ -43,16 +43,6 @@ To make sure the linters' checks using Github Actions work properly, you should 
 2. Create the `feature/branch` and push.
 3. Start working on your milestone as usual.
 4. Open a PR from the `feature/branch` when your work is done.
-
-### Usage
-
-Start server with:
-
-```
-    rails server
-```
-
-Open `http://localhost:3000/` in your browser.
 
 ### Run tests
 
