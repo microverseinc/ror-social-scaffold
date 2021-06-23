@@ -7,11 +7,13 @@ class FriendshipsController < ApplicationController
     # @user = User.find(params[:friendship][:friend_id])
     # friend_user = User.find(params[:friendship][:friend_id])
     @friendship = current_user.friendships.build(friend_id: params[:friendship][:friend_id])
+    
     if @friendship.save
-      redirect_to users_path
+      flash.now[:success]= "Friend request sent!"
     else
-      redirect_to current_user
+      flash.now[:danger]= "Friend request not sent, unluckly!"
     end
+    redirect_to root_path
   end
 
   def update

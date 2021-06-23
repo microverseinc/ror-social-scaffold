@@ -9,7 +9,7 @@
   </head>
   <body>
     <nav class="nav">
-      <%# <%= link_to 'Stay in touch', root_path %> %>
+      <%# <%= link_to 'Stay in touch', root_path %>
       <div class="menu">
         <div class="menu-item">
           <%= menu_link_to 'Timeline', posts_path %>
@@ -45,6 +45,9 @@
       </div>
     <% end %>
     <main class="main">
+      <% flash.each do |msg_type, msg|%>
+        <%= content_tag(:div, msg, class: "alert alert-#{msg_type}") %>
+      <%end%>
       <%= yield %>
     </main>
   </body>
