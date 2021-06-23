@@ -11,31 +11,29 @@
 
 TBA
 
-
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-Ruby: 2.6.3
-Rails: 5.2.3
+Ruby: 2.7.3
+Rails: 6.1.3.2
 Postgres: >=9.5
 
-### Setup
+## Getting Started
 
-Instal gems with:
-
-```
-bundle install
-```
-
-Setup database with:
-
-```
-   rails db:create
-   rails db:migrate
-```
+- Ensure you have rails installed by running 'rails -v'. Otherwise run 'gem install rails'
+- Click on the `Code` green button
+- By the right end of the read-only input containing the repository link click the clipboard icon to copy the link
+- In your local PC, open your terminal in the folder you would like to clone the repository into
+- Clone the repository with the command: `git clone (copied link)`; like so: `git clone https://github.com/vikitaotiz/private_events.git`
+- After the clone, type in the command `cd private_events` to access the app directory on the terminal
+- Then run 'bundle install' to install all the required dependencies
+- Then run 'npm install' to avoid this error 'Webpacker::Manifest::MissingEntryError in posts#index'
+- Run 'rails db:create db:migrate'
+- Run 'rails server' to spin up a development server
+- Once the server is up, open this link 'http://127.0.0.1:3000' on your browser
 
 ### Github Actions
 
@@ -45,7 +43,6 @@ To make sure the linters' checks using Github Actions work properly, you should 
 2. Create the `feature/branch` and push.
 3. Start working on your milestone as usual.
 4. Open a PR from the `feature/branch` when your work is done.
-
 
 ### Usage
 
@@ -59,11 +56,9 @@ Open `http://localhost:3000/` in your browser.
 
 ### Run tests
 
-```
-    rpsec --format documentation
-```
-
-> Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
+- Navigate into the app directory, `cd ror-social-scaffold`
+- Then run `rails db:migrate db:test:prepare`
+- Then run `rspec --format doc`. This will display detailed information about models and test results.
 
 ### Deployment
 
@@ -71,7 +66,11 @@ TBA
 
 ## Authors
 
-TBA
+:bust_in_silhouette: **Victor Otieno**
+
+- GitHub: [@githubhandle](https://github.com/vikitaotiz)
+- Twitter: [@twitterhandle](https://twitter.com/victoro29641869)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/victor-otieno-oluoch/)
 
 ## 🤝 Contributing
 
@@ -90,4 +89,3 @@ TBA
 ## 📝 License
 
 TBA
-
