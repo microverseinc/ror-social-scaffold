@@ -13,8 +13,16 @@ class FriendshipsController < ApplicationController
       redirect_to current_user
     end
   end
-end
 
+  def update
+    @friendship.update(status: true )
+  end
+
+private
 def friendship_params
   params.require(:friendship).permit(:user_id, :friend_id)
 end
+end
+
+
+
