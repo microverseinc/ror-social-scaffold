@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'friendships/create'
   # code from lastnight
   get 'my_friends', to: 'users#my_friends'
-  get 'pending_requests', to: 'users#pending_requests'
+  get 'requests', to: 'users#requests'
   
 
 

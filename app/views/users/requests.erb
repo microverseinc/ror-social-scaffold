@@ -1,0 +1,27 @@
+
+<h1><%= "Requests Page" %></h1> <br><br><br>
+
+<h3><%= "Pending Sent Requests" %></h3> <br>
+
+<% if @pending_requests.empty? %>
+    <h3>Make some friends! meh</h3>
+<% else %>
+    <% @pending_requests.each do |request| %>
+        <% friend = User.find(request.friend_id) %>
+        <%= friend.name %> didn't respond yet <br>
+    <% end %>
+<% end %>
+<br><br><br><br>
+
+<h3><%= "Pending Friend Requests" %></h3>
+
+<% if @friend_requests.nil? || @friend_requests.empty? %> <br><br>
+    <h4>No Friend Requests recived</h4>
+<% else %>
+    <% @friend_requests.each do |request| %>
+        <% sender = User.find(request.user_id) %>
+        <%= sender.name %> sent you a request <br>
+    <% end %>
+<% end %>
+
+

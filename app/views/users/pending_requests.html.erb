@@ -1,6 +1,0 @@
-<% @friendships.each do |request| %>
-  <% sender = User.find_by(id:request.user_id) %>
-  <%= sender.name %><br>
-  <%= link_to 'accept' , friendships_path(request) , method: :patch %>
-<% end %>
-<%# <h2><%= "its my pending requests page" %></h2> %>
