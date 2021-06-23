@@ -38,5 +38,11 @@
       </ul>
     <% end %>
   </article>
-
+  <h3>All Friends:</h3>
+    <ul>
+      <% @all_friends.each do |f| %>
+        <li><%= f.name %></li>
+      <% end %>
+    </ul>
+  <% end %>
 </section>
