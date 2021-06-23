@@ -13,7 +13,7 @@
       <%= render @posts %>
     </ul>
   </article>
-
+  <hr>
   <article>
   <% if current_user.id == @user.id %>
   <ul>
@@ -25,7 +25,7 @@
   <% end %>
   </ul>
   </article>
-
+  <hr>
   <article>
     <% if current_user.id == @user.id %>
       <ul>
@@ -38,11 +38,11 @@
       </ul>
     <% end %>
   </article>
+  <hr>
   <h3>All Friends:</h3>
     <ul>
       <% @all_friends.each do |f| %>
         <li><%= f.name %></li>
       <% end %>
     </ul>
-  <% end %>
 </section>
