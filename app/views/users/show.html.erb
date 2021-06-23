@@ -1,4 +1,5 @@
 <section class="user-section">
+  <%= gravatar_for @user %>
   <h2><%= "Name: #{@user.name}" %></h2>
   <% if @user != current_user && is_friend?(@user) && (request_sent?(@user) == false) %>
       <%= link_to 'Add Friend', friendships_path(:friendship => {:friend_id => @user.id}),method: :post, class: 'profile-link profile-link-btn' %>  

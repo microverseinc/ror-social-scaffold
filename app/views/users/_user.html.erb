@@ -1,5 +1,6 @@
 <li>
   <% @user = user %>
+  <%= gravatar_for @user %>
   Name: <%= @user.name %> | id: <%= @user.id %>
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(@user), class: 'profile-link' %>  
