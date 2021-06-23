@@ -17,7 +17,18 @@ class FriendshipsController < ApplicationController
   end
 
   def update
-    @friendship.update(status: true )
+    # @friendship.update(confirmed: true )
+    @friendship = Friendship.find(params[:id])
+    @friendship.confirmed = true
+    @friendship.save
+    @user = User.find(@friendship.user_id)
+    redirect_to @user
+  end
+
+  def destroy
+    @friendship = Friendship.find(params[:id])
+    @friendship.delete 
+    redirect_to 'requests'
   end
 
 private
