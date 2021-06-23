@@ -1,5 +1,12 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
+  <% if current_user.id != @user.id %>
+      <% if !friends?(@user.id) %>
+      <%= button_to 'Add friend', {:controller => "friendships", :action => "create", :friend_id => @user.id} , :method=>:post  %>
+      
+      <% end %>
+      
+    <% end %>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
