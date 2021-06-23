@@ -17,8 +17,8 @@
     <tbody>
       <% @friendships.each do |relationship| %>
         <tr>
-          <td> <%= User.find_by(id: relationship.user_id).name %></td>
-           <td> <%= User.find_by(id: relationship.user_id).email %></td>
+          <td> <%= User.find_by(id: relationship.friend_id).name %></td>
+           <td> <%= User.find_by(id: relationship.friend_id).email %></td>
           <td>
             <%= link_to "View Profile", user_path(User.find_by(id: relationship.user_id)), class: "btn btn-primary btn-xs" %>
             <%= link_to "Remove Friend", friendship_path(relationship.id), method: :delete,

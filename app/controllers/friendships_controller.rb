@@ -21,14 +21,15 @@ class FriendshipsController < ApplicationController
     @friendship = Friendship.find(params[:id])
     @friendship.confirmed = true
     @friendship.save
-    @user = User.find(@friendship.user_id)
-    redirect_to @user
+    # debugger
+    redirect_to my_friends_path
   end
 
   def destroy
     @friendship = Friendship.find(params[:id])
     @friendship.delete 
-    redirect_to 'requests'
+    # debugger
+    redirect_to root_path
   end
 
 private

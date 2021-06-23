@@ -1,9 +1,14 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
-  <% if @user != current_user && request_sent?(@user)%>
+  <% if @user != current_user && is_friend?(@user) && (request_sent?(@user) == false) %>
+      <%= link_to 'Add Friend', friendships_path(:friendship => {:friend_id => @user.id}),method: :post, class: 'profile-link profile-link-btn' %>  
+    <% elsif @user != current_user && (request_sent?(@user) == true) && !is_friend?(@user) %>
         <%= link_to 'Request sent', '#', class: 'profile-link profile-link-btn' %>
-    <% elsif @user != current_user && (request_sent?(@user) == false) %>
-        <%= link_to 'Add Friend', friendships_path(:friendship => {:friend_id => @user.id}),method: :post, class: 'profile-link profile-link-btn' %>
+    <% elsif is_friend?(@user) && @user != current_user %>
+        <%# <%= link_to "Remove Friend", friendship_path(relationship.id), method: :delete, %>
+              <%# data: { confirm: "Are you sure?" }, class: "btn btn-xs btn-danger" %>
+            <h6>he is a friend</h6>
+            
     <% end%>
   <article class="timeline">
     <h3>Recent posts:</h3>
