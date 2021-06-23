@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # code from lastnight
   get 'my_friends', to: 'users#my_friends'
   get 'requests', to: 'users#requests'
+  get 'shows', to: 'users#show'
 
 
 

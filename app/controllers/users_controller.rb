@@ -18,8 +18,9 @@ class UsersController < ApplicationController
   end
 
   def requests
-    @pending_requests = Friendship.where(user_id: current_user.id, confirmed:nil)  
-    @friend_requests = Friendship.where(friend_id: current_user.id, confirmed:nil)
-    
+    @pending_requests = Friendship.where(user_id: current_user.id, confirmed: nil)
+    @friend_requests = Friendship.where(friend_id: current_user.id, confirmed: nil)
   end
+
+
 end

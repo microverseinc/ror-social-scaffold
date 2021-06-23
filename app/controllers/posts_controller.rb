@@ -22,14 +22,14 @@ class PostsController < ApplicationController
   def timeline_posts
     @my_posts = current_user.posts
     @friends = Friendship.where(user_id: current_user.id, confirmed: true)
-    @my_friends_posts = [] 
+    @my_friends_posts = []
     @friends.each do |friendship|
-      user = User.find_by(id:friendship.friend_id)
+      user = User.find_by(id: friendship.friend_id)
       @my_friends_posts << user.posts
     end
     @friends = Friendship.where(friend_id: current_user.id, confirmed: true)
-    @friends.each do |friendship| 
-      user = User.find_by(id:friendship.user_id)
+    @friends.each do |friendship|
+      user = User.find_by(id: friendship.user_id)
       @my_friends_posts << user.posts
     end
 
