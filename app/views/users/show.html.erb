@@ -1,12 +1,31 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
+  <% if @user != current_user && request_sent?(@user)%>
+        <%= link_to 'Request sent', '#', class: 'profile-link profile-link-btn' %>
+    <% elsif @user != current_user && (request_sent?(@user) == false) %>
+        <%= link_to 'Add Friend', friendships_path(:friendship => {:friend_id => @user.id}),method: :post, class: 'profile-link profile-link-btn' %>
+    <% end%>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
-     <%# <%= render 'users/pending_request'  %> %>
-     
-       
       <%= render @posts %>
     </ul>
   </article>
 </section>
+
+to accept
+
+1. accept the friendships
+2. by changing/update the friendship object: confirmed: 
+3. add the friend to the user and user to the friend's list.
+
+to ignore 
+
+1. delete the friendships object
+
+
+add note :
+
+click
+routes
+controller 

@@ -20,7 +20,11 @@
 <% else %>
     <% @friend_requests.each do |request| %>
         <% sender = User.find(request.user_id) %>
-        <%= sender.name %> sent you a request <br>
+        <%= sender.name %> sent you a request. <br>
+        <%= link_to 'accept', friendship_path(request.id),method: :patch %>
+        <%= link_to 'IGNORE', friendship_path(request.id),method: :delete %>
+
+
     <% end %>
 <% end %>
 
