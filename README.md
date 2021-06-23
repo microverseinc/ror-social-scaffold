@@ -4,7 +4,6 @@
 
 ![ssm](https://user-images.githubusercontent.com/42869046/123082742-0a35a400-d428-11eb-82b4-6390ee90764f.JPG)
 
-
 ## Built With
 
 - Ruby v2.7.0
@@ -73,8 +72,5 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-TBA
-
-## 📝 License
-
-TBA
+- Microverse Team
+- Standup Team
