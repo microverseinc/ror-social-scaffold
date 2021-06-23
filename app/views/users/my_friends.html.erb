@@ -15,13 +15,13 @@
       </tr>
     </thead>
     <tbody>
-      <% @friendships.each do |friend| %>
+      <% @friendships.each do |relationship| %>
         <tr>
-          <%# <td><%= friend.name %></td> %>
-          <%# <td><%= friend.email %></td> %>
+          <td> <%= User.find_by(id: relationship.user_id).name %></td>
+           <td> <%= User.find_by(id: relationship.user_id).email %></td>
           <td>
-            <%= link_to "View Profile", user_path(friend), class: "btn btn-primary btn-xs" %>
-            <%= link_to "Remove Friend", friendship_path(friend), method: :delete,
+            <%= link_to "View Profile", user_path(User.find_by(id: relationship.user_id)), class: "btn btn-primary btn-xs" %>
+            <%= link_to "Remove Friend", friendship_path(relationship.id), method: :delete,
               data: { confirm: "Are you sure?" }, class: "btn btn-xs btn-danger" %>
           </td>
         </tr>
