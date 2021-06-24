@@ -10,24 +10,22 @@
   <body>
     <nav class="nav">
       <%= link_to 'Stay in touch', root_path %>
-      <div class="menu">
-        <div class="menu-item">
-          <%= menu_link_to 'Timeline', posts_path %>
-        </div>
-        <div class="menu-item">
-          <%= menu_link_to 'my profile', '#' %>
-        </div>
-        <div class="menu-item">
-          <%= menu_link_to 'All users', users_path %>
-        </div>
-        <%# code from last night %>
-        <div class="menu-item">
-          <%= menu_link_to 'my friends', my_friends_path %>
-        </div>
-            <div class="menu-item">
-          <%= menu_link_to 'requests', requests_path %>
-        </div>
-      </div>
+      <% if user_signed_in? %>
+              <div class="menu">
+                <div class="menu-item">
+                  <%= menu_link_to 'Timeline', posts_path %>
+                </div>
+                <div class="menu-item">
+                  <%= menu_link_to 'All users', users_path %>
+                </div>
+                <div class="menu-item">
+                  <%= menu_link_to 'my friends', my_friends_path %>
+                </div>
+                <div class="menu-item">
+                  <%= menu_link_to 'requests', requests_path %>
+                </div>
+              </div>
+      <% end %>
       <% if current_user %>
         <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
       <% else %>
@@ -45,9 +43,6 @@
       </div>
     <% end %>
     <main class="main">
-      <% flash.each do |msg_type, msg|%>
-        <%= content_tag(:div, msg, class: "alert alert-#{msg_type}") %>
-      <%end%>
       <%= yield %>
     </main>
   </body>
