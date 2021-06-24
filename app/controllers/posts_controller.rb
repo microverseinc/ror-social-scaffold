@@ -34,6 +34,7 @@ class PostsController < ApplicationController
     end
 
     @timeline_posts = @my_posts + @my_friends_posts
+    debugger
   end
 
   def post_params
