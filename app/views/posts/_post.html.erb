@@ -5,11 +5,13 @@
     </div>
     <div class='post-liking'>
       <span class='post-date'> <%= post.created_at.strftime("%Y/%m/%d") %> </span>
-      <%= like_or_dislike_btn(post) %>
+      <%= like_or_dislike_btn(post) %> : <%= post.likes.count %>
     </div>
+
   </div>
   <p class="post-content">
     <%= post.content %>
+    <br><small class='post-date'> Comments:<%= post.comments.count %> </small>
   </p>
 
   <div class='post-comments-section'>
