@@ -16,12 +16,18 @@
     </thead>
     <tbody>
       <% @friendships.each do |relationship| %>
-        <tr>
-          <td> <%= User.find_by(id: relationship.user_id).name %></td>
-           <td> <%= User.find_by(id: relationship.user_id).email %></td>
+      <% if current_user.id == relationship.friend_id %>
+        <% friend_id = relationship.user_id  %>
+      <% else %>
+        <% friend_id = relationship.friend_id  %>
+      <% end %>
+      <% user = User.find_by(id: friend_id) %>
+        <tr> 
+          <td> <%= user.name %></td>
+          <td> <%= user.email %></td>
           <td>
-            <%= link_to "View Profile", user_path(User.find_by(id: relationship.user_id)), class: "btn btn-primary btn-xs" %>
-            <%= link_to "Remove Friend", friendship_path(relationship.id), method: :delete,
+            <%= link_to "View Profile", user_path(user), class: "btn btn-primary btn-xs" %>
+            | <%= link_to "Remove Friend", friendship_path(relationship.id), method: :delete,
               data: { confirm: "Are you sure?" }, class: "btn btn-xs btn-danger" %>
           </td>
         </tr>
