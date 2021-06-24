@@ -5,7 +5,7 @@ class FriendshipsController < ApplicationController
     if @add_friend.save
       redirect_to users_path, notice: 'Friend request sent.'
     else
-      redirect_to users_path, alert: 'You request was not sent.'
+      redirect_to users_path, alert: 'You friend request was not sent.'
     end
   end
 end
