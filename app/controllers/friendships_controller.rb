@@ -5,9 +5,7 @@ class FriendshipsController < ApplicationController
 
   def create
     @friendship = current_user.friendships.build(friend_id: params[:friendship][:friend_id])
-    if @friendship.save
-      redirect_to root_path
-    end
+    redirect_to root_path if @friendship.save
   end
 
   def update
@@ -20,7 +18,6 @@ class FriendshipsController < ApplicationController
   def destroy
     @friendship = Friendship.find(params[:id])
     @friendship.delete
-    # debugger
     redirect_to root_path
   end
 

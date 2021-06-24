@@ -6,7 +6,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    debugger
     @user = User.find_by(id: params[:id])
     @posts = @user.posts.ordered_by_most_recent
   end
@@ -20,6 +19,4 @@ class UsersController < ApplicationController
     @pending_requests = Friendship.where(user_id: current_user.id, confirmed: nil)
     @friend_requests = Friendship.where(friend_id: current_user.id, confirmed: nil)
   end
-
-
 end
