@@ -11,12 +11,7 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
 
   has_many :friendships, dependent: :destroy
-  has_many :friend, through :friendship 
-
+  has_many :friends, through: :friendships, foreign_key: :user_id
+  # has_many :friends_by_invitations, class_name: "Friendship", foreign_key: :user_id
+  
 end
-
-
-
-
-
-

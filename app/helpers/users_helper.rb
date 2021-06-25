@@ -5,7 +5,7 @@ module UsersHelper
   end
 
   def is_friend?(user)
-    value1 = (current_user.friendships.where(user_id: current_user.id, friend_id: user.id, confirmed: true)
+    value1 = current_user.friendships.where(user_id: current_user.id, friend_id: user.id, confirmed: true)
     value2 = current_user.friendships.where(user_id: user.id, friend_id: current_user.id, confirmed: true)
     return !!(value1 || value2)
   end
@@ -16,4 +16,8 @@ module UsersHelper
     return image_tag(gravatar_url, alt: user.name, class: 'gravatar')
   end
 
+  def me?(user)
+    current_user == user
+  end
+  
 end
