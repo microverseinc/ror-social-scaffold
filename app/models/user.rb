@@ -9,4 +9,14 @@ class User < ApplicationRecord
   has_many :posts
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+
+  has_many :friendships, dependent: :destroy
+  has_many :friend, through :friendship 
+
 end
+
+
+
+
+
+

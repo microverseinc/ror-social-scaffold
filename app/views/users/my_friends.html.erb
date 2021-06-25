@@ -1,0 +1,43 @@
+<%# code from lastnight %>
+
+<% if @friendships.size > 0 %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th colspan="3" class="page-header">
+          <h2>My Friends</h2>
+        </th>
+      </tr>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @friendships.each do |relationship| %>
+      <% if current_user.id == relationship.friend_id %>
+        <% friend_id = relationship.user_id  %>
+      <% else %>
+        <% friend_id = relationship.friend_id  %>
+      <% end %>
+      <% user = User.find_by(id: friend_id) %>
+        <tr> 
+          <td> <%= user.name %></td>
+          <td> <%= user.email %></td>
+          <td>
+            <%= link_to "View Profile", user_path(user), class: "btn btn-primary btn-xs" %>
+            | <%= link_to "Remove Friend", friendship_path(relationship.id), method: :delete,
+              data: { confirm: "Are you sure?" }, class: "btn btn-xs btn-danger" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  <table>  
+<% else %>
+  <div class="row col-lg-12">
+    <p class="lead">
+      You don't have any friends yet, please add some!
+    </p>
+  </div>
+<% end %>

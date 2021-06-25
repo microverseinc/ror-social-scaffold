@@ -289,6 +289,17 @@ form {
     font-size: 0.8em;
     margin: 0 0 8px 0;
     color: $primary-color-dark;
+    
+  }
+  .profile-link-btn {
+    border: 1px gray solid;
+    padding: 5px;
+    border-radius: 5px;
+    :hover {
+      border: 1px black solid;
+      background-color:lightgray ;
+      color: white;
+    }
   }
 }
 
