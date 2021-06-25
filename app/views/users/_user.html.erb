@@ -2,20 +2,15 @@
 <% if !me?(user) %>
   <% @user = user %>
   <%= gravatar_for @user %>
-  Name: <%= @user.name %> | mutual_friend: <%= mutual_friend(current_user, @user) %>
+  Name: <%= @user.name %>  | id: <%= @user.id %>
   
   <span class="profile-link">
-    <%= link_to 'See Profile',  user_path(@user), class: 'profile-link' %>  
-    <% if is_friend?(@user) %>
-      <% if @user != current_user && request_sent?(@user)%>
-        <%= link_to 'Request sent', '#', class: 'profile-link profile-link-btn' %>
-      <% elsif @user != current_user && (request_sent?(@user) == false) %>
-        <%= link_to 'Add Friend', friendships_path(:friendship => {:friend_id => @user.id}),
-                                                                      method: :post,
-                                                                       class: 'profile-link profile-link-btn' %>
-      <% end%>
-    <% end %>
+  <%= link_to 'See Profile',  user_path(@user), class: 'profile-link' %>  
+      <% if !is_friend?(@user)%>
+        <%= link_to 'Add Friend',friendships_path(:friendship => {:friend_id => @user.id}),
+                                                                    method: :post,
+                                                                     class: 'profile-link profile-link-btn' %>
+      <% end %>
   </span>
   <% end %>
 </li>
-
