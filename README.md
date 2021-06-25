@@ -1,6 +1,6 @@
 # Scaffold for social media app with Ruby on Rails
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students. Add frienship model.
+> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students. Add frienship model. Deploy Application to heroku.
 
 ![ssm](https://user-images.githubusercontent.com/42869046/123082742-0a35a400-d428-11eb-82b4-6390ee90764f.JPG)
 
