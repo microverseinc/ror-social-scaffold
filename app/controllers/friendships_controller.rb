@@ -17,14 +17,14 @@ class FriendshipsController < ApplicationController
     
     def confirm 
         @friend = User.find(params[:id])
-        if current_user.confirm_friend(@friend)
-          redirect_to users_path
-        end
+        current_user.confirm_friend(@friend)
+        redirect_to users_path
+        
     end
     
     def destroy 
-        @friend = User.find(params[:id])
-        @friend.destroy 
+        @friendship = Friendship.where(:user_id==params[:id] || :friend_id ==params[:id]).first
+        @friendship.destroy 
         redirect_to users_path
     end
 end
