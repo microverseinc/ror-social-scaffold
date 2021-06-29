@@ -9,6 +9,6 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
 
   def likes
-    num_of_likes = Like.group(:post_id).count[self.id]
+    Like.group(:post_id).count[id]
   end
 end
