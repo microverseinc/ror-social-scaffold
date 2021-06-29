@@ -54,6 +54,9 @@ group :test do
   #Add capybara and selenium
   gem "capybara"
   gem "selenium-webdriver"
+
+  #Add shoulda
+  gem 'shoulda-matchers', '~> 4.0'
 end
 
 group :development do
