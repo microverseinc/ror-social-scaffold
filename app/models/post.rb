@@ -7,4 +7,8 @@ class Post < ApplicationRecord
   scope :ordered_by_most_recent, -> { order(created_at: :desc) }
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+
+  def likes
+    num_of_likes = Like.group(:post_id).count[self.id]
+  end
 end
