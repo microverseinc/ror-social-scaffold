@@ -23,8 +23,13 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
-    @friendship = Friendship.where(params[:id] == :user_id || params[:id] == :friend_id).first
+    @friendship = Friendship.find_by user_id:current_user.id,friend_id: params[:id] 
+    @frienship_reverse = Friendship.find_by friend_id:current_user.id,user_id: params[:id] 
+    if @friendship
     @friendship.destroy
+    else 
+      @frienship_reverse.destroy
+    end
     redirect_to users_path
   end
 end
