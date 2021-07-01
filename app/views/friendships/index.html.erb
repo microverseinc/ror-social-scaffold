@@ -1,0 +1,22 @@
+<h1>Friendships#index</h1>
+<h2>All friendships</h2>
+<p><% @friendships.each do |friendship|%></p>
+<div class= "border">
+    <li><%=friendship.friend.name%></li>
+    <li><%=friendship.user.name%></li><br>
+</div>
+<% end %>
+<h2>Pending friendships</h2>
+<%current_user.pending_friends.each do |friend|%>
+<li><%= friend.name%></li>
+<% end %>
+<h2>Friend_requests</h2>
+<%current_user.friend_requests.each do |friend|%>
+<li><%= friend.name%></li>
+<%= link_to "Accept", confirm_friendship_path(id: friend.id), method: :put, class: "btn-green"%>
+<%= link_to "Decline", friendship_path(id: friend.id), method: :delete, data: {confirm: "Are you sure you want to decline friend request?"}, class: "btn-red"%>
+<% end %>
+<h3>Friends</h3>
+<%current_user.friends.each do |friend|%>
+<li><%= friend.name%></li>
+<% end %>

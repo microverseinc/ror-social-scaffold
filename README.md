@@ -60,7 +60,7 @@ Open `http://localhost:3000/` in your browser.
 ### Run tests
 
 ```
-    rpsec --format documentation
+    rspec --format documentation
 ```
 
 > Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
@@ -71,7 +71,19 @@ TBA
 
 ## Authors
 
-TBA
+👤 **HENRY ONU**
+
+- GitHub: [@githubhandle](https://github.com/Henryhaulka)
+- Twitter: [@twitterhandle](https://twitter.com/ONUHENRY12)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/henry-onu)
+
+
+👤 **Aleksandar Ivezic**
+
+- GitHub: [Aleksandar Ivezic](https://github.com/ShinobiWarior)
+- Twitter: [@Aivezic](https://twitter.com/Aivezic)
+- LinkedIn: [Aleksandar Ivezic](https://www.linkedin.com/in/aleksandar-ivezic/)
+
 
 ## 🤝 Contributing
 

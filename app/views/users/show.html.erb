@@ -1,5 +1,19 @@
 <section class="user-section">
-  <h2><%= "Name: #{@user.name}" %></h2>
+  <h2 class= "inline"><%= "Name: #{@user.name}" %></h2>
+   <%if current_user == @user%>
+    <span class = "bg-yellow">Current user</span>
+   <%elsif current_user.pending?(@user)%>
+   <span class="bg-orange">Pending...</span>
+    <%elsif current_user.requested?(@user)%>
+        <%= link_to "Accept", confirm_friendship_path(id: @user.id), method: :put, class: "btn-green"%>
+        <%= link_to "Decline", friendship_path(id: @user.id), method: :delete, data: {confirm: "Are you sure you want to decline friend request?"}, class: "btn-red"%>
+   <%elsif current_user.friend?(@user)%>
+    <%= link_to 'Remove Friend',  friendship_path(id: @user.id), method: :delete, data: {confirm: "Are you sure you want to remove friend?"}, class: "btn-red"%>
+   <%elsif !current_user.friend?(@user)%>
+    <%= link_to 'Invite to friendship',  friendships_path(user_id: @user.id), method: :post, action: :confirm, class: 'btn-green' %>
+    <% elsif !current_user.friend?(@user) %>
+    <%= link_to 'Remove Friendship',  friendship_path(id: @user.id), method: :delete, data: {confirm: "Are you sure you want to remove friend?"}, class: "btn-red"%>
+  <% end %>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
