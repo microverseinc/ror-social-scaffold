@@ -19,9 +19,11 @@
 
 /node_modules
 /yarn-error.log
+/Gemfile.lock
 
 /public/assets
 .byebug_history
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
