@@ -18,11 +18,18 @@ class UsersController < ApplicationController
   end
 
   def accept_freind
-    current_user.accept_freindship(params[:id])
+    current_user.accept_friendship(params[:id])
     user = User.find(params[:id])
 
-    flash[:notice] = "You Accepted #{user.name}'s Freind Request!"
+    flash[:notice] = "You Accepted #{user.name}'s Friend Request!"
     redirect_to users_path
   end
 
+  def decline_friend
+    current_user.decline_friendship(params[:id])
+    user = User.find(params[:id])
+
+    flash[:notice] = "You Declined #{user.name}'s Friends Request"
+    redirect_to users_path
+  end
 end
