@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   end
 
   def request_friend
-    request = current_user.friendships.build(friend_id: params['id'], status: false)
+    request = current_user.friendships.build(friend_id: params['id'], confirmed: false)
     request.save
     flash[:notice] = 'Friend Request Successfully sent'
     redirect_to users_path
