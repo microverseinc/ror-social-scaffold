@@ -17,5 +17,12 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 
-  
+  def accept_freind
+    current_user.accept_freindship(params[:id])
+    user = User.find(params[:id])
+
+    flash[:notice] = "You Accepted #{user.name}'s Freind Request!"
+    redirect_to users_path
+  end
+
 end
