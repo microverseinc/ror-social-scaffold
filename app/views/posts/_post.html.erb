@@ -1,23 +1,26 @@
 <li class="post">
   <div>
-    <div class='post-attribution' >
-      <%= link_to post.user.name, user_path(post.user), class: 'post-author' %>
-    </div>
-    <div class='post-liking'>
-      <span class='post-date'> <%= post.created_at.strftime("%Y/%m/%d") %> </span>
-      <%= like_or_dislike_btn(post) %>
-    </div>
-  </div>
-  <p class="post-content">
-    <%= post.content %>
-  </p>
+    <% if current_user == post.user || current_user.friends.include?(post.user)%>
+      <div class='post-attribution' >
+        <%= link_to post.user.name, user_path(post.user), class: 'post-author' %>
+      </div>
+      <div class='post-liking'>
+        <span class='post-date'> <%= post.created_at.strftime("%Y/%m/%d") %> </span>
+        <%= like_or_dislike_btn(post) %>
+      </div>
 
-  <div class='post-comments-section'>
-    <%= render partial: 'comments/comment', collection: post.comments %>
+      <p class="post-content">
+       <%= post.content %>
+      </p>
 
-    <%= form_for(post.comments.new, url: post_comments_path(post)) do |form| %>
-      <%= form.text_field :content, id: :comment_content, class: 'form-control', placeholder: 'Add new Comment' %>
-      <%= form.submit 'Comment', class: 'btn btn-secondary' %>
-    <% end %>
+      <div class='post-comments-section'>
+        <%= render partial: 'comments/comment', collection: post.comments %>
+
+        <%= form_for(post.comments.new, url: post_comments_path(post)) do |form| %>
+          <%= form.text_field :content, id: :comment_content, class: 'form-control', placeholder: 'Add new Comment' %>
+          <%= form.submit 'Comment', class: 'btn btn-secondary' %>
+        <% end %>
+      </div>
+   <% end %>
   </div>
 </li>
