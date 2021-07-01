@@ -57,6 +57,17 @@ group :test do
   gem 'rspec'
 end
 
+group :development, :test do
+  # The RSpec testing framework
+  gem 'rspec-rails'
+  # Capybara, the library that allows us to interact with the browser using Ruby
+  gem 'capybara'
+  # The following gems aids with the nuts and bolts
+  # of interacting with the browser.
+  gem 'webdrivers'
+end
+
+
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'listen', '>= 3.0.5', '< 3.2'
