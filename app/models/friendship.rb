@@ -5,10 +5,8 @@ class Friendship < ApplicationRecord
   belongs_to :inviter, class_name: 'User'
   belongs_to :invitee, class_name: 'User'
 
-  # belongs_to :friends_invitees, class_name: 'User'
-  # belongs_to :friends_inviters, class_name: 'User'
-
   scope :accepted, -> { where(accepted: true) }
+  scope :pending, -> { where(accepted: false) }
 
   private
 
