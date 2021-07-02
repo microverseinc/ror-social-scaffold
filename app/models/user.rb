@@ -13,25 +13,28 @@ class User < ApplicationRecord
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
 
   def friends
-    friends_array = friendships.map { |friendship| friendship.friend if friendship.confirmed }
-    friends_array += inverse_friendships.map { |friendship| friendship.user if friendship.confirmed }
+    user_friend_array = Friendship.pluck(:user_id, :friend_id)
+    filter_friendships = friendships.select do |friendship|
+      user_friend_array.include?([friendship.friend.id, friendship.user.id])
+    end
+    friends_array = filter_friendships.map(&:friend)
     friends_array.compact
   end
 
   # Users who have yet to confirme friend requests
   def pending_friends
-    friendships.map { |friendship| friendship.friend unless friendship.confirmed }.compact
+    user_friend_array = Friendship.pluck(:user_id, :friend_id)
+    friendships.map do |friendship|
+      friendship.friend unless user_friend_array.include?([friendship.friend.id, friendship.user.id])
+    end.compact
   end
 
   # Users who have requested to be friends
   def friend_requests
-    inverse_friendships.map { |friendship| friendship.user unless friendship.confirmed }.compact
-  end
-
-  def confirm_friend(user)
-    friendship = inverse_friendships.find { |friend| friend.user == user }
-    friendship.confirmed = true
-    friendship.save
+    user_friend_array = Friendship.pluck(:user_id, :friend_id)
+    inverse_friendships.map do |friendship|
+      friendship.user unless user_friend_array.include?([friendship.friend.id, friendship.user.id])
+    end.compact
   end
 
   def friend?(user)
