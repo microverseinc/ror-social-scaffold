@@ -196,6 +196,15 @@ form {
   text-transform: capitalize;
 }
 
+.friendship-relations {
+  a {
+    color: $primary-color-dark;
+    font-weight: bold;
+    font-size: 0.9em;
+    margin: 0 4px;
+  }
+}
+
 .timeline {
   width: 100%;
   margin: 16px 0;
