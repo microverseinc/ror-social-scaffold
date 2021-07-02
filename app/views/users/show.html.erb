@@ -1,5 +1,6 @@
 <section class="user-section">
-  <h2><%= "Name: #{@user.name}" %></h2>
+  <h2 class= "inline"><%= "Name: #{@user.name}" %></h2>
+   <%= display_links(@user)%>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
