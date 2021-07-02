@@ -9,7 +9,16 @@ class User < ApplicationRecord
   has_many :posts
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
-  has_many :friendships, dependent: :destroy
-  has_many :invitees, class_name: 'Friendship', foreign_key: :invitee_id, source: :user
-  has_many :inviters, class_name: 'Friendship', foreign_key: :inviter_id, source: :user
+
+  has_many :friendship_invitees, foreign_key: :inviter_id, class_name: 'Friendship'
+  has_many :invitees, through: :friendship_invitees
+  has_many :friendship_inviters, foreign_key: :invitee_id, class_name: 'Friendship'
+  has_many :inviters, through: :friendship_inviters
+
+  # has_many :friendship_invitation_invitees, foreign_key: :inviter_id, class_name: 'Friendship', scope: :accepted
+  # has_many :friends_invitees, through: :friendship_invitation_invitees
+  # has_many :friendship_invitation_inviters, foreign_key: :invitee_id, class_name: 'Friendship', scope: :accepted
+  # has_many :friends_inviters, through: :friendship_invitation_inviters
+
+
 end

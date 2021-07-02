@@ -2,20 +2,19 @@ class Friendship < ApplicationRecord
   #validates :accepted, presence: true
   validate :not_narcissist
 
-  belongs_to :inviter, class_name: 'User', foreign_key: :user_id
-  belongs_to :invitee, class_name: 'User', foreign_key: :user_id
+  belongs_to :inviter, class_name: 'User'
+  belongs_to :invitee, class_name: 'User'
+
+  # belongs_to :friends_invitees, class_name: 'User'
+  # belongs_to :friends_inviters, class_name: 'User'
+
+  scope :accepted, -> { where(accepted: true) }
 
   private
 
   def not_narcissist
-     if invitee == inviter
-      errors.add(:inviter, "can't ask theirselves for a friendship")
-     end
-     if invitee.nil?
-      errors.add(:invitee, "can't be missing")
-     end
-     if inviter.nil?
-      errors.add(:inviter, "can't be missing")
-     end
+    errors.add(:inviter, "can't ask themselves for friendship") if invitee == inviter
+    errors.add(:invitee, "can't be missing") if invitee.nil?
+    errors.add(:inviter, "can't be missing") if inviter.nil?
   end
 end
