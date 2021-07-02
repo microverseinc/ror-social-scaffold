@@ -5,6 +5,7 @@
     <% if @friends.include? @user %>
       <%= link_to  "End friendship", friendship_destroy_path(current_user.id, @user.id, @user.id), method: :delete %>
     <% elsif @pending_inviter_friends.include? @user %>
+    <p> This user has requested your friendship</p>
       <%= link_to  "Accept", friendship_update_path(@user.id, current_user.id), method: :post %>
       <%= link_to  "Reject", friendship_destroy_path(@user.id, current_user.id, @user.id), method: :delete %>
     <% elsif @pending_invitee_friends.include? @user %>
@@ -13,7 +14,7 @@
       <%= link_to  "Request friendship", friendship_create_path(current_user.id, @user.id), method: :post %>
     <% end %>
   </div>
-  
+
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">

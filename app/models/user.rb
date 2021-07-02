@@ -19,6 +19,9 @@ class User < ApplicationRecord
   def friends
   invitee_friends + inviter_friends
   end
+  def friends_unfiltered
+  invitees + inviters
+  end
 
  def pending_inviter_friends
   inviter_ids = friendship_inviters.pending.select(:inviter_id)

@@ -96,53 +96,43 @@ Comment.create([
 Like.create([
   {
     user_id: User.second.id,
-    post_id: Post.first.id,
-    value: true
+    post_id: Post.first.id
   },
   {
     user_id: User.third.id,
-    post_id: Post.first.id,
-    value: false
+    post_id: Post.first.id
   },
   {
     user_id: User.fourth.id,
-    post_id: Post.first.id,
-    value: true
+    post_id: Post.first.id
   },
   {
     user_id: User.first.id,
-    post_id: Post.second.id,
-    value: true
+    post_id: Post.second.id
   },
   {
     user_id: User.third.id,
-    post_id: Post.second.id,
-    value: false
+    post_id: Post.second.id
   },
   {
     user_id: User.fourth.id,
-    post_id: Post.second.id,
-    value: true
+    post_id: Post.second.id
   },
   {
     user_id: User.first.id,
-    post_id: Post.third.id,
-    value: true
+    post_id: Post.third.id
   },
   {
     user_id: User.third.id,
-    post_id: Post.third.id,
-    value: true
+    post_id: Post.third.id
   },
   {
     user_id: User.first.id,
-    post_id: Post.fourth.id,
-    value: true
+    post_id: Post.fourth.id
   },
   {
     user_id: User.fourth.id,
-    post_id: Post.fourth.id,
-    value: true
+    post_id: Post.fourth.id
   }
 ])
 
