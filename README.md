@@ -1,4 +1,5 @@
 # Scaffold for social media app with Ruby on Rails
+![screenshot](img/stay-in.png)
 
 
 
@@ -10,6 +11,8 @@
 - Ruby v2.7.0
 - Ruby on Rails v5.2.4
 
+## Live Demo
+[Live Demo Link](https://fast-eyrie-06446.herokuapp.com)
 
 
 
