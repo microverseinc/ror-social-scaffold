@@ -28,6 +28,10 @@ class User < ApplicationRecord
   has_many :comfirmed_friendships, -> { where status: true }, class_name: 'Friendship', foreign_key: :inviter_id
   has_many :friends, through: :comfirmed_friendships, source: :invitee
 
+  def after_confirmation
+    UserMailer.with(user: self).welcome_email.deliver_now
+  end
+
   def friends_and_own_posts
     Post.where(user_id: [*friends, self])
   end
