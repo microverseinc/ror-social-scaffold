@@ -35,6 +35,15 @@ a {
   color: $primary-color-text;
 }
 
+.friendship-relations {
+  a {
+    color: $primary-color-dark;
+    font-weight: bold;
+    font-size: 0.9em;
+    margin: 0 4px;
+  }
+}
+
 .nav {
   display: flex;
   justify-content: space-between;
@@ -194,15 +203,6 @@ form {
   text-align: center;
   margin-bottom: 16px;
   text-transform: capitalize;
-}
-
-.friendship-relations {
-  a {
-    color: $primary-color-dark;
-    font-weight: bold;
-    font-size: 0.9em;
-    margin: 0 4px;
-  }
 }
 
 .timeline {
