@@ -34,6 +34,14 @@
         <% end %>
       </div>
     </nav>
+    <% flash.each do |type, msg| %>
+      <div class="alert alert-info">
+        <%= msg %>
+      </div>
+    <% end %>
+<%
+=begin
+%>
     <% if notice.present? %>
       <div class="notice">
         <p> <%= notice %> </p>
@@ -49,6 +57,9 @@
         <p> <%= alert %> </p>
       </div>
     <% end %>
+<%
+=end
+%>
     <main class="main">
       <%= yield %>
     </main>
