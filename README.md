@@ -1,6 +1,6 @@
 # Scaffold for social media app with Ruby on Rails
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+> This repo includes Milestone 2 code for social media app with basic styling. In this Milestone, we added Friendship feature to the social media app.
 
 ## Built With
 
@@ -17,9 +17,9 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-Ruby: 2.6.3
-Rails: 5.2.3
-Postgres: >=9.5
+- Ruby: 2.7.0
+- Rails: 5.2.6
+- Postgres: >=9.5
 
 ### Setup
 
@@ -36,14 +36,11 @@ Setup database with:
    rails db:migrate
 ```
 
-### Github Actions
+Optionally, you can add the provided seeds for the database tables with:
 
-To make sure the linters' checks using Github Actions work properly, you should follow the next steps:
-
-1. On your recently forked repo, enable the GitHub Actions in the Actions tab.
-2. Create the `feature/branch` and push.
-3. Start working on your milestone as usual.
-4. Open a PR from the `feature/branch` when your work is done.
+```
+    rails db:seed
+```
 
 ### Usage
 
@@ -61,7 +58,7 @@ Open `http://localhost:3000/` in your browser.
     rpsec --format documentation
 ```
 
-> Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
+> Tests were created regarding only the Friendship feature added in this Milestone.
 
 ### Deployment
 
@@ -69,13 +66,23 @@ TBA
 
 ## Authors
 
-TBA
+👤 **Julian Carracedo**
+
+- GitHub: [@JuliCarracedo](https://github.com/JuliCarracedo)
+- Twitter: [@CarracedoTrigo](https://twitter.com/CarracedoTrigo)
+- LinkedIn: [Julian Carracedo](https://www.linkedin.com/in/julian-carracedo/)
+
+👤 **Ênio Neves de Souza**
+
+- GitHub: [@enionsouza](https://github.com/enionsouza)
+- Twitter: [@enionsouza](https://twitter.com/enionsouza)
+- LinkedIn: [Enio Neves de Souza](https://www.linkedin.com/in/enio-neves-de-souza/)
 
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the [issues page](issues/).
+Feel free to check the [pull resquests page](https://github.com/JuliCarracedo/ror-social-scaffold/pull/2) for this milestone.
 
 ## Show your support
 
@@ -83,8 +90,10 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-TBA
+- [Microverse](https://www.microverse.org/)
+- [The Odin Project](https://www.theodinproject.com/)
+- [Rails Guides](https://guides.rubyonrails.org/index.html)
 
 ## 📝 License
 
-TBA
+This project is [MIT](./LICENSE) licensed.
