@@ -1,10 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Friendship do
-
   before(:each) do
-    julian = User.create!(name: 'Julian', email: 'julian@example.com', gravatar_url: 'https://www.w3schools.com/howto/img_avatar.png', password: 'Secret1', password_confirmation: 'Secret1')
-    enio = User.create!(name: 'Enio', email: 'enio@example.com', gravatar_url: 'https://www.w3schools.com/howto/img_avatar.png', password: 'Secret1', password_confirmation: 'Secret1')
+    User.create(name: 'Julian', email: 'julian@example.com',
+                gravatar_url: 'https://www.w3schools.com/howto/img_avatar.png',
+                password: 'Secret1', password_confirmation: 'Secret1')
+    User.create(name: 'Enio', email: 'enio@example.com',
+                gravatar_url: 'https://www.w3schools.com/howto/img_avatar.png',
+                password: 'Secret1', password_confirmation: 'Secret1')
   end
 
   describe 'creation' do
@@ -36,13 +39,31 @@ RSpec.describe Friendship do
 end
 
 RSpec.describe User do
-
   before(:each) do
-    julian = User.create!(name: 'Julian', email: 'julian@example.com', gravatar_url: 'https://www.w3schools.com/howto/img_avatar.png', password: 'Secret1', password_confirmation: 'Secret1')
-    enio = User.create!(name: 'Enio', email: 'enio@example.com', gravatar_url: 'https://www.w3schools.com/howto/img_avatar.png', password: 'Secret1', password_confirmation: 'Secret1')
-    user001 = User.create!(name: 'User001', email: 'user001@example.com', gravatar_url: 'https://www.w3schools.com/howto/img_avatar.png', password: 'Secret1', password_confirmation: 'Secret1')
-    user002 = User.create!(name: 'User002', email: 'user002@example.com', gravatar_url: 'https://www.w3schools.com/howto/img_avatar.png', password: 'Secret1', password_confirmation: 'Secret1')
-    user003 = User.create!(name: 'User003', email: 'user003@example.com', gravatar_url: 'https://www.w3schools.com/howto/img_avatar.png', password: 'Secret1', password_confirmation: 'Secret1')
+    User.create(name: 'Julian',
+                email: 'julian@example.com',
+                gravatar_url: 'https://www.w3schools.com/howto/img_avatar.png',
+                password: 'Secret1', password_confirmation: 'Secret1')
+
+    User.create(name: 'Enio',
+                email: 'enio@example.com',
+                gravatar_url: 'https://www.w3schools.com/howto/img_avatar.png',
+                password: 'Secret1', password_confirmation: 'Secret1')
+
+    User.create(name: 'User001',
+                email: 'user001@example.com',
+                gravatar_url: 'https://www.w3schools.com/howto/img_avatar.png',
+                password: 'Secret1', password_confirmation: 'Secret1')
+
+    User.create(name: 'User002',
+                email: 'user002@example.com',
+                gravatar_url: 'https://www.w3schools.com/howto/img_avatar.png',
+                password: 'Secret1', password_confirmation: 'Secret1')
+
+    User.create(name: 'User003',
+                email: 'user003@example.com',
+                gravatar_url: 'https://www.w3schools.com/howto/img_avatar.png',
+                password: 'Secret1', password_confirmation: 'Secret1')
   end
 
   describe '#friends' do

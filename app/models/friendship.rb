@@ -1,5 +1,5 @@
 class Friendship < ApplicationRecord
-  #validates :accepted, presence: true
+  # validates :accepted, presence: true
   validate :not_narcissist
   validate :not_inviting_twice, on: :create
 
@@ -16,7 +16,10 @@ class Friendship < ApplicationRecord
     errors.add(:invitee, "can't be missing") if invitee.nil?
     errors.add(:inviter, "can't be missing") if inviter.nil?
   end
+
   def not_inviting_twice
-    errors.add(:inviter, "can't invite. There's a previous request created")if inviter.friends_unfiltered.include?(invitee)
+    return unless inviter.friends_unfiltered.include?(invitee)
+
+    errors.add(:inviter, "can't invite. There's a previous request created")
   end
 end
