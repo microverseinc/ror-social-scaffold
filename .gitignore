@@ -28,3 +28,4 @@
 ror-socia-scaffold.code-workspace
 .DS_Store
 ror-social-scaffold-mailer.code-workspace
+/spec/examples.txt
