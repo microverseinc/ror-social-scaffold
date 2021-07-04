@@ -4,7 +4,7 @@
 
 # About
 
-> This is a social media app where you can create posts, add other users as friends, and make comments or like another post. The main purpose of this project was to build advanced associations, scopes for faster queries, and model methods. Some additional features have been added to the project for learning purposes, such as sign up with a Google account, email confirmation and welcome email messages.
+> This is a social media app where you can create posts, add other users as friends, and make comments or like another post. The objective of this project was to build advanced associations in the database, implement scopes for faster queries, and create model methods for more efficient use of resources. Some additional features have been added to the project for learning purposes, such as sign up with a Google account, email confirmation, and welcome email messages.
 
 What you can do on the app:
 - Sign up and Log in
@@ -46,12 +46,12 @@ You can visit [here](https://fast-wildwood-38105.herokuapp.com) our app.
 
 ## Getting Started
 
-To get a local copy up and running follow these simple example steps:
+To get a local copy up and running, follow these simple example steps:
 
 - Clone this repository.
-- Open the project folder where the repository was downloaded.
-- In your terminal, run the command `bundle install`. This will install all the required dependencies.
-- Thereafter, run the migrations. To do this, while in the project root folder, run the command: `rails db:migrate`.
+- Open the directory where you downloaded the repository.
+- In your terminal, run the command `bundle install`. This command will install all the required dependencies.
+- Afterwards, run the migrations. To do this, while in the project root folder, run the command: `rails db:migrate`.
 - Run the command `yarn install --check-files` to install all the yarn dependencies of the project.
 
 ## Prerequisites
@@ -70,7 +70,7 @@ To get a local copy up and running follow these simple example steps:
 - Start the server with:
 
 ```
-    rails server
+ rails server
 ```
 - Open `http://localhost:3000/` in your browser
 
@@ -89,10 +89,10 @@ To get a local copy up and running follow these simple example steps:
 ### Run tests
 
 ```
-    rpsec --format documentation
+ rpsec --format documentation
 ```
 
-In this project there are two different types of tests:
+There are two different types of tests in this project :
 
 - Integration Tests made with Capybara (You will need a Chrome browser for these tests to work.)
 - Unit Tests made with Rspec
@@ -120,3 +120,4 @@ Give a ⭐️ if you like this project!
 ## 📝 License
 
 This project is [MIT](https://github.com/alexisbec/ror-social-scaffold/blob/master/LICENSE) licensed.
+
