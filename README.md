@@ -4,7 +4,7 @@
 
 # About
 
-> This is a social media app where you can create posts, add other users as friends, and make comments or like another post. The main purpose of this project was to build advanced associations, scopes for faster queries, and model methods.
+> This is a social media app where you can create posts, add other users as friends, and make comments or like another post. The main purpose of this project was to build advanced associations, scopes for faster queries, and model methods. Some additional features have been added to the project for learning purposes, such as sign up with a Google account, email confirmation and welcome email messages.
 
 What you can do on the app:
 - Sign up and Log in
@@ -19,8 +19,10 @@ In this project we:
 - Created advanced associations between users
 - Used scopes to make more efficient database queries
 - Created models, views, and controllers for users
-- Used devise gem for user authentication and authorization
-- We implemented integration tests with Capybara
+- Used devise gem for user authentication, authorization, and email account confirmation
+- Implemented ActionMailer to send a welcome mail to users who activate their account
+- Implemented OAuth to allow users to sign up to the app using their Google account
+- Implemented integration tests with Capybara
 - Used Rspec to test model validations and associations
 
 # Application Screenshot
@@ -32,6 +34,9 @@ In this project we:
 
 - Ruby v2.7.2
 - Ruby on Rails v6.0.3.6
+- OAuth
+- Google account services
+- Devise gem for user registration and account confirmation
 - Heroku
 - PostgreSQL
 
@@ -72,10 +77,14 @@ To get a local copy up and running follow these simple example steps:
 ### Instructions
 
 1. Create a user in 'Sign Up'
-2. Post something
-3. Add a friend in 'All Users'
-4. Wait for a response
-5. If your friend request is accepted, now you can see each other's posts
+2. Check the tmp folder and open the newly created folder in it. Inside you will find a local copy of the confirmation mail sent to you
+3. Open the plain.html or rich.html file in your preferred browser
+4. Confirm your account by clicking on the link provided
+5. Sign in to your new account with your account credentials
+6. Post something
+7. Add a friend in 'All Users'
+8. Wait for a response
+9. If your friend request is accepted, now you can see each other's posts
 
 ### Run tests
 

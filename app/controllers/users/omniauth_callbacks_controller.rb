@@ -5,8 +5,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user = User.create_from_provider_data(request.env['omniauth.auth'])
 
     if @user.persisted?
-      # UserMailer.with(user: @user).welcome_email.deliver_now
-
       sign_in_and_redirect @user
       set_flash_message(:notice, :success, kind: 'Google') if is_navigational_format?
     else
