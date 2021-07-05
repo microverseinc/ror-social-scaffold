@@ -1,10 +1,12 @@
 <li>
   Name: <%= user.name %>
-  <% if current_user.pending_inviter_friends.include?(user) %>
-      <span >Pending friendship request</span>
-  <% end %>
   <span class="profile-link">
-    
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
   </span>
+  <% if current_user.pending_inviter_friends.include?(user) %>
+    <span>Pending friendship request</span>
+  <% end %>
+  <% if current_user.not_acquaintances.include?(user) %>
+    <%= link_to  "Request friendship", friendship_create_path(current_user.id, user.id, 'all-users'), method: :post, class: 'profile-friendship-request' %>
+  <% end %>
 </li>

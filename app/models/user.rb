@@ -34,6 +34,10 @@ class User < ApplicationRecord
     User.where(id: invitee_ids)
   end
 
+  def not_acquaintances
+    User.where.not(id: id) - friends_unfiltered
+  end
+
   private
 
   def invitee_friends

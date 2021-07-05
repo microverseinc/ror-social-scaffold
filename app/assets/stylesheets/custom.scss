@@ -299,6 +299,22 @@ form {
     margin: 0 0 8px 0;
     color: $primary-color-dark;
   }
+
+  .profile-friendship-request {
+    font-size: 0.7em;
+    margin: 0 0 8px 8px;
+    padding: 2px;
+    padding-right: 4px;
+    border-radius: 2px;
+    color: $primary-color-text;
+    font-style: italic;
+    background-color: $primary-color-dark;
+  }
+
+  .profile-friendship-request:hover {
+    color: $primary-color-light;
+    background-color: $primary-color;
+  }
 }
 
 .user-section {

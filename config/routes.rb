@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :likes, only: [:create, :destroy]
   end
 
-  post 'friendships/create/:inviter_id/:invitee_id', to: 'friendships#create', as: 'friendship_create'
+  post 'friendships/create/:inviter_id/:invitee_id/:mode', to: 'friendships#create', as: 'friendship_create'
   post 'friendships/update/:inviter_id/:invitee_id', to: 'friendships#update', as: 'friendship_update'
   delete 'friendships/destroy/:inviter_id/:invitee_id/:show_user', to: 'friendships#destroy', as: 'friendship_destroy'
 
