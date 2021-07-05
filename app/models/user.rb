@@ -4,7 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :name, presence: true, length: { maximum: 20 }
+  validates :name, presence: true, length: { in: 3..20 }
+  validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true
+  validates :password, presence: true
+  validates :password_confirmation, presence: true
 
   has_many :posts
   has_many :comments, dependent: :destroy
