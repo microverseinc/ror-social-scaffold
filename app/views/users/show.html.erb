@@ -11,7 +11,7 @@
     <% elsif @pending_invitee_friends.include? @user %>
       <%= link_to "Remove friendship request", friendship_destroy_path(current_user.id, @user.id, @user.id), method: :delete %>
     <% elsif current_user != @user %>
-      <%= link_to "Request friendship", friendship_create_path(current_user.id, @user.id, 'profile'), method: :post %>
+      <%= link_to "Invite to friendship", friendship_create_path(current_user.id, @user.id, 'profile'), method: :post %>
     <% end %>
   </div>
 

@@ -250,6 +250,13 @@ form {
     .post-date {
       font-size: 0.6em;
     }
+
+    .post-likes {
+      color: $primary-color;
+      font-weight: bold;
+      font-size: 0.9em;
+      margin: 0 4px;
+    }
   }
 
   .post-content {
@@ -281,6 +288,11 @@ form {
         font-size: 0.6em;
       }
     }
+
+    .justify-right {
+      justify-content: end;
+      font-size: 0.7em;
+    }
   }
 }
 
@@ -298,6 +310,13 @@ form {
     font-size: 0.8em;
     margin: 0 0 8px 0;
     color: $primary-color-dark;
+  }
+
+  .profile-pending-request {
+    font-size: 0.7em;
+    margin: 0 0 8px 0;
+    color: #f00;
+    font-style: italic;
   }
 
   .profile-friendship-request {

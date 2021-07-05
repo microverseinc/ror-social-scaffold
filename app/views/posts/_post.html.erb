@@ -5,6 +5,7 @@
     </div>
     <div class='post-liking'>
       <span class='post-date'> <%= post.created_at.strftime("%Y/%m/%d") %> </span>
+      <span class="post-likes"> <%= pluralize(post.likes.count, 'like') %> </span>
       <%= like_or_dislike_btn(post) %>
     </div>
   </div>
@@ -13,6 +14,9 @@
   </p>
 
   <div class='post-comments-section'>
+    <p class="post-comments justify-right">
+      <%= pluralize(post.comments.count, 'comment') %>
+    </p>
     <%= render partial: 'comments/comment', collection: post.comments %>
 
     <%= form_for(post.comments.new, url: post_comments_path(post)) do |form| %>
