@@ -1,27 +1,47 @@
 class FriendshipsController < ApplicationController
+
+  before_action :update_params, only: [:update]
+
   def create
     friend = User.find(params[:friend_id])
-    
-    new_friend = current_user.friendships.build(friend_id: friend.id, status: "pending")
-    puts "---------"
-    puts new_friend.valid?
-    if new_friend.save
-      render body: "Saved"
+
+    check_friend = current_user.friendships.find_by(friend_id: friend.id)
+    if check_friend
+      flash[:alert] = "You have added that friend"
+      redirect_to root_path and return
     else
-      render body: "Not saved"
+      new_friend = current_user.friendships.build(friend_id: friend.id, status: "pending")
+      if new_friend.save
+        render body: "Saved"
+      else
+        render body: "Not saved"
+      end
     end
   end
 
   def update
-    friend = User.find(params[:friend_id])
-    
-    new_friend = current_user.friendships.build(friend_id: friend.id, status: "approved")
-    puts "---------"
-    puts new_friend.valid?
-    if new_friend.save
-      render body: "Saved"
+    friendship_to_update = Friendship.find(params[:id])
+
+    if friendship_to_update.update(update_params)
+      flash[:notice] = "You are now friends. Hooray! :)"
+      redirect_to user_path(current_user) and return
     else
-      render body: "Not saved"
+      puts "--Not--"
     end
+    
+    puts friendship_to_update.user.name
+    puts friendship_to_update.friend.name
   end
+
+  # find and find_by
+
+  # group and where
+
+  private
+
+  def update_params
+    params.permit(:user_id, :friend_id, :status)
+  end
+  
+
 end
