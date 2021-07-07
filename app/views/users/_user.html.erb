@@ -3,4 +3,10 @@
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
   </span>
+  <% if current_user != user  %>
+    <%= form_with url: friendships_path, method: :post do |f| %>
+      <%= f.hidden_field :friend_id, value: user.id %>
+      <%= f.submit 'Add Friend' %>
+    <% end %>
+  <% end %>
 </li>
