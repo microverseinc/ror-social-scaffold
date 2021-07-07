@@ -15,20 +15,21 @@ class User < ApplicationRecord
   has_many :sent_requests, class_name: 'Friendship', foreign_key: 'user_id'
 
   def self.sent_request?(signed_in_user, other_user)
-    friendship_sent = Friendship.where("user_id = ? AND friend_id = ?", signed_in_user.id, other_user.id)
+    friendship_sent = Friendship.where('user_id = ? AND friend_id = ?', signed_in_user.id, other_user.id)
     if friendship_sent.empty?
-      return false
+      false
     else
-      return true
+      true
     end
   end
 
   def self.friends?(signed_in_user, other_user)
-    friend_approved = Friendship.where("user_id = ? AND friend_id = ? AND status = ?", signed_in_user.id, other_user.id, "approved")
+    friend_approved = Friendship.where('user_id = ? AND friend_id = ? AND status = ?', signed_in_user.id,
+                                       other_user.id, 'approved')
     if friend_approved.empty?
-      return false
+      false
     else
-      return true
+      true
     end
   end
 end
