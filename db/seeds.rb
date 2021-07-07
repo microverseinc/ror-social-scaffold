@@ -138,28 +138,53 @@ Like.create([
 
 Friendship.create([
   {
-    inviter_id: User.first.id,
-    invitee_id: User.second.id,
-    accepted: true
+    user_id: User.first.id,
+    friend_id: User.second.id,
+    status: true
+  },
+    {
+    user_id: User.second.id,
+    friend_id: User.first.id,
+    status: true
   },
   {
-    inviter_id: User.second.id,
-    invitee_id: User.third.id,
-    accepted: false
+    user_id: User.second.id,
+    friend_id: User.third.id,
+    status: true
   },
   {
-    inviter_id: User.third.id,
-    invitee_id: User.first.id,
-    accepted: true
+    user_id: User.third.id,
+    friend_id: User.second.id,
+    status: false
   },
   {
-    inviter_id: User.fourth.id,
-    invitee_id: User.second.id,
-    accepted: true
+    user_id: User.third.id,
+    friend_id: User.first.id,
+    status: true
   },
   {
-    inviter_id: User.fourth.id,
-    invitee_id: User.third.id,
-    accepted: false
+    user_id: User.first.id,
+    friend_id: User.third.id,
+    status: true
+  },
+  {
+    user_id: User.fourth.id,
+    friend_id: User.second.id,
+    status: true
+  },
+  {
+    user_id: User.second.id,
+    friend_id: User.fourth.id,
+    status: true
+  },
+  {
+    user_id: User.fourth.id,
+    friend_id: User.third.id,
+    status: true
+  },
+  {
+    user_id: User.third.id,
+    friend_id: User.fourth.id,
+    status: false
   }
 ])
