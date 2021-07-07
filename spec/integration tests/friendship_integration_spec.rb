@@ -23,7 +23,7 @@ RSpec.describe 'friendship feature', type: :system do
     fill_in 'Email', with: 'user001@example.com'
     fill_in 'Password', with: 'Secret1'
     click_button 'Log in'
-    expect(page).to have_content('Request friendship')
+    expect(page).to have_content('Invite to friendship')
   end
   it 'allows to end a previously accepted friendship' do
     Friendship.safe_create(User.first.id, User.second.id)
@@ -42,7 +42,7 @@ RSpec.describe 'friendship feature', type: :system do
     fill_in 'Password', with: 'Secret1'
     click_button 'Log in'
     click_link 'End friendship'
-    expect(page).to have_content('Request friendship')
+    expect(page).to have_content('Invite to friendship')
   end
   it 'allows to accept a friendship request' do
     Friendship.safe_create(User.second.id, User.first.id)
@@ -79,7 +79,7 @@ RSpec.describe 'friendship feature', type: :system do
     fill_in 'Password', with: 'Secret1'
     click_button 'Log in'
     click_link 'Reject'
-    expect(page).to have_content('Request friendship')
+    expect(page).to have_content('Invite to friendship')
   end
 
   it 'allows to take down a friendship request you sent' do
@@ -97,7 +97,7 @@ RSpec.describe 'friendship feature', type: :system do
     fill_in 'Password', with: 'Secret1'
     click_button 'Log in'
     click_link 'Remove friendship request'
-    expect(page).to have_content('Request friendship')
+    expect(page).to have_content('Invite to friendship')
   end
 
   it 'warns you of any pending friendship requests in the navbar' do
