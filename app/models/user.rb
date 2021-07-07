@@ -24,12 +24,11 @@ class User < ApplicationRecord
   end
 
   def self.friends?(signed_in_user, other_user)
-    friend_approved_1 = Friendship.where("user_id = ? AND friend_id = ? AND status = ?", other_user.id, signed_in_user.id, "approved")
-    friend_approved_2 = Friendship.where("user_id = ? AND friend_id = ? AND status = ?", signed_in_user.id, other_user.id, "approved")
-    if !friend_approved_1.empty? or !friend_approved_2.empty?
-      return true
-    else
+    friend_approved = Friendship.where("user_id = ? AND friend_id = ? AND status = ?", signed_in_user.id, other_user.id, "approved")
+    if friend_approved.empty?
       return false
+    else
+      return true
     end
   end
 end
