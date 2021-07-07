@@ -17,12 +17,14 @@ class User < ApplicationRecord
   has_many :friends, through: :friendships, class_name: 'User'
 
   def pending_inviters
-    pending_inviters_ids = Friendship.where(user_id: id, friend_id: User.find(id).friends.select(:id), status: false).select(:friend_id)
+    pending_inviters_ids = Friendship.where(user_id: id, friend_id: User.find(id).friends.select(:id),
+                                            status: false).select(:friend_id)
     friends.where(id: pending_inviters_ids)
   end
 
   def pending_invitees
-    pending_invitees_ids = Friendship.where(user_id: User.find(id).friends.select(:id), friend_id: id, status: false).select(:user_id)
+    pending_invitees_ids = Friendship.where(user_id: User.find(id).friends.select(:id), friend_id: id,
+                                            status: false).select(:user_id)
     friends.where(id: pending_invitees_ids)
   end
 

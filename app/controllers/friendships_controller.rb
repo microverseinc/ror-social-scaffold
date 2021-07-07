@@ -1,6 +1,6 @@
 class FriendshipsController < ApplicationController
   def create
-    Friendship.safe_create(params[:inviter_id],params[:invitee_id])
+    Friendship.safe_create(params[:inviter_id], params[:invitee_id])
     if params[:mode] == 'profile'
       redirect_to user_path(User.find(params[:invitee_id]))
     else

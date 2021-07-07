@@ -17,7 +17,7 @@ RSpec.describe Friendship do
     end
 
     it 'rejects friendship if previously that request already exists' do
-      Friendship.safe_create(User.first.id,User.second.id)
+      Friendship.safe_create(User.first.id, User.second.id)
       friendship = Friendship.new(user_id: User.second.id, friend_id: User.first.id, status: false)
       expect(friendship.valid?).to eq(false)
     end
@@ -90,9 +90,9 @@ RSpec.describe User do
   describe '#pending_inviters' do
     it 'shows all the pending friend requests proposed to the user' do
       Friendship.safe_create(User.first.id, User.second.id)
-      Friendship.find_by(user_id: User.second.id,friend_id: User.first.id).update(status: true)
+      Friendship.find_by(user_id: User.second.id, friend_id: User.first.id).update(status: true)
       Friendship.safe_create(User.third.id, User.first.id)
-      Friendship.find_by(user_id: User.first.id,friend_id: User.third.id).update(status: true)
+      Friendship.find_by(user_id: User.first.id, friend_id: User.third.id).update(status: true)
       Friendship.safe_create(User.fourth.id, User.first.id)
       expect(User.first.pending_inviters.count).to eq(1)
     end
@@ -101,9 +101,9 @@ RSpec.describe User do
   describe '#pending_invitees' do
     it 'shows all the pending friend requests proposed to the user' do
       Friendship.safe_create(User.first.id, User.second.id)
-      Friendship.find_by(user_id: User.second.id,friend_id: User.first.id).update(status: true)
+      Friendship.find_by(user_id: User.second.id, friend_id: User.first.id).update(status: true)
       Friendship.safe_create(User.third.id, User.first.id)
-      Friendship.find_by(user_id: User.first.id,friend_id: User.third.id).update(status: true)
+      Friendship.find_by(user_id: User.first.id, friend_id: User.third.id).update(status: true)
       Friendship.safe_create(User.fourth.id, User.first.id)
       expect(User.fourth.pending_invitees.count).to eq(1)
     end
