@@ -2,13 +2,13 @@
   <h2><%= "Name: #{@user.name}" %></h2>
   
   <div class="friendship-relations">
-    <% if @friends.include? @user %>
+    <% if @accepted_friends.include? @user %>
       <%= link_to "End friendship", friendship_destroy_path(current_user.id, @user.id, @user.id), method: :delete %>
-    <% elsif @pending_inviter_friends.include? @user %>
+    <% elsif @pending_inviters.include? @user %>
     <p> This user has requested your friendship</p>
       <%= link_to "Accept", friendship_update_path(@user.id, current_user.id), method: :post %>
       <%= link_to "Reject", friendship_destroy_path(@user.id, current_user.id, @user.id), method: :delete %>
-    <% elsif @pending_invitee_friends.include? @user %>
+    <% elsif @pending_invitees.include? @user %>
       <%= link_to "Remove friendship request", friendship_destroy_path(current_user.id, @user.id, @user.id), method: :delete %>
     <% elsif current_user != @user %>
       <%= link_to "Invite to friendship", friendship_create_path(current_user.id, @user.id, 'profile'), method: :post %>

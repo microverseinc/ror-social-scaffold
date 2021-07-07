@@ -3,7 +3,7 @@
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
   </span>
-  <% if current_user.pending_inviter_friends.include?(user) %>
+  <% if current_user.pending_inviters.include?(user) %>
     <span class="profile-pending-request">
       Pending friendship request
     </span>

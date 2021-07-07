@@ -13,6 +13,13 @@ class Friendship < ApplicationRecord
          friend_id: user_id, status: false)
     end
   end
+  def self.safe_delete(user_id, friend_id)
+    transaction do
+      find_by(user_id: user_id, friend_id: friend_id).delete
+      find_by(user_id: friend_id, friend_id: user_id).delete
+    end
+  end
+
   private
   def not_repeated 
     return unless Friendship.find_by(user_id: user_id, friend_id: friend_id)

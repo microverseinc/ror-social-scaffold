@@ -14,10 +14,8 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
-    Friendship.find_by(user_id: params[:inviter_id],
-    friend_id: params[:invitee_id]).delete
-    Friendship.find_by(user_id: params[:invitee_id],
-       friend_id: params[:inviter_id]).delete
+    Friendship.safe_delete(params[:inviter_id], params[:invitee_id])
+
     redirect_to user_path(User.find(params[:show_user]))
   end
 end

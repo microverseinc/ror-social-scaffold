@@ -19,7 +19,7 @@
         </div>
 
         <% if current_user%>
-        <% if current_user&.pending_inviter_friends.any? %>
+        <% if current_user&.pending_inviters.any? %>
         <div class="menu-item">
           <%= link_to 'Pending Friendship Requests', users_path%>
         </div>
