@@ -6,7 +6,7 @@
   <p>Received Invitations</p>
 
   <% @received_invites.each do |invitee| %>
-    <% if User.friends?(invitee, current_user) == false %>
+  
       <%= invitee.user.name %>
       <%= form_with url: friendship_path(invitee), method: :patch do |f| %>
         <%= f.hidden_field :user_id, value: invitee.user_id %>
@@ -14,7 +14,11 @@
         <%= f.hidden_field :status, value: "approved" %>
         <%= f.submit 'Accept Friend' %>
       <% end %>
-    <% end %>
+       <%= form_with url: friendship_path(invitee), method: :delete do |f| %>
+        <%= f.hidden_field :user_id, value: invitee.user_id %>
+        <%= f.submit 'Decline Friendship' %>
+      <% end %>
+  
   <% end %>
 <% end %>
 <section class="user-section">

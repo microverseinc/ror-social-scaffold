@@ -35,7 +35,8 @@
       </div>
     <% end %>
     <% if user_signed_in? %>
-      <%= current_user.name %>
+      <%= current_user.name %> |
+      <%= current_user.id%>
     <% end %>
     <main class="main">
       <%= yield %>

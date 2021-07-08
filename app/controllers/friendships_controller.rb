@@ -4,18 +4,18 @@ class FriendshipsController < ApplicationController
   def create
     friend = User.find(params[:friend_id])
 
-    check_friend = current_user.friendships.find_by(friend_id: friend.id)
-    if check_friend
-      flash[:alert] = 'You have added that friend'
-      redirect_to root_path and return
-    else
+    # check_friend = current_user.friendships.find_by(friend_id: friend.id)
+    # if check_friend
+    #   flash[:alert] = 'You have added that friend'
+    #   redirect_to root_path and return
+    # else
       new_friend = current_user.friendships.build(friend_id: friend.id, status: 'pending')
       if new_friend.save
         render body: 'Saved'
       else
         render body: 'Not saved'
       end
-    end
+    # end
   end
 
   def update
@@ -31,7 +31,16 @@ class FriendshipsController < ApplicationController
     puts friendship_to_update.user.name
     puts friendship_to_update.friend.name
   end
+  
+  def destroy
+    @invitee = User.find(params[:user_id])
+    friend_request = @invitee.friendships.find_by(friend_id: current_user.id)
 
+    friend_request.destroy
+    flash[:alert] = 'You have rejected the friend request'
+    redirect_to root_path and return
+    
+  end
   # find and find_by
 
   # group and where
