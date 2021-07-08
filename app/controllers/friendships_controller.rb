@@ -4,18 +4,18 @@ class FriendshipsController < ApplicationController
   def create
     friend = User.find(params[:friend_id])
 
-    # check_friend = current_user.friendships.find_by(friend_id: friend.id)
-    # if check_friend
-    #   flash[:alert] = 'You have added that friend'
-    #   redirect_to root_path and return
-    # else
+    check_friend = current_user.friendships.find_by(friend_id: friend.id)
+    if check_friend
+      flash[:alert] = 'You have added that friend'
+      redirect_to root_path and return
+    else
       new_friend = current_user.friendships.build(friend_id: friend.id, status: 'pending')
       if new_friend.save
         render body: 'Saved'
       else
         render body: 'Not saved'
       end
-    # end
+    end
   end
 
   def update
