@@ -23,6 +23,17 @@ class User < ApplicationRecord
     end
   end
 
+  def friends?(other_user)
+    friends_1 = self.friendships.where(user_id: self.id, friend_id: other_user.id, status:"approved")
+    friends_2 = other_user.friendships.where(user_id: other_user.id, friend_id: self.id, status:"approved")
+    
+    if friends_1.empty? and friends_2.empty?
+      return false
+    elsif !friends_1.empty? or !friends_2.empty?
+      return true
+    end
+  end
+
   def check_approval?(other_user)
     check_approval = Friendship.where("user_id = ? AND friend_id = ? AND status = ?", other_user.id, self.id, "approved")
     
