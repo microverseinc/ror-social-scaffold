@@ -1,7 +1,5 @@
-<% if @user == current_user %>
-  <% @approved_friends.each do |app_f| %>
-    <%= app_f.friend.name %>
-  <% end %>
+
+<% if @user = current_user%>
 
   <p>Received Invitations</p>
 
@@ -14,16 +12,17 @@
         <%= f.hidden_field :status, value: "approved" %>
         <%= f.submit 'Accept Friend' %>
       <% end %>
-       <%= form_with url: friendship_path(invitee), method: :delete do |f| %>
+        <%= form_with url: friendship_path(invitee), method: :delete do |f| %>
         <%= f.hidden_field :user_id, value: invitee.user_id %>
         <%= f.submit 'Decline Friendship' %>
       <% end %>
-  
+   
   <% end %>
 <% end %>
+
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
-  <% if current_user != @user  and User.sent_request?(current_user, @user) == false %>
+  <% if current_user != @user and !current_user.check_friendship?(@user) %>
     <%= form_with url: friendships_path, method: :post do |f| %>
       <%= f.hidden_field :friend_id, value: @user.id %>
       <%= f.submit 'Add Friend' %>

@@ -11,6 +11,6 @@ class UsersController < ApplicationController
 
     @current_user = current_user if current_user
     @approved_friends = current_user.sent_requests
-    @received_invites = @current_user.inverse_friendships
+    @received_invites = @current_user.inverse_friendships.where("status = ?", "pending")
   end
 end

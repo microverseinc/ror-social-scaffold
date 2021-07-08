@@ -11,7 +11,7 @@ class FriendshipsController < ApplicationController
     else
       new_friend = current_user.friendships.build(friend_id: friend.id, status: 'pending')
       if new_friend.save
-        render body: 'Saved'
+        redirect_to root_path and return
       else
         render body: 'Not saved'
       end
@@ -21,9 +21,11 @@ class FriendshipsController < ApplicationController
   def update
     friendship_to_update = Friendship.find(params[:id])
 
+    # check_approval = 
+
     if friendship_to_update.update(update_params)
       flash[:notice] = 'You are now friends. Hooray! :)'
-      redirect_to user_path(current_user) and return
+      redirect_to root_path and return
     else
       puts '--Not--'
     end
