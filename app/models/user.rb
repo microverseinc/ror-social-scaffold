@@ -15,32 +15,33 @@ class User < ApplicationRecord
   has_many :sent_requests, class_name: 'Friendship', foreign_key: 'user_id'
 
   def check_friendship?(other_user)
-    check_friendship = self.friendships.find_by(friend_id: other_user.id)
+    check_friendship = friendships.find_by(friend_id: other_user.id)
     if check_friendship.nil?
-      return false
+      false
     else
-      return true
+      true
     end
   end
 
   def friends?(other_user)
-    friends_1 = self.friendships.where(user_id: self.id, friend_id: other_user.id, status:"approved")
-    friends_2 = other_user.friendships.where(user_id: other_user.id, friend_id: self.id, status:"approved")
-    
-    if friends_1.empty? and friends_2.empty?
-      return false
-    elsif !friends_1.empty? or !friends_2.empty?
-      return true
+    friends1 = friendships.where(user_id: id, friend_id: other_user.id, status: 'approved')
+    friends2 = other_user.friendships.where(user_id: other_user.id, friend_id: id, status: 'approved')
+
+    if friends1.empty? and friends2.empty?
+      false
+    elsif !friends1.empty? or !friends2.empty?
+      true
     end
   end
 
   def check_approval?(other_user)
-    check_approval = Friendship.where("user_id = ? AND friend_id = ? AND status = ?", other_user.id, self.id, "approved")
-    
+    check_approval = Friendship.where('user_id = ? AND friend_id = ? AND status = ?', other_user.id, id,
+                                      'approved')
+
     if check_approval.empty?
-      return false
+      false
     else
-      return true
+      true
     end
   end
 end

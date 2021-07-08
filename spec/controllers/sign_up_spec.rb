@@ -32,7 +32,5 @@ describe 'Controller', type: :system do
       sleep(2)
       expect(page).to have_content('ALL USERS')
     end
-
   end
-
 end

@@ -10,18 +10,17 @@ class FriendshipsController < ApplicationController
       redirect_to root_path and return
     else
       new_friend = current_user.friendships.build(friend_id: friend.id, status: 'pending')
-      if new_friend.save
-        redirect_to root_path and return
-      else
-        render body: 'Not saved'
-      end
+
+      redirect_to root_path and return if new_friend.save
+
+      render body: 'Not saved'
     end
   end
 
   def update
     friendship_to_update = Friendship.find(params[:id])
 
-    # check_approval = 
+    # check_approval =
 
     if friendship_to_update.update(update_params)
       flash[:notice] = 'You are now friends. Hooray! :)'
@@ -33,7 +32,7 @@ class FriendshipsController < ApplicationController
     puts friendship_to_update.user.name
     puts friendship_to_update.friend.name
   end
-  
+
   def destroy
     @invitee = User.find(params[:user_id])
     friend_request = @invitee.friendships.find_by(friend_id: current_user.id)
@@ -41,7 +40,6 @@ class FriendshipsController < ApplicationController
     friend_request.destroy
     flash[:alert] = 'You have rejected the friend request'
     redirect_to root_path and return
-    
   end
   # find and find_by
 
