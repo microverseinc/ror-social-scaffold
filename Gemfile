@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.3'
+ruby '3.0.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.1', '>= 6.1.4'
@@ -42,6 +42,16 @@ gem 'devise'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+
+  # The RSpec testing framework
+  gem 'rspec-rails'
+
+  # Capybara, the library that allows us to interact with the browser using Ruby
+  gem 'capybara'
+
+  # The following gems aids with the nuts and bolts
+  # of interacting with the browser.
+  gem 'webdrivers'
 end
 
 group :test do
