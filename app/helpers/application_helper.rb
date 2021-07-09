@@ -19,44 +19,51 @@ module ApplicationHelper
   def friendship_request_button(friend)
     return unless signed_in?
     friendship = Friendship.find_by(user_id: current_user.id, friend_id: friend.id)
-    if friendship
-      if friendship.status == true
-        # rubocop:disable Metrics/LineLength
-        #(link_to 'Add Friend!', remove_attendances_path(id: event.id), method: :post).to_s.html_safe
-        "<p>You are Friends</p>".html_safe
-        #Create remove friend link
+    if friendship && friendship.status == true
+      remove_friend
+    elsif friendship && friendship.status != true
+      if friendship.friend_id == current_user.id
+        accept_request
       else
-        #(link_to 'Unfriend!', join_attendances_path(id: event.id), method: :delete).to_s.html_safe
-        # rubocop:enable Metrics/LineLength
-        if friendship.friend_id == current_user.id
-          "<p>Accept</p>".html_safe
-          #Create link to accept invitation
-        else
-          "<p>Pending</p>".html_safe
-          #Create link to cancel invitation
-        end
+        cancel_request
       end
-    elsif
-      friendship = Friendship.find_by(user_id: friend.id, friend_id: current_user.id)
-      if friendship.status == true
-        # rubocop:disable Metrics/LineLength
-        #(link_to 'Add Friend!', remove_attendances_path(id: event.id), method: :post).to_s.html_safe
-        "<p>You are Friends</p>".html_safe
-        #Create remove friend link
-      else
-        #(link_to 'Unfriend!', join_attendances_path(id: event.id), method: :delete).to_s.html_safe
-        # rubocop:enable Metrics/LineLength
-        if friendship.friend_id == current_user.id
-          "<p>Accept</p>".html_safe
-        else
-          "<p>Pending</p>".html_safe
-        end
-      end
-    else
-      if current_user.id != friend.id
-        "<p>Add Friend</p>".html_safe
-        #Create add friend link
-      end
+    elsif !friendship
+      inverse_check(friend)
     end
+  end
+
+  def inverse_check(friend)
+    friendship = Friendship.find_by(user_id: friend.id, friend_id: current_user.id)
+    if friendship && friendship.status == true
+      remove_friend
+    elsif friendship && friendship.status != true
+      if friendship.friend_id == current_user.id
+        accept_request
+      else
+        cancel_request
+      end
+    elsif current_user.id != friend.id
+      add_friend
+    end
+  end
+
+  def accept_request
+    #Accepts invitations
+    "<p>Accept</p>".html_safe
+  end
+
+  def cancel_request
+    #Cancel invitations request
+    "<p>Pending</p>".html_safe
+  end
+
+  def add_friend
+    #Add a friend
+    "<p>Add Friend</p>".html_safe
+  end
+
+  def remove_friend
+    #Remove a friend
+    "<p>You are Friends</p>".html_safe
   end
 end
