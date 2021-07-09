@@ -53,19 +53,19 @@ module ApplicationHelper
     # Accepts invitations
     friendship = Friendship.find_by(user_id: user.id, friend_id: current_user.id)
     link_to('Accept',
-            user_friendship_accept_path(friendship_id: friendship.id, user_id: friendship.user_id, friend_id: friendship.friend_id), method: :post)
+            user_friendship_accept_path(friendship_id: friendship.id, user_id: friendship.user_id, friend_id: friendship.friend_id), class:'btn btn-secondary',method: :post)
   end
 
   def cancel_request(user)
     # Cancel invitations request
     friendship = Friendship.find_by(user_id: current_user.id, friend_id: user.id)
     link_to('Cancel request',
-            user_friendship_path(user_id: friendship.user_id, friend_id: friendship.friend_id, id: friendship.id), method: :delete)
+            user_friendship_path(user_id: friendship.user_id, friend_id: friendship.friend_id, id: friendship.id), class:'btn btn-warning', method: :delete)
   end
 
   def add_friend(user)
     # Add a friend
-    link_to('Add Friend', user_friendships_path(user_id: current_user.id, friend_id: user.id), method: :post)
+    link_to('Add Friend', user_friendships_path(user_id: current_user.id, friend_id: user.id), class:'btn btn-primary', method: :post)
   end
 
   def remove_friend(user)
@@ -73,7 +73,7 @@ module ApplicationHelper
     friendship = Friendship.find_by(user_id: user.id, friend_id: current_user.id)
     friendship ||= Friendship.find_by(user_id: current_user.id, friend_id: user.id)
     link_to('Remove Friend',
-            user_friendship_path(user_id: friendship.user_id, friend_id: friendship.friend_id, id: friendship.id), method: :delete)
+            user_friendship_path(user_id: friendship.user_id, friend_id: friendship.friend_id, id: friendship.id), class:'btn btn-warning-2', method: :delete)
   end
   # rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Layout/LineLength
 end

@@ -4,9 +4,9 @@ class FriendshipsController < ApplicationController
     @friendship.status = FALSE
 
     if @friendship.save
-      redirect_to users_path, notice: 'You requested to be friends!'
+      redirect_back fallback_location: root_path, notice: 'You requested to be friends!'
     else
-      redirect_to users_path, alert: 'You cannot add this user.'
+      redirect_back fallback_location: root_path, alert: 'You cannot add this user.'
     end
   end
 
@@ -14,9 +14,9 @@ class FriendshipsController < ApplicationController
     friendship = Friendship.find(params[:friendship_id])
     friendship.status = TRUE
     if friendship.save
-      redirect_to users_path, notice: 'You are now friends!'
+      redirect_back fallback_location: root_path, notice: 'You are now friends!'
     else
-      redirect_to users_path, notice: 'You cannot be friends!'
+      redirect_back fallback_location: root_path, notice: 'You cannot be friends!'
     end
   end
 
@@ -25,7 +25,7 @@ class FriendshipsController < ApplicationController
     return unless friendship
 
     friendship.destroy
-    redirect_to users_path, notice: 'You removed a friend!'
+    redirect_back fallback_location: root_path, notice: 'You removed a friend!'
   end
 
   private
