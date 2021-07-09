@@ -22,7 +22,7 @@ class PostsController < ApplicationController
   def timeline_posts
     @timeline_posts = []
     current_user.posts.each { |post| @timeline_posts << Post.find(post.id) }
-    current_user.friends.each { |friend| friend.posts.each { |post| @timeline_posts << Post.find(post.id)} }
+    current_user.friends.each { |friend| friend.posts.each { |post| @timeline_posts << Post.find(post.id) } }
     @timeline_posts.sort!.reverse!
   end
 
