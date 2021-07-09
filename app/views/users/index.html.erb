@@ -1,5 +1,17 @@
 <section class="users-section">
   <ul class="users-list">
+
     <%= render @users %>
+    <ul>
+
+      <li>
+        <% if current_user %>
+
+        <p><%=link_to 'Send friendship invitation', invitations_path('invitations'), class: 'send-invitation' %>
+        </p>
+        <% end %>
+
+      </li>
+    </ul>
   </ul>
 </section>
