@@ -55,13 +55,8 @@ module ApplicationHelper
 
   def cancel_request(user)
     #Cancel invitations request
-    friendship = Friendship.find_by(user_id: user.id, friend_id: current_user.id)
-    if friendship
-      link_to('Cancel request', user_friendship_path(user_id: friendship.user_id, friend_id: friendship.friend_id, id: friendship.id), method: :delete)
-    else
-      friendship = Friendship.find_by(user_id: current_user.id, friend_id: user.id)
-      link_to('Cancel request', user_friendship_path(user_id: friendship.user_id, friend_id: friendship.friend_id, id: friendship.id), method: :delete)
-    end
+    friendship = Friendship.find_by(user_id: current_user.id, friend_id: user.id)
+    link_to('Cancel request', user_friendship_path(user_id: friendship.user_id, friend_id: friendship.friend_id, id: friendship.id), method: :delete)
   end
 
   def add_friend(user)
