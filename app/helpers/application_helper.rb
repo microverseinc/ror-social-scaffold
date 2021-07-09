@@ -25,7 +25,7 @@ module ApplicationHelper
       if friendship.friend_id == current_user.id
         accept_request(friend)
       else
-        cancel_request
+        cancel_request(friend)
       end
     elsif !friendship
       inverse_check(friend)
@@ -40,7 +40,7 @@ module ApplicationHelper
       if friendship.friend_id == current_user.id
         accept_request(friend)
       else
-        cancel_request
+        cancel_request(friend)
       end
     elsif current_user.id != friend.id
       add_friend(friend)
@@ -53,9 +53,15 @@ module ApplicationHelper
     link_to('Accept', user_friendship_accept_path(friendship_id: friendship.id, user_id: friendship.user_id, friend_id: friendship.friend_id), method: :post)
   end
 
-  def cancel_request
+  def cancel_request(user)
     #Cancel invitations request
-    "<p>Pending</p>".html_safe
+    friendship = Friendship.find_by(user_id: user.id, friend_id: current_user.id)
+    if friendship
+      link_to('Cancel request', user_friendship_path(user_id: friendship.user_id, friend_id: friendship.friend_id, id: friendship.id), method: :delete)
+    else
+      friendship = Friendship.find_by(user_id: current_user.id, friend_id: user.id)
+      link_to('Cancel request', user_friendship_path(user_id: friendship.user_id, friend_id: friendship.friend_id, id: friendship.id), method: :delete)
+    end
   end
 
   def add_friend(user)
