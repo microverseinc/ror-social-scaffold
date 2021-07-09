@@ -23,7 +23,7 @@ module ApplicationHelper
       remove_friend
     elsif friendship && friendship.status != true
       if friendship.friend_id == current_user.id
-        accept_request
+        accept_request(friend)
       else
         cancel_request
       end
@@ -38,18 +38,18 @@ module ApplicationHelper
       remove_friend
     elsif friendship && friendship.status != true
       if friendship.friend_id == current_user.id
-        accept_request
+        accept_request(friend)
       else
         cancel_request
       end
     elsif current_user.id != friend.id
-      add_friend
+      add_friend(friend)
     end
   end
 
-  def accept_request
+  def accept_request(user)
     #Accepts invitations
-    "<p>Accept</p>".html_safe
+    link_to('Accept', user_friendships_path(user_id: user.id, friend_id: current_user.id), action: :accept, method: :post)
   end
 
   def cancel_request
@@ -57,13 +57,13 @@ module ApplicationHelper
     "<p>Pending</p>".html_safe
   end
 
-  def add_friend
+  def add_friend(user)
     #Add a friend
-    "<p>Add Friend</p>".html_safe
+    link_to('Add Friend', user_friendships_path(user_id: current_user.id, friend_id: user.id), method: :post)
   end
 
-  def remove_friend
+  def remove_friend(user)
     #Remove a friend
-    "<p>You are Friends</p>".html_safe
+    link_to('Remove Friend', user_friendship_path(user_id: current_user.id, friend_id: user.id), method: :delete)
   end
 end
