@@ -36,6 +36,15 @@ Setup database with:
    rails db:create
    rails db:migrate
 ```
+### To get a local copy up and running simply follow the next step.
+
+- In your local PC, open your terminal in the folder you would like to clone the project.
+- Clone the repo with the command: `git clone (copied link)`; like so: `git clone https://github.com/danmainah/private-eve.git`
+- Then run `bundle install` to install all the required dependencies
+- Then run `npm install`
+- Run `rails db:create`, then `rails db:migrate`
+- Run `rails server` to spin up a development server
+- Once the server is up, open this link `http://127.0.0.1:3000` on your browser
 
 ### Github Actions
 
@@ -55,7 +64,6 @@ Start server with:
     rails server
 ```
 
-Open `http://localhost:3000/` in your browser.
 
 ### Run tests
 
