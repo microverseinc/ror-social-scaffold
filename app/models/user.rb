@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  # rubocop:disable Lint/Void, Lint/ShadowingOuterLocalVariable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -37,4 +38,5 @@ class User < ApplicationRecord
   def friend?(user)
     friends.include?(user)
   end
+  # rubocop:enable Lint/Void, Lint/ShadowingOuterLocalVariable
 end

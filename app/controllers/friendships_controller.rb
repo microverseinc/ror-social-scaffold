@@ -22,10 +22,9 @@ class FriendshipsController < ApplicationController
 
   def destroy
     friendship = Friendship.find(params[:id])
-    if friendship
-      friendship.destroy
-      redirect_to users_path, notice: 'You removed a friend!'
-    end
+    return unless friendship
+    friendship.destroy
+    redirect_to users_path, notice: 'You removed a friend!'
   end
 
   private

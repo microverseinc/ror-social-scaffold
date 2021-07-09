@@ -16,6 +16,7 @@ module ApplicationHelper
     end
   end
 
+  # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Layout/LineLength
   def friendship_request_button(friend)
     return unless signed_in?
 
@@ -74,4 +75,5 @@ module ApplicationHelper
     link_to('Remove Friend',
             user_friendship_path(user_id: friendship.user_id, friend_id: friendship.friend_id, id: friendship.id), method: :delete)
   end
+  # rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Layout/LineLength
 end
