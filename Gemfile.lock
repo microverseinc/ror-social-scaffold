@@ -118,6 +118,7 @@ GEM
     parser (3.0.1.1)
       ast (~> 2.4.1)
     pg (1.2.3)
+    pg (1.2.3-x64-mingw32)
     puma (3.12.6)
     racc (1.5.2)
     rack (2.2.3)
@@ -260,7 +261,7 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 RUBY VERSION
-   ruby 3.0.0p0
+   ruby 2.7.2p137
 
 BUNDLED WITH
-   2.2.14
+   2.2.16
