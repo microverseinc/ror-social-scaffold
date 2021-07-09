@@ -20,7 +20,7 @@ module ApplicationHelper
     return unless signed_in?
     friendship = Friendship.find_by(user_id: current_user.id, friend_id: friend.id)
     if friendship && friendship.status == true
-      remove_friend
+      remove_friend(friend)
     elsif friendship && friendship.status != true
       if friendship.friend_id == current_user.id
         accept_request(friend)
@@ -35,7 +35,7 @@ module ApplicationHelper
   def inverse_check(friend)
     friendship = Friendship.find_by(user_id: friend.id, friend_id: current_user.id)
     if friendship && friendship.status == true
-      remove_friend
+      remove_friend(friend)
     elsif friendship && friendship.status != true
       if friendship.friend_id == current_user.id
         accept_request(friend)
@@ -49,7 +49,8 @@ module ApplicationHelper
 
   def accept_request(user)
     #Accepts invitations
-    link_to('Accept', user_friendships_path(user_id: user.id, friend_id: current_user.id), action: :accept, method: :post)
+    friendship = Friendship.find_by(user_id: user.id, friend_id: current_user.id)
+    link_to('Accept', user_friendship_accept_path(friendship_id: friendship.id, user_id: friendship.user_id, friend_id: friendship.friend_id), method: :post)
   end
 
   def cancel_request
@@ -64,6 +65,12 @@ module ApplicationHelper
 
   def remove_friend(user)
     #Remove a friend
-    link_to('Remove Friend', user_friendship_path(user_id: current_user.id, friend_id: user.id), method: :delete)
+    friendship = Friendship.find_by(user_id: user.id, friend_id: current_user.id)
+    if friendship
+      link_to('Remove Friend', user_friendship_path(user_id: friendship.user_id, friend_id: friendship.friend_id, id: friendship.id), method: :delete)
+    else
+      friendship = Friendship.find_by(user_id: current_user.id, friend_id: user.id)
+      link_to('Remove Friend', user_friendship_path(user_id: friendship.user_id, friend_id: friendship.friend_id, id: friendship.id), method: :delete)
+    end
   end
 end

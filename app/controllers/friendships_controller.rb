@@ -10,31 +10,21 @@ class FriendshipsController < ApplicationController
       end
     end
 
-    def accept(user)
-        friendship = Friendship.find_by(user_id = current_user.id, friend_id = user.id)
-        if friendship
-          friendship.status = TRUE
-        else
-          friendship = Friendship.find_by(user_id = user.id, friend_id = current_user.id)
-          if friendship
-            friendship.status = TRUE
-          end
-        end
+    def accept
+      friendship = Friendship.find(params[:friendship_id])
+      friendship.status = TRUE
+      if friendship.save
+        redirect_to users_path, notice: 'You are now friends!'
+      else
+        redirect_to users_path, notice: 'You cannot be friends!'
+      end
     end
   
-    def destroy(user)
-      friendship = Friendship.find_by(user_id = current_user.id, friend_id = user.id)
+    def destroy
+      friendship = Friendship.find(params[:id])
       if friendship
         friendship.destroy
         redirect_to users_path, notice: 'You removed a friend!'
-      else
-        friendship = Friendship.find_by(user_id = user.id, friend_id = current_user.id)
-        if friendship
-          friendship.destroy
-          redirect_to users_path, notice: 'You removed a friend!'
-        else 
-          redirect_to posts_path, alert: 'You cannot remove this friend!'
-        end
       end
     end
 
