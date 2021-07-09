@@ -18,6 +18,7 @@ module ApplicationHelper
 
   def friendship_request_button(friend)
     return unless signed_in?
+
     friendship = Friendship.find_by(user_id: current_user.id, friend_id: friend.id)
     if friendship && friendship.status == true
       remove_friend(friend)
@@ -48,30 +49,29 @@ module ApplicationHelper
   end
 
   def accept_request(user)
-    #Accepts invitations
+    # Accepts invitations
     friendship = Friendship.find_by(user_id: user.id, friend_id: current_user.id)
-    link_to('Accept', user_friendship_accept_path(friendship_id: friendship.id, user_id: friendship.user_id, friend_id: friendship.friend_id), method: :post)
+    link_to('Accept',
+            user_friendship_accept_path(friendship_id: friendship.id, user_id: friendship.user_id, friend_id: friendship.friend_id), method: :post)
   end
 
   def cancel_request(user)
-    #Cancel invitations request
+    # Cancel invitations request
     friendship = Friendship.find_by(user_id: current_user.id, friend_id: user.id)
-    link_to('Cancel request', user_friendship_path(user_id: friendship.user_id, friend_id: friendship.friend_id, id: friendship.id), method: :delete)
+    link_to('Cancel request',
+            user_friendship_path(user_id: friendship.user_id, friend_id: friendship.friend_id, id: friendship.id), method: :delete)
   end
 
   def add_friend(user)
-    #Add a friend
+    # Add a friend
     link_to('Add Friend', user_friendships_path(user_id: current_user.id, friend_id: user.id), method: :post)
   end
 
   def remove_friend(user)
-    #Remove a friend
+    # Remove a friend
     friendship = Friendship.find_by(user_id: user.id, friend_id: current_user.id)
-    if friendship
-      link_to('Remove Friend', user_friendship_path(user_id: friendship.user_id, friend_id: friendship.friend_id, id: friendship.id), method: :delete)
-    else
-      friendship = Friendship.find_by(user_id: current_user.id, friend_id: user.id)
-      link_to('Remove Friend', user_friendship_path(user_id: friendship.user_id, friend_id: friendship.friend_id, id: friendship.id), method: :delete)
-    end
+    friendship ||= Friendship.find_by(user_id: current_user.id, friend_id: user.id)
+    link_to('Remove Friend',
+            user_friendship_path(user_id: friendship.user_id, friend_id: friendship.friend_id, id: friendship.id), method: :delete)
   end
 end
