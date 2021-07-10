@@ -1,5 +1,5 @@
 require 'rails_helper'
-
+# rubocop:disable Lint/UselessAssignment
 RSpec.describe User, type: :model do
   context 'User/friendship relations' do
     it 'Checks associations between User and Friendships' do
@@ -26,7 +26,6 @@ RSpec.describe User, type: :model do
     it 'Checks associations between User and Posts' do
       user = User.create!(email: 'test@email.com', name: 'testname', password: 'testpassword')
       post = Post.create!(content: 'post test', user_id: user.id)
-      comment = Comment.create!(content: 'first comment', user_id: user.id, post_id: post.id)
       expect(user.posts).to eq([post])
     end
   end
@@ -64,3 +63,4 @@ RSpec.describe User, type: :model do
     end
   end
 end
+# rubocop:enable Lint/UselessAssignment

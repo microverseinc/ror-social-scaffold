@@ -1,6 +1,6 @@
 require 'rails_helper'
 require 'capybara/rails'
-
+# rubocop:disable Lint/UselessAssignment
 RSpec.describe 'Integrations', type: :system do
   describe 'Timeline' do
     it 'Shows timeline after Log In' do
@@ -49,3 +49,4 @@ RSpec.describe 'Integrations', type: :system do
     end
   end
 end
+# rubocop:enable Lint/UselessAssignment
