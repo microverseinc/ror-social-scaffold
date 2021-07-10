@@ -32,7 +32,7 @@ rescue ActiveRecord::PendingMigrationError => e
   puts e.to_s.strip
   exit 1
 end
-Capybara.run_server = true 
+Capybara.run_server = true
 Capybara.server_port = 7000
 Capybara.app_host = "http://localhost:#{Capybara.server_port}"
 Capybara.register_driver :selenium_chrome do |app|
