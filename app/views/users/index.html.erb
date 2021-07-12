@@ -13,13 +13,11 @@
   <tbody>
     <% @users.each do |user| %>
     <tr>
-      <td><%= user.name %></td>
-      <td><%= link_to 'Show', user %></td>
-      <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      <td>/</td>
+
+      <td><%= link_to user.name, user, class: "show" %></td>
       <% if user_signed_in? && !Invitation.reacted(current_user.id, user.id) && current_user != user %>
       <td> <%= link_to 'Send Invitation',
-            invitations_path(ids: {id1: current_user.id, id2: user.id}), method: 'post'
+            invitations_path(user: current_user.id, friend: user.id), method: 'post'
           %></td>
       <% end %>
     </tr>
