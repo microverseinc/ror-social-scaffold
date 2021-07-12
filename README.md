@@ -1,4 +1,4 @@
-# Scaffold for social media app with Ruby on Rails
+# Scaffold for social media app with Ruby on Rails.
 
 > This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
 
@@ -10,7 +10,6 @@
 ## Live Demo
 
 TBA
-
 
 ## Getting Started
 
@@ -45,7 +44,6 @@ To make sure the linters' checks using Github Actions work properly, you should 
 2. Create the `feature/branch` and push.
 3. Start working on your milestone as usual.
 4. Open a PR from the `feature/branch` when your work is done.
-
 
 ### Usage
 
@@ -90,4 +88,3 @@ TBA
 ## 📝 License
 
 TBA
-
