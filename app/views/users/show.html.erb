@@ -1,32 +1,31 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
   <article class="timeline">
+    <% if @user == current_user%>
+    <h3> These people wants to be friend with you</h3>
+    <ol>
+      <% @user.pending_invitations.each do |invitation| %>
+      <li>
+        <%= User.find(invitation.user_id).name %>
+        <%= link_to 'Accept Invitation',
+      invitations_path(invitation_id: invitation.id) %>
+        <%= link_to 'Reject Invitation',
+      invitations_path(invitation_id: invitation.id) %>
+      </li>
+      <% end %>
+    </ol>
+    <%end%>
+
     <h3>Recent posts:</h3>
     <ul class="posts">
       <%= render @posts %>
     </ul>
 
-    <!--
-      <ul class='send-invitation'>
-        <%=link_to 'Send friendship invitation', invitations_create_path(current_user), class: 'send-invitation', method: 'post' %>
-      </ul>
--->
-
   </article>
-
-
 
 
   <p id="notice"><%= notice %></p>
 
-  <p>
-    <strong>Name:</strong>
-    <%= @user.name %>
-  </p>
-  <!-------------------------------
-  <%= link_to 'Edit', edit_user_path(@user) %> |
-  <%= link_to 'Back', users_path %>
------------------------------------>
   <h3>Friends of <strong> <%= @user.name %> </strong> </h3>
 
   <ol>
@@ -37,20 +36,6 @@
       <%= link_to 'Unfriend',
         invitations_destroy_path(invitation_id: Invitation.find_invitation(@user.id, friend.id))  %>
       <% end %>
-    </li>
-    <% end %>
-  </ol>
-
-  <h3> These people wants to be friend with <strong> <%= @user.name %> </strong> </h3>
-
-  <ol>
-    <% @user.pending_invitations.each do |invitation| %>
-    <li>
-      <%= User.find(invitation.user_id).name %>
-      <%= link_to 'Accept Invitation',
-      invitations_update_path(invitation_id: invitation.id) %>
-      <%= link_to 'Reject Invitation',
-      invitations_destroy_path(invitation_id: invitation.id) %>
     </li>
     <% end %>
   </ol>
