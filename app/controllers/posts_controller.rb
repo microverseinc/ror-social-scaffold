@@ -24,7 +24,7 @@ class PostsController < ApplicationController
     current_user.friends.includes(:posts).each do |friend|
       relevant_posts += friend.posts
     end
-    @timeline_posts = relevant_posts
+    @timeline_posts = relevant_posts.sort { |p1, p2|  p2.created_at <=> p1.created_at }
   end
 
   def post_params

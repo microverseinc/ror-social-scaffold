@@ -14,10 +14,11 @@
     <% @users.each do |user| %>
     <tr>
 
-      <td><%= link_to user.name, user, class: "show" %></td>
+      <td><%= link_to user.name, user, class: "index-user" %></td>
       <% if user.invitable?(current_user) %>
       <td> <%= link_to 'Send friendship invitation',
-            invitations_path(user: current_user.id, friend: user.id), method: 'post' %>
+            invitations_path(user: current_user.id, friend: user.id),
+            method: 'post', class: 'friendship-invite' %>
       </td>
       <% end %>
     </tr>

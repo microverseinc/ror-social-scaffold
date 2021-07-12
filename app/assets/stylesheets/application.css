@@ -13,3 +13,26 @@
  *= require_tree .
  *= require_self
  */
+.show-user-name {
+  display: inline-block;
+  font-size: 2.0em;
+  font-weight: 500;
+  margin-right: 10px;
+}
+
+.friendship-invite,
+.show-accept {
+  color: #689f38;
+}
+
+.show-reject {
+  color: darkred;
+}
+
+.index-user {
+  font-size: 1.4em;
+}
+
+td {
+  padding-left: 10px;
+}
