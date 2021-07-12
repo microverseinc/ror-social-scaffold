@@ -1,17 +1,32 @@
-<section class="users-section">
-  <ul class="users-list">
+<p id="notice"><%= notice %></p>
 
-    <%= render @users %>
-    <ul>
+<h1>Users</h1>
 
-      <li>
-        <% if current_user %>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
 
-        <p><%=link_to 'Send friendship invitation', invitations_path('invitations'), class: 'send-invitation' %>
-        </p>
-        <% end %>
+  <tbody>
+    <% @users.each do |user| %>
+    <tr>
+      <td><%= user.name %></td>
+      <td><%= link_to 'Show', user %></td>
+      <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td>/</td>
+      <% if signed_in? && !Invitation.reacted?(current_user.id, user.id) && current_user != user %>
+      <td> <%= link_to 'Send Invitation',
+            invitations_create_path(ids: {id1: current_user.id, id2: user.id})
+          %></td>
+      <% end %>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
 
-      </li>
-    </ul>
-  </ul>
-</section>
+<br>
+
+<%= link_to 'New User', new_user_path %>
