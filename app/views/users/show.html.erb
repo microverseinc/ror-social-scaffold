@@ -2,23 +2,25 @@
   <h2><%= "Name: #{@user.name}" %></h2>
   <article class="timeline">
     <% if @user == current_user%>
-    <h3> These people wants to be friend with you</h3>
-    <ol>
-      <% @user.pending_invitations.each do |invitation| %>
-      <li>
-        <%= User.find(invitation.user_id).name %>
-        <%= link_to 'Accept Invitation', invitation, method: 'patch' %>
-        <%= link_to 'Reject Invitation', invitation, method: 'delete' %>
-      </li>
-      <% end %>
-    </ol>
-    <%end%>
+      <h3> These people wants to be friend with you</h3>
+      <ul>
+        <% @user.pending_invitations.each do |invitation| %>
+          <li>
+            <%= User.find(invitation.user_id).name %>
+            <%= link_to 'Accept Invitation', invitation, method: 'patch' %>
+            <%= link_to 'Reject Invitation', invitation, method: 'delete' %>
+          </li>
+        <% end %>
+      </ul>
+    <% elsif @user.invitable?(current_user) %>
+      <%= link_to 'Send friendship invitation',
+       invitations_path(user: current_user.id, friend: @user.id),
+       method: 'post' %>
+    <% end %>
 
     <h3>Recent posts:</h3>
     <ul class="posts">
       <%= render @posts %>
     </ul>
-
   </article>
-
 </section>

@@ -28,4 +28,10 @@ class User < ApplicationRecord
   def pending_invitations
     Invitation.where(friend_id: id, confirmed: false)
   end
+
+  def invitable?(user)
+    case1 = Invitation.where(user_id: id, friend_id: user.id).empty?
+    case2 = Invitation.where(user_id: user.id, friend_id: id).empty?
+    case1 && case2 && id != user.id
+  end
 end

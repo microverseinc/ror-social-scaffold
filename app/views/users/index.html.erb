@@ -15,7 +15,7 @@
     <tr>
 
       <td><%= link_to user.name, user, class: "show" %></td>
-      <% if user_signed_in? && !Invitation.reacted(current_user.id, user.id) && current_user != user %>
+      <% if user.invitable?(current_user) %>
       <td> <%= link_to 'Send friendship invitation',
             invitations_path(user: current_user.id, friend: user.id), method: 'post' %>
       </td>
