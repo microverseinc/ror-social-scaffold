@@ -1,7 +1,11 @@
 class InvitationsController < ApplicationController
   def create
-    redirect_to root_path
+    invitation = Invitation.new(user_id:params[:user], friend_id:params[:friend], confirmed: false )
+    if invitation.save
+      redirect_to current_user
+    else
+      render 
+    end
   end
 end
-
 
