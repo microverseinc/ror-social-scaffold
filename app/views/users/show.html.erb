@@ -6,11 +6,11 @@
       <%= render @posts %>
     </ul>
 
-
-    <ul class='send-invitation'>
-      <%=link_to 'Send friendship invitation', invitations_path(current_user), class: 'send-invitation' %>
-    </ul>
-
+    <!--
+      <ul class='send-invitation'>
+        <%=link_to 'Send friendship invitation', invitations_create_path(current_user), class: 'send-invitation', method: 'post' %>
+      </ul>
+-->
 
   </article>
 
