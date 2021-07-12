@@ -25,7 +25,8 @@ class User < ApplicationRecord
     invitation.confirmed_record?(id, user.id)
   end
 
-  def send_invitation(user)
-    Invitation.create(friend_id:user_id)
+  def pending_invitations
+   Invitation.where(friend_id: id, confirmed:false)
+
   end
 end
