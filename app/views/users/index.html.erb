@@ -17,9 +17,9 @@
       <td><%= link_to 'Show', user %></td>
       <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       <td>/</td>
-      <% if signed_in? && !Invitation.reacted?(current_user.id, user.id) && current_user != user %>
+      <% if user_signed_in? && !Invitation.reacted(current_user.id, user.id) && current_user != user %>
       <td> <%= link_to 'Send Invitation',
-            invitations_create_path(ids: {id1: current_user.id, id2: user.id})
+            invitations_path(ids: {id1: current_user.id, id2: user.id}), method: 'post'
           %></td>
       <% end %>
     </tr>
@@ -28,5 +28,3 @@
 </table>
 
 <br>
-
-<%= link_to 'New User', new_user_path %>
