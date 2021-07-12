@@ -7,10 +7,8 @@
       <% @user.pending_invitations.each do |invitation| %>
       <li>
         <%= User.find(invitation.user_id).name %>
-        <%= link_to 'Accept Invitation',
-      invitations_path(invitation_id: invitation.id) %>
-        <%= link_to 'Reject Invitation',
-      invitations_path(invitation_id: invitation.id) %>
+        <%= link_to 'Accept Invitation', invitation, method: 'patch' %>
+        <%= link_to 'Reject Invitation', invitation, method: 'delete' %>
       </li>
       <% end %>
     </ol>
@@ -22,22 +20,5 @@
     </ul>
 
   </article>
-
-
-  <p id="notice"><%= notice %></p>
-
-  <h3>Friends of <strong> <%= @user.name %> </strong> </h3>
-
-  <ol>
-    <% @user.friends.each do |friend| %>
-    <li>
-      <%= friend.name %>
-      <% if @user == current_user %>
-      <%= link_to 'Unfriend',
-        invitations_destroy_path(invitation_id: Invitation.find_invitation(@user.id, friend.id))  %>
-      <% end %>
-    </li>
-    <% end %>
-  </ol>
 
 </section>
