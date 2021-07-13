@@ -1,6 +1,6 @@
-# Scaffold for social media app with Ruby on Rails
+# Simple social media app with Ruby on Rails
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+> This project is about using MVC architecture to built a simple social media app where users can follow each other, make a post, like and comment on each others' posts.
 
 ## Built With
 
@@ -22,20 +22,13 @@ Ruby: 2.6.3
 Rails: 5.2.3
 Postgres: >=9.5
 
-### Setup
+### Run App
+- Type `bundle install` in the root directory of the project.
+- Type `rails db:create` in the root directory of the project to create the database.
+- Type `rails db:migrate` in the root directory of the project to migrate the database.
+- Type `rails server` in the root directory of the project.
+- Open a browser, navigate to `http://localhost:3000`
 
-Instal gems with:
-
-```
-bundle install
-```
-
-Setup database with:
-
-```
-   rails db:create
-   rails db:migrate
-```
 
 ### Github Actions
 
@@ -65,13 +58,7 @@ Open `http://localhost:3000/` in your browser.
 
 > Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
 
-### Deployment
 
-TBA
-
-## Authors
-
-TBA
 
 ## 🤝 Contributing
 
@@ -83,11 +70,4 @@ Feel free to check the [issues page](issues/).
 
 Give a ⭐️ if you like this project!
 
-## Acknowledgments
-
-TBA
-
-## 📝 License
-
-TBA
 
