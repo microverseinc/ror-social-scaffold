@@ -1,7 +1,6 @@
 class FriendshipsController < ApplicationController
   def create
     @friendship = Friendship.new(friendship_params)
-    @friendship.status = FALSE
 
     if @friendship.save
       redirect_back fallback_location: root_path, notice: 'You requested to be friends!'
