@@ -13,6 +13,7 @@ class FriendshipsController < ApplicationController
     friendship = Friendship.find(params[:friendship_id])
     friendship.status = TRUE
     if friendship.save
+      friendship.confirm_friend(friendship.user_id, friendship.friend_id)
       redirect_back fallback_location: root_path, notice: 'You are now friends!'
     else
       redirect_back fallback_location: root_path, notice: 'You cannot be friends!'
@@ -21,9 +22,11 @@ class FriendshipsController < ApplicationController
 
   def destroy
     friendship = Friendship.find(params[:id])
+    inverse_friendship = Friendship.find_by(user_id: friendship.friend_id, friend_id: friendship.user_id)
     return unless friendship
 
     friendship.destroy
+    inverse_friendship.destroy
     redirect_back fallback_location: root_path, notice: 'You removed a friend!'
   end
 
