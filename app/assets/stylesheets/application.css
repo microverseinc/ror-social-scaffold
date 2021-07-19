@@ -13,7 +13,8 @@
  *= require_tree .
  *= require_self
  */
- .gravatar {
-  height: 30px;
-  width: auto;
-}
+
+  .gravatar {
+    height: 30px;
+    width: auto;
+  }
