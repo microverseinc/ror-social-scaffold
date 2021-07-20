@@ -12,7 +12,7 @@
         </button>
       <% elsif !pending_request?(user.id) %>
       <button class="friend_button">
-        <%= link_to "Friend request", user_path(user) %>
+        <%= link_to "Accept friend request", user_path(user) %>
       </button>
       <% else %>
         <span>You already have sent an invitation to <%= user.name %></span>

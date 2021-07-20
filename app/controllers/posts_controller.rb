@@ -21,8 +21,8 @@ class PostsController < ApplicationController
 
   def friends_list
     list = []
-    Friendship.where(friend_id: current_user.id).each { |f| list << User.find_by_id(f.user_id) }
-    Friendship.where(user_id: current_user.id).each { |f| list << User.find_by_id(f.friend_id) }
+    Friendship.where(friend_id: current_user.id, confirmed: true).each { |f| list << User.find_by_id(f.user_id) }
+    Friendship.where(user_id: current_user.id, confirmed: true).each { |f| list << User.find_by_id(f.friend_id) }
     list
   end
 
