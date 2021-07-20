@@ -12,6 +12,6 @@ class User < ApplicationRecord
   has_many :friendships
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
   def friendships_and_own_posts
-    Post.where(user: (friendships.to_a << self))
+    Post.where(user_id: (friendships.to_a << self))
   end
 end

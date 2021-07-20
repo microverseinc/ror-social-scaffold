@@ -8,12 +8,25 @@
   </article>
 </section>
 
-<% if already_friends?(@user.id) && @user.id != current_user.id %>
-  <% if new_request?(@user.id) %>
+<div>
+  <% if already_friends?(@user.id) && @user.id != current_user.id %>
+    <% if new_request?(@user.id) %>
+      <button class="friend_button">
       <%= link_to "Send request to #{@user.name}", controller: "friendships", action: "new", user_id: current_user.id, friend_id: @user.id, confirmed: false %>
-  <% else %>
+      </button>
+    <% else %>
       <span>You already have sent an invitation to <%= @user.name %></span>
+    <% end %>
+  <% elsif @user.id != current_user.id %>
+    <span><%= @user.name %> and you are friends</span>
   <% end %>
-<% elsif @user.id != current_user.id %>
-  <span><%= @user.name %> and you are friends</span>
-<% end %>
+  <% if !pending_requests? && @user.id == current_user.id %>
+    <h2>Friend Requests:</h2>
+    <% @requests.each do |request| %>
+      <button class="friend_button">
+      <%= link_to "Accept request from #{User.find(request.user_id).name}", controller: "friendships", action: "edit", user_id: User.find(request.user_id).id, friend_id: current_user.id, confirmed: true %>
+      </button>
+      </br>
+    <% end %>
+  <% end %>
+</div>
