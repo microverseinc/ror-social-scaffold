@@ -19,8 +19,15 @@ class PostsController < ApplicationController
 
   private
 
+  def friends_list
+    list = []
+    Friendship.where(friend_id: current_user.id).each { |f| list << User.find_by_id(f.user_id) }
+    Friendship.where(user_id: current_user.id).each { |f| list << User.find_by_id(f.friend_id) }
+    list
+  end
+
   def timeline_posts
-    @friends = Friendship.where(user_id: current_user.id, confirmed: true) + Friendship.where(friend_id: current_user.id, confirmed: true)
+    @friends = friends_list
     @timeline_posts ||= Post.all.ordered_by_most_recent.includes(:user)
   end
 

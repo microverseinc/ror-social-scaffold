@@ -10,8 +10,6 @@
     Recent posts
   </h3>
   <ul class="posts">
-    <% @friends.each do |friend| %>
-      <%= render @timeline_posts.where(user_id: User.find(friend.user_id).id) %>
-    <% end %>
+    <%= render @timeline_posts.where(user_id: [@friends]) %>
   </ul>
 </article>
