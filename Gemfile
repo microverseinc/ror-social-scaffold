@@ -49,7 +49,8 @@ group :development, :test do
 end
 
 group :test do
-  gem 'rspec'
+  gem 'rspec-rails', '~> 5.0.0'
+  gem 'capybara'
 end
 
 group :development do
