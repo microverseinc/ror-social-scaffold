@@ -11,7 +11,4 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :friendships
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
-  def friendships_and_own_posts
-    Post.where(user_id: (friendships.to_a << self))
-  end
 end
