@@ -33,6 +33,7 @@ class FriendshipsController < ApplicationController
   end
 
   def accept_friend_params
-    params.permit(:user_id, :friend_id, !:confirmed)
+    flag = { 'confirmed' => false }
+    params.permit(:user_id, :friend_id, flag)
   end
 end
