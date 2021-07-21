@@ -18,6 +18,9 @@
       <button class="friend_button">
         <%= link_to "Accept request from #{User.find(@user.id).name}", controller: "friendships", action: "edit", user_id: User.find(@user.id).id, friend_id: current_user.id, confirmed: true %>
       <button>
+      <button class="friend_button">
+        <%= link_to "Reject Friendship", friendship_path(request_id(@user)), method: :delete %>
+      </button>
     <% else %>
       <span>You already have sent an invitation to <%= @user.name %></span>
     <% end %>
@@ -29,6 +32,9 @@
     <% @requests.each do |request| %>
       <button class="friend_button">
       <%= link_to "Accept request from #{User.find(request.user_id).name}", controller: "friendships", action: "edit", user_id: User.find(request.user_id).id, friend_id: current_user.id, confirmed: true %>
+      </button>
+      <button class="friend_button">
+      <%= link_to "Reject Friendship", friendship_path(request.id), method: :delete %>
       </button>
       </br>
     <% end %>

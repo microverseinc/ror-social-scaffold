@@ -19,6 +19,9 @@
       <% end %>
     <% elsif user.id != current_user.id %>
       <span><%= user.name %> and you are friends</span>
+      <button class="friend_button">
+        <%= link_to "End up Friendship", friendship_path(friendship_id(user)), method: :delete %>
+      </button>
     <% end %>
   </span>
 </li>

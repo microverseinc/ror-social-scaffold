@@ -17,6 +17,11 @@ class FriendshipsController < ApplicationController
     update
   end
 
+  def destroy
+    Friendship.find(params[:id]).delete
+    redirect_to users_path, notice: 'Friendship request deleted!'
+  end
+
   def update
     @friendship = Friendship.where(accept_friend_params)
     if @friendship.update(friendship_params)
