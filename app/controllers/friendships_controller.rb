@@ -19,10 +19,11 @@ class FriendshipsController < ApplicationController
 
   def destroy
     @friendship = Friendship.find(params[:id])
-    delete_friend(@friendship)
-    # Friendship.find(params[:id]).delete
+    @user = User.find(@friendship.user_id)
+    @inverse_friendship = @user.inverse_friendships.find_by(user_id: @friendship.friend_id)
+    Friendship.delete([@friendship.id, @inverse_friendship.id])
 
-    redirect_to root_path, notice: 'Friendship request deleted!'
+    redirect_to users_path, notice: 'Friendship request deleted!'
   end
 
   def update
@@ -36,12 +37,6 @@ class FriendshipsController < ApplicationController
   end
 
   private
-
-  def delete_friend(friendship)
-    friend1 = Friendship.find_by(friend_id: friendship.friend_id, user_id: friendship.user_id)
-    friend2 = Friendship.find_by(user_id: friendship.user_id, friend_id: friendship.friend_id)
-    Friendship.delete([friend1.id, friend2.id])
-  end
 
   def reverse_friend
     @request = Friendship.create(user_id: params[:friend_id], friend_id: params[:user_id], confirmed: true)
