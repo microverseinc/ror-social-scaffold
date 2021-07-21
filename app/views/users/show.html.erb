@@ -28,14 +28,14 @@
   <% end %>
   <% if !pending_requests? && @user.id == current_user.id %>
     <h2>Friend Requests:</h2>
-    <% @requests.each do |request| %>
+    <% @requests.each do |r| %>
       <button class="friend_button">
-      <%= link_to "Accept request from #{User.find(request.user_id).name}", controller: "friendships", action: "edit", user_id: User.find(request.user_id).id, friend_id: current_user.id, confirmed: true %>
+        <%= link_to "Accept friend request from #{r.name}", controller: "friendships", action: "edit", user_id: r.id, friend_id: current_user.id, confirmed: true %>
       </button>
       <button class="friend_button">
-      <%= link_to "Reject Friendship", friendship_path(request.id), method: :delete %>
+        <%= link_to "Reject Friendship", friendship_path(request.id), method: :delete %>
       </button>
-      </br>
+      <br />
     <% end %>
   <% end %>
 </div>
