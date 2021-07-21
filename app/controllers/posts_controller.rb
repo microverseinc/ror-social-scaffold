@@ -20,10 +20,7 @@ class PostsController < ApplicationController
   private
 
   def friends_list
-    list = []
-    Friendship.where(friend_id: current_user.id, confirmed: true).each { |f| list << User.find_by_id(f.user_id) }
-    Friendship.where(user_id: current_user.id, confirmed: true).each { |f| list << User.find_by_id(f.friend_id) }
-    list
+    list = User.find(current_user.id).friends
   end
 
   def timeline_posts

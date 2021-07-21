@@ -28,8 +28,7 @@ class FriendshipsController < ApplicationController
 
   def update
     @friendship = Friendship.where(accept_friend_params)
-    reverse_friend
-    if @friendship.update(friendship_params)
+    if @friendship.confirm_friend(params[:user_id], params[:friend_id])
       redirect_to users_path, notice: 'You accepted the request!'
     else
       redirect_to users_path
@@ -37,10 +36,6 @@ class FriendshipsController < ApplicationController
   end
 
   private
-
-  def reverse_friend
-    @request = Friendship.create(user_id: params[:friend_id], friend_id: params[:user_id], confirmed: true)
-  end
 
   def friendship_params
     params.permit(:user_id, :friend_id, :confirmed)
