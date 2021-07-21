@@ -71,7 +71,19 @@ TBA
 
 ## Authors
 
-TBA
+👤 **Author**
+Arístides José Molina Pérez
+
+- GitHub: [@aristides1000](https://github.com/aristides1000)
+- Twitter: [@aristides_1000](https://twitter.com/@aristides_1000)
+- LinkedIn: [aristides jose molina perez](https://www.linkedin.com/in/aristides-jose-molina-perez-09b0579a)
+
+👤 **Author**
+Ángel Díaz Rivera
+
+- GitHub: [@ad9311](https://github.com/ad9311)
+- Twitter: [@aristides_1000](https://twitter.com/@adiaz9311)
+- LinkedIn: [Ángel Díaz](https://www.linkedin.com/in/ad9311/)
 
 ## 🤝 Contributing
 
@@ -89,5 +101,5 @@ TBA
 
 ## 📝 License
 
-TBA
+This project is [CC0-1.0](LICENSE) licensed.
 

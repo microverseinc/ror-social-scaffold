@@ -39,13 +39,18 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'devise'
 
+gem 'mimemagic', '~> 0.4.3'
+
+gem 'irb', '~> 1.3', '>= 1.3.6'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end
 
 group :test do
-  gem 'rspec'
+  gem 'capybara'
+  gem 'rspec-rails', '~> 5.0.0'
 end
 
 group :development do
