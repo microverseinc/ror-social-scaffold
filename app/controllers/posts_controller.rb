@@ -19,13 +19,13 @@ class PostsController < ApplicationController
 
   private
 
-  def friends_list
-    list = User.find(current_user.id).friends
-  end
+  # def friends_list
+  #   list = User.find(current_user.id).friends
+  # end
 
   def timeline_posts
-    @friends = friends_list
-    @timeline_posts ||= Post.all.ordered_by_most_recent.includes(:user)
+    #@timeline_posts ||= Post.all.ordered_by_most_recent.includes(:user)
+    @timeline_posts ||= User.find(current_user.id).friends_and_own_posts
   end
 
   def post_params

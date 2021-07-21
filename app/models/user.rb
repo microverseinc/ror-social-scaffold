@@ -17,7 +17,8 @@ class User < ApplicationRecord
   has_many :pending_friends, through: :pending_friendships, source: :friend
   has_many :inverted_friendships, -> { where confirmed: false }, class_name: "Friendship", foreign_key: "friend_id"
   has_many :friend_requests, through: :inverted_friendships, source: :user
-  def self.friends_and_own_posts
+  
+  def friends_and_own_posts
     Post.where(user: (self.friends.to_a << self))
   end
 end
