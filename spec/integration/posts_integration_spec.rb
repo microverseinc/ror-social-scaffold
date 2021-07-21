@@ -61,5 +61,4 @@ RSpec.describe PostsController, type: :feature do
   end
 
   # rubocop:enable  Metrics/BlockLength
-
 end

@@ -13,6 +13,6 @@ RSpec.describe Friendship, type: :feature do
     fill_in 'Password', with: person1.password
     click_on 'Log in'
     visit users_path
-    expect(page).to have_content('Name: ' + person1.name)
+    expect(page).to have_content("Name: #{person1.name}")
   end
 end
