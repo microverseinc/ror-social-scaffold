@@ -71,7 +71,11 @@ TBA
 
 ## Authors
 
-TBA
+👤 **Tshephang Mampa**
+
+- GitHub: [@tmampa](https://github.com/tmampa)
+- Twitter: [@tshephangm_](https://twitter.com/tshephangm_)
+- LinkedIn: [Tshephang Mampa](https://linkedin.com/in/tshephangmampa)
 
 ## 🤝 Contributing
 
