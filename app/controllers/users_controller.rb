@@ -19,6 +19,8 @@ class UsersController < ApplicationController
     friend = Friendship.where('friend_id = ? and user_id = ?', current_user.id, user.id).first
     friend.status = true
     if friend.save
+      @add_friend = Friendship.new(user_id: current_user.id, friend_id: user.id, status: true)
+      @add_friend.save
       redirect_to user_path(current_user), notice: 'Accepted'
     else
       redirect_to user_path(current_user), alert: 'Rejected'
@@ -27,11 +29,20 @@ class UsersController < ApplicationController
 
   def destroy
     user = User.find(params[:friend_id])
-    friend = Friendship.where('friend_id = ? and user_id = ?', current_user.id, user.id).first
-    if friend.delete
-      redirect_to user_path(current_user), notice: 'Rejected'
-    else
-      redirect_to user_path(current_user), alert: 'Failed'
+    first_friend = Friendship.where('friend_id = ? and user_id = ?', user.id, current_user.id).first
+    second_friend = Friendship.where('friend_id = ? and user_id = ?', current_user.id, user.id).first
+    if !first_friend.nil?
+      if first_friend.delete
+        redirect_to user_path(current_user), notice: 'Rejected'
+      else
+        redirect_to user_path(current_user), alert: 'Failed'
+      end
+    elsif !second_friend.nil?
+      if second_friend.delete
+        redirect_to user_path(current_user), notice: 'Rejected'
+      else
+        redirect_to user_path(current_user), alert: 'Failed'
+      end
     end
   end
 end

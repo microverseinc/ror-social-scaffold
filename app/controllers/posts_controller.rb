@@ -20,14 +20,17 @@ class PostsController < ApplicationController
   private
 
   def timeline_posts
-    friend_ids = []
-    current_user.friendships.each { |f| friend_ids << f.friend_id if f.status == true }
+    ids = []
+    # returns ids of accepted friends of currently logged in user
+    current_user.friendships.each { |f| ids << f.friend_id if f.status == true }
     @timeline_posts = []
-    friend_ids << current_user.id
-    index = 0
-    while index < friend_ids.length
-      @timeline_posts += Post.where('user_id = ?', friend_ids[index])
-      index += 1
+    # add id of currently logged in user to ids array
+    ids << current_user.id
+    # returns posts of currently logged in user and their friends
+    i = 0
+    while i < ids.length
+      @timeline_posts += Post.where('user_id = ?', ids[i])
+      i += 1
     end
     @timeline_posts.reverse!
   end
