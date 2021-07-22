@@ -24,7 +24,6 @@ class FriendshipsController < ApplicationController
     Friendship.delete(@friendship.id) if @inverse_friendship.nil?
     Friendship.delete([@friendship.id, @inverse_friendship.id]) unless @inverse_friendship.nil?
 
-
     redirect_to users_path, notice: 'Friendship request deleted!'
   end
 
