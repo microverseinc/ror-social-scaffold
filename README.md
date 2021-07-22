@@ -9,7 +9,7 @@
 
 ## Live Demo
 
-TBA
+[Live Demo Link](https://evening-beach-95970.herokuapp.com/users/sign_in)
 
 
 ## Getting Started
@@ -65,10 +65,6 @@ Open `http://localhost:3000/` in your browser.
 
 > Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
 
-### Deployment
-
-TBA
-
 ## Authors
 
 👤 **Author**
@@ -97,7 +93,8 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-TBA
+- Ariel Camus CEO Microverse: For letting us start this journey.
+- Google: For letting us find crucial information in order to create this project.
 
 ## 📝 License
 
