@@ -44,4 +44,9 @@ class User < ApplicationRecord
     friend = User.find(friend_id)
     current_user.friendships.where(friend_id: friend.id)
   end
+
+  def my_request(friend_id, current_user)
+    friend = User.find(friend_id)
+    current_user.inverse_friendships.where(user_id: friend.id)
+  end
 end

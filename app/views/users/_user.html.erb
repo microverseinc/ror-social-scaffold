@@ -3,25 +3,5 @@
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
   </span>
-  </br>
-  <span class="profile-link">
-    <% if already_friends?(user.id) && user.id != current_user.id %>
-      <% if new_request?(user.id) %>
-        <button class="friend_button">
-        <%= link_to "Send request to #{user.name}", controller: "friendships", action: "new", user_id: current_user.id, friend_id: user.id, confirmed: false %>
-        </button>
-      <% elsif !pending_request?(user.id) %>
-      <button class="friend_button">
-        <%= link_to "Accept friend request", user_path(user) %>
-      </button>
-      <% else %>
-        <span>You already have sent an invitation to <%= user.name %></span>
-      <% end %>
-    <% elsif user.id != current_user.id %>
-      <span><%= user.name %> and you are friends</span>
-      <button class="friend_button">
-        <%= link_to "End up Friendship", friendship_path(friendship_id(user)), method: :delete %>
-      </button>
-    <% end %>
-  </span>
+  <%= friendship_status(user) %>
 </li>

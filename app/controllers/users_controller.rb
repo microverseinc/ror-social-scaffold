@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     @friend_request = current_user.friendship_request?(params[:id], current_user)
     @pending_friend = current_user.pending_friends?(params[:id], current_user)
     @my_friendship = current_user.my_friendship(params[:id], current_user)
+    @my_request = current_user.my_request(params[:id], current_user)
   end
 
   def new

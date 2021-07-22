@@ -21,7 +21,9 @@ class FriendshipsController < ApplicationController
     @friendship = Friendship.find(params[:id])
     @user = User.find(@friendship.user_id)
     @inverse_friendship = @user.inverse_friendships.find_by(user_id: @friendship.friend_id)
-    Friendship.delete([@friendship.id, @inverse_friendship.id])
+    Friendship.delete(@friendship.id) if @inverse_friendship.nil?
+    Friendship.delete([@friendship.id, @inverse_friendship.id]) unless @inverse_friendship.nil?
+
 
     redirect_to users_path, notice: 'Friendship request deleted!'
   end

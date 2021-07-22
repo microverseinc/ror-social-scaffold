@@ -38,7 +38,7 @@
         <%= link_to "Accept friend request from #{r.name}", controller: "friendships", action: "edit", user_id: r.id, friend_id: current_user.id, confirmed: true %>
       </button>
       <button class="friend_button">
-        <%= link_to "Reject Friendship", friendship_path(request.id), method: :delete %>
+        <%= link_to "Delete Friendship", friendship_path(@my_request[0].id), method: :delete %>
       </button>
       </br>
     <% end %>
