@@ -7,36 +7,40 @@
     </ul>
   </article>
 </section>
-
-<div>
-  <% if already_friends?(@user.id) && @user.id != current_user.id %>
-    <% if new_request?(@user.id) %>
+<section>
+  <% unless @user.id == current_user.id %>
+    <% if @are_we_friends %>
+      <span><%= @user.name %> and you are friends</span></br>
       <button class="friend_button">
-        <%= link_to "Send request to #{@user.name}", controller: "friendships", action: "new", user_id: current_user.id, friend_id: @user.id, confirmed: false %>
+        <%= link_to "Delete Friendship", friendship_path(@my_friendship[0].id), method: :delete %>
       </button>
-    <% elsif !pending_request?(@user.id) %>
+    <% elsif @friend_request %>
       <button class="friend_button">
         <%= link_to "Accept request from #{User.find(@user.id).name}", controller: "friendships", action: "edit", user_id: User.find(@user.id).id, friend_id: current_user.id, confirmed: true %>
       <button>
       <button class="friend_button">
-        <%= link_to "Reject Friendship", friendship_path(request_id(@user)), method: :delete %>
+        <%= link_to "Reject Friendship", friendship_path(@my_request[0].id), method: :delete %>
       </button>
-    <% else %>
+    <% elsif @pending_friend %>
       <span>You already have sent an invitation to <%= @user.name %></span>
-    <% end %>
-  <% elsif @user.id != current_user.id %>
-    <span><%= @user.name %> and you are friends</span>
-  <% end %>
-  <% if !pending_requests? && @user.id == current_user.id %>
-    <h2>Friend Requests:</h2>
-    <% @requests.each do |request| %>
+    <% else %>
       <button class="friend_button">
-      <%= link_to "Accept request from #{User.find(request.user_id).name}", controller: "friendships", action: "edit", user_id: User.find(request.user_id).id, friend_id: current_user.id, confirmed: true %>
+        <%= link_to "Send request to #{@user.name}", controller: "friendships", action: "new", user_id: current_user.id, friend_id: @user.id, confirmed: false %>
+      </button>
+    <% end %>
+  <% end %>
+</section>
+<section>
+  <% if !@requests.empty? && @user.id == current_user.id %>
+    <h2>Friend Requests:</h2>
+    <% @requests.each do |r| %>
+      <button class="friend_button">
+        <%= link_to "Accept friend request from #{r.name}", controller: "friendships", action: "edit", user_id: r.id, friend_id: current_user.id, confirmed: true %>
       </button>
       <button class="friend_button">
-      <%= link_to "Reject Friendship", friendship_path(request.id), method: :delete %>
+        <%= link_to "Delete Friendship", friendship_path(@my_request[0].id), method: :delete %>
       </button>
       </br>
     <% end %>
   <% end %>
-</div>
+</section>

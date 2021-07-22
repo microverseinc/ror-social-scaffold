@@ -1,0 +1,3 @@
+<button class="friend_button">
+  <%= link_to "Send request to #{user.name}", controller: "friendships", action: "new", user_id: current_user.id, friend_id: user.id, confirmed: false %>
+</button>

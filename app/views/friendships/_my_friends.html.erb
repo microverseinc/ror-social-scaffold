@@ -1,0 +1,3 @@
+<button class="friend_button">
+  <%= link_to "End up Friendship", friendship_path(current_user.my_friendship(user.id, current_user)[0]), method: :delete %>
+</button>

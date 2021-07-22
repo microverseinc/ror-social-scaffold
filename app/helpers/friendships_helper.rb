@@ -1,35 +1,13 @@
 module FriendshipsHelper
-  def new_request?(friend)
-    request1 = Friendship.find_by(user_id: current_user.id, friend_id: friend, confirmed: false)
-    request2 = Friendship.find_by(user_id: friend, friend_id: current_user.id, confirmed: false)
-    request1.nil? && request2.nil?
-  end
+  def friendship_status(user)
+    return if user == current_user
 
-  def already_friends?(friend)
-    friendship1 = Friendship.find_by(user_id: current_user.id, friend_id: friend, confirmed: true)
-    friendship2 = Friendship.find_by(user_id: friend, friend_id: current_user.id, confirmed: true)
-    friendship1.nil? && friendship2.nil?
-  end
-
-  def request_id(friend)
-    friendship1 = Friendship.find_by(user_id: current_user.id, friend_id: friend, confirmed: false)
-    friendship2 = Friendship.find_by(user_id: friend, friend_id: current_user.id, confirmed: false)
-    friendship1 || friendship2
-  end
-
-  def friendship_id(friend)
-    friendship1 = Friendship.find_by(user_id: current_user.id, friend_id: friend, confirmed: true)
-    friendship2 = Friendship.find_by(user_id: friend, friend_id: current_user.id, confirmed: true)
-    friendship1 || friendship2
-  end
-
-  def pending_requests?
-    requests = Friendship.where(friend_id: current_user.id, confirmed: false)
-    requests.empty?
-  end
-
-  def pending_request?(user)
-    requests = Friendship.where(user_id: user, friend_id: current_user.id, confirmed: false)
-    requests.empty?
+    if current_user.pending_friends.include?(user) || user.pending_friends.include?(current_user)
+      render 'friendships/pending_friend_request', user: user
+    elsif current_user.friends.include?(user) || user.friends.include?(current_user)
+      render 'friendships/my_friends', user: user
+    else
+      render 'friendships/add_friend', user: user
+    end
   end
 end

@@ -7,7 +7,7 @@ class FriendshipsController < ApplicationController
   def create
     @request = Friendship.create(friendship_params)
     if @request.save
-      redirect_to root_path, notice: 'Friendship request sent!'
+      redirect_to users_path, notice: 'Friendship request sent!'
     else
       redirect_to users_path
     end
@@ -18,16 +18,21 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
-    Friendship.find(params[:id]).delete
+    @friendship = Friendship.find(params[:id])
+    @user = User.find(@friendship.user_id)
+    @inverse_friendship = @user.inverse_friendships.find_by(user_id: @friendship.friend_id)
+    Friendship.delete(@friendship.id) if @inverse_friendship.nil?
+    Friendship.delete([@friendship.id, @inverse_friendship.id]) unless @inverse_friendship.nil?
+
     redirect_to users_path, notice: 'Friendship request deleted!'
   end
 
   def update
     @friendship = Friendship.where(accept_friend_params)
-    if @friendship.update(friendship_params)
-      redirect_to root_path, notice: 'You accepted the request!'
+    if @friendship.confirm_friend(params[:user_id], params[:friend_id])
+      redirect_to users_path, notice: 'You accepted the request!'
     else
-      redirect_to root_path
+      redirect_to users_path
     end
   end
 
