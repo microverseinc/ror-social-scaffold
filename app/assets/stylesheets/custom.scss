@@ -35,6 +35,11 @@ a {
   color: $primary-color-text;
 }
 
+.small-text {
+  font-size: small;
+  color: grey;
+}
+
 .nav {
   display: flex;
   justify-content: space-between;
