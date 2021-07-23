@@ -180,5 +180,5 @@ Give a ⭐️ if you like this project!
 
 ## 📝 License
 
-This project is [MIT](https://en.wikipedia.org/wiki/MIT_License) licensed.
+This project is [MIT](https://github.com/mrigorir/social-media-app/blob/main/LICENSE) licensed.
 
