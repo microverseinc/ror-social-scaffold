@@ -6,6 +6,8 @@
 
 - Ruby v2.7.0
 - Ruby on Rails v5.2.4
+- SCSS & CSS
+- Tailwind
 
 ## Live Demo
 
