@@ -1,4 +1,5 @@
 AllCops:
+  SuggestExtensions: false
   NewCops: enable
   Exclude:
     - "db/**/*"
@@ -49,7 +50,7 @@ Layout/MultilineMethodCallIndentation:
   Enabled: true
   EnforcedStyle: indented
 Lint/RaiseException:
-  Enabled: false
+  Enabled: true
 Lint/StructNewOverride:
   Enabled: false
 Style/HashEachMethods:
