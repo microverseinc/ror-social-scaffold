@@ -1,5 +1,5 @@
 class FriendshipsController < ApplicationController
-  before_action :set_friendship, only: %i[ show edit update destroy ]
+  before_action :set_friendship, only: %i[show edit update destroy]
 
   # GET /friendships or /friendships.json
   def index
@@ -8,6 +8,7 @@ class FriendshipsController < ApplicationController
 
   # GET /friendships/1 or /friendships/1.json
   def show
+    # null
   end
 
   # GET /friendships/new
@@ -17,6 +18,7 @@ class FriendshipsController < ApplicationController
 
   # GET /friendships/1/edit
   def edit
+    # null
   end
 
   # POST /friendships or /friendships.json
@@ -25,7 +27,7 @@ class FriendshipsController < ApplicationController
 
     respond_to do |format|
       if @friendship.save
-        format.html { redirect_to @friendship, notice: "Friendship was successfully created." }
+        format.html { redirect_to @friendship, notice: 'Friendship was successfully created.' }
         format.json { render :show, status: :created, location: @friendship }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +40,7 @@ class FriendshipsController < ApplicationController
   def update
     respond_to do |format|
       if @friendship.update(friendship_params)
-        format.html { redirect_to @friendship, notice: "Friendship was successfully updated." }
+        format.html { redirect_to @friendship, notice: 'Friendship was successfully updated.' }
         format.json { render :show, status: :ok, location: @friendship }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -51,19 +53,20 @@ class FriendshipsController < ApplicationController
   def destroy
     @friendship.destroy
     respond_to do |format|
-      format.html { redirect_to friendships_url, notice: "Friendship was successfully destroyed." }
+      format.html { redirect_to friendships_url, notice: 'Friendship was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_friendship
-      @friendship = Friendship.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def friendship_params
-      params.require(:friendship).permit(:user_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_friendship
+    @friendship = Friendship.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def friendship_params
+    params.require(:friendship).permit(:user_id)
+  end
 end
