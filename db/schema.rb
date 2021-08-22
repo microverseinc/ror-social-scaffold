@@ -27,13 +27,9 @@ ActiveRecord::Schema.define(version: 2021_08_20_152656) do
 
   create_table "friendships", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "request_sent_to_id", null: false
-    t.bigint "request_sent_by_id", null: false
     t.boolean "confirmed", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["request_sent_by_id"], name: "index_friendships_on_request_sent_by_id"
-    t.index ["request_sent_to_id"], name: "index_friendships_on_request_sent_to_id"
     t.index ["user_id"], name: "index_friendships_on_user_id"
   end
 
@@ -67,6 +63,4 @@ ActiveRecord::Schema.define(version: 2021_08_20_152656) do
   end
 
   add_foreign_key "friendships", "users"
-  add_foreign_key "friendships", "users", column: "request_sent_by_id"
-  add_foreign_key "friendships", "users", column: "request_sent_to_id"
 end
