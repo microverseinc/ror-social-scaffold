@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
 
-  has_many :friends, -> {merge(Friendship.accepted_friendship)}, through: :friendly_requests
-  has_many :request_pending, -> {merge(Friendship.no_friendship)}, through: :friendly_requests
+  def add_friend(another_user)
+    friends << another_user
+  end
 end

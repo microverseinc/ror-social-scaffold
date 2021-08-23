@@ -1,5 +1,16 @@
 <section class="users-section">
   <ul class="users-list">
-    <%= render @users %>
+    
   </ul>
+  <% @users.each do |user|%>
+    <div class='card'>
+      <div class="columns">
+        <div class="column is-3"><%= user.name %></div>
+        <% if user.friendships %>
+          <div class="column is-3"> <%= new_friendship_button(user) %></div>
+        <% end %>
+        <div class="column is-3"></div>
+      </div>
+    </div>
+  <% end %>
 </section>
