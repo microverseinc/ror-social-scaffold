@@ -1,19 +1,69 @@
 class FriendshipsController < ApplicationController
-  def create
-    current_user.friendships.create!(friendship_params)
-    redirect_to users_path
+  before_action :set_friendship, only: %i[ show edit update destroy ]
+
+  # GET /friendships or /friendships.json
+  def index
+    @friendships = Friendship.all
   end
 
-  # NOTE we're not using friendship id here
-  # expect params[:user_id]
+  # GET /friendships/1 or /friendships/1.json
+  def show
+  end
+
+  # GET /friendships/new
+  def new
+    @friendship = Friendship.new
+  end
+
+  # GET /friendships/1/edit
+  def edit
+  end
+
+  # POST /friendships or /friendships.json
+  def create
+    @friendship = Friendship.new(friendship_params)
+
+    respond_to do |format|
+      if @friendship.save
+        format.html { redirect_to @friendship, notice: "Friendship was successfully created." }
+        format.json { render :show, status: :created, location: @friendship }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @friendship.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PATCH/PUT /friendships/1 or /friendships/1.json
+  def update
+    respond_to do |format|
+      if @friendship.update(friendship_params)
+        format.html { redirect_to @friendship, notice: "Friendship was successfully updated." }
+        format.json { render :show, status: :ok, location: @friendship }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @friendship.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /friendships/1 or /friendships/1.json
   def destroy
-    another_user = User.find params[:user_id]
-    current_user.friends.delete(another_user)
-    redirect_to users_path
+    @friendship.destroy
+    respond_to do |format|
+      format.html { redirect_to friendships_url, notice: "Friendship was successfully destroyed." }
+      format.json { head :no_content }
+    end
   end
 
   private
-  def friendship_params
-    params.require(:friendship).permit(:friend_id, :confirmed)
-  end
+    # Use callbacks to share common setup or constraints between actions.
+    def set_friendship
+      @friendship = Friendship.find(params[:id])
+    end
+
+    # Only allow a list of trusted parameters through.
+    def friendship_params
+      params.require(:friendship).permit(:user_id, :confirmed, :friend_id)
+    end
 end

@@ -1,15 +1,22 @@
 <section class="users-section">
-  <ul class="users-list">
-    
-  </ul>
   <% @users.each do |user|%>
     <div class='card'>
       <div class="columns">
         <div class="column is-3"><%= user.name %></div>
-        <% if user.friendships %>
-          <div class="column is-3"> <%= new_friendship_button(user) %></div>
-        <% end %>
-        <div class="column is-3"></div>
+          <div class="column is-9">
+              <% unless current_user.is_friend?(user) %>
+                <%= form_for current_user.friendships.build(friend_id: user.id) do |f| %> 
+                  <%= f.text_field :user_id, value: current_user.id, type: :hidden %>
+                  <%= f.text_field :friend_id, value: user.id, type: :hidden %>
+                  <%= f.text_field :confirmed, value: true, type: :hidden %>
+                  <%= f.submit 'Confirm', class:"button is-info"%>
+                <% end%>
+              <% else %>
+                <% user.friendships.each do |friendship| %>
+                  <%= link_to 'Delete', friendship.delete, method: :delete, data: { confirm: 'Are you sure?' }, class:"button is-danger" %>
+                <% end %>
+              <% end%>
+          </div>
       </div>
     </div>
   <% end %>

@@ -5,5 +5,15 @@
   <%= @friendship.user_id %>
 </p>
 
+<p>
+  <strong>Confirmed:</strong>
+  <%= @friendship.confirmed %>
+</p>
+
+<p>
+  <strong>Friend:</strong>
+  <%= @friendship.friend_id %>
+</p>
+
 <%= link_to 'Edit', edit_friendship_path(@friendship) %> |
 <%= link_to 'Back', friendships_path %>
