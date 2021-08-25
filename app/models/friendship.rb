@@ -6,6 +6,14 @@ class Friendship < ApplicationRecord
   end
 
   def self.no_friendship
-    where('confirmed =?', false)
+    where('confirmed =?', false).where('friend_id <?', 1)
+  end
+
+  def self.confirmed_friendship
+    where('confirmed =?', true).where('friend_id >=?', 1)
+  end
+
+  def self.pending_friendship
+    where('confirmed =?', false).where('friend_id >=?', 1)
   end
 end

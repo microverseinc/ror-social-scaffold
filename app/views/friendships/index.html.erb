@@ -2,7 +2,7 @@
 
 <h1>Friendships</h1>
 
-<table>
+<table class="table is-stripped">
   <thead>
     <tr>
       <th>User</th>
@@ -25,6 +25,27 @@
     <% end %>
   </tbody>
 </table>
+
+<br>
+<% User.all.each do |user|%>
+<% unless current_user.is_friend?(user) %>
+<div class="box">
+  <div class="columns">
+    <div class="column is-8">
+      <%= user.name %>
+    </div>
+    <div class="column is-4">
+      <%= form_for current_user.friendships.build(friend_id: user.id) do |f| %> 
+          <%= f.text_field :user_id, value: current_user.id, type: :hidden %>
+          <%= f.text_field :friend_id, value: user.id, type: :hidden %>
+          <%= f.text_field :confirmed, value: false, type: :hidden %>
+          <%= f.submit 'Confirm', class:"button is-info px-5"%>
+        <% end%>
+    </div>
+  </div>
+</div>
+<% end %>
+<% end %>
 
 <br>
 
