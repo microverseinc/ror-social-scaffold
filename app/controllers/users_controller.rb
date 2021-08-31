@@ -13,4 +13,17 @@ class UsersController < ApplicationController
     @all_friends = []
     @friends.each { |u| @all_friends << User.find(u.user_id) }
   end
+
+  def create
+    user = User.find(params[:friend_id])
+    friend = Friendship.where('friend_id = ? and user_id = ?', current_user.id, user.id).first
+    friend.confirmed = true
+    if friend.save
+      @add_friend = Friendship.new(user_id: current_user.id, friend_id: user.id, status: true)
+      @add_friend.save
+      redirect_to user_path(current_user), notice: 'Friend Request Accepted'
+    else
+      redirect_to user_path(current_user), alert: 'Friend Request Rejected'
+    end
+  end
 end
