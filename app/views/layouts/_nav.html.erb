@@ -1,16 +1,34 @@
-<nav class="nav">
-  <%= link_to 'Stay in touch', root_path %>
-  <div class="menu">
-    <div class="menu-item">
-      <%= menu_link_to 'Timeline', posts_path %>
+<nav class="navbar is-light" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <div class="navbar-item">
+      <%= link_to 'STAY IN TOUCH', root_path, class: "has-text-black" %>
     </div>
-    <div class="menu-item">
-      <%= menu_link_to 'All users', users_path %>
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <div class="navbar-item">
+        <%= menu_link_to 'Timeline', posts_path%>
+      </div>
+      <div class="navbar-item">
+        <%= menu_link_to 'All users', users_path %>
+      </div>
+    </div>
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <% if current_user %>
+          <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "button is-primary" %>
+        <% else  %>
+          <%= link_to 'Sign in', user_session_path, class: "button is-primary" %>
+          <div class="navbar-item">
+            <%= link_to 'Sign Up', new_user_registration_path, class: "button is-secondary" %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
-  <% if current_user %>
-    <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-  <% else %>
-    <%= link_to 'Sign in', user_session_path %>
-  <% end %>
 </nav>

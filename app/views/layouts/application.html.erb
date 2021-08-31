@@ -7,20 +7,23 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <body>
+  <body onload="destroyNotice('notice_wrapper');">
+    <% if flash[:notice] %>
+      <div class="notification is-primary global-notification" id="notice_wrapper">
+        <p class="notice"><%= notice %></p>
+      </div>
+    <% elsif flash[:alert] %>
+      <div class="notification is-danger global-notification">
+        <p class="alert"><%= alert %></p>
+      </div>
+    <% end %>
     <%= render 'layouts/nav'%>
-    <% if notice.present? %>
-      <div class="notice">
-        <p> <%= notice %> </p>
-      </div>
-    <% end %>
-    <% if alert.present? %>
-      <div class="alert">
-        <p> <%= alert %> </p>
-      </div>
-    <% end %>
-    <main class="main">
-      <%= yield %>
-    </main>
+    <%= yield %>
+    <script>
+      notice = document.getElementById('notice_wrapper');
+      removeNotice = setTimeout(function () {
+      notice.remove();
+        }, 3000);
+    </script>
   </body>
 </html>
