@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
-
-  root 'posts#index'
+  root "posts#index"
 
   devise_for :users
+  post "friendships/create"
+  resources :users, only: [:index, :show] do
+    member do
+      post :confirm
+      delete :destroy
+    end
+  end
 
-  resources :users, only: [:index, :show]
   resources :posts, only: [:index, :create] do
     resources :comments, only: [:create]
     resources :likes, only: [:create, :destroy]
