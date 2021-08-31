@@ -54,6 +54,7 @@ gem 'webpacker', '~> 5.0'
 gem 'jbuilder', '~> 2.7'
 
 gem 'bulma-rails', '~> 0.9.1'
+gem 'gravatar_image_tag', '~> 1.2'
 gem 'simple_form', '~> 5.1'
 
 group :development, :test do

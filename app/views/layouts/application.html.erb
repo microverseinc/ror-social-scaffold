@@ -13,7 +13,7 @@
         <p class="notice"><%= notice %></p>
       </div>
     <% elsif flash[:alert] %>
-      <div class="notification is-danger global-notification">
+      <div class="notification is-danger global-notification" id="notice_alert">
         <p class="alert"><%= alert %></p>
       </div>
     <% end %>
@@ -21,9 +21,13 @@
     <%= yield %>
     <script>
       notice = document.getElementById('notice_wrapper');
+      alert = document.getElementById('notice_alert');
       removeNotice = setTimeout(function () {
       notice.remove();
-        }, 3000);
+        }, 5000);
+      alertNotice = setTimeout(function () {
+      alert.remove();
+        }, 5000);
     </script>
   </body>
 </html>

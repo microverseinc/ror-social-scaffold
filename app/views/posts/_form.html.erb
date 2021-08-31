@@ -1,0 +1,22 @@
+<%= form_for(@post) do |form| %>
+  <div class="field">
+    <div class="control">
+      <%= form.label :content, class: 'label' %>
+    </div>
+  </div>
+  <div class="field">
+    <div class="control">
+      <%= form.text_field :content, id: :post_content, class: 'textarea', placeholder: 'Add New Post', wrapper: false %>
+    </div>
+  </div>
+  <div class="field">
+    <div class="control">
+      <%= display_errors(@post) %>
+    </div>
+  </div>
+  <div class="field">
+    <div class="control">
+      <%= form.submit 'Save', class: 'button is-primary' %>
+    </div>
+  </div>
+<% end %>
