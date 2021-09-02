@@ -1,0 +1,84 @@
+<section class="hero">
+  <div class="hero-body">
+    <p class="title">
+      @<%= @user.name %>
+    </p>
+    <p class="subtitle">
+      <%= @user.email %>
+    </p>
+    <article class="media">
+      <div class="media-left">
+        <% if current_user.id != @user.id %>
+          <% if !friends?(@user.id) %>
+            <%= button_to 'Add friend', {:controller => "friendships", :action => "create", :friend_id => @user.id} , :method=>:post, class: "button is-primary"  %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="media-content">
+        <% if current_user.id == @user.id %>
+          <% sent_requests.each do |friend| %>
+            <p class="has-text-weight-semibold is-size-4">You Requested: <%= friend.name %></p>
+            <%= button_to "Remove Request", {:controller => "users", :action => "destroy", :friend_id => friend.id}, :method=>:delete, class: "button is-dark" %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="media-right">
+        <% if current_user.id == @user.id %>
+          <% current_user.friend_requests.each do |friend| %>
+            <p class="has-text-weight-semibold is-size-4">Incoming Friend Request From: <%= friend.name %></p>
+            <%= button_to "Accept Request", {:controller => "users", :action => "confirm", :friend_id => friend.id}, :method=>:post, class: "button is-info" %>
+            <%= button_to "Reject Request", {:controller => "users", :action => "destroy", :friend_id => friend.id}, :method=>:delete, class: "button is-danger" %>
+          <% end %>
+        <% end %>
+      </div>
+    </article>
+  </div>
+</section>
+<h2 class="title"> Recent Posts </h2>
+<%= link_to 'Create a new Post', root_path , class: 'button is-info mb-5' %>
+<% @user.posts.each do |post| %>
+  <article class="media">
+    <figure class="media-left">
+      <p class="image is-64x64">
+        <%= gravatar_image_tag(post.user.email, size: 64, alt: post.user.name) %>
+      </p>
+    </figure>
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <% if user_signed_in? %>
+            <strong>@<%= link_to post.user.name, user_path(post.user), class: 'has-text-black' %></strong>
+          <% end %>
+          <small><%= post.created_at.strftime("%Y/%m/%d") %></small>
+          <br>
+          <%= post.content %><br>
+        </p>
+      </div>
+      <article class="media">
+        <div class="media-content">
+          <div class="content">
+            <%= render partial: 'comments/comment', collection: post.comments %>
+          </div>
+        </div>
+      </article>
+    </div>
+  </article>
+  <article class="media">
+    <figure class="media-left">
+      <p class="image is-64x64">
+        <%= gravatar_image_tag(post.user.email, size: 64, alt: post.user.name) %>
+      </p>
+    </figure>
+    <div class="media-content">
+      <%= form_for(post.comments.new, url: post_comments_path(post)) do |form| %>
+        <div class="field">
+          <div class="control">
+            <%= form.text_field :content, id: :comment_content, class: 'textarea', placeholder: 'Add new Comment' %>
+          </div>
+        </div>
+        <%= form.submit 'Add a new comment', class: 'button is-info' %>
+      <% end %>
+      <%= like_or_dislike_btn(post) %>
+    </div>
+  </article>
+<% end %>

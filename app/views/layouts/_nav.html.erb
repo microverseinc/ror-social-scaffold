@@ -21,6 +21,9 @@
     <div class="navbar-end">
       <div class="navbar-item">
         <% if current_user %>
+          <p class="has-text-dark mr-5">
+            Signed in as: <%= link_to current_user.name, current_user %>
+          </p>
           <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "button is-primary" %>
         <% else  %>
           <%= link_to 'Sign in', user_session_path, class: "button is-primary" %>
