@@ -1,41 +1,33 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RorSocialScaffold</title>
+    <title>Ror Social Scaffold</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <body>
-    <nav class="nav">
-      <%= link_to 'Stay in touch', root_path %>
-      <div class="menu">
-        <div class="menu-item">
-          <%= menu_link_to 'Timeline', posts_path %>
-        </div>
-        <div class="menu-item">
-          <%= menu_link_to 'All users', users_path %>
-        </div>
+  <body onload="destroyNotice('notice_wrapper');">
+    <% if flash[:notice] %>
+      <div class="notification is-primary global-notification" id="notice_wrapper">
+        <p class="notice"><%= notice %></p>
       </div>
-      <% if current_user %>
-        <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-      <% else %>
-        <%= link_to 'Sign in', user_session_path %>
-      <% end %>
-    </nav>
-    <% if notice.present? %>
-      <div class="notice">
-        <p> <%= notice %> </p>
+    <% elsif flash[:alert] %>
+      <div class="notification is-danger global-notification" id="notice_alert">
+        <p class="alert"><%= alert %></p>
       </div>
     <% end %>
-    <% if alert.present? %>
-      <div class="alert">
-        <p> <%= alert %> </p>
-      </div>
-    <% end %>
-    <main class="main">
-      <%= yield %>
-    </main>
+    <%= render 'layouts/nav'%>
+    <%= yield %>
+    <script>
+      notice = document.getElementById('notice_wrapper');
+      alert = document.getElementById('notice_alert');
+      removeNotice = setTimeout(function () {
+      notice.remove();
+        }, 5000);
+      alertNotice = setTimeout(function () {
+      alert.remove();
+        }, 5000);
+    </script>
   </body>
 </html>
