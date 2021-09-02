@@ -15,6 +15,9 @@
           </article>
         <% end %>
         <% @posts.each do | post | %>
+          <h3 class="title">
+            Recent posts
+          </h3>
           <div class="box">
             <article class="media">
               <div class="media-left">
@@ -24,24 +27,13 @@
               </div>
               <div class="media-content">
                 <div class="content">
-                  <% if user_signed_in? %>
-                    <strong>@<%= post.user.name %></strong><br />
-                  <% end %>
-                  <p><%= post.content %></p>
+                  <%= render @timeline_posts %>
                 </div>
               </div>
             </article>
           </div>
         <% end %>
       </div>
-      <article class="timeline">
-        <h3>
-          Recent posts
-        </h3>
-        <ul class="posts">
-          <%= render @timeline_posts %>
-        </ul>
-      </article>
     </div>
   </div>
 </section>

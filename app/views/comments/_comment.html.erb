@@ -1,6 +1,20 @@
-<div class="post-comments">
-  <p>
-    <b><%= comment.user.name %>:</b> <%= comment.content %>
-  </p>
-  <span> <%= comment.created_at.strftime("%Y/%m/%d") %> </span>
-</div>
+<% if comment.content != nil %>
+  <article class="media">
+    <figure class="media-left">
+      <p class="image is-48x48">
+        <%= gravatar_image_tag('junk'.gsub('spam', 'mdeering'), :alt => 'Github Default Gravatar' ) %>
+      </p>
+    </figure>
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <strong><%= comment.user.name %></strong>
+          <br>
+          <%= comment.content %>
+          <br>
+          <small><%= comment.created_at.strftime("%Y/%m/%d") %></small>
+        </p>
+      </div>
+    </div>
+  </article>
+<% end %>
