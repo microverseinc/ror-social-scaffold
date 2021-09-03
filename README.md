@@ -11,7 +11,6 @@
 
 TBA
 
-
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
@@ -46,7 +45,6 @@ To make sure the linters' checks using Github Actions work properly, you should 
 3. Start working on your milestone as usual.
 4. Open a PR from the `feature/branch` when your work is done.
 
-
 ### Usage
 
 Start server with:
@@ -77,7 +75,7 @@ TBA
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the [issues page](issues/).
+Feel free to check the [issues page](https://github.com/microverseinc/ror-social-scaffold/issues/).
 
 ## Show your support
 
@@ -90,4 +88,3 @@ TBA
 ## 📝 License
 
 TBA
-
