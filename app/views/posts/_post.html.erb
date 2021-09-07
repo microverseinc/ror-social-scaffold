@@ -11,10 +11,11 @@
 
   <div class='post-comments-section'>
     <%= render partial: 'comments/comment', collection: post.comments %>
-
-    <%= form_for(post.comments.new, url: post_comments_path(post)) do |form| %>
-      <%= form.text_field :content, id: :comment_content, class: 'form-control', placeholder: 'Add new Comment' %>
-      <%= form.submit 'Comment', class: 'btn btn-secondary' %>
-    <% end %>
+    <div class="form">
+      <%= form_for(post.comments.new, url: post_comments_path(post)) do |form| %>
+        <%= form.text_field :content, id: :comment_content, class: 'form-control', placeholder: 'Add new Comment' %>
+        <%= form.submit 'Comment', class: 'btn btn-secondary' %>
+      <% end %>
+    </div>
   </div>
 </li>

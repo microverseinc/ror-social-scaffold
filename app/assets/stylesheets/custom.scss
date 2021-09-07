@@ -136,59 +136,59 @@ a {
   }
 }
 
-// form {
-//   width: 80%;
-//   margin: 8px 0;
+.form {
+  width: 80%;
+  margin: 8px 0;
 
-//   .field {
-//     width: 100%;
-//     padding: 8px 0;
+  .field {
+    width: 100%;
+    padding: 8px 0;
 
-//     label {
-//       margin-bottom: 8px;
-//     }
+    label {
+      margin-bottom: 8px;
+    }
 
-//     input {
-//       width: 100%;
-//       border: 1px solid $divider-color;
-//       border-radius: 4px;
-//       padding: 8px;
-//       background-color: $primary-color-light;
-//     }
+    input {
+      width: 100%;
+      border: 1px solid $divider-color;
+      border-radius: 4px;
+      padding: 8px;
+      background-color: $primary-color-light;
+    }
 
-//     input[type="checkbox"] {
-//       width: fit-content;
-//     }
-//   }
+    input[type="checkbox"] {
+      width: fit-content;
+    }
+  }
 
-//   .actions {
-//     display: flex;
-//     justify-content: center;
-//     margin: 8px 0;
-//   }
+  .actions {
+    display: flex;
+    justify-content: center;
+    margin: 8px 0;
+  }
 
-//   input[type="submit"] {
-//     padding: 8px;
-//     width: 50%;
-//     border: none;
-//     border-radius: 4px;
-//     background-color: $primary-color-dark;
-//     color: $primary-color-light;
-//     text-transform: uppercase;
-//     font-weight: 900;
-//   }
+  input[type="submit"] {
+    padding: 8px;
+    width: 50%;
+    border: none;
+    border-radius: 4px;
+    background-color: $primary-color-dark;
+    color: $primary-color-light;
+    text-transform: uppercase;
+    font-weight: 900;
+  }
 
-//   input[type="submit"]:hover {
-//     background-color: $primary-color;
-//     color: #fff;
-//   }
+  input[type="submit"]:hover {
+    background-color: $primary-color;
+    color: #fff;
+  }
 
-//   .actions.reset {
-//     input[type="submit"] {
-//       width: 100%;
-//     }
-//   }
-// }
+  .actions.reset {
+    input[type="submit"] {
+      width: 100%;
+    }
+  }
+}
 
 .title {
   text-align: center;
