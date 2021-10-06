@@ -8,6 +8,7 @@ class CommentsController < ApplicationController
       format.json { render json: @comments }
     end
   end
+
   def create
     @comment = Comment.new(comment_params)
     @comment.post_id = params[:post_id]
@@ -21,7 +22,9 @@ class CommentsController < ApplicationController
       redirect_to posts_path, alert: @comment.errors.full_messages.join('. ').to_s
     end
   end
+
   private
+
   def comment_params
     params.require(:comment).permit(:content)
   end
