@@ -1,16 +1,20 @@
-
 class PostsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @posts = Post.all
     @post = Post.new
-    timeline_posts
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @posts }
-      format.json { render :json => @posts }
+      format.html { timeline_posts }
+      format.xml { render xml: timeline_posts }
+      format.json { render json: timeline_posts }
+    end
+  end
+
+  def show
+    @post = Post.find(params[:id])
+    respond_to do |format|
+      format.json { render json: @post }
     end
   end
 
@@ -28,7 +32,7 @@ class PostsController < ApplicationController
   private
 
   def timeline_posts
-    @timeline_posts ||= Post.all.ordered_by_most_recent.includes(:user)
+    @timeline_posts = Post.where(user: (current_user.friends.to_a << current_user)).ordered_by_most_recent
   end
 
   def post_params
