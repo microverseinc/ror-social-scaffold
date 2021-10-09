@@ -69,15 +69,109 @@ Start server with:
 
 Open `http://localhost:3000/` in your browser.
 
+### API endpoints
+
+The app allows a number of API calls using curl or your favorite API client, such as postman or VS Code's Thunder ClientYou must be logged in first to access protected content
+
+***Endpoints:***
+
+#### /api/login
+- Action: Authenticate user.
+- Method: POST
+- Headers:
+  - Accept: application/json
+  - Content-Type: application/json
+- Body:
+  ```json
+  {
+    "api_user": {
+      "email":"name@email.com",
+      "password":"the password"
+    }
+  }
+  ```
+- Response:
+    - status: 200 OK
+    - body: jwt secret (Copy this to authenticate protected content access)
+
+#### /api/posts.json
+- Action: Get posts.
+- Method: GET
+- Headers:
+  - Accept: application/json
+  - Content-Type: application/json
+  - Authorization: Bearer **\<JWT TOKEN\>**
+- Response:
+  - status: 200 OK
+  - body:
+    ```json
+      [
+        {
+          "id": 15,
+          "user_id": 50,
+          "content": "Example post 1",
+          "created_at": "2021-10-07T16:45:18.580Z",
+          "updated_at": "2021-10-07T16:45:18.580Z"
+        },
+        {
+          "id": 14,
+          "user_id": 51,
+          "content": "Example post 2",
+          "created_at": "2021-10-07T16:44:25.442Z",
+          "updated_at": "2021-10-07T16:44:25.442Z"
+        }
+      ]
+
+    ```
+
+#### /posts/:post_id/comments.json
+- Action: Get post comments.
+- Method: GET
+- Headers:
+  - Accept: application/json
+  - Content-Type: application/json
+  - Authorization: Bearer **\<JWT TOKEN\>**
+- Response:
+  - status: 200 OK
+  - body:
+    ```json
+      [
+        {
+          "id": 15,
+          "user_id": 51,
+          "post_id": 15,
+          "content": "Example post comment",
+          "created_at": "2021-10-07T16:46:52.875Z",
+          "updated_at": "2021-10-07T16:46:52.875Z"
+        }
+      ]
+    ```
+
+#### /posts/:post_id/comments.json
+- Action: Add comment.
+- Method: POST
+- Headers:
+  - Accept: application/json
+  - Content-Type: application/json
+  - Authorization: Bearer **\<JWT TOKEN\>**
+- Body:
+  ```json
+    {
+      "comment": {
+        "content":"Your comment."
+      }
+    }
+  ```
+- Response:
+  - status: 201 Created
+  - body: `Message created successfully`
+
 ### Run tests
 
 ```
     rpsec --format documentation
 ```
 
-### Deployment
-
-TBA
 
 ## Authors
 
