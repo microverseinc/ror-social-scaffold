@@ -299,7 +299,7 @@ Devise.setup do |config|
 
   #jwt
   config.jwt do |jwt|
-    jwt.secret = ENV[DEVISE_JWT_SECRET_KEY]
+    jwt.secret = ENV['DEVISE_JWT_SECRET_KEY']
     jwt.dispatch_requests = [
       ['POST', %r{^/api/login$}],
       ['POST', %r{^/api/login.json$}]
@@ -313,5 +313,5 @@ Devise.setup do |config|
   end
 
   config.skip_session_storage = [:http_auth]
-  config.navigational_formats = ['*/*'. :html, :json]
+  config.navigational_formats = ['*/*', :html, :json]
 end
