@@ -16,6 +16,7 @@ class ApplicationController < ActionController::Base
   # Use api_user Devise scope for JSON access
   def authenticate_user!(*args)
     super and return unless args.blank?
+
     json_request? ? authenticate_api_user! : super
   end
 
