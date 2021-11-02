@@ -177,7 +177,26 @@ form {
     text-transform: uppercase;
     font-weight: 900;
   }
+}
 
+.button_to {
+  display: inline-block;
+  width: fit-content;
+
+  input[type="submit"] {
+    padding: 8px;
+    width: fit-content;
+    border: none;
+    border-radius: 4px;
+    background-color: $primary-color-dark;
+    color: $primary-color-light;
+    text-transform: uppercase;
+    font-weight: 900;
+  }
+}
+
+form,
+.button_to {
   input[type="submit"]:hover {
     background-color: $primary-color;
     color: #fff;
@@ -275,11 +294,13 @@ form {
   }
 }
 
-.users-section {
+.users-section,
+.invitations-section {
   width: 100%;
   margin: 10px;
 
-  .users-list li {
+  .users-list li,
+  .invitations-list li {
     margin-bottom: 16px;
     text-transform: capitalize;
     font-size: 1.2em;
@@ -330,6 +351,7 @@ form {
   .new_post,
   .timeline,
   .users-section,
+  .invitations-section,
   .user-section {
     width: 70%;
   }
@@ -343,7 +365,34 @@ form {
   .new_post,
   .timeline,
   .users-section,
+  .invitations-section,
   .user-section {
     width: 50%;
   }
+}
+
+.pending_badge {
+  padding: 8px;
+  width: fit-content;
+  border: none;
+  border-radius: 4px;
+  background-color: $divider-color;
+  color: $primary-color-text;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.un-friend {
+  padding: 8px;
+  width: fit-content;
+  border: none;
+  border-radius: 4px;
+  background-color: rgb(255, 103, 103);
+  color: white;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.un-friend:hover {
+  background-color: rgb(116, 41, 41);
 }

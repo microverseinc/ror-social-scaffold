@@ -1,0 +1,8 @@
+<li>
+  Name: <%= invitation.name %>
+  <span class="profile-link">
+    <%= link_to 'See Profile',  user_path(invitation), class: 'profile-link' %>
+  </span>
+  <%= confirm_friendship_btn invitation %>
+  <%= reject_friendship_btn invitation %>
+</li>
