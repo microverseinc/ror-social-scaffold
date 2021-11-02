@@ -1,0 +1,1 @@
+json.posts @posts
