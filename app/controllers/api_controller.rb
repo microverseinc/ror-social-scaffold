@@ -3,4 +3,9 @@ class ApiController < ApplicationController
     @posts = Post.all
     render json: @posts
   end
+
+  def getcomments
+    @posts = Post.all
+    render json: @posts
+  end
 end
