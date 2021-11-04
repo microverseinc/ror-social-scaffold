@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :friendships
 
   get 'list/posts' => 'api#getposts'
-  get 'list/comments' => 'api#getcomments'
+  get 'list/:post_id/comments' => 'api#getcomments'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

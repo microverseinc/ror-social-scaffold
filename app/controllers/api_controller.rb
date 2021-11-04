@@ -5,7 +5,7 @@ class ApiController < ApplicationController
   end
 
   def getcomments
-    @posts = Post.all
-    render json: @posts
+    @comments = Comment.find(params[:post_id])
+    render json: @comments
   end
 end
