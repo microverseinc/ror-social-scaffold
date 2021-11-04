@@ -53,6 +53,8 @@ group :test do
   gem 'webdrivers'
 end
 
+gem 'simple_token_authentication', '~> 1.0'
+
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'listen', '>= 3.0.5', '< 3.2'

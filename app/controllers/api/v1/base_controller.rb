@@ -3,7 +3,11 @@ class Api::V1::BaseController < ApplicationController
 
     rescue_from ActiveRecord::RecordNotFound, with: :handle_not_found
 
-  before_action :authenticate
+  before_action :authenticate, :set_default_format
+
+  def set_default_format
+    request.format = :json
+  end
 
   private
 

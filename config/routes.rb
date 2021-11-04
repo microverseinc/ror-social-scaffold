@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   # Api routing
   namespace :api do
     namespace :v1 do
+    
+      post :auth, to: 'auth#create'
+
       defaults format: :json do
         resources :posts, only: [:index, :show] do
           resources :comments, only: [:create]
