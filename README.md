@@ -1,6 +1,6 @@
 # Scaffold for social media app with Ruby on Rails
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+> This repository includes an application with API endpoint for posts and Comments, as well as adding a session start functionality. Its purpose is to train Microverse students in API creation.
 
 ## Built With
 
