@@ -60,10 +60,60 @@ Open `http://localhost:3000/` in your browser.
 ### Run tests
 
 ```
-    rpsec --format documentation
+    rspec --format documentation
 ```
 
 > Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
+
+## API Endpoints
+
+Use the token from the authorization response headers to sign in.
+
+### Sign up
+
+#### Method: `POST`
+#### Endpoint: `/users`
+#### Header: `{ "Content-Type": "application/json", "Accept": "application/json" }`
+#### Body: `{"user": {"name": "Yuvraj", "email": "Yuvraj@fakemail.com", "password": "abc123", "password_confirmation": "abc123"}}`
+
+### Sign in
+
+#### Method: `POST`
+#### Endpoint: `/users/sign_in`
+#### Header: `{ "Content-Type": "application/json", "Accept": "application/json" }`
+#### Body: `{"user": {"email": "Yuvraj@fakemail.com", "password": "abc123"}}`
+
+### Sign out
+
+#### Method: `DELETE`
+#### Endpoint: `/users/sing_out`
+#### Header: `{ "Content-Type": "application/json", "Accept": "application/json", "Authorization": JWT token }`
+
+### Add post
+
+#### Method: `POST`
+#### Endpoint: `/posts`
+#### Header: `{ "Content-Type": "application/json", "Accept": "application/json", "Authorization": JWT token }`
+#### Body: `{"content": "Hello!"}`
+
+### View post
+
+#### Method: `GET`
+#### Endpoint: `/posts`
+#### Header: `{ "Content-Type": "application/json", "Accept": "application/json", "Authorization": JWT token }`
+
+### Add comment
+
+#### Method: `POST`
+#### Endpoint: `/posts/:post_id/comments`
+#### Header: `{ "Content-Type": "application/json", "Accept": "application/json", "Authorization": JWT token }`
+#### Body: `{"content": "Hi!"}`
+
+### View comments
+
+#### Method: `GET`
+#### Endpoint: `/posts/:post_id/comments`
+#### Header: `{ "Content-Type": "application/json", "Accept": "application/json", "Authorization": JWT token }`
 
 ## Authors
 
