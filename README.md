@@ -18,8 +18,8 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-Ruby: 2.6.3
-Rails: 5.2.3
+Ruby: 2.7.2
+Rails: 5.2.6
 Postgres: >=9.5
 
 ### Setup
@@ -33,7 +33,7 @@ bundle install
 Setup database with:
 
 ```
-   rails db:create
+   rails db:setup
    rails db:migrate
 ```
 
@@ -60,10 +60,60 @@ Open `http://localhost:3000/` in your browser.
 ### Run tests
 
 ```
-    rpsec --format documentation
+    rspec --format documentation
 ```
 
 > Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
+
+## API Endpoints
+
+Use the token from the authorization response headers to sign in.
+
+### Sign up
+
+#### Method: `POST`
+#### Endpoint: `/users`
+#### Header: `{ "Content-Type": "application/json", "Accept": "application/json" }`
+#### Body: `{"user": {"name": "Yuvraj", "email": "Yuvraj@fakemail.com", "password": "abc123", "password_confirmation": "abc123"}}`
+
+### Sign in
+
+#### Method: `POST`
+#### Endpoint: `/users/sign_in`
+#### Header: `{ "Content-Type": "application/json", "Accept": "application/json" }`
+#### Body: `{"user": {"email": "Yuvraj@fakemail.com", "password": "abc123"}}`
+
+### Sign out
+
+#### Method: `DELETE`
+#### Endpoint: `/users/sing_out`
+#### Header: `{ "Content-Type": "application/json", "Accept": "application/json", "Authorization": JWT token }`
+
+### Add post
+
+#### Method: `POST`
+#### Endpoint: `/posts`
+#### Header: `{ "Content-Type": "application/json", "Accept": "application/json", "Authorization": JWT token }`
+#### Body: `{"content": "Hello!"}`
+
+### View post
+
+#### Method: `GET`
+#### Endpoint: `/posts`
+#### Header: `{ "Content-Type": "application/json", "Accept": "application/json", "Authorization": JWT token }`
+
+### Add comment
+
+#### Method: `POST`
+#### Endpoint: `/posts/:post_id/comments`
+#### Header: `{ "Content-Type": "application/json", "Accept": "application/json", "Authorization": JWT token }`
+#### Body: `{"content": "Hi!"}`
+
+### View comments
+
+#### Method: `GET`
+#### Endpoint: `/posts/:post_id/comments`
+#### Header: `{ "Content-Type": "application/json", "Accept": "application/json", "Authorization": JWT token }`
 
 ## Authors
 
@@ -75,11 +125,11 @@ Arístides José Molina Pérez
 - LinkedIn: [aristides jose molina perez](https://www.linkedin.com/in/aristides-jose-molina-perez-09b0579a)
 
 👤 **Author**
-Ángel Díaz Rivera
+Yuvraj Manoo
 
-- GitHub: [@ad9311](https://github.com/ad9311)
-- Twitter: [@aristides_1000](https://twitter.com/@adiaz9311)
-- LinkedIn: [Ángel Díaz](https://www.linkedin.com/in/ad9311/)
+- GitHub: [@YuvrajM108](https://github.com/YuvrajM108)
+- Twitter: [@YuvrajM108](https://twitter.com/@YuvrajM108)
+- LinkedIn: [Yuvraj Manoo](https://www.linkedin.com/in/yuvraj-manoo/)
 
 ## 🤝 Contributing
 
