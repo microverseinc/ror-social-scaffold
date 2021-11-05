@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  respond_to :json
+  respond_to :json, :html, :js
 
   def index
     @users = User.all
