@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  respond_to :json
 
   def index
     @users = User.all
+    render json: [current_user]
     @not_my_request = current_user.pending_friends
   end
 

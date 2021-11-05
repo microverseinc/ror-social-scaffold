@@ -38,6 +38,8 @@ gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'devise'
+gem 'devise-jwt'
+gem 'rack-cors'
 
 gem 'mimemagic', '~> 0.4.3'
 
