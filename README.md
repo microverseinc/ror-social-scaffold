@@ -125,11 +125,11 @@ Arístides José Molina Pérez
 - LinkedIn: [aristides jose molina perez](https://www.linkedin.com/in/aristides-jose-molina-perez-09b0579a)
 
 👤 **Author**
-Ángel Díaz Rivera
+Yuvraj Manoo
 
-- GitHub: [@ad9311](https://github.com/ad9311)
-- Twitter: [@aristides_1000](https://twitter.com/@adiaz9311)
-- LinkedIn: [Ángel Díaz](https://www.linkedin.com/in/ad9311/)
+- GitHub: [@YuvrajM108](https://github.com/YuvrajM108)
+- Twitter: [@YuvrajM108](https://twitter.com/@YuvrajM108)
+- LinkedIn: [Yuvraj Manoo](https://www.linkedin.com/in/yuvraj-manoo/)
 
 ## 🤝 Contributing
 
