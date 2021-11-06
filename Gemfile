@@ -46,6 +46,7 @@ end
 
 group :test do
   gem 'rspec-rails'
+  gem 'rswag-specs'
   gem 'shoulda', '~> 4.0'
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 3.26'
@@ -54,6 +55,7 @@ group :test do
 end
 
 gem 'jwt'
+gem 'rswag'
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
