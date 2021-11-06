@@ -1,5 +1,11 @@
 <li>
   Name: <%= user.name %>
+  <% if current_user.id != user.id %>
+      <% if !friends?(user.id) %>
+      <%= button_to 'Add friend', {:controller => "friendships", :action => "create", :friend_id => user.id} , :method=>:post  %>
+      <% end %>
+    <% end %>
+
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
   </span>
