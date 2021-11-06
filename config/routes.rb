@@ -20,15 +20,12 @@ Rails.application.routes.draw do
   # Api routing
   namespace :api do
     namespace :v1 do
-    
-      post :auth, to: 'auth#create'
-
-      defaults format: :json do
-        resources :posts, only: [:index, :show] do
-          resources :comments, only: [:create]
-        end
+      post :auth, to: "auth#create"
+      post :register, to: "register#create"
+      resources :posts, only: [:index, :create] do
+        resources :comments, only: [:index, :create]
       end
-    end
+    end 
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
