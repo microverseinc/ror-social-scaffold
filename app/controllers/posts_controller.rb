@@ -17,6 +17,10 @@ class PostsController < ApplicationController
     end
   end
 
+  def posts_index
+    render json: Post.all
+  end
+
   private
 
   def timeline_posts

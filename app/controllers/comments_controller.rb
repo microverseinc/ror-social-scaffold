@@ -11,6 +11,12 @@ class CommentsController < ApplicationController
     end
   end
 
+  def comments_index
+    post_id = params[:post_id]
+    comments = Post.find_by(id: post_id).comments
+    render json: comments.to_json
+  end
+
   private
 
   def comment_params
