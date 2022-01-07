@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_forgery_protection
   # before_action :authenticate_user!
   before_action :set_user, only: %i[show create_friendship accept decline]
 
