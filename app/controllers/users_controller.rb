@@ -1,9 +1,12 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   before_action :set_user, only: %i[show create_friendship accept decline]
 
   def index
     @users = User.all
+    puts "//////////////////////" 
+    puts @users
+    render json: @users
   end
 
   def show
