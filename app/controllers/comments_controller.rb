@@ -19,13 +19,12 @@ class CommentsController < ApplicationController
 
   # def create_comment
   #   comment = Comment.create(comment_params)
-    
+
   #   if comment.save
   #     render json: comment, status: :created
   #   else
   #     render json: comment.errors, status: :unprocessable_entity
   #   end
-
 
   # end
 
@@ -36,11 +35,11 @@ class CommentsController < ApplicationController
     render json: @comment
     if @comment.save
       render json: @comment
-       # redirect_to posts_path, notice: 'Comment was successfully created.'
+    # redirect_to posts_path, notice: 'Comment was successfully created.'
     else
-      puts "not saving"
+      puts 'not saving'
       # redirect_to posts_path, alert: @comment.errors.full_messages.join('. ').to_s
-     end
+    end
   end
 
   private

@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    puts "//////////////////////" 
+    puts '//////////////////////'
     puts @users
     render json: @users
   end
