@@ -17,12 +17,21 @@ class PostsController < ApplicationController
     end
   end
 
+  def posts
+    render json: Post.all
+  end
+
   private
 
   def timeline_posts
-    @timeline_posts ||= Post.all.ordered_by_most_recent.select do |post|
-      post.user.friends.include?(current_user) || post.user == current_user
+    @timeline_posts = []
+    Post.all.ordered_by_most_recent.each do |post|
+      @timeline_posts << post if post.user_id == current_user.id
+      current_user.friends.each do |i|
+        @timeline_posts << post if post.user_id == i.id
+      end
     end
+    @timeline_posts
   end
 
   def post_params

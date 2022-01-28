@@ -15,4 +15,32 @@ module ApplicationHelper
       link_to('Like!', post_likes_path(post_id: post.id), method: :post)
     end
   end
+
+  def login_display
+    output = ''
+    output << if current_user
+                " #{link_to current_user.name, user_path(current_user)} |
+      #{link_to gravatar_image_tag(current_user.email, gravatar: { size: 18 },
+                                                       alt: current_user.name), user_path(current_user)}
+      #{link_to 'Sign out', destroy_user_session_path, method: :delete}"
+              else
+                link_to 'Sign in', user_session_path.to_s
+              end
+    output.html_safe
+  end
+
+  def notice_alert
+    output = ''
+    if notice.present?
+      output << "
+      <div class='notice'>
+        <p> #{notice} </p>
+      </div>"
+    elsif alert.present?
+      output << "<div class='alert'>
+        <p> #{alert} </p>
+      </div>"
+    end
+    output.html_safe
+  end
 end

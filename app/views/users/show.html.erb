@@ -1,29 +1,22 @@
 <section class="user-section">
-  <h2><%= "Name: #{@user.name}" %></h2>
 
-  <%= request_control(@user) %>
-  
+  <br>
+  <h3 class="text-danger">Friends:</h3>
+  <ul>
+    <li>
+      <%= friend %>
+    </li>
+  </ul>
+
+  <h3 class="text-danger">Pending Friends:</h3>
+    <%= pending_friend_display %>
+  <br>
+ 
   <article class="timeline">
-    <h3>Recent posts:</h3>
+    <h3 class="text-primary">Your Posts:</h3>
     <ul class="posts">
       <%= render @posts %>
     </ul>
   </article>
-
-  <div class="timeline">
-    <h3>Sent Invitations:</h3>
-    <ul class="posts">
-      <% @user.pending_friends.each do |invi|%>
-          <li><%= invi.name %></li>
-      <% end %>
-    </ul>
-  </div>
-  <div class="timeline">
-    <h3>Incoming Invitations:</h3>
-    <ul class="posts">
-      <% @user.friend_requests.each do |invi|%>
-          <li><%= invi.name %> <%= request_control(invi) %></li>
-      <% end %>
-    </ul>
-  </div>
+  
 </section>
