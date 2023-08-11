@@ -76,10 +76,9 @@ GEM
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.2)
       activesupport (>= 5.0.0)
-    listen (3.1.5)
+    listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
-      ruby_dep (~> 1.2)
     loofah (2.9.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -141,10 +140,6 @@ GEM
       actionpack (>= 5.0)
       railties (>= 5.0)
     rexml (3.2.5)
-    rspec (3.10.0)
-      rspec-core (~> 3.10.0)
-      rspec-expectations (~> 3.10.0)
-      rspec-mocks (~> 3.10.0)
     rspec-core (3.10.1)
       rspec-support (~> 3.10.0)
     rspec-expectations (3.10.1)
@@ -174,7 +169,6 @@ GEM
     rubocop-ast (1.6.0)
       parser (>= 3.0.1.1)
     ruby-progressbar (1.11.0)
-    ruby_dep (1.5.0)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -205,6 +199,8 @@ GEM
     turbolinks-source (5.2.0)
     tzinfo (1.2.9)
       thread_safe (~> 0.1)
+    tzinfo-data (1.2023.3)
+      tzinfo (>= 1.0.0)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (2.0.0)
@@ -232,9 +228,8 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   pg (~> 1.5, >= 1.5.3)
   puma (~> 3.12)
-  rails (~> 5.2.4)
-  rspec
-  rspec-rails (~> 5.0, >= 5.0.1)
+  rails (~> 5.2.5)
+  rspec-rails
   rubocop
   sass-rails (~> 5.0)
   spring
@@ -245,7 +240,7 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 RUBY VERSION
-   ruby 2.7.2p137
+   ruby 3.2.1p31
 
 BUNDLED WITH
    2.4.6
