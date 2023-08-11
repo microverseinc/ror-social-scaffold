@@ -101,8 +101,7 @@ GEM
     parallel (1.20.1)
     parser (3.0.1.1)
       ast (~> 2.4.1)
-    pg (1.2.3)
-    pg (1.2.3-x64-mingw32)
+    pg (1.5.3)
     puma (3.12.6)
     racc (1.5.2)
     rack (2.2.3)
@@ -231,7 +230,7 @@ DEPENDENCIES
   devise
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
-  pg (>= 0.18, < 2.0)
+  pg (~> 1.5, >= 1.5.3)
   puma (~> 3.12)
   rails (~> 5.2.4)
   rspec
@@ -249,4 +248,4 @@ RUBY VERSION
    ruby 2.7.2p137
 
 BUNDLED WITH
-   2.2.16
+   2.4.6
