@@ -1,9 +1,45 @@
-<section class="user-section">
-  <h2><%= "Name: #{@user.name}" %></h2>
-  <article class="timeline">
-    <h3>Recent posts:</h3>
-    <ul class="posts">
-      <%= render @posts %>
-    </ul>
-  </article>
-</section>
+<div class="user-page">
+    <section class="user-section">
+        <h2><%= "Name: #{@user.name}" %></h2>
+        <%= friend_or_unfriend_btn(@user) %>
+        <article class="timeline">
+            <h3>Recent posts:</h3>
+            <ul class="posts">
+                <%= render @posts %>
+            </ul>
+        </article>
+    </section>
+    <div class="pending-con">
+
+        <div>
+
+            <%= pending_header(@user) %>
+
+            <% @pending.each do |mess| %>
+            <ul>
+                <% @new = User.find(mess.user_id)%>
+                <li><%= pending_name(@user,@new) %><%= accept_btn(@new,@user)%><%=decline_btn(@new,@user)%></li>
+            </ul>
+            <% end %>
+        </div>
+        <div>
+            <%= sent_header(@user) %>
+            <% @sent.each do |mess| %>
+            <ul>
+                <% @new = User.find(mess.friend_id) %>
+                <li><%= sent_names(@user, @new) %> <%= sent_button(@user,@new)%></li>
+
+            </ul>
+            <%end %>
+        </div>
+
+        <div>
+            <h3>Friends</h3>
+            <% @user.friends.each do |friend|%>
+            <ul>
+                <li><%= friend.name%><%= unfriend_btn(friend)%></li>
+            </ul>
+            <%end%>
+        </div>
+    </div>
+</div>
